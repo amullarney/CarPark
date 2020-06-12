@@ -72,6 +72,7 @@ INSERT INTO O_TFR
 	0,
 	'// @TODO use an EE with numeric to string ops.
 
+/* https://github.com/johnrwolfe/CarPark/issues/31  @TODO
 select any tu from instances of TimeUtil;
 year = tu.EpochYear + (param.Time / TimeConversion::QuantumPerYear);
 RemTime = param.Time % TimeConversion::QuantumPerYear;
@@ -101,6 +102,7 @@ LOG::LogReal( message:" Day", r:day );
 LOG::LogReal( message:" Hour", r:hour );
 LOG::LogReal( message:" Minute", r:minute );
 LOG::LogReal( message:" Second", r:second );
+*/
 
 
 return "@TODO return formatted string";',
