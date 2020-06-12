@@ -47,7 +47,7 @@ INSERT INTO GD_SHP
 INSERT INTO GD_CTR
 	VALUES ("6cb93767-b34f-4fad-9dde-b33ea73a7e53");
 INSERT INTO DIM_ND
-	VALUES (1218.000000,
+	VALUES (1400.000000,
 	276.000000,
 	"6cb93767-b34f-4fad-9dde-b33ea73a7e53");
 INSERT INTO DIM_GE
@@ -76,7 +76,7 @@ INSERT INTO DIM_CON
 	"6cb93767-b34f-4fad-9dde-b33ea73a7e53");
 INSERT INTO DIM_CON
 	VALUES ("92cd3adc-ae94-4df5-9ffd-b8274e7f5585",
-	5318.000000,
+	5500.000000,
 	144.000000,
 	"6cb93767-b34f-4fad-9dde-b33ea73a7e53");
 INSERT INTO DIM_CON
@@ -114,7 +114,7 @@ INSERT INTO GD_GE
 	"3a0a5f08-1388-4c3f-ab8d-73aa1165fb23",
 	94,
 	0,
-	'CarPark::Components::CarparkControl::Operator::ControlRoomOperator');
+	'CarPark::Components::CarparkControl::Operator::OperatorConsole');
 INSERT INTO GD_CON
 	VALUES ("e70bab47-8251-4281-a9c5-4299de48c792",
 	"00000000-0000-0000-0000-000000000000");
@@ -414,7 +414,7 @@ INSERT INTO GD_GE
 	"beb17c01-5d43-4cbd-bd44-08536daaf245",
 	94,
 	0,
-	'CarPark::Components::CarparkControl::Payer::PaymentMachineUser');
+	'CarPark::Components::CarparkControl::Payer::PaymentMachine');
 INSERT INTO GD_CON
 	VALUES ("584795c6-79dc-4024-80f0-4ca002291d03",
 	"00000000-0000-0000-0000-000000000000");
@@ -448,7 +448,7 @@ INSERT INTO DIM_ND
 	0.000000,
 	"42760a82-a3de-4ed8-b49c-d8ded1778bb8");
 INSERT INTO DIM_GE
-	VALUES (5325.000000,
+	VALUES (5507.000000,
 	104.000000,
 	"42760a82-a3de-4ed8-b49c-d8ded1778bb8",
 	"00000000-0000-0000-0000-000000000000");
@@ -483,14 +483,14 @@ INSERT INTO GD_LS
 	"4e641f51-af19-4c41-ba74-721d00eb38f8");
 INSERT INTO DIM_WAY
 	VALUES ("23961be7-45d1-4468-8e07-9c6036a649d2",
-	5318.000000,
+	5500.000000,
 	144.000000,
 	"584795c6-79dc-4024-80f0-4ca002291d03",
 	"00000000-0000-0000-0000-000000000000",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO DIM_WAY
 	VALUES ("4e641f51-af19-4c41-ba74-721d00eb38f8",
-	5449.000000,
+	5631.000000,
 	144.000000,
 	"584795c6-79dc-4024-80f0-4ca002291d03",
 	"00000000-0000-0000-0000-000000000000",
@@ -704,6 +704,30 @@ INSERT INTO DIM_ELE
 	VALUES ("a6cce81c-cd2d-446f-9792-517488eb0531",
 	0,
 	"6cb93767-b34f-4fad-9dde-b33ea73a7e53");
+INSERT INTO GD_GE
+	VALUES ("165fd39e-85a3-4b0e-a0f4-f1f1f3e51498",
+	"99c3a267-14f8-42b1-84c2-02216e736048",
+	"bbab2682-e9d8-44da-a123-bf2623a92edd",
+	108,
+	0,
+	'CarPark::Components::CarparkControl::SharedTypes');
+INSERT INTO GD_SHP
+	VALUES ("165fd39e-85a3-4b0e-a0f4-f1f1f3e51498");
+INSERT INTO GD_NCS
+	VALUES ("165fd39e-85a3-4b0e-a0f4-f1f1f3e51498");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"165fd39e-85a3-4b0e-a0f4-f1f1f3e51498");
+INSERT INTO DIM_GE
+	VALUES (5288.000000,
+	48.000000,
+	"165fd39e-85a3-4b0e-a0f4-f1f1f3e51498",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("165fd39e-85a3-4b0e-a0f4-f1f1f3e51498",
+	0,
+	"6cb93767-b34f-4fad-9dde-b33ea73a7e53");
 INSERT INTO DIM_DIA
 	VALUES ("99c3a267-14f8-42b1-84c2-02216e736048",
 	'',
@@ -724,10 +748,10 @@ INSERT INTO C_IR
 	"5151cd41-0769-460c-8d89-89ef89764175");
 INSERT INTO C_P
 	VALUES ("3a0a5f08-1388-4c3f-ab8d-73aa1165fb23",
-	'ControlRoomOperator',
+	'OperatorConsole',
 	'Unnamed Interface',
 	'',
-	'CarparkControl::Operator::ControlRoomOperator');
+	'CarparkControl::Operator::OperatorConsole');
 INSERT INTO SPR_PEP
 	VALUES ("68927b2a-db16-4eba-98e2-51cabea609af",
 	"56dc2578-d45a-4a5c-86c8-ee5e3284e192",
@@ -745,7 +769,7 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'TardyExit',
 	'',
-	'../../Interfaces/ControlRoomOperator/ControlRoomOperator.xtuml');
+	'../../Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("12df4c70-262f-481e-836d-365b82af564e",
 	"6addbc93-2516-4ff7-973f-4036661c3594",
@@ -763,7 +787,7 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'UnpaidStayExit',
 	'',
-	'../../Interfaces/ControlRoomOperator/ControlRoomOperator.xtuml');
+	'../../Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("9a93f701-cadb-485a-a293-723d3236e703",
 	"691fe067-ff91-4b3a-80b4-ac20b1a6f42c",
@@ -790,7 +814,7 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'FeeWaived',
 	'',
-	'../../Interfaces/ControlRoomOperator/ControlRoomOperator.xtuml');
+	'../../Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("aec29863-3840-4abd-98ae-ac51b7438e6d",
 	"deabe881-00f0-46a6-8238-f0f211af4084",
@@ -815,7 +839,7 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'FeeCollected',
 	'',
-	'../../Interfaces/ControlRoomOperator/ControlRoomOperator.xtuml');
+	'../../Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("55b5998a-74c6-41dd-881e-264fc986f3e7",
 	"decb291b-9729-42dc-9e3c-39bf58a3f0fe",
@@ -833,7 +857,7 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'ActivateEntryStand',
 	'',
-	'../../Interfaces/ControlRoomOperator/ControlRoomOperator.xtuml');
+	'../../Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("16f1b932-8b5a-4b30-8c60-97856a3e36d4",
 	"e498b425-5222-4bf7-beb4-dbf2b2ed21ef",
@@ -851,7 +875,7 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'DeactivateEntryStand',
 	'',
-	'../../Interfaces/ControlRoomOperator/ControlRoomOperator.xtuml');
+	'../../Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("4c83640f-54da-4989-b453-53cc5fe8f5f9",
 	"ceb70e8e-da44-4868-9afd-06ee51840aaf",
@@ -869,7 +893,7 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'DelayedEntry',
 	'',
-	'../../Interfaces/ControlRoomOperator/ControlRoomOperator.xtuml');
+	'../../Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("be6fcc4a-f7ae-43ed-92cf-2b3278a4f787",
 	"a19289e3-ea62-417f-9a6d-5f05d709b9b8",
@@ -887,7 +911,7 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'ActivateExitStand',
 	'',
-	'../../Interfaces/ControlRoomOperator/ControlRoomOperator.xtuml');
+	'../../Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("a07511de-b3ec-41ad-9aca-8eb47322f5f0",
 	"2c1be27d-0494-409e-bee1-e788809c8dc5",
@@ -905,7 +929,7 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'DeactivateExitStand',
 	'',
-	'../../Interfaces/ControlRoomOperator/ControlRoomOperator.xtuml');
+	'../../Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("1c0f0fc2-1743-4b36-8bd8-3b5409576f5b",
 	"fb9ecbd5-8059-4308-9f0a-83969561ff04",
@@ -923,7 +947,7 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'OccupancyUpdate',
 	'',
-	'../../Interfaces/ControlRoomOperator/ControlRoomOperator.xtuml');
+	'../../Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("aa71fc0b-9f5c-4747-9bcf-89bad998012d",
 	"bb331470-fbd3-43d9-8d59-e5684346c197",
@@ -947,7 +971,7 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'IssueTicket',
 	'',
-	'../../Interfaces/ControlRoomOperator/ControlRoomOperator.xtuml');
+	'../../Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("af87cda2-b14f-47ee-82d2-1b06c3e26837",
 	"dc4b88ab-d520-4c50-ae78-e56474653079",
@@ -969,13 +993,13 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'OpenBarrier',
 	'',
-	'../../Interfaces/ControlRoomOperator/ControlRoomOperator.xtuml');
+	'../../Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	"00000000-0000-0000-0000-000000000000",
-	'ControlRoomOperator',
+	'OperatorConsole',
 	'Interaction with operator in the control room.',
-	'../../Interfaces/ControlRoomOperator/ControlRoomOperator.xtuml');
+	'../../Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO C_PO
 	VALUES ("8fe2f311-d912-4a92-98a6-8cf761a7c1df",
 	"1bdb4958-d141-408c-a010-920b78c78dcc",
@@ -1319,10 +1343,10 @@ INSERT INTO C_IR
 	"17462cc9-b531-453f-85ef-019eeb5b33d4");
 INSERT INTO C_P
 	VALUES ("beb17c01-5d43-4cbd-bd44-08536daaf245",
-	'PaymentMachineUser',
+	'PaymentMachine',
 	'Unnamed Interface',
 	'',
-	'CarparkControl::Payer::PaymentMachineUser');
+	'CarparkControl::Payer::PaymentMachine');
 INSERT INTO SPR_PEP
 	VALUES ("326ba948-4a2c-4a2e-bbbb-8b68d2d9cd01",
 	"aeb8e261-7eb2-4971-a3cb-e35a714490b3",
@@ -1342,7 +1366,7 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'CancelledTransaction',
 	'',
-	'../../Interfaces/PaymentMachineUser/PaymentMachineUser.xtuml');
+	'../../Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("6f73ef50-c440-4985-b587-161d85ca9a3e",
 	"f66a3b7f-d47f-4c2b-9f66-1ce143dc9e4d",
@@ -1362,7 +1386,7 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'WaivedChange',
 	'',
-	'../../Interfaces/PaymentMachineUser/PaymentMachineUser.xtuml');
+	'../../Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("15ad350b-af8a-4196-8117-69919486a9ef",
 	"1a93d819-e152-409f-8b77-23b28cb652bb",
@@ -1382,7 +1406,7 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'CollectedTicket',
 	'',
-	'../../Interfaces/PaymentMachineUser/PaymentMachineUser.xtuml');
+	'../../Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("f8c00300-0b27-465c-96a4-54f20428a3bd",
 	"6bdbefd7-2814-447f-a902-ed56cfceddfb",
@@ -1402,7 +1426,7 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'InsertedTicket',
 	'',
-	'../../Interfaces/PaymentMachineUser/PaymentMachineUser.xtuml');
+	'../../Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("d59655e0-0ae3-49fc-9abf-eb762a24450e",
 	"ed039022-908c-4f0a-bb12-81c944031952",
@@ -1422,7 +1446,7 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'InsertedCurrency',
 	'',
-	'../../Interfaces/PaymentMachineUser/PaymentMachineUser.xtuml');
+	'../../Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("23805362-b635-4a13-b7a2-4c9622292a5a",
 	"e6bd25b1-8a4d-4a8a-a068-e149f8b48ebb",
@@ -1440,7 +1464,7 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'RemainingBalance',
 	'',
-	'../../Interfaces/PaymentMachineUser/PaymentMachineUser.xtuml');
+	'../../Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("734667a0-7048-49f7-b7ca-27b501eaeeec",
 	"acfc0128-4d4f-4a0e-87ed-988ebe170166",
@@ -1458,7 +1482,7 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'InsufficientChange',
 	'',
-	'../../Interfaces/PaymentMachineUser/PaymentMachineUser.xtuml');
+	'../../Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("3e8b0098-3e6e-4fdf-b79a-5b0dd2031467",
 	"ab99ffd4-de35-47a9-9eb4-ee31927071ec",
@@ -1476,13 +1500,13 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'ReturnedTicket',
 	'',
-	'../../Interfaces/PaymentMachineUser/PaymentMachineUser.xtuml');
+	'../../Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("1775761d-746e-41ae-a5e0-cd1a783dc665",
 	"00000000-0000-0000-0000-000000000000",
-	'PaymentMachineUser',
+	'PaymentMachine',
 	'',
-	'../../Interfaces/PaymentMachineUser/PaymentMachineUser.xtuml');
+	'../../Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO C_PO
 	VALUES ("19b036a6-0fa0-4668-828d-dc6545845474",
 	"1bdb4958-d141-408c-a010-920b78c78dcc",
