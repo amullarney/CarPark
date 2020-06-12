@@ -23,7 +23,8 @@ select one Linear related by FeeSched->Linear[R21.''employs''];
 // If this is a linear fee schedule, calculate the charge using 
 // the linear rate and then apply any minimum or maximum fees if they exist.
 if ( not empty Linear )
-  self.Amount = Linear.Rate * (self.Duration / TimeConversion::QuantumPerHour);
+  // self.Amount = Linear.Rate * (self.Duration / TimeConversion::QuantumPerHour); https://github.com/xtuml/pyxtuml/issues/20  @TODO
+  self.Amount = Linear.Rate * (self.Duration / QuantumPerHour);
   select one MinimumFee related by Linear->FlatFee[R18.''employs minimum''];
   if ( not empty MinimumFee ) 
     if ( MinimumFee.Amount > self.Amount )

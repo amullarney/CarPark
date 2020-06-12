@@ -39,16 +39,23 @@ second = TIM::get_second( date:sys_date );
 if ( (year - tu.EpochYear) > 0 )
   LOG::LogFailure( message:"TODO: Suport year crossing." );
 end if;
-time = (year - tu.EpochYear) * TimeConversion::QuantumPerYear;
+// time = (year - tu.EpochYear) * TimeConversion::QuantumPerYear;  https://github.com/xtuml/pyxtuml/issues/20  @TODO
+time = (year - tu.EpochYear) * QuantumPerYear;
 
 if ( (month - tu.EpochMonth) > 0 )
   LOG::LogFailure( message:"TODO: Support month crossing." );
 end if;
 
+/* https://github.com/xtuml/pyxtuml/issues/20  @TODO
 time = time + ((day - tu.EpochDay) * TimeConversion::QuantumPerDay);
 time = time + ((hour - tu.EpochHour) * TimeConversion::QuantumPerHour);
 time = time + ((minute - tu.EpochMinute) * TimeConversion::QuantumPerMinute);
 time = time + ((second - tu.EpochSecond) * TimeConversion::QuantumPerSecond);
+*/
+time = time + ((day - tu.EpochDay) * QuantumPerDay);
+time = time + ((hour - tu.EpochHour) * QuantumPerHour);
+time = time + ((minute - tu.EpochMinute) * QuantumPerMinute);
+time = time + ((second - tu.EpochSecond) * QuantumPerSecond);
 
 return time;
 ',
