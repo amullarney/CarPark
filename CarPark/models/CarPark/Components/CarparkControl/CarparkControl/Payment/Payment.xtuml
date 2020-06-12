@@ -86,19 +86,9 @@ the exit time on which the charge for the associated stay is based.',
 	'',
 	'ExitTime',
 	0,
-	"d3fcb8ce-ecb8-4cf7-b70d-7ae617f25ee4",
+	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
-INSERT INTO S_DT_PROXY
-	VALUES ("d3fcb8ce-ecb8-4cf7-b70d-7ae617f25ee4",
-	"00000000-0000-0000-0000-000000000000",
-	'Time',
-	'A specific point in time represented as a number of seconds
-past the beginning of a defined epic.
-
-Units: seconds.',
-	'',
-	'../../DateTime/DateTime.xtuml');
 INSERT INTO O_ID
 	VALUES (0,
 	"c216bfa3-7943-40ad-9c0a-5f242438ac15");

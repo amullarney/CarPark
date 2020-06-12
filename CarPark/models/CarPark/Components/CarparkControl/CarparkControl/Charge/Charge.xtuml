@@ -43,19 +43,9 @@ INSERT INTO O_ATTR
 	'',
 	'ExitDeadline',
 	0,
-	"d3fcb8ce-ecb8-4cf7-b70d-7ae617f25ee4",
+	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
-INSERT INTO S_DT_PROXY
-	VALUES ("d3fcb8ce-ecb8-4cf7-b70d-7ae617f25ee4",
-	"00000000-0000-0000-0000-000000000000",
-	'Time',
-	'A specific point in time represented as a number of seconds
-past the beginning of a defined epic.
-
-Units: seconds.',
-	'',
-	'../../DateTime/DateTime.xtuml');
 INSERT INTO O_NBATTR
 	VALUES ("a224c50c-663c-4267-8dd7-35ae4e1ef09d",
 	"946458d3-3399-4127-ae05-c61fbf8a5aaf");
