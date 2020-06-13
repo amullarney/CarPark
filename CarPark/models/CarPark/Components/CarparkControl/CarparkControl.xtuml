@@ -1542,6 +1542,24 @@ INSERT INTO C_EP_PROXY
 	'InitializeEpoch',
 	'',
 	'../../Interfaces/TestSupport/TestSupport.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("f007fa62-c53a-4ef6-843f-60dae33987a8",
+	"d15007a5-9b6a-46db-8c22-363bb8839b4f",
+	"b20b5f3f-7e9b-4575-a705-7eb58865fe20");
+INSERT INTO SPR_PS
+	VALUES ("f007fa62-c53a-4ef6-843f-60dae33987a8",
+	'Initialize',
+	'',
+	'::Initialize();',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("d15007a5-9b6a-46db-8c22-363bb8839b4f",
+	"3f2d15df-2fa6-4155-9f03-3cddb8b85271",
+	-1,
+	'Initialize',
+	'',
+	'../../Interfaces/TestSupport/TestSupport.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("3f2d15df-2fa6-4155-9f03-3cddb8b85271",
 	"00000000-0000-0000-0000-000000000000",

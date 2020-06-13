@@ -1,0 +1,45 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("04c68d66-b47f-4702-a7ba-63d364bb05c9",
+	'NominalBucket',
+	4,
+	'NominalBucket',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("4fd7359e-cdb7-4662-8ae8-d7146c22f0dc",
+	"04c68d66-b47f-4702-a7ba-63d364bb05c9",
+	'Run',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'send TestSupport::Initialize();
+UC1_NominalEntry::Run();',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_ID
+	VALUES (0,
+	"04c68d66-b47f-4702-a7ba-63d364bb05c9");
+INSERT INTO O_ID
+	VALUES (1,
+	"04c68d66-b47f-4702-a7ba-63d364bb05c9");
+INSERT INTO O_ID
+	VALUES (2,
+	"04c68d66-b47f-4702-a7ba-63d364bb05c9");
+INSERT INTO PE_PE
+	VALUES ("04c68d66-b47f-4702-a7ba-63d364bb05c9",
+	1,
+	"c7be3bcb-d5e1-4863-b6cc-dc5120645a51",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("c7be3bcb-d5e1-4863-b6cc-dc5120645a51",
+	"00000000-0000-0000-0000-000000000000",
+	"dccd26e2-5328-45c4-8ada-fed969fc6ffe",
+	'TestCases',
+	'',
+	0,
+	'../TestCases.xtuml');

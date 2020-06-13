@@ -18,6 +18,18 @@ INSERT INTO C_AS
 	'',
 	0,
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("d15007a5-9b6a-46db-8c22-363bb8839b4f",
+	"3f2d15df-2fa6-4155-9f03-3cddb8b85271",
+	-1,
+	'Initialize',
+	'');
+INSERT INTO C_AS
+	VALUES ("d15007a5-9b6a-46db-8c22-363bb8839b4f",
+	'Initialize',
+	'',
+	0,
+	"86c0d8c0-a5fd-4d3f-a2bd-1fabe1f99de0");
 INSERT INTO PE_PE
 	VALUES ("3f2d15df-2fa6-4155-9f03-3cddb8b85271",
 	1,
