@@ -14,12 +14,38 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'send TestSupport::Initialize();
-UC1_NominalEntry::Run();',
+	'// Initialize the application under test.
+send TestSupport::Initialize();
+
+// Execute the first test case in the bucket.
+UC1_NominalEntry::Run();
+
+// Arrange for the vehicle to stay in the carpark for 22 seconds
+create object instance bucket of NominalBucket;
+create event instance StayComplete of NominalBucket1:StayComplete() to bucket;
+tmr = TIM::timer_start( event_inst:StayComplete, microseconds:22000000 );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
 	0);
+INSERT INTO O_NBATTR
+	VALUES ("bb27f35c-cc28-407a-81d4-053d8f4fa36b",
+	"04c68d66-b47f-4702-a7ba-63d364bb05c9");
+INSERT INTO O_BATTR
+	VALUES ("bb27f35c-cc28-407a-81d4-053d8f4fa36b",
+	"04c68d66-b47f-4702-a7ba-63d364bb05c9");
+INSERT INTO O_ATTR
+	VALUES ("bb27f35c-cc28-407a-81d4-053d8f4fa36b",
+	"04c68d66-b47f-4702-a7ba-63d364bb05c9",
+	"00000000-0000-0000-0000-000000000000",
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000006",
+	'',
+	'');
 INSERT INTO O_ID
 	VALUES (0,
 	"04c68d66-b47f-4702-a7ba-63d364bb05c9");
