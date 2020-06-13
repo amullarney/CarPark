@@ -128,6 +128,7 @@ INSERT INTO O_TFR
 	0,
 	'create object instance t of TimeUtil;
 t.EpochStart = TIM::current_date();
+/* Causes array out of bounds with Ciera-generated code @TODO
 t.DaysPerMonth[0] = 31;
 t.DaysPerMonth[1] = 28;
 t.DaysPerMonth[2] = 31;
@@ -139,7 +140,8 @@ t.DaysPerMonth[7] = 31;
 t.DaysPerMonth[8] = 30;
 t.DaysPerMonth[9] = 31;
 t.DaysPerMonth[10] = 30;
-t.DaysPerMonth[11] = 31;',
+t.DaysPerMonth[11] = 31;
+*/',
 	1,
 	'',
 	"556714e0-29a5-45f8-beee-ba0a42875b9a",
