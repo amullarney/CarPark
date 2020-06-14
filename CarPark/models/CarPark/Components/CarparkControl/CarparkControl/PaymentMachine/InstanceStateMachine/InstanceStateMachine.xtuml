@@ -14,7 +14,7 @@ INSERT INTO SM_EVTDI
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
 	'TicketNumber',
 	'',
-	"ba5eda7a-def5-0000-0000-000000000002",
+	"ba5eda7a-def5-0000-0000-000000000003",
 	'',
 	"f6eb4fef-6b00-47ac-89ca-0be2f159952f",
 	"00000000-0000-0000-0000-000000000000");
@@ -27,25 +27,6 @@ INSERT INTO SM_EVTDI
 	'',
 	"99ecc7a8-9c49-49b7-a07d-1e29a675688f",
 	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_EVTDI
-	VALUES ("a65c593c-1924-4012-b71e-8b2993ca5f0b",
-	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
-	'Deadline',
-	'',
-	"d3fcb8ce-ecb8-4cf7-b70d-7ae617f25ee4",
-	'',
-	"5b109579-96e4-406a-800b-ad8441d51927",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO S_DT_PROXY
-	VALUES ("d3fcb8ce-ecb8-4cf7-b70d-7ae617f25ee4",
-	"00000000-0000-0000-0000-000000000000",
-	'Time',
-	'A specific point in time represented as a number of seconds
-past the beginning of a defined epic.
-
-Units: seconds.',
-	'',
-	'../../../DateTime/DateTime.xtuml');
 INSERT INTO SM_LEVT
 	VALUES ("f6eb4fef-6b00-47ac-89ca-0be2f159952f",
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",

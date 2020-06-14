@@ -1,0 +1,537 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("cc44dcb6-e8fb-416b-b79f-4dc711038b1e",
+	"8ec583db-9132-4c61-8204-c283dacc4f75",
+	"8ec583db-9132-4c61-8204-c283dacc4f75",
+	'Deployment',
+	'',
+	0);
+INSERT INTO CL_IC
+	VALUES ("58d65580-3a47-4d54-ad80-d56bcbe8af23",
+	"1bdb4958-d141-408c-a010-920b78c78dcc",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'CarPark::Components::CarparkControl',
+	'');
+INSERT INTO CL_POR
+	VALUES ("58d65580-3a47-4d54-ad80-d56bcbe8af23",
+	"5151cd41-0769-460c-8d89-89ef89764175",
+	'Operator',
+	"a255a650-30a9-4db0-b1c6-280ecb801c8f");
+INSERT INTO CL_IIR
+	VALUES ("151a1f27-e8e3-4c06-901c-cc974fc75239",
+	"3a0a5f08-1388-4c3f-ab8d-73aa1165fb23",
+	"a255a650-30a9-4db0-b1c6-280ecb801c8f",
+	"00000000-0000-0000-0000-000000000000",
+	'OperatorConsole',
+	'');
+INSERT INTO CL_IP
+	VALUES ("151a1f27-e8e3-4c06-901c-cc974fc75239",
+	'OperatorConsole',
+	'');
+INSERT INTO CL_IPINS
+	VALUES ("a9dc36a3-a3fd-4758-aa82-b108091b27e1",
+	"151a1f27-e8e3-4c06-901c-cc974fc75239");
+INSERT INTO C_IR_PROXY
+	VALUES ("3a0a5f08-1388-4c3f-ab8d-73aa1165fb23",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	"00000000-0000-0000-0000-000000000000",
+	"5151cd41-0769-460c-8d89-89ef89764175",
+	'../../../../CarPark/models/CarPark/Components/CarparkControl/CarparkControl.xtuml');
+INSERT INTO C_PO_PROXY
+	VALUES ("5151cd41-0769-460c-8d89-89ef89764175",
+	"1bdb4958-d141-408c-a010-920b78c78dcc",
+	'Operator',
+	0,
+	0,
+	'../../../../CarPark/models/CarPark/Components/CarparkControl/CarparkControl.xtuml');
+INSERT INTO CL_POR
+	VALUES ("58d65580-3a47-4d54-ad80-d56bcbe8af23",
+	"8fe2f311-d912-4a92-98a6-8cf761a7c1df",
+	'Entry',
+	"a6638a48-96a6-4ca6-aa19-290c6e19764e");
+INSERT INTO CL_IIR
+	VALUES ("154fe46f-5649-4ce4-8dee-23bf4270d334",
+	"9f4d3169-5587-474e-af39-0764b65642f0",
+	"a6638a48-96a6-4ca6-aa19-290c6e19764e",
+	"00000000-0000-0000-0000-000000000000",
+	'EntryStand',
+	'');
+INSERT INTO CL_IP
+	VALUES ("154fe46f-5649-4ce4-8dee-23bf4270d334",
+	'EntryStand',
+	'');
+INSERT INTO CL_IPINS
+	VALUES ("61e19872-0259-4059-803d-31af2da6edbe",
+	"154fe46f-5649-4ce4-8dee-23bf4270d334");
+INSERT INTO C_IR_PROXY
+	VALUES ("9f4d3169-5587-474e-af39-0764b65642f0",
+	"a4174036-5fb5-4ca8-bc14-f60c13721964",
+	"00000000-0000-0000-0000-000000000000",
+	"8fe2f311-d912-4a92-98a6-8cf761a7c1df",
+	'../../../../CarPark/models/CarPark/Components/CarparkControl/CarparkControl.xtuml');
+INSERT INTO C_PO_PROXY
+	VALUES ("8fe2f311-d912-4a92-98a6-8cf761a7c1df",
+	"1bdb4958-d141-408c-a010-920b78c78dcc",
+	'Entry',
+	0,
+	0,
+	'../../../../CarPark/models/CarPark/Components/CarparkControl/CarparkControl.xtuml');
+INSERT INTO CL_POR
+	VALUES ("58d65580-3a47-4d54-ad80-d56bcbe8af23",
+	"97cfba4f-f881-4735-a4d7-34a70b274f37",
+	'Exit',
+	"4beb3232-f2a6-4cce-8486-5e04ca712a0e");
+INSERT INTO CL_IIR
+	VALUES ("74e33839-1082-4585-83ad-775a6efa12ae",
+	"dd495095-34eb-41d0-9910-e28a308ce762",
+	"4beb3232-f2a6-4cce-8486-5e04ca712a0e",
+	"00000000-0000-0000-0000-000000000000",
+	'ExitStand',
+	'');
+INSERT INTO CL_IP
+	VALUES ("74e33839-1082-4585-83ad-775a6efa12ae",
+	'ExitStand',
+	'');
+INSERT INTO CL_IPINS
+	VALUES ("feb7003b-4e42-414c-a3a6-1031ce904325",
+	"74e33839-1082-4585-83ad-775a6efa12ae");
+INSERT INTO C_IR_PROXY
+	VALUES ("dd495095-34eb-41d0-9910-e28a308ce762",
+	"7899d3af-2715-4b8f-a3b5-f0508005328d",
+	"00000000-0000-0000-0000-000000000000",
+	"97cfba4f-f881-4735-a4d7-34a70b274f37",
+	'../../../../CarPark/models/CarPark/Components/CarparkControl/CarparkControl.xtuml');
+INSERT INTO C_PO_PROXY
+	VALUES ("97cfba4f-f881-4735-a4d7-34a70b274f37",
+	"1bdb4958-d141-408c-a010-920b78c78dcc",
+	'Exit',
+	0,
+	0,
+	'../../../../CarPark/models/CarPark/Components/CarparkControl/CarparkControl.xtuml');
+INSERT INTO CL_POR
+	VALUES ("58d65580-3a47-4d54-ad80-d56bcbe8af23",
+	"17462cc9-b531-453f-85ef-019eeb5b33d4",
+	'Payer',
+	"18eb3cb5-fc9b-4ed8-b93a-a04844a3989d");
+INSERT INTO CL_IIR
+	VALUES ("b93b022d-755c-45ff-9456-d631cef8aa3c",
+	"beb17c01-5d43-4cbd-bd44-08536daaf245",
+	"18eb3cb5-fc9b-4ed8-b93a-a04844a3989d",
+	"00000000-0000-0000-0000-000000000000",
+	'PaymentMachine',
+	'');
+INSERT INTO CL_IP
+	VALUES ("b93b022d-755c-45ff-9456-d631cef8aa3c",
+	'PaymentMachine',
+	'');
+INSERT INTO CL_IPINS
+	VALUES ("516b05b1-97f4-4007-af1e-0dd8f3d7528b",
+	"b93b022d-755c-45ff-9456-d631cef8aa3c");
+INSERT INTO C_IR_PROXY
+	VALUES ("beb17c01-5d43-4cbd-bd44-08536daaf245",
+	"1775761d-746e-41ae-a5e0-cd1a783dc665",
+	"00000000-0000-0000-0000-000000000000",
+	"17462cc9-b531-453f-85ef-019eeb5b33d4",
+	'../../../../CarPark/models/CarPark/Components/CarparkControl/CarparkControl.xtuml');
+INSERT INTO C_PO_PROXY
+	VALUES ("17462cc9-b531-453f-85ef-019eeb5b33d4",
+	"1bdb4958-d141-408c-a010-920b78c78dcc",
+	'Payer',
+	0,
+	0,
+	'../../../../CarPark/models/CarPark/Components/CarparkControl/CarparkControl.xtuml');
+INSERT INTO CL_POR
+	VALUES ("58d65580-3a47-4d54-ad80-d56bcbe8af23",
+	"19b036a6-0fa0-4668-828d-dc6545845474",
+	'TestSupport',
+	"5dc44cab-e1ae-4311-8153-68a814652066");
+INSERT INTO CL_IIR
+	VALUES ("e7eb7140-49c5-4fe8-8eba-9d6beafb7da1",
+	"b20b5f3f-7e9b-4575-a705-7eb58865fe20",
+	"5dc44cab-e1ae-4311-8153-68a814652066",
+	"00000000-0000-0000-0000-000000000000",
+	'TestSupport',
+	'');
+INSERT INTO CL_IP
+	VALUES ("e7eb7140-49c5-4fe8-8eba-9d6beafb7da1",
+	'TestSupport',
+	'');
+INSERT INTO C_IR_PROXY
+	VALUES ("b20b5f3f-7e9b-4575-a705-7eb58865fe20",
+	"3f2d15df-2fa6-4155-9f03-3cddb8b85271",
+	"00000000-0000-0000-0000-000000000000",
+	"19b036a6-0fa0-4668-828d-dc6545845474",
+	'../../../../CarPark/models/CarPark/Components/CarparkControl/CarparkControl.xtuml');
+INSERT INTO C_PO_PROXY
+	VALUES ("19b036a6-0fa0-4668-828d-dc6545845474",
+	"1bdb4958-d141-408c-a010-920b78c78dcc",
+	'TestSupport',
+	0,
+	0,
+	'../../../../CarPark/models/CarPark/Components/CarparkControl/CarparkControl.xtuml');
+INSERT INTO PE_PE
+	VALUES ("58d65580-3a47-4d54-ad80-d56bcbe8af23",
+	1,
+	"cc44dcb6-e8fb-416b-b79f-4dc711038b1e",
+	"00000000-0000-0000-0000-000000000000",
+	21);
+INSERT INTO C_C_PROXY
+	VALUES ("1bdb4958-d141-408c-a010-920b78c78dcc",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'CarparkControl',
+	'Assumptions:
+1. Port activities assume that identifiers are unique across all instances
+of the identified class.  This is normal, but has specific implications 
+should a single component instance be used to manage multiple carpark
+instances.  For example, the value of EntryStand.Location must be unique
+across all instances of EntryStand deployed within an instance of a component,
+not just those associated with a particular instance of Carpark.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../../../../CarPark/models/CarPark/Components/CarparkControl/CarparkControl.xtuml');
+INSERT INTO CL_IC
+	VALUES ("24d714f2-1d5f-4a76-a0c9-fe3acab0fde9",
+	"cf7a3d2b-ed93-4406-9369-9394eec5a5fd",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'EntryStand::Components::EntryStand',
+	'');
+INSERT INTO CL_POR
+	VALUES ("24d714f2-1d5f-4a76-a0c9-fe3acab0fde9",
+	"74ca86a2-98fc-4bc7-9d78-f994094edf54",
+	'CarPark',
+	"66acc425-970a-4420-830d-2c0f5a2e06be");
+INSERT INTO CL_IIR
+	VALUES ("3f3b1b30-b76e-4dc7-ab2a-fa6a83cfebd6",
+	"aef78402-1955-4aaf-8b8b-2353afbd7888",
+	"66acc425-970a-4420-830d-2c0f5a2e06be",
+	"00000000-0000-0000-0000-000000000000",
+	'EntryStand',
+	'');
+INSERT INTO CL_IR
+	VALUES ("3f3b1b30-b76e-4dc7-ab2a-fa6a83cfebd6",
+	"61e19872-0259-4059-803d-31af2da6edbe",
+	'EntryStand',
+	'');
+INSERT INTO C_IR_PROXY
+	VALUES ("aef78402-1955-4aaf-8b8b-2353afbd7888",
+	"a4174036-5fb5-4ca8-bc14-f60c13721964",
+	"00000000-0000-0000-0000-000000000000",
+	"74ca86a2-98fc-4bc7-9d78-f994094edf54",
+	'../../../../EntryStand/models/EntryStand/Components/EntryStand/EntryStand.xtuml');
+INSERT INTO C_PO_PROXY
+	VALUES ("74ca86a2-98fc-4bc7-9d78-f994094edf54",
+	"cf7a3d2b-ed93-4406-9369-9394eec5a5fd",
+	'CarPark',
+	0,
+	0,
+	'../../../../EntryStand/models/EntryStand/Components/EntryStand/EntryStand.xtuml');
+INSERT INTO PE_PE
+	VALUES ("24d714f2-1d5f-4a76-a0c9-fe3acab0fde9",
+	1,
+	"cc44dcb6-e8fb-416b-b79f-4dc711038b1e",
+	"00000000-0000-0000-0000-000000000000",
+	21);
+INSERT INTO C_C_PROXY
+	VALUES ("cf7a3d2b-ed93-4406-9369-9394eec5a5fd",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'EntryStand',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../../../../EntryStand/models/EntryStand/Components/EntryStand/EntryStand.xtuml');
+INSERT INTO CL_IC
+	VALUES ("e21aa37f-f287-47f4-9e29-bb840490f255",
+	"05de1619-41b1-467d-858f-929e0131b332",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'ExitStand::Components::ExitStand',
+	'');
+INSERT INTO CL_POR
+	VALUES ("e21aa37f-f287-47f4-9e29-bb840490f255",
+	"372e1953-dd98-4712-96fe-b17430aa2fbb",
+	'CarPark',
+	"5d8a940f-d3aa-4c4e-abe3-4eda32fe651e");
+INSERT INTO CL_IIR
+	VALUES ("e8712915-ee63-4dc8-acb9-8723a3efbf56",
+	"bd1fa382-9e93-4e57-aae3-5b35d028e1a5",
+	"5d8a940f-d3aa-4c4e-abe3-4eda32fe651e",
+	"00000000-0000-0000-0000-000000000000",
+	'ExitStand',
+	'');
+INSERT INTO CL_IR
+	VALUES ("e8712915-ee63-4dc8-acb9-8723a3efbf56",
+	"feb7003b-4e42-414c-a3a6-1031ce904325",
+	'ExitStand',
+	'');
+INSERT INTO C_IR_PROXY
+	VALUES ("bd1fa382-9e93-4e57-aae3-5b35d028e1a5",
+	"7899d3af-2715-4b8f-a3b5-f0508005328d",
+	"00000000-0000-0000-0000-000000000000",
+	"372e1953-dd98-4712-96fe-b17430aa2fbb",
+	'../../../../ExitStand/models/ExitStand/Components/ExitStand/ExitStand.xtuml');
+INSERT INTO C_PO_PROXY
+	VALUES ("372e1953-dd98-4712-96fe-b17430aa2fbb",
+	"05de1619-41b1-467d-858f-929e0131b332",
+	'CarPark',
+	0,
+	0,
+	'../../../../ExitStand/models/ExitStand/Components/ExitStand/ExitStand.xtuml');
+INSERT INTO PE_PE
+	VALUES ("e21aa37f-f287-47f4-9e29-bb840490f255",
+	1,
+	"cc44dcb6-e8fb-416b-b79f-4dc711038b1e",
+	"00000000-0000-0000-0000-000000000000",
+	21);
+INSERT INTO C_C_PROXY
+	VALUES ("05de1619-41b1-467d-858f-929e0131b332",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'ExitStand',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../../../../ExitStand/models/ExitStand/Components/ExitStand/ExitStand.xtuml');
+INSERT INTO CL_IC
+	VALUES ("25dcce9a-7f60-4d40-8e47-7185e086a3a4",
+	"62598ed2-34fc-47d2-b195-4f5078774955",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'OperatorConsole::Components::OperatorConsole',
+	'');
+INSERT INTO CL_POR
+	VALUES ("25dcce9a-7f60-4d40-8e47-7185e086a3a4",
+	"1d0fcd22-0cfe-4b03-8681-2003b623eb89",
+	'Port1',
+	"e10136cd-5213-4786-8761-a0926053ff4e");
+INSERT INTO CL_IIR
+	VALUES ("b0dae329-7dd9-431e-8093-567e7cecee4f",
+	"4560e82f-446e-4799-8690-6c829985509d",
+	"e10136cd-5213-4786-8761-a0926053ff4e",
+	"00000000-0000-0000-0000-000000000000",
+	'OperatorConsole',
+	'');
+INSERT INTO CL_IR
+	VALUES ("b0dae329-7dd9-431e-8093-567e7cecee4f",
+	"a9dc36a3-a3fd-4758-aa82-b108091b27e1",
+	'OperatorConsole',
+	'');
+INSERT INTO C_IR_PROXY
+	VALUES ("4560e82f-446e-4799-8690-6c829985509d",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	"00000000-0000-0000-0000-000000000000",
+	"1d0fcd22-0cfe-4b03-8681-2003b623eb89",
+	'../../../../OperatorConsole/models/OperatorConsole/Components/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO C_PO_PROXY
+	VALUES ("1d0fcd22-0cfe-4b03-8681-2003b623eb89",
+	"62598ed2-34fc-47d2-b195-4f5078774955",
+	'Port1',
+	0,
+	0,
+	'../../../../OperatorConsole/models/OperatorConsole/Components/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO PE_PE
+	VALUES ("25dcce9a-7f60-4d40-8e47-7185e086a3a4",
+	1,
+	"cc44dcb6-e8fb-416b-b79f-4dc711038b1e",
+	"00000000-0000-0000-0000-000000000000",
+	21);
+INSERT INTO C_C_PROXY
+	VALUES ("62598ed2-34fc-47d2-b195-4f5078774955",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'OperatorConsole',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../../../../OperatorConsole/models/OperatorConsole/Components/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO CL_IC
+	VALUES ("abb6e320-a599-4ae7-ad2a-226dd9a2c6f3",
+	"9ce675de-740a-4d77-833b-66ab4d7d13eb",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'PaymentMachine::Components::PaymentMachine',
+	'');
+INSERT INTO CL_POR
+	VALUES ("abb6e320-a599-4ae7-ad2a-226dd9a2c6f3",
+	"876f2a50-2183-44f3-aebc-10d73f0e43a5",
+	'Port1',
+	"2714ef01-9856-4608-9e12-70ae14ebba4d");
+INSERT INTO CL_IIR
+	VALUES ("4c18aeec-7aa3-471a-937c-4821a845d5da",
+	"cba51a94-8f08-44d4-af84-9adb6451b70d",
+	"2714ef01-9856-4608-9e12-70ae14ebba4d",
+	"00000000-0000-0000-0000-000000000000",
+	'PaymentMachine',
+	'');
+INSERT INTO CL_IR
+	VALUES ("4c18aeec-7aa3-471a-937c-4821a845d5da",
+	"516b05b1-97f4-4007-af1e-0dd8f3d7528b",
+	'PaymentMachine',
+	'');
+INSERT INTO C_IR_PROXY
+	VALUES ("cba51a94-8f08-44d4-af84-9adb6451b70d",
+	"1775761d-746e-41ae-a5e0-cd1a783dc665",
+	"00000000-0000-0000-0000-000000000000",
+	"876f2a50-2183-44f3-aebc-10d73f0e43a5",
+	'../../../../PaymentMachine/models/PaymentMachine/Components/PaymentMachine/PaymentMachine.xtuml');
+INSERT INTO C_PO_PROXY
+	VALUES ("876f2a50-2183-44f3-aebc-10d73f0e43a5",
+	"9ce675de-740a-4d77-833b-66ab4d7d13eb",
+	'Port1',
+	0,
+	0,
+	'../../../../PaymentMachine/models/PaymentMachine/Components/PaymentMachine/PaymentMachine.xtuml');
+INSERT INTO PE_PE
+	VALUES ("abb6e320-a599-4ae7-ad2a-226dd9a2c6f3",
+	1,
+	"cc44dcb6-e8fb-416b-b79f-4dc711038b1e",
+	"00000000-0000-0000-0000-000000000000",
+	21);
+INSERT INTO C_C_PROXY
+	VALUES ("9ce675de-740a-4d77-833b-66ab4d7d13eb",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'PaymentMachine',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../../../../PaymentMachine/models/PaymentMachine/Components/PaymentMachine/PaymentMachine.xtuml');
+INSERT INTO C_SF
+	VALUES ("516b05b1-97f4-4007-af1e-0dd8f3d7528b",
+	"cba51a94-8f08-44d4-af84-9adb6451b70d",
+	"beb17c01-5d43-4cbd-bd44-08536daaf245",
+	'',
+	'CarparkControl::Payer::PaymentMachine -o)- PaymentMachine::Port1::PaymentMachine');
+INSERT INTO PE_PE
+	VALUES ("516b05b1-97f4-4007-af1e-0dd8f3d7528b",
+	1,
+	"cc44dcb6-e8fb-416b-b79f-4dc711038b1e",
+	"00000000-0000-0000-0000-000000000000",
+	22);
+INSERT INTO C_R_PROXY
+	VALUES ("cba51a94-8f08-44d4-af84-9adb6451b70d",
+	'PaymentMachine',
+	'',
+	'Unnamed Interface',
+	'PaymentMachine::Port1::PaymentMachine',
+	'../../../../PaymentMachine/models/PaymentMachine/Components/PaymentMachine/PaymentMachine.xtuml');
+INSERT INTO C_P_PROXY
+	VALUES ("beb17c01-5d43-4cbd-bd44-08536daaf245",
+	'PaymentMachine',
+	'Unnamed Interface',
+	'',
+	'CarparkControl::Payer::PaymentMachine',
+	'../../../../CarPark/models/CarPark/Components/CarparkControl/CarparkControl.xtuml');
+INSERT INTO C_SF
+	VALUES ("a9dc36a3-a3fd-4758-aa82-b108091b27e1",
+	"4560e82f-446e-4799-8690-6c829985509d",
+	"3a0a5f08-1388-4c3f-ab8d-73aa1165fb23",
+	'',
+	'CarparkControl::Operator::OperatorConsole -o)- OperatorConsole::Port1::OperatorConsole');
+INSERT INTO PE_PE
+	VALUES ("a9dc36a3-a3fd-4758-aa82-b108091b27e1",
+	1,
+	"cc44dcb6-e8fb-416b-b79f-4dc711038b1e",
+	"00000000-0000-0000-0000-000000000000",
+	22);
+INSERT INTO C_R_PROXY
+	VALUES ("4560e82f-446e-4799-8690-6c829985509d",
+	'OperatorConsole',
+	'',
+	'Unnamed Interface',
+	'OperatorConsole::Port1::OperatorConsole',
+	'../../../../OperatorConsole/models/OperatorConsole/Components/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO C_P_PROXY
+	VALUES ("3a0a5f08-1388-4c3f-ab8d-73aa1165fb23",
+	'OperatorConsole',
+	'Unnamed Interface',
+	'',
+	'CarparkControl::Operator::OperatorConsole',
+	'../../../../CarPark/models/CarPark/Components/CarparkControl/CarparkControl.xtuml');
+INSERT INTO C_SF
+	VALUES ("feb7003b-4e42-414c-a3a6-1031ce904325",
+	"bd1fa382-9e93-4e57-aae3-5b35d028e1a5",
+	"dd495095-34eb-41d0-9910-e28a308ce762",
+	'',
+	'CarparkControl::Exit::ExitStand -o)- ExitStand::CarPark::ExitStand');
+INSERT INTO PE_PE
+	VALUES ("feb7003b-4e42-414c-a3a6-1031ce904325",
+	1,
+	"cc44dcb6-e8fb-416b-b79f-4dc711038b1e",
+	"00000000-0000-0000-0000-000000000000",
+	22);
+INSERT INTO C_R_PROXY
+	VALUES ("bd1fa382-9e93-4e57-aae3-5b35d028e1a5",
+	'ExitStand',
+	'',
+	'Unnamed Interface',
+	'ExitStand::CarPark::ExitStand',
+	'../../../../ExitStand/models/ExitStand/Components/ExitStand/ExitStand.xtuml');
+INSERT INTO C_P_PROXY
+	VALUES ("dd495095-34eb-41d0-9910-e28a308ce762",
+	'ExitStand',
+	'Unnamed Interface',
+	'',
+	'CarparkControl::Exit::ExitStand',
+	'../../../../CarPark/models/CarPark/Components/CarparkControl/CarparkControl.xtuml');
+INSERT INTO C_SF
+	VALUES ("61e19872-0259-4059-803d-31af2da6edbe",
+	"aef78402-1955-4aaf-8b8b-2353afbd7888",
+	"9f4d3169-5587-474e-af39-0764b65642f0",
+	'',
+	'CarparkControl::Entry::EntryStand -o)- EntryStand::CarPark::EntryStand');
+INSERT INTO PE_PE
+	VALUES ("61e19872-0259-4059-803d-31af2da6edbe",
+	1,
+	"cc44dcb6-e8fb-416b-b79f-4dc711038b1e",
+	"00000000-0000-0000-0000-000000000000",
+	22);
+INSERT INTO C_R_PROXY
+	VALUES ("aef78402-1955-4aaf-8b8b-2353afbd7888",
+	'EntryStand',
+	'',
+	'Unnamed Interface',
+	'EntryStand::CarPark::EntryStand',
+	'../../../../EntryStand/models/EntryStand/Components/EntryStand/EntryStand.xtuml');
+INSERT INTO C_P_PROXY
+	VALUES ("9f4d3169-5587-474e-af39-0764b65642f0",
+	'EntryStand',
+	'Unnamed Interface',
+	'',
+	'CarparkControl::Entry::EntryStand',
+	'../../../../CarPark/models/CarPark/Components/CarparkControl/CarparkControl.xtuml');
+INSERT INTO PE_PE
+	VALUES ("cc44dcb6-e8fb-416b-b79f-4dc711038b1e",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO S_SYS_PROXY
+	VALUES ("8ec583db-9132-4c61-8204-c283dacc4f75",
+	'Deployment',
+	1,
+	'../Deployment.xtuml');

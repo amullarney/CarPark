@@ -39,16 +39,23 @@ second = TIM::get_second( date:sys_date );
 if ( (year - tu.EpochYear) > 0 )
   LOG::LogFailure( message:"TODO: Suport year crossing." );
 end if;
-time = (year - tu.EpochYear) * TimeConversion::QuantumPerYear;
+// time = (year - tu.EpochYear) * TimeConversion::QuantumPerYear;  https://github.com/xtuml/pyxtuml/issues/20  @TODO
+time = (year - tu.EpochYear) * QuantumPerYear;
 
 if ( (month - tu.EpochMonth) > 0 )
   LOG::LogFailure( message:"TODO: Support month crossing." );
 end if;
 
+/* https://github.com/xtuml/pyxtuml/issues/20  @TODO
 time = time + ((day - tu.EpochDay) * TimeConversion::QuantumPerDay);
 time = time + ((hour - tu.EpochHour) * TimeConversion::QuantumPerHour);
 time = time + ((minute - tu.EpochMinute) * TimeConversion::QuantumPerMinute);
 time = time + ((second - tu.EpochSecond) * TimeConversion::QuantumPerSecond);
+*/
+time = time + ((day - tu.EpochDay) * QuantumPerDay);
+time = time + ((hour - tu.EpochHour) * QuantumPerHour);
+time = time + ((minute - tu.EpochMinute) * QuantumPerMinute);
+time = time + ((second - tu.EpochSecond) * QuantumPerSecond);
 
 return time;
 ',
@@ -65,6 +72,7 @@ INSERT INTO O_TFR
 	0,
 	'// @TODO use an EE with numeric to string ops.
 
+/* https://github.com/johnrwolfe/CarPark/issues/31  @TODO
 select any tu from instances of TimeUtil;
 year = tu.EpochYear + (param.Time / TimeConversion::QuantumPerYear);
 RemTime = param.Time % TimeConversion::QuantumPerYear;
@@ -94,6 +102,7 @@ LOG::LogReal( message:" Day", r:day );
 LOG::LogReal( message:" Hour", r:hour );
 LOG::LogReal( message:" Minute", r:minute );
 LOG::LogReal( message:" Second", r:second );
+*/
 
 
 return "@TODO return formatted string";',
@@ -119,6 +128,7 @@ INSERT INTO O_TFR
 	0,
 	'create object instance t of TimeUtil;
 t.EpochStart = TIM::current_date();
+/* Causes array out of bounds with Ciera-generated code @TODO
 t.DaysPerMonth[0] = 31;
 t.DaysPerMonth[1] = 28;
 t.DaysPerMonth[2] = 31;
@@ -130,7 +140,8 @@ t.DaysPerMonth[7] = 31;
 t.DaysPerMonth[8] = 30;
 t.DaysPerMonth[9] = 31;
 t.DaysPerMonth[10] = 30;
-t.DaysPerMonth[11] = 31;',
+t.DaysPerMonth[11] = 31;
+*/',
 	1,
 	'',
 	"556714e0-29a5-45f8-beee-ba0a42875b9a",

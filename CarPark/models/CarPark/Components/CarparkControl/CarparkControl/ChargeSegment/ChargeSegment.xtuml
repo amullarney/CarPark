@@ -23,7 +23,8 @@ select one Linear related by FeeSched->Linear[R21.''employs''];
 // If this is a linear fee schedule, calculate the charge using 
 // the linear rate and then apply any minimum or maximum fees if they exist.
 if ( not empty Linear )
-  self.Amount = Linear.Rate * (self.Duration / TimeConversion::QuantumPerHour);
+  // self.Amount = Linear.Rate * (self.Duration / TimeConversion::QuantumPerHour); https://github.com/xtuml/pyxtuml/issues/20  @TODO
+  self.Amount = Linear.Rate * (self.Duration / QuantumPerHour);
   select one MinimumFee related by Linear->FlatFee[R18.''employs minimum''];
   if ( not empty MinimumFee ) 
     if ( MinimumFee.Amount > self.Amount )
@@ -108,19 +109,9 @@ INSERT INTO O_ATTR
 	'',
 	'Start',
 	0,
-	"d3fcb8ce-ecb8-4cf7-b70d-7ae617f25ee4",
+	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
-INSERT INTO S_DT_PROXY
-	VALUES ("d3fcb8ce-ecb8-4cf7-b70d-7ae617f25ee4",
-	"00000000-0000-0000-0000-000000000000",
-	'Time',
-	'A specific point in time represented as a number of seconds
-past the beginning of a defined epic.
-
-Units: seconds.',
-	'',
-	'../../DateTime/DateTime.xtuml');
 INSERT INTO O_DBATTR
 	VALUES ("7bb5f88a-b33d-40f9-a0ad-f90525a280c1",
 	"94a3e097-a7c1-4fa8-a43d-b79524106049",
@@ -141,7 +132,7 @@ INSERT INTO O_ATTR
 	'',
 	'End',
 	0,
-	"d3fcb8ce-ecb8-4cf7-b70d-7ae617f25ee4",
+	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
 INSERT INTO O_DBATTR

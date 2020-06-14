@@ -1,0 +1,73 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("ae86b1c5-b5e6-4c2e-83b0-a3d5f4b5d17c",
+	"00000000-0000-0000-0000-000000000000",
+	"dccd26e2-5328-45c4-8ada-fed969fc6ffe",
+	'Functions',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("cba913f0-5877-46f1-8eb0-0286761c21d4",
+	112,
+	"ae86b1c5-b5e6-4c2e-83b0-a3d5f4b5d17c",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'4.1.17',
+	'InteractiveTesting::Components::InteractiveTestbench::Functions');
+INSERT INTO DIM_DIA
+	VALUES ("cba913f0-5877-46f1-8eb0-0286761c21d4",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_SYNC
+	VALUES ("67079cc9-8992-43df-ace5-904413a7d13b",
+	"00000000-0000-0000-0000-000000000000",
+	'Initialize',
+	'',
+	'NominalBucket::Run();',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("67079cc9-8992-43df-ace5-904413a7d13b",
+	1,
+	"ae86b1c5-b5e6-4c2e-83b0-a3d5f4b5d17c",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO PE_PE
+	VALUES ("ae86b1c5-b5e6-4c2e-83b0-a3d5f4b5d17c",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"4106b522-c480-445f-b75c-19cb7ec10f7c",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("4106b522-c480-445f-b75c-19cb7ec10f7c",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'InteractiveTestbench',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../InteractiveTestbench.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("dccd26e2-5328-45c4-8ada-fed969fc6ffe",
+	'InteractiveTesting',
+	1,
+	'../../../InteractiveTesting.xtuml');

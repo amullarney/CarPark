@@ -55,19 +55,9 @@ INSERT INTO O_ATTR
 	'',
 	'Start',
 	0,
-	"d3fcb8ce-ecb8-4cf7-b70d-7ae617f25ee4",
+	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
-INSERT INTO S_DT_PROXY
-	VALUES ("d3fcb8ce-ecb8-4cf7-b70d-7ae617f25ee4",
-	"00000000-0000-0000-0000-000000000000",
-	'Time',
-	'A specific point in time represented as a number of seconds
-past the beginning of a defined epic.
-
-Units: seconds.',
-	'',
-	'../../DateTime/DateTime.xtuml');
 INSERT INTO O_NBATTR
 	VALUES ("95d5fe09-7d4b-4ae8-82cb-c4ce5ad6f277",
 	"d71ede6a-f0ea-4839-b691-35635c85e716");
@@ -83,7 +73,7 @@ INSERT INTO O_ATTR
 	'',
 	'End',
 	0,
-	"d3fcb8ce-ecb8-4cf7-b70d-7ae617f25ee4",
+	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
 INSERT INTO O_NBATTR

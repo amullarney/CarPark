@@ -1,0 +1,74 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("bbab2682-e9d8-44da-a123-bf2623a92edd",
+	"00000000-0000-0000-0000-000000000000",
+	"887b82b9-56ec-4387-b15a-8b42f655cdba",
+	'SharedTypes',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("afa61f9f-249f-4993-b996-9ff4846de006",
+	112,
+	"bbab2682-e9d8-44da-a123-bf2623a92edd",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'CarPark::Components::CarparkControl::SharedTypes');
+INSERT INTO DIM_DIA
+	VALUES ("afa61f9f-249f-4993-b996-9ff4846de006",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO EP_PKGREF
+	VALUES ("bbab2682-e9d8-44da-a123-bf2623a92edd",
+	"19f4c26f-518e-4bac-983e-9519c6d49e42");
+INSERT INTO EP_PKG_PROXY
+	VALUES ("19f4c26f-518e-4bac-983e-9519c6d49e42",
+	"887b82b9-56ec-4387-b15a-8b42f655cdba",
+	"887b82b9-56ec-4387-b15a-8b42f655cdba",
+	'SharedTypes',
+	'',
+	0,
+	'../../../SharedTypes/SharedTypes.xtuml');
+INSERT INTO PE_PE
+	VALUES ("bbab2682-e9d8-44da-a123-bf2623a92edd",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"1bdb4958-d141-408c-a010-920b78c78dcc",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("1bdb4958-d141-408c-a010-920b78c78dcc",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'CarparkControl',
+	'Assumptions:
+1. Port activities assume that identifiers are unique across all instances
+of the identified class.  This is normal, but has specific implications 
+should a single component instance be used to manage multiple carpark
+instances.  For example, the value of EntryStand.Location must be unique
+across all instances of EntryStand deployed within an instance of a component,
+not just those associated with a particular instance of Carpark.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../CarparkControl.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("887b82b9-56ec-4387-b15a-8b42f655cdba",
+	'CarPark',
+	1,
+	'../../../CarPark.xtuml');
