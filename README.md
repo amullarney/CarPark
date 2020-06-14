@@ -22,11 +22,14 @@ The following configurations exist:
 Execute `mvn install` at the top-level directory (CarPark).
 ## Run for Browser-based Clients
 @TODO
-## Run for Interactive Testing
+## Run for Interactive Testing (Verifier)
 1. Create a debug configuration of type "xtUML eXecute Application" and name it Carpark-logging
 2. Enable "Log model execution activity"
 3. Disable "Run deterministically"
 4. Disable "Enable simulated time"
 5. Select the InteractiveTesting configuration within the InteractiveTesting project
 6. Run Verifier using this debug configuration
-7. Refer to the class descriptions of the test case classes within the InteractiveTestbench component for details on executing each test case.
+7. Refer to the class descriptions of the test case classes within the InteractiveTestbench component for details on executing each test case or a bucket of several test cases.
+## Run for Interactive Testing (Ciera-generated Code)
+1. bash ./run-test.sh
+2. Verify "bucket successful" in the console log.
