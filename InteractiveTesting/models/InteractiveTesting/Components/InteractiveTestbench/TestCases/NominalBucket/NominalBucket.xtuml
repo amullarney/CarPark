@@ -5,7 +5,11 @@ INSERT INTO O_OBJ
 	'NominalBucket',
 	4,
 	'NominalBucket',
-	'',
+	'1.	Launch Verifier with InteractiveTesting configuration and logging enabled.
+2.	Execute CarparkControl/Initialization/CreatePEIs
+3.	Execute CarparkControl/Initialization/Run
+4.	Execute InteractiveTestbench/TestCases/NominalBucket/Run
+5.	Verify "bucket successful" in the console log.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("4fd7359e-cdb7-4662-8ae8-d7146c22f0dc",
