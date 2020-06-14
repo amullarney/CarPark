@@ -2,8 +2,8 @@
 An autmoated carpark (parking garage) control system.  
 ## Configurations
 The following configurations exist:
-1. Interactive Testing.  Employs a modeled test bench, enabling interactive testing with Verifier.
-2. Browser-based Clients.  Leverages browser-based clients repesenting system peripherals such as entry and exit stands, payment machines, and an operator console.  Intended for testing and demonstration of code generated from the xtUML model of the carpark control system connected to externally produced code.
+1. Interactive Testing.  Employs a modeled test bench, enabling interactive testing with Verifier and Ciera-generated code using pom-testbench.xml.
+2. Browser-based Clients.  Leverages browser-based clients repesenting system peripherals such as entry and exit stands, payment machines, and an operator console.  Intended for testing and demonstration of code generated from the xtUML model of the carpark control system connected to externally produced code.  Use pom-clients.xml for this configuration.
 ## Importing for Interactive Testing
 1. Import the following projects from this repository:
 - CarPark
