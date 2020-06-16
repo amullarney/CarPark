@@ -39,7 +39,9 @@ INSERT INTO O_ATTR
 	"946458d3-3399-4127-ae05-c61fbf8a5aaf",
 	"be64f509-0c8d-422e-9ae2-40e1c2f873d5",
 	'ExitDeadline',
-	'Time by which the vehicle must exit to avoid an additional fee.',
+	'Time by which the vehicle must exit to avoid an additional fee.
+Units: seconds
+Origin: start of epoch',
 	'',
 	'ExitDeadline',
 	0,

@@ -105,7 +105,9 @@ INSERT INTO O_ATTR
 	"94a3e097-a7c1-4fa8-a43d-b79524106049",
 	"aa5aad8d-d108-4c69-a28e-8e7dff3e2262",
 	'Start',
-	'The start time for this particular charge segment.',
+	'The start time for this particular charge segment.
+Units: seconds
+Origin: start of epoch',
 	'',
 	'Start',
 	0,
@@ -128,7 +130,9 @@ INSERT INTO O_ATTR
 	"94a3e097-a7c1-4fa8-a43d-b79524106049",
 	"8fb95a71-1aad-42d4-9ba5-4b52be9df49f",
 	'End',
-	'The end time for this particular charge segment.',
+	'The end time for this particular charge segment.
+Units: seconds
+Origin: start of epoch',
 	'',
 	'End',
 	0,
@@ -151,7 +155,9 @@ INSERT INTO O_ATTR
 	'Duration',
 	'Duration covered by this charge segment.
 It is typed as a real to enable real (fractional) 
-calculations involving rates.',
+calculations involving rates.
+Units: seconds
+Origin: start of epoch',
 	'',
 	'Duration',
 	0,

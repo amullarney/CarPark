@@ -1417,24 +1417,6 @@ INSERT INTO C_R
 	'Unnamed Interface',
 	'InteractiveTestbench::TestSupport::TestSupport');
 INSERT INTO SPR_REP
-	VALUES ("3a809ee4-a2ef-4224-ae27-f6e3a7aef1d6",
-	"86c0d8c0-a5fd-4d3f-a2bd-1fabe1f99de0",
-	"9133d5aa-3058-447a-b28e-f7d3e3a7a2dc");
-INSERT INTO SPR_RS
-	VALUES ("3a809ee4-a2ef-4224-ae27-f6e3a7aef1d6",
-	'InitializeEpoch',
-	'',
-	'',
-	1,
-	0);
-INSERT INTO C_EP_PROXY
-	VALUES ("86c0d8c0-a5fd-4d3f-a2bd-1fabe1f99de0",
-	"3f2d15df-2fa6-4155-9f03-3cddb8b85271",
-	-1,
-	'InitializeEpoch',
-	'',
-	'../../../../../CarPark/models/CarPark/Interfaces/TestSupport/TestSupport.xtuml');
-INSERT INTO SPR_REP
 	VALUES ("51d0bc31-2c51-4544-bf93-1739630f2832",
 	"d15007a5-9b6a-46db-8c22-363bb8839b4f",
 	"9133d5aa-3058-447a-b28e-f7d3e3a7a2dc");

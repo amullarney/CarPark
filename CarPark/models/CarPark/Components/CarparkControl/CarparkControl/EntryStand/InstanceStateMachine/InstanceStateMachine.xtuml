@@ -585,7 +585,7 @@ INSERT INTO SM_ACT
 select one stay related by self->
   Ticket[R30.''presently holding'']->
   Stay[R26.''identifies''];
-stay.EntryTime = TimeUtil::CurrentTime();
+stay.EntryTime = TIM::current_seconds();
 
 // Update ticket status
 select one ticket related by self->Ticket[R30.''presently holding''];
@@ -728,7 +728,7 @@ INSERT INTO SM_AH
 INSERT INTO SM_ACT
 	VALUES ("5e6a5f77-7c00-4219-af70-7f5eb07de22d",
 	"1fbf931a-0233-4cb9-86af-6db3b44ec8fc",
-	3,
+	1,
 	'',
 	'',
 	0);
@@ -742,7 +742,7 @@ INSERT INTO SM_AH
 INSERT INTO SM_ACT
 	VALUES ("c3f1209b-ec6f-4559-a1f0-71ae508e83ea",
 	"1fbf931a-0233-4cb9-86af-6db3b44ec8fc",
-	3,
+	1,
 	'',
 	'',
 	0);
