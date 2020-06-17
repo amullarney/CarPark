@@ -18,33 +18,10 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'// Set epoch start to midnight for the current day.
-today = TIM::current_date();
-TIM::set_epoch(
-  year:TIM::get_year( date:today ),
-  month:TIM::get_month( date:today ), 
-  day:TIM::get_day( date:today ) );
+	'create object instance bucket of NominalBucket;
 
 // Initialize the application under test.
-send TestSupport::Initialize();
-
-// Set the entry time for the vehicle.
-toss = TIM::set_time( 
-  year:TIM::get_year( date:today ),
-  month:TIM::get_month( date:today ),
-  day:TIM::get_day( date:today ),
-  hour:7,
-  minute:42,
-  second:0,
-  microsecond:0 );
-
-// Execute the first test case in the bucket.
-UC1_NominalEntry::Run();
-
-// Allow time for first test case to complete
-create object instance bucket of NominalBucket;
-create event instance StayComplete of NominalBucket2:StayComplete() to bucket;
-tmr = TIM::timer_start( event_inst:StayComplete, microseconds:1000000 );',
+send TestSupport::Initialize();',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",

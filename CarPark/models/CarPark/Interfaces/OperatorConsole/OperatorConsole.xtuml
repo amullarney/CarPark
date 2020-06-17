@@ -370,6 +370,54 @@ INSERT INTO C_PP
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("78dddf09-cf4f-4260-95da-dabf54002032",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'OpenCarpark',
+	'');
+INSERT INTO C_AS
+	VALUES ("78dddf09-cf4f-4260-95da-dabf54002032",
+	'OpenCarpark',
+	'',
+	0,
+	"fb9ecbd5-8059-4308-9f0a-83969561ff04");
+INSERT INTO C_EP
+	VALUES ("314e787f-c1c2-425c-b684-c14acf073e80",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'CarparkOpened',
+	'');
+INSERT INTO C_AS
+	VALUES ("314e787f-c1c2-425c-b684-c14acf073e80",
+	'CarparkOpened',
+	'',
+	1,
+	"78dddf09-cf4f-4260-95da-dabf54002032");
+INSERT INTO C_EP
+	VALUES ("685996cf-e141-4a25-8095-b11c6e30fd38",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'CloseCarpark',
+	'');
+INSERT INTO C_AS
+	VALUES ("685996cf-e141-4a25-8095-b11c6e30fd38",
+	'CloseCarpark',
+	'',
+	0,
+	"314e787f-c1c2-425c-b684-c14acf073e80");
+INSERT INTO C_EP
+	VALUES ("643234c5-7a94-4834-81d1-69d996c5a76d",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'CarparkClosed',
+	'');
+INSERT INTO C_AS
+	VALUES ("643234c5-7a94-4834-81d1-69d996c5a76d",
+	'CarparkClosed',
+	'',
+	1,
+	"685996cf-e141-4a25-8095-b11c6e30fd38");
 INSERT INTO PE_PE
 	VALUES ("b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	1,
