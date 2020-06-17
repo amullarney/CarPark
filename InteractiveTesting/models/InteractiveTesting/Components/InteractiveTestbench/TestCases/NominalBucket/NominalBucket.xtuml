@@ -21,7 +21,7 @@ INSERT INTO O_TFR
 	'create object instance bucket of NominalBucket;
 
 // Initialize the application under test.
-send TestSupport::Initialize();',
+send Operator::OpenCarpark();',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
