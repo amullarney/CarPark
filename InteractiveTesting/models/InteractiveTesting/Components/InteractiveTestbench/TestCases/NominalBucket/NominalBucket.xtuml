@@ -18,11 +18,17 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'// Initialize the application under test.
+	'// Set epoch start to midnight for the current day.
+today = TIM::current_date();
+TIM::set_epoch(
+  year:TIM::get_year( date:today ),
+  month:TIM::get_month( date:today ), 
+  day:TIM::get_day( date:today ) );
+
+// Initialize the application under test.
 send TestSupport::Initialize();
 
 // Set the entry time for the vehicle.
-today = TIM::current_date();
 toss = TIM::set_time( 
   year:TIM::get_year( date:today ),
   month:TIM::get_month( date:today ),
@@ -35,19 +41,10 @@ toss = TIM::set_time(
 // Execute the first test case in the bucket.
 UC1_NominalEntry::Run();
 
-// Arrange for the vehicle to stay in the carpark for several hours before
-// patron pays for the stay.
-toss = TIM::advance_time( microseconds:(1000000 * 3600 * 5) );
-UC5_NominalPayment::Run();
-
-// Arrange for the patron to burn a few minutes before making an on-time exit.
-toss = TIM::advance_time( microseconds:(1000000 * 60 * 7) );
-UC11_NominalExit::Run();
-
-// Wait a couple seconds for all the messages to be received.
+// Allow time for first test case to complete
 create object instance bucket of NominalBucket;
-create event instance TestComplete of NominalBucket1:TestComplete() to bucket;
-tmr = TIM::timer_start( event_inst:TestComplete, microseconds:2000000 );',
+create event instance StayComplete of NominalBucket2:StayComplete() to bucket;
+tmr = TIM::timer_start( event_inst:StayComplete, microseconds:1000000 );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
