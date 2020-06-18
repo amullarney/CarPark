@@ -156,8 +156,7 @@ INSERT INTO O_ATTR
 	'Duration covered by this charge segment.
 It is typed as a real to enable real (fractional) 
 calculations involving rates.
-Units: seconds
-Origin: start of epoch',
+Units: seconds',
 	'',
 	'Duration',
 	0,

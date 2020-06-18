@@ -601,7 +601,7 @@ INSERT INTO SM_ACT
 	1,
 	'// Make it appear as if the vehicle stayed in the carpark for several hours before
 // patron pays for the stay.
-toss = TIM::advance_time( microseconds:(1000000 * 3600 * 5) );
+toss = ::advance_time_hours( hours:5 );
 UC5_NominalPayment::Run();
 
 // Allow time for this test case to complete
@@ -621,7 +621,7 @@ INSERT INTO SM_ACT
 	"5f7238f2-fd8a-42d9-9aca-3ebc29151ecc",
 	1,
 	'// Make it appear as the patron burns a few minutes before making an on-time exit.
-toss = TIM::advance_time( microseconds:(1000000 * 60 * 7) );
+toss = ::advance_time_minutes( minutes:7 );
 UC11_NominalExit::Run();
 
 // Allow time for this test case to complete.

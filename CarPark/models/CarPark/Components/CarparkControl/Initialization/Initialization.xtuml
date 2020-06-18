@@ -188,13 +188,13 @@ FeeSched_EarlyAM.Position = 0;
 relate FeeSched_EarlyAM to carpark across R14.''applicable within'';
 
 create object instance Step1_EarlyAM of Step;
-Step1_EarlyAM.Duration = 1;
+Step1_EarlyAM.Duration = QuantumPerHour * 1;
 Step1_EarlyAM.Rate = 2;
 Step1_EarlyAM.Position = 0;
 relate Step1_EarlyAM to FeeSched_EarlyAM across R22.''is rate for'';
 
 create object instance Step2_EarlyAM of Step;
-Step2_EarlyAM.Duration = 1;
+Step2_EarlyAM.Duration = QuantumPerHour * 1;
 Step2_EarlyAM.Rate = 3;
 Step2_EarlyAM.Position = 1;
 relate Step2_EarlyAM to FeeSched_EarlyAM across R22.''is rate for'';
@@ -246,7 +246,7 @@ FeeSched_LatePM.Position = 4;
 relate FeeSched_LatePM to carpark across R14.''applicable within'';
 
 create object instance Step1_LatePM of Step;
-Step1_LatePM.Duration = 1;
+Step1_LatePM.Duration = QuantumPerHour * 1;
 Step1_LatePM.Rate = 2;
 Step1_LatePM.Position = 0;
 relate Step1_LatePM to FeeSched_LatePM across R22.''is rate for'';',
