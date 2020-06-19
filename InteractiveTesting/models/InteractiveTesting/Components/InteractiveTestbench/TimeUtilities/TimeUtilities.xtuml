@@ -1,16 +1,17 @@
 -- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
 
 INSERT INTO EP_PKG
-	VALUES ("92c920e3-63b9-4baa-9ef9-4503df3bdc17",
+	VALUES ("9bc0d138-002f-4e7f-ba76-348f3dc2b873",
 	"00000000-0000-0000-0000-000000000000",
 	"dccd26e2-5328-45c4-8ada-fed969fc6ffe",
 	'TimeUtilities',
-	'',
+	'Wrapper for TIM bridge operations to make it more convenient to operate on time scales 
+larger than one microsecond.',
 	0);
 INSERT INTO GD_MD
-	VALUES ("54690444-1d1d-4f2c-b1c7-d2f2ca46a52a",
+	VALUES ("618aca27-a6dd-4460-aa6b-6543e8aaef76",
 	112,
-	"92c920e3-63b9-4baa-9ef9-4503df3bdc17",
+	"9bc0d138-002f-4e7f-ba76-348f3dc2b873",
 	108,
 	0,
 	0,
@@ -21,32 +22,111 @@ INSERT INTO GD_MD
 	1,
 	0,
 	0,
+	200,
+	150,
 	0,
-	0,
-	0,
-	'',
+	'4.1.17',
 	'InteractiveTesting::Components::InteractiveTestbench::TimeUtilities');
+INSERT INTO GD_GE
+	VALUES ("51dcb7c8-371c-42a2-b0b0-92de7093a135",
+	"618aca27-a6dd-4460-aa6b-6543e8aaef76",
+	"33bb35a9-c3f1-4af3-a8d8-38e661a1d75a",
+	109,
+	0,
+	'InteractiveTesting::Components::InteractiveTestbench::TimeUtilities::ConversionFactors');
+INSERT INTO GD_SHP
+	VALUES ("51dcb7c8-371c-42a2-b0b0-92de7093a135");
+INSERT INTO GD_NCS
+	VALUES ("51dcb7c8-371c-42a2-b0b0-92de7093a135");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"51dcb7c8-371c-42a2-b0b0-92de7093a135");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"51dcb7c8-371c-42a2-b0b0-92de7093a135",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("51dcb7c8-371c-42a2-b0b0-92de7093a135",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_GE
+	VALUES ("19790ddd-7509-4dd3-86cd-07f68e81bd0b",
+	"618aca27-a6dd-4460-aa6b-6543e8aaef76",
+	"42d81ebd-6500-4043-83cb-ad205543cf24",
+	21,
+	0,
+	'InteractiveTesting::Components::InteractiveTestbench::TimeUtilities::TimeUtilitiesWrapper');
+INSERT INTO GD_SHP
+	VALUES ("19790ddd-7509-4dd3-86cd-07f68e81bd0b");
+INSERT INTO GD_NCS
+	VALUES ("19790ddd-7509-4dd3-86cd-07f68e81bd0b");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"19790ddd-7509-4dd3-86cd-07f68e81bd0b");
+INSERT INTO DIM_GE
+	VALUES (220.000000,
+	0.000000,
+	"19790ddd-7509-4dd3-86cd-07f68e81bd0b",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("19790ddd-7509-4dd3-86cd-07f68e81bd0b",
+	0,
+	"00000000-0000-0000-0000-000000000000");
 INSERT INTO DIM_DIA
-	VALUES ("54690444-1d1d-4f2c-b1c7-d2f2ca46a52a",
+	VALUES ("618aca27-a6dd-4460-aa6b-6543e8aaef76",
 	'',
 	1.000000,
 	0.000000,
 	0.000000,
 	"00000000-0000-0000-0000-000000000000");
-INSERT INTO EP_PKGREF
-	VALUES ("92c920e3-63b9-4baa-9ef9-4503df3bdc17",
-	"5789b714-1d73-4b63-8082-7fa4bb52d6d5");
-INSERT INTO EP_PKG_PROXY
-	VALUES ("5789b714-1d73-4b63-8082-7fa4bb52d6d5",
-	"7c9d3d3c-c99c-4d27-844e-9d43b446702c",
-	"7c9d3d3c-c99c-4d27-844e-9d43b446702c",
-	'TimeUtilities',
-	'Wrapper for TIM bridge operations to make it more convenient to operate on time scales 
-larger than one microsecond.',
-	0,
-	'../../../../../../TimeUtilities/models/TimeUtilities/TimeUtilities/TimeUtilities.xtuml');
+INSERT INTO CNST_CSP
+	VALUES ("33bb35a9-c3f1-4af3-a8d8-38e661a1d75a",
+	'ConversionFactors',
+	'The timestamp type is mapped to a long (64-bit) integer.  Constants 
+with this type can then be used in calculations that required long-integer math.
+Keep in mind that the value of the constant is limited, by the editor, to be no 
+larger 2^31 (signed integer).');
+INSERT INTO CNST_SYC
+	VALUES ("75b02c26-a7c7-48dd-a49f-1e62d7023134",
+	'MicrosecondsPerHalfHour',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000010",
+	"33bb35a9-c3f1-4af3-a8d8-38e661a1d75a",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_LFSC
+	VALUES ("75b02c26-a7c7-48dd-a49f-1e62d7023134",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_LSC
+	VALUES ("75b02c26-a7c7-48dd-a49f-1e62d7023134",
+	"00000000-0000-0000-0000-000000000000",
+	'1800000000');
+INSERT INTO CNST_SYC
+	VALUES ("8af4d695-8921-4092-a42b-eaa25a59bfaf",
+	'MicrosecondsPerMinute',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000010",
+	"33bb35a9-c3f1-4af3-a8d8-38e661a1d75a",
+	"75b02c26-a7c7-48dd-a49f-1e62d7023134",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_LFSC
+	VALUES ("8af4d695-8921-4092-a42b-eaa25a59bfaf",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_LSC
+	VALUES ("8af4d695-8921-4092-a42b-eaa25a59bfaf",
+	"00000000-0000-0000-0000-000000000000",
+	'60000000');
 INSERT INTO PE_PE
-	VALUES ("92c920e3-63b9-4baa-9ef9-4503df3bdc17",
+	VALUES ("33bb35a9-c3f1-4af3-a8d8-38e661a1d75a",
+	1,
+	"9bc0d138-002f-4e7f-ba76-348f3dc2b873",
+	"00000000-0000-0000-0000-000000000000",
+	10);
+INSERT INTO PE_PE
+	VALUES ("9bc0d138-002f-4e7f-ba76-348f3dc2b873",
 	1,
 	"00000000-0000-0000-0000-000000000000",
 	"4106b522-c480-445f-b75c-19cb7ec10f7c",
