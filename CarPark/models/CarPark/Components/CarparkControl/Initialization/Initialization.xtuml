@@ -109,79 +109,7 @@ PaymentMachine.SufficientChange = true;
 relate PaymentMachine to carpark across R11.''accepts payments for'';
 
 // Fee Schedules
-create object instance FeeSched_EarlyAM of FeeSchedule;
-FeeSched_EarlyAM.Name = "Early Morning";
-FeeSched_EarlyAM.Start = 0;
-FeeSched_EarlyAM.End = 10;
-FeeSched_EarlyAM.Position = 0;
-relate FeeSched_EarlyAM to carpark across R14.''applicable within'';
-
-create object instance Step1_EarlyAM of Step;
-Step1_EarlyAM.Duration = 2;
-Step1_EarlyAM.Rate = 2;
-Step1_EarlyAM.Position = 0;
-relate Step1_EarlyAM to FeeSched_EarlyAM across R22.''is rate for'';
-
-create object instance Step2_EarlyAM of Step;
-Step2_EarlyAM.Duration = 1;
-Step2_EarlyAM.Rate = 1;
-Step2_EarlyAM.Position = 1;
-relate Step2_EarlyAM to FeeSched_EarlyAM across R22.''is rate for'';
-
-create object instance FeeSched_MidAM of FeeSchedule;
-FeeSched_MidAM.Name = "Mid-morning";
-FeeSched_MidAM.Start = 10;
-FeeSched_MidAM.End = 15;
-FeeSched_MidAM.Position = 1;
-relate FeeSched_MidAM to carpark across R14.''applicable within'';
-
-create object instance Linear_MidAM of Linear;
-Linear_MidAM.Rate = 10000;
-relate Linear_MidAM to FeeSched_MidAM across R21.''is rate for'';
-
-create object instance FeeSched_Midday of FeeSchedule;
-FeeSched_Midday.Name = "Midday";
-FeeSched_Midday.Start = 15;
-FeeSched_Midday.End = 25;
-FeeSched_Midday.Position = 2;
-relate FeeSched_Midday to carpark across R14.''applicable within'';
-
-create object instance Linear_Midday of Linear;
-Linear_Midday.Rate = 50000;
-create object instance Max_Midday of FlatFee;
-Max_Midday.Amount = 1.2;
-relate Max_Midday to Linear_Midday across R19.''is maximum for'';
-relate Linear_Midday to FeeSched_Midday across R21.''is rate for'';
-
-create object instance FeeSched_EarlyPM of FeeSchedule;
-FeeSched_EarlyPM.Name = "Early Afternoon";
-FeeSched_EarlyPM.Start = 25;
-FeeSched_EarlyPM.End = 30;
-FeeSched_EarlyPM.Position = 3;
-relate FeeSched_EarlyPM to carpark across R14.''applicable within'';
-
-create object instance Linear_EarlyPM of Linear;
-Linear_EarlyPM.Rate = 1000;
-create object instance Min_EarlyPM of FlatFee;
-Min_EarlyPM.Amount = 3;
-relate Min_EarlyPM to Linear_EarlyPM across R18.''is minimum for'';
-relate Linear_EarlyPM to FeeSched_EarlyPM across R21.''is rate for'';
-
-create object instance FeeSched_LatePM of FeeSchedule;
-FeeSched_LatePM.Name = "Late Afternoon";
-FeeSched_LatePM.Start = 30;
-FeeSched_LatePM.End = 45;
-FeeSched_LatePM.Position = 4;
-relate FeeSched_LatePM to carpark across R14.''applicable within'';
-
-create object instance Step1_LatePM of Step;
-Step1_LatePM.Duration = 1;
-Step1_LatePM.Rate = 4;
-Step1_LatePM.Position = 0;
-relate Step1_LatePM to FeeSched_LatePM across R22.''is rate for'';
-
-
-
+::CreateFeeSchedules();
 ',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
@@ -223,6 +151,111 @@ INSERT INTO S_SYNC
 	0);
 INSERT INTO PE_PE
 	VALUES ("03db68a9-a87e-4cd2-992e-0f8a04d7a6d1",
+	1,
+	"b2c7f429-04de-41ed-be2b-e72245892361",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("a5e051a2-7e87-4f8a-a732-29bd93619287",
+	"00000000-0000-0000-0000-000000000000",
+	'CreateFeeSchedules',
+	'',
+	'select any carpark from instances of Carpark;
+
+// Start of epoch is initialized, at start-up to midnight of the current day.
+// Establish opening time as the number of seconds between midnight and opening, 
+// and then use that value as a base for all times in the fee schedule.
+// This fee schedule is valid only for the current day.  When testing expands
+// to cover multi-day stays, the fee schedule must be expanded accordingly.
+
+// Set opening time to 6:00 a.m.
+today = TIM::current_date();
+toss = TIM::set_time( 
+  year:TIM::get_year( date:today ),
+  month:TIM::get_month( date:today ),
+  day:TIM::get_day( date:today ),
+  hour:6,
+  minute:0,
+  second:0,
+  microsecond:0 );
+OpeningTime = TIM::current_seconds();
+
+create object instance FeeSched_EarlyAM of FeeSchedule;
+FeeSched_EarlyAM.Name = "Early Morning";
+FeeSched_EarlyAM.Start = OpeningTime;
+FeeSched_EarlyAM.End = FeeSched_EarlyAM.Start + (2 * QuantumPerHour);
+FeeSched_EarlyAM.Position = 0;
+relate FeeSched_EarlyAM to carpark across R14.''applicable within'';
+
+create object instance Step1_EarlyAM of Step;
+Step1_EarlyAM.Duration = QuantumPerHour * 1;
+Step1_EarlyAM.Rate = 2;
+Step1_EarlyAM.Position = 0;
+relate Step1_EarlyAM to FeeSched_EarlyAM across R22.''is rate for'';
+
+create object instance Step2_EarlyAM of Step;
+Step2_EarlyAM.Duration = QuantumPerHour * 1;
+Step2_EarlyAM.Rate = 3;
+Step2_EarlyAM.Position = 1;
+relate Step2_EarlyAM to FeeSched_EarlyAM across R22.''is rate for'';
+
+create object instance FeeSched_MidAM of FeeSchedule;
+FeeSched_MidAM.Name = "Mid-morning";
+FeeSched_MidAM.Start = FeeSched_EarlyAM.End;
+FeeSched_MidAM.End = FeeSched_MidAM.Start + (3 * QuantumPerHour);
+FeeSched_MidAM.Position = 1;
+relate FeeSched_MidAM to carpark across R14.''applicable within'';
+
+create object instance Linear_MidAM of Linear;
+Linear_MidAM.Rate = 5;
+relate Linear_MidAM to FeeSched_MidAM across R21.''is rate for'';
+
+create object instance FeeSched_Midday of FeeSchedule;
+FeeSched_Midday.Name = "Midday";
+FeeSched_Midday.Start = FeeSched_MidAM.End;
+FeeSched_Midday.End = FeeSched_Midday.Start + (3 * QuantumPerHour);
+FeeSched_Midday.Position = 2;
+relate FeeSched_Midday to carpark across R14.''applicable within'';
+
+create object instance Linear_Midday of Linear;
+Linear_Midday.Rate = 10;
+create object instance Max_Midday of FlatFee;
+Max_Midday.Amount = 25;
+relate Max_Midday to Linear_Midday across R19.''is maximum for'';
+relate Linear_Midday to FeeSched_Midday across R21.''is rate for'';
+
+create object instance FeeSched_EarlyPM of FeeSchedule;
+FeeSched_EarlyPM.Name = "Early Afternoon";
+FeeSched_EarlyPM.Start = FeeSched_Midday.End;
+FeeSched_EarlyPM.End = FeeSched_EarlyPM.Start + (2 * QuantumPerHour);
+FeeSched_EarlyPM.Position = 3;
+relate FeeSched_EarlyPM to carpark across R14.''applicable within'';
+
+create object instance Linear_EarlyPM of Linear;
+Linear_EarlyPM.Rate = 5;
+create object instance Min_EarlyPM of FlatFee;
+Min_EarlyPM.Amount = 7;
+relate Min_EarlyPM to Linear_EarlyPM across R18.''is minimum for'';
+relate Linear_EarlyPM to FeeSched_EarlyPM across R21.''is rate for'';
+
+create object instance FeeSched_LatePM of FeeSchedule;
+FeeSched_LatePM.Name = "Late Afternoon";
+FeeSched_LatePM.Start = FeeSched_EarlyPM.End;
+FeeSched_LatePM.End = FeeSched_LatePM.Start + (4 * QuantumPerHour);
+FeeSched_LatePM.Position = 4;
+relate FeeSched_LatePM to carpark across R14.''applicable within'';
+
+create object instance Step1_LatePM of Step;
+Step1_LatePM.Duration = QuantumPerHour * 1;
+Step1_LatePM.Rate = 2;
+Step1_LatePM.Position = 0;
+relate Step1_LatePM to FeeSched_LatePM across R22.''is rate for'';',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("a5e051a2-7e87-4f8a-a732-29bd93619287",
 	1,
 	"b2c7f429-04de-41ed-be2b-e72245892361",
 	"00000000-0000-0000-0000-000000000000",

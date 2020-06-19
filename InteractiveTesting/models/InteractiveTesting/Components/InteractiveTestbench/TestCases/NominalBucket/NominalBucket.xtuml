@@ -18,16 +18,10 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'// Initialize the application under test.
-send TestSupport::Initialize();
+	'create object instance bucket of NominalBucket;
 
-// Execute the first test case in the bucket.
-UC1_NominalEntry::Run();
-
-// Arrange for the vehicle to stay in the carpark for 22 seconds
-create object instance bucket of NominalBucket;
-create event instance StayComplete of NominalBucket1:StayComplete() to bucket;
-tmr = TIM::timer_start( event_inst:StayComplete, microseconds:22000000 );',
+// Initialize the application under test.
+send Operator::OpenCarpark();',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",

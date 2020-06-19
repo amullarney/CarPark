@@ -51,7 +51,9 @@ INSERT INTO O_ATTR
 	"d71ede6a-f0ea-4839-b691-35635c85e716",
 	"6b61908a-eff9-4c2e-87f6-62fbe3000d12",
 	'Start',
-	'Beginning of specified time span.',
+	'Beginning of specified time span.
+Units: seconds
+Origin: start of epoch',
 	'',
 	'Start',
 	0,
@@ -69,7 +71,9 @@ INSERT INTO O_ATTR
 	"d71ede6a-f0ea-4839-b691-35635c85e716",
 	"41f2f6eb-e69d-4d68-bde3-ffe9743e1370",
 	'End',
-	'End of specified time span.',
+	'End of specified time span.
+Units: seconds
+Origin: start of epoch',
 	'',
 	'End',
 	0,

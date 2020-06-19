@@ -19,7 +19,7 @@ INSERT INTO O_TFR
 	'// Returns the disposition of this stay.
 // Creates a charge or an additional charge if necessary.
 disposition = StayDisposition::Unpaid;
-CurrentTime = TimeUtil::CurrentTime();
+CurrentTime = TIM::current_seconds();
 
 // If there is an instance of charge, determine whether
 // the exit deadline was met.
@@ -156,7 +156,9 @@ INSERT INTO O_TPARM
 	'',
 	"00000000-0000-0000-0000-000000000000",
 	'Exit time for the set of charge segments to be created which
-could be for either a base charge or an additional charge.');
+could be for either a base charge or an additional charge.
+Units: seconds
+Origin: start of epoch');
 INSERT INTO O_TFR
 	VALUES ("06197662-c0f1-4004-b298-a27ee1441249",
 	"324b9649-c373-4ba1-814c-460202283e85",
@@ -166,7 +168,7 @@ INSERT INTO O_TFR
 	1,
 	'// Use the current time as the exit time to create charge
 // segments for the overstay period.
-ExitTime = TimeUtil::CurrentTime();
+ExitTime = TIM::current_seconds();
 self.CreateChargeSegments( ExitTime:ExitTime );
 
 // Sum all charge segments and store the result in an 
@@ -239,7 +241,10 @@ INSERT INTO O_ATTR
 	"324b9649-c373-4ba1-814c-460202283e85",
 	"54ddcd61-f3c0-476d-9c86-5671d4de20b8",
 	'EntryTime',
-	'',
+	'Time at which the stay begins for the purposes of calculating 
+the eventual charge for the stay.
+Units: seconds
+Origin: start of epoch',
 	'',
 	'EntryTime',
 	0,

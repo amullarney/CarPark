@@ -82,7 +82,9 @@ INSERT INTO O_ATTR
 	"00000000-0000-0000-0000-000000000000",
 	'ExitTime',
 	'Not to be confused with the exit deadline, this is 
-the exit time on which the charge for the associated stay is based.',
+the exit time on which the charge for the associated stay is based.
+Units: seconds
+Origin: start of epoch',
 	'',
 	'ExitTime',
 	0,

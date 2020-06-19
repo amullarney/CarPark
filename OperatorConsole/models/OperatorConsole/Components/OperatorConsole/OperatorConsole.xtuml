@@ -398,6 +398,78 @@ INSERT INTO C_EP_PROXY
 	'OpenBarrier',
 	'',
 	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("5102a50c-2c23-43d5-bb28-d0c3778b337c",
+	"78dddf09-cf4f-4260-95da-dabf54002032",
+	"4560e82f-446e-4799-8690-6c829985509d");
+INSERT INTO SPR_RS
+	VALUES ("5102a50c-2c23-43d5-bb28-d0c3778b337c",
+	'OpenCarpark',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("78dddf09-cf4f-4260-95da-dabf54002032",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'OpenCarpark',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("14823f0b-136e-417d-aeca-2461c490f776",
+	"314e787f-c1c2-425c-b684-c14acf073e80",
+	"4560e82f-446e-4799-8690-6c829985509d");
+INSERT INTO SPR_RS
+	VALUES ("14823f0b-136e-417d-aeca-2461c490f776",
+	'CarparkOpened',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("314e787f-c1c2-425c-b684-c14acf073e80",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'CarparkOpened',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("4797a4cf-a761-4a67-945c-376ad971847a",
+	"685996cf-e141-4a25-8095-b11c6e30fd38",
+	"4560e82f-446e-4799-8690-6c829985509d");
+INSERT INTO SPR_RS
+	VALUES ("4797a4cf-a761-4a67-945c-376ad971847a",
+	'CloseCarpark',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("685996cf-e141-4a25-8095-b11c6e30fd38",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'CloseCarpark',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("96239695-7a5f-4cad-9bcd-f639ba1d3cf4",
+	"643234c5-7a94-4834-81d1-69d996c5a76d",
+	"4560e82f-446e-4799-8690-6c829985509d");
+INSERT INTO SPR_RS
+	VALUES ("96239695-7a5f-4cad-9bcd-f639ba1d3cf4",
+	'CarparkClosed',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("643234c5-7a94-4834-81d1-69d996c5a76d",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'CarparkClosed',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	"00000000-0000-0000-0000-000000000000",

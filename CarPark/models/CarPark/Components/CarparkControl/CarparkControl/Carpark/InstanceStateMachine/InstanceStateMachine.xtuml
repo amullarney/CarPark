@@ -259,7 +259,9 @@ INSERT INTO SM_ACT
 	VALUES ("040d9224-c94d-4717-b03b-20e8ba6c0d8f",
 	"209b0fde-efc1-4ede-a073-9baf3064ec81",
 	1,
-	'',
+	'// @TODO activate closed signs, disable ticket requests, persist the day''s receipts, etc.
+// Notify the operator that the carpark is closed.
+send Operator::CarparkClosed();',
 	'',
 	0);
 INSERT INTO SM_MOAH
@@ -301,7 +303,8 @@ INSERT INTO SM_ACT
 	VALUES ("40f91e10-8ae8-4305-9215-34a5870d2d2c",
 	"209b0fde-efc1-4ede-a073-9baf3064ec81",
 	1,
-	'',
+	'// Notify operator that the carpark is open and ready for business.
+send Operator::CarparkOpened();',
 	'',
 	0);
 INSERT INTO SM_TAH
@@ -393,11 +396,11 @@ INSERT INTO GD_SHP
 INSERT INTO GD_NCS
 	VALUES ("b9088f13-39e8-402c-96e2-38892f7986a8");
 INSERT INTO DIM_ND
-	VALUES (200.000000,
+	VALUES (480.000000,
 	150.000000,
 	"b9088f13-39e8-402c-96e2-38892f7986a8");
 INSERT INTO DIM_GE
-	VALUES (4488.000000,
+	VALUES (4344.000000,
 	3048.000000,
 	"b9088f13-39e8-402c-96e2-38892f7986a8",
 	"00000000-0000-0000-0000-000000000000");
@@ -519,8 +522,8 @@ INSERT INTO DIM_ND
 	0.000000,
 	"112d1d69-522f-43ab-aa97-d6ae9916282d");
 INSERT INTO DIM_GE
-	VALUES (4412.000000,
-	3200.000000,
+	VALUES (4397.000000,
+	3204.000000,
 	"112d1d69-522f-43ab-aa97-d6ae9916282d",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO DIM_ELE

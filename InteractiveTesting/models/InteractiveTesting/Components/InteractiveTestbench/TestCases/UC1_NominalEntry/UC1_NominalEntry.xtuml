@@ -21,7 +21,6 @@ INSERT INTO O_TFR
 	0,
 	'Entry::Create();
 Operator::Create();
-send TestSupport::InitializeEpoch();
 send EntryStand::VehicleWaiting( Location:"North" );
 ',
 	1,
