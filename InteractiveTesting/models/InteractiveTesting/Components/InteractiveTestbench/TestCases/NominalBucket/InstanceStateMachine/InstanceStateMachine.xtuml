@@ -601,7 +601,7 @@ INSERT INTO SM_ACT
 	1,
 	'// Make it appear as if the vehicle stayed in the carpark for several hours before
 // patron pays for the stay.
-toss = ::advance_time_hours( hours:5 );
+toss = TimeUtilities::advance_time_hours( hours:5 );
 UC5_NominalPayment::Run();
 
 // Allow time for this test case to complete
@@ -621,7 +621,7 @@ INSERT INTO SM_ACT
 	"5f7238f2-fd8a-42d9-9aca-3ebc29151ecc",
 	1,
 	'// Make it appear as the patron burns a few minutes before making an on-time exit.
-toss = ::advance_time_minutes( minutes:7 );
+toss = TimeUtilities::advance_time_minutes( minutes:7 );
 UC11_NominalExit::Run();
 
 // Allow time for this test case to complete.
@@ -639,7 +639,7 @@ INSERT INTO SM_AH
 INSERT INTO SM_ACT
 	VALUES ("9bcea140-5875-4c2c-a5c0-996e0c6f13df",
 	"5f7238f2-fd8a-42d9-9aca-3ebc29151ecc",
-	3,
+	1,
 	'',
 	'',
 	0);
@@ -653,7 +653,7 @@ INSERT INTO SM_AH
 INSERT INTO SM_ACT
 	VALUES ("92593aa9-c3dc-4bd8-9aa8-3a1a5e00d970",
 	"5f7238f2-fd8a-42d9-9aca-3ebc29151ecc",
-	3,
+	1,
 	'',
 	'',
 	0);
@@ -683,7 +683,7 @@ INSERT INTO SM_AH
 INSERT INTO SM_ACT
 	VALUES ("85bbd084-d65f-461b-8187-6b9fc5511e1a",
 	"5f7238f2-fd8a-42d9-9aca-3ebc29151ecc",
-	3,
+	1,
 	'',
 	'',
 	0);
@@ -697,7 +697,7 @@ INSERT INTO SM_AH
 INSERT INTO SM_ACT
 	VALUES ("7c81efd5-2e10-4936-9bb6-178502fb029e",
 	"5f7238f2-fd8a-42d9-9aca-3ebc29151ecc",
-	3,
+	1,
 	'',
 	'',
 	0);
@@ -711,7 +711,7 @@ INSERT INTO SM_AH
 INSERT INTO SM_ACT
 	VALUES ("8f93f2b8-c956-47b6-ac79-8b1fb004f4b9",
 	"5f7238f2-fd8a-42d9-9aca-3ebc29151ecc",
-	3,
+	1,
 	'',
 	'',
 	0);
@@ -725,7 +725,7 @@ INSERT INTO SM_AH
 INSERT INTO SM_ACT
 	VALUES ("6ada8bb8-148e-48fc-9230-f87a1b5058eb",
 	"5f7238f2-fd8a-42d9-9aca-3ebc29151ecc",
-	3,
+	1,
 	'',
 	'',
 	0);

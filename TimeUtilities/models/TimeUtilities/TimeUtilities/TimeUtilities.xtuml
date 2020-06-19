@@ -25,7 +25,7 @@ INSERT INTO GD_MD
 	200,
 	150,
 	0,
-	'',
+	'4.1.17',
 	'TimeUtilities::TimeUtilities');
 INSERT INTO GD_GE
 	VALUES ("7548b79d-bec2-40a2-8b3a-7ffe9e3237a5",
@@ -51,6 +51,30 @@ INSERT INTO DIM_ELE
 	VALUES ("7548b79d-bec2-40a2-8b3a-7ffe9e3237a5",
 	0,
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_GE
+	VALUES ("4c2c0671-bb4d-4fc3-abc1-f55069a9ebd4",
+	"76458c28-74bb-4f75-bd00-c38415b77f0e",
+	"8f040de9-885b-467d-b9b9-68b68fe4e559",
+	21,
+	0,
+	'TimeUtilities::TimeUtilities::TimeUtilities');
+INSERT INTO GD_SHP
+	VALUES ("4c2c0671-bb4d-4fc3-abc1-f55069a9ebd4");
+INSERT INTO GD_NCS
+	VALUES ("4c2c0671-bb4d-4fc3-abc1-f55069a9ebd4");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"4c2c0671-bb4d-4fc3-abc1-f55069a9ebd4");
+INSERT INTO DIM_GE
+	VALUES (220.000000,
+	0.000000,
+	"4c2c0671-bb4d-4fc3-abc1-f55069a9ebd4",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("4c2c0671-bb4d-4fc3-abc1-f55069a9ebd4",
+	0,
+	"00000000-0000-0000-0000-000000000000");
 INSERT INTO DIM_DIA
 	VALUES ("76458c28-74bb-4f75-bd00-c38415b77f0e",
 	'',
@@ -61,7 +85,10 @@ INSERT INTO DIM_DIA
 INSERT INTO CNST_CSP
 	VALUES ("f2386245-6d38-4630-b724-399231a86ff3",
 	'ConversionFactors',
-	'');
+	'The timestamp type is mapped to a long (64-bit) integer.  Constants 
+with this type can then be used in calculations that required long-integer math.
+Keep in mind that the value of the constant is limited, by the editor, to be no 
+larger 2^31 (signed integer).');
 INSERT INTO CNST_SYC
 	VALUES ("f6aa3b8e-848a-4ee1-b817-b50c85032eb6",
 	'MicrosecondsPerHalfHour',
@@ -98,61 +125,6 @@ INSERT INTO PE_PE
 	"5789b714-1d73-4b63-8082-7fa4bb52d6d5",
 	"00000000-0000-0000-0000-000000000000",
 	10);
-INSERT INTO S_SYNC
-	VALUES ("e82329f4-024d-4b2b-bc11-942cef20ab96",
-	"00000000-0000-0000-0000-000000000000",
-	'advance_time_hours',
-	'',
-	'x = MicrosecondsPerHalfHour * 2;
-x = x * param.hours;
-current_time = TIM::advance_time( microseconds:x );
-return current_time;',
-	"ba5eda7a-def5-0000-0000-000000000010",
-	1,
-	'',
-	0);
-INSERT INTO S_SPARM
-	VALUES ("419b5b73-2ff2-4454-bcff-b53a0ddda685",
-	"e82329f4-024d-4b2b-bc11-942cef20ab96",
-	'hours',
-	"ba5eda7a-def5-0000-0000-000000000002",
-	0,
-	'',
-	"00000000-0000-0000-0000-000000000000",
-	'');
-INSERT INTO PE_PE
-	VALUES ("e82329f4-024d-4b2b-bc11-942cef20ab96",
-	1,
-	"5789b714-1d73-4b63-8082-7fa4bb52d6d5",
-	"00000000-0000-0000-0000-000000000000",
-	1);
-INSERT INTO S_SYNC
-	VALUES ("56636768-93dd-427c-ae89-d37c3aabe52b",
-	"00000000-0000-0000-0000-000000000000",
-	'advance_time_minutes',
-	'',
-	'x = MicrosecondsPerMinute * param.minutes;
-current_time = TIM::advance_time( microseconds:x );
-return current_time;',
-	"ba5eda7a-def5-0000-0000-000000000010",
-	1,
-	'',
-	0);
-INSERT INTO S_SPARM
-	VALUES ("3e1911e2-09eb-4d94-b652-ac0d4454a288",
-	"56636768-93dd-427c-ae89-d37c3aabe52b",
-	'minutes',
-	"ba5eda7a-def5-0000-0000-000000000002",
-	0,
-	'',
-	"00000000-0000-0000-0000-000000000000",
-	'');
-INSERT INTO PE_PE
-	VALUES ("56636768-93dd-427c-ae89-d37c3aabe52b",
-	1,
-	"5789b714-1d73-4b63-8082-7fa4bb52d6d5",
-	"00000000-0000-0000-0000-000000000000",
-	1);
 INSERT INTO PE_PE
 	VALUES ("5789b714-1d73-4b63-8082-7fa4bb52d6d5",
 	1,

@@ -1,0 +1,69 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("92c920e3-63b9-4baa-9ef9-4503df3bdc17",
+	"00000000-0000-0000-0000-000000000000",
+	"dccd26e2-5328-45c4-8ada-fed969fc6ffe",
+	'TimeUtilities',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("54690444-1d1d-4f2c-b1c7-d2f2ca46a52a",
+	112,
+	"92c920e3-63b9-4baa-9ef9-4503df3bdc17",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'InteractiveTesting::Components::InteractiveTestbench::TimeUtilities');
+INSERT INTO DIM_DIA
+	VALUES ("54690444-1d1d-4f2c-b1c7-d2f2ca46a52a",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO EP_PKGREF
+	VALUES ("92c920e3-63b9-4baa-9ef9-4503df3bdc17",
+	"5789b714-1d73-4b63-8082-7fa4bb52d6d5");
+INSERT INTO EP_PKG_PROXY
+	VALUES ("5789b714-1d73-4b63-8082-7fa4bb52d6d5",
+	"7c9d3d3c-c99c-4d27-844e-9d43b446702c",
+	"7c9d3d3c-c99c-4d27-844e-9d43b446702c",
+	'TimeUtilities',
+	'Wrapper for TIM bridge operations to make it more convenient to operate on time scales 
+larger than one microsecond.',
+	0,
+	'../../../../../../TimeUtilities/models/TimeUtilities/TimeUtilities/TimeUtilities.xtuml');
+INSERT INTO PE_PE
+	VALUES ("92c920e3-63b9-4baa-9ef9-4503df3bdc17",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"4106b522-c480-445f-b75c-19cb7ec10f7c",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("4106b522-c480-445f-b75c-19cb7ec10f7c",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'InteractiveTestbench',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../InteractiveTestbench.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("dccd26e2-5328-45c4-8ada-fed969fc6ffe",
+	'InteractiveTesting',
+	1,
+	'../../../InteractiveTesting.xtuml');
