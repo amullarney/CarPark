@@ -8,7 +8,7 @@ The following configurations exist:
 1. Import the following projects from this repository:
 - CarPark
 - InteractiveTesting
-2. Import the Ciera runtime project (ref. https://github.com/xtuml/ciera/wiki/Jump_Start)
+2. Import the built-in external entities from the Epoch test [model](https://github.com/xtuml/models/tree/7a9fd1c3fe351b495f348a061fd10bc053991ea0/test/EpochTest).
 ## Importing for Browser-based Clients
 1. Import the following projects from this repository:
 - CarPark
