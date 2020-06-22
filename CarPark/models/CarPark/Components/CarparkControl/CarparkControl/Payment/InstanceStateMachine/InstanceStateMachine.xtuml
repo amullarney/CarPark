@@ -173,8 +173,7 @@ select any charge related by self->Stay[R16.''retires debt for'']->
   ChargeSegment[R15]->
   Charge[R23.''addend of''];
 CurrentTime = TIM::current_seconds();
-// charge.ExitDeadline = CurrentTime + (15 * TimeConversion::QuantumPerMinute); https://github.com/xtuml/pyxtuml/issues/20  @TODO
-charge.ExitDeadline = CurrentTime + (15 * QuantumPerMinute);
+charge.ExitDeadline = CurrentTime + (15 * TimeConversion::QuantumPerMinute);
 select one PaymentMachine related by self->PaymentMachine[R25.''collected by''];
 generate PaymentMachine7:ExitDeadline to PaymentMachine;
 
