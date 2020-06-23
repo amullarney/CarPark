@@ -230,6 +230,74 @@ end if;',
 	'',
 	"4688c039-b4ac-457d-b154-20d5a88099f6",
 	0);
+INSERT INTO O_TFR
+	VALUES ("540c25f5-6252-4bbd-8794-d09ba941d244",
+	"324b9649-c373-4ba1-814c-460202283e85",
+	'CompleteStay',
+	'Invoked when a stay is completed.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Log data about this stay.
+
+// @TODO get this from initial configuration data.
+DateFormat = "yyyy/MM/dd";
+TimeFormat = "HH:mm";
+
+// Declare a timestamp for use with timestamp_format().
+ts_time = TIM::current_clock();
+
+LOG::LogInfo( message:"Stay completed, data follows:" );
+
+// Ticket number
+LOG::LogReal( message:" <- Ticket Number.", r:self.TicketNumber );
+
+// Entry time
+ts_time = self.EntryTime;  // Cast to timestamp
+ts_time = ts_time * TimeConversion::MicrosecondsPerQuantum;
+EntryDateString = TIM::timestamp_format( timestamp:ts_time, format:DateFormat );
+EntryTimeString = TIM::timestamp_format( timestamp:ts_time, format:TimeFormat );
+EntryDateTimeString = EntryDateString + " at " + EntryTimeString;
+LOG::LogInfo( message:"Entry time: " + EntryDateTimeString );
+
+// Exit time
+select one payment related by self->Payment[R16.''solicits''];
+ts_time = payment.ExitTime;  // Cast to timestamp
+ts_time = ts_time * TimeConversion::MicrosecondsPerQuantum;
+ExitDateString = TIM::timestamp_format( timestamp:ts_time, format:DateFormat );
+ExitTimeString = TIM::timestamp_format( timestamp:ts_time, format:TimeFormat );
+ExitDateTimeString = ExitDateString + " at " + ExitTimeString;
+LOG::LogInfo( message:"Exit time: " + ExitDateTimeString );
+
+// Exit deadline
+select any charge related by self->ChargeSegment[R15]->Charge[R23.''addend of''];
+ts_time = charge.ExitDeadline;  // Cast to timestamp
+ts_time = ts_time * TimeConversion::MicrosecondsPerQuantum;
+ExitDeadlineDateString = TIM::timestamp_format( timestamp:ts_time, format:DateFormat );
+ExitDeadlineTimeString = TIM::timestamp_format( timestamp:ts_time, format:TimeFormat );
+ExitDeadlineDateTimeString = ExitDeadlineDateString + " at " + ExitDeadlineTimeString;
+LOG::LogInfo( message:"ExitDeadline: " + ExitDeadlineDateTimeString );
+
+// Primary charge
+ChargeDisposition = "collected.";
+if ( charge.WaiverGranted )
+	ChargeDisposition = "waived.";
+end if;
+LOG::LogReal( message:" <- Primary charge " + ChargeDisposition, r:charge.Amount );
+
+// Additional charge, if any
+select any AdditionalCharge related by self->ChargeSegment[R15]->AdditionalCharge[R24.''addend of''];
+if ( not empty AdditionalCharge )
+    ChargeDisposition = "collected.";
+    if ( AdditionalCharge.WaiverGranted )
+        ChargeDisposition = "waived.";
+    end if;
+    LOG::LogReal( message:" <- Additional charge " + ChargeDisposition, r:AdditionalCharge.Amount );
+end if;
+',
+	1,
+	'',
+	"3a4f8fd6-8175-4df5-9ac0-a7a009e75234",
+	0);
 INSERT INTO O_NBATTR
 	VALUES ("48ad1eab-ce0d-4eeb-b353-4bbe45a4f93c",
 	"324b9649-c373-4ba1-814c-460202283e85");
