@@ -239,6 +239,11 @@ INSERT INTO O_TFR
 	1,
 	'// Log data about this stay.
 
+//------------------------------------------------------------------------------------------
+// Note: Much of the code below involves work-arounds for tooling deficiencies.
+// Before changing any of it, please review https://github.com/johnrwolfe/CarPark/issues/42.
+//------------------------------------------------------------------------------------------
+
 // @TODO get this from initial configuration data.
 DateFormat = "yyyy/MM/dd";
 TimeFormat = "HH:mm";

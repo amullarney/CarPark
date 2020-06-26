@@ -25,8 +25,12 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000010",
 	0,
-	'x = MicrosecondsPerHalfHour * 2;
-x = x * param.hours;
+	'//------------------------------------------------------------------------------------------
+// Note: Much of the code below involves work-arounds for tooling deficiencies.
+// Before changing any of it, please review https://github.com/johnrwolfe/CarPark/issues/42.
+//------------------------------------------------------------------------------------------
+x = MicrosecondsPerHalfHour;
+x = x * 2 * param.hours;
 current_time = TIM::advance_time( microseconds:x );
 return current_time;',
 	1,
@@ -49,7 +53,12 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000010",
 	0,
-	'x = MicrosecondsPerMinute * param.minutes;
+	'//------------------------------------------------------------------------------------------
+// Note: Much of the code below involves work-arounds for tooling deficiencies.
+// Before changing any of it, please review https://github.com/johnrwolfe/CarPark/issues/42.
+//------------------------------------------------------------------------------------------
+x = MicrosecondsPerMinute;
+x = x * param.minutes;
 current_time = TIM::advance_time( microseconds:x );
 return current_time;',
 	1,
