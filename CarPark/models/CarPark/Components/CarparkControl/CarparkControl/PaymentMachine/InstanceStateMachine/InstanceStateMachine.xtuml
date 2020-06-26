@@ -14,7 +14,7 @@ INSERT INTO SM_EVTDI
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
 	'TicketNumber',
 	'',
-	"ba5eda7a-def5-0000-0000-000000000003",
+	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	"f6eb4fef-6b00-47ac-89ca-0be2f159952f",
 	"00000000-0000-0000-0000-000000000000");
@@ -26,6 +26,15 @@ INSERT INTO SM_EVTDI
 	"ba5eda7a-def5-0000-0000-000000000003",
 	'',
 	"99ecc7a8-9c49-49b7-a07d-1e29a675688f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVTDI
+	VALUES ("e9fe2f89-64c4-4383-b927-2c50dea8a1bf",
+	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
+	'Deadline',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	"5b109579-96e4-406a-800b-ad8441d51927",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_LEVT
 	VALUES ("f6eb4fef-6b00-47ac-89ca-0be2f159952f",
@@ -857,7 +866,8 @@ INSERT INTO SM_ACT
 	VALUES ("14e95daa-9724-4ce1-b7cd-721ac55413b0",
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
 	1,
-	'// @TODO Print exit deadline on ticket.',
+	'// Print exit deadline on ticket.
+send Payer::ExitDeadline( Deadline:param.Deadline );',
 	'',
 	0);
 INSERT INTO GD_MD

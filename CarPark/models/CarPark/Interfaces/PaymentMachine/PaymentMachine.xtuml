@@ -200,6 +200,27 @@ INSERT INTO C_PP
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("7d98badf-0872-49ac-a66e-72a2d0d07fa7",
+	"1775761d-746e-41ae-a5e0-cd1a783dc665",
+	-1,
+	'ExitDeadline',
+	'');
+INSERT INTO C_AS
+	VALUES ("7d98badf-0872-49ac-a66e-72a2d0d07fa7",
+	'ExitDeadline',
+	'',
+	1,
+	"ab99ffd4-de35-47a9-9eb4-ee31927071ec");
+INSERT INTO C_PP
+	VALUES ("561db48f-dfa7-4487-b2a3-f41f0ab780ed",
+	"7d98badf-0872-49ac-a66e-72a2d0d07fa7",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'Deadline',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
 INSERT INTO PE_PE
 	VALUES ("1775761d-746e-41ae-a5e0-cd1a783dc665",
 	1,

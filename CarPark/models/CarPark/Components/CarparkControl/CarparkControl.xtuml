@@ -1450,6 +1450,24 @@ INSERT INTO C_EP_PROXY
 	'ReturnedTicket',
 	'',
 	'../../Interfaces/PaymentMachine/PaymentMachine.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("48d305d2-e5fd-4826-b828-7c9feb17c602",
+	"7d98badf-0872-49ac-a66e-72a2d0d07fa7",
+	"beb17c01-5d43-4cbd-bd44-08536daaf245");
+INSERT INTO SPR_PS
+	VALUES ("48d305d2-e5fd-4826-b828-7c9feb17c602",
+	'ExitDeadline',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("7d98badf-0872-49ac-a66e-72a2d0d07fa7",
+	"1775761d-746e-41ae-a5e0-cd1a783dc665",
+	-1,
+	'ExitDeadline',
+	'',
+	'../../Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("1775761d-746e-41ae-a5e0-cd1a783dc665",
 	"00000000-0000-0000-0000-000000000000",

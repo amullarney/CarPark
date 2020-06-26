@@ -175,7 +175,7 @@ select any charge related by self->Stay[R16.''retires debt for'']->
 CurrentTime = TIM::current_seconds();
 charge.ExitDeadline = CurrentTime + (15 * TimeConversion::QuantumPerMinute);
 select one PaymentMachine related by self->PaymentMachine[R25.''collected by''];
-generate PaymentMachine7:ExitDeadline to PaymentMachine;
+generate PaymentMachine7:ExitDeadline( Deadline:charge.ExitDeadline ) to PaymentMachine;
 
 // Unlink from the payment machine.
 unrelate self from PaymentMachine across R25.''collected by'';',
