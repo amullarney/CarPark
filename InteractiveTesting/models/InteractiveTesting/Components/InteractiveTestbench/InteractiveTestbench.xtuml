@@ -1390,6 +1390,24 @@ INSERT INTO C_EP_PROXY
 	'ReturnedTicket',
 	'',
 	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("1182eb10-476e-49ad-8c0d-3593c32daea4",
+	"7d98badf-0872-49ac-a66e-72a2d0d07fa7",
+	"258032a0-84e8-437b-9e3f-3f82e9d440ed");
+INSERT INTO SPR_RS
+	VALUES ("1182eb10-476e-49ad-8c0d-3593c32daea4",
+	'ExitDeadline',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("7d98badf-0872-49ac-a66e-72a2d0d07fa7",
+	"1775761d-746e-41ae-a5e0-cd1a783dc665",
+	-1,
+	'ExitDeadline',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("1775761d-746e-41ae-a5e0-cd1a783dc665",
 	"00000000-0000-0000-0000-000000000000",
