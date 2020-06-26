@@ -239,6 +239,11 @@ INSERT INTO O_TFR
 	1,
 	'// Log data about this stay.
 
+//------------------------------------------------------------------------------------------
+// Note: Much of the code below involves work-arounds for tooling deficiencies.
+// Before changing any of it, please review https://github.com/johnrwolfe/CarPark/issues/42.
+//------------------------------------------------------------------------------------------
+
 // @TODO get this from initial configuration data.
 DateFormat = "yyyy/MM/dd";
 TimeFormat = "HH:mm";
@@ -253,39 +258,27 @@ LOG::LogReal( message:" <- Ticket Number.", r:self.TicketNumber );
 
 // Entry time
 ts_time = self.EntryTime;  // Cast to timestamp
-LOG::LogTime( message:"Entry time (seconds): ", t:ts_time );
 ts_time = ts_time * TimeConversion::MicrosecondsPerQuantum;
-LOG::LogTime( message:"Entry time (microseconds): ", t:ts_time );
 EntryDateString = TIM::timestamp_format( timestamp:ts_time, format:DateFormat );
-LOG::LogInfo( message:EntryDateString );
 EntryTimeString = TIM::timestamp_format( timestamp:ts_time, format:TimeFormat );
-LOG::LogInfo( message:EntryTimeString );
 EntryDateTimeString = EntryDateString + " at " + EntryTimeString;
 LOG::LogInfo( message:"Entry time: " + EntryDateTimeString );
 
 // Exit time
 select one payment related by self->Payment[R16.''solicits''];
 ts_time = payment.ExitTime;  // Cast to timestamp
-LOG::LogTime( message:"Exit time (seconds): ", t:ts_time );
 ts_time = ts_time * TimeConversion::MicrosecondsPerQuantum;
-LOG::LogTime( message:"Exit time (microseconds): ", t:ts_time );
 ExitDateString = TIM::timestamp_format( timestamp:ts_time, format:DateFormat );
-LOG::LogInfo( message:ExitDateString );
 ExitTimeString = TIM::timestamp_format( timestamp:ts_time, format:TimeFormat );
-LOG::LogInfo( message:ExitTimeString );
 ExitDateTimeString = ExitDateString + " at " + ExitTimeString;
 LOG::LogInfo( message:"Exit time: " + ExitDateTimeString );
 
 // Exit deadline
 select any charge related by self->ChargeSegment[R15]->Charge[R23.''addend of''];
 ts_time = charge.ExitDeadline;  // Cast to timestamp
-LOG::LogTime( message:"Exit deadline (seconds): ", t:ts_time );
 ts_time = ts_time * TimeConversion::MicrosecondsPerQuantum;
-LOG::LogTime( message:"Exit deadline (microseconds): ", t:ts_time );
 ExitDeadlineDateString = TIM::timestamp_format( timestamp:ts_time, format:DateFormat );
-LOG::LogInfo( message:ExitDeadlineDateString );
 ExitDeadlineTimeString = TIM::timestamp_format( timestamp:ts_time, format:TimeFormat );
-LOG::LogInfo( message:ExitDeadlineTimeString );
 ExitDeadlineDateTimeString = ExitDeadlineDateString + " at " + ExitDeadlineTimeString;
 LOG::LogInfo( message:"ExitDeadline: " + ExitDeadlineDateTimeString );
 
