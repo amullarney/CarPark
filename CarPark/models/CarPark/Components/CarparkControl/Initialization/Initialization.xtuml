@@ -183,18 +183,18 @@ OpeningTime = TIM::current_seconds();
 create object instance FeeSched_EarlyAM of FeeSchedule;
 FeeSched_EarlyAM.Name = "Early Morning";
 FeeSched_EarlyAM.Start = OpeningTime;
-FeeSched_EarlyAM.End = FeeSched_EarlyAM.Start + (2 * QuantumPerHour);
+FeeSched_EarlyAM.End = FeeSched_EarlyAM.Start + (2 * TimeConversion::QuantumPerHour);
 FeeSched_EarlyAM.Position = 0;
 relate FeeSched_EarlyAM to carpark across R14.''applicable within'';
 
 create object instance Step1_EarlyAM of Step;
-Step1_EarlyAM.Duration = QuantumPerHour * 1;
+Step1_EarlyAM.Duration = TimeConversion::QuantumPerHour * 1;
 Step1_EarlyAM.Rate = 2;
 Step1_EarlyAM.Position = 0;
 relate Step1_EarlyAM to FeeSched_EarlyAM across R22.''is rate for'';
 
 create object instance Step2_EarlyAM of Step;
-Step2_EarlyAM.Duration = QuantumPerHour * 1;
+Step2_EarlyAM.Duration = TimeConversion::QuantumPerHour * 1;
 Step2_EarlyAM.Rate = 3;
 Step2_EarlyAM.Position = 1;
 relate Step2_EarlyAM to FeeSched_EarlyAM across R22.''is rate for'';
@@ -202,7 +202,7 @@ relate Step2_EarlyAM to FeeSched_EarlyAM across R22.''is rate for'';
 create object instance FeeSched_MidAM of FeeSchedule;
 FeeSched_MidAM.Name = "Mid-morning";
 FeeSched_MidAM.Start = FeeSched_EarlyAM.End;
-FeeSched_MidAM.End = FeeSched_MidAM.Start + (3 * QuantumPerHour);
+FeeSched_MidAM.End = FeeSched_MidAM.Start + (3 * TimeConversion::QuantumPerHour);
 FeeSched_MidAM.Position = 1;
 relate FeeSched_MidAM to carpark across R14.''applicable within'';
 
@@ -213,7 +213,7 @@ relate Linear_MidAM to FeeSched_MidAM across R21.''is rate for'';
 create object instance FeeSched_Midday of FeeSchedule;
 FeeSched_Midday.Name = "Midday";
 FeeSched_Midday.Start = FeeSched_MidAM.End;
-FeeSched_Midday.End = FeeSched_Midday.Start + (3 * QuantumPerHour);
+FeeSched_Midday.End = FeeSched_Midday.Start + (3 * TimeConversion::QuantumPerHour);
 FeeSched_Midday.Position = 2;
 relate FeeSched_Midday to carpark across R14.''applicable within'';
 
@@ -227,7 +227,7 @@ relate Linear_Midday to FeeSched_Midday across R21.''is rate for'';
 create object instance FeeSched_EarlyPM of FeeSchedule;
 FeeSched_EarlyPM.Name = "Early Afternoon";
 FeeSched_EarlyPM.Start = FeeSched_Midday.End;
-FeeSched_EarlyPM.End = FeeSched_EarlyPM.Start + (2 * QuantumPerHour);
+FeeSched_EarlyPM.End = FeeSched_EarlyPM.Start + (2 * TimeConversion::QuantumPerHour);
 FeeSched_EarlyPM.Position = 3;
 relate FeeSched_EarlyPM to carpark across R14.''applicable within'';
 
@@ -241,12 +241,12 @@ relate Linear_EarlyPM to FeeSched_EarlyPM across R21.''is rate for'';
 create object instance FeeSched_LatePM of FeeSchedule;
 FeeSched_LatePM.Name = "Late Afternoon";
 FeeSched_LatePM.Start = FeeSched_EarlyPM.End;
-FeeSched_LatePM.End = FeeSched_LatePM.Start + (4 * QuantumPerHour);
+FeeSched_LatePM.End = FeeSched_LatePM.Start + (4 * TimeConversion::QuantumPerHour);
 FeeSched_LatePM.Position = 4;
 relate FeeSched_LatePM to carpark across R14.''applicable within'';
 
 create object instance Step1_LatePM of Step;
-Step1_LatePM.Duration = QuantumPerHour * 1;
+Step1_LatePM.Duration = TimeConversion::QuantumPerHour * 1;
 Step1_LatePM.Rate = 2;
 Step1_LatePM.Position = 0;
 relate Step1_LatePM to FeeSched_LatePM across R22.''is rate for'';',
