@@ -72,16 +72,32 @@ public class EntryStandMsgController {
         	  System.out.printf( "Exception, %s, in TicketRequested()\n", e );    			
       	}
     }
+
+    @MessageMapping( "/TicketCollected" )
+    public void TicketCollected( TicketCollectedMsg message ) throws Exception {
+    	try {
+      	  EntryStand.Singleton().CarPark().TicketCollected( message.getLocation() );
+      	}
+      	catch ( Exception e ) {
+        	  System.out.printf( "Exception, %s, in TicketCollected()\n", e );    			
+      	}
+    }
     
     public void SendTicketRequestEnabledMessage ( String Location ) throws Exception {
-    	TicketRequestEnabledMsg tremsg = new TicketRequestEnabledMsg( "Ticket request enabled");
+    	TicketRequestEnabledMsg msg = new TicketRequestEnabledMsg( "Ticket request enabled");
         String topic = "/topic/EntryStand/" + Location;
-        this.template.convertAndSend( topic, tremsg );
+        this.template.convertAndSend( topic, msg );
     }
     
     public void SendIssueTicketMessage ( String Location, int Number ) throws Exception {
-    	IssueTicketMsg itmsg = new IssueTicketMsg( "Issue ticket number: " + String.valueOf( Number ));
+    	IssueTicketMsg msg = new IssueTicketMsg( "Issue ticket number: " + String.valueOf( Number ));
         String topic = "/topic/EntryStand/" + Location;
-        this.template.convertAndSend( topic, itmsg );
+        this.template.convertAndSend( topic, msg );
+    }
+    
+    public void SendOpenBarrierMessage ( String Location ) throws Exception {
+    	OpenBarrierMsg msg = new OpenBarrierMsg( "Open barrier" );
+        String topic = "/topic/EntryStand/" + Location;
+        this.template.convertAndSend( topic, msg );
     }
 }

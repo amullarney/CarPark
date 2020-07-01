@@ -45,6 +45,9 @@ public class EntryStand extends Component<EntryStand> {
     }
 
     public void OpenBarrier( final String p_Location ) throws XtumlException {
+    	try {
+            EntryStandMsgController.Singleton().SendOpenBarrierMessage( p_Location );
+      	} catch ( Exception e ) {}
     }
 
     public void TicketRequestDisabled( final String p_Location ) throws XtumlException {
