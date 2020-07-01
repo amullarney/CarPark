@@ -34,7 +34,7 @@ import org.springframework.web.util.HtmlUtils;
 import deployment.entrystand.EntryStandCarPark;        // EntryStand-CarPark port
 import deployment.carparkcontrol.CarparkControlEntry;  // EntryStand interface
 import deployment.VehicleWaitingMsg;                   // VehicleWaiting message class
-                                                       // TicketRequestEnabled message class
+import deployment.TicketRequestEnabledMsg;             // TicketRequestEnabled message class
 import deployment.EntryStand;                          // Shell component
 
 @Controller
@@ -64,16 +64,11 @@ public class EntryStandMsgController {
         	  System.out.printf( "Exception, %s, in VehicleWaiting()\n", e );    			
       	}
     }
-    /*
-    public void SendReplyMessage ( String msg ) throws Exception {
-    	ReplyMessage rmsg = new ReplyMessage( HtmlUtils.htmlEscape( msg ) );
-        System.out.printf( "Sending reply: %s\n", rmsg.getContent() );
-        String topic = "/topic/replies";
-        if ( msg.contains( "north") )
-        	topic = "/topic/replies/north";
-        else if  ( msg.contains( "south" ) )
-            topic = "/topic/replies/south";
-        this.template.convertAndSend( topic, rmsg );
+    
+    public void SendTicketRequestEnabledMessage ( String Location ) throws Exception {
+    	TicketRequestEnabledMsg tremsg = new TicketRequestEnabledMsg( "Ticket request enabled");
+        String topic = "/topic/EntryStand/" + Location;
+        System.out.printf( "Sending TicketRequestEnabled to %s\n", topic );
+        this.template.convertAndSend( topic, tremsg );
     }
-    */
 }

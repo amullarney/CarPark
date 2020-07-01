@@ -48,6 +48,9 @@ public class EntryStand extends Component<EntryStand> {
     }
 
     public void TicketRequestEnabled( final String p_Location ) throws XtumlException {
+    	try {
+            EntryStandMsgController.Singleton().SendTicketRequestEnabledMessage( p_Location );
+      	} catch ( Exception e ) {}
     }
 
 
