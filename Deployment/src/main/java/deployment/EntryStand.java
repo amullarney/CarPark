@@ -36,6 +36,9 @@ public class EntryStand extends Component<EntryStand> {
 
     // domain functions
     public void CloseBarrier( final String p_Location ) throws XtumlException {
+    	try {
+            EntryStandMsgController.Singleton().SendCloseBarrierMessage( p_Location );
+      	} catch ( Exception e ) {}
     }
 
     public void IssueTicket( final String p_Location,  final int p_Number ) throws XtumlException {
@@ -51,6 +54,9 @@ public class EntryStand extends Component<EntryStand> {
     }
 
     public void TicketRequestDisabled( final String p_Location ) throws XtumlException {
+       	try {
+            EntryStandMsgController.Singleton().SendTicketRequestDisabledMessage( p_Location );
+      	} catch ( Exception e ) {}
     }
 
     public void TicketRequestEnabled( final String p_Location ) throws XtumlException {

@@ -82,6 +82,16 @@ public class EntryStandMsgController {
         	  System.out.printf( "Exception, %s, in TicketCollected()\n", e );    			
       	}
     }
+
+    @MessageMapping( "/VehicleEntered" )
+    public void VehicleEntered( VehicleEnteredMsg message ) throws Exception {
+    	try {
+      	  EntryStand.Singleton().CarPark().VehicleEntered( message.getLocation() );
+      	}
+      	catch ( Exception e ) {
+        	  System.out.printf( "Exception, %s, in VehicleEntered()\n", e );    			
+      	}
+    }
     
     public void SendTicketRequestEnabledMessage ( String Location ) throws Exception {
     	TicketRequestEnabledMsg msg = new TicketRequestEnabledMsg( "Ticket request enabled");
@@ -97,6 +107,18 @@ public class EntryStandMsgController {
     
     public void SendOpenBarrierMessage ( String Location ) throws Exception {
     	OpenBarrierMsg msg = new OpenBarrierMsg( "Open barrier" );
+        String topic = "/topic/EntryStand/" + Location;
+        this.template.convertAndSend( topic, msg );
+    }
+    
+    public void SendCloseBarrierMessage ( String Location ) throws Exception {
+    	CloseBarrierMsg msg = new CloseBarrierMsg( "Close barrier" );
+        String topic = "/topic/EntryStand/" + Location;
+        this.template.convertAndSend( topic, msg );
+    }
+    
+    public void SendTicketRequestDisabledMessage ( String Location ) throws Exception {
+    	TicketRequestDisabledMsg msg = new TicketRequestDisabledMsg( "Ticket request disabled");
         String topic = "/topic/EntryStand/" + Location;
         this.template.convertAndSend( topic, msg );
     }
