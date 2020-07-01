@@ -18,7 +18,7 @@ function connect() {
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/EntryStand/North', function (reply) {
+        stompClient.subscribe('/topic/EntryStand/' + $("#location").val(), function (reply) {
             showReply(JSON.parse(reply.body).content);
         });
     });
