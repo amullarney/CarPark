@@ -36,6 +36,10 @@ function sendVehicleWaiting() {
     stompClient.send("/app/VehicleWaiting", {}, JSON.stringify({'location': $("#location").val()}));
 }
 
+function sendTicketRequested() {
+    stompClient.send("/app/TicketRequested", {}, JSON.stringify({'location': $("#location").val()}));
+}
+
 function showReply(message) {
     $("#replies").append("<tr><td>" + message + "</td></tr>");
 }
@@ -47,4 +51,5 @@ $(function () {
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#VehicleWaiting" ).click(function() { sendVehicleWaiting(); });
+    $( "#TicketRequested" ).click(function() { sendTicketRequested(); });
 });

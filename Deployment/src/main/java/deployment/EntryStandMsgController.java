@@ -55,8 +55,6 @@ public class EntryStandMsgController {
 	
     @MessageMapping( "/VehicleWaiting" )
     public void VehicleWaiting( VehicleWaitingMsg message ) throws Exception {
-    	System.out.printf( "EntryStandMsgController: \n" );
-    	System.out.printf( "Location: %s\n", message.getLocation() );
     	try {
       	  EntryStand.Singleton().CarPark().VehicleWaiting( message.getLocation() );
       	}
@@ -65,10 +63,25 @@ public class EntryStandMsgController {
       	}
     }
     
+    @MessageMapping( "/TicketRequested" )
+    public void TicketRequested( TicketRequestedMsg message ) throws Exception {
+    	try {
+      	  EntryStand.Singleton().CarPark().TicketRequested( message.getLocation() );
+      	}
+      	catch ( Exception e ) {
+        	  System.out.printf( "Exception, %s, in TicketRequested()\n", e );    			
+      	}
+    }
+    
     public void SendTicketRequestEnabledMessage ( String Location ) throws Exception {
     	TicketRequestEnabledMsg tremsg = new TicketRequestEnabledMsg( "Ticket request enabled");
         String topic = "/topic/EntryStand/" + Location;
-        System.out.printf( "Sending TicketRequestEnabled to %s\n", topic );
         this.template.convertAndSend( topic, tremsg );
+    }
+    
+    public void SendIssueTicketMessage ( String Location, int Number ) throws Exception {
+    	IssueTicketMsg itmsg = new IssueTicketMsg( "Issue ticket number: " + String.valueOf( Number ));
+        String topic = "/topic/EntryStand/" + Location;
+        this.template.convertAndSend( topic, itmsg );
     }
 }

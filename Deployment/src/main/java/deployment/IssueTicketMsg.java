@@ -2,11 +2,11 @@ package deployment;
 
 
 // Spring requires a POJ class for each message.
-public class TicketRequestEnabledMsg {
+public class IssueTicketMsg {
 	private String content;
-	public TicketRequestEnabledMsg() {
+	public IssueTicketMsg() {
 	}
-	public TicketRequestEnabledMsg( String content ) {
+	public IssueTicketMsg( String content ) {
 		this.content = content;
 	}
 	public String getContent() {

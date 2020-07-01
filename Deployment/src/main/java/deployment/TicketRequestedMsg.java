@@ -2,11 +2,11 @@ package deployment;
 
 
 // Spring requires a POJ class for each message.
-public class VehicleWaitingMsg {
+public class TicketRequestedMsg {
 	private String location;
-	public VehicleWaitingMsg() {
+	public TicketRequestedMsg() {
 	}
-	public VehicleWaitingMsg( String location ) {
+	public TicketRequestedMsg( String location ) {
 		this.location = location;
 	}
 	public String getLocation() {
