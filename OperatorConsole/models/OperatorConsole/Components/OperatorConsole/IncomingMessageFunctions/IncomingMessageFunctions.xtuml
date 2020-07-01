@@ -2,9 +2,9 @@
 
 INSERT INTO EP_PKG
 	VALUES ("2ca9b2f0-398f-4215-845d-82171e2c03d9",
+	"00000000-0000-0000-0000-000000000000",
 	"60cc3102-af7a-4b9a-98e2-290a03a31cd5",
-	"60cc3102-af7a-4b9a-98e2-290a03a31cd5",
-	'Functions',
+	'IncomingMessageFunctions',
 	'',
 	0);
 INSERT INTO GD_MD
@@ -25,7 +25,7 @@ INSERT INTO GD_MD
 	0,
 	0,
 	'',
-	'OperatorConsole::Functions');
+	'OperatorConsole::Components::OperatorConsole::IncomingMessageFunctions');
 INSERT INTO DIM_DIA
 	VALUES ("1e338812-796a-40a6-b4e2-4f1748368a6d",
 	'',
@@ -153,7 +153,7 @@ INSERT INTO S_DT_PROXY
 	'BarrierState',
 	'',
 	'',
-	'../../../../CarPark/models/CarPark/SharedTypes/SharedTypes.xtuml');
+	'../../../../../../CarPark/models/CarPark/SharedTypes/SharedTypes.xtuml');
 INSERT INTO S_SPARM
 	VALUES ("c0e7bdce-bbd7-461c-8ecd-06515dff9449",
 	"e31c557a-3d90-4b58-b44a-d4cdfed9421d",
@@ -169,7 +169,7 @@ INSERT INTO S_DT_PROXY
 	'EntryTicketState',
 	'',
 	'',
-	'../../../../CarPark/models/CarPark/SharedTypes/SharedTypes.xtuml');
+	'../../../../../../CarPark/models/CarPark/SharedTypes/SharedTypes.xtuml');
 INSERT INTO PE_PE
 	VALUES ("e31c557a-3d90-4b58-b44a-d4cdfed9421d",
 	1,
@@ -260,7 +260,7 @@ INSERT INTO S_DT_PROXY
 	'ExitTicketState',
 	'',
 	'',
-	'../../../../CarPark/models/CarPark/SharedTypes/SharedTypes.xtuml');
+	'../../../../../../CarPark/models/CarPark/SharedTypes/SharedTypes.xtuml');
 INSERT INTO S_SPARM
 	VALUES ("e9c87d93-04bb-40df-9d24-8b7ae6f60907",
 	"7b6841c2-be15-4b59-aa42-d848e4dd8860",
@@ -286,7 +286,7 @@ INSERT INTO S_DT_PROXY
 	'Dispostion of the exit deadline associated with a particular stay.
 Req: CP-73',
 	'',
-	'../../../../CarPark/models/CarPark/SharedTypes/SharedTypes.xtuml');
+	'../../../../../../CarPark/models/CarPark/SharedTypes/SharedTypes.xtuml');
 INSERT INTO PE_PE
 	VALUES ("7b6841c2-be15-4b59-aa42-d848e4dd8860",
 	1,
@@ -347,10 +347,21 @@ INSERT INTO PE_PE
 	VALUES ("2ca9b2f0-398f-4215-845d-82171e2c03d9",
 	1,
 	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
+	"62598ed2-34fc-47d2-b195-4f5078774955",
 	7);
+INSERT INTO C_C_PROXY
+	VALUES ("62598ed2-34fc-47d2-b195-4f5078774955",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'OperatorConsole',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../OperatorConsole.xtuml');
 INSERT INTO S_SYS_PROXY
 	VALUES ("60cc3102-af7a-4b9a-98e2-290a03a31cd5",
 	'OperatorConsole',
 	1,
-	'../OperatorConsole.xtuml');
+	'../../../OperatorConsole.xtuml');

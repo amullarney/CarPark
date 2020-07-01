@@ -58,12 +58,12 @@ public class DeploymentApplication implements IApplication {
         components[2] = new ExitStand(this, executors[0], 2);
         components[4] = new PaymentMachine(this, executors[0], 4);
         components[1] = new EntryStand(this, executors[0], 1);
-        ((OperatorConsole)components[3]).Port1().satisfy(((CarparkControl)components[0]).Operator());
-        ((CarparkControl)components[0]).Operator().satisfy(((OperatorConsole)components[3]).Port1());
+        ((OperatorConsole)components[3]).CarPark().satisfy(((CarparkControl)components[0]).Operator());
+        ((CarparkControl)components[0]).Operator().satisfy(((OperatorConsole)components[3]).CarPark());
         ((ExitStand)components[2]).CarPark().satisfy(((CarparkControl)components[0]).Exit());
         ((CarparkControl)components[0]).Exit().satisfy(((ExitStand)components[2]).CarPark());
-        ((PaymentMachine)components[4]).Port1().satisfy(((CarparkControl)components[0]).Payer());
-        ((CarparkControl)components[0]).Payer().satisfy(((PaymentMachine)components[4]).Port1());
+        ((PaymentMachine)components[4]).CarPark().satisfy(((CarparkControl)components[0]).Payer());
+        ((CarparkControl)components[0]).Payer().satisfy(((PaymentMachine)components[4]).CarPark());
         ((EntryStand)components[1]).CarPark().satisfy(((CarparkControl)components[0]).Entry());
         ((CarparkControl)components[0]).Entry().satisfy(((EntryStand)components[1]).CarPark());
     }
