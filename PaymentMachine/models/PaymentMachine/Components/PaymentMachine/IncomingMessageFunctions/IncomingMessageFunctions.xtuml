@@ -2,9 +2,9 @@
 
 INSERT INTO EP_PKG
 	VALUES ("44e2fee5-e8e1-4ed4-809d-e1cf9ba0c254",
+	"00000000-0000-0000-0000-000000000000",
 	"02751817-2680-4dad-b74b-37bb4bf16e71",
-	"02751817-2680-4dad-b74b-37bb4bf16e71",
-	'Functions',
+	'IncomingMessageFunctions',
 	'',
 	0);
 INSERT INTO GD_MD
@@ -25,7 +25,7 @@ INSERT INTO GD_MD
 	0,
 	0,
 	'',
-	'PaymentMachine::Functions');
+	'PaymentMachine::Components::PaymentMachine::IncomingMessageFunctions');
 INSERT INTO DIM_DIA
 	VALUES ("e0297a2e-7f98-4337-9fa0-dac73b56591f",
 	'',
@@ -121,10 +121,21 @@ INSERT INTO PE_PE
 	VALUES ("44e2fee5-e8e1-4ed4-809d-e1cf9ba0c254",
 	1,
 	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
+	"9ce675de-740a-4d77-833b-66ab4d7d13eb",
 	7);
+INSERT INTO C_C_PROXY
+	VALUES ("9ce675de-740a-4d77-833b-66ab4d7d13eb",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'PaymentMachine',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../PaymentMachine.xtuml');
 INSERT INTO S_SYS_PROXY
 	VALUES ("02751817-2680-4dad-b74b-37bb4bf16e71",
 	'PaymentMachine',
 	1,
-	'../PaymentMachine.xtuml');
+	'../../../PaymentMachine.xtuml');

@@ -10,6 +10,18 @@
   <artifactId>InteractiveTesting</artifactId>
   <packaging>jar</packaging>
   <version>1.0.0-SNAPSHOT</version>
+  <dependencyManagement>
+	<dependencies>
+		<dependency>
+			<!-- Import dependency management from Spring Boot -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-dependencies</artifactId>
+			<version>2.3.0.RELEASE</version>
+			<type>pom</type>
+			<scope>import</scope>
+		</dependency>
+	</dependencies>
+  </dependencyManagement>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -22,6 +34,10 @@
       <releases><enabled>false</enabled></releases>
       <snapshots><enabled>true</enabled></snapshots>
     </repository>
+    <repository>
+      <id>spring-releases</id>
+      <url>https://repo.spring.io/libs-release</url>
+    </repository>
   </repositories>
   <pluginRepositories>
     <pluginRepository>
@@ -29,6 +45,10 @@
       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
       <releases><enabled>false</enabled></releases>
       <snapshots><enabled>true</enabled></snapshots>
+    </pluginRepository>
+    <pluginRepository>
+      <id>spring-releases</id>
+      <url>https://repo.spring.io/libs-release</url>
     </pluginRepository>
   </pluginRepositories>
   <dependencies>
@@ -47,6 +67,45 @@
       <artifactId>lanterna</artifactId>
       <version>3.0.1</version>
     </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
+      <version>2.3.0.RELEASE</version>
+    </dependency>
+	<dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <version>2.3.0.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+	  <artifactId>spring-boot-starter-websocket</artifactId>
+	  <version>2.3.0.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>webjars-locator-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>sockjs-client</artifactId>
+      <version>1.0.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>stomp-websocket</artifactId>
+      <version>2.3.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>bootstrap</artifactId>
+      <version>3.3.7</version>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>jquery</artifactId>
+      <version>3.1.1-1</version>
+    </dependency>
   </dependencies>
   <build>
     <resources>
@@ -64,6 +123,9 @@
         <includes>
           <include>**/*.properties</include>
         </includes>
+      </resource>
+      <resource>
+        <directory>${project.basedir}/src/main/resources</directory>
       </resource>
     </resources>
     <plugins>
@@ -86,6 +148,19 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+	    <groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-maven-plugin</artifactId>
+		<version>2.3.0.RELEASE</version>
+		<executions>
+		  <execution>
+		    <id>spring-boot-repackage</id>
+		    <goals>
+		      <goal>repackage</goal>
+		    </goals>
+		  </execution>
+		</executions>
+	  </plugin>
     </plugins>
   </build>
 </project>
