@@ -12,6 +12,8 @@ function setConnected(connected) {
     $("#replies").html("");
 }
 
+// When connecting, subscribe to a location-specific topic to receive
+// messages sent from the server.
 function connect() {
     var socket = new SockJS('/Carpark-websocket');
     stompClient = Stomp.over(socket);
@@ -32,34 +34,25 @@ function disconnect() {
     console.log("Disconnected");
 }
 
-function sendVehicleWaiting() {
-    stompClient.send("/app/VehicleWaiting", {}, JSON.stringify({'location': $("#location").val()}));
+// Client-to-server messages.
+function sendToServer( messageName ) {
+    stompClient.send("/app/" + messageName, {}, JSON.stringify({'location': $("#location").val()}));
 }
 
-function sendTicketRequested() {
-    stompClient.send("/app/TicketRequested", {}, JSON.stringify({'location': $("#location").val()}));
-}
-
-function sendTicketCollected() {
-    stompClient.send("/app/TicketCollected", {}, JSON.stringify({'location': $("#location").val()}));
-}
-
-function sendVehicleEntered() {
-    stompClient.send("/app/VehicleEntered", {}, JSON.stringify({'location': $("#location").val()}));
-}
-
+// Display a message received from the server.
 function showReply(message) {
     $("#replies").append("<tr><td>" + message + "</td></tr>");
 }
 
+// Map buttons to functions.
 $(function () {
     $("form").on('submit', function (e) {
         e.preventDefault();
     });
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
-    $( "#VehicleWaiting" ).click(function() { sendVehicleWaiting(); });
-    $( "#TicketRequested" ).click(function() { sendTicketRequested(); });
-    $( "#TicketCollected" ).click(function() { sendTicketCollected(); });
-    $( "#VehicleEntered" ).click(function() { sendVehicleEntered(); });
+    $( "#VehicleWaiting" ).click(function() { sendToServer( "VehicleWaiting" ); });
+    $( "#TicketRequested" ).click(function() { sendToServer( "TicketRequested" ); });
+    $( "#TicketCollected" ).click(function() { sendToServer( "TicketCollected" ); });
+    $( "#VehicleEntered" ).click(function() { sendToServer( "VehicleEntered" ); });
 });

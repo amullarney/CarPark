@@ -37,6 +37,9 @@ import deployment.VehicleWaitingMsg;                   // VehicleWaiting message
 import deployment.TicketRequestEnabledMsg;             // TicketRequestEnabled message class
 import deployment.EntryStand;                          // Shell component
 
+// The Spring framework arranges for an instance of this class to be
+// created, passing an instance of SimpMessagingTemplate as an argument,
+// which enables messages to be sent to JavaScript clients.
 @Controller
 public class EntryStandMsgController {
 	private static EntryStandMsgController singleton;
@@ -53,6 +56,12 @@ public class EntryStandMsgController {
 		return singleton;
 	}
 	
+	// Begin outgoing (from this component) messages.
+	// Each of the following methods is invoked when the (JavaScript) client sends 
+	// a message to the corresponding message-broker topic, "/app/<messageName>".
+	// For example, when the JavaScript client sends a message to "/app/VehicleWaiting",
+	// the method annoated with @MessageMapping( "/VehicleWaiting" ) is invoked, and
+	// an instance of the message is passed to it as a parameter.
     @MessageMapping( "/VehicleWaiting" )
     public void VehicleWaiting( VehicleWaitingMsg message ) throws Exception {
     	try {
@@ -92,7 +101,12 @@ public class EntryStandMsgController {
         	  System.out.printf( "Exception, %s, in VehicleEntered()\n", e );    			
       	}
     }
+    // End of outgoing messages.
     
+    // Incoming (to this component) messages.
+    // The following methods forward incoming messages to the (JavaScript) client which
+    // subscribes to a location-specific message-broker topic.  For example, the "North"
+    // entry stand subscribes to "/topic/EntryStand/North".
     public void SendTicketRequestEnabledMessage ( String Location ) throws Exception {
     	TicketRequestEnabledMsg msg = new TicketRequestEnabledMsg( "Ticket request enabled");
         String topic = "/topic/EntryStand/" + Location;
@@ -122,4 +136,5 @@ public class EntryStandMsgController {
         String topic = "/topic/EntryStand/" + Location;
         this.template.convertAndSend( topic, msg );
     }
+    // End of incoming messages.
 }
