@@ -628,6 +628,9 @@ self.VehicleWaiting = false;
 select one carpark related by self->Carpark[R4.''controls entry to''];
 generate Carpark5:VehicleEntered() to carpark;
 
+// Disable ticket requests.
+send Entry::TicketRequestDisabled( Location:self.Location );
+
 // Prevent the next vehicle from entering the carpark.
 self.Barrier = BarrierState::Closed;
 send Entry::CloseBarrier( Location:self.Location );
