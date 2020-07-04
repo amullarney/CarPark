@@ -1,5 +1,12 @@
 var stompClient = null;
 
+var vue_data = { TicketRequestDisabled: true };
+
+var vm = new Vue({
+	el: '#main-content',
+	data: vue_data
+})
+
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
@@ -42,6 +49,12 @@ function sendToServer( messageName ) {
 // Display a message received from the server.
 function showReply(message) {
     $("#replies").append("<tr><td>" + message + "</td></tr>");
+    if (message == "Ticket request enabled") {
+    	vm.TicketRequestDisabled = false;
+    }
+    if (message == "Open barrier") {
+    	vm.TicketRequestDisabled = true;
+    }
 }
 
 // Map buttons to functions.
@@ -52,7 +65,7 @@ $(function () {
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#VehicleWaiting" ).click(function() { sendToServer( "VehicleWaiting" ); });
-    $( "#TicketRequested" ).click(function() { sendToServer( "TicketRequested" ); });
+    $( "#TicketRequest" ).click(function() { sendToServer( "TicketRequested" ); });
     $( "#TicketCollected" ).click(function() { sendToServer( "TicketCollected" ); });
     $( "#VehicleEntered" ).click(function() { sendToServer( "VehicleEntered" ); });
 });

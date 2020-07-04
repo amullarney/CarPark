@@ -3,11 +3,9 @@
 <head>
     <title>Entry Stand</title>
     <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/main.css" rel="stylesheet">
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
-    <script src="/EntryStand.js"></script>
 </head>
 <body>
 <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
@@ -38,7 +36,7 @@
         <div class="col-md-6">
             <form class="form-inline">
                 <button id="VehicleWaiting" class="btn btn-default" type="submit">Vehicle Waiting</button>
-                <button id="TicketRequested" class="btn btn-default" type="submit">Ticket Requested</button>
+                <button v-bind:disabled="TicketRequestDisabled" id="TicketRequest" class="btn btn-primary" type="submit">Ticket Request</button>
                 <button id="TicketCollected" class="btn btn-default" type="submit">Ticket Collected</button>
                 <button id="VehicleEntered" class="btn btn-default" type="submit">Vehicle Entered</button>
             </form>
@@ -59,4 +57,6 @@
     </div>
 </div>
 </body>
+<script src="/vue.js"></script>
+<script src="/EntryStand.js"></script>
 </html>
