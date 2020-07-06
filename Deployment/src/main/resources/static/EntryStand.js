@@ -1,10 +1,12 @@
 var stompClient = null;
 
-var vue_data = { TicketRequestDisabled: true };
-
 var vm = new Vue({
 	el: '#main-content',
-	data: vue_data
+	data: {
+	    TicketRequestDisabled: true,
+	    TicketCollectedDisabled : true,
+	    VehicleEnteredDisabled: true
+    }
 })
 
 function setConnected(connected) {
@@ -46,14 +48,21 @@ function sendToServer( messageName ) {
     stompClient.send("/app/" + messageName, {}, JSON.stringify({'location': $("#location").val()}));
 }
 
-// Display a message received from the server.
+// Display a message received from the server and 
+// update the enable/disable states of buttons based on the 
+// the incoming message.
 function showReply(message) {
     $("#replies").append("<tr><td>" + message + "</td></tr>");
-    if (message == "Ticket request enabled") {
+    if ( message == "Ticket request enabled" ) {
     	vm.TicketRequestDisabled = false;
-    }
-    if (message == "Open barrier") {
+    } else if ( message == "Open barrier" ) {
+    	vm.VehicleEnteredDisabled = false;
+    	vm.TicketCollectedDisabled = true;
+    } else if ( message.includes( "Issue ticket"  )) {
     	vm.TicketRequestDisabled = true;
+    	vm.TicketCollectedDisabled = false;
+    } else if ( message == "Close barrier" ) {
+    	vm.VehicleEnteredDisabled = true;
     }
 }
 

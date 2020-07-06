@@ -35,10 +35,10 @@
     <div class="row">
         <div class="col-md-6">
             <form class="form-inline">
-                <button id="VehicleWaiting" class="btn btn-default" type="submit">Vehicle Waiting</button>
+                <button id="VehicleWaiting" class="btn btn-primary" type="submit">Vehicle Waiting</button>
                 <button v-bind:disabled="TicketRequestDisabled" id="TicketRequest" class="btn btn-primary" type="submit">Ticket Request</button>
-                <button id="TicketCollected" class="btn btn-default" type="submit">Ticket Collected</button>
-                <button id="VehicleEntered" class="btn btn-default" type="submit">Vehicle Entered</button>
+                <button v-bind:disabled="TicketCollectedDisabled" id="TicketCollected" class="btn btn-primary" type="submit">Ticket Collected</button>
+                <button v-bind:disabled="VehicleEnteredDisabled" id="VehicleEntered" class="btn btn-primary" type="submit">Vehicle Entered</button>
             </form>
         </div>
     </div>
