@@ -43,6 +43,10 @@
         </div>
     </div>
     <div class="row">
+    <h4 v-if="BarrierOpen" style="color:green;">Barrier: Open</h4>
+    <h4 v-else style="color:red;">Barrier: Closed</h4>
+    </div>
+    <div class="row">
         <div class="col-md-12">
             <table id="conversation" class="table table-striped">
                 <thead>

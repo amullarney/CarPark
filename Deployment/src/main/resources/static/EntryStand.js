@@ -5,7 +5,8 @@ var vm = new Vue({
 	data: {
 	    TicketRequestDisabled: true,
 	    TicketCollectedDisabled : true,
-	    VehicleEnteredDisabled: true
+	    VehicleEnteredDisabled: true,
+	    BarrierOpen: false
     }
 })
 
@@ -58,11 +59,13 @@ function showReply(message) {
     } else if ( message == "Open barrier" ) {
     	vm.VehicleEnteredDisabled = false;
     	vm.TicketCollectedDisabled = true;
+    	vm.BarrierOpen = true;
     } else if ( message.includes( "Issue ticket"  )) {
     	vm.TicketRequestDisabled = true;
     	vm.TicketCollectedDisabled = false;
     } else if ( message == "Close barrier" ) {
     	vm.VehicleEnteredDisabled = true;
+    	vm.BarrierOpen = false;
     }
 }
 
