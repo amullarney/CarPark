@@ -1,7 +1,7 @@
 -- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
 
 INSERT INTO O_OBJ
-	VALUES ("42d81ebd-6500-4043-83cb-ad205543cf24",
+	VALUES ("89864b6f-5956-4929-983d-b1b275333d1b",
 	'TimeUtilities',
 	1,
 	'TimeUtilities',
@@ -19,9 +19,9 @@ if the LHS of the assignment, x, has been previously typed as timestamp.
 x = 2 * MicrosecondsPerHalfHour;  // Does not work',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
-	VALUES ("20c28ba0-8be7-4598-8a74-7aee09e59e17",
-	"42d81ebd-6500-4043-83cb-ad205543cf24",
-	'advance_time_hours',
+	VALUES ("e59cf55b-8605-4954-8e69-d831e7dab981",
+	"89864b6f-5956-4929-983d-b1b275333d1b",
+	'AdvanceTime',
 	'',
 	"ba5eda7a-def5-0000-0000-000000000010",
 	0,
@@ -29,64 +29,49 @@ INSERT INTO O_TFR
 // Note: Much of the code below involves work-arounds for tooling deficiencies.
 // Before changing any of it, please review https://github.com/johnrwolfe/CarPark/issues/42.
 //------------------------------------------------------------------------------------------
-current_time = TIM::advance_time( microseconds:ConversionFactors::MicrosecondsPerHalfHour * 2 * param.hours );
+HoursInMicroseconds = ConversionFactors::MicrosecondsPerHalfHour * 2 * param.hours;
+MinutesInMicroseconds = ConversionFactors::MicrosecondsPerMinute * param.minutes;
+current_time = TIM::advance_time( microseconds:HoursInMicroseconds + MinutesInMicroseconds );
 return current_time;',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
 	0);
 INSERT INTO O_TPARM
-	VALUES ("29608417-fe75-4d9b-9b47-1372cf27c657",
-	"20c28ba0-8be7-4598-8a74-7aee09e59e17",
+	VALUES ("ad55c248-6045-4624-b93e-85c63f6435ad",
+	"e59cf55b-8605-4954-8e69-d831e7dab981",
 	'hours',
 	"ba5eda7a-def5-0000-0000-000000000002",
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000",
 	'');
-INSERT INTO O_TFR
-	VALUES ("1ce858d4-45b6-4079-b8f3-b4f5af071cc1",
-	"42d81ebd-6500-4043-83cb-ad205543cf24",
-	'advance_time_minutes',
-	'',
-	"ba5eda7a-def5-0000-0000-000000000010",
-	0,
-	'//------------------------------------------------------------------------------------------
-// Note: Much of the code below involves work-arounds for tooling deficiencies.
-// Before changing any of it, please review https://github.com/johnrwolfe/CarPark/issues/42.
-//------------------------------------------------------------------------------------------
-current_time = TIM::advance_time( microseconds:ConversionFactors::MicrosecondsPerMinute * param.minutes );
-return current_time;',
-	1,
-	'',
-	"20c28ba0-8be7-4598-8a74-7aee09e59e17",
-	0);
 INSERT INTO O_TPARM
-	VALUES ("74da32d1-6bc4-4a8d-b273-3d61354d65fa",
-	"1ce858d4-45b6-4079-b8f3-b4f5af071cc1",
+	VALUES ("972ab234-f0c4-4c03-ba66-705dc55432ca",
+	"e59cf55b-8605-4954-8e69-d831e7dab981",
 	'minutes',
 	"ba5eda7a-def5-0000-0000-000000000002",
 	0,
 	'',
-	"00000000-0000-0000-0000-000000000000",
+	"ad55c248-6045-4624-b93e-85c63f6435ad",
 	'');
 INSERT INTO O_ID
 	VALUES (0,
-	"42d81ebd-6500-4043-83cb-ad205543cf24");
+	"89864b6f-5956-4929-983d-b1b275333d1b");
 INSERT INTO O_ID
 	VALUES (1,
-	"42d81ebd-6500-4043-83cb-ad205543cf24");
+	"89864b6f-5956-4929-983d-b1b275333d1b");
 INSERT INTO O_ID
 	VALUES (2,
-	"42d81ebd-6500-4043-83cb-ad205543cf24");
+	"89864b6f-5956-4929-983d-b1b275333d1b");
 INSERT INTO PE_PE
-	VALUES ("42d81ebd-6500-4043-83cb-ad205543cf24",
+	VALUES ("89864b6f-5956-4929-983d-b1b275333d1b",
 	1,
-	"9bc0d138-002f-4e7f-ba76-348f3dc2b873",
+	"2c7495b3-bc98-4bf7-936e-2c8d6fcbecab",
 	"00000000-0000-0000-0000-000000000000",
 	4);
 INSERT INTO EP_PKG_PROXY
-	VALUES ("9bc0d138-002f-4e7f-ba76-348f3dc2b873",
+	VALUES ("2c7495b3-bc98-4bf7-936e-2c8d6fcbecab",
 	"00000000-0000-0000-0000-000000000000",
 	"dccd26e2-5328-45c4-8ada-fed969fc6ffe",
 	'TimeUtilities',
