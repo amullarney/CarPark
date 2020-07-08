@@ -1,5 +1,15 @@
 var stompClient = null;
 
+var vm = new Vue({
+	el: '#main-content',
+	data: {
+	    TicketRequestDisabled: true,
+	    TicketCollectedDisabled : true,
+	    VehicleEnteredDisabled: true,
+	    BarrierOpen: false
+    }
+})
+
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
@@ -39,9 +49,24 @@ function sendToServer( messageName ) {
     stompClient.send("/app/" + messageName, {}, JSON.stringify({'location': $("#location").val()}));
 }
 
-// Display a message received from the server.
+// Display a message received from the server and 
+// update the enable/disable states of buttons based on the 
+// the incoming message.
 function showReply(message) {
     $("#replies").append("<tr><td>" + message + "</td></tr>");
+    if ( message == "Ticket request enabled" ) {
+    	vm.TicketRequestDisabled = false;
+    } else if ( message == "Open barrier" ) {
+    	vm.VehicleEnteredDisabled = false;
+    	vm.TicketCollectedDisabled = true;
+    	vm.BarrierOpen = true;
+    } else if ( message.includes( "Issue ticket"  )) {
+    	vm.TicketRequestDisabled = true;
+    	vm.TicketCollectedDisabled = false;
+    } else if ( message == "Close barrier" ) {
+    	vm.VehicleEnteredDisabled = true;
+    	vm.BarrierOpen = false;
+    }
 }
 
 // Map buttons to functions.
@@ -52,7 +77,7 @@ $(function () {
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#VehicleWaiting" ).click(function() { sendToServer( "VehicleWaiting" ); });
-    $( "#TicketRequested" ).click(function() { sendToServer( "TicketRequested" ); });
+    $( "#TicketRequest" ).click(function() { sendToServer( "TicketRequested" ); });
     $( "#TicketCollected" ).click(function() { sendToServer( "TicketCollected" ); });
     $( "#VehicleEntered" ).click(function() { sendToServer( "VehicleEntered" ); });
 });
