@@ -1,0 +1,81 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("4a019b00-2a4c-4c72-a027-9436663417bc",
+	'TimeUtilities',
+	1,
+	'TimeUtilities',
+	'Literal integers in BridgePoint are treated as signed 32-bit integers.
+The timestamp type is a signed 64-bit integer.
+Loading a variable of type timestamp with a value calculated with 
+literal integers therefore requires special care.  Basically, the 
+left-hand-side of all sub-expressions must be of type timestamp to
+ensure that all math is done as 64-bit integer math.  For example:
+x = MicrosecondsPerHalfHour * 2;  // Works fine
+The following line does not produce the desired result because the 
+multiplication operation is performed in 32-bit integer math, and
+the result is greater than 2^31, so the value gets truncated, even 
+if the LHS of the assignment, x, has been previously typed as timestamp.
+x = 2 * MicrosecondsPerHalfHour;  // Does not work',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("93363cf5-dc50-4994-824d-b1c1f27a05a2",
+	"4a019b00-2a4c-4c72-a027-9436663417bc",
+	'AdvanceTime',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000010",
+	0,
+	'//------------------------------------------------------------------------------------------
+// Note: Much of the code below involves work-arounds for tooling deficiencies.
+// Before changing any of it, please review https://github.com/johnrwolfe/CarPark/issues/42.
+//------------------------------------------------------------------------------------------
+HoursInMicroseconds = ConversionFactors::MicrosecondsPerHalfHour * 2 * param.hours;
+MinutesInMicroseconds = ConversionFactors::MicrosecondsPerMinute * param.minutes;
+current_time = TIM::advance_time( microseconds:HoursInMicroseconds + MinutesInMicroseconds );
+return current_time;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("5544a727-921b-4a13-8797-730560512702",
+	"93363cf5-dc50-4994-824d-b1c1f27a05a2",
+	'hours',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("b2dbe3fb-7086-41ef-821f-ae9ea7c352a6",
+	"93363cf5-dc50-4994-824d-b1c1f27a05a2",
+	'minutes',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"5544a727-921b-4a13-8797-730560512702",
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"4a019b00-2a4c-4c72-a027-9436663417bc");
+INSERT INTO O_ID
+	VALUES (1,
+	"4a019b00-2a4c-4c72-a027-9436663417bc");
+INSERT INTO O_ID
+	VALUES (2,
+	"4a019b00-2a4c-4c72-a027-9436663417bc");
+INSERT INTO PE_PE
+	VALUES ("4a019b00-2a4c-4c72-a027-9436663417bc",
+	1,
+	"92dcbb22-60f3-4b47-b221-2da70ca31dd1",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("92dcbb22-60f3-4b47-b221-2da70ca31dd1",
+	"00000000-0000-0000-0000-000000000000",
+	"d7592564-3100-4fba-8bbf-7843cd18a789",
+	'TimeUtilities',
+	'Wrapper for TIM bridge operations to make it more convenient to operate on time scales 
+larger than one microsecond.',
+	0,
+	'../TimeUtilities.xtuml');
