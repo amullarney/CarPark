@@ -417,7 +417,7 @@ INSERT INTO GD_GE
 	"b0dae329-7dd9-431e-8093-567e7cecee4f",
 	106,
 	0,
-	'Deployment::Deployment::OperatorConsole::Components::OperatorConsole::Port1::OperatorConsole');
+	'Deployment::Deployment::OperatorConsole::Components::OperatorConsole::CarPark::OperatorConsole');
 INSERT INTO GD_CON
 	VALUES ("13f76bb5-b037-407a-9916-19be2b1f747f",
 	"00000000-0000-0000-0000-000000000000");
@@ -517,7 +517,7 @@ INSERT INTO GD_GE
 	"4c18aeec-7aa3-471a-937c-4821a845d5da",
 	106,
 	0,
-	'Deployment::Deployment::PaymentMachine::Components::PaymentMachine::Port1::PaymentMachine');
+	'Deployment::Deployment::PaymentMachine::Components::PaymentMachine::CarPark::PaymentMachine');
 INSERT INTO GD_CON
 	VALUES ("a9860949-2cd3-4d84-b5da-957593063e10",
 	"00000000-0000-0000-0000-000000000000");
@@ -1043,6 +1043,35 @@ INSERT INTO DIM_ED
 	VALUES ("30af1c11-291c-4896-8d25-8e250902c348",
 	"00000000-0000-0000-0000-000000000000",
 	"b110d07e-1c40-423f-8b42-0166c771d3c9");
+INSERT INTO GD_GE
+	VALUES ("559549fe-d7d2-4a77-a722-d035e93a8d51",
+	"d3798f5c-59df-47f1-90b7-386892d1a414",
+	"e8b2957a-5655-4af1-9588-37b34171e1e3",
+	100,
+	0,
+	'Deployment::Deployment::TestControl::Components::TestControl');
+INSERT INTO GD_SHP
+	VALUES ("559549fe-d7d2-4a77-a722-d035e93a8d51");
+INSERT INTO GD_NCS
+	VALUES ("559549fe-d7d2-4a77-a722-d035e93a8d51");
+INSERT INTO DIM_ND
+	VALUES (133.000000,
+	96.000000,
+	"559549fe-d7d2-4a77-a722-d035e93a8d51");
+INSERT INTO DIM_GE
+	VALUES (720.000000,
+	276.000000,
+	"559549fe-d7d2-4a77-a722-d035e93a8d51",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("559549fe-d7d2-4a77-a722-d035e93a8d51",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_CON
+	VALUES ("9bfedd75-5dae-4ce7-b4d7-2420864e913f",
+	816.000000,
+	276.000000,
+	"559549fe-d7d2-4a77-a722-d035e93a8d51");
 INSERT INTO DIM_DIA
 	VALUES ("d3798f5c-59df-47f1-90b7-386892d1a414",
 	'',
@@ -1334,7 +1363,7 @@ INSERT INTO CL_IC
 INSERT INTO CL_POR
 	VALUES ("25dcce9a-7f60-4d40-8e47-7185e086a3a4",
 	"1d0fcd22-0cfe-4b03-8681-2003b623eb89",
-	'Port1',
+	'CarPark',
 	"e10136cd-5213-4786-8761-a0926053ff4e");
 INSERT INTO CL_IIR
 	VALUES ("b0dae329-7dd9-431e-8093-567e7cecee4f",
@@ -1357,7 +1386,7 @@ INSERT INTO C_IR_PROXY
 INSERT INTO C_PO_PROXY
 	VALUES ("1d0fcd22-0cfe-4b03-8681-2003b623eb89",
 	"62598ed2-34fc-47d2-b195-4f5078774955",
-	'Port1',
+	'CarPark',
 	0,
 	0,
 	'../../../../OperatorConsole/models/OperatorConsole/Components/OperatorConsole/OperatorConsole.xtuml');
@@ -1390,7 +1419,7 @@ INSERT INTO CL_IC
 INSERT INTO CL_POR
 	VALUES ("abb6e320-a599-4ae7-ad2a-226dd9a2c6f3",
 	"876f2a50-2183-44f3-aebc-10d73f0e43a5",
-	'Port1',
+	'CarPark',
 	"2714ef01-9856-4608-9e12-70ae14ebba4d");
 INSERT INTO CL_IIR
 	VALUES ("4c18aeec-7aa3-471a-937c-4821a845d5da",
@@ -1413,7 +1442,7 @@ INSERT INTO C_IR_PROXY
 INSERT INTO C_PO_PROXY
 	VALUES ("876f2a50-2183-44f3-aebc-10d73f0e43a5",
 	"9ce675de-740a-4d77-833b-66ab4d7d13eb",
-	'Port1',
+	'CarPark',
 	0,
 	0,
 	'../../../../PaymentMachine/models/PaymentMachine/Components/PaymentMachine/PaymentMachine.xtuml');
@@ -1434,12 +1463,38 @@ INSERT INTO C_C_PROXY
 	0,
 	'',
 	'../../../../PaymentMachine/models/PaymentMachine/Components/PaymentMachine/PaymentMachine.xtuml');
+INSERT INTO CL_IC
+	VALUES ("e8b2957a-5655-4af1-9588-37b34171e1e3",
+	"5f844f9d-b4a9-4fcc-adaa-b69ecf9327b1",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'TestControl::Components::TestControl',
+	'');
+INSERT INTO PE_PE
+	VALUES ("e8b2957a-5655-4af1-9588-37b34171e1e3",
+	1,
+	"cc44dcb6-e8fb-416b-b79f-4dc711038b1e",
+	"00000000-0000-0000-0000-000000000000",
+	21);
+INSERT INTO C_C_PROXY
+	VALUES ("5f844f9d-b4a9-4fcc-adaa-b69ecf9327b1",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'TestControl',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../../../../TestControl/models/TestControl/Components/TestControl/TestControl.xtuml');
 INSERT INTO C_SF
 	VALUES ("d1afe571-c81a-4d48-b03f-342b3a082d0f",
 	"cba51a94-8f08-44d4-af84-9adb6451b70d",
 	"beb17c01-5d43-4cbd-bd44-08536daaf245",
 	'',
-	'CarparkControl::Payer::PaymentMachine -o)- PaymentMachine::Port1::PaymentMachine');
+	'CarparkControl::Payer::PaymentMachine -o)- PaymentMachine::CarPark::PaymentMachine');
 INSERT INTO PE_PE
 	VALUES ("d1afe571-c81a-4d48-b03f-342b3a082d0f",
 	1,
@@ -1451,7 +1506,7 @@ INSERT INTO C_R_PROXY
 	'PaymentMachine',
 	'',
 	'Unnamed Interface',
-	'PaymentMachine::Port1::PaymentMachine',
+	'PaymentMachine::CarPark::PaymentMachine',
 	'../../../../PaymentMachine/models/PaymentMachine/Components/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO C_P_PROXY
 	VALUES ("beb17c01-5d43-4cbd-bd44-08536daaf245",
@@ -1465,7 +1520,7 @@ INSERT INTO C_SF
 	"4560e82f-446e-4799-8690-6c829985509d",
 	"3a0a5f08-1388-4c3f-ab8d-73aa1165fb23",
 	'',
-	'CarparkControl::Operator::OperatorConsole -o)- OperatorConsole::Port1::OperatorConsole');
+	'CarparkControl::Operator::OperatorConsole -o)- OperatorConsole::CarPark::OperatorConsole');
 INSERT INTO PE_PE
 	VALUES ("45af0bd9-51ec-4232-bd96-939c48ff8606",
 	1,
@@ -1477,7 +1532,7 @@ INSERT INTO C_R_PROXY
 	'OperatorConsole',
 	'',
 	'Unnamed Interface',
-	'OperatorConsole::Port1::OperatorConsole',
+	'OperatorConsole::CarPark::OperatorConsole',
 	'../../../../OperatorConsole/models/OperatorConsole/Components/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO C_P_PROXY
 	VALUES ("3a0a5f08-1388-4c3f-ab8d-73aa1165fb23",
