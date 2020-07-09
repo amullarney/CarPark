@@ -45,10 +45,12 @@ public class TestControl extends Component<TestControl> {
     	try {
           new TimeUtilitiesImpl.CLASS(context()).AdvanceTime( p_hours, p_minutes );
     	} catch ( Exception e ) {}
+    	System.out.printf( "AdvanceTime( hours: %d, minutes: %d )\n", p_hours, p_minutes );
     }
 
     public void SetTime( final int p_year,  final int p_month,  final int p_day,  final int p_hour,  final int p_minute ) {
         context().TIM().set_time( p_year, p_month, p_day, p_hour, p_minute, 0, 0 );
+        System.out.printf( "SetTime( year: %d, month: %d, day: %d, hour: %d, minute: %d )\n", p_year, p_month, p_day, p_hour, p_minute );
     }
 
 

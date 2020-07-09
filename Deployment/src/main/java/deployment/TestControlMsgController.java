@@ -62,9 +62,12 @@ public class TestControlMsgController {
 	// an instance of the message is passed to it as a parameter.
     @MessageMapping( "/AdvanceTime" )
     public void AdvanceTime( AdvanceTimeMsg message ) throws Exception {
+    	int hours = 0, minutes = 0;
     	try {
-    	  int hours = Integer.parseInt( message.getHours() );
-    	  int minutes = Integer.parseInt( message.getMinutes() );
+    	  if ( message.getHours() != null )
+    	    hours = Integer.parseInt( message.getHours() );
+    	  if ( message.getMinutes() != null )
+    	    minutes = Integer.parseInt( message.getMinutes() );
     	  TestControl.Singleton().AdvanceTime( hours, minutes );	
     	}
     	catch ( Exception e ) {
@@ -73,7 +76,7 @@ public class TestControlMsgController {
     }
     
     @MessageMapping( "/SetTime" )
-    public void TicketRequested( SetTimeMsg message ) {
+    public void SetTime( SetTimeMsg message ) {
         int year = Integer.parseInt( message.getYear() );
         int month = Integer.parseInt( message.getMonth() );
         int day = Integer.parseInt( message.getDay() );

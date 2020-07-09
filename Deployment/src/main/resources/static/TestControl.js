@@ -45,7 +45,7 @@ function sendAdvanceTime() {
 }
 
 function sendSetTime() {
-    stompClient.send("/app/" + messageName, {}, 
+    stompClient.send("/app/SetTime", {}, 
       JSON.stringify({'year': $("#year").val(),
     	              'month': $("#month").val(),
     	              'day': $("#day").val(),
