@@ -33,6 +33,7 @@ import org.springframework.web.util.HtmlUtils;
 
 import deployment.AdvanceTimeMsg;         // AdvanceTime message class
 import deployment.SetTimeMsg;             // SetTime message class
+import deployment.CurrentDateTimeMsg;     // Current date and time message class
 import deployment.TestControl;            // Shell component
 
 // The Spring framework arranges for an instance of this class to be
@@ -62,12 +63,10 @@ public class TestControlMsgController {
 	// an instance of the message is passed to it as a parameter.
     @MessageMapping( "/AdvanceTime" )
     public void AdvanceTime( AdvanceTimeMsg message ) throws Exception {
-    	int hours = 0, minutes = 0;
+    	int hours, minutes;
     	try {
-    	  if ( message.getHours() != null )
-    	    hours = Integer.parseInt( message.getHours() );
-    	  if ( message.getMinutes() != null )
-    	    minutes = Integer.parseInt( message.getMinutes() );
+    	  hours = Integer.parseInt( message.getHours() );
+    	  minutes = Integer.parseInt( message.getMinutes() );
     	  TestControl.Singleton().AdvanceTime( hours, minutes );	
     	}
     	catch ( Exception e ) {
@@ -90,6 +89,10 @@ public class TestControlMsgController {
     // The following methods forward incoming messages to the (JavaScript) client which
     // subscribes to a location-specific message-broker topic.  For example, the "North"
     // entry stand subscribes to "/topic/EntryStand/North".
- 
+    public void SendCurrentDateTimeMessage ( String CurrentDateTime ) throws Exception {
+    	CurrentDateTimeMsg msg = new CurrentDateTimeMsg( CurrentDateTime );
+        String topic = "/topic/TestControl";
+        this.template.convertAndSend( topic, msg );
+    }
     // End of incoming messages.
 }

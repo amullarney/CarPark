@@ -29,6 +29,7 @@ public class TestControl extends Component<TestControl> {
 
     public TestControl(IApplication app, IRunContext runContext, int populationId) {
         super(app, runContext, populationId);
+    	System.out.printf( "TestControl constructor\n" );
         TimeUtilities_extent = new TimeUtilitiesSetImpl();
         singleton = this;
         TIM = null;
@@ -42,15 +43,28 @@ public class TestControl extends Component<TestControl> {
 
     // domain functions
     public void AdvanceTime( final int p_hours,  final int p_minutes ) throws XtumlException {
+    	System.out.printf( "AdvanceTime( hours: %d, minutes: %d )\n", p_hours, p_minutes );
     	try {
           new TimeUtilitiesImpl.CLASS(context()).AdvanceTime( p_hours, p_minutes );
     	} catch ( Exception e ) {}
-    	System.out.printf( "AdvanceTime( hours: %d, minutes: %d )\n", p_hours, p_minutes );
+    	SendCurrentDateTime();
     }
 
     public void SetTime( final int p_year,  final int p_month,  final int p_day,  final int p_hour,  final int p_minute ) {
         context().TIM().set_time( p_year, p_month, p_day, p_hour, p_minute, 0, 0 );
         System.out.printf( "SetTime( year: %d, month: %d, day: %d, hour: %d, minute: %d )\n", p_year, p_month, p_day, p_hour, p_minute );
+        SendCurrentDateTime();
+    }
+    
+    // (hand-written) utility functions
+    public void SendCurrentDateTime() {
+    	String currentDateTime = context().TIM().timestamp_format( context().TIM().current_clock(), "yyyy/MM/dd HH:mm" );
+    	try {
+    	  TestControlMsgController.Singleton().SendCurrentDateTimeMessage( currentDateTime );
+    	}
+    	catch ( Exception e ) {
+        	  System.out.printf( "Exception, %s, in SendCurrentDateTime()\n", e );    			
+      	}
     }
 
 

@@ -6,6 +6,7 @@ import deployment.EntryStand;
 import deployment.ExitStand;
 import deployment.OperatorConsole;
 import deployment.PaymentMachine;
+import deployment.TestControl;
 
 import io.ciera.runtime.summit.application.ApplicationExecutor;
 import io.ciera.runtime.summit.application.IApplication;
@@ -30,7 +31,7 @@ public class DeploymentApplication implements IApplication {
 
     public DeploymentApplication() {
     	singleton = this;
-        components = new IComponent<?>[5];
+        components = new IComponent<?>[6];
         executors = new ApplicationExecutor[1];
         setup( null, null );
         initialize();
@@ -58,6 +59,7 @@ public class DeploymentApplication implements IApplication {
         components[2] = new ExitStand(this, executors[0], 2);
         components[4] = new PaymentMachine(this, executors[0], 4);
         components[1] = new EntryStand(this, executors[0], 1);
+        components[5] = new TestControl(this, executors[0], 5);
         ((OperatorConsole)components[3]).CarPark().satisfy(((CarparkControl)components[0]).Operator());
         ((CarparkControl)components[0]).Operator().satisfy(((OperatorConsole)components[3]).CarPark());
         ((ExitStand)components[2]).CarPark().satisfy(((CarparkControl)components[0]).Exit());
@@ -82,6 +84,9 @@ public class DeploymentApplication implements IApplication {
     }
     public EntryStand EntryStand() {
         return (EntryStand)components[1];
+    }
+    public TestControl TestControl() {
+        return (TestControl)components[5];
     }
 
     @Override
