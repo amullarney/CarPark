@@ -17,5 +17,6 @@
     <module>ExitStand</module>
     <module>PaymentMachine</module>
     <module>OperatorConsole</module>
+    <module>TestControl</module>
   </modules>
 </project>

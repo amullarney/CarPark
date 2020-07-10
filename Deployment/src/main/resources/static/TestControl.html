@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Control</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+</head>
+<body>
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+    enabled. Please enable
+    Javascript and reload this page!</h2></noscript>
+<div id="main-content" class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="connect">WebSocket connection:</label>
+                    <button id="connect" class="btn btn-default" type="submit">Connect</button>
+                    <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <h3>Advance Time</h3>
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="Hours">Enter hours:</label>
+                    <input type="text" id="hours" class="form-control" placeholder="Hours here...">
+                </div>
+                <div class="form-group">
+                    <label for="Minutes">Enter minutes:</label>
+                    <input type="text" id="minutes" class="form-control" placeholder="Minutes here...">
+                </div>
+                <div class="row">
+                    <button id="AdvanceTime" class="btn btn-primary" type="submit">Advance Time</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <h3>Set Time</h3>
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="Year">Enter year:</label>
+                    <input type="text" id="year" class="form-control" placeholder="Year here...">
+                </div>
+                <div class="form-group">
+                    <label for="Month">Enter month:</label>
+                    <input type="text" id="month" class="form-control" placeholder="Month here...">
+                </div>
+                <div class="form-group">
+                    <label for="Day">Enter day:</label>
+                    <input type="text" id="day" class="form-control" placeholder="Day here...">
+                </div>
+                <div class="form-group">
+                    <label for="Hour">Enter hour:</label>
+                    <input type="text" id="hour" class="form-control" placeholder="Hour here...">
+                </div>
+                <div class="form-group">
+                    <label for="Minute">Enter minute:</label>
+                    <input type="text" id="minute" class="form-control" placeholder="Minute here...">
+                </div>
+                <div class="row">
+                    <button id="SetTime" class="btn btn-primary" type="submit">Set Time</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table id="conversation" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Incoming Messages</th>
+                </tr>
+                </thead>
+                <tbody id="replies">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+<script src="/vue.js"></script>
+<script src="/TestControl.js"></script>
+</html>

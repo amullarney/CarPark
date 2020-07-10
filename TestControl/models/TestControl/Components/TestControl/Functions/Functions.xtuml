@@ -1,0 +1,152 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("8119b7c0-6b8f-4f17-9c08-4d00558f9e74",
+	"00000000-0000-0000-0000-000000000000",
+	"d7592564-3100-4fba-8bbf-7843cd18a789",
+	'Functions',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("abfe9fc2-a3d5-4b21-866c-1f8351133029",
+	112,
+	"8119b7c0-6b8f-4f17-9c08-4d00558f9e74",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'TestControl::Components::TestControl::Functions');
+INSERT INTO DIM_DIA
+	VALUES ("abfe9fc2-a3d5-4b21-866c-1f8351133029",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_SYNC
+	VALUES ("98150965-96ee-4bed-8e39-f98385458e40",
+	"00000000-0000-0000-0000-000000000000",
+	'AdvanceTime',
+	'',
+	'toss = TimeUtilities::AdvanceTime( hours:param.hours, minutes:param.minutes );',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO S_SPARM
+	VALUES ("ff3de254-dd38-4925-bfb3-69962c11517a",
+	"98150965-96ee-4bed-8e39-f98385458e40",
+	'hours',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("abe7ced1-8e3d-4665-83c9-673120411997",
+	"98150965-96ee-4bed-8e39-f98385458e40",
+	'minutes',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"ff3de254-dd38-4925-bfb3-69962c11517a",
+	'');
+INSERT INTO PE_PE
+	VALUES ("98150965-96ee-4bed-8e39-f98385458e40",
+	1,
+	"8119b7c0-6b8f-4f17-9c08-4d00558f9e74",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("47b9a22e-9580-42c2-8aa2-6d9a26d3e4d6",
+	"00000000-0000-0000-0000-000000000000",
+	'SetTime',
+	'',
+	'toss = TIM::set_time( day:param.day, hour:param.hour, microsecond:0, minute:param.minute, month:param.month, second:0, year:param.year );',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO S_SPARM
+	VALUES ("b73cb217-4c69-4cae-a905-efa02050758e",
+	"47b9a22e-9580-42c2-8aa2-6d9a26d3e4d6",
+	'year',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("1115a33e-2f8b-4e66-931e-f545ac3eb26e",
+	"47b9a22e-9580-42c2-8aa2-6d9a26d3e4d6",
+	'month',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"b73cb217-4c69-4cae-a905-efa02050758e",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("587c1aaf-cf57-485c-9d46-32c8856bf596",
+	"47b9a22e-9580-42c2-8aa2-6d9a26d3e4d6",
+	'day',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"1115a33e-2f8b-4e66-931e-f545ac3eb26e",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("21e4be73-a374-4b25-9dc4-3c761ef2d311",
+	"47b9a22e-9580-42c2-8aa2-6d9a26d3e4d6",
+	'hour',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"587c1aaf-cf57-485c-9d46-32c8856bf596",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("77d9ecbf-6bff-4430-a104-405d97f8fc3f",
+	"47b9a22e-9580-42c2-8aa2-6d9a26d3e4d6",
+	'minute',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"21e4be73-a374-4b25-9dc4-3c761ef2d311",
+	'');
+INSERT INTO PE_PE
+	VALUES ("47b9a22e-9580-42c2-8aa2-6d9a26d3e4d6",
+	1,
+	"8119b7c0-6b8f-4f17-9c08-4d00558f9e74",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO PE_PE
+	VALUES ("8119b7c0-6b8f-4f17-9c08-4d00558f9e74",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"5f844f9d-b4a9-4fcc-adaa-b69ecf9327b1",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("5f844f9d-b4a9-4fcc-adaa-b69ecf9327b1",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'TestControl',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../TestControl.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("d7592564-3100-4fba-8bbf-7843cd18a789",
+	'TestControl',
+	1,
+	'../../../TestControl.xtuml');
