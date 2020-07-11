@@ -81,6 +81,8 @@ public class PaymentMachineMsgController {
     
     @MessageMapping( "/InsertedCurrency" )
     public void InsertedCurrency( InsertedCurrencyMsg message ) throws Exception {
+    	if ( message == null )
+    		System.out.print( "InsertedCurrency(): message is null!\n" );
     	try {
       	  PaymentMachine.Singleton().CarPark().InsertedCurrency( message.getLocation(), Double.parseDouble( message.getAmount() ) );
       	}

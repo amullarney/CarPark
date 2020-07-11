@@ -69,7 +69,7 @@ function sendInsertedTicket() {
 
 function sendInsertedCurrency( amount ) {
     stompClient.send("/app/InsertedCurrency", {}, 
-      JSON.stringify({'location': $("#location").val(), 'Amount': amount}));
+      JSON.stringify({'location': $("#location").val(), 'amount': amount}));
     vm.InsertedCurrencyDisabled = true;
 }
 
@@ -94,9 +94,12 @@ function showReply(message) {
     } else if ( message.includes( "Remaining balance"  )) {
     	vm.InsertedCurrencyDisabled = false;
         vm.CancelledTransactionDisabled = false;
-        vm.RemainingBalance = message;
+        var balanceIndex = message.indexOf( ": " ) + 2;
+        vm.RemainingBalance = "Remaining balance: " + (Number( message.slice( balanceIndex ) ).toFixed(2)).toString();
     } else if ( message == "ReturnedTicket" ) {
     	vm.TicketCollectedDisabled = false;
+    	vm.CancelledTransactionDisabled = true;
+    	vm.InsertedCurrencyDisabled = true;
     }
 }
 
