@@ -164,7 +164,7 @@ INSERT INTO GD_GE
 	"44e2fee5-e8e1-4ed4-809d-e1cf9ba0c254",
 	108,
 	0,
-	'PaymentMachine::Components::PaymentMachine::Functions');
+	'PaymentMachine::Components::PaymentMachine::IncomingMessageFunctions');
 INSERT INTO GD_SHP
 	VALUES ("4cdd903e-8f1b-4cb3-98c4-9e6136a7a6ee");
 INSERT INTO GD_NCS
@@ -248,7 +248,7 @@ INSERT INTO SPR_REP
 	"cba51a94-8f08-44d4-af84-9adb6451b70d");
 INSERT INTO SPR_RS
 	VALUES ("b70ee109-784e-4c06-acc4-d8ff95271bf3",
-	'CollectedTicket',
+	'TicketCollected',
 	'',
 	'',
 	3,
@@ -257,7 +257,7 @@ INSERT INTO C_EP_PROXY
 	VALUES ("1a93d819-e152-409f-8b77-23b28cb652bb",
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
-	'CollectedTicket',
+	'TicketCollected',
 	'',
 	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO SPR_REP
@@ -304,8 +304,8 @@ INSERT INTO SPR_RS
 	VALUES ("304ec5c1-ba7c-49e9-9d94-2c059a63b236",
 	'RemainingBalance',
 	'',
-	'',
-	3,
+	'::RemainingBalance( Location:param.Location, Amount:param.Amount );',
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("e6bd25b1-8a4d-4a8a-a068-e149f8b48ebb",
@@ -322,8 +322,8 @@ INSERT INTO SPR_RS
 	VALUES ("7c5ef413-5563-42dd-8fc3-e77340c271d0",
 	'InsufficientChange',
 	'',
-	'',
-	3,
+	'::InsufficientChange( Location:param.Location );',
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("acfc0128-4d4f-4a0e-87ed-988ebe170166",
@@ -340,8 +340,8 @@ INSERT INTO SPR_RS
 	VALUES ("8e29fdc1-4e8f-48a9-8005-b1cd3672ec4e",
 	'ReturnedTicket',
 	'',
-	'',
-	3,
+	'::ReturnedTicket( Location:param.Location );',
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("ab99ffd4-de35-47a9-9eb4-ee31927071ec",
@@ -358,8 +358,8 @@ INSERT INTO SPR_RS
 	VALUES ("9fb9a563-55f0-478c-9825-ac4ffdea7685",
 	'ExitDeadline',
 	'',
-	'',
-	3,
+	'::ExitDeadline( Location:param.Location, Deadline:param.Deadline );',
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("7d98badf-0872-49ac-a66e-72a2d0d07fa7",

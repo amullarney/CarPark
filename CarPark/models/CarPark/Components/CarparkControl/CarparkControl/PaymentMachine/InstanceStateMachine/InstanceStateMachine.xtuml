@@ -867,7 +867,7 @@ INSERT INTO SM_ACT
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
 	1,
 	'// Print exit deadline on ticket.
-send Payer::ExitDeadline( Deadline:param.Deadline );',
+send Payer::ExitDeadline( Location:self.Location, Deadline:param.Deadline );',
 	'',
 	0);
 INSERT INTO GD_MD

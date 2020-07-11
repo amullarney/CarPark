@@ -51,11 +51,11 @@ INSERT INTO C_EP
 	VALUES ("1a93d819-e152-409f-8b77-23b28cb652bb",
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
-	'CollectedTicket',
+	'TicketCollected',
 	'');
 INSERT INTO C_AS
 	VALUES ("1a93d819-e152-409f-8b77-23b28cb652bb",
-	'CollectedTicket',
+	'TicketCollected',
 	'',
 	0,
 	"f66a3b7f-d47f-4c2b-9f66-1ce143dc9e4d");
@@ -217,6 +217,15 @@ INSERT INTO C_PP
 	"7d98badf-0872-49ac-a66e-72a2d0d07fa7",
 	"ba5eda7a-def5-0000-0000-000000000002",
 	'Deadline',
+	'',
+	0,
+	'',
+	"de7c70c2-1466-4e3b-a7af-7336341e7e2f");
+INSERT INTO C_PP
+	VALUES ("de7c70c2-1466-4e3b-a7af-7336341e7e2f",
+	"7d98badf-0872-49ac-a66e-72a2d0d07fa7",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'Location',
 	'',
 	0,
 	'',

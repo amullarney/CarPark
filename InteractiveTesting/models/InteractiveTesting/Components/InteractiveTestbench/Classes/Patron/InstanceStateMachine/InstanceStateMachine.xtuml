@@ -198,7 +198,7 @@ INSERT INTO SM_ACT
 	VALUES ("19a50d79-5fdb-4874-81ff-f30a8da4c4fe",
 	"e037f1be-d376-4e0d-a6fd-1d9cdf65609d",
 	1,
-	'send Payer::CollectedTicket( Location:"1st Floor" );',
+	'send Payer::TicketCollected( Location:"1st Floor" );',
 	'',
 	0);
 INSERT INTO SM_TAH
