@@ -63,7 +63,7 @@ function sendSetTime() {
 	if ( year.length == 0 )
 		year = currentDate.getFullYear();
 	if ( month.length == 0 )
-		month = currentDate.getMonth();
+		month = currentDate.getMonth() + 1;  // JavaScript is 0-based, TIM EE is 1-based
 	if ( day.length == 0 )
 		day = currentDate.getDate();
 	if ( hour.length == 0 )
