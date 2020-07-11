@@ -368,6 +368,24 @@ INSERT INTO C_EP_PROXY
 	'ExitDeadline',
 	'',
 	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("0ff77c69-2a44-4b4d-be1a-b3e736c7c464",
+	"f6708800-f5f1-4db3-bf94-550b4dd6e170",
+	"cba51a94-8f08-44d4-af84-9adb6451b70d");
+INSERT INTO SPR_RS
+	VALUES ("0ff77c69-2a44-4b4d-be1a-b3e736c7c464",
+	'DispenseChange',
+	'',
+	'::DispenseChange( Location:param.Location, Amount:param.Amount );',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("f6708800-f5f1-4db3-bf94-550b4dd6e170",
+	"1775761d-746e-41ae-a5e0-cd1a783dc665",
+	-1,
+	'DispenseChange',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("1775761d-746e-41ae-a5e0-cd1a783dc665",
 	"00000000-0000-0000-0000-000000000000",

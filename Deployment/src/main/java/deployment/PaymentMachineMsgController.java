@@ -43,6 +43,7 @@ import deployment.InsufficientChangeMsg;
 import deployment.RemainingBalanceMsg;
 import deployment.ReturnedTicketMsg;
 import deployment.WaivedChangeMsg;
+import deployment.DispenseChangeMsg;
 
 // The Spring framework arranges for an instance of this class to be
 // created, passing an instance of SimpMessagingTemplate as an argument,
@@ -148,6 +149,12 @@ public class PaymentMachineMsgController {
     
     public void SendReturnedTicketMessage ( String Location ) throws Exception {
     	ReturnedTicketMsg msg = new ReturnedTicketMsg( "ReturnedTicket" );
+        String topic = "/topic/PaymentMachine/" + Location;
+        this.template.convertAndSend( topic, msg );
+    }
+    
+    public void SendDispenseChangeMessage ( String Location, double Amount ) throws Exception {
+    	DispenseChangeMsg msg = new DispenseChangeMsg( "Dispense change: " + String.valueOf( Amount ) );
         String topic = "/topic/PaymentMachine/" + Location;
         this.template.convertAndSend( topic, msg );
     }

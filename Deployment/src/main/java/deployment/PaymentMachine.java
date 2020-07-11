@@ -36,6 +36,12 @@ public class PaymentMachine extends Component<PaymentMachine> {
     }
 
     // domain functions
+    public void DispenseChange( final String p_Location,  final double p_Amount ) throws XtumlException {
+    	try {
+            PaymentMachineMsgController.Singleton().SendDispenseChangeMessage( p_Location, p_Amount );
+      	} catch ( Exception e ) {}
+    }
+    
     public void ExitDeadline( final String p_Location, final int p_Deadline ) throws XtumlException {
     	long deadline = (long) p_Deadline * 1000000L;
     	String exitDeadline = context().TIM().timestamp_format( deadline, "yyyy/MM/dd HH:mm" );

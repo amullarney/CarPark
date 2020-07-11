@@ -660,7 +660,7 @@ if ( payment.Balance > 0 )
 else 
   if ( payment.Balance < 0 )
     if ( self.SufficientChange )
-    // @TODO Dispense change (payment.Balance)
+      send Payer::DispenseChange( Location:self.Location, Amount:(payment.Balance * -1) );
     else
       generate PaymentMachine6:InsufficientChange() to self;
     end if;

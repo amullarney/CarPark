@@ -230,6 +230,36 @@ INSERT INTO C_PP
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("f6708800-f5f1-4db3-bf94-550b4dd6e170",
+	"1775761d-746e-41ae-a5e0-cd1a783dc665",
+	-1,
+	'DispenseChange',
+	'');
+INSERT INTO C_AS
+	VALUES ("f6708800-f5f1-4db3-bf94-550b4dd6e170",
+	'DispenseChange',
+	'',
+	1,
+	"7d98badf-0872-49ac-a66e-72a2d0d07fa7");
+INSERT INTO C_PP
+	VALUES ("8a961f65-cb8e-4db4-ba36-ca8f380225fd",
+	"f6708800-f5f1-4db3-bf94-550b4dd6e170",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'Location',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("d69decca-48ab-48be-9c01-11881687af76",
+	"f6708800-f5f1-4db3-bf94-550b4dd6e170",
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'Amount',
+	'',
+	0,
+	'',
+	"8a961f65-cb8e-4db4-ba36-ca8f380225fd");
 INSERT INTO PE_PE
 	VALUES ("1775761d-746e-41ae-a5e0-cd1a783dc665",
 	1,

@@ -10,7 +10,8 @@ var vm = new Vue({
 	    CancelledTransactionDisabled: true,
 	    RemainingBalance: "",
 	    InsufficientChange: false,
-	    ExitDeadline: ""
+	    ExitDeadline: "",
+	    ChangeDispensed: ""
     }
 })
 
@@ -23,6 +24,7 @@ function initialize() {
     vm.RemainingBalance = "";
     vm.InsufficientChange = false;
     vm.ExitDeadline = "";
+    vm.ChangeDispensed = "";
 }
 
 function setConnected(connected) {
@@ -100,6 +102,9 @@ function showReply(message) {
     	vm.TicketCollectedDisabled = false;
     	vm.CancelledTransactionDisabled = true;
     	vm.InsertedCurrencyDisabled = true;
+    } else if ( message.includes( "Dispense change" ) ) {
+    	var changeIndex = message.indexOf( ": " ) + 2;
+    	vm.ChangeDispensed = "Change dispensed: " + (Number( message.slice( changeIndex ) ).toFixed(2)).toString();
     }
 }
 
