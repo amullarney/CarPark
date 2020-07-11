@@ -70,7 +70,9 @@ public class PaymentMachineMsgController {
 	// For example, when the JavaScript client sends a message to "/app/InsertedTicket",
 	// the method annoated with @MessageMapping( "/InsertedTicket" ) is invoked, and
 	// an instance of the message is passed to it as a parameter.
-    @MessageMapping( "/InsertedTicket" )
+	
+	// The exit stand has an InsertedTicket message, so this one uses a prefix to distinguish it.
+    @MessageMapping( "/PMInsertedTicket" )
     public void InsertedTicket( InsertedTicketMsg message ) throws Exception {
     	try {
       	  PaymentMachine.Singleton().CarPark().InsertedTicket( message.getLocation(), Integer.parseInt( message.getTicketNumber() ) );

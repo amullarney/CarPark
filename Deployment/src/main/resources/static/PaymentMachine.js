@@ -63,7 +63,7 @@ function disconnect() {
 
 // Client-to-server messages.
 function sendInsertedTicket() {
-    stompClient.send("/app/InsertedTicket", {}, 
+    stompClient.send("/app/PMInsertedTicket", {}, 
       JSON.stringify({'location': $("#location").val(), 'ticketNumber': $("#TicketNumber").val()}));
     vm.CancelledTransactionDisabled = false;
     vm.InsertedTicketDisabled = true;
