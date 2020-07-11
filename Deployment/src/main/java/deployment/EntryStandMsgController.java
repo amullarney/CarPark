@@ -32,10 +32,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.util.HtmlUtils;
 
 import deployment.entrystand.EntryStandCarPark;        // EntryStand-CarPark port
-import deployment.carparkcontrol.CarparkControlEntry;  // EntryStand interface
-import deployment.VehicleWaitingMsg;                   // VehicleWaiting message class
-import deployment.TicketRequestEnabledMsg;             // TicketRequestEnabled message class
+import deployment.carparkcontrol.CarparkControlEntry;  // CarPark-EntryStand port
 import deployment.EntryStand;                          // Shell component
+import deployment.VehicleWaitingMsg;                   
+import deployment.TicketRequestedMsg;                  
+import deployment.TicketCollectedMsg;
+import deployment.VehicleEnteredMsg;
+import deployment.TicketRequestEnabledMsg; 
+import deployment.IssueTicketMsg;
+import deployment.OpenBarrierMsg;
+import deployment.CloseBarrierMsg;
+import deployment.TicketRequestDisabledMsg;
+
 
 // The Spring framework arranges for an instance of this class to be
 // created, passing an instance of SimpMessagingTemplate as an argument,

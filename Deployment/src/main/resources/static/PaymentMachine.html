@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Entry Stand</title>
+    <title>Payment Machine</title>
     <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
@@ -35,16 +35,35 @@
     <div class="row">
         <div class="col-md-6">
             <form class="form-inline">
-                <button id="VehicleWaiting" class="btn btn-primary" type="submit">Vehicle Waiting</button>
-                <button v-bind:disabled="TicketRequestDisabled" id="TicketRequest" class="btn btn-primary" type="submit">Ticket Request</button>
-                <button v-bind:disabled="TicketCollectedDisabled" id="TicketCollected" class="btn btn-primary" type="submit">Ticket Collected</button>
-                <button v-bind:disabled="VehicleEnteredDisabled" id="VehicleEntered" class="btn btn-primary" type="submit">Vehicle Entered</button>
+                <div class="form-group">
+                    <label for="Ticket number">Enter ticket number.</label>
+                    <input type="text" id="TicketNumber" class="form-control" placeholder="Ticket number here...">
+                </div>
+                <button v-bind:disabled="InsertedTicketDisabled" id="InsertedTicket" class="btn btn-primary" type="submit">Inserted Ticket</button>
             </form>
         </div>
     </div>
     <div class="row">
-        <h4 v-if="BarrierOpen" style="color:green;">Barrier: Open</h4>
-        <h4 v-else style="color:red;">Barrier: Closed</h4>
+        <h4>{{ RemainingBalance }}</h4>
+    </div>
+    <div class="row">
+        <h4>Insert currency...</h4>
+        <button v-bind:disabled="InsertedCurrencyDisabled" id="InsertedCurrency1" class="btn btn-primary" type="submit">1</button>
+        <button v-bind:disabled="InsertedCurrencyDisabled" id="InsertedCurrency2" class="btn btn-primary" type="submit">2</button>
+        <button v-bind:disabled="InsertedCurrencyDisabled" id="InsertedCurrency5" class="btn btn-primary" type="submit">5</button>
+        <button v-bind:disabled="InsertedCurrencyDisabled" id="InsertedCurrency10" class="btn btn-primary" type="submit">10</button>
+        <button v-bind:disabled="InsertedCurrencyDisabled" id="InsertedCurrency20" class="btn btn-primary" type="submit">20</button>
+    </div>
+    <div class="row">
+        <h4>{{ ExitDeadline }}</h4>
+        <h4>{{ ChangeDispensed }}</h4>
+    </div>
+    <div class="row">
+        <h4>Transaction completion...</h4>
+        <h5 v-if="InsufficientChange" style="color:red;">Insufficient change available.  Waive change or cancel transaction?</h4>
+        <button v-bind:disabled="CancelledTransactionDisabled" id="CancelledTransaction" class="btn btn-primary" type="submit">Cancel</button>
+        <button v-bind:disabled="WaivedChangeDisabled" id="WaivedChange" class="btn btn-primary" type="submit">Waive Change</button>
+        <button v-bind:disabled="TicketCollectedDisabled" id="TicketCollected" class="btn btn-primary" type="submit">Collect Ticket</button>
     </div>
     <div class="row">
         <div class="col-md-12">
@@ -62,5 +81,5 @@
 </div>
 </body>
 <script src="/vue.js"></script>
-<script src="/EntryStand.js"></script>
+<script src="/PaymentMachine.js"></script>
 </html>

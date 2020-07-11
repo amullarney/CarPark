@@ -1342,7 +1342,7 @@ INSERT INTO SPR_PEP
 	"beb17c01-5d43-4cbd-bd44-08536daaf245");
 INSERT INTO SPR_PS
 	VALUES ("15ad350b-af8a-4196-8117-69919486a9ef",
-	'CollectedTicket',
+	'TicketCollected',
 	'',
 	'select any machine from instances of PaymentMachine 
   where ( selected.Location == param.Location );
@@ -1353,7 +1353,7 @@ INSERT INTO C_EP_PROXY
 	VALUES ("1a93d819-e152-409f-8b77-23b28cb652bb",
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
-	'CollectedTicket',
+	'TicketCollected',
 	'',
 	'../../Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO SPR_PEP
@@ -1466,6 +1466,24 @@ INSERT INTO C_EP_PROXY
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'ExitDeadline',
+	'',
+	'../../Interfaces/PaymentMachine/PaymentMachine.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("17103d5d-fd69-4bf1-ace3-f5715293f1bf",
+	"f6708800-f5f1-4db3-bf94-550b4dd6e170",
+	"beb17c01-5d43-4cbd-bd44-08536daaf245");
+INSERT INTO SPR_PS
+	VALUES ("17103d5d-fd69-4bf1-ace3-f5715293f1bf",
+	'DispenseChange',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("f6708800-f5f1-4db3-bf94-550b4dd6e170",
+	"1775761d-746e-41ae-a5e0-cd1a783dc665",
+	-1,
+	'DispenseChange',
 	'',
 	'../../Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO C_I_PROXY

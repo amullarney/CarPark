@@ -1291,7 +1291,7 @@ INSERT INTO SPR_REP
 	"258032a0-84e8-437b-9e3f-3f82e9d440ed");
 INSERT INTO SPR_RS
 	VALUES ("8c32c61f-5f32-4a5a-91a6-304ccd85d597",
-	'CollectedTicket',
+	'TicketCollected',
 	'',
 	'',
 	1,
@@ -1300,7 +1300,7 @@ INSERT INTO C_EP_PROXY
 	VALUES ("1a93d819-e152-409f-8b77-23b28cb652bb",
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
-	'CollectedTicket',
+	'TicketCollected',
 	'',
 	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO SPR_REP
@@ -1411,6 +1411,24 @@ INSERT INTO C_EP_PROXY
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'ExitDeadline',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("2f22f001-1cff-46f5-acff-70035aa1f86a",
+	"f6708800-f5f1-4db3-bf94-550b4dd6e170",
+	"258032a0-84e8-437b-9e3f-3f82e9d440ed");
+INSERT INTO SPR_RS
+	VALUES ("2f22f001-1cff-46f5-acff-70035aa1f86a",
+	'DispenseChange',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("f6708800-f5f1-4db3-bf94-550b4dd6e170",
+	"1775761d-746e-41ae-a5e0-cd1a783dc665",
+	-1,
+	'DispenseChange',
 	'',
 	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO C_I_PROXY
