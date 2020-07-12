@@ -659,8 +659,7 @@ LOG::LogReal( message:" Balance ", r:payment.Balance );
 if ( payment.Balance > 0 )
   LOG::LogInfo( message:"Balance > 0" );
   self.SlotsOpen = true;
-else
-  if ( payment.Balance < 0 )
+elif ( payment.Balance < 0 )
     LOG::LogInfo( message:"Balance < 0" );
     if ( self.SufficientChange )
       LOG::LogInfo( message:"Sufficient change" );
@@ -670,10 +669,9 @@ else
   	  LOG::LogInfo( message:"Insufficient change" );
       generate PaymentMachine6:InsufficientChange() to self;
     end if;
-  else  // payment.Balance == 0
+else  // payment.Balance == 0
     LOG::LogInfo( message:"Balance == 0" );
     generate PaymentMachine3:TransactionCompleted() to self;
-  end if;
 end if;',
 	'',
 	0);
