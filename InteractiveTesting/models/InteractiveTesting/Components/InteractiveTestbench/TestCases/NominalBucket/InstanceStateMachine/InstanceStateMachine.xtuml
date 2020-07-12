@@ -606,7 +606,7 @@ UC5_NominalPayment::Run();
 
 // Allow time for this test case to complete
 create event instance PaymentComplete of NominalBucket3:PaymentComplete() to self;
-tmr = TIM::timer_start( event_inst:PaymentComplete, microseconds:1000000 );',
+tmr = TIM::timer_start( event_inst:PaymentComplete, microseconds:2000000 );',
 	'',
 	0);
 INSERT INTO SM_MOAH
