@@ -655,19 +655,26 @@ INSERT INTO SM_ACT
 	'// Inform user of remaining balance (payment.Balance)
 select one payment related by self->Payment[R25.''collects''];
 send Payer::RemainingBalance( Location:self.Location, Amount:payment.Balance );
+LOG::LogReal( message:" Balance ", r:payment.Balance );
 if ( payment.Balance > 0 )
+  LOG::LogInfo( message:"Balance > 0" );
   self.SlotsOpen = true;
-else 
+else
   if ( payment.Balance < 0 )
+    LOG::LogInfo( message:"Balance < 0" );
     if ( self.SufficientChange )
+      LOG::LogInfo( message:"Sufficient change" );
       send Payer::DispenseChange( Location:self.Location, Amount:(payment.Balance * -1) );
+      generate PaymentMachine3:TransactionCompleted() to self;
     else
+  	  LOG::LogInfo( message:"Insufficient change" );
       generate PaymentMachine6:InsufficientChange() to self;
     end if;
+  else  // payment.Balance == 0
+    LOG::LogInfo( message:"Balance == 0" );
+    generate PaymentMachine3:TransactionCompleted() to self;
   end if;
-  generate PaymentMachine3:TransactionCompleted() to self;
-end if;
-',
+end if;',
 	'',
 	0);
 INSERT INTO SM_MOAH

@@ -523,7 +523,7 @@ UC1_NominalEntry::Run();
 
 // Allow time for first test case to complete
 create event instance StayComplete of NominalBucket2:StayComplete() to self;
-tmr = TIM::timer_start( event_inst:StayComplete, microseconds:1000000 );',
+tmr = TIM::timer_start( event_inst:StayComplete, microseconds:2000000 );',
 	'',
 	0);
 INSERT INTO SM_MOAH
@@ -606,7 +606,7 @@ UC5_NominalPayment::Run();
 
 // Allow time for this test case to complete
 create event instance PaymentComplete of NominalBucket3:PaymentComplete() to self;
-tmr = TIM::timer_start( event_inst:PaymentComplete, microseconds:1000000 );',
+tmr = TIM::timer_start( event_inst:PaymentComplete, microseconds:5000000 );',
 	'',
 	0);
 INSERT INTO SM_MOAH
@@ -626,7 +626,7 @@ UC11_NominalExit::Run();
 
 // Allow time for this test case to complete.
 create event instance Exited of NominalBucket4:Exited() to self;
-tmr = TIM::timer_start( event_inst:Exited, microseconds:1000000 );',
+tmr = TIM::timer_start( event_inst:Exited, microseconds:2000000 );',
 	'',
 	0);
 INSERT INTO SM_TAH
