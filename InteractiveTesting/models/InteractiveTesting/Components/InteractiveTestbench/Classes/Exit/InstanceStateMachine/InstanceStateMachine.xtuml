@@ -265,7 +265,7 @@ INSERT INTO SM_ACT
 	VALUES ("83e73b40-b090-4463-a3e4-99f2c942ed5b",
 	"b943f648-0630-4a9b-b22c-8669b2ed85be",
 	1,
-	'send ExitStand::TicketInserted( Location:"Lane 1", TicketNumber:1 );',
+	'send ExitStand::InsertedTicket( Location:"Lane 1", TicketNumber:1 );',
 	'',
 	0);
 INSERT INTO SM_MOAH

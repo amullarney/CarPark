@@ -72,11 +72,11 @@ INSERT INTO C_EP
 	VALUES ("edaae9b0-1293-42d5-9588-eebd4c4e58e9",
 	"7899d3af-2715-4b8f-a3b5-f0508005328d",
 	-1,
-	'TicketInserted',
+	'InsertedTicket',
 	'');
 INSERT INTO C_AS
 	VALUES ("edaae9b0-1293-42d5-9588-eebd4c4e58e9",
-	'TicketInserted',
+	'InsertedTicket',
 	'',
 	0,
 	"ed36bd77-6fda-48f3-a9fb-7e00759b1b57");
@@ -113,27 +113,6 @@ INSERT INTO C_AS
 INSERT INTO C_PP
 	VALUES ("0c7aa709-22cf-492a-ae9b-a1b0ae5af34b",
 	"1156e097-b935-4375-835b-405ad15cc03d",
-	"ba5eda7a-def5-0000-0000-000000000004",
-	'Location',
-	'',
-	0,
-	'',
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO C_EP
-	VALUES ("7aae9de0-bc3e-443c-9457-ab72bd7dd86c",
-	"7899d3af-2715-4b8f-a3b5-f0508005328d",
-	-1,
-	'SwallowTicket',
-	'');
-INSERT INTO C_AS
-	VALUES ("7aae9de0-bc3e-443c-9457-ab72bd7dd86c",
-	'SwallowTicket',
-	'',
-	1,
-	"1156e097-b935-4375-835b-405ad15cc03d");
-INSERT INTO C_PP
-	VALUES ("34cbcf3d-4a52-4257-88f8-4e506534cb44",
-	"7aae9de0-bc3e-443c-9457-ab72bd7dd86c",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
 	'',
