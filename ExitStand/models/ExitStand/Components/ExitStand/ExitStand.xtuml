@@ -164,7 +164,7 @@ INSERT INTO GD_GE
 	"92eac544-3b96-4904-8b02-55adbd60aed8",
 	108,
 	0,
-	'ExitStand::Functions');
+	'ExitStand::Components::ExitStand::IncomingMessageFunctions');
 INSERT INTO GD_SHP
 	VALUES ("5fdeb5f7-bc43-46c3-aad3-625c9cfe6012");
 INSERT INTO GD_NCS
@@ -250,8 +250,8 @@ INSERT INTO SPR_RS
 	VALUES ("28872c29-55c6-406b-be14-2a18de0227ac",
 	'OpenBarrier',
 	'',
-	'',
-	3,
+	'::OpenBarrier( Location:param.Location );',
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("94176f94-59e4-424f-93c7-c63bd6df3325",
@@ -266,7 +266,7 @@ INSERT INTO SPR_REP
 	"bd1fa382-9e93-4e57-aae3-5b35d028e1a5");
 INSERT INTO SPR_RS
 	VALUES ("d7a780af-4a5a-485a-b9cd-a382d6ba3cd7",
-	'TicketInserted',
+	'InsertedTicket',
 	'',
 	'',
 	3,
@@ -275,7 +275,7 @@ INSERT INTO C_EP_PROXY
 	VALUES ("edaae9b0-1293-42d5-9588-eebd4c4e58e9",
 	"7899d3af-2715-4b8f-a3b5-f0508005328d",
 	-1,
-	'TicketInserted',
+	'InsertedTicket',
 	'',
 	'../../../../../CarPark/models/CarPark/Interfaces/ExitStand/ExitStand.xtuml');
 INSERT INTO SPR_REP
@@ -286,32 +286,14 @@ INSERT INTO SPR_RS
 	VALUES ("b0866bff-0810-4f12-9795-967495ee095c",
 	'CloseBarrier',
 	'',
-	'',
-	3,
+	'::CloseBarrier( Location:param.Location );',
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("1156e097-b935-4375-835b-405ad15cc03d",
 	"7899d3af-2715-4b8f-a3b5-f0508005328d",
 	-1,
 	'CloseBarrier',
-	'',
-	'../../../../../CarPark/models/CarPark/Interfaces/ExitStand/ExitStand.xtuml');
-INSERT INTO SPR_REP
-	VALUES ("b3669716-a719-48db-aaec-4b4d4f93429b",
-	"7aae9de0-bc3e-443c-9457-ab72bd7dd86c",
-	"bd1fa382-9e93-4e57-aae3-5b35d028e1a5");
-INSERT INTO SPR_RS
-	VALUES ("b3669716-a719-48db-aaec-4b4d4f93429b",
-	'SwallowTicket',
-	'',
-	'',
-	3,
-	0);
-INSERT INTO C_EP_PROXY
-	VALUES ("7aae9de0-bc3e-443c-9457-ab72bd7dd86c",
-	"7899d3af-2715-4b8f-a3b5-f0508005328d",
-	-1,
-	'SwallowTicket',
 	'',
 	'../../../../../CarPark/models/CarPark/Interfaces/ExitStand/ExitStand.xtuml');
 INSERT INTO C_I_PROXY

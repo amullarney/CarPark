@@ -1223,7 +1223,7 @@ INSERT INTO SPR_PEP
 	"dd495095-34eb-41d0-9910-e28a308ce762");
 INSERT INTO SPR_PS
 	VALUES ("17d8e213-6ba3-428b-86e6-44eaf140ed46",
-	'TicketInserted',
+	'InsertedTicket',
 	'',
 	'select any ExitStand from instances of ExitStand 
   where ( selected.Location == param.Location );
@@ -1234,7 +1234,7 @@ INSERT INTO C_EP_PROXY
 	VALUES ("edaae9b0-1293-42d5-9588-eebd4c4e58e9",
 	"7899d3af-2715-4b8f-a3b5-f0508005328d",
 	-1,
-	'TicketInserted',
+	'InsertedTicket',
 	'',
 	'../../Interfaces/ExitStand/ExitStand.xtuml');
 INSERT INTO SPR_PEP
@@ -1253,24 +1253,6 @@ INSERT INTO C_EP_PROXY
 	"7899d3af-2715-4b8f-a3b5-f0508005328d",
 	-1,
 	'CloseBarrier',
-	'',
-	'../../Interfaces/ExitStand/ExitStand.xtuml');
-INSERT INTO SPR_PEP
-	VALUES ("546a39a5-6297-4502-a083-ce2f269293d0",
-	"7aae9de0-bc3e-443c-9457-ab72bd7dd86c",
-	"dd495095-34eb-41d0-9910-e28a308ce762");
-INSERT INTO SPR_PS
-	VALUES ("546a39a5-6297-4502-a083-ce2f269293d0",
-	'SwallowTicket',
-	'',
-	'',
-	1,
-	0);
-INSERT INTO C_EP_PROXY
-	VALUES ("7aae9de0-bc3e-443c-9457-ab72bd7dd86c",
-	"7899d3af-2715-4b8f-a3b5-f0508005328d",
-	-1,
-	'SwallowTicket',
 	'',
 	'../../Interfaces/ExitStand/ExitStand.xtuml');
 INSERT INTO C_I_PROXY

@@ -1178,7 +1178,7 @@ INSERT INTO SPR_REP
 	"97f9011c-c275-4ad5-83c2-fce26d041715");
 INSERT INTO SPR_RS
 	VALUES ("40cc29ec-d054-4d63-b3f2-bfdb1e230309",
-	'TicketInserted',
+	'InsertedTicket',
 	'',
 	'',
 	1,
@@ -1187,7 +1187,7 @@ INSERT INTO C_EP_PROXY
 	VALUES ("edaae9b0-1293-42d5-9588-eebd4c4e58e9",
 	"7899d3af-2715-4b8f-a3b5-f0508005328d",
 	-1,
-	'TicketInserted',
+	'InsertedTicket',
 	'',
 	'../../../../../CarPark/models/CarPark/Interfaces/ExitStand/ExitStand.xtuml');
 INSERT INTO SPR_REP
@@ -1206,24 +1206,6 @@ INSERT INTO C_EP_PROXY
 	"7899d3af-2715-4b8f-a3b5-f0508005328d",
 	-1,
 	'CloseBarrier',
-	'',
-	'../../../../../CarPark/models/CarPark/Interfaces/ExitStand/ExitStand.xtuml');
-INSERT INTO SPR_REP
-	VALUES ("0e4ec6ec-1826-4451-8544-8d27d60f42af",
-	"7aae9de0-bc3e-443c-9457-ab72bd7dd86c",
-	"97f9011c-c275-4ad5-83c2-fce26d041715");
-INSERT INTO SPR_RS
-	VALUES ("0e4ec6ec-1826-4451-8544-8d27d60f42af",
-	'SwallowTicket',
-	'',
-	'',
-	1,
-	0);
-INSERT INTO C_EP_PROXY
-	VALUES ("7aae9de0-bc3e-443c-9457-ab72bd7dd86c",
-	"7899d3af-2715-4b8f-a3b5-f0508005328d",
-	-1,
-	'SwallowTicket',
 	'',
 	'../../../../../CarPark/models/CarPark/Interfaces/ExitStand/ExitStand.xtuml');
 INSERT INTO C_I_PROXY

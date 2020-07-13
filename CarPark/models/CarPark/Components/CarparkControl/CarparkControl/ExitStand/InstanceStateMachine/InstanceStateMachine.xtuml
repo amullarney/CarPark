@@ -402,11 +402,10 @@ select one stay related by self->
   Ticket[R29.''presently holding'']->Stay[R26.''identifies''];
 stay.CompleteStay();
 
-// Swallow the ticket and unlink it from this stand.
+// Unlink the ticket from this stand.
 select one ticket related by self->Ticket[R29.''presently holding''];
 ticket.Status = TicketStatus::Swallowed;
 unrelate ticket from self across R29.''currently inserted in'';
-send Exit::SwallowTicket( Location:self.Location );
 
 // Permit vehicle to exit.
 self.Barrier = BarrierState::Open;
