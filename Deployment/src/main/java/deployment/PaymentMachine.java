@@ -42,11 +42,9 @@ public class PaymentMachine extends Component<PaymentMachine> {
       	} catch ( Exception e ) {}
     }
     
-    public void ExitDeadline( final String p_Location, final int p_Deadline ) throws XtumlException {
-    	long deadline = (long) p_Deadline * 1000000L;
-    	String exitDeadline = context().TIM().timestamp_format( deadline, "yyyy/MM/dd HH:mm" );
+    public void ExitDeadline( final String p_Location, final String p_Deadline ) throws XtumlException {
     	try {
-            PaymentMachineMsgController.Singleton().SendExitDeadlineMessage( p_Location, exitDeadline );
+            PaymentMachineMsgController.Singleton().SendExitDeadlineMessage( p_Location, p_Deadline );
       	} catch ( Exception e ) {}
     }
     

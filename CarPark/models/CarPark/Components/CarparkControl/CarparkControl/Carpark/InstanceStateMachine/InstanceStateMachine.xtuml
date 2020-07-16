@@ -347,7 +347,7 @@ INSERT INTO SM_ACT
 	"209b0fde-efc1-4ede-a073-9baf3064ec81",
 	1,
 	'self.Occupancy = self.Occupancy - 1;
-send Operator::OccupancyUpdate( Occupancy:self.Occupancy );',
+send Operator::OccupancyUpdate( Occupancy:self.Occupancy, Capacity:self.Capacity, Availability:self.Availability );',
 	'',
 	0);
 INSERT INTO SM_TAH
@@ -362,7 +362,7 @@ INSERT INTO SM_ACT
 	"209b0fde-efc1-4ede-a073-9baf3064ec81",
 	1,
 	'self.Occupancy = self.Occupancy + 1;
-send Operator::OccupancyUpdate( Occupancy:self.Occupancy );',
+send Operator::OccupancyUpdate( Occupancy:self.Occupancy, Capacity:self.Capacity, Availability:self.Availability );',
 	'',
 	0);
 INSERT INTO GD_MD

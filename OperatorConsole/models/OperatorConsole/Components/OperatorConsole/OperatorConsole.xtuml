@@ -410,7 +410,7 @@ INSERT INTO SPR_REP
 	"4560e82f-446e-4799-8690-6c829985509d");
 INSERT INTO SPR_RS
 	VALUES ("7bf23b4f-a30a-4d0a-b685-7e4b15b10ac4",
-	'OpenBarrier',
+	'OpenEntryBarrier',
 	'',
 	'',
 	3,
@@ -419,7 +419,7 @@ INSERT INTO C_EP_PROXY
 	VALUES ("dc4b88ab-d520-4c50-ae78-e56474653079",
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
-	'OpenBarrier',
+	'OpenEntryBarrier',
 	'',
 	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_REP
@@ -492,6 +492,42 @@ INSERT INTO C_EP_PROXY
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'CarparkClosed',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("d71131a5-ef08-4fde-b9d5-be7627c7648d",
+	"06d1a1ae-4cf0-4736-9880-66e81f19f2dd",
+	"4560e82f-446e-4799-8690-6c829985509d");
+INSERT INTO SPR_RS
+	VALUES ("d71131a5-ef08-4fde-b9d5-be7627c7648d",
+	'OpenExitBarrier',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("06d1a1ae-4cf0-4736-9880-66e81f19f2dd",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'OpenExitBarrier',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("b3277778-0daa-4677-accf-e0899c499d92",
+	"e5c28b7b-3074-4ec3-933c-109cc9064aac",
+	"4560e82f-446e-4799-8690-6c829985509d");
+INSERT INTO SPR_RS
+	VALUES ("b3277778-0daa-4677-accf-e0899c499d92",
+	'DateTimeUpdate',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("e5c28b7b-3074-4ec3-933c-109cc9064aac",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'DateTimeUpdate',
 	'',
 	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO C_I_PROXY

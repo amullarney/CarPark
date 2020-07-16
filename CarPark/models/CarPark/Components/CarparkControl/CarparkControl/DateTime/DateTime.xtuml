@@ -1,0 +1,286 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("b49ae536-44cc-4075-a836-22bae7421fa8",
+	'DateTime',
+	21,
+	'DateTime',
+	'Stores date and time formats and provides periodic updates 
+of the current date and time to the operator.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("02d8cc6b-4e1f-4aa1-afeb-9b90cf117094",
+	"b49ae536-44cc-4075-a836-22bae7421fa8",
+	'Create',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance date_time of DateTime;
+date_time.DateFormat = param.DateFormat;
+date_time.TimeFormat = param.TimeFormat;
+date_time.Delimiter = param.Delimiter;
+date_time.DateFirst = param.DateFirst;
+date_time.UpdatePeriod = param.UpdatePeriod;
+select any carpark from instances of Carpark;
+relate date_time to carpark across R31.''manages date and time for'';
+update_period_us = date_time.UpdatePeriod * TimeConversion::QuantumPerSecond * TimeConversion::MicrosecondsPerQuantum;
+create event instance update of DateTime1:SendUpdate() to date_time;
+date_time.UpdateTimer = TIM::timer_start_recurring( event_inst:update, microseconds:update_period_us );',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("852f8656-d477-4b71-8691-235d17f689e0",
+	"02d8cc6b-4e1f-4aa1-afeb-9b90cf117094",
+	'DateFormat',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("23a87705-3d73-4fe8-b74e-a4fb3130c014",
+	"02d8cc6b-4e1f-4aa1-afeb-9b90cf117094",
+	'TimeFormat',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"852f8656-d477-4b71-8691-235d17f689e0",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("37c6d4ff-f323-40e2-b153-3d65b3843303",
+	"02d8cc6b-4e1f-4aa1-afeb-9b90cf117094",
+	'Delimiter',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"23a87705-3d73-4fe8-b74e-a4fb3130c014",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("1c9bbf77-6b00-4408-9de7-248720145b89",
+	"02d8cc6b-4e1f-4aa1-afeb-9b90cf117094",
+	'DateFirst',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"37c6d4ff-f323-40e2-b153-3d65b3843303",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("5c2bf3f0-3625-4493-9c35-d5350b7b7b5a",
+	"02d8cc6b-4e1f-4aa1-afeb-9b90cf117094",
+	'UpdatePeriod',
+	"ba5eda7a-def5-0000-0000-000000000003",
+	0,
+	'',
+	"1c9bbf77-6b00-4408-9de7-248720145b89",
+	'');
+INSERT INTO O_TFR
+	VALUES ("803e578e-44ec-48b1-b9d4-57b4e77d5794",
+	"b49ae536-44cc-4075-a836-22bae7421fa8",
+	'Format',
+	'Formats the incoming parameter based on the specifications stored in the instance.',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'// Format the incomeing date and time according 
+// to the provided specifications.
+
+//------------------------------------------------------------------------------------------
+// Note: Much of the code below involves work-arounds for tooling deficiencies.
+// Before changing any of it, please review https://github.com/johnrwolfe/CarPark/issues/42.
+//------------------------------------------------------------------------------------------
+ts_time = TIM::current_clock();  // Declare a timestamp for use with timestamp_format().
+ts_time = param.Time;  // Cast incoming date/time to timestamp
+ts_time = ts_time * TimeConversion::QuantumPerSecond;
+ts_time = ts_time * TimeConversion::MicrosecondsPerQuantum;
+// End #42 work-around.
+
+date_str = TIM::timestamp_format( timestamp:ts_time, format:self.DateFormat );
+time_str = TIM::timestamp_format( timestamp:ts_time, format:self.TimeFormat );
+
+date_time_str = "";  // Declaration
+if ( self.DateFirst )
+  date_time_str = date_str + self.Delimiter + time_str;
+else
+  date_time_str = time_str + self.Delimiter + date_str;
+end if;
+return date_time_str;',
+	1,
+	'',
+	"02d8cc6b-4e1f-4aa1-afeb-9b90cf117094",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("06b4073d-ee57-43da-bacc-9658142c0a1a",
+	"803e578e-44ec-48b1-b9d4-57b4e77d5794",
+	'Time',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'Date and time to be formatted.
+Units: seconds
+Origin:  beginning of epoch');
+INSERT INTO O_NBATTR
+	VALUES ("9319f948-72db-4dfe-9e9b-41dd03d50b26",
+	"b49ae536-44cc-4075-a836-22bae7421fa8");
+INSERT INTO O_BATTR
+	VALUES ("9319f948-72db-4dfe-9e9b-41dd03d50b26",
+	"b49ae536-44cc-4075-a836-22bae7421fa8");
+INSERT INTO O_ATTR
+	VALUES ("9319f948-72db-4dfe-9e9b-41dd03d50b26",
+	"b49ae536-44cc-4075-a836-22bae7421fa8",
+	"00000000-0000-0000-0000-000000000000",
+	'DateFormat',
+	'Typically a string containing "y", "M", and "d".  Examples include:
+"yyyy/MM/dd" => 2020/07/15 
+"dd-MMM-yyyy" => 15-Jul-2020
+"MMMMM dd, yyyy" => July 15, 2020
+Refer to https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html for details.',
+	'',
+	'DateFormat',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("87ae4e02-aa2f-4446-8b06-9bc65ee58a07",
+	"b49ae536-44cc-4075-a836-22bae7421fa8");
+INSERT INTO O_BATTR
+	VALUES ("87ae4e02-aa2f-4446-8b06-9bc65ee58a07",
+	"b49ae536-44cc-4075-a836-22bae7421fa8");
+INSERT INTO O_ATTR
+	VALUES ("87ae4e02-aa2f-4446-8b06-9bc65ee58a07",
+	"b49ae536-44cc-4075-a836-22bae7421fa8",
+	"9319f948-72db-4dfe-9e9b-41dd03d50b26",
+	'TimeFormat',
+	'Typically a string containing "H", "m", "s", and "a".  Examples include:
+"HH:mm:ss" => 16:20:05
+"hh:mm:ss a" => 4:20:05 p.m.
+Refer to https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html for details.',
+	'',
+	'TimeFormat',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("6bba697b-bdab-46cf-b654-38225da71d02",
+	"b49ae536-44cc-4075-a836-22bae7421fa8");
+INSERT INTO O_BATTR
+	VALUES ("6bba697b-bdab-46cf-b654-38225da71d02",
+	"b49ae536-44cc-4075-a836-22bae7421fa8");
+INSERT INTO O_ATTR
+	VALUES ("6bba697b-bdab-46cf-b654-38225da71d02",
+	"b49ae536-44cc-4075-a836-22bae7421fa8",
+	"6a4bc227-30d4-4406-acbd-4c335c1bee3f",
+	'UpdatePeriod',
+	'Period at which date/time updates are sent to the operator.
+Units:  seconds',
+	'',
+	'UpdatePeriod',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("f58601c0-49cf-4ada-b703-2182730d06d5",
+	"b49ae536-44cc-4075-a836-22bae7421fa8");
+INSERT INTO O_BATTR
+	VALUES ("f58601c0-49cf-4ada-b703-2182730d06d5",
+	"b49ae536-44cc-4075-a836-22bae7421fa8");
+INSERT INTO O_ATTR
+	VALUES ("f58601c0-49cf-4ada-b703-2182730d06d5",
+	"b49ae536-44cc-4075-a836-22bae7421fa8",
+	"c55fb53c-befa-4b48-8b59-c3f46f8ba3f7",
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000006",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("c55fb53c-befa-4b48-8b59-c3f46f8ba3f7",
+	"b49ae536-44cc-4075-a836-22bae7421fa8");
+INSERT INTO O_BATTR
+	VALUES ("c55fb53c-befa-4b48-8b59-c3f46f8ba3f7",
+	"b49ae536-44cc-4075-a836-22bae7421fa8");
+INSERT INTO O_ATTR
+	VALUES ("c55fb53c-befa-4b48-8b59-c3f46f8ba3f7",
+	"b49ae536-44cc-4075-a836-22bae7421fa8",
+	"6bba697b-bdab-46cf-b654-38225da71d02",
+	'UpdateTimer',
+	'Handle for timer that precipitates updates.',
+	'',
+	'UpdateTimer',
+	0,
+	"ba5eda7a-def5-0000-0000-00000000000f",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("20751eb4-7d37-4c2f-a706-5ed33df7f035",
+	"b49ae536-44cc-4075-a836-22bae7421fa8");
+INSERT INTO O_BATTR
+	VALUES ("20751eb4-7d37-4c2f-a706-5ed33df7f035",
+	"b49ae536-44cc-4075-a836-22bae7421fa8");
+INSERT INTO O_ATTR
+	VALUES ("20751eb4-7d37-4c2f-a706-5ed33df7f035",
+	"b49ae536-44cc-4075-a836-22bae7421fa8",
+	"87ae4e02-aa2f-4446-8b06-9bc65ee58a07",
+	'Delimiter',
+	'A string emitted between the date and time.  Examples incude:
+", " =>  2020/7/15, 4:40 p.m.
+" at " => July 15, 2020 at 4:40 p.m.',
+	'',
+	'Delimiter',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("6a4bc227-30d4-4406-acbd-4c335c1bee3f",
+	"b49ae536-44cc-4075-a836-22bae7421fa8");
+INSERT INTO O_BATTR
+	VALUES ("6a4bc227-30d4-4406-acbd-4c335c1bee3f",
+	"b49ae536-44cc-4075-a836-22bae7421fa8");
+INSERT INTO O_ATTR
+	VALUES ("6a4bc227-30d4-4406-acbd-4c335c1bee3f",
+	"b49ae536-44cc-4075-a836-22bae7421fa8",
+	"20751eb4-7d37-4c2f-a706-5ed33df7f035",
+	'DateFirst',
+	'True when the date must precede the time.  2020/7/15, 4:40 p.m.
+False when the date must follow the time.  4:40 p.m. on July 15, 2020',
+	'',
+	'DateFirst',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"b49ae536-44cc-4075-a836-22bae7421fa8");
+INSERT INTO O_ID
+	VALUES (1,
+	"b49ae536-44cc-4075-a836-22bae7421fa8");
+INSERT INTO O_ID
+	VALUES (2,
+	"b49ae536-44cc-4075-a836-22bae7421fa8");
+INSERT INTO PE_PE
+	VALUES ("b49ae536-44cc-4075-a836-22bae7421fa8",
+	1,
+	"0e2ca0ec-d69c-4d5e-a330-1f86d9c2ffa4",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("0e2ca0ec-d69c-4d5e-a330-1f86d9c2ffa4",
+	"00000000-0000-0000-0000-000000000000",
+	"887b82b9-56ec-4387-b15a-8b42f655cdba",
+	'CarparkControl',
+	'Assumptions:
+1. Carpark is a singleton.  However, this domain is engineered to make it 
+fairly simple to support multiple instances of Carpark with a single instance
+of the application.
+',
+	0,
+	'../CarparkControl.xtuml');

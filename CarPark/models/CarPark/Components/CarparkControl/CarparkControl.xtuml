@@ -854,11 +854,12 @@ INSERT INTO SPR_PEP
 	"3a0a5f08-1388-4c3f-ab8d-73aa1165fb23");
 INSERT INTO SPR_PS
 	VALUES ("af87cda2-b14f-47ee-82d2-1b06c3e26837",
-	'OpenBarrier',
+	'OpenEntryBarrier',
 	'',
 	'select any EntryStand from instances of EntryStand 
   where ( selected.Location == param.Location );
 EntryStand.Barrier = BarrierState::Open;
+send Entry::OpenBarrier( Location:param.Location );
 send Operator::ActivateEntryStand( Location:param.Location, 
   Barrier:EntryStand.Barrier, Ticket: EntryTicketState::Accepted );',
 	1,
@@ -867,7 +868,7 @@ INSERT INTO C_EP_PROXY
 	VALUES ("dc4b88ab-d520-4c50-ae78-e56474653079",
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
-	'OpenBarrier',
+	'OpenEntryBarrier',
 	'',
 	'../../Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_PEP
@@ -941,6 +942,45 @@ INSERT INTO C_EP_PROXY
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'CarparkClosed',
+	'',
+	'../../Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("f76a04e1-5526-4197-a0c9-7005483f8bb8",
+	"06d1a1ae-4cf0-4736-9880-66e81f19f2dd",
+	"3a0a5f08-1388-4c3f-ab8d-73aa1165fb23");
+INSERT INTO SPR_PS
+	VALUES ("f76a04e1-5526-4197-a0c9-7005483f8bb8",
+	'OpenExitBarrier',
+	'',
+	'select any ExitStand from instances of ExitStand 
+  where ( selected.Location == param.Location );
+ExitStand.Barrier = BarrierState::Open;
+send Exit::OpenBarrier( Location:param.Location );',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("06d1a1ae-4cf0-4736-9880-66e81f19f2dd",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'OpenExitBarrier',
+	'',
+	'../../Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("03f43c54-31aa-4233-98f1-2f7cd66886b4",
+	"e5c28b7b-3074-4ec3-933c-109cc9064aac",
+	"3a0a5f08-1388-4c3f-ab8d-73aa1165fb23");
+INSERT INTO SPR_PS
+	VALUES ("03f43c54-31aa-4233-98f1-2f7cd66886b4",
+	'DateTimeUpdate',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("e5c28b7b-3074-4ec3-933c-109cc9064aac",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'DateTimeUpdate',
 	'',
 	'../../Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO C_I_PROXY

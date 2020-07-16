@@ -45,6 +45,14 @@ carpark.Occupancy = 0;
 carpark.Open = true;
 carpark.LastTicketNumber = 0;
 
+// Date and time
+DateTime::Create( 
+  DateFormat:"yyyy/M/d", 
+  TimeFormat:"h:mm:ss a", 
+  Delimiter:" on ", 
+  DateFirst:false, 
+  UpdatePeriod:1 );
+
 // Entry Stands
 create object instance EntryStand of EntryStand;
 EntryStand.Barrier = BarrierState::Closed;

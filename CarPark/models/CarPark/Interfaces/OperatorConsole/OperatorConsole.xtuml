@@ -328,6 +328,24 @@ INSERT INTO C_PP
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("eb56b0cf-78a7-4360-8aa1-6fab846ab205",
+	"fb9ecbd5-8059-4308-9f0a-83969561ff04",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'Capacity',
+	'',
+	0,
+	'',
+	"a85749d9-9c06-4ef4-af4c-85acbb8cef6d");
+INSERT INTO C_PP
+	VALUES ("111974ca-a6f2-409e-90e0-bb993a6f960f",
+	"fb9ecbd5-8059-4308-9f0a-83969561ff04",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'Availability',
+	'',
+	0,
+	'',
+	"eb56b0cf-78a7-4360-8aa1-6fab846ab205");
 INSERT INTO C_EP
 	VALUES ("bb331470-fbd3-43d9-8d59-e5684346c197",
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
@@ -353,11 +371,11 @@ INSERT INTO C_EP
 	VALUES ("dc4b88ab-d520-4c50-ae78-e56474653079",
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
-	'OpenBarrier',
+	'OpenEntryBarrier',
 	'');
 INSERT INTO C_AS
 	VALUES ("dc4b88ab-d520-4c50-ae78-e56474653079",
-	'OpenBarrier',
+	'OpenEntryBarrier',
 	'',
 	0,
 	"bb331470-fbd3-43d9-8d59-e5684346c197");
@@ -418,6 +436,48 @@ INSERT INTO C_AS
 	'',
 	1,
 	"685996cf-e141-4a25-8095-b11c6e30fd38");
+INSERT INTO C_EP
+	VALUES ("06d1a1ae-4cf0-4736-9880-66e81f19f2dd",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'OpenExitBarrier',
+	'');
+INSERT INTO C_AS
+	VALUES ("06d1a1ae-4cf0-4736-9880-66e81f19f2dd",
+	'OpenExitBarrier',
+	'',
+	0,
+	"643234c5-7a94-4834-81d1-69d996c5a76d");
+INSERT INTO C_PP
+	VALUES ("f712c1c0-e44e-40e9-a019-f52da07d214e",
+	"06d1a1ae-4cf0-4736-9880-66e81f19f2dd",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'Location',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("e5c28b7b-3074-4ec3-933c-109cc9064aac",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'DateTimeUpdate',
+	'');
+INSERT INTO C_AS
+	VALUES ("e5c28b7b-3074-4ec3-933c-109cc9064aac",
+	'DateTimeUpdate',
+	'',
+	0,
+	"06d1a1ae-4cf0-4736-9880-66e81f19f2dd");
+INSERT INTO C_PP
+	VALUES ("7812c9e4-744f-4b8e-8b80-e7ac4ab25867",
+	"e5c28b7b-3074-4ec3-933c-109cc9064aac",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'DateTime',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
 INSERT INTO PE_PE
 	VALUES ("b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	1,
