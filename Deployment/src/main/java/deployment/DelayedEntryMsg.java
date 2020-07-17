@@ -2,7 +2,7 @@ package deployment;
 
 // Spring requires a POJ class for each message.
 public class DelayedEntryMsg {
-	private string location;
+	private String location;
 	public DelayedEntryMsg() {
 	}
 	public DelayedEntryMsg( String location ) {

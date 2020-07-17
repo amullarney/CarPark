@@ -214,7 +214,7 @@ INSERT INTO SPR_RS
 	VALUES ("001b3d1c-64df-44cc-8d74-b2d78dee8364",
 	'TardyExit',
 	'',
-	'::TardyExit( TicketNumber:param.TicketNumber, AdditionalCharge:param.AdditionalCharge, Overstay:param.Overstay );',
+	'::TardyExit( Location:param.Location, TicketNumber:param.TicketNumber, AdditionalCharge:param.AdditionalCharge, Overstay:param.Overstay );',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -232,7 +232,7 @@ INSERT INTO SPR_RS
 	VALUES ("68e6ad3e-d2af-4bf9-8c83-b3905b06160f",
 	'UnpaidStayExit',
 	'',
-	'::UnpaidStayExit( TicketNumber:param.TicketNumber, Charge:param.Charge, Duration:param.Duration );',
+	'::UnpaidStayExit( Location:param.Location, TicketNumber:param.TicketNumber, Charge:param.Charge, Duration:param.Duration );',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -376,7 +376,7 @@ INSERT INTO SPR_RS
 	VALUES ("d2fa7e44-6581-40c1-bf86-91d828836be8",
 	'OccupancyUpdate',
 	'',
-	'::OccupancyUpdate( Occupancy:param.Occupancy );',
+	'::OccupancyUpdate( Occupancy:param.Occupancy, Capacity:param.Capacity, Availability:param.Availability );',
 	1,
 	0);
 INSERT INTO C_EP_PROXY

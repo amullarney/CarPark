@@ -2,7 +2,7 @@ package deployment;
 
 // Spring requires a POJ class for each message.
 public class DeactivateEntryStandMsg {
-	private string location;
+	private String location;
 	public DeactivateEntryStandMsg() {
 	}
 	public DeactivateEntryStandMsg( String location ) {

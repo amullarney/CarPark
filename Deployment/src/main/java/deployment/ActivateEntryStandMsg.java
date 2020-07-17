@@ -2,7 +2,7 @@ package deployment;
 
 // Spring requires a POJ class for each message.
 public class ActivateEntryStandMsg {
-	private string location;
+	private String location;
 	private String barrier;
 	private String ticket;
 	public ActivateEntryStandMsg() {
