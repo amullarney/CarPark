@@ -51,12 +51,14 @@
                 <h5>{{ Lane1Barrier }}</h5>
                 <button id="Lane1OpenBarrier" class="btn btn-primary" type="submit">Open Barrier</button>
                 <template v-if="Lane1TardyExit">
+                    <h5 style="color:red">Missed exit deadline!</h5>
                     <h5>Additional charge: {{ Lane1AdditionalCharge }}</h5>
                     <h5>Overstay: {{ Lane1Overstay }}</h5>
                     <button id="Lane1Cancel" class="btn btn-primary" type="submit">Cancel Extra</button>
                     <button id="Lane1Paid" class="btn btn-primary" type="submit">Extra Paid</button>
                 </template>
                 <template v-if="Lane1UnpaidStayExit">
+                    <h5 style="color:red">Unpaid stay!</h5>
                     <h5>Charge: {{ Lane1Charge }}</h5>
                     <h5>Duration: {{ Lane1Duration }}</h5>
                     <button id="Lane1Cancel" class="btn btn-primary" type="submit">Cancel Extra</button>

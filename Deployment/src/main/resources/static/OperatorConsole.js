@@ -113,9 +113,9 @@ $(function () {
     });
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
-    $( "#NorthIssueTicket" ).click(function() { sendToServer( "IssueTicket", "Location", "North" ); });
-    $( "#NorthOpenBarrier" ).click(function() { sendToServer( "OpenEntryBarrier", "Location", "North" ); });
-    $( "#Lane1OpenBarrier" ).click(function() { sendToServer( "OpenExitBarrier", "Location", "Lane1" ); });
-    $( "#Lane1Cancel" ).click(function() { sendToServer( "FeeWaived", "TicketNumber", vm.Lane1TicketNumber ); });
-    $( "#Lane1Paid" ).click(function() { sendToServer( "FeeCollected", "TicketNumber", vm.Lane1TicketNumber ); });
+    $( "#NorthIssueTicket" ).click(function() { sendToServer( "IssueTicket", "location", "North" ); });
+    $( "#NorthOpenBarrier" ).click(function() { sendToServer( "OpenEntryBarrier", "location", "North" ); });
+    $( "#Lane1OpenBarrier" ).click(function() { sendToServer( "OpenExitBarrier", "location", "Lane1" ); });
+    $( "#Lane1Cancel" ).click(function() { sendToServer( "FeeWaived", "ticketNumber", vm.Lane1TicketNumber ); });
+    $( "#Lane1Paid" ).click(function() { sendToServer( "FeeCollected", "ticketNumber", vm.Lane1TicketNumber ); });
 });
