@@ -23,9 +23,7 @@ date_time.DateFirst = param.DateFirst;
 date_time.UpdatePeriod = param.UpdatePeriod;
 select any carpark from instances of Carpark;
 relate date_time to carpark across R31.''manages date and time for'';
-update_period_us = date_time.UpdatePeriod * TimeConversion::QuantumPerSecond * TimeConversion::MicrosecondsPerQuantum;
-create event instance update of DateTime1:SendUpdate() to date_time;
-date_time.UpdateTimer = TIM::timer_start_recurring( event_inst:update, microseconds:update_period_us );',
+date_time.StartTimer();',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
@@ -120,6 +118,20 @@ INSERT INTO O_TPARM
 	'Date and time to be formatted.
 Units: seconds
 Origin:  beginning of epoch');
+INSERT INTO O_TFR
+	VALUES ("84c3be7a-7619-4717-bf11-b1c474abf38e",
+	"b49ae536-44cc-4075-a836-22bae7421fa8",
+	'StartTimer',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'update_period_us = self.UpdatePeriod * TimeConversion::QuantumPerSecond * TimeConversion::MicrosecondsPerQuantum;
+create event instance update of DateTime1:SendUpdate() to self;
+self.UpdateTimer = TIM::timer_start( event_inst:update, microseconds:update_period_us );',
+	1,
+	'',
+	"803e578e-44ec-48b1-b9d4-57b4e77d5794",
+	0);
 INSERT INTO O_NBATTR
 	VALUES ("9319f948-72db-4dfe-9e9b-41dd03d50b26",
 	"b49ae536-44cc-4075-a836-22bae7421fa8");
