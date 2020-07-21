@@ -2,15 +2,20 @@ package deployment;
 
 // Spring requires a POJ class for each message.
 public class OccupancyUpdateMsg {
+	private String messageName;
 	private String occupancy;
 	private String capacity;
 	private String availability;
 	public OccupancyUpdateMsg() {
 	}
-	public OccupancyUpdateMsg( String occupancy, String capacity, String availability ) {
+	public OccupancyUpdateMsg( String messageName, String occupancy, String capacity, String availability ) {
+		this.messageName = messageName;
 		this.occupancy = occupancy;
 		this.capacity = capacity;
 		this.availability = availability;
+	}
+	public String getMessageName() {
+		return messageName;
 	}
 	public String getOccupancy() {
 		return occupancy;
@@ -20,6 +25,9 @@ public class OccupancyUpdateMsg {
 	}
 	public String getAvailability() {
 		return availability;
+	}
+	public void setMessageName( String messageName ) {
+		this.messageName = messageName;
 	}
 	public void setOccupancy( String occupancy ) {
 		this.occupancy = occupancy;

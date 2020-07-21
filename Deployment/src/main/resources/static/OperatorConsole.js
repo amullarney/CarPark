@@ -7,23 +7,32 @@ var vm = new Vue({
 	    Capacity: "",
 	    Occupancy: "",
 	    Availability: "",
-	    NorthEntry = false,
-	    NorthTicket = "",
-	    NorthBarrier = "",
-	    NorthDelayedEntry = false,
-	    Lane1Exit = false,
-	    Lane1Ticket = "",
-	    Lane1ExitDeadline = "",
-	    Lane1Barrier = "",
-	    Lane1TicketNumber = "",
-	    Lane1AdditionalCharge = "",
-	    Lane1Overstay = "",
-	    Lane1Charge = "",
-	    Lane1Duration = "",
-	    Lane1TardyExit = false,
-	    Lane1UnpaidStayExit = false
+	    NorthEntry: false,
+	    NorthTicket: "",
+	    NorthBarrier: "",
+	    NorthDelayedEntry: false,
+	    Lane1Exit: false,
+	    Lane1Ticket: "",
+	    Lane1ExitDeadline: "",
+	    Lane1Barrier: "",
+	    Lane1TicketNumber: "",
+	    Lane1AdditionalCharge: "",
+	    Lane1Overstay: "",
+	    Lane1Charge: "",
+	    Lane1Duration: "",
+	    Lane1TardyExit: false,
+	    Lane1UnpaidStayExit: false
     }
 })
+
+function initialize() {
+	vm.DateTime = "";
+	vm.Capacity = "";
+	vm.Occupancy = "";
+	vm.Availability = "";
+	NorthEntry = false;
+	Lane1Exit = false;
+}
 
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
@@ -33,6 +42,7 @@ function setConnected(connected) {
     }
     else {
         $("#conversation").hide();
+        initialize();
     }
     $("#replies").html("");
 }
@@ -64,12 +74,19 @@ function sendToServer( messageName, paramName, paramValue ) {
     stompClient.send("/app/" + messageName, {}, JSON.stringify({paramName: paramValue}));
 }
 
+// Dummy for testing
+function dummyButton( p1, p2, p3 ) {
+	var x = p1;
+	var y = p2;
+	var z = p3;
+}
+
 // Display a message received from the server and
 // update data as necessary.
-function handleReply(message) {
-    $("#replies").append("<tr><td>" + reply + "</td></tr>");
+function handleReply(reply) {
+    $("#replies").append("<tr><td>" + JSON.stringify( JSON.parse( reply.body ) ) + "</td></tr>");
     var messageName = JSON.parse( reply.body ).messageName;
-    if ( messageName == "ActivateEntryStand" ) ) {
+    if ( messageName == "ActivateEntryStand" ) {
     	vm.NorthBarrier = JSON.parse( reply.body ).barrier;
     	vm.NorthTicket = JSON.parse( reply.body ).ticket;
     	vm.NorthEntry = true;
@@ -113,7 +130,8 @@ $(function () {
     });
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
-    $( "#NorthIssueTicket" ).click(function() { sendToServer( "IssueTicket", "location", "North" ); });
+    $( "#DummyButton" ).click(function() { sendToServer( "OperatorIssueTicket", "location", "North" ); });
+    $( "#NorthIssueTicket" ).click(function() { sendToServer( "OperatorIssueTicket", "location", "North" ); });
     $( "#NorthOpenBarrier" ).click(function() { sendToServer( "OpenEntryBarrier", "location", "North" ); });
     $( "#Lane1OpenBarrier" ).click(function() { sendToServer( "OpenExitBarrier", "location", "Lane1" ); });
     $( "#Lane1Cancel" ).click(function() { sendToServer( "FeeWaived", "ticketNumber", vm.Lane1TicketNumber ); });

@@ -25,48 +25,42 @@
         </div>
     </div>
     <div class="row">
-        <h5>{{ DateTime }}, {{ Time }}</h5>
-        <h5>{{ Capacity }}</h5>
-        <h5>{{ Occupancy }}</h5>
-        <h5>{{ Availability }}</h5>
+        <h5>{{ DateTime }}</h5>
+        <h5>Capacity: {{ Capacity }}, Occupancy: {{ Occupancy }}, Availability: {{ Availability }}</h5>
     </div>
-    <template v-if="NorthEntry">
-        <div class = "row">
-            <div class = "col-md-6">
-                <h5>North Entry</h5>
-                <h5>{{ NorthTicket }}</h5>
-                <h5>{{ NorthBarrier }}</h5>
-                <h5 v-if="NorthDelayedEntry" style="color:red">Delayed entry!</h5>
-                <button id="NorthIssueTicket" class="btn btn-primary" type="submit">Issue Ticket</button>
-                <button id="NorthOpenBarrier" class="btn btn-primary" type="submit">Open Barrier</button>
-            </div>
+    <div v-show="NorthEntry" class="row">
+        <div class="col-md-6">
+            <h4>North Entry</h4>
+            <h5>Ticket: {{ NorthTicket }}</h5>
+            <h5>Barrier: {{ NorthBarrier }}</h5>
+            <h5 v-if="NorthDelayedEntry" style="color:red">Delayed entry!</h5>
+            <button id="NorthIssueTicket" class="btn btn-primary" type="submit">Issue Ticket</button>
+            <button id="NorthOpenBarrier" class="btn btn-primary" type="submit">Open Barrier</button>
         </div>
-    </template>
-    <template v-if="Lane1Exit">
-        <div class = "row">
-            <div class = "col-md-6">
-                <h5>Lane 1 Exit</h5>
-                <h5>{{ Lane1Ticket }}</h5>
-                <h5>{{ Lane1ExitDeadline }}</h5>
-                <h5>{{ Lane1Barrier }}</h5>
-                <button id="Lane1OpenBarrier" class="btn btn-primary" type="submit">Open Barrier</button>
-                <template v-if="Lane1TardyExit">
-                    <h5 style="color:red">Missed exit deadline!</h5>
-                    <h5>Additional charge: {{ Lane1AdditionalCharge }}</h5>
-                    <h5>Overstay: {{ Lane1Overstay }}</h5>
-                    <button id="Lane1Cancel" class="btn btn-primary" type="submit">Cancel Extra</button>
-                    <button id="Lane1Paid" class="btn btn-primary" type="submit">Extra Paid</button>
-                </template>
-                <template v-if="Lane1UnpaidStayExit">
-                    <h5 style="color:red">Unpaid stay!</h5>
-                    <h5>Charge: {{ Lane1Charge }}</h5>
-                    <h5>Duration: {{ Lane1Duration }}</h5>
-                    <button id="Lane1Cancel" class="btn btn-primary" type="submit">Cancel Extra</button>
-                    <button id="Lane1Paid" class="btn btn-primary" type="submit">Extra Paid</button>
-                </template>
-            </div>
+    </div>
+    <div v-show="Lane1Exit" class="row">
+        <div class="col-md-6">
+            <h4>Lane 1 Exit</h4>
+            <h5>Ticket: {{ Lane1Ticket }}</h5>
+            <h5>Exit Deadline: {{ Lane1ExitDeadline }}</h5>
+            <h5>Barrier: {{ Lane1Barrier }}</h5>
+            <button id="Lane1OpenBarrier" class="btn btn-primary" type="submit">Open Barrier</button>
+            <template v-show="Lane1TardyExit">
+                <h5 style="color:red">Missed exit deadline!</h5>
+                <h5>Additional charge: {{ Lane1AdditionalCharge }}</h5>
+                <h5>Overstay: {{ Lane1Overstay }} minutes</h5>
+                <button id="Lane1Cancel" class="btn btn-primary" type="submit">Cancel Extra</button>
+                <button id="Lane1Paid" class="btn btn-primary" type="submit">Extra Paid</button>
+            </template>
+            <template v-show="Lane1UnpaidStayExit">
+                <h5 style="color:red">Unpaid stay!</h5>
+                <h5>Charge: {{ Lane1Charge }}</h5>
+                <h5>Duration: {{ Lane1Duration }} hours</h5>
+                <button id="Lane1Cancel" class="btn btn-primary" type="submit">Cancel Extra</button>
+                <button id="Lane1Paid" class="btn btn-primary" type="submit">Extra Paid</button>
+            </template>
         </div>
-    </template>
+    </div>
     <div class="row">
         <div class="col-md-12">
             <table id="conversation" class="table table-striped">

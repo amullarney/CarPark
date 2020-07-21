@@ -520,8 +520,8 @@ INSERT INTO SPR_RS
 	VALUES ("b3277778-0daa-4677-accf-e0899c499d92",
 	'DateTimeUpdate',
 	'',
-	'',
-	3,
+	'::DateTimeUpdate( DateTime:param.DateTime );',
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("e5c28b7b-3074-4ec3-933c-109cc9064aac",

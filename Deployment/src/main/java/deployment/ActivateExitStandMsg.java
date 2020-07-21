@@ -2,17 +2,22 @@ package deployment;
 
 // Spring requires a POJ class for each message.
 public class ActivateExitStandMsg {
+	private String messageName;
 	private String location;
 	private String barrier;
 	private String ticket;
 	private String exitDeadline;
 	public ActivateExitStandMsg() {
 	}
-	public ActivateExitStandMsg( String location, String barrier, String ticket, String exitDeadline ) {
+	public ActivateExitStandMsg( String messageName, String location, String barrier, String ticket, String exitDeadline ) {
+		this.messageName = messageName;
 		this.location = location;
 		this.barrier = barrier;
 		this.ticket = ticket;
 		this.exitDeadline = exitDeadline;
+	}
+	public String getMessageName() {
+		return messageName;
 	}
 	public String getLocation() {
 		return location;
@@ -25,6 +30,9 @@ public class ActivateExitStandMsg {
 	}
 	public String getExitDeadline() {
 		return exitDeadline;
+	}
+	public void setMessageName( String messageName ) {
+		this.messageName = messageName;
 	}
 	public void setLocation( String location ) {
 		this.location = location;
