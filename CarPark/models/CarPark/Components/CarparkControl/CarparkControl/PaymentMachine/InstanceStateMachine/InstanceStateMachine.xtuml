@@ -731,10 +731,6 @@ select one stay related by self->
   Stay[R26.''identifies''];
 create object instance payment of Payment;
 payment.ExitTime = TIM::current_seconds();
-// @TODO remove debugging log
-LOG::LogReal( message:" Entry Time ", r:stay.EntryTime );
-LOG::LogReal( message:" Exit Time ", r:payment.ExitTime );
-// End debugging log
 payment.Amount = 0;
 relate payment to self across R25.''collected by'';
 relate payment to stay across R16.''retires debt for'';
