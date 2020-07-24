@@ -730,7 +730,7 @@ select one stay related by self->
   Ticket[R28.''presently holding'']->
   Stay[R26.''identifies''];
 create object instance payment of Payment;
-payment.ExitTime = TIM::current_seconds();
+payment.ExitTime = DateTime::CurrentSeconds();
 payment.Amount = 0;
 relate payment to self across R25.''collected by'';
 relate payment to stay across R16.''retires debt for'';

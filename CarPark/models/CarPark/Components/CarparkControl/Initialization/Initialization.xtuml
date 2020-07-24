@@ -51,7 +51,8 @@ DateTime::Create(
   TimeFormat:"h:mm:ss a", 
   Delimiter:" on ", 
   DateFirst:false, 
-  UpdatePeriod:1 );
+  UpdatePeriod:1, 
+  UTC_Offset:-7*TimeConversion::QuantumPerHour );
 
 // Entry Stands
 create object instance EntryStand of EntryStand;
@@ -176,17 +177,18 @@ INSERT INTO S_SYNC
 // This fee schedule is valid only for the current day.  When testing expands
 // to cover multi-day stays, the fee schedule must be expanded accordingly.
 
-// Set opening time to 6:00 a.m.
+// Set opening time to 6:00 a.m. local time, adjusted to UTC because TIM 
+// operates on UTC.
 today = TIM::current_date();
 toss = TIM::set_time( 
   year:TIM::get_year( date:today ),
   month:TIM::get_month( date:today ),
   day:TIM::get_day( date:today ),
-  hour:6,
+  hour:6+7,
   minute:0,
   second:0,
   microsecond:0 );
-OpeningTime = TIM::current_seconds();
+OpeningTime = DateTime::CurrentSeconds();
 
 create object instance FeeSched_EarlyAM of FeeSchedule;
 FeeSched_EarlyAM.Name = "Early Morning";

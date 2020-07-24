@@ -508,12 +508,15 @@ INSERT INTO SM_ACT
 	"5f7238f2-fd8a-42d9-9aca-3ebc29151ecc",
 	1,
 	'// Set the entry time for the vehicle.
+// TIM operates in UTC, but the application under test
+// operates on local time, so adjust the desired local
+// time to UTC before passing it to TIM.
 today = TIM::current_date();
 toss = TIM::set_time(
   year:TIM::get_year( date:today ),
   month:TIM::get_month( date:today ),
   day:TIM::get_day( date:today ),
-  hour:7,
+  hour:7+7,
   minute:42, 
   second:0, 
   microsecond:0 );

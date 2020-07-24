@@ -19,7 +19,7 @@ INSERT INTO O_TFR
 	'// Returns the disposition of this stay.
 // Creates a charge or an additional charge if necessary.
 disposition = StayDisposition::Unpaid;
-CurrentTime = TIM::current_seconds();
+CurrentTime = DateTime::CurrentSeconds();
 
 // If there is an instance of charge, determine whether
 // the exit deadline was met.
@@ -168,7 +168,7 @@ INSERT INTO O_TFR
 	1,
 	'// Use the current time as the exit time to create charge
 // segments for the overstay period.
-ExitTime = TIM::current_seconds();
+ExitTime = DateTime::CurrentSeconds();
 self.CreateChargeSegments( ExitTime:ExitTime );
 
 // Sum all charge segments and store the result in an 

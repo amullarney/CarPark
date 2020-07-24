@@ -63,7 +63,7 @@ INSERT INTO SM_ACT
 	1,
 	'// Format the current date and time according 
 // to the provided specifications.
-DateTime_ts = TIM::current_seconds();
+DateTime_ts = DateTime::CurrentSeconds();
 DateTime_str = self.Format( Time:DateTime_ts );
 
 // Send the current date and time (string) to the operator.
@@ -290,7 +290,13 @@ INSERT INTO O_OBJ_PROXY
 	'DateTime',
 	21,
 	'DateTime',
-	'Stores date and time formats and provides periodic updates 
-of the current date and time to the operator.',
+	'Provides a wrapper for time-related bridge operations and 
+provides periodic updates of the current date and time to the operator.
+The entire application operates on local time, meaning that all entry and exit 
+times as well as start and end times for fee schedules are specified in local time.
+The BridgePoint TIM EE operates on UTC, so this class provides wrappers for 
+bridge operations that return time values, converting them from UTC to local time
+so the rest of the application can remain ignorant of time zones.
+A singleton instance of this class is created during initialization of the system.',
 	"00000000-0000-0000-0000-000000000000",
 	'../DateTime.xtuml');

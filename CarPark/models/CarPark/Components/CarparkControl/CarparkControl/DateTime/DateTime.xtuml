@@ -5,8 +5,14 @@ INSERT INTO O_OBJ
 	'DateTime',
 	21,
 	'DateTime',
-	'Stores date and time formats and provides periodic updates 
-of the current date and time to the operator.',
+	'Provides a wrapper for time-related bridge operations and 
+provides periodic updates of the current date and time to the operator.
+The entire application operates on local time, meaning that all entry and exit 
+times as well as start and end times for fee schedules are specified in local time.
+The BridgePoint TIM EE operates on UTC, so this class provides wrappers for 
+bridge operations that return time values, converting them from UTC to local time
+so the rest of the application can remain ignorant of time zones.
+A singleton instance of this class is created during initialization of the system.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("02d8cc6b-4e1f-4aa1-afeb-9b90cf117094",
@@ -21,6 +27,7 @@ date_time.TimeFormat = param.TimeFormat;
 date_time.Delimiter = param.Delimiter;
 date_time.DateFirst = param.DateFirst;
 date_time.UpdatePeriod = param.UpdatePeriod;
+date_time.UTC_Offset = param.UTC_Offset;
 select any carpark from instances of Carpark;
 relate date_time to carpark across R31.''manages date and time for'';
 date_time.StartTimer();',
@@ -72,6 +79,15 @@ INSERT INTO O_TPARM
 	0,
 	'',
 	"1c9bbf77-6b00-4408-9de7-248720145b89",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("a32c97a9-f2ff-4519-ba4c-eb53e75cedaa",
+	"02d8cc6b-4e1f-4aa1-afeb-9b90cf117094",
+	'UTC_Offset',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"5c2bf3f0-3625-4493-9c35-d5350b7b7b5a",
 	'');
 INSERT INTO O_TFR
 	VALUES ("803e578e-44ec-48b1-b9d4-57b4e77d5794",
@@ -131,6 +147,20 @@ self.UpdateTimer = TIM::timer_start( event_inst:update, microseconds:update_peri
 	1,
 	'',
 	"803e578e-44ec-48b1-b9d4-57b4e77d5794",
+	0);
+INSERT INTO O_TFR
+	VALUES ("d0f5f740-6bee-4f13-8fee-5a572ff120a5",
+	"b49ae536-44cc-4075-a836-22bae7421fa8",
+	'CurrentSeconds',
+	'Returns current number of seconds since beginning of epoch,
+adjusted for the local time zone.',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'select any dt from instances of DateTime;
+return TIM::current_seconds() + dt.UTC_Offset;',
+	1,
+	'',
+	"84c3be7a-7619-4717-bf11-b1c474abf38e",
 	0);
 INSERT INTO O_NBATTR
 	VALUES ("9319f948-72db-4dfe-9e9b-41dd03d50b26",
@@ -259,7 +289,7 @@ INSERT INTO O_BATTR
 INSERT INTO O_ATTR
 	VALUES ("6a4bc227-30d4-4406-acbd-4c335c1bee3f",
 	"b49ae536-44cc-4075-a836-22bae7421fa8",
-	"20751eb4-7d37-4c2f-a706-5ed33df7f035",
+	"bcb78fd2-5205-4588-a2b3-153d4f3d514f",
 	'DateFirst',
 	'True when the date must precede the time.  2020/7/15, 4:40 p.m.
 False when the date must follow the time.  4:40 p.m. on July 15, 2020',
@@ -267,6 +297,25 @@ False when the date must follow the time.  4:40 p.m. on July 15, 2020',
 	'DateFirst',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("bcb78fd2-5205-4588-a2b3-153d4f3d514f",
+	"b49ae536-44cc-4075-a836-22bae7421fa8");
+INSERT INTO O_BATTR
+	VALUES ("bcb78fd2-5205-4588-a2b3-153d4f3d514f",
+	"b49ae536-44cc-4075-a836-22bae7421fa8");
+INSERT INTO O_ATTR
+	VALUES ("bcb78fd2-5205-4588-a2b3-153d4f3d514f",
+	"b49ae536-44cc-4075-a836-22bae7421fa8",
+	"20751eb4-7d37-4c2f-a706-5ed33df7f035",
+	'UTC_Offset',
+	'Value to be added to UTC to produce local time.
+Units: seconds.',
+	'',
+	'UTC_Offset',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
 INSERT INTO O_ID

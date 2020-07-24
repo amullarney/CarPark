@@ -381,7 +381,7 @@ elif ( disposition == StayDisposition::TardyExit )
     AdditionalCharge[R24.''addend of''];
   select any charge related by stay->ChargeSegment[R15]->
     Charge[R23.''addend of''];
-  overstay = (TIM::current_seconds() - charge.ExitDeadline) * 
+  overstay = (DateTime::CurrentSeconds() - charge.ExitDeadline) * 
     TimeConversion::QuantumPerSecond / TimeConversion::QuantumPerMinute;
   send Operator::TardyExit( Location:self.Location, 
     TicketNumber:ticket.Number, 
