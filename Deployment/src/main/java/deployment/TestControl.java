@@ -29,7 +29,6 @@ public class TestControl extends Component<TestControl> {
 
     public TestControl(IApplication app, IRunContext runContext, int populationId) {
         super(app, runContext, populationId);
-    	System.out.printf( "TestControl constructor\n" );
         TimeUtilities_extent = new TimeUtilitiesSetImpl();
         singleton = this;
         TIM = null;

@@ -32,6 +32,9 @@ function initialize() {
 	vm.Availability = "";
 	NorthEntry = false;
 	Lane1Exit = false;
+	NorthDelayedEntry = false;
+    Lane1TardyExit = false;
+    Lane1UnpaidStayExit = false;
 }
 
 function setConnected(connected) {
@@ -72,13 +75,6 @@ function disconnect() {
 // Client-to-server messages.
 function sendToServer( messageName, paramName, paramValue ) {
     stompClient.send("/app/" + messageName, {}, JSON.stringify({paramName: paramValue}));
-}
-
-// Dummy for testing
-function dummyButton( p1, p2, p3 ) {
-	var x = p1;
-	var y = p2;
-	var z = p3;
 }
 
 // Display a message received from the server and

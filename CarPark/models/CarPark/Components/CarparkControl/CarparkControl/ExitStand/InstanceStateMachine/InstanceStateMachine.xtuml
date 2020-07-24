@@ -392,6 +392,10 @@ else
   send Operator::ActivateExitStand( Location:self.Location, 
     Ticket:ExitTicketState::Inserted, Barrier:self.Barrier, 
     ExitDeadline:ExitDeadline::None );
+  select one ticket related by self->Ticket[R29.''presently holding''];
+  select any charge related by stay->ChargeSegment[R15]->Charge[R23.''addend of''];
+  send Operator::UnpaidStayExit( Location:self.Location, 
+    TicketNumber:ticket.Number, Charge:charge.Amount, Duration:charge.Duration );
 end if;
 
 ',
