@@ -74,7 +74,9 @@ function disconnect() {
 
 // Client-to-server messages.
 function sendToServer( messageName, paramName, paramValue ) {
-    stompClient.send("/app/" + messageName, {}, JSON.stringify({paramName: paramValue}));
+	var messageBody = {};
+	messageBody[paramName] = paramValue;
+    stompClient.send("/app/" + messageName, {}, JSON.stringify( messageBody ));
 }
 
 // Display a message received from the server and
@@ -106,13 +108,13 @@ function handleReply(reply) {
     	vm.Availability = JSON.parse( reply.body ).availability;
     } else if ( messageName == "TardyExit" ) {
     	vm.Lane1TicketNumber = JSON.parse( reply.body ).ticketNumber;
-    	vm.Lane1AdditionalCharge = JSON.parse( reply.body ).additionalCharge;
-    	vm.Lane1Overstay = JSON.parse( reply.body ).overstay;
+    	vm.Lane1AdditionalCharge = Number( JSON.parse( reply.body ).additionalCharge ).toFixed(2);
+    	vm.Lane1Overstay = Number( JSON.parse( reply.body ).overstay ).toFixed(2);
     	vm.Lane1TardyExit = true;
     } else if ( messageName == "UnpaidStayExit" ) {
     	vm.Lane1TicketNumber = JSON.parse( reply.body ).ticketNumber;
-    	vm.Lane1Charge = JSON.parse( reply.body ).charge;
-    	vm.Lane1Duration = JSON.parse( reply.body ).duration;
+    	vm.Lane1Charge = Number( JSON.parse( reply.body ).charge ).toFixed(2);
+    	vm.Lane1Duration = Number( JSON.parse( reply.body ).duration ).toFixed(2);
     	vm.Lane1UnpaidStayExit = true;
     } else if ( messageName == "DateTimeUpdate" ) {
     	vm.DateTime = JSON.parse( reply.body ).dateTime;
@@ -126,10 +128,11 @@ $(function () {
     });
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
-    $( "#DummyButton" ).click(function() { sendToServer( "OperatorIssueTicket", "location", "North" ); });
     $( "#NorthIssueTicket" ).click(function() { sendToServer( "OperatorIssueTicket", "location", "North" ); });
     $( "#NorthOpenBarrier" ).click(function() { sendToServer( "OpenEntryBarrier", "location", "North" ); });
     $( "#Lane1OpenBarrier" ).click(function() { sendToServer( "OpenExitBarrier", "location", "Lane1" ); });
-    $( "#Lane1Cancel" ).click(function() { sendToServer( "FeeWaived", "ticketNumber", vm.Lane1TicketNumber ); });
-    $( "#Lane1Paid" ).click(function() { sendToServer( "FeeCollected", "ticketNumber", vm.Lane1TicketNumber ); });
+    $( "#Lane1TardyCancel" ).click(function() { sendToServer( "FeeWaived", "ticketNumber", vm.Lane1TicketNumber ); });
+    $( "#Lane1TardyPaid" ).click(function() { sendToServer( "FeeCollected", "ticketNumber", vm.Lane1TicketNumber ); });
+    $( "#Lane1UnpaidCancel" ).click(function() { sendToServer( "FeeWaived", "ticketNumber", vm.Lane1TicketNumber ); });
+    $( "#Lane1UnpaidPaid" ).click(function() { sendToServer( "FeeCollected", "ticketNumber", vm.Lane1TicketNumber ); });
 });

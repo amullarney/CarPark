@@ -49,15 +49,15 @@
                 <h5 style="color:red">Missed exit deadline!</h5>
                 <h5>Additional charge: {{ Lane1AdditionalCharge }}</h5>
                 <h5>Overstay: {{ Lane1Overstay }} minutes</h5>
-                <button id="Lane1Cancel" class="btn btn-primary" type="submit">Cancel Extra</button>
-                <button id="Lane1Paid" class="btn btn-primary" type="submit">Extra Paid</button>
+                <button id="Lane1TardyCancel" class="btn btn-primary" type="submit">Cancel Extra</button>
+                <button id="Lane1TardyPaid" class="btn btn-primary" type="submit">Extra Paid</button>
             </div>
             <div v-show="Lane1UnpaidStayExit" class="row">
                 <h5 style="color:red">Unpaid stay!</h5>
                 <h5>Charge: {{ Lane1Charge }}</h5>
                 <h5>Duration: {{ Lane1Duration }} hours</h5>
-                <button id="Lane1Cancel" class="btn btn-primary" type="submit">Cancel Extra</button>
-                <button id="Lane1Paid" class="btn btn-primary" type="submit">Extra Paid</button>
+                <button id="Lane1UnpaidCancel" class="btn btn-primary" type="submit">Cancel Extra</button>
+                <button id="Lane1UnpaidPaid" class="btn btn-primary" type="submit">Extra Paid</button>
             </div>
         </div>
     </div>
