@@ -511,11 +511,10 @@ INSERT INTO SM_ACT
 // TIM operates in UTC, but the application under test
 // operates on local time, so adjust the desired local
 // time to UTC before passing it to TIM.
-today = TIM::current_date();
 toss = TIM::set_time(
-  year:TIM::get_year( date:today ),
-  month:TIM::get_month( date:today ),
-  day:TIM::get_day( date:today ),
+  year:2021,
+  month:4,
+  day:1,
   hour:7+7,
   minute:42, 
   second:0, 
@@ -764,11 +763,11 @@ INSERT INTO GD_NCS
 	VALUES ("8c8b7f61-e3be-461e-aea1-c3743dcc3681");
 INSERT INTO DIM_ND
 	VALUES (456.000000,
-	318.000000,
+	354.000000,
 	"8c8b7f61-e3be-461e-aea1-c3743dcc3681");
 INSERT INTO DIM_GE
 	VALUES (4381.000000,
-	2904.000000,
+	2868.000000,
 	"8c8b7f61-e3be-461e-aea1-c3743dcc3681",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO DIM_ELE
@@ -1375,7 +1374,7 @@ INSERT INTO DIM_ND
 	60.000000,
 	"f2bdbdc3-2dee-442b-bfc6-f64db66403fe");
 INSERT INTO DIM_GE
-	VALUES (4116.000000,
+	VALUES (4092.000000,
 	2988.000000,
 	"f2bdbdc3-2dee-442b-bfc6-f64db66403fe",
 	"00000000-0000-0000-0000-000000000000");
@@ -1385,7 +1384,7 @@ INSERT INTO DIM_ELE
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO DIM_CON
 	VALUES ("ca0a8c4a-7a0b-4c7f-b5da-498200a2ded3",
-	4256.000000,
+	4232.000000,
 	3024.000000,
 	"f2bdbdc3-2dee-442b-bfc6-f64db66403fe");
 INSERT INTO GD_GE
@@ -1428,8 +1427,8 @@ INSERT INTO DIM_ND
 	40.000000,
 	"2405b075-6ef4-4e57-bdaf-13779038e6ff");
 INSERT INTO DIM_GE
-	VALUES (4256.000000,
-	2981.000000,
+	VALUES (4238.000000,
+	2979.000000,
 	"2405b075-6ef4-4e57-bdaf-13779038e6ff",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO DIM_ELE
@@ -1463,7 +1462,7 @@ INSERT INTO GD_LS
 	"bc14b3b3-f6df-4526-9a91-40d2d5dc8273");
 INSERT INTO DIM_WAY
 	VALUES ("93703919-c98a-4704-a8ff-1be38c95190b",
-	4256.000000,
+	4232.000000,
 	3024.000000,
 	"9fdee1e8-0752-4a49-bc2d-7985cda31636",
 	"00000000-0000-0000-0000-000000000000",
