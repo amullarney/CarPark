@@ -143,7 +143,7 @@ INSERT INTO O_TFR
 	1,
 	'update_period_us = self.UpdatePeriod * TimeConversion::QuantumPerSecond * TimeConversion::MicrosecondsPerQuantum;
 create event instance update of DateTime1:SendUpdate() to self;
-self.UpdateTimer = TIM::timer_start( event_inst:update, microseconds:update_period_us );',
+self.UpdateTimer = TIM::timer_start_recurring( event_inst:update, microseconds:update_period_us );',
 	1,
 	'',
 	"803e578e-44ec-48b1-b9d4-57b4e77d5794",

@@ -67,9 +67,7 @@ DateTime_ts = DateTime::CurrentSeconds();
 DateTime_str = self.Format( Time:DateTime_ts );
 
 // Send the current date and time (string) to the operator.
-send Operator::DateTimeUpdate( DateTime:DateTime_str );
-
-self.StartTimer();',
+send Operator::DateTimeUpdate( DateTime:DateTime_str );',
 	'',
 	0);
 INSERT INTO SM_TAH
