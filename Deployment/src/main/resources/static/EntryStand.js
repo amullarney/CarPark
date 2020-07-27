@@ -10,6 +10,13 @@ var vm = new Vue({
     }
 })
 
+function initialize() {
+	vm.TicketRequestDisabled = true;
+	vm.TicketCollectedDisabled = true;
+	vm.VehicleEnteredDisabled = true;
+	BarrierOpen = false;
+}
+
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
@@ -18,6 +25,7 @@ function setConnected(connected) {
     }
     else {
         $("#conversation").hide();
+        initialize();
     }
     $("#replies").html("");
 }

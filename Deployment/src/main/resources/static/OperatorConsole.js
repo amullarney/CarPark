@@ -30,11 +30,11 @@ function initialize() {
 	vm.Capacity = "";
 	vm.Occupancy = "";
 	vm.Availability = "";
-	NorthEntry = false;
-	Lane1Exit = false;
-	NorthDelayedEntry = false;
-    Lane1TardyExit = false;
-    Lane1UnpaidStayExit = false;
+	vm.NorthEntry = false;
+	vm.Lane1Exit = false;
+	vm.NorthDelayedEntry = false;
+    vm.Lane1TardyExit = false;
+    vm.Lane1UnpaidStayExit = false;
 }
 
 function setConnected(connected) {
