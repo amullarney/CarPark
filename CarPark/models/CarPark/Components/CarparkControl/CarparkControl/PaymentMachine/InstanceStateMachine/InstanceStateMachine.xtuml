@@ -730,13 +730,11 @@ select one stay related by self->
   Ticket[R28.''presently holding'']->
   Stay[R26.''identifies''];
 create object instance payment of Payment;
-payment.ExitTime = TIM::current_seconds();
+payment.ExitTime = DateTime::CurrentSeconds();
 payment.Amount = 0;
 relate payment to self across R25.''collected by'';
 relate payment to stay across R16.''retires debt for'';
-stay.CalculateCharge();
-
-',
+stay.CalculateCharge();',
 	'',
 	0);
 INSERT INTO SM_TAH
@@ -870,7 +868,10 @@ INSERT INTO SM_ACT
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
 	1,
 	'// Print exit deadline on ticket.
-send Payer::ExitDeadline( Location:self.Location, Deadline:param.Deadline );',
+select one DateTime related by self->
+  Carpark[R11.''accepts payments for'']->
+  DateTime[R31.''delegates date and time mgt to''];
+send Payer::ExitDeadline( Location:self.Location, Deadline:DateTime.Format( Time:param.Deadline ) );',
 	'',
 	0);
 INSERT INTO GD_MD

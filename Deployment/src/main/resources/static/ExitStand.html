@@ -46,7 +46,7 @@
                     <label for="Ticket number">Enter ticket number.</label>
                     <input type="text" id="TicketNumber" class="form-control" placeholder="Ticket number here...">
                 </div>
-                <button id="InsertedTicket" class="btn btn-primary" type="submit">Inserted Ticket</button>
+                <button v-bind:disabled="InsertedTicketDisabled" id="InsertedTicket" class="btn btn-primary" type="submit">Inserted Ticket</button>
             </form>
         </div>
     </div>

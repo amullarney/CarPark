@@ -4,9 +4,16 @@ var vm = new Vue({
 	el: '#main-content',
 	data: {
 	    VehicleExitedDisabled : true,
+	    InsertedTicketDisabled: true,
 	    BarrierOpen: false,
     }
 })
+
+function initialize() {
+	vm.VehicleExitedDisabled = true;
+	vm.InsertedTicketDisabled = true;
+	vm.BarrierOpen = false;
+}
 
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
@@ -16,6 +23,7 @@ function setConnected(connected) {
     }
     else {
         $("#conversation").hide();
+        initialize();
     }
     $("#replies").html("");
 }
@@ -45,11 +53,14 @@ function disconnect() {
 // Client-to-server messages.
 function sendToServer( messageName ) {
     stompClient.send("/app/" + messageName, {}, JSON.stringify({'location': $("#location").val()}));
+    if ( messageName == "EXVehicleWaiting" )
+    	vm.InsertedTicketDisabled = false;
 }
 
 function sendInsertedTicket() {
     stompClient.send("/app/InsertedTicket", {}, 
       JSON.stringify({'location': $("#location").val(), 'ticketNumber': $("#TicketNumber").val()}));
+    vm.InsertedTicketDisabled = true;
 }
 
 // Display a message received from the server and 

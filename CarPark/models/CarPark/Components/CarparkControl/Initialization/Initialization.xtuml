@@ -45,6 +45,15 @@ carpark.Occupancy = 0;
 carpark.Open = true;
 carpark.LastTicketNumber = 0;
 
+// Date and time
+DateTime::Create( 
+  DateFormat:"yyyy/M/d", 
+  TimeFormat:"h:mm:ss a", 
+  Delimiter:" on ", 
+  DateFirst:false, 
+  UpdatePeriod:1, 
+  UTC_Offset:-7*TimeConversion::QuantumPerHour );
+
 // Entry Stands
 create object instance EntryStand of EntryStand;
 EntryStand.Barrier = BarrierState::Closed;
@@ -162,23 +171,20 @@ INSERT INTO S_SYNC
 	'',
 	'select any carpark from instances of Carpark;
 
-// Start of epoch is initialized, at start-up to midnight of the current day.
-// Establish opening time as the number of seconds between midnight and opening, 
-// and then use that value as a base for all times in the fee schedule.
-// This fee schedule is valid only for the current day.  When testing expands
+// This fee schedule is valid only for the specified day.  When testing expands
 // to cover multi-day stays, the fee schedule must be expanded accordingly.
 
-// Set opening time to 6:00 a.m.
-today = TIM::current_date();
+// Set opening time to 6:00 a.m. local time, adjusted to UTC because TIM 
+// operates on UTC.
 toss = TIM::set_time( 
-  year:TIM::get_year( date:today ),
-  month:TIM::get_month( date:today ),
-  day:TIM::get_day( date:today ),
-  hour:6,
+  year:2021,
+  month:4,
+  day:1,
+  hour:6+7,
   minute:0,
   second:0,
   microsecond:0 );
-OpeningTime = TIM::current_seconds();
+OpeningTime = DateTime::CurrentSeconds();
 
 create object instance FeeSched_EarlyAM of FeeSchedule;
 FeeSched_EarlyAM.Name = "Early Morning";

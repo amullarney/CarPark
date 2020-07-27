@@ -19,7 +19,7 @@ INSERT INTO O_TFR
 	'// Returns the disposition of this stay.
 // Creates a charge or an additional charge if necessary.
 disposition = StayDisposition::Unpaid;
-CurrentTime = TIM::current_seconds();
+CurrentTime = DateTime::CurrentSeconds();
 
 // If there is an instance of charge, determine whether
 // the exit deadline was met.
@@ -168,7 +168,7 @@ INSERT INTO O_TFR
 	1,
 	'// Use the current time as the exit time to create charge
 // segments for the overstay period.
-ExitTime = TIM::current_seconds();
+ExitTime = DateTime::CurrentSeconds();
 self.CreateChargeSegments( ExitTime:ExitTime );
 
 // Sum all charge segments and store the result in an 
@@ -238,48 +238,25 @@ INSERT INTO O_TFR
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'// Log data about this stay.
-
-//------------------------------------------------------------------------------------------
-// Note: Much of the code below involves work-arounds for tooling deficiencies.
-// Before changing any of it, please review https://github.com/johnrwolfe/CarPark/issues/42.
-//------------------------------------------------------------------------------------------
-
-// @TODO get this from initial configuration data.
-DateFormat = "yyyy/MM/dd";
-TimeFormat = "HH:mm";
-
-// Declare a timestamp for use with timestamp_format().
-ts_time = TIM::current_clock();
-
 LOG::LogInfo( message:"Stay completed, data follows:" );
+select one date_time related by self->Carpark[R7.''generates revenue for'']->
+  DateTime[R31.''delegates date and time mgt to''];
 
 // Ticket number
 LOG::LogReal( message:" <- Ticket Number.", r:self.TicketNumber );
 
 // Entry time
-ts_time = self.EntryTime;  // Cast to timestamp
-ts_time = ts_time * TimeConversion::MicrosecondsPerQuantum;
-EntryDateString = TIM::timestamp_format( timestamp:ts_time, format:DateFormat );
-EntryTimeString = TIM::timestamp_format( timestamp:ts_time, format:TimeFormat );
-EntryDateTimeString = EntryDateString + " at " + EntryTimeString;
+EntryDateTimeString = date_time.Format( Time:self.EntryTime );
 LOG::LogInfo( message:"Entry time: " + EntryDateTimeString );
 
 // Exit time
 select one payment related by self->Payment[R16.''solicits''];
-ts_time = payment.ExitTime;  // Cast to timestamp
-ts_time = ts_time * TimeConversion::MicrosecondsPerQuantum;
-ExitDateString = TIM::timestamp_format( timestamp:ts_time, format:DateFormat );
-ExitTimeString = TIM::timestamp_format( timestamp:ts_time, format:TimeFormat );
-ExitDateTimeString = ExitDateString + " at " + ExitTimeString;
+ExitDateTimeString = date_time.Format( Time:payment.ExitTime );
 LOG::LogInfo( message:"Exit time: " + ExitDateTimeString );
 
 // Exit deadline
 select any charge related by self->ChargeSegment[R15]->Charge[R23.''addend of''];
-ts_time = charge.ExitDeadline;  // Cast to timestamp
-ts_time = ts_time * TimeConversion::MicrosecondsPerQuantum;
-ExitDeadlineDateString = TIM::timestamp_format( timestamp:ts_time, format:DateFormat );
-ExitDeadlineTimeString = TIM::timestamp_format( timestamp:ts_time, format:TimeFormat );
-ExitDeadlineDateTimeString = ExitDeadlineDateString + " at " + ExitDeadlineTimeString;
+ExitDeadlineDateTimeString = date_time.Format( Time:charge.ExitDeadline );
 LOG::LogInfo( message:"ExitDeadline: " + ExitDeadlineDateTimeString );
 
 // Primary charge

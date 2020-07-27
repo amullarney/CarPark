@@ -37,7 +37,7 @@ INSERT INTO O_BATTR
 INSERT INTO O_ATTR
 	VALUES ("10328f50-08d5-47fa-8b9b-5e7813d97060",
 	"946458d3-3399-4127-ae05-c61fbf8a5aaf",
-	"be64f509-0c8d-422e-9ae2-40e1c2f873d5",
+	"8e992b5f-9c1b-4131-93b7-3dcf088a0b32",
 	'ExitDeadline',
 	'Time by which the vehicle must exit to avoid an additional fee.
 Units: seconds
@@ -65,6 +65,34 @@ False if the fee was paid.',
 	'WaiverGranted',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_DBATTR
+	VALUES ("8e992b5f-9c1b-4131-93b7-3dcf088a0b32",
+	"946458d3-3399-4127-ae05-c61fbf8a5aaf",
+	'select many ChargeSegments related by self->ChargeSegment[R23.''sum of''];
+sum = self.Amount;  // Declare a real
+sum = 0;
+for each ChargeSegment in ChargeSegments
+	sum = sum + ChargeSegment.Duration;
+end for;
+self.Duration = sum / TimeConversion::QuantumPerHour;',
+	1,
+	0);
+INSERT INTO O_BATTR
+	VALUES ("8e992b5f-9c1b-4131-93b7-3dcf088a0b32",
+	"946458d3-3399-4127-ae05-c61fbf8a5aaf");
+INSERT INTO O_ATTR
+	VALUES ("8e992b5f-9c1b-4131-93b7-3dcf088a0b32",
+	"946458d3-3399-4127-ae05-c61fbf8a5aaf",
+	"be64f509-0c8d-422e-9ae2-40e1c2f873d5",
+	'Duration',
+	'Duration of the stay.
+Units: hours.',
+	'',
+	'Duration',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000003",
 	'',
 	'');
 INSERT INTO O_ID

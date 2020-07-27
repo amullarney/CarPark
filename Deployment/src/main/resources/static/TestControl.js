@@ -53,29 +53,32 @@ function sendAdvanceTime() {
 }
 
 function sendSetTime() {
-	// Use the current date and time for any field left blank by the user
-	var currentDate = new Date();
+	// Use the current date and time for any field left blank by the user.
+	// The user enters a date/time in the local time zone, but the 
+	// BridgePoint TIM EE operates in UTC, so the date/time sent from
+	// this function must be in UTC.
+	var dateTime = new Date();
 	var year = $("#year").val();
 	var month = $("#month").val();
 	var day = $("#day").val();
 	var hour = $("#hour").val();
 	var minute = $("#minute").val();
-	if ( year.length == 0 )
-		year = currentDate.getFullYear();
-	if ( month.length == 0 )
-		month = currentDate.getMonth() + 1;  // JavaScript is 0-based, TIM EE is 1-based
-	if ( day.length == 0 )
-		day = currentDate.getDate();
-	if ( hour.length == 0 )
-		hour = currentDate.getHours();
-	if ( minute.length == 0 )
-		minute = currentDate.getMinutes();
+	if ( year.length != 0 )
+		dateTime.setFullYear( year );
+	if ( month.length != 0 )
+		dateTime.setMonth( month - 1 );  // JavaScript is 0-based
+	if ( day.length != 0 )
+		dateTime.setDate( day );
+	if ( hour.length != 0 )
+		dateTime.setHours( hour );
+	if ( minute.length != 0 )
+		dateTime.setMinutes( minute );
     stompClient.send("/app/SetTime", {}, 
-      JSON.stringify({'year': year,
-    	              'month': month,
-    	              'day': day,
-    	              'hour': hour,
-    	              'minute': minute}));
+      JSON.stringify({'year': dateTime.getUTCFullYear(),
+    	              'month': dateTime.getUTCMonth() + 1,  // JavaScript is 0-based, TIM is 1-based
+    	              'day': dateTime.getUTCDate(),
+    	              'hour': dateTime.getUTCHours(),
+    	              'minute': dateTime.getUTCMinutes()}));
 }
 
 // Display a message received from the server.

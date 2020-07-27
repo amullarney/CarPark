@@ -29,7 +29,6 @@ public class TestControl extends Component<TestControl> {
 
     public TestControl(IApplication app, IRunContext runContext, int populationId) {
         super(app, runContext, populationId);
-    	System.out.printf( "TestControl constructor\n" );
         TimeUtilities_extent = new TimeUtilitiesSetImpl();
         singleton = this;
         TIM = null;
@@ -58,7 +57,12 @@ public class TestControl extends Component<TestControl> {
     
     // (hand-written) utility functions
     public void SendCurrentDateTime() {
-    	String currentDateTime = context().TIM().timestamp_format( context().TIM().current_clock(), "yyyy/MM/dd HH:mm" );
+    	// @TODO This is a temporary hack that hard-codes the UTC offset for a local time zone.  
+    	// Once the periodic update to the date and time display on the Operator Console works reliably,
+    	// this function and its invocation can be removed, as there will be no need for the Test Control
+    	// client to display the current time.
+    	long currentDateTime_us = context().TIM().current_clock() + (3600L * 1000000L * -7L);  
+    	String currentDateTime = context().TIM().timestamp_format( currentDateTime_us, "yyyy/MM/dd HH:mm" );
     	try {
     	  TestControlMsgController.Singleton().SendCurrentDateTimeMessage( currentDateTime );
     	}
