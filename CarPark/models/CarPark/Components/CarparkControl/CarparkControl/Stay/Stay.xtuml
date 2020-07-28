@@ -24,8 +24,7 @@ CurrentTime = DateTime::CurrentSeconds();
 // If there is an instance of charge, determine whether
 // the exit deadline was met.
 select any charge related by self->
-  ChargeSegment[R15]->
-  Charge[R23.''addend of''];
+  ChargeSegment[R15]->BaseChargeSegment[R32]->Charge[R33.''addend of''];
 if ( not empty charge )
   if ( CurrentTime <= charge.ExitDeadline ) 
     disposition = StayDisposition::PunctualExit;
@@ -63,10 +62,10 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'// Use the exit time from the associated payment to 
-// create charge segments for this stay.
+	'// Use the entry time for the stay and exit time from the
+// associated payment to create base charge segments for this stay.
 select one payment related by self->Payment[R16.''solicits''];
-self.CreateChargeSegments( ExitTime:payment.ExitTime );
+self.CreateChargeSegments( Start:self.EntryTime, End:payment.ExitTime );
 
 // Sum all charge segments and store the result in a charge
 // and relate the segments to the charge.
@@ -76,7 +75,9 @@ Charge.WaiverGranted = false;
 select many ChgSegs related by self->ChargeSegment[R15];
 for each ChgSeg in ChgSegs
   Charge.Amount = Charge.Amount + ChgSeg.Amount;
-  relate Charge to ChgSeg across R23.''sum of'';
+  create object instance BaseChgSeg of BaseChargeSegment;
+  relate BaseChgSeg to ChgSeg across R32;
+  relate Charge to BaseChgSeg across R33.''sum of'';
 end for;',
 	1,
 	'',
@@ -89,12 +90,13 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'// Find all relevant instances of fee schedule for this stay
+	'// Find all relevant instances of fee schedule for the period
+// of interest delineated by the incoming parameters
 // and relate each one to this stay using one charge segment.
 
-// First, find the fee schedule covering the end of the stay 
+// First, find the fee schedule covering the end of the period 
 // by finding the earliest end time that is later than the 
-// exit time for this stay.
+// end of the period of interest.
 cursor = 0;
 EndPosition = 0;
 select any FeeSched from instances of FeeSchedule where false;  // Decl
@@ -103,7 +105,7 @@ while ( true )
     Carpark[R7.''generates revenue for'']->
     FeeSchedule[R14.''applies'']
     where ( selected.Position == cursor );
-  if ( FeeSched.End >= param.ExitTime )
+  if ( FeeSched.End >= param.End )
     EndPosition = cursor;
     break;
   else
@@ -111,17 +113,17 @@ while ( true )
   end if;
 end while;
 
-// Next, find the fee schedule instance covering the entry
-// time for this stay by walking backwards through the 
+// Next, find the fee schedule instance covering the beginning
+// of the period of interest by walking backwards through the 
 // sequence to find the latest start time that is earlier 
-// than the entry time for this stay.
+// than the start time for this period.
 StartPosition = EndPosition;
 while ( cursor >= 0 )
   select any FeeSched related by self->
     Carpark[R7.''generates revenue for'']->
     FeeSchedule[R14.''applies'']
     where ( selected.Position == cursor );
-  if ( FeeSched.Start <= self.EntryTime )
+  if ( FeeSched.Start <= param.Start )
     StartPosition = cursor;
     break;
   else
@@ -150,13 +152,30 @@ end while;',
 INSERT INTO O_TPARM
 	VALUES ("ce68b82c-fe30-454f-834f-1d751f2c1ec2",
 	"bc8cfa9a-3b0c-457e-840d-222ea12cb4ca",
-	'ExitTime',
+	'End',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"1fad79df-9895-49f4-86a7-c3c48d98ec77",
+	'Exit time for the set of charge segments to be created which
+could be for either a base charge or an additional charge.
+For a base charge, this is the time at which the ticket is
+inserted into the payment machine.  For an additional charge
+for an overstay, this is the time at which the ticket is 
+inserted into the exit stand.
+Units: seconds
+Origin: start of epoch');
+INSERT INTO O_TPARM
+	VALUES ("1fad79df-9895-49f4-86a7-c3c48d98ec77",
+	"bc8cfa9a-3b0c-457e-840d-222ea12cb4ca",
+	'Start',
 	"ba5eda7a-def5-0000-0000-000000000002",
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000",
-	'Exit time for the set of charge segments to be created which
-could be for either a base charge or an additional charge.
+	'Start time of the period of interest.  
+For a base charge, this is the entry time for the stay,
+and for an additional charge, it is the exit deadline.
 Units: seconds
 Origin: start of epoch');
 INSERT INTO O_TFR
@@ -166,21 +185,30 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'// Use the current time as the exit time to create charge
-// segments for the overstay period.
-ExitTime = DateTime::CurrentSeconds();
-self.CreateChargeSegments( ExitTime:ExitTime );
+	'// Use the exit deadline as the start and the current time 
+// as the end of the period of interest for which to create 
+// charge segments for the overstay.
+select any charge related by self->ChargeSegment[R15]->
+  BaseChargeSegment[R32]->Charge[R33.''addend of''];
+self.CreateChargeSegments( Start:charge.ExitDeadline, 
+  End:DateTime::CurrentSeconds() );
 
-// Sum all charge segments and store the result in an 
-// additional charge and relate the segments to the
-// additional charge.
+// Find all charge segments associated with this stay and 
+// subtract from that set those associated with the base charge,
+// leaving only the newly created charge segments to be associated
+// with the additional charge for the overstay.
+select many BaseChargeSegments related by self->ChargeSegment[R15]->
+  BaseChargeSegment[R32]->ChargeSegment[R32];
+select many ChargeSegments related by self->ChargeSegment[R15];
+AdditionalChargeSegments = ChargeSegments - BaseChargeSegments;
 create object instance AdditionalCharge of AdditionalCharge;
 AdditionalCharge.Amount = 0;
 AdditionalCharge.WaiverGranted = false;
-select many ChgSegs related by self->ChargeSegment[R15];
-for each ChgSeg in ChgSegs
+for each ChgSeg in AdditionalChargeSegments
   AdditionalCharge.Amount = AdditionalCharge.Amount + ChgSeg.Amount;
-  relate AdditionalCharge to ChgSeg across R24.''sum of'';
+  create object instance AddChgSeg of AdditionalChargeSegment;
+  relate AddChgSeg to ChgSeg across R32;
+  relate AdditionalCharge to AddChgSeg across R34.''sum of'';
 end for;',
 	1,
 	'',
@@ -195,13 +223,17 @@ INSERT INTO O_TFR
 	1,
 	'// Unrelate and remove everything associated with the charge for this stay.
 select any charge related by self->ChargeSegment[R15]->
-  Charge[R23.''addend of''];
-select many ChgSegs related by charge->ChargeSegment[R23.''sum of''];
-for each ChgSeg in ChgSegs
-  unrelate ChgSeg from charge across R23.''addend of'';
+  BaseChargeSegment[R32]->Charge[R33.''addend of''];
+select many BaseChgSegs related by charge->
+  BaseChargeSegment[R33.''sum of''];
+for each BaseChgSeg in BaseChgSegs
+  unrelate BaseChgSeg from charge across R33.''addend of'';
+  select one ChgSeg related by BaseChgSeg->ChargeSegment[R32];
+  unrelate ChgSeg from BaseChgSeg across R32;
   select one FeeSched related by ChgSeg->FeeSchedule[R15.''spans''];
   unrelate FeeSched from self across R15.''applies to'' using ChgSeg;
   delete object instance ChgSeg;
+  delete object instance BaseChgSeg;
 end for;
 delete object instance charge;',
 	1,
@@ -218,12 +250,12 @@ INSERT INTO O_TFR
 	'// If an additional charge exists, it has been waived, otherwise
 // it is the (base) charge that has just been waived.
 select any AddChg related by self->ChargeSegment[R15]->
-  AdditionalCharge[R24.''addend of''];
+  AdditionalChargeSegment[R32]->AdditionalCharge[R34.''addend of''];
 if ( not empty AddChg )
   AddChg.WaiverGranted = true;
 else
   select any charge related by self->ChargeSegment[R15]->
-    Charge[R23.''addend of''];
+    BaseChargeSegment[R32]->Charge[R33.''addend of''];
   charge.WaiverGranted = true;
 end if;',
 	1,
@@ -255,7 +287,8 @@ ExitDateTimeString = date_time.Format( Time:payment.ExitTime );
 LOG::LogInfo( message:"Exit time: " + ExitDateTimeString );
 
 // Exit deadline
-select any charge related by self->ChargeSegment[R15]->Charge[R23.''addend of''];
+select any charge related by self->ChargeSegment[R15]->
+  BaseChargeSegment[R32]->Charge[R33.''addend of''];
 ExitDeadlineDateTimeString = date_time.Format( Time:charge.ExitDeadline );
 LOG::LogInfo( message:"ExitDeadline: " + ExitDeadlineDateTimeString );
 
@@ -267,7 +300,8 @@ end if;
 LOG::LogReal( message:" <- Primary charge " + ChargeDisposition, r:charge.Amount );
 
 // Additional charge, if any
-select any AdditionalCharge related by self->ChargeSegment[R15]->AdditionalCharge[R24.''addend of''];
+select any AdditionalCharge related by self->ChargeSegment[R15]->
+  AdditionalChargeSegment[R32]->AdditionalCharge[R34.''addend of''];
 if ( not empty AdditionalCharge )
     ChargeDisposition = "collected.";
     if ( AdditionalCharge.WaiverGranted )

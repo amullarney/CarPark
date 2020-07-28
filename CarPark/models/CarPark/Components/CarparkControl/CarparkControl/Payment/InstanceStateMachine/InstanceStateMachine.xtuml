@@ -170,8 +170,7 @@ INSERT INTO SM_ACT
 	'// Establish exit deadline for this stay and send it to 
 // the payment machine so it can be printed on the ticket.
 select any charge related by self->Stay[R16.''retires debt for'']->
-  ChargeSegment[R15]->
-  Charge[R23.''addend of''];
+  ChargeSegment[R15]->BaseChargeSegment[R32]->Charge[R33.''addend of''];
 CurrentTime = DateTime::CurrentSeconds();
 charge.ExitDeadline = CurrentTime + (15 * TimeConversion::QuantumPerMinute);
 select one PaymentMachine related by self->PaymentMachine[R25.''collected by''];

@@ -70,7 +70,8 @@ False if the fee was paid.',
 INSERT INTO O_DBATTR
 	VALUES ("8e992b5f-9c1b-4131-93b7-3dcf088a0b32",
 	"946458d3-3399-4127-ae05-c61fbf8a5aaf",
-	'select many ChargeSegments related by self->ChargeSegment[R23.''sum of''];
+	'select many ChargeSegments related by self->
+  BaseChargeSegment[R33.''sum of'']->ChargeSegment[R32];
 sum = self.Amount;  // Declare a real
 sum = 0;
 for each ChargeSegment in ChargeSegments
