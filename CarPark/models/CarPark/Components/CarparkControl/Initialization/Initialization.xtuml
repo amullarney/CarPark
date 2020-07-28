@@ -40,7 +40,7 @@ INSERT INTO S_SYNC
 	'',
 	'// Carpark
 create object instance carpark of Carpark;
-carpark.Capacity = 200;
+carpark.Capacity = 5;
 carpark.Occupancy = 0;
 carpark.Open = true;
 carpark.LastTicketNumber = 0;
