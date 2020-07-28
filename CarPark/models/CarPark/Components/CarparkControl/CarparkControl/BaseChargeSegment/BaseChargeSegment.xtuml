@@ -1,0 +1,36 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("af109f89-9db3-4c59-b96c-d46185e236ab",
+	'BaseChargeSegment',
+	23,
+	'BaseChargeSegment',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_ID
+	VALUES (0,
+	"af109f89-9db3-4c59-b96c-d46185e236ab");
+INSERT INTO O_ID
+	VALUES (1,
+	"af109f89-9db3-4c59-b96c-d46185e236ab");
+INSERT INTO O_ID
+	VALUES (2,
+	"af109f89-9db3-4c59-b96c-d46185e236ab");
+INSERT INTO PE_PE
+	VALUES ("af109f89-9db3-4c59-b96c-d46185e236ab",
+	1,
+	"0e2ca0ec-d69c-4d5e-a330-1f86d9c2ffa4",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("0e2ca0ec-d69c-4d5e-a330-1f86d9c2ffa4",
+	"00000000-0000-0000-0000-000000000000",
+	"887b82b9-56ec-4387-b15a-8b42f655cdba",
+	'CarparkControl',
+	'Assumptions:
+1. Carpark is a singleton.  However, this domain is engineered to make it 
+fairly simple to support multiple instances of Carpark with a single instance
+of the application.
+',
+	0,
+	'../CarparkControl.xtuml');

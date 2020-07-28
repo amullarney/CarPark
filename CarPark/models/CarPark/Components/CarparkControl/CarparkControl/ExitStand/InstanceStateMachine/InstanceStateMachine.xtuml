@@ -378,9 +378,9 @@ elif ( disposition == StayDisposition::TardyExit )
     ExitDeadline:ExitDeadline::Expired );
   select one ticket related by self->Ticket[R29.''presently holding''];
   select any AdditionalCharge related by stay->ChargeSegment[R15]->
-    AdditionalCharge[R24.''addend of''];
+    AdditionalChargeSegment[R32]->AdditionalCharge[R34.''addend of''];
   select any charge related by stay->ChargeSegment[R15]->
-    Charge[R23.''addend of''];
+    BaseChargeSegment[R32]->Charge[R33.''addend of''];
   overstay = (DateTime::CurrentSeconds() - charge.ExitDeadline) * 
     TimeConversion::QuantumPerSecond / TimeConversion::QuantumPerMinute;
   send Operator::TardyExit( Location:self.Location, 
@@ -393,7 +393,8 @@ else
     Ticket:ExitTicketState::Inserted, Barrier:self.Barrier, 
     ExitDeadline:ExitDeadline::None );
   select one ticket related by self->Ticket[R29.''presently holding''];
-  select any charge related by stay->ChargeSegment[R15]->Charge[R23.''addend of''];
+  select any charge related by stay->ChargeSegment[R15]->
+    BaseChargeSegment[R32]->Charge[R33.''addend of''];
   send Operator::UnpaidStayExit( Location:self.Location, 
     TicketNumber:ticket.Number, Charge:charge.Amount, Duration:charge.Duration );
 end if;

@@ -49,8 +49,7 @@ INSERT INTO O_DBATTR
 	"c216bfa3-7943-40ad-9c0a-5f242438ac15",
 	'select any charge related by self->
   Stay[R16.''retires debt for'']->
-  ChargeSegment[R15]->
-  Charge[R23.''addend of''];
+  ChargeSegment[R15]->BaseChargeSegment[R32]->Charge[R33.''addend of''];
 self.Balance = charge.Amount - self.Amount;',
 	1,
 	0);
