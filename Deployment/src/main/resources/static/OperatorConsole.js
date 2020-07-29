@@ -130,7 +130,7 @@ $(function () {
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#NorthIssueTicket" ).click(function() { sendToServer( "OperatorIssueTicket", "location", "North" ); });
     $( "#NorthOpenBarrier" ).click(function() { sendToServer( "OpenEntryBarrier", "location", "North" ); });
-    $( "#Lane1OpenBarrier" ).click(function() { sendToServer( "OpenExitBarrier", "location", "Lane1" ); });
+    $( "#Lane1OpenBarrier" ).click(function() { sendToServer( "OpenExitBarrier", "location", "Lane 1" ); });
     $( "#Lane1TardyCancel" ).click(function() { sendToServer( "FeeWaived", "ticketNumber", vm.Lane1TicketNumber ); });
     $( "#Lane1TardyPaid" ).click(function() { sendToServer( "FeeCollected", "ticketNumber", vm.Lane1TicketNumber ); });
     $( "#Lane1UnpaidCancel" ).click(function() { sendToServer( "FeeWaived", "ticketNumber", vm.Lane1TicketNumber ); });

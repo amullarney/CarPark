@@ -955,7 +955,12 @@ INSERT INTO SPR_PS
 	'select any ExitStand from instances of ExitStand 
   where ( selected.Location == param.Location );
 ExitStand.Barrier = BarrierState::Open;
-send Exit::OpenBarrier( Location:param.Location );',
+send Exit::OpenBarrier( Location:param.Location );
+// The values of Ticket and ExitDeadline are unimportant in this case, so the
+// defaults are used.  The goal is to inform the Operator that the barrier is open.
+send Operator::ActivateExitStand( Location:param.Location, 
+  Barrier:BarrierState::Open, Ticket:ExitTicketState::NotInserted, 
+  ExitDeadline:ExitDeadline::None );',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -974,7 +979,7 @@ INSERT INTO SPR_PS
 	'DateTimeUpdate',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("e5c28b7b-3074-4ec3-933c-109cc9064aac",
@@ -1481,7 +1486,7 @@ INSERT INTO SPR_PS
 	'ExitDeadline',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("7d98badf-0872-49ac-a66e-72a2d0d07fa7",
@@ -1499,7 +1504,7 @@ INSERT INTO SPR_PS
 	'DispenseChange',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("f6708800-f5f1-4db3-bf94-550b4dd6e170",
