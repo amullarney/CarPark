@@ -4717,27 +4717,11 @@ INSERT INTO R_PART
 	0,
 	0,
 	'identified by');
-INSERT INTO O_RTIDA
-	VALUES ("4286e7ff-8596-46c9-9fd1-e94ec96fed44",
-	"78bbccbe-149d-4c28-8bb9-62c7583ac7b1",
-	0,
-	"bff5db6a-b032-4796-8092-49927e8b11a8",
-	"0fee315e-6010-4452-b50e-e67eabbdc361");
-INSERT INTO O_OIDA_PROXY
-	VALUES ("4286e7ff-8596-46c9-9fd1-e94ec96fed44",
-	"78bbccbe-149d-4c28-8bb9-62c7583ac7b1",
-	0,
-	'Number',
-	'./Ticket/Ticket.xtuml');
 INSERT INTO R_RTO
 	VALUES ("78bbccbe-149d-4c28-8bb9-62c7583ac7b1",
 	"bff5db6a-b032-4796-8092-49927e8b11a8",
 	"0fee315e-6010-4452-b50e-e67eabbdc361",
-	0);
-INSERT INTO O_ID_PROXY
-	VALUES (0,
-	"78bbccbe-149d-4c28-8bb9-62c7583ac7b1",
-	'./Ticket/Ticket.xtuml');
+	-1);
 INSERT INTO R_OIR
 	VALUES ("78bbccbe-149d-4c28-8bb9-62c7583ac7b1",
 	"bff5db6a-b032-4796-8092-49927e8b11a8",
@@ -4752,17 +4736,18 @@ INSERT INTO O_OBJ_PROXY
 the carpark.',
 	"00000000-0000-0000-0000-000000000000",
 	'./Ticket/Ticket.xtuml');
-INSERT INTO R_FORM
+INSERT INTO R_PART
 	VALUES ("324b9649-c373-4ba1-814c-460202283e85",
 	"bff5db6a-b032-4796-8092-49927e8b11a8",
 	"5f47f2bf-2d91-4b1c-8696-bfc3acc9c730",
 	0,
 	0,
 	'identifies');
-INSERT INTO R_RGO
+INSERT INTO R_RTO
 	VALUES ("324b9649-c373-4ba1-814c-460202283e85",
 	"bff5db6a-b032-4796-8092-49927e8b11a8",
-	"5f47f2bf-2d91-4b1c-8696-bfc3acc9c730");
+	"5f47f2bf-2d91-4b1c-8696-bfc3acc9c730",
+	-1);
 INSERT INTO R_OIR
 	VALUES ("324b9649-c373-4ba1-814c-460202283e85",
 	"bff5db6a-b032-4796-8092-49927e8b11a8",
