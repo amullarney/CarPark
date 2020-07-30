@@ -833,8 +833,14 @@ INSERT INTO SPR_PS
 	'IssueTicket',
 	'',
 	'// This message is received only when the vehicle sensor
-// or ticket request button malfunctions.  Accordingly, 
-// prod the entry stand lifecycle along.
+// or ticket request button malfunctions.  And, it should
+// be noted that the message is poorly named, but the name
+// comes from the specification.  In reality, it makes no
+// sense for the Operator to command the system to issue a
+// ticket in this situation.  Since the carpark may be full
+// at the time, it only makes sense to allow the Operator
+// issue a ticket request.  Accordingly, prod the entry stand 
+// lifecycle along by making a ticket request on behalf the driver.
 select any EntryStand from instances of EntryStand 
   where ( selected.Location == param.Location );
 generate EntryStand1:VehicleArrived() to EntryStand;
