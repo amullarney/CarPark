@@ -59,24 +59,28 @@ create object instance EntryStand of EntryStand;
 EntryStand.Barrier = BarrierState::Closed;
 EntryStand.Location = "North";
 EntryStand.VehicleWaiting = false; 
+EntryStand.VehicleArrived = false;
 relate EntryStand to carpark across R4.''controls entry to'';
 
 create object instance EntryStand of EntryStand;
 EntryStand.Barrier = BarrierState::Closed;
 EntryStand.Location = "East";
 EntryStand.VehicleWaiting = false; 
+EntryStand.VehicleArrived = false;
 relate EntryStand to carpark across R4.''controls entry to'';
 
 create object instance EntryStand of EntryStand;
 EntryStand.Barrier = BarrierState::Closed;
 EntryStand.Location = "South";
 EntryStand.VehicleWaiting = false; 
+EntryStand.VehicleArrived = false;
 relate EntryStand to carpark across R4.''controls entry to'';
 
 create object instance EntryStand of EntryStand;
 EntryStand.Barrier = BarrierState::Closed;
 EntryStand.Location = "West";
 EntryStand.VehicleWaiting = false; 
+EntryStand.VehicleArrived = false;
 relate EntryStand to carpark across R4.''controls entry to'';
 
 // Exit Stands
@@ -84,12 +88,14 @@ create object instance ExitStand of ExitStand;
 ExitStand.Barrier = BarrierState::Closed;
 ExitStand.Location = "Lane 1";
 ExitStand.VehicleWaiting = false;
+ExitStand.VehicleArrived = false;
 relate ExitStand to carpark across R10.''controls exit from'';
 
 create object instance ExitStand of ExitStand;
 ExitStand.Barrier = BarrierState::Closed;
 ExitStand.Location = "Lane 2";
 ExitStand.VehicleWaiting = false;
+ExitStand.VehicleArrived = false;
 relate ExitStand to carpark across R10.''controls exit from'';
 
 // Payment Machines
