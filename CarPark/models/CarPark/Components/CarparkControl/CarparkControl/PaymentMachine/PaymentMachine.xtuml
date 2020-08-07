@@ -7,6 +7,23 @@ INSERT INTO O_OBJ
 	'PaymentMachine',
 	'Accepts payment for a stay, identified by a ticket.',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("1641f20c-c0d1-4c1a-a70a-aaeb6ffbe487",
+	"71fc749d-1e1a-472f-a507-e927aa1c4890",
+	'ResetTimeout',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// If cancel returns false, the timer has expired and an event is in-flight.
+// See AwaitingChangeResponse state - where this could be problematic
+self.IgnoreCancelFlag = TIM::timer_cancel( timer_inst_ref:self.TimeoutTimer );
+create event instance Timeout of PaymentMachine4:TransactionCancelled to self;
+self.TimeoutTimer = TIM::timer_start( event_inst:Timeout, microseconds:TimerValues::PaymentTimeout );
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
 INSERT INTO O_NBATTR
 	VALUES ("628ad614-ae00-4cb1-a340-a4046e14978f",
 	"71fc749d-1e1a-472f-a507-e927aa1c4890");
@@ -34,7 +51,7 @@ INSERT INTO O_BATTR
 INSERT INTO O_ATTR
 	VALUES ("b4b3a8e6-4677-42cb-abc3-c60a191e41eb",
 	"71fc749d-1e1a-472f-a507-e927aa1c4890",
-	"9e5d9fdb-5a0f-46e5-9d1c-4761007a2589",
+	"d5b70c33-8196-41fd-b017-febbfd17f75e",
 	'current_state',
 	'',
 	'',
@@ -83,6 +100,44 @@ INSERT INTO O_ATTR
 currency slots and false to close them.',
 	'',
 	'SlotsOpen',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("553a8ec6-2422-4239-8360-39bb78cb471e",
+	"71fc749d-1e1a-472f-a507-e927aa1c4890");
+INSERT INTO O_BATTR
+	VALUES ("553a8ec6-2422-4239-8360-39bb78cb471e",
+	"71fc749d-1e1a-472f-a507-e927aa1c4890");
+INSERT INTO O_ATTR
+	VALUES ("553a8ec6-2422-4239-8360-39bb78cb471e",
+	"71fc749d-1e1a-472f-a507-e927aa1c4890",
+	"9e5d9fdb-5a0f-46e5-9d1c-4761007a2589",
+	'TimeoutTimer',
+	'Timer used to cancel transaction if not completed in a timely manner',
+	'',
+	'TimeoutTimer',
+	0,
+	"ba5eda7a-def5-0000-0000-00000000000f",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("d5b70c33-8196-41fd-b017-febbfd17f75e",
+	"71fc749d-1e1a-472f-a507-e927aa1c4890");
+INSERT INTO O_BATTR
+	VALUES ("d5b70c33-8196-41fd-b017-febbfd17f75e",
+	"71fc749d-1e1a-472f-a507-e927aa1c4890");
+INSERT INTO O_ATTR
+	VALUES ("d5b70c33-8196-41fd-b017-febbfd17f75e",
+	"71fc749d-1e1a-472f-a507-e927aa1c4890",
+	"553a8ec6-2422-4239-8360-39bb78cb471e",
+	'IgnoreCancelFlag',
+	'Cancellation of the timer failed during reset attempt; the timer has expired.
+This means we have an unwanted event in-flight which should be ignored.
+Processing the receipt of the unwanted event will clear this flag.',
+	'',
+	'IgnoreCancelFlag',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000001",
 	'',
