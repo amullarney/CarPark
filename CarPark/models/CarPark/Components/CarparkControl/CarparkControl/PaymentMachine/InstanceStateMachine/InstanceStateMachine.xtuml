@@ -768,7 +768,9 @@ select one ticket related by self->
   Ticket[R28.''presently holding''];
 ticket.Status = TicketStatus::AwaitingCollection;
 
-tmr = TIM::timer_cancel( timer_inst_ref:self.TimeoutTimer );',
+tmr = TIM::timer_cancel( timer_inst_ref:self.TimeoutTimer );
+// ensure that the ignore flag is never ''left over'' for misinterpretation
+self.IgnoreCancelFlag = false;',
 	'',
 	0);
 INSERT INTO SM_TAH

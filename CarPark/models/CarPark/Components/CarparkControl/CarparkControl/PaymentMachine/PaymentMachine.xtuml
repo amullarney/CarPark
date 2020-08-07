@@ -16,7 +16,7 @@ INSERT INTO O_TFR
 	1,
 	'// If cancel returns false, the timer has expired and an event is in-flight.
 // See AwaitingChangeResponse state - where this could be problematic
-self.IgnoreCancelFlag = TIM::timer_cancel( timer_inst_ref:self.TimeoutTimer );
+self.IgnoreCancelFlag = not TIM::timer_cancel( timer_inst_ref:self.TimeoutTimer );
 create event instance Timeout of PaymentMachine4:TransactionCancelled to self;
 self.TimeoutTimer = TIM::timer_start( event_inst:Timeout, microseconds:TimerValues::PaymentTimeout );
 ',
