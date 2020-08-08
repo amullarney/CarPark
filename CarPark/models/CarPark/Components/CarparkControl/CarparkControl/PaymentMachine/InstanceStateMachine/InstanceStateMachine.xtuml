@@ -785,7 +785,7 @@ INSERT INTO SM_ACT
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
 	1,
 	'select one payment related by self->Payment[R25.''collects''];
-
+send Payer::TransactionCancelled( Location:self.Location );
 // Refund any partial payment
 if ( payment.Amount > 0 )
   send Payer::DispenseChange( Location:self.Location, Amount:payment.Amount );
@@ -910,6 +910,7 @@ INSERT INTO SM_ACT
 	'select one payment related by self->Payment[R25.''collects''];
 // Cannot make change - but refund all of overpayment.
 send Payer::DispenseChange( Location:self.Location, Amount:payment.Amount );
+send Payer::TransactionCancelled( Location:self.Location );
 generate Payment3:Cancelled() to payment;',
 	'',
 	0);

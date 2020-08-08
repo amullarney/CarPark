@@ -260,6 +260,27 @@ INSERT INTO C_PP
 	0,
 	'',
 	"8a961f65-cb8e-4db4-ba36-ca8f380225fd");
+INSERT INTO C_EP
+	VALUES ("e25325e0-cebe-4e34-8814-1a1f84c7e4a4",
+	"1775761d-746e-41ae-a5e0-cd1a783dc665",
+	-1,
+	'TransactionCancelled',
+	'');
+INSERT INTO C_AS
+	VALUES ("e25325e0-cebe-4e34-8814-1a1f84c7e4a4",
+	'TransactionCancelled',
+	'',
+	1,
+	"f6708800-f5f1-4db3-bf94-550b4dd6e170");
+INSERT INTO C_PP
+	VALUES ("dd714b69-26b3-45dc-98ce-e661e9e8cfa2",
+	"e25325e0-cebe-4e34-8814-1a1f84c7e4a4",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'Location',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
 INSERT INTO PE_PE
 	VALUES ("1775761d-746e-41ae-a5e0-cd1a783dc665",
 	1,

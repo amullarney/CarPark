@@ -16,7 +16,8 @@ INSERT INTO O_TFR
 	0,
 	'create object instance paystand of Paystand;
 paystand.MoneyDispensed = false;
-paystand.TicketReturnedUnchanged = false;',
+paystand.TicketReturned = false;
+paystand.TransactionCancelled = false;',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
@@ -31,10 +32,10 @@ INSERT INTO O_ATTR
 	VALUES ("71cf6de5-e838-45ff-8a47-9ec8f7491e67",
 	"4d1cc40a-87de-4f2b-9e4e-efc95b76106b",
 	"00000000-0000-0000-0000-000000000000",
-	'TicketReturnedUnchanged',
+	'TicketReturned',
 	'',
 	'',
-	'TicketReturnedUnchanged',
+	'TicketReturned',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000001",
 	'',
@@ -53,6 +54,24 @@ INSERT INTO O_ATTR
 	'',
 	'',
 	'MoneyDispensed',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("f5d99fec-7f4c-4b9e-8209-86b4548a9819",
+	"4d1cc40a-87de-4f2b-9e4e-efc95b76106b");
+INSERT INTO O_BATTR
+	VALUES ("f5d99fec-7f4c-4b9e-8209-86b4548a9819",
+	"4d1cc40a-87de-4f2b-9e4e-efc95b76106b");
+INSERT INTO O_ATTR
+	VALUES ("f5d99fec-7f4c-4b9e-8209-86b4548a9819",
+	"4d1cc40a-87de-4f2b-9e4e-efc95b76106b",
+	"4b3091ed-de7d-4e97-becf-0e0be1e53075",
+	'TransactionCancelled',
+	'',
+	'',
+	'TransactionCancelled',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000001",
 	'',

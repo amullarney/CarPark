@@ -20,9 +20,8 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'create object instance patron of Patron;
+	'select any patron from instances of Patron;
 patron.Behavior = "normal";	// no fumbling for cash..
-Paystand::Create();
 send Payer::InsertedTicket( Location:"1st Floor", TicketNumber:1 );',
 	1,
 	'',

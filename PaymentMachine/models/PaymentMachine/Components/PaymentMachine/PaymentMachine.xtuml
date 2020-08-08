@@ -386,6 +386,24 @@ INSERT INTO C_EP_PROXY
 	'DispenseChange',
 	'',
 	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("ef0996e5-9a86-4e9c-b6a9-37d8d571a984",
+	"e25325e0-cebe-4e34-8814-1a1f84c7e4a4",
+	"cba51a94-8f08-44d4-af84-9adb6451b70d");
+INSERT INTO SPR_RS
+	VALUES ("ef0996e5-9a86-4e9c-b6a9-37d8d571a984",
+	'TransactionCancelled',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("e25325e0-cebe-4e34-8814-1a1f84c7e4a4",
+	"1775761d-746e-41ae-a5e0-cd1a783dc665",
+	-1,
+	'TransactionCancelled',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("1775761d-746e-41ae-a5e0-cd1a783dc665",
 	"00000000-0000-0000-0000-000000000000",

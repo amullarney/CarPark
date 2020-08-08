@@ -7,6 +7,27 @@ INSERT INTO O_OBJ
 	'Patron',
 	'',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("51b59a37-6343-4b3e-b684-57aee88ba46e",
+	"c8cf3868-1e5f-4dbb-83e0-4a1a1b5e7920",
+	'Create',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance patron of Patron;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("2127b3a2-5ac5-40dd-9755-7b5426fc144b",
+	"51b59a37-6343-4b3e-b684-57aee88ba46e",
+	'behavior',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
 INSERT INTO O_NBATTR
 	VALUES ("a671ef59-ea30-425a-9bba-50daf91a72a8",
 	"c8cf3868-1e5f-4dbb-83e0-4a1a1b5e7920");

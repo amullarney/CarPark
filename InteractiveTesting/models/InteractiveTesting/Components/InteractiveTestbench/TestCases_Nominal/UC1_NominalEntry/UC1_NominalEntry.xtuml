@@ -19,9 +19,7 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'Entry::Create();
-Operator::Create();
-send EntryStand::VehicleWaiting( Location:"North" );
+	'send EntryStand::VehicleWaiting( Location:"North" );
 ',
 	1,
 	'',

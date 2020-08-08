@@ -14,11 +14,16 @@ INSERT INTO O_OBJ
 INSERT INTO O_TFR
 	VALUES ("a5766775-3436-41d2-8e06-b6cd4db263ab",
 	"894fb0f9-871b-4790-bca9-eefb4cf07f9a",
-	'Run',
+	'RunNominals',
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
 	'create object instance bucket of NominalBucket;
+Operator::Create();
+Entry::Create();
+Paystand::Create();
+Exit::Create();
+Patron::Create( behavior:"normal" );
 
 // Initialize the application under test.
 send Operator::OpenCarpark();',
