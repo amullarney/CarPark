@@ -14,7 +14,8 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'create object instance patron of Patron;',
+	'create object instance patron of Patron;
+patron.Behavior = param.behavior;',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",

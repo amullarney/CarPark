@@ -31,6 +31,26 @@ send Operator::OpenCarpark();',
 	'',
 	"00000000-0000-0000-0000-000000000000",
 	0);
+INSERT INTO O_TFR
+	VALUES ("d57fd7e5-5cf8-4f0e-b5e2-090310f7751a",
+	"894fb0f9-871b-4790-bca9-eefb4cf07f9a",
+	'RunNonNominal1',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance bucket of NominalBucket;
+Operator::Create();
+Entry::Create();
+Paystand::Create();
+Exit::Create();
+Patron::Create( behavior:"tooSlowl" );
+
+// Initialize the application under test.
+send Operator::OpenCarpark();',
+	1,
+	'',
+	"a5766775-3436-41d2-8e06-b6cd4db263ab",
+	0);
 INSERT INTO O_NBATTR
 	VALUES ("3efc45c1-20d4-493c-9489-eefe93768faa",
 	"894fb0f9-871b-4790-bca9-eefb4cf07f9a");

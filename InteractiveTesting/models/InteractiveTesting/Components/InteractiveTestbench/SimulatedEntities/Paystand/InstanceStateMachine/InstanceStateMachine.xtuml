@@ -426,7 +426,7 @@ INSERT INTO SM_ACT
 	1,
 	'LOG::LogInfo( message:"Paystand transaction cancelled" );
 self.TransactionCancelled = true;
-generate Paystand2:Ended() to self;',
+',
 	'',
 	0);
 INSERT INTO SM_MOAH
@@ -542,7 +542,7 @@ INSERT INTO SM_AH
 INSERT INTO SM_ACT
 	VALUES ("1d290b80-c3e7-49b7-a5e4-6b3e2dcba1ff",
 	"71f6e4eb-60bf-4103-bde9-b9a0878920f5",
-	3,
+	1,
 	'',
 	'',
 	0);
