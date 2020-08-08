@@ -1,0 +1,69 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("894fb0f9-871b-4790-bca9-eefb4cf07f9a",
+	'NominalBucket',
+	4,
+	'NominalBucket',
+	'1.	Launch Verifier with InteractiveTesting configuration and logging enabled.
+2.	Execute CarparkControl/Initialization/CreatePEIs
+3.	Execute CarparkControl/Initialization/Run
+4.	Execute InteractiveTestbench/TestCases/NominalBucket/Run
+5.	Verify "bucket successful" in the console log.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("a5766775-3436-41d2-8e06-b6cd4db263ab",
+	"894fb0f9-871b-4790-bca9-eefb4cf07f9a",
+	'Run',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance bucket of NominalBucket;
+
+// Initialize the application under test.
+send Operator::OpenCarpark();',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_NBATTR
+	VALUES ("3efc45c1-20d4-493c-9489-eefe93768faa",
+	"894fb0f9-871b-4790-bca9-eefb4cf07f9a");
+INSERT INTO O_BATTR
+	VALUES ("3efc45c1-20d4-493c-9489-eefe93768faa",
+	"894fb0f9-871b-4790-bca9-eefb4cf07f9a");
+INSERT INTO O_ATTR
+	VALUES ("3efc45c1-20d4-493c-9489-eefe93768faa",
+	"894fb0f9-871b-4790-bca9-eefb4cf07f9a",
+	"00000000-0000-0000-0000-000000000000",
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000006",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"894fb0f9-871b-4790-bca9-eefb4cf07f9a");
+INSERT INTO O_ID
+	VALUES (1,
+	"894fb0f9-871b-4790-bca9-eefb4cf07f9a");
+INSERT INTO O_ID
+	VALUES (2,
+	"894fb0f9-871b-4790-bca9-eefb4cf07f9a");
+INSERT INTO PE_PE
+	VALUES ("894fb0f9-871b-4790-bca9-eefb4cf07f9a",
+	1,
+	"c7be3bcb-d5e1-4863-b6cc-dc5120645a51",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("c7be3bcb-d5e1-4863-b6cc-dc5120645a51",
+	"00000000-0000-0000-0000-000000000000",
+	"dccd26e2-5328-45c4-8ada-fed969fc6ffe",
+	'TestCases_Nominal',
+	'',
+	0,
+	'../TestCases_Nominal.xtuml');

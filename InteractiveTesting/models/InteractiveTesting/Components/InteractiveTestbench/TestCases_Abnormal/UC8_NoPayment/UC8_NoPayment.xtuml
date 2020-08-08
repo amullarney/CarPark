@@ -1,0 +1,52 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("152cf42f-4200-4424-863c-61acf56b67dd",
+	'UC8_NoPayment',
+	2,
+	'UC8_NoPayment',
+	'1. Launch Verifier on the InteractiveTesting configuration.
+2. Execute CarparkControl/Initialization/CreatePEIs().
+3. Execute CarparkControl/Initialization/Run().
+4. Execute InteractiveTestbench/TestCases/UC01_NominalEntry/Run().
+5. Wait about 20 seconds and definitely no more than 40 seconds.
+6. Execute InteractiveTestbench/TestCases/UC05_NominalPayment/Run().
+7. Using Session Explorer verify expected post conditions.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("f0f61e94-e944-47d2-9eaa-dd6632442c63",
+	"152cf42f-4200-4424-863c-61acf56b67dd",
+	'Run',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance patron of Patron;
+patron.Behavior = "fumble";	// takes too long to find a coin..
+send Payer::InsertedTicket( Location:"1st Floor", TicketNumber:1 );',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_ID
+	VALUES (0,
+	"152cf42f-4200-4424-863c-61acf56b67dd");
+INSERT INTO O_ID
+	VALUES (1,
+	"152cf42f-4200-4424-863c-61acf56b67dd");
+INSERT INTO O_ID
+	VALUES (2,
+	"152cf42f-4200-4424-863c-61acf56b67dd");
+INSERT INTO PE_PE
+	VALUES ("152cf42f-4200-4424-863c-61acf56b67dd",
+	1,
+	"9492b595-3b2d-4b9d-8d74-7945e94f4a33",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("9492b595-3b2d-4b9d-8d74-7945e94f4a33",
+	"00000000-0000-0000-0000-000000000000",
+	"dccd26e2-5328-45c4-8ada-fed969fc6ffe",
+	'TestCases_Abnormal',
+	'',
+	0,
+	'../TestCases_Abnormal.xtuml');
