@@ -1,47 +1,43 @@
 -- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
 
 INSERT INTO O_OBJ
-	VALUES ("202e27a7-5a72-49a2-8c7b-dbdeff186d6e",
-	'UC11_NominalExit',
-	3,
-	'UC11_NominalExit',
+	VALUES ("ba0a0858-9e74-4f0a-a0f6-fd0135ecf641",
+	'UC5_NominalPayment',
+	2,
+	'UC5_NominalPayment',
 	'1. Launch Verifier on the InteractiveTesting configuration.
 2. Execute CarparkControl/Initialization/CreatePEIs().
 3. Execute CarparkControl/Initialization/Run().
 4. Execute InteractiveTestbench/TestCases/UC01_NominalEntry/Run().
 5. Wait about 20 seconds and definitely no more than 40 seconds.
 6. Execute InteractiveTestbench/TestCases/UC05_NominalPayment/Run().
-7. Execute InteractiveTestbench/TestCases/UC11_NominalExit/Run().
-8. Using Session Explorer verify expected post conditions.
-Specifically, ensure that the Operator instance in the test bench shows
-true for all boolean attributes, 1 for OccupancyIncreased and
-OccupancyDecreased, and 0 for Occupancy.  Verify that all instances in
-the CarparkControl component are in their "resting" states.',
+7. Using Session Explorer verify expected post conditions.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
-	VALUES ("0b40853e-175a-489e-bbb5-bd14ee7c3b31",
-	"202e27a7-5a72-49a2-8c7b-dbdeff186d6e",
+	VALUES ("c065fe99-397c-4a57-b0d7-d4e66acbf423",
+	"ba0a0858-9e74-4f0a-a0f6-fd0135ecf641",
 	'Run',
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'create object instance exit of Exit;
-generate Exit3:VehicleArrived() to exit;',
+	'create object instance patron of Patron;
+patron.Behavior = "normal";	// no fumbling for cash..
+send Payer::InsertedTicket( Location:"1st Floor", TicketNumber:1 );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
 	0);
 INSERT INTO O_ID
 	VALUES (0,
-	"202e27a7-5a72-49a2-8c7b-dbdeff186d6e");
+	"ba0a0858-9e74-4f0a-a0f6-fd0135ecf641");
 INSERT INTO O_ID
 	VALUES (1,
-	"202e27a7-5a72-49a2-8c7b-dbdeff186d6e");
+	"ba0a0858-9e74-4f0a-a0f6-fd0135ecf641");
 INSERT INTO O_ID
 	VALUES (2,
-	"202e27a7-5a72-49a2-8c7b-dbdeff186d6e");
+	"ba0a0858-9e74-4f0a-a0f6-fd0135ecf641");
 INSERT INTO PE_PE
-	VALUES ("202e27a7-5a72-49a2-8c7b-dbdeff186d6e",
+	VALUES ("ba0a0858-9e74-4f0a-a0f6-fd0135ecf641",
 	1,
 	"c7be3bcb-d5e1-4863-b6cc-dc5120645a51",
 	"00000000-0000-0000-0000-000000000000",
@@ -50,7 +46,7 @@ INSERT INTO EP_PKG_PROXY
 	VALUES ("c7be3bcb-d5e1-4863-b6cc-dc5120645a51",
 	"00000000-0000-0000-0000-000000000000",
 	"dccd26e2-5328-45c4-8ada-fed969fc6ffe",
-	'TestCases',
+	'TestCases_Nominal',
 	'',
 	0,
-	'../TestCases.xtuml');
+	'../TestCases_Nominal.xtuml');

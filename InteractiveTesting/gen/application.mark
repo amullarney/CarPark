@@ -1,2 +1,1 @@
-*,RootPackage,*,InteractiveTesting::InteractiveTesting
 Components::InteractiveTestbench,InitFunction,Component,Initialize

@@ -191,7 +191,7 @@ INSERT INTO EP_PKG_PROXY
 	VALUES ("1224df28-97e6-44e1-8d1f-a0640160ec61",
 	"00000000-0000-0000-0000-000000000000",
 	"dccd26e2-5328-45c4-8ada-fed969fc6ffe",
-	'Classes',
+	'SimulatedEntities',
 	'',
 	0,
-	'../Classes.xtuml');
+	'../SimulatedEntities.xtuml');
