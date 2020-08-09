@@ -394,8 +394,9 @@ INSERT INTO SPR_RS
 	VALUES ("ef0996e5-9a86-4e9c-b6a9-37d8d571a984",
 	'TransactionCancelled',
 	'',
-	'',
-	3,
+	'::TransactionCancelled( Location:param.Location );
+',
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("e25325e0-cebe-4e34-8814-1a1f84c7e4a4",
