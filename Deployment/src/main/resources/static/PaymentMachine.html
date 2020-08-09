@@ -60,10 +60,13 @@
     </div>
     <div class="row">
         <h4>Transaction completion...</h4>
-        <h5 v-if="InsufficientChange" style="color:red;">Insufficient change available.  Waive change or cancel transaction?</h4>
+        <h5 v-if="InsufficientChange" style="color:red;">Insufficient change available.  Waive change or cancel transaction?</h5>
         <button v-bind:disabled="CancelledTransactionDisabled" id="CancelledTransaction" class="btn btn-primary" type="submit">Cancel</button>
         <button v-bind:disabled="WaivedChangeDisabled" id="WaivedChange" class="btn btn-primary" type="submit">Waive Change</button>
         <button v-bind:disabled="TicketCollectedDisabled" id="TicketCollected" class="btn btn-primary" type="submit">Collect Ticket</button>
+    </div>
+    <div class="row">
+        <h4>{{ CancelReason }}</h4>
     </div>
     <div class="row">
         <div class="col-md-12">

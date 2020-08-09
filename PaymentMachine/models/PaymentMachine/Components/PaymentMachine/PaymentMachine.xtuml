@@ -394,7 +394,7 @@ INSERT INTO SPR_RS
 	VALUES ("ef0996e5-9a86-4e9c-b6a9-37d8d571a984",
 	'TransactionCancelled',
 	'',
-	'::TransactionCancelled( Location:param.Location );
+	'::TransactionCancelled( Location:param.Location, Why:param.Why );
 ',
 	1,
 	0);

@@ -66,9 +66,9 @@ public class PaymentMachine extends Component<PaymentMachine> {
       	} catch ( Exception e ) {}
     }
 
-    public void TransactionCancelled( final String p_Location ) throws XtumlException {
+    public void TransactionCancelled( final String p_Location final String p_Why ) throws XtumlException {
     	try {
-            PaymentMachineMsgController.Singleton().SendTransactionCancelledMessage( p_Location );
+            PaymentMachineMsgController.Singleton().SendTransactionCancelledMessage( p_Location, p_Why );
       	} catch ( Exception e ) {}
     }
 

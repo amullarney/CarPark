@@ -162,8 +162,8 @@ public class PaymentMachineMsgController {
         this.template.convertAndSend( topic, msg );
     }
 
-    public void SendTransactionCancelledMessage ( String Location ) throws Exception {
-    	TransactionCancelledMsg msg = new TransactionCancelledMsg( "Transaction cancelled" );
+    public void SendTransactionCancelledMessage ( String Location, String Why ) throws Exception {
+    	TransactionCancelledMsg msg = new TransactionCancelledMsg( "Transaction cancelled by " + Why );
         String topic = "/topic/PaymentMachine/" + Location;
         this.template.convertAndSend( topic, msg );
     }
