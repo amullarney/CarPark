@@ -35,7 +35,17 @@ INSERT INTO O_TFR
 	VALUES ("d57fd7e5-5cf8-4f0e-b5e2-090310f7751a",
 	"894fb0f9-871b-4790-bca9-eefb4cf07f9a",
 	'RunNonNominal1',
-	'',
+	'A preliminary effort to extend use case coverage using the existing test bucket.
+Specifically, this addresses UC8 - timeout when payment takes too long. 
+A Behavior attribute added to Patron modifies a state action to delay making payment.
+A simulated entity for the PaymentMachine captures the resulting cancellation.
+Note, however, that the NominalBucket state machine has not been modified to allow for abnormal action.
+Addition of more Patron attributes to force choice of PaymentMachine, overpayment, could extend use case coverage.
+
+As of this time, 8/9/2020 further development is on hold.
+
+Running this will log the effect of timeout but will also show failure of the test bucket.
+',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
 	'create object instance bucket of NominalBucket;
