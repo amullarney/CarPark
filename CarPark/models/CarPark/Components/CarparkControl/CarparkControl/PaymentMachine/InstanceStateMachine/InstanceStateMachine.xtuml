@@ -36,6 +36,15 @@ INSERT INTO SM_EVTDI
 	'',
 	"5b109579-96e4-406a-800b-ad8441d51927",
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVTDI
+	VALUES ("5def5d7d-ce26-49f4-a8d9-f5e7b3da259e",
+	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
+	'Reason',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	"670ea272-f913-43da-bbc4-5769d7ab644c",
+	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_LEVT
 	VALUES ("f6eb4fef-6b00-47ac-89ca-0be2f159952f",
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
@@ -785,12 +794,14 @@ INSERT INTO SM_ACT
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
 	1,
 	'select one payment related by self->Payment[R25.''collects''];
-send Payer::TransactionCancelled( Location:self.Location );
 // Refund any partial payment
 if ( payment.Amount > 0 )
   send Payer::DispenseChange( Location:self.Location, Amount:payment.Amount );
 end if;
-generate Payment3:Cancelled() to payment;',
+generate Payment3:Cancelled() to payment;
+send Payer::TransactionCancelled( Location:self.Location, Why:rcvd_evt.Reason );
+
+',
 	'',
 	0);
 INSERT INTO SM_TAH
@@ -824,7 +835,7 @@ relate payment to stay across R16.''retires debt for'';
 stay.CalculateCharge();
 
 // Prepare to cancel transaction if not initiated in timely manner.
-create event instance Timeout of PaymentMachine4:TransactionCancelled to self;
+create event instance Timeout of PaymentMachine4:TransactionCancelled( Reason:"timeout" ) to self;
 self.TimeoutTimer = TIM::timer_start( event_inst:Timeout, microseconds:TimerValues::PaymentTimeout );
 ',
 	'',
@@ -910,8 +921,8 @@ INSERT INTO SM_ACT
 	'select one payment related by self->Payment[R25.''collects''];
 // Cannot make change - but refund all of overpayment.
 send Payer::DispenseChange( Location:self.Location, Amount:payment.Amount );
-send Payer::TransactionCancelled( Location:self.Location );
-generate Payment3:Cancelled() to payment;',
+generate Payment3:Cancelled() to payment;
+',
 	'',
 	0);
 INSERT INTO SM_MOAH
@@ -992,6 +1003,7 @@ INSERT INTO SM_ACT
 else
   // a real cancellation..
   generate PaymentMachine8:TransactionCancelled_pvt() to self;
+  send Payer::TransactionCancelled( Location:self.Location, Why:rcvd_evt.Reason );
 end if;',
 	'',
 	0);

@@ -1339,7 +1339,7 @@ INSERT INTO SPR_PS
 	'',
 	'select any machine from instances of PaymentMachine 
   where ( selected.Location == param.Location );
-generate PaymentMachine4:TransactionCancelled() to machine;',
+generate PaymentMachine4:TransactionCancelled( Reason:"request" ) to machine;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
