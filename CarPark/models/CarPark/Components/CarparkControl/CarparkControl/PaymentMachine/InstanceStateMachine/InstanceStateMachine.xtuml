@@ -799,7 +799,7 @@ if ( payment.Amount > 0 )
   send Payer::DispenseChange( Location:self.Location, Amount:payment.Amount );
 end if;
 generate Payment3:Cancelled() to payment;
-send Payer::TransactionCancelled( Location:self.Location, Why:rcvd_evt.Reason );
+send Payer::TransactionCancelled( Location:self.Location, Why:param.Reason );
 
 ',
 	'',
@@ -1003,7 +1003,7 @@ INSERT INTO SM_ACT
 else
   // a real cancellation..
   generate PaymentMachine8:TransactionCancelled_pvt() to self;
-  send Payer::TransactionCancelled( Location:self.Location, Why:rcvd_evt.Reason );
+  send Payer::TransactionCancelled( Location:self.Location, Why:param.Reason );
 end if;',
 	'',
 	0);
