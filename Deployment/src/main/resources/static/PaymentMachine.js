@@ -11,7 +11,7 @@ var vm = new Vue({
 	    RemainingBalance: "",
 	    InsufficientChange: false,
 	    ExitDeadline: "",
-	    ChangeDispensed: ""
+	    ChangeDispensed: "",
 	    CancelReason: ""
     }
 })
