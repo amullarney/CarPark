@@ -36,6 +36,15 @@ INSERT INTO SM_EVTDI
 	'',
 	"5b109579-96e4-406a-800b-ad8441d51927",
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVTDI
+	VALUES ("5def5d7d-ce26-49f4-a8d9-f5e7b3da259e",
+	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
+	'Reason',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	"670ea272-f913-43da-bbc4-5769d7ab644c",
+	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_LEVT
 	VALUES ("f6eb4fef-6b00-47ac-89ca-0be2f159952f",
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
@@ -162,6 +171,24 @@ INSERT INTO SM_EVT
 	'',
 	'PaymentMachine7',
 	'');
+INSERT INTO SM_LEVT
+	VALUES ("9a35d486-d86f-4b1b-9e6d-2bd3b4a0db39",
+	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("9a35d486-d86f-4b1b-9e6d-2bd3b4a0db39",
+	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("9a35d486-d86f-4b1b-9e6d-2bd3b4a0db39",
+	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
+	"00000000-0000-0000-0000-000000000000",
+	8,
+	'TransactionCancelled_pvt',
+	0,
+	'',
+	'PaymentMachine8',
+	'');
 INSERT INTO SM_STATE
 	VALUES ("189251ab-0795-4814-8ada-94b2feb19a49",
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
@@ -196,7 +223,7 @@ INSERT INTO SM_SEME
 	"c2783eb0-9d74-4c6f-8556-1c496ead77bc",
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
 	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_CH
+INSERT INTO SM_EIGN
 	VALUES ("189251ab-0795-4814-8ada-94b2feb19a49",
 	"670ea272-f913-43da-bbc4-5769d7ab644c",
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
@@ -238,6 +265,17 @@ INSERT INTO SM_CH
 INSERT INTO SM_SEME
 	VALUES ("189251ab-0795-4814-8ada-94b2feb19a49",
 	"5b109579-96e4-406a-800b-ad8441d51927",
+	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_CH
+	VALUES ("189251ab-0795-4814-8ada-94b2feb19a49",
+	"9a35d486-d86f-4b1b-9e6d-2bd3b4a0db39",
+	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("189251ab-0795-4814-8ada-94b2feb19a49",
+	"9a35d486-d86f-4b1b-9e6d-2bd3b4a0db39",
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_STATE
@@ -300,6 +338,17 @@ INSERT INTO SM_SEME
 	"5b109579-96e4-406a-800b-ad8441d51927",
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_CH
+	VALUES ("507fc9e6-749c-4cb3-84fd-ea2ed70368d4",
+	"9a35d486-d86f-4b1b-9e6d-2bd3b4a0db39",
+	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("507fc9e6-749c-4cb3-84fd-ea2ed70368d4",
+	"9a35d486-d86f-4b1b-9e6d-2bd3b4a0db39",
+	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
+	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_STATE
 	VALUES ("a9415920-ff60-4500-b2a1-13dfc40508f2",
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
@@ -340,7 +389,7 @@ INSERT INTO SM_SEME
 	"c2783eb0-9d74-4c6f-8556-1c496ead77bc",
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
 	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_CH
+INSERT INTO SM_EIGN
 	VALUES ("a9415920-ff60-4500-b2a1-13dfc40508f2",
 	"670ea272-f913-43da-bbc4-5769d7ab644c",
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
@@ -376,6 +425,17 @@ INSERT INTO SM_CH
 INSERT INTO SM_SEME
 	VALUES ("a9415920-ff60-4500-b2a1-13dfc40508f2",
 	"5b109579-96e4-406a-800b-ad8441d51927",
+	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_CH
+	VALUES ("a9415920-ff60-4500-b2a1-13dfc40508f2",
+	"9a35d486-d86f-4b1b-9e6d-2bd3b4a0db39",
+	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("a9415920-ff60-4500-b2a1-13dfc40508f2",
+	"9a35d486-d86f-4b1b-9e6d-2bd3b4a0db39",
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_STATE
@@ -450,6 +510,11 @@ INSERT INTO SM_SEME
 	"5b109579-96e4-406a-800b-ad8441d51927",
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("5191b1de-7667-48e3-909f-d4bf1d2fd319",
+	"9a35d486-d86f-4b1b-9e6d-2bd3b4a0db39",
+	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
+	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_STATE
 	VALUES ("4bb156ee-2bc7-4f26-8502-994081212977",
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
@@ -490,7 +555,7 @@ INSERT INTO SM_SEME
 	"c2783eb0-9d74-4c6f-8556-1c496ead77bc",
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
 	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_CH
+INSERT INTO SM_EIGN
 	VALUES ("4bb156ee-2bc7-4f26-8502-994081212977",
 	"670ea272-f913-43da-bbc4-5769d7ab644c",
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
@@ -526,6 +591,17 @@ INSERT INTO SM_SEME
 INSERT INTO SM_SEME
 	VALUES ("4bb156ee-2bc7-4f26-8502-994081212977",
 	"5b109579-96e4-406a-800b-ad8441d51927",
+	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_CH
+	VALUES ("4bb156ee-2bc7-4f26-8502-994081212977",
+	"9a35d486-d86f-4b1b-9e6d-2bd3b4a0db39",
+	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("4bb156ee-2bc7-4f26-8502-994081212977",
+	"9a35d486-d86f-4b1b-9e6d-2bd3b4a0db39",
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_NSTXN
@@ -587,7 +663,7 @@ INSERT INTO SM_NSTXN
 	VALUES ("a6ebac82-bdfc-43b4-8456-8efea6b5c7f1",
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
 	"5191b1de-7667-48e3-909f-d4bf1d2fd319",
-	"670ea272-f913-43da-bbc4-5769d7ab644c",
+	"9a35d486-d86f-4b1b-9e6d-2bd3b4a0db39",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_TXN
 	VALUES ("a6ebac82-bdfc-43b4-8456-8efea6b5c7f1",
@@ -626,6 +702,17 @@ INSERT INTO SM_TXN
 	VALUES ("cd11ee4d-c143-48cd-9e8c-c1f4a7666813",
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
 	"a9415920-ff60-4500-b2a1-13dfc40508f2",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("5d56af52-bac5-44a9-81f0-0184575b1ded",
+	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
+	"5191b1de-7667-48e3-909f-d4bf1d2fd319",
+	"670ea272-f913-43da-bbc4-5769d7ab644c",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("5d56af52-bac5-44a9-81f0-0184575b1ded",
+	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
+	"5191b1de-7667-48e3-909f-d4bf1d2fd319",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_MOAH
 	VALUES ("332e0b96-2e9f-45ed-b487-c266732372e3",
@@ -688,7 +775,11 @@ INSERT INTO SM_ACT
 send Payer::ReturnedTicket( Location:self.Location );
 select one ticket related by self->
   Ticket[R28.''presently holding''];
-ticket.Status = TicketStatus::AwaitingCollection;',
+ticket.Status = TicketStatus::AwaitingCollection;
+
+tmr = TIM::timer_cancel( timer_inst_ref:self.TimeoutTimer );
+// ensure that the ignore flag is never ''left over'' for misinterpretation
+self.IgnoreCancelFlag = false;',
 	'',
 	0);
 INSERT INTO SM_TAH
@@ -703,7 +794,14 @@ INSERT INTO SM_ACT
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
 	1,
 	'select one payment related by self->Payment[R25.''collects''];
-generate Payment3:Cancelled() to payment;',
+// Refund any partial payment
+if ( payment.Amount > 0 )
+  send Payer::DispenseChange( Location:self.Location, Amount:payment.Amount );
+end if;
+generate Payment3:Cancelled() to payment;
+send Payer::TransactionCancelled( Location:self.Location, Why:param.Reason );
+
+',
 	'',
 	0);
 INSERT INTO SM_TAH
@@ -734,7 +832,12 @@ payment.ExitTime = DateTime::CurrentSeconds();
 payment.Amount = 0;
 relate payment to self across R25.''collected by'';
 relate payment to stay across R16.''retires debt for'';
-stay.CalculateCharge();',
+stay.CalculateCharge();
+
+// Prepare to cancel transaction if not initiated in timely manner.
+create event instance Timeout of PaymentMachine4:TransactionCancelled( Reason:"timeout" ) to self;
+self.TimeoutTimer = TIM::timer_start( event_inst:Timeout, microseconds:TimerValues::PaymentTimeout );
+',
 	'',
 	0);
 INSERT INTO SM_TAH
@@ -766,7 +869,10 @@ INSERT INTO SM_ACT
 	1,
 	'select one payment related by self->Payment[R25.''collects''];
 payment.Amount = payment.Amount + param.Amount;
-self.SlotsOpen = false;',
+self.SlotsOpen = false;
+
+// Prepare to cancel transaction if too long a pause in completion of payment.
+self.ResetTimeout();',
 	'',
 	0);
 INSERT INTO SM_MOAH
@@ -780,8 +886,7 @@ INSERT INTO SM_ACT
 	VALUES ("3d24c2c5-3dc4-4a36-b4b8-fe969b4ccc65",
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
 	1,
-	'// Ask user to cancel the transaction or waive the change due.
-send Payer::InsufficientChange( Location:self.Location );',
+	'',
 	'',
 	0);
 INSERT INTO SM_TAH
@@ -795,7 +900,11 @@ INSERT INTO SM_ACT
 	VALUES ("fc11e563-2500-4bee-9c6e-c3cd5357ef58",
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
 	1,
-	'',
+	'// Ask user to cancel the transaction or waive the change due.
+send Payer::InsufficientChange( Location:self.Location );
+// Prepare to cancel transaction if too long a pause in making a choice.
+self.ResetTimeout();
+',
 	'',
 	0);
 INSERT INTO SM_TAH
@@ -810,7 +919,10 @@ INSERT INTO SM_ACT
 	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
 	1,
 	'select one payment related by self->Payment[R25.''collects''];
-generate Payment3:Cancelled() to payment;',
+// Cannot make change - but refund all of overpayment.
+send Payer::DispenseChange( Location:self.Location, Amount:payment.Amount );
+generate Payment3:Cancelled() to payment;
+',
 	'',
 	0);
 INSERT INTO SM_MOAH
@@ -872,6 +984,27 @@ select one DateTime related by self->
   Carpark[R11.''accepts payments for'']->
   DateTime[R31.''delegates date and time mgt to''];
 send Payer::ExitDeadline( Location:self.Location, Deadline:DateTime.Format( Time:param.Deadline ) );',
+	'',
+	0);
+INSERT INTO SM_TAH
+	VALUES ("f35edf29-1756-4402-a30a-c6856509a597",
+	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
+	"5d56af52-bac5-44a9-81f0-0184575b1ded");
+INSERT INTO SM_AH
+	VALUES ("f35edf29-1756-4402-a30a-c6856509a597",
+	"c7a393ee-03dc-44d0-a142-8335736b4fbd");
+INSERT INTO SM_ACT
+	VALUES ("f35edf29-1756-4402-a30a-c6856509a597",
+	"c7a393ee-03dc-44d0-a142-8335736b4fbd",
+	1,
+	'if (self.IgnoreCancelFlag)
+  // spurious event in-flight
+  self.IgnoreCancelFlag = false;
+else
+  // a real cancellation..
+  generate PaymentMachine8:TransactionCancelled_pvt() to self;
+  send Payer::TransactionCancelled( Location:self.Location, Why:param.Reason );
+end if;',
 	'',
 	0);
 INSERT INTO GD_MD
@@ -1576,6 +1709,16 @@ INSERT INTO DIM_CON
 	4728.000000,
 	3684.000000,
 	"80fd53bf-85ba-4fb5-bff5-83f5fecb8883");
+INSERT INTO DIM_CON
+	VALUES ("a439bd2d-3f1f-4b1d-a626-3953794c6c0a",
+	4991.000000,
+	3781.000000,
+	"80fd53bf-85ba-4fb5-bff5-83f5fecb8883");
+INSERT INTO DIM_CON
+	VALUES ("0ca14d39-8035-4b7a-b7a8-2e1e3601d38a",
+	5245.000000,
+	3741.000000,
+	"80fd53bf-85ba-4fb5-bff5-83f5fecb8883");
 INSERT INTO GD_GE
 	VALUES ("f4878a33-2945-4e1d-9693-9600eeec168c",
 	"dac0b165-fa6c-47bf-b43e-1fabb73deaaa",
@@ -1682,7 +1825,7 @@ INSERT INTO GD_GE
 	"a6ebac82-bdfc-43b4-8456-8efea6b5c7f1",
 	42,
 	0,
-	'CarPark::Components::CarparkControl::CarparkControl::PaymentMachine::Instance State Machine::AwaitingChangeResponse::PaymentMachine4: TransactionCancelled');
+	'CarPark::Components::CarparkControl::CarparkControl::PaymentMachine::Instance State Machine::AwaitingChangeResponse::PaymentMachine8: TransactionCancelled_pvt');
 INSERT INTO GD_CON
 	VALUES ("816b12bf-1161-446f-96cb-aca5eca1404e",
 	"00000000-0000-0000-0000-000000000000");
@@ -2115,6 +2258,145 @@ INSERT INTO DIM_ED
 	VALUES ("a570a75c-7680-4048-b5a3-49a24d0ae12e",
 	"dfae3fd8-5b38-4f98-85ab-2f957331c684",
 	"dfd488ba-9013-4cf3-b0dd-233a8cd3b26f");
+INSERT INTO GD_GE
+	VALUES ("9c9d2611-cb54-4146-9e3e-8b44db0d7d21",
+	"dac0b165-fa6c-47bf-b43e-1fabb73deaaa",
+	"5d56af52-bac5-44a9-81f0-0184575b1ded",
+	42,
+	0,
+	'CarPark::Components::CarparkControl::CarparkControl::PaymentMachine::Instance State Machine::AwaitingChangeResponse::PaymentMachine4: TransactionCancelled');
+INSERT INTO GD_CON
+	VALUES ("9c9d2611-cb54-4146-9e3e-8b44db0d7d21",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("1fde20ea-617e-4e01-9103-428e0679052b",
+	"9c9d2611-cb54-4146-9e3e-8b44db0d7d21",
+	0,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"1fde20ea-617e-4e01-9103-428e0679052b");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"1fde20ea-617e-4e01-9103-428e0679052b",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("1fde20ea-617e-4e01-9103-428e0679052b",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("ba278104-48d6-4dbd-9b9b-572f3ccb2fc8",
+	"9c9d2611-cb54-4146-9e3e-8b44db0d7d21",
+	2,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"ba278104-48d6-4dbd-9b9b-572f3ccb2fc8");
+INSERT INTO DIM_GE
+	VALUES (5034.000000,
+	3841.000000,
+	"ba278104-48d6-4dbd-9b9b-572f3ccb2fc8",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("ba278104-48d6-4dbd-9b9b-572f3ccb2fc8",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("53a26bfc-ce60-4f10-82e0-6f840bd7f809",
+	"9c9d2611-cb54-4146-9e3e-8b44db0d7d21",
+	1,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"53a26bfc-ce60-4f10-82e0-6f840bd7f809");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"53a26bfc-ce60-4f10-82e0-6f840bd7f809",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("53a26bfc-ce60-4f10-82e0-6f840bd7f809",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_LS
+	VALUES ("9877e38b-1521-4a30-9b7b-ee27970aeb45",
+	"9c9d2611-cb54-4146-9e3e-8b44db0d7d21",
+	"00000000-0000-0000-0000-000000000000",
+	"5d54e3ce-9e68-4475-8020-e895511bd3c8",
+	"3a78e4ab-46c7-4e8d-a916-8806ad651901");
+INSERT INTO GD_LS
+	VALUES ("4a0f2879-ee45-489f-be60-7d936e9570ec",
+	"9c9d2611-cb54-4146-9e3e-8b44db0d7d21",
+	"9877e38b-1521-4a30-9b7b-ee27970aeb45",
+	"3a78e4ab-46c7-4e8d-a916-8806ad651901",
+	"6317f91a-09a2-4919-b664-34235c3fcf4f");
+INSERT INTO GD_LS
+	VALUES ("b017c7c8-b70a-4102-b144-2941b6254eca",
+	"9c9d2611-cb54-4146-9e3e-8b44db0d7d21",
+	"4a0f2879-ee45-489f-be60-7d936e9570ec",
+	"6317f91a-09a2-4919-b664-34235c3fcf4f",
+	"b733962d-2c0d-4bb3-ae25-8980de332ad3");
+INSERT INTO GD_LS
+	VALUES ("b2dd3e15-99df-4a19-a251-29968707aa23",
+	"9c9d2611-cb54-4146-9e3e-8b44db0d7d21",
+	"b017c7c8-b70a-4102-b144-2941b6254eca",
+	"b733962d-2c0d-4bb3-ae25-8980de332ad3",
+	"1b9ef3af-6536-4544-b7b2-415277397e8b");
+INSERT INTO DIM_WAY
+	VALUES ("5d54e3ce-9e68-4475-8020-e895511bd3c8",
+	4991.000000,
+	3781.000000,
+	"9c9d2611-cb54-4146-9e3e-8b44db0d7d21",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_WAY
+	VALUES ("1b9ef3af-6536-4544-b7b2-415277397e8b",
+	5245.000000,
+	3741.000000,
+	"9c9d2611-cb54-4146-9e3e-8b44db0d7d21",
+	"00000000-0000-0000-0000-000000000000",
+	"5d54e3ce-9e68-4475-8020-e895511bd3c8");
+INSERT INTO DIM_WAY
+	VALUES ("3a78e4ab-46c7-4e8d-a916-8806ad651901",
+	4991.000000,
+	3831.000000,
+	"9c9d2611-cb54-4146-9e3e-8b44db0d7d21",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_WAY
+	VALUES ("6317f91a-09a2-4919-b664-34235c3fcf4f",
+	5295.000000,
+	3831.000000,
+	"9c9d2611-cb54-4146-9e3e-8b44db0d7d21",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_WAY
+	VALUES ("b733962d-2c0d-4bb3-ae25-8980de332ad3",
+	5295.000000,
+	3741.000000,
+	"9c9d2611-cb54-4146-9e3e-8b44db0d7d21",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"9c9d2611-cb54-4146-9e3e-8b44db0d7d21",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("9c9d2611-cb54-4146-9e3e-8b44db0d7d21",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ED
+	VALUES ("a439bd2d-3f1f-4b1d-a626-3953794c6c0a",
+	"0ca14d39-8035-4b7a-b7a8-2e1e3601d38a",
+	"9c9d2611-cb54-4146-9e3e-8b44db0d7d21");
 INSERT INTO DIM_DIA
 	VALUES ("dac0b165-fa6c-47bf-b43e-1fabb73deaaa",
 	'',

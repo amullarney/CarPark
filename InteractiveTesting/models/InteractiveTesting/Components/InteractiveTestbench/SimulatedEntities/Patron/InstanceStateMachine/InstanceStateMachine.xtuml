@@ -181,7 +181,11 @@ INSERT INTO SM_ACT
 	VALUES ("17989553-a513-49fe-b465-9dd100984d23",
 	"e037f1be-d376-4e0d-a6fd-1d9cdf65609d",
 	1,
-	'self.BalanceOwed = param.Balance;
+	'if ( self.Behavior != "normal" )
+  toss = TimeUtilities::AdvanceTime( hours:0, minutes:0, seconds:32 );
+else
+
+self.BalanceOwed = param.Balance;
 if ( self.BalanceOwed > 20 )
   send Payer::InsertedCurrency( Location:"1st Floor", Amount:20 );
 elif ( self.BalanceOwed > 10 )
@@ -192,6 +196,8 @@ elif ( self.BalanceOwed > 2 )
   send Payer::InsertedCurrency( Location:"1st Floor", Amount:2 );
 elif ( self.BalanceOwed > 0 )
   send Payer::InsertedCurrency( Location:"1st Floor", Amount:1 );
+end if;
+
 end if;',
 	'',
 	0);
@@ -269,14 +275,14 @@ INSERT INTO GD_MD
 	150,
 	0,
 	'4.1.17',
-	'InteractiveTesting::Components::InteractiveTestbench::Classes::Patron::Instance State Machine');
+	'InteractiveTesting::Components::InteractiveTestbench::SimulatedEntities::Patron::Instance State Machine');
 INSERT INTO GD_GE
 	VALUES ("9e9a3f4f-085d-4cf4-a285-f102186db598",
 	"a507a1fb-591f-4b7a-9ff3-ebebb776bbe6",
 	"8f4f8c20-d394-4b1d-b26d-ca4f9acacc1f",
 	41,
 	0,
-	'InteractiveTesting::Components::InteractiveTestbench::Classes::Patron::Instance State Machine::TicketInserted');
+	'InteractiveTesting::Components::InteractiveTestbench::SimulatedEntities::Patron::Instance State Machine::TicketInserted');
 INSERT INTO GD_SHP
 	VALUES ("9e9a3f4f-085d-4cf4-a285-f102186db598");
 INSERT INTO GD_NCS
@@ -305,7 +311,7 @@ INSERT INTO GD_GE
 	"e2d8a6a5-23cd-4145-aa7a-0afb4554e78a",
 	41,
 	0,
-	'InteractiveTesting::Components::InteractiveTestbench::Classes::Patron::Instance State Machine::InsertingCurrency');
+	'InteractiveTesting::Components::InteractiveTestbench::SimulatedEntities::Patron::Instance State Machine::InsertingCurrency');
 INSERT INTO GD_SHP
 	VALUES ("5670c42e-7c9a-4520-96cf-05c23c838994");
 INSERT INTO GD_NCS
@@ -349,7 +355,7 @@ INSERT INTO GD_GE
 	"ad820435-bdd8-457c-955e-7d2e9b9a74f3",
 	41,
 	0,
-	'InteractiveTesting::Components::InteractiveTestbench::Classes::Patron::Instance State Machine::TicketCollected');
+	'InteractiveTesting::Components::InteractiveTestbench::SimulatedEntities::Patron::Instance State Machine::TicketCollected');
 INSERT INTO GD_SHP
 	VALUES ("e03eb4d0-6c5e-4f7f-aa3b-78256d6041eb");
 INSERT INTO GD_NCS
@@ -378,7 +384,7 @@ INSERT INTO GD_GE
 	"80f81f66-76e2-4c40-baf7-b7991723e3c3",
 	42,
 	0,
-	'InteractiveTesting::Components::InteractiveTestbench::Classes::Patron::Instance State Machine::TicketInserted::Patron1: BalanceDisplayed');
+	'InteractiveTesting::Components::InteractiveTestbench::SimulatedEntities::Patron::Instance State Machine::TicketInserted::Patron1: BalanceDisplayed');
 INSERT INTO GD_CON
 	VALUES ("63b9d087-a3e5-44c5-b52f-5b1f872beda9",
 	"00000000-0000-0000-0000-000000000000");
@@ -408,11 +414,11 @@ INSERT INTO GD_CTXT
 	0.000000,
 	0.000000);
 INSERT INTO DIM_ND
-	VALUES (102.000000,
+	VALUES (151.000000,
 	40.000000,
 	"1e65689c-d464-464e-9b90-1252b72afe6f");
 INSERT INTO DIM_GE
-	VALUES (4205.500000,
+	VALUES (4205.000000,
 	3159.000000,
 	"1e65689c-d464-464e-9b90-1252b72afe6f",
 	"00000000-0000-0000-0000-000000000000");
@@ -478,7 +484,7 @@ INSERT INTO GD_GE
 	"ccf0b81e-1cc9-4f3f-be56-150f76f433bb",
 	42,
 	0,
-	'InteractiveTesting::Components::InteractiveTestbench::Classes::Patron::Instance State Machine::InsertingCurrency::Patron2: TicketReturned');
+	'InteractiveTesting::Components::InteractiveTestbench::SimulatedEntities::Patron::Instance State Machine::InsertingCurrency::Patron2: TicketReturned');
 INSERT INTO GD_CON
 	VALUES ("5e9b8635-5eb0-4c5e-8304-8de11e5f457d",
 	"00000000-0000-0000-0000-000000000000");
@@ -578,7 +584,7 @@ INSERT INTO GD_GE
 	"2d754dbf-6d11-4231-9214-e385c0f90242",
 	42,
 	0,
-	'InteractiveTesting::Components::InteractiveTestbench::Classes::Patron::Instance State Machine::InsertingCurrency::Patron1: BalanceDisplayed');
+	'InteractiveTesting::Components::InteractiveTestbench::SimulatedEntities::Patron::Instance State Machine::InsertingCurrency::Patron1: BalanceDisplayed');
 INSERT INTO GD_CON
 	VALUES ("5726ebcf-2a11-4eb7-ae41-adebaac65619",
 	"00000000-0000-0000-0000-000000000000");

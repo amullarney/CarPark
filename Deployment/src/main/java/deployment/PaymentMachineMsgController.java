@@ -44,6 +44,7 @@ import deployment.RemainingBalanceMsg;
 import deployment.ReturnedTicketMsg;
 import deployment.WaivedChangeMsg;
 import deployment.DispenseChangeMsg;
+import deployment.TransactionCancelledMsg;
 
 // The Spring framework arranges for an instance of this class to be
 // created, passing an instance of SimpMessagingTemplate as an argument,
@@ -68,7 +69,7 @@ public class PaymentMachineMsgController {
 	// Each of the following methods is invoked when the (JavaScript) client sends 
 	// a message to the corresponding message-broker topic, "/app/<messageName>".
 	// For example, when the JavaScript client sends a message to "/app/InsertedTicket",
-	// the method annoated with @MessageMapping( "/InsertedTicket" ) is invoked, and
+	// the method annotated with @MessageMapping( "/InsertedTicket" ) is invoked, and
 	// an instance of the message is passed to it as a parameter.
 	
 	// The exit stand has an InsertedTicket message, so this one uses a prefix to distinguish it.
@@ -157,6 +158,12 @@ public class PaymentMachineMsgController {
     
     public void SendDispenseChangeMessage ( String Location, double Amount ) throws Exception {
     	DispenseChangeMsg msg = new DispenseChangeMsg( "Dispense change: " + String.valueOf( Amount ) );
+        String topic = "/topic/PaymentMachine/" + Location;
+        this.template.convertAndSend( topic, msg );
+    }
+
+    public void SendTransactionCancelledMessage ( String Location, String Why ) throws Exception {
+    	TransactionCancelledMsg msg = new TransactionCancelledMsg( "Transaction cancelled by " + Why );
         String topic = "/topic/PaymentMachine/" + Location;
         this.template.convertAndSend( topic, msg );
     }

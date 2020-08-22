@@ -19,9 +19,7 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'Entry::Create();
-Operator::Create();
-send EntryStand::VehicleWaiting( Location:"North" );
+	'send EntryStand::VehicleWaiting( Location:"North" );
 ',
 	1,
 	'',
@@ -46,7 +44,7 @@ INSERT INTO EP_PKG_PROXY
 	VALUES ("c7be3bcb-d5e1-4863-b6cc-dc5120645a51",
 	"00000000-0000-0000-0000-000000000000",
 	"dccd26e2-5328-45c4-8ada-fed969fc6ffe",
-	'TestCases',
+	'TestCases_Nominal',
 	'',
 	0,
-	'../TestCases.xtuml');
+	'../TestCases_Nominal.xtuml');

@@ -7,6 +7,18 @@ INSERT INTO O_OBJ
 	'Exit',
 	'',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("0df3c508-4827-4155-b2b3-d6e1378ae6af",
+	"0b5ccdf9-ab3d-4559-b46c-e9aba769d0e6",
+	'Create',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance exit of Exit;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
 INSERT INTO O_NBATTR
 	VALUES ("c9dbd877-148c-451c-a839-d9243713651d",
 	"0b5ccdf9-ab3d-4559-b46c-e9aba769d0e6");
@@ -44,7 +56,7 @@ INSERT INTO EP_PKG_PROXY
 	VALUES ("1224df28-97e6-44e1-8d1f-a0640160ec61",
 	"00000000-0000-0000-0000-000000000000",
 	"dccd26e2-5328-45c4-8ada-fed969fc6ffe",
-	'Classes',
+	'SimulatedEntities',
 	'',
 	0,
-	'../Classes.xtuml');
+	'../SimulatedEntities.xtuml');

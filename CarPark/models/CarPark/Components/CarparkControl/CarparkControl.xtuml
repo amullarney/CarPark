@@ -1339,7 +1339,7 @@ INSERT INTO SPR_PS
 	'',
 	'select any machine from instances of PaymentMachine 
   where ( selected.Location == param.Location );
-generate PaymentMachine4:TransactionCancelled() to machine;',
+generate PaymentMachine4:TransactionCancelled( Reason:"request" ) to machine;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1517,6 +1517,24 @@ INSERT INTO C_EP_PROXY
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'DispenseChange',
+	'',
+	'../../Interfaces/PaymentMachine/PaymentMachine.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("5efab68e-1a9a-4614-a243-808ee5d8655f",
+	"e25325e0-cebe-4e34-8814-1a1f84c7e4a4",
+	"beb17c01-5d43-4cbd-bd44-08536daaf245");
+INSERT INTO SPR_PS
+	VALUES ("5efab68e-1a9a-4614-a243-808ee5d8655f",
+	'TransactionCancelled',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("e25325e0-cebe-4e34-8814-1a1f84c7e4a4",
+	"1775761d-746e-41ae-a5e0-cd1a783dc665",
+	-1,
+	'TransactionCancelled',
 	'',
 	'../../Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO C_I_PROXY

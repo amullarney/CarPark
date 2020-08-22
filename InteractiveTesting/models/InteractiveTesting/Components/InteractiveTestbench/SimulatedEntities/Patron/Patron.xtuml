@@ -7,6 +7,28 @@ INSERT INTO O_OBJ
 	'Patron',
 	'',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("51b59a37-6343-4b3e-b684-57aee88ba46e",
+	"c8cf3868-1e5f-4dbb-83e0-4a1a1b5e7920",
+	'Create',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance patron of Patron;
+patron.Behavior = param.behavior;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("2127b3a2-5ac5-40dd-9755-7b5426fc144b",
+	"51b59a37-6343-4b3e-b684-57aee88ba46e",
+	'behavior',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
 INSERT INTO O_NBATTR
 	VALUES ("a671ef59-ea30-425a-9bba-50daf91a72a8",
 	"c8cf3868-1e5f-4dbb-83e0-4a1a1b5e7920");
@@ -16,7 +38,7 @@ INSERT INTO O_BATTR
 INSERT INTO O_ATTR
 	VALUES ("a671ef59-ea30-425a-9bba-50daf91a72a8",
 	"c8cf3868-1e5f-4dbb-83e0-4a1a1b5e7920",
-	"88124547-05de-4a33-8b9e-4e4dcc9a1b51",
+	"452aa6ee-8448-475e-9710-2314993855d1",
 	'current_state',
 	'',
 	'',
@@ -43,6 +65,26 @@ INSERT INTO O_ATTR
 	"ba5eda7a-def5-0000-0000-000000000003",
 	'',
 	'');
+INSERT INTO O_NBATTR
+	VALUES ("452aa6ee-8448-475e-9710-2314993855d1",
+	"c8cf3868-1e5f-4dbb-83e0-4a1a1b5e7920");
+INSERT INTO O_BATTR
+	VALUES ("452aa6ee-8448-475e-9710-2314993855d1",
+	"c8cf3868-1e5f-4dbb-83e0-4a1a1b5e7920");
+INSERT INTO O_ATTR
+	VALUES ("452aa6ee-8448-475e-9710-2314993855d1",
+	"c8cf3868-1e5f-4dbb-83e0-4a1a1b5e7920",
+	"88124547-05de-4a33-8b9e-4e4dcc9a1b51",
+	'Behavior',
+	'Used to direct different behaviors in test cases.
+Initial use is for delays in making payments.
+This may evolve to be an enumeration...',
+	'',
+	'Behavior',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
 INSERT INTO O_ID
 	VALUES (0,
 	"c8cf3868-1e5f-4dbb-83e0-4a1a1b5e7920");
@@ -62,7 +104,7 @@ INSERT INTO EP_PKG_PROXY
 	VALUES ("1224df28-97e6-44e1-8d1f-a0640160ec61",
 	"00000000-0000-0000-0000-000000000000",
 	"dccd26e2-5328-45c4-8ada-fed969fc6ffe",
-	'Classes',
+	'SimulatedEntities',
 	'',
 	0,
-	'../Classes.xtuml');
+	'../SimulatedEntities.xtuml');

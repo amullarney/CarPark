@@ -332,7 +332,7 @@ INSERT INTO SM_AH
 INSERT INTO SM_ACT
 	VALUES ("99832a64-6757-4a60-9951-7c011e4d00e0",
 	"e4796306-5c51-47f8-acf6-695353abb512",
-	3,
+	1,
 	'',
 	'',
 	0);
@@ -354,14 +354,14 @@ INSERT INTO GD_MD
 	150,
 	0,
 	'4.1.17',
-	'InteractiveTesting::Components::InteractiveTestbench::Classes::Entry::Instance State Machine');
+	'InteractiveTesting::Components::InteractiveTestbench::SimulatedEntities::Entry::Instance State Machine');
 INSERT INTO GD_GE
 	VALUES ("a90b254b-0d54-46e5-b0a6-ac597890af31",
 	"86bb4e37-d5fb-4117-b345-a324181d83ba",
 	"b4915e99-d07f-47c7-8607-d9cd9b2a033a",
 	41,
 	0,
-	'InteractiveTesting::Components::InteractiveTestbench::Classes::Entry::Instance State Machine::AwaitingTicketRequestEnabled');
+	'InteractiveTesting::Components::InteractiveTestbench::SimulatedEntities::Entry::Instance State Machine::AwaitingTicketRequestEnabled');
 INSERT INTO GD_SHP
 	VALUES ("a90b254b-0d54-46e5-b0a6-ac597890af31");
 INSERT INTO GD_NCS
@@ -390,7 +390,7 @@ INSERT INTO GD_GE
 	"59d332aa-e66e-4c2f-9954-e971d2f389f5",
 	41,
 	0,
-	'InteractiveTesting::Components::InteractiveTestbench::Classes::Entry::Instance State Machine::AwaitingTicketIssued');
+	'InteractiveTesting::Components::InteractiveTestbench::SimulatedEntities::Entry::Instance State Machine::AwaitingTicketIssued');
 INSERT INTO GD_SHP
 	VALUES ("82c09ae0-875d-4459-9884-f86621dd3d8e");
 INSERT INTO GD_NCS
@@ -424,7 +424,7 @@ INSERT INTO GD_GE
 	"071feae4-bd38-4ae4-a419-cf70ce3308c2",
 	42,
 	0,
-	'InteractiveTesting::Components::InteractiveTestbench::Classes::Entry::Instance State Machine::AwaitingTicketRequestEnabled::Entry1: TicketRequestEnabled');
+	'InteractiveTesting::Components::InteractiveTestbench::SimulatedEntities::Entry::Instance State Machine::AwaitingTicketRequestEnabled::Entry1: TicketRequestEnabled');
 INSERT INTO GD_CON
 	VALUES ("a511cff3-118b-4de4-8671-232c786582aa",
 	"00000000-0000-0000-0000-000000000000");
@@ -524,7 +524,7 @@ INSERT INTO GD_GE
 	"a88f7de4-7b52-4eb2-b489-46a9d8fdfce8",
 	41,
 	0,
-	'InteractiveTesting::Components::InteractiveTestbench::Classes::Entry::Instance State Machine::AwaitingBarrierOpening');
+	'InteractiveTesting::Components::InteractiveTestbench::SimulatedEntities::Entry::Instance State Machine::AwaitingBarrierOpening');
 INSERT INTO GD_SHP
 	VALUES ("caa5f7e4-194b-45dd-be3d-8b82ac7663bc");
 INSERT INTO GD_NCS
@@ -558,7 +558,7 @@ INSERT INTO GD_GE
 	"cae20cff-82b6-4b4e-9360-d709af670996",
 	42,
 	0,
-	'InteractiveTesting::Components::InteractiveTestbench::Classes::Entry::Instance State Machine::AwaitingTicketIssued::Entry2: TicketIssued');
+	'InteractiveTesting::Components::InteractiveTestbench::SimulatedEntities::Entry::Instance State Machine::AwaitingTicketIssued::Entry2: TicketIssued');
 INSERT INTO GD_CON
 	VALUES ("5ac79053-6810-4644-a60a-3beaa985e7d3",
 	"00000000-0000-0000-0000-000000000000");
@@ -658,7 +658,7 @@ INSERT INTO GD_GE
 	"36e99837-a0c3-479b-ad30-5c8b8e82d859",
 	41,
 	0,
-	'InteractiveTesting::Components::InteractiveTestbench::Classes::Entry::Instance State Machine::Entered');
+	'InteractiveTesting::Components::InteractiveTestbench::SimulatedEntities::Entry::Instance State Machine::Entered');
 INSERT INTO GD_SHP
 	VALUES ("5f4a392f-095d-475c-833c-e0dafc0c0a49");
 INSERT INTO GD_NCS
@@ -687,7 +687,7 @@ INSERT INTO GD_GE
 	"d1782763-34a5-4493-bed2-0d6ad24ff0c6",
 	42,
 	0,
-	'InteractiveTesting::Components::InteractiveTestbench::Classes::Entry::Instance State Machine::AwaitingBarrierOpening::Entry3: BarrierOpened');
+	'InteractiveTesting::Components::InteractiveTestbench::SimulatedEntities::Entry::Instance State Machine::AwaitingBarrierOpening::Entry3: BarrierOpened');
 INSERT INTO GD_CON
 	VALUES ("75860d64-5908-45a6-850b-4d08d6f822b3",
 	"00000000-0000-0000-0000-000000000000");

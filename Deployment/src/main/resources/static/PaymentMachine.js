@@ -11,7 +11,8 @@ var vm = new Vue({
 	    RemainingBalance: "",
 	    InsufficientChange: false,
 	    ExitDeadline: "",
-	    ChangeDispensed: ""
+	    ChangeDispensed: "",
+	    CancelReason: ""
     }
 })
 
@@ -25,6 +26,7 @@ function initialize() {
     vm.InsufficientChange = false;
     vm.ExitDeadline = "";
     vm.ChangeDispensed = "";
+    vm.CancelReason = "";
 }
 
 function setConnected(connected) {
@@ -35,6 +37,7 @@ function setConnected(connected) {
     }
     else {
         $("#conversation").hide();
+        initialize();
     }
     $("#replies").html("");
 }
@@ -107,6 +110,8 @@ function showReply(message) {
     } else if ( message.includes( "Dispense change" ) ) {
     	var changeIndex = message.indexOf( ": " ) + 2;
     	vm.ChangeDispensed = "Change dispensed: " + (Number( message.slice( changeIndex ) ).toFixed(2)).toString();
+    } else if ( message.includes( "Transaction cancelled by" ) ) {
+    	vm.CancelReason = message;
     }
 }
 

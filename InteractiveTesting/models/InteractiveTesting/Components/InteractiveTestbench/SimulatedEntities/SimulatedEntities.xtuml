@@ -4,7 +4,7 @@ INSERT INTO EP_PKG
 	VALUES ("1224df28-97e6-44e1-8d1f-a0640160ec61",
 	"00000000-0000-0000-0000-000000000000",
 	"dccd26e2-5328-45c4-8ada-fed969fc6ffe",
-	'Classes',
+	'SimulatedEntities',
 	'',
 	0);
 INSERT INTO GD_MD
@@ -25,14 +25,14 @@ INSERT INTO GD_MD
 	150,
 	0,
 	'4.1.17',
-	'InteractiveTesting::Components::InteractiveTestbench::Classes');
+	'InteractiveTesting::Components::InteractiveTestbench::SimulatedEntities');
 INSERT INTO GD_GE
 	VALUES ("a025fdee-3a86-4bea-a964-b06a9feb6ce9",
 	"51f7fe5f-23f8-4ae0-9f80-ddd4a32a0906",
 	"1a31a78d-dfb1-400e-94d8-98a33069483c",
 	21,
 	0,
-	'InteractiveTesting::Components::InteractiveTestbench::Classes::Entry');
+	'InteractiveTesting::Components::InteractiveTestbench::SimulatedEntities::Entry');
 INSERT INTO GD_SHP
 	VALUES ("a025fdee-3a86-4bea-a964-b06a9feb6ce9");
 INSERT INTO GD_NCS
@@ -56,7 +56,7 @@ INSERT INTO GD_GE
 	"c92a6141-cd81-48d1-a43f-5e96a35734de",
 	21,
 	0,
-	'InteractiveTesting::Components::InteractiveTestbench::Classes::Operator');
+	'InteractiveTesting::Components::InteractiveTestbench::SimulatedEntities::Operator');
 INSERT INTO GD_SHP
 	VALUES ("2924e693-5653-4de8-aa60-04230ed83415");
 INSERT INTO GD_NCS
@@ -80,7 +80,7 @@ INSERT INTO GD_GE
 	"c8cf3868-1e5f-4dbb-83e0-4a1a1b5e7920",
 	21,
 	0,
-	'InteractiveTesting::Components::InteractiveTestbench::Classes::Patron');
+	'InteractiveTesting::Components::InteractiveTestbench::SimulatedEntities::Patron');
 INSERT INTO GD_SHP
 	VALUES ("d810af94-03ca-4cff-9a39-c478b9624787");
 INSERT INTO GD_NCS
@@ -104,7 +104,7 @@ INSERT INTO GD_GE
 	"0b5ccdf9-ab3d-4559-b46c-e9aba769d0e6",
 	21,
 	0,
-	'InteractiveTesting::Components::InteractiveTestbench::Classes::Exit');
+	'InteractiveTesting::Components::InteractiveTestbench::SimulatedEntities::Exit');
 INSERT INTO GD_SHP
 	VALUES ("9e362f8e-6ad9-4125-ae29-f10157d8f7ad");
 INSERT INTO GD_NCS
@@ -120,6 +120,30 @@ INSERT INTO DIM_GE
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO DIM_ELE
 	VALUES ("9e362f8e-6ad9-4125-ae29-f10157d8f7ad",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_GE
+	VALUES ("5b83533d-1bc8-48b8-a5d9-96104d241414",
+	"51f7fe5f-23f8-4ae0-9f80-ddd4a32a0906",
+	"4d1cc40a-87de-4f2b-9e4e-efc95b76106b",
+	21,
+	0,
+	'InteractiveTesting::Components::InteractiveTestbench::SimulatedEntities::Paystand');
+INSERT INTO GD_SHP
+	VALUES ("5b83533d-1bc8-48b8-a5d9-96104d241414");
+INSERT INTO GD_NCS
+	VALUES ("5b83533d-1bc8-48b8-a5d9-96104d241414");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"5b83533d-1bc8-48b8-a5d9-96104d241414");
+INSERT INTO DIM_GE
+	VALUES (4612.000000,
+	3300.000000,
+	"5b83533d-1bc8-48b8-a5d9-96104d241414",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("5b83533d-1bc8-48b8-a5d9-96104d241414",
 	0,
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO DIM_DIA

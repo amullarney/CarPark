@@ -31,7 +31,10 @@ INSERT INTO O_TFR
 //------------------------------------------------------------------------------------------
 HoursInMicroseconds = ConversionFactors::MicrosecondsPerHalfHour * 2 * param.hours;
 MinutesInMicroseconds = ConversionFactors::MicrosecondsPerMinute * param.minutes;
-current_time = TIM::advance_time( microseconds:HoursInMicroseconds + MinutesInMicroseconds );
+SecondsInMicroseconds = ConversionFactors::MicrosecondsPerSecond * param.seconds;
+current_time = TIM::advance_time( microseconds:HoursInMicroseconds
+                                  + MinutesInMicroseconds
+                                  + SecondsInMicroseconds );
 return current_time;',
 	1,
 	'',
@@ -54,6 +57,15 @@ INSERT INTO O_TPARM
 	0,
 	'',
 	"ad55c248-6045-4624-b93e-85c63f6435ad",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("1f86af2d-f4b1-412e-bbcf-1f3f4c3f42ac",
+	"e59cf55b-8605-4954-8e69-d831e7dab981",
+	'seconds',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"972ab234-f0c4-4c03-ba66-705dc55432ca",
 	'');
 INSERT INTO O_ID
 	VALUES (0,
