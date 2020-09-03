@@ -1,5 +1,5 @@
 # CarPark
-An autmoated carpark (parking garage) control system.  
+An automated carpark (parking garage) control system.  
 ## Configurations
 The following configurations exist:
 1. Interactive Testing.  Employs a modeled test bench, enabling interactive testing with Verifier and Ciera-generated code using `pom-testbench.xml`.
