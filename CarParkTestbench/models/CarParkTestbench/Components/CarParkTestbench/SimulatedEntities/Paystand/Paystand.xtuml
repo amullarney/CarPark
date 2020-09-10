@@ -1,0 +1,119 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("528b6e2f-0d46-448d-8af7-4fa14e23ce45",
+	'Paystand',
+	5,
+	'Paystand',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("8aa625c6-e81b-468d-8bb1-163d80d496f8",
+	"528b6e2f-0d46-448d-8af7-4fa14e23ce45",
+	'Create',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance paystand of Paystand;
+paystand.MoneyDispensed = false;
+paystand.TicketReturned = false;
+paystand.TransactionCancelled = false;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_NBATTR
+	VALUES ("b245f27e-04a8-4e52-bbb0-5f618cea0ac9",
+	"528b6e2f-0d46-448d-8af7-4fa14e23ce45");
+INSERT INTO O_BATTR
+	VALUES ("b245f27e-04a8-4e52-bbb0-5f618cea0ac9",
+	"528b6e2f-0d46-448d-8af7-4fa14e23ce45");
+INSERT INTO O_ATTR
+	VALUES ("b245f27e-04a8-4e52-bbb0-5f618cea0ac9",
+	"528b6e2f-0d46-448d-8af7-4fa14e23ce45",
+	"00000000-0000-0000-0000-000000000000",
+	'TicketReturned',
+	'',
+	'',
+	'TicketReturned',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("31f482f3-38f0-48a1-9b1f-9bc26931bf45",
+	"528b6e2f-0d46-448d-8af7-4fa14e23ce45");
+INSERT INTO O_BATTR
+	VALUES ("31f482f3-38f0-48a1-9b1f-9bc26931bf45",
+	"528b6e2f-0d46-448d-8af7-4fa14e23ce45");
+INSERT INTO O_ATTR
+	VALUES ("31f482f3-38f0-48a1-9b1f-9bc26931bf45",
+	"528b6e2f-0d46-448d-8af7-4fa14e23ce45",
+	"b245f27e-04a8-4e52-bbb0-5f618cea0ac9",
+	'MoneyDispensed',
+	'',
+	'',
+	'MoneyDispensed',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("e7af7826-fffb-45c6-aa5b-42bf4785d122",
+	"528b6e2f-0d46-448d-8af7-4fa14e23ce45");
+INSERT INTO O_BATTR
+	VALUES ("e7af7826-fffb-45c6-aa5b-42bf4785d122",
+	"528b6e2f-0d46-448d-8af7-4fa14e23ce45");
+INSERT INTO O_ATTR
+	VALUES ("e7af7826-fffb-45c6-aa5b-42bf4785d122",
+	"528b6e2f-0d46-448d-8af7-4fa14e23ce45",
+	"31f482f3-38f0-48a1-9b1f-9bc26931bf45",
+	'TransactionCancelled',
+	'',
+	'',
+	'TransactionCancelled',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("4e98ef62-a3ff-4289-9271-bfc336e624f6",
+	"528b6e2f-0d46-448d-8af7-4fa14e23ce45");
+INSERT INTO O_BATTR
+	VALUES ("4e98ef62-a3ff-4289-9271-bfc336e624f6",
+	"528b6e2f-0d46-448d-8af7-4fa14e23ce45");
+INSERT INTO O_ATTR
+	VALUES ("4e98ef62-a3ff-4289-9271-bfc336e624f6",
+	"528b6e2f-0d46-448d-8af7-4fa14e23ce45",
+	"e7af7826-fffb-45c6-aa5b-42bf4785d122",
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000006",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"528b6e2f-0d46-448d-8af7-4fa14e23ce45");
+INSERT INTO O_ID
+	VALUES (1,
+	"528b6e2f-0d46-448d-8af7-4fa14e23ce45");
+INSERT INTO O_ID
+	VALUES (2,
+	"528b6e2f-0d46-448d-8af7-4fa14e23ce45");
+INSERT INTO PE_PE
+	VALUES ("528b6e2f-0d46-448d-8af7-4fa14e23ce45",
+	1,
+	"3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'SimulatedEntities',
+	'',
+	0,
+	'../SimulatedEntities.xtuml');

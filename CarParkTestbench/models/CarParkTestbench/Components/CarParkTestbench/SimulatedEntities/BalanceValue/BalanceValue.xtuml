@@ -1,0 +1,137 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("02570cd5-45d0-4ab0-9f80-9e0d84e616ed",
+	'BalanceValue',
+	26,
+	'BalanceValue',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("0b99b513-dff8-46d2-adcd-15ed347c1ed9",
+	"02570cd5-45d0-4ab0-9f80-9e0d84e616ed",
+	'CreatePolling',
+	'Add an observation of this type to the ''script'' of a test case.
+See Observation.AppendPolling for description.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance bv of BalanceValue;
+
+create object instance obs of Observation;
+relate bv to obs across R4;
+bv.location = param.location;
+
+obs.AppendPolling( stimulus:param.stimulus,
+                   pollInterval:param.pollInterval, 
+                   timeLimit:param.timeLimit );
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("84b5fedd-0772-4a7f-87be-cad1c26db141",
+	"0b99b513-dff8-46d2-adcd-15ed347c1ed9",
+	'pollInterval',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"160e84a3-db3a-4fd7-a2ce-73bc14fd97c6",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("c560d9c2-f5a4-41d1-bd52-9f5fe6fd4aab",
+	"0b99b513-dff8-46d2-adcd-15ed347c1ed9",
+	'timeLimit',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"84b5fedd-0772-4a7f-87be-cad1c26db141",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("489257c2-21c8-4cbc-a803-32789338e963",
+	"0b99b513-dff8-46d2-adcd-15ed347c1ed9",
+	'stimulus',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("160e84a3-db3a-4fd7-a2ce-73bc14fd97c6",
+	"0b99b513-dff8-46d2-adcd-15ed347c1ed9",
+	'location',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"489257c2-21c8-4cbc-a803-32789338e963",
+	'');
+INSERT INTO O_TFR
+	VALUES ("6922d6cb-3230-415e-a11f-7b4d9255795f",
+	"02570cd5-45d0-4ab0-9f80-9e0d84e616ed",
+	'CheckBalance',
+	'When invoked, search any existing notifications looking for a match.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'LOG::LogInfo( message:" --- Checking for payment balance at " + self.location  );
+
+select any b from instances of Balance
+ where ( selected.location == self.location );
+if ( not_empty b )
+  if ( b.amount < 1.0 )
+    LOG::LogInfo( message:"paid in full" );
+    select one obs related by self->Observation[R4]; 
+    obs.Complete( success:True );
+    //delete object instance b;
+  else
+    LOG::LogInfo( message:"sending more money" );
+    send Payer::InsertedCurrency( Location:self.location, Amount:10 );
+  end if;
+else
+  success = False;	// @TODO here to allow breakpoint only
+end if;
+',
+	1,
+	'',
+	"0b99b513-dff8-46d2-adcd-15ed347c1ed9",
+	0);
+INSERT INTO O_NBATTR
+	VALUES ("d57ead3c-a41e-45e9-9c48-186fab91c284",
+	"02570cd5-45d0-4ab0-9f80-9e0d84e616ed");
+INSERT INTO O_BATTR
+	VALUES ("d57ead3c-a41e-45e9-9c48-186fab91c284",
+	"02570cd5-45d0-4ab0-9f80-9e0d84e616ed");
+INSERT INTO O_ATTR
+	VALUES ("d57ead3c-a41e-45e9-9c48-186fab91c284",
+	"02570cd5-45d0-4ab0-9f80-9e0d84e616ed",
+	"00000000-0000-0000-0000-000000000000",
+	'location',
+	'',
+	'',
+	'location',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"02570cd5-45d0-4ab0-9f80-9e0d84e616ed");
+INSERT INTO O_ID
+	VALUES (1,
+	"02570cd5-45d0-4ab0-9f80-9e0d84e616ed");
+INSERT INTO O_ID
+	VALUES (2,
+	"02570cd5-45d0-4ab0-9f80-9e0d84e616ed");
+INSERT INTO PE_PE
+	VALUES ("02570cd5-45d0-4ab0-9f80-9e0d84e616ed",
+	1,
+	"3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'SimulatedEntities',
+	'',
+	0,
+	'../SimulatedEntities.xtuml');

@@ -1,0 +1,139 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("76982554-b9dd-4bb2-81d8-f57877cade8e",
+	'VehicleArrived',
+	14,
+	'VehicleArrived',
+	'An example of a stimulus invoking an interface signal to the application under test.
+This requests that payroll data be retrieved for review from the application.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("89d3f23d-eb53-4fbc-b30c-088697738580",
+	"76982554-b9dd-4bb2-81d8-f57877cade8e",
+	'Create',
+	'Add a stimulus of this type to the ''script of a test case.
+',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'create object instance va of VehicleArrived;
+va.location = param.location;
+va.standType = param.stand;
+
+create object instance stimulus of Stimulus;
+relate stimulus to va across R3;
+
+stimulus.AddToTest( seqLabel:param.seqLabel );
+return stimulus.stimulusId;
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("288e60b6-9227-4879-b10f-889f744dbb86",
+	"89d3f23d-eb53-4fbc-b30c-088697738580",
+	'location',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"a91883b3-570f-46cf-bb0a-2dd7770261b0",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("8d27d9ee-09e4-43b0-a984-3be79aba8b86",
+	"89d3f23d-eb53-4fbc-b30c-088697738580",
+	'stand',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"288e60b6-9227-4879-b10f-889f744dbb86",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("a91883b3-570f-46cf-bb0a-2dd7770261b0",
+	"89d3f23d-eb53-4fbc-b30c-088697738580",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("1f10d4da-bd03-41eb-bd54-e6e02a7c29bc",
+	"76982554-b9dd-4bb2-81d8-f57877cade8e",
+	'VehicleArrival',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'LOG::LogInfo( message:"Vehicle arrived at " + self.standType + " " + self.location );
+if ( self.standType == "Entry" )
+  send EntryStand::VehicleWaiting( Location:self.location );
+else
+  send ExitStand::VehicleWaiting( Location:self.location );
+end if;
+
+select one stimulus related by self->Stimulus[R3];
+stimulus.Complete();
+',
+	1,
+	'',
+	"89d3f23d-eb53-4fbc-b30c-088697738580",
+	0);
+INSERT INTO O_NBATTR
+	VALUES ("826b85e6-2476-46e0-8c76-096e835fe2ce",
+	"76982554-b9dd-4bb2-81d8-f57877cade8e");
+INSERT INTO O_BATTR
+	VALUES ("826b85e6-2476-46e0-8c76-096e835fe2ce",
+	"76982554-b9dd-4bb2-81d8-f57877cade8e");
+INSERT INTO O_ATTR
+	VALUES ("826b85e6-2476-46e0-8c76-096e835fe2ce",
+	"76982554-b9dd-4bb2-81d8-f57877cade8e",
+	"00000000-0000-0000-0000-000000000000",
+	'location',
+	'',
+	'',
+	'location',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("3fe007c5-aa0e-4f87-9304-a37e9aa67074",
+	"76982554-b9dd-4bb2-81d8-f57877cade8e");
+INSERT INTO O_BATTR
+	VALUES ("3fe007c5-aa0e-4f87-9304-a37e9aa67074",
+	"76982554-b9dd-4bb2-81d8-f57877cade8e");
+INSERT INTO O_ATTR
+	VALUES ("3fe007c5-aa0e-4f87-9304-a37e9aa67074",
+	"76982554-b9dd-4bb2-81d8-f57877cade8e",
+	"826b85e6-2476-46e0-8c76-096e835fe2ce",
+	'standType',
+	'',
+	'',
+	'standType',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"76982554-b9dd-4bb2-81d8-f57877cade8e");
+INSERT INTO O_ID
+	VALUES (1,
+	"76982554-b9dd-4bb2-81d8-f57877cade8e");
+INSERT INTO O_ID
+	VALUES (2,
+	"76982554-b9dd-4bb2-81d8-f57877cade8e");
+INSERT INTO PE_PE
+	VALUES ("76982554-b9dd-4bb2-81d8-f57877cade8e",
+	1,
+	"3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'SimulatedEntities',
+	'',
+	0,
+	'../SimulatedEntities.xtuml');

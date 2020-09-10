@@ -1,0 +1,2253 @@
+-- BP 7.1.6 content: Component syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO C_C
+	VALUES ("267abe01-5adc-42d6-aa1d-2adf945776bc",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'CarParkTestbench',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'');
+INSERT INTO GD_MD
+	VALUES ("77c51073-d550-49a0-9c24-1958fb700e9e",
+	111,
+	"267abe01-5adc-42d6-aa1d-2adf945776bc",
+	98,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	200,
+	150,
+	0,
+	'4.1.17',
+	'CarParkTestbench::Components::CarParkTestbench');
+INSERT INTO GD_GE
+	VALUES ("49745cba-7b3d-4bcb-abae-81214c483983",
+	"77c51073-d550-49a0-9c24-1958fb700e9e",
+	"267abe01-5adc-42d6-aa1d-2adf945776bc",
+	103,
+	0,
+	'CarParkTestbench::Components::CarParkTestbench');
+INSERT INTO GD_SHP
+	VALUES ("49745cba-7b3d-4bcb-abae-81214c483983");
+INSERT INTO GD_CTR
+	VALUES ("49745cba-7b3d-4bcb-abae-81214c483983");
+INSERT INTO DIM_ND
+	VALUES (3148.000000,
+	3580.000000,
+	"49745cba-7b3d-4bcb-abae-81214c483983");
+INSERT INTO DIM_GE
+	VALUES (4100.000000,
+	-12.000000,
+	"49745cba-7b3d-4bcb-abae-81214c483983",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("49745cba-7b3d-4bcb-abae-81214c483983",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_CON
+	VALUES ("80c96c6d-d52a-4960-b799-6d67eefde965",
+	4170.000000,
+	-12.000000,
+	"49745cba-7b3d-4bcb-abae-81214c483983");
+INSERT INTO DIM_CON
+	VALUES ("71d5dfc0-91e0-4c59-8aba-9ab6c3bb5611",
+	4458.000000,
+	-12.000000,
+	"49745cba-7b3d-4bcb-abae-81214c483983");
+INSERT INTO DIM_CON
+	VALUES ("00a520bc-fd3e-4b2b-8d8c-05218c259ff2",
+	4746.000000,
+	-12.000000,
+	"49745cba-7b3d-4bcb-abae-81214c483983");
+INSERT INTO DIM_CON
+	VALUES ("09bf1a19-1947-4433-8e26-5728d34a8b17",
+	5142.000000,
+	-12.000000,
+	"49745cba-7b3d-4bcb-abae-81214c483983");
+INSERT INTO DIM_CON
+	VALUES ("9990110a-3d22-41a8-9024-c8bca752bbc8",
+	4950.000000,
+	3568.000000,
+	"49745cba-7b3d-4bcb-abae-81214c483983");
+INSERT INTO DIM_CON
+	VALUES ("d17e4075-6f4f-4069-aac8-3d5f11d63998",
+	6410.000000,
+	1680.000000,
+	"49745cba-7b3d-4bcb-abae-81214c483983");
+INSERT INTO DIM_CON
+	VALUES ("618eb0b9-250e-42d1-a95e-02cd40862b67",
+	5688.000000,
+	3568.000000,
+	"49745cba-7b3d-4bcb-abae-81214c483983");
+INSERT INTO DIM_CON
+	VALUES ("929d7e45-2768-4108-8bbb-e72789184d44",
+	4100.000000,
+	1393.000000,
+	"49745cba-7b3d-4bcb-abae-81214c483983");
+INSERT INTO DIM_CON
+	VALUES ("fe57347d-e60f-4bcf-9577-7b91cbb8e65e",
+	4100.000000,
+	2610.000000,
+	"49745cba-7b3d-4bcb-abae-81214c483983");
+INSERT INTO GD_GE
+	VALUES ("42e688ae-3854-412a-b2d6-6db0afd9f1ef",
+	"77c51073-d550-49a0-9c24-1958fb700e9e",
+	"bd0d79e5-8b72-439c-a575-cb80a89b4e3a",
+	93,
+	0,
+	'CarParkTestbench::Components::CarParkTestbench::Operator::OperatorConsole');
+INSERT INTO GD_CON
+	VALUES ("42e688ae-3854-412a-b2d6-6db0afd9f1ef",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("1fe93354-1900-4904-a6df-fbd2619bcc7f",
+	"42e688ae-3854-412a-b2d6-6db0afd9f1ef",
+	0,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"1fe93354-1900-4904-a6df-fbd2619bcc7f");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"1fe93354-1900-4904-a6df-fbd2619bcc7f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("1fe93354-1900-4904-a6df-fbd2619bcc7f",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("89ca59f3-2f9b-4069-8338-51483118481f",
+	"42e688ae-3854-412a-b2d6-6db0afd9f1ef",
+	2,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"89ca59f3-2f9b-4069-8338-51483118481f");
+INSERT INTO DIM_GE
+	VALUES (4055.000000,
+	-54.000000,
+	"89ca59f3-2f9b-4069-8338-51483118481f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("89ca59f3-2f9b-4069-8338-51483118481f",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("34d97863-4bdd-407f-a820-f584f2d5d250",
+	"42e688ae-3854-412a-b2d6-6db0afd9f1ef",
+	1,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"34d97863-4bdd-407f-a820-f584f2d5d250");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"34d97863-4bdd-407f-a820-f584f2d5d250",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("34d97863-4bdd-407f-a820-f584f2d5d250",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_LS
+	VALUES ("3509b613-4a99-4db7-9173-82f2cb4c54eb",
+	"42e688ae-3854-412a-b2d6-6db0afd9f1ef",
+	"00000000-0000-0000-0000-000000000000",
+	"a687dcb7-d484-44b6-86c1-cbc8c1d60b16",
+	"9d20001b-c5b6-44b3-a177-e2c976720e67");
+INSERT INTO DIM_WAY
+	VALUES ("a687dcb7-d484-44b6-86c1-cbc8c1d60b16",
+	4170.000000,
+	-12.000000,
+	"42e688ae-3854-412a-b2d6-6db0afd9f1ef",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_WAY
+	VALUES ("9d20001b-c5b6-44b3-a177-e2c976720e67",
+	4169.000000,
+	-82.000000,
+	"42e688ae-3854-412a-b2d6-6db0afd9f1ef",
+	"00000000-0000-0000-0000-000000000000",
+	"a687dcb7-d484-44b6-86c1-cbc8c1d60b16");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"42e688ae-3854-412a-b2d6-6db0afd9f1ef",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("42e688ae-3854-412a-b2d6-6db0afd9f1ef",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ED
+	VALUES ("80c96c6d-d52a-4960-b799-6d67eefde965",
+	"00000000-0000-0000-0000-000000000000",
+	"42e688ae-3854-412a-b2d6-6db0afd9f1ef");
+INSERT INTO GD_GE
+	VALUES ("21484e4a-beb9-468f-8b40-0d76816b0f8d",
+	"77c51073-d550-49a0-9c24-1958fb700e9e",
+	"a40ddd81-ad50-41f6-a8a7-8cf0c07f48b6",
+	93,
+	0,
+	'CarParkTestbench::Components::CarParkTestbench::EntryStand::EntryStand');
+INSERT INTO GD_CON
+	VALUES ("21484e4a-beb9-468f-8b40-0d76816b0f8d",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("c65a0b0e-cfc0-4b72-878c-972bffd52ab1",
+	"21484e4a-beb9-468f-8b40-0d76816b0f8d",
+	0,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"c65a0b0e-cfc0-4b72-878c-972bffd52ab1");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"c65a0b0e-cfc0-4b72-878c-972bffd52ab1",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("c65a0b0e-cfc0-4b72-878c-972bffd52ab1",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("b77b5cc0-3e76-4125-9461-46221d5b6def",
+	"21484e4a-beb9-468f-8b40-0d76816b0f8d",
+	2,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"b77b5cc0-3e76-4125-9461-46221d5b6def");
+INSERT INTO DIM_GE
+	VALUES (4377.000000,
+	-54.000000,
+	"b77b5cc0-3e76-4125-9461-46221d5b6def",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("b77b5cc0-3e76-4125-9461-46221d5b6def",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("b2aa4f60-ea62-4ab7-aa4e-d285a00af31a",
+	"21484e4a-beb9-468f-8b40-0d76816b0f8d",
+	1,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"b2aa4f60-ea62-4ab7-aa4e-d285a00af31a");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"b2aa4f60-ea62-4ab7-aa4e-d285a00af31a",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("b2aa4f60-ea62-4ab7-aa4e-d285a00af31a",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_LS
+	VALUES ("410ee44a-ff52-4fbd-827e-7a378ddcc2dc",
+	"21484e4a-beb9-468f-8b40-0d76816b0f8d",
+	"00000000-0000-0000-0000-000000000000",
+	"1754255c-d4dc-484a-9a80-0de44d3de9e2",
+	"1dc59455-b355-45c9-aa8f-b5ed4fa46ee2");
+INSERT INTO DIM_WAY
+	VALUES ("1754255c-d4dc-484a-9a80-0de44d3de9e2",
+	4458.000000,
+	-12.000000,
+	"21484e4a-beb9-468f-8b40-0d76816b0f8d",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_WAY
+	VALUES ("1dc59455-b355-45c9-aa8f-b5ed4fa46ee2",
+	4460.000000,
+	-82.000000,
+	"21484e4a-beb9-468f-8b40-0d76816b0f8d",
+	"00000000-0000-0000-0000-000000000000",
+	"1754255c-d4dc-484a-9a80-0de44d3de9e2");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"21484e4a-beb9-468f-8b40-0d76816b0f8d",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("21484e4a-beb9-468f-8b40-0d76816b0f8d",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ED
+	VALUES ("71d5dfc0-91e0-4c59-8aba-9ab6c3bb5611",
+	"00000000-0000-0000-0000-000000000000",
+	"21484e4a-beb9-468f-8b40-0d76816b0f8d");
+INSERT INTO GD_GE
+	VALUES ("767f3d9f-140c-4b1a-a209-19fe9aa0a8aa",
+	"77c51073-d550-49a0-9c24-1958fb700e9e",
+	"9ed87ac1-d91a-4819-bef5-4fe15fae6ea7",
+	93,
+	0,
+	'CarParkTestbench::Components::CarParkTestbench::ExitStand::ExitStand');
+INSERT INTO GD_CON
+	VALUES ("767f3d9f-140c-4b1a-a209-19fe9aa0a8aa",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("f33b1eff-22ac-491f-a953-56d703d66053",
+	"767f3d9f-140c-4b1a-a209-19fe9aa0a8aa",
+	0,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"f33b1eff-22ac-491f-a953-56d703d66053");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"f33b1eff-22ac-491f-a953-56d703d66053",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("f33b1eff-22ac-491f-a953-56d703d66053",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("555b2810-cac4-4f91-a465-78521fb3943c",
+	"767f3d9f-140c-4b1a-a209-19fe9aa0a8aa",
+	2,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"555b2810-cac4-4f91-a465-78521fb3943c");
+INSERT INTO DIM_GE
+	VALUES (4673.000000,
+	-54.000000,
+	"555b2810-cac4-4f91-a465-78521fb3943c",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("555b2810-cac4-4f91-a465-78521fb3943c",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("e7b3948c-1276-436e-b541-7ac9cd95f1e2",
+	"767f3d9f-140c-4b1a-a209-19fe9aa0a8aa",
+	1,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"e7b3948c-1276-436e-b541-7ac9cd95f1e2");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"e7b3948c-1276-436e-b541-7ac9cd95f1e2",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("e7b3948c-1276-436e-b541-7ac9cd95f1e2",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_LS
+	VALUES ("c3cb32ba-a144-4e64-9966-cbc83b683cd3",
+	"767f3d9f-140c-4b1a-a209-19fe9aa0a8aa",
+	"00000000-0000-0000-0000-000000000000",
+	"22bb2652-6d17-4fd6-9298-4b4d13e631e7",
+	"f2e542ed-1478-4934-8600-f54af053e94e");
+INSERT INTO DIM_WAY
+	VALUES ("22bb2652-6d17-4fd6-9298-4b4d13e631e7",
+	4746.000000,
+	-12.000000,
+	"767f3d9f-140c-4b1a-a209-19fe9aa0a8aa",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_WAY
+	VALUES ("f2e542ed-1478-4934-8600-f54af053e94e",
+	4748.000000,
+	-82.000000,
+	"767f3d9f-140c-4b1a-a209-19fe9aa0a8aa",
+	"00000000-0000-0000-0000-000000000000",
+	"22bb2652-6d17-4fd6-9298-4b4d13e631e7");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"767f3d9f-140c-4b1a-a209-19fe9aa0a8aa",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("767f3d9f-140c-4b1a-a209-19fe9aa0a8aa",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ED
+	VALUES ("00a520bc-fd3e-4b2b-8d8c-05218c259ff2",
+	"00000000-0000-0000-0000-000000000000",
+	"767f3d9f-140c-4b1a-a209-19fe9aa0a8aa");
+INSERT INTO GD_GE
+	VALUES ("1afce8be-be60-4af9-883f-62c79b92748d",
+	"77c51073-d550-49a0-9c24-1958fb700e9e",
+	"afa5e31a-c993-427d-b907-5786d5800b5f",
+	93,
+	0,
+	'CarParkTestbench::Components::CarParkTestbench::Payer::PaymentMachine');
+INSERT INTO GD_CON
+	VALUES ("1afce8be-be60-4af9-883f-62c79b92748d",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("65271e69-121a-4138-b154-d5d8aedabfc6",
+	"1afce8be-be60-4af9-883f-62c79b92748d",
+	0,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"65271e69-121a-4138-b154-d5d8aedabfc6");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"65271e69-121a-4138-b154-d5d8aedabfc6",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("65271e69-121a-4138-b154-d5d8aedabfc6",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("6572bdb0-4d97-4f8e-95c8-859078366db5",
+	"1afce8be-be60-4af9-883f-62c79b92748d",
+	2,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"6572bdb0-4d97-4f8e-95c8-859078366db5");
+INSERT INTO DIM_GE
+	VALUES (5025.000000,
+	-54.000000,
+	"6572bdb0-4d97-4f8e-95c8-859078366db5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("6572bdb0-4d97-4f8e-95c8-859078366db5",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("a1b1e2ea-5576-4a8d-a833-0498f2f33fde",
+	"1afce8be-be60-4af9-883f-62c79b92748d",
+	1,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"a1b1e2ea-5576-4a8d-a833-0498f2f33fde");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"a1b1e2ea-5576-4a8d-a833-0498f2f33fde",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("a1b1e2ea-5576-4a8d-a833-0498f2f33fde",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_LS
+	VALUES ("c7c10152-422b-4ed0-917c-9ffdf5e61766",
+	"1afce8be-be60-4af9-883f-62c79b92748d",
+	"00000000-0000-0000-0000-000000000000",
+	"36ebfd07-f5c6-4fd1-b147-4d9e4fe7b5a1",
+	"6e222a3c-c2a3-47b8-aa17-c3f5c0928f3b");
+INSERT INTO DIM_WAY
+	VALUES ("36ebfd07-f5c6-4fd1-b147-4d9e4fe7b5a1",
+	5142.000000,
+	-12.000000,
+	"1afce8be-be60-4af9-883f-62c79b92748d",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_WAY
+	VALUES ("6e222a3c-c2a3-47b8-aa17-c3f5c0928f3b",
+	5144.000000,
+	-82.000000,
+	"1afce8be-be60-4af9-883f-62c79b92748d",
+	"00000000-0000-0000-0000-000000000000",
+	"36ebfd07-f5c6-4fd1-b147-4d9e4fe7b5a1");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"1afce8be-be60-4af9-883f-62c79b92748d",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("1afce8be-be60-4af9-883f-62c79b92748d",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ED
+	VALUES ("09bf1a19-1947-4433-8e26-5728d34a8b17",
+	"00000000-0000-0000-0000-000000000000",
+	"1afce8be-be60-4af9-883f-62c79b92748d");
+INSERT INTO GD_GE
+	VALUES ("36c76d6f-7873-44bc-b7d8-c32db7395a3e",
+	"77c51073-d550-49a0-9c24-1958fb700e9e",
+	"68e29e87-70d2-4c06-97db-6b293da075ca",
+	108,
+	0,
+	'CarParkTestbench::Components::CarParkTestbench::Functions');
+INSERT INTO GD_SHP
+	VALUES ("36c76d6f-7873-44bc-b7d8-c32db7395a3e");
+INSERT INTO GD_NCS
+	VALUES ("36c76d6f-7873-44bc-b7d8-c32db7395a3e");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"36c76d6f-7873-44bc-b7d8-c32db7395a3e");
+INSERT INTO DIM_GE
+	VALUES (5716.000000,
+	3100.000000,
+	"36c76d6f-7873-44bc-b7d8-c32db7395a3e",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("36c76d6f-7873-44bc-b7d8-c32db7395a3e",
+	0,
+	"49745cba-7b3d-4bcb-abae-81214c483983");
+INSERT INTO GD_GE
+	VALUES ("627008f4-b0f9-4871-b63d-f4c802173dfb",
+	"77c51073-d550-49a0-9c24-1958fb700e9e",
+	"2b2f0a23-82bc-45e3-9c08-5c0bb41b4329",
+	108,
+	0,
+	'CarParkTestbench::Components::CarParkTestbench::TimeUtilities');
+INSERT INTO GD_SHP
+	VALUES ("627008f4-b0f9-4871-b63d-f4c802173dfb");
+INSERT INTO GD_NCS
+	VALUES ("627008f4-b0f9-4871-b63d-f4c802173dfb");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"627008f4-b0f9-4871-b63d-f4c802173dfb");
+INSERT INTO DIM_GE
+	VALUES (5936.000000,
+	3100.000000,
+	"627008f4-b0f9-4871-b63d-f4c802173dfb",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("627008f4-b0f9-4871-b63d-f4c802173dfb",
+	0,
+	"49745cba-7b3d-4bcb-abae-81214c483983");
+INSERT INTO GD_GE
+	VALUES ("b6ea213b-d7c0-4a0e-8d91-793b6b257025",
+	"77c51073-d550-49a0-9c24-1958fb700e9e",
+	"3430745e-1746-4e96-ac58-2ee3ee684b20",
+	108,
+	0,
+	'CarParkTestbench::Components::CarParkTestbench::SimulatedEntities');
+INSERT INTO GD_SHP
+	VALUES ("b6ea213b-d7c0-4a0e-8d91-793b6b257025");
+INSERT INTO GD_NCS
+	VALUES ("b6ea213b-d7c0-4a0e-8d91-793b6b257025");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"b6ea213b-d7c0-4a0e-8d91-793b6b257025");
+INSERT INTO DIM_GE
+	VALUES (6376.000000,
+	3100.000000,
+	"b6ea213b-d7c0-4a0e-8d91-793b6b257025",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("b6ea213b-d7c0-4a0e-8d91-793b6b257025",
+	0,
+	"49745cba-7b3d-4bcb-abae-81214c483983");
+INSERT INTO GD_GE
+	VALUES ("36c654c0-a0e7-4dbc-afb8-fc90a612cb0f",
+	"77c51073-d550-49a0-9c24-1958fb700e9e",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf",
+	93,
+	0,
+	'CarParkTestbench::Components::CarParkTestbench::TESTSEQ::TestSequencing');
+INSERT INTO GD_CON
+	VALUES ("36c654c0-a0e7-4dbc-afb8-fc90a612cb0f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("d3469f3c-c09f-42c2-a490-1137cf3eda90",
+	"36c654c0-a0e7-4dbc-afb8-fc90a612cb0f",
+	0,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"d3469f3c-c09f-42c2-a490-1137cf3eda90");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"d3469f3c-c09f-42c2-a490-1137cf3eda90",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("d3469f3c-c09f-42c2-a490-1137cf3eda90",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("40ee9ff5-d121-40af-b942-d076cd95c209",
+	"36c654c0-a0e7-4dbc-afb8-fc90a612cb0f",
+	2,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (92.000000,
+	25.000000,
+	"40ee9ff5-d121-40af-b942-d076cd95c209");
+INSERT INTO DIM_GE
+	VALUES (5581.000000,
+	3595.000000,
+	"40ee9ff5-d121-40af-b942-d076cd95c209",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("40ee9ff5-d121-40af-b942-d076cd95c209",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("947fdf2e-14da-40b7-a6ba-0aa2babf389a",
+	"36c654c0-a0e7-4dbc-afb8-fc90a612cb0f",
+	1,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"947fdf2e-14da-40b7-a6ba-0aa2babf389a");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"947fdf2e-14da-40b7-a6ba-0aa2babf389a",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("947fdf2e-14da-40b7-a6ba-0aa2babf389a",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_LS
+	VALUES ("1e4d6dd3-3358-4498-ae1e-a81fea6d613b",
+	"36c654c0-a0e7-4dbc-afb8-fc90a612cb0f",
+	"00000000-0000-0000-0000-000000000000",
+	"cd4db519-258a-43d4-8211-840f070485ee",
+	"bb74e1ec-e3c0-4d81-86b8-b7d619639982");
+INSERT INTO DIM_WAY
+	VALUES ("cd4db519-258a-43d4-8211-840f070485ee",
+	5688.000000,
+	3568.000000,
+	"36c654c0-a0e7-4dbc-afb8-fc90a612cb0f",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_WAY
+	VALUES ("bb74e1ec-e3c0-4d81-86b8-b7d619639982",
+	5689.000000,
+	3636.000000,
+	"36c654c0-a0e7-4dbc-afb8-fc90a612cb0f",
+	"00000000-0000-0000-0000-000000000000",
+	"cd4db519-258a-43d4-8211-840f070485ee");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"36c654c0-a0e7-4dbc-afb8-fc90a612cb0f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("36c654c0-a0e7-4dbc-afb8-fc90a612cb0f",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ED
+	VALUES ("618eb0b9-250e-42d1-a95e-02cd40862b67",
+	"00000000-0000-0000-0000-000000000000",
+	"36c654c0-a0e7-4dbc-afb8-fc90a612cb0f");
+INSERT INTO GD_GE
+	VALUES ("5bdb1370-f1d7-4fac-97bf-a85493b06736",
+	"77c51073-d550-49a0-9c24-1958fb700e9e",
+	"ae1754df-78e6-4776-9103-d17612298bb1",
+	108,
+	0,
+	'CarParkTestbench::Components::CarParkTestbench::TestFunctionsForCodeGen');
+INSERT INTO GD_SHP
+	VALUES ("5bdb1370-f1d7-4fac-97bf-a85493b06736");
+INSERT INTO GD_NCS
+	VALUES ("5bdb1370-f1d7-4fac-97bf-a85493b06736");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"5bdb1370-f1d7-4fac-97bf-a85493b06736");
+INSERT INTO DIM_GE
+	VALUES (7036.000000,
+	3100.000000,
+	"5bdb1370-f1d7-4fac-97bf-a85493b06736",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("5bdb1370-f1d7-4fac-97bf-a85493b06736",
+	0,
+	"49745cba-7b3d-4bcb-abae-81214c483983");
+INSERT INTO DIM_DIA
+	VALUES ("77c51073-d550-49a0-9c24-1958fb700e9e",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PO
+	VALUES ("b01aa672-0b47-4336-96cd-97b2b73a8188",
+	"267abe01-5adc-42d6-aa1d-2adf945776bc",
+	'Operator',
+	0,
+	0);
+INSERT INTO C_IR
+	VALUES ("bd0d79e5-8b72-439c-a575-cb80a89b4e3a",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	"00000000-0000-0000-0000-000000000000",
+	"b01aa672-0b47-4336-96cd-97b2b73a8188");
+INSERT INTO C_R
+	VALUES ("bd0d79e5-8b72-439c-a575-cb80a89b4e3a",
+	'OperatorConsole',
+	'',
+	'Unnamed Interface',
+	'CarParkTestbench::Operator::OperatorConsole');
+INSERT INTO SPR_REP
+	VALUES ("b9ad2e69-be84-48e2-ab73-4a723c6dd883",
+	"56dc2578-d45a-4a5c-86c8-ee5e3284e192",
+	"bd0d79e5-8b72-439c-a575-cb80a89b4e3a");
+INSERT INTO SPR_RS
+	VALUES ("b9ad2e69-be84-48e2-ab73-4a723c6dd883",
+	'TardyExit',
+	'',
+	'LOG::LogInfo( message:"Tardy exit." );',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("56dc2578-d45a-4a5c-86c8-ee5e3284e192",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'TardyExit',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("b15a9460-75c6-4faa-a392-8dce9344e6b1",
+	"6addbc93-2516-4ff7-973f-4036661c3594",
+	"bd0d79e5-8b72-439c-a575-cb80a89b4e3a");
+INSERT INTO SPR_RS
+	VALUES ("b15a9460-75c6-4faa-a392-8dce9344e6b1",
+	'UnpaidStayExit',
+	'',
+	'LOG::LogInfo( message:"Unpaid stay exit" );',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("6addbc93-2516-4ff7-973f-4036661c3594",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'UnpaidStayExit',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("04644983-1e73-42be-a023-a65e59c6356f",
+	"691fe067-ff91-4b3a-80b4-ac20b1a6f42c",
+	"bd0d79e5-8b72-439c-a575-cb80a89b4e3a");
+INSERT INTO SPR_RS
+	VALUES ("04644983-1e73-42be-a023-a65e59c6356f",
+	'FeeWaived',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("691fe067-ff91-4b3a-80b4-ac20b1a6f42c",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'FeeWaived',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("75b0df71-52c0-4a70-9dc2-bac27605e6b2",
+	"deabe881-00f0-46a6-8238-f0f211af4084",
+	"bd0d79e5-8b72-439c-a575-cb80a89b4e3a");
+INSERT INTO SPR_RS
+	VALUES ("75b0df71-52c0-4a70-9dc2-bac27605e6b2",
+	'FeeCollected',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("deabe881-00f0-46a6-8238-f0f211af4084",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'FeeCollected',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("9030b81f-3015-4b1d-9b1f-6217ddce858d",
+	"decb291b-9729-42dc-9e3c-39bf58a3f0fe",
+	"bd0d79e5-8b72-439c-a575-cb80a89b4e3a");
+INSERT INTO SPR_RS
+	VALUES ("9030b81f-3015-4b1d-9b1f-6217ddce858d",
+	'ActivateEntryStand',
+	'',
+	'select any operator from instances of Operator;
+operator.EntryStandActivated = true;',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("decb291b-9729-42dc-9e3c-39bf58a3f0fe",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'ActivateEntryStand',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("3ee2ab3c-3f90-41ae-9eeb-43a1f994e19c",
+	"e498b425-5222-4bf7-beb4-dbf2b2ed21ef",
+	"bd0d79e5-8b72-439c-a575-cb80a89b4e3a");
+INSERT INTO SPR_RS
+	VALUES ("3ee2ab3c-3f90-41ae-9eeb-43a1f994e19c",
+	'DeactivateEntryStand',
+	'',
+	'select any operator from instances of Operator;
+operator.EntryStandDeactivated = true;',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("e498b425-5222-4bf7-beb4-dbf2b2ed21ef",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'DeactivateEntryStand',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("fafcf6ae-8621-453e-b70d-29e3179bec96",
+	"ceb70e8e-da44-4868-9afd-06ee51840aaf",
+	"bd0d79e5-8b72-439c-a575-cb80a89b4e3a");
+INSERT INTO SPR_RS
+	VALUES ("fafcf6ae-8621-453e-b70d-29e3179bec96",
+	'DelayedEntry',
+	'',
+	'LOG::LogInfo( message:"Delayed entry." );',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("ceb70e8e-da44-4868-9afd-06ee51840aaf",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'DelayedEntry',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("8e4d2896-2cb8-4bbf-bc8b-a9aecefa99fe",
+	"a19289e3-ea62-417f-9a6d-5f05d709b9b8",
+	"bd0d79e5-8b72-439c-a575-cb80a89b4e3a");
+INSERT INTO SPR_RS
+	VALUES ("8e4d2896-2cb8-4bbf-bc8b-a9aecefa99fe",
+	'ActivateExitStand',
+	'',
+	'select any operator from instances of Operator;
+operator.ExitStandActivated = true;',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("a19289e3-ea62-417f-9a6d-5f05d709b9b8",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'ActivateExitStand',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("8f5cce9e-ad81-456b-9d9c-43da460ffacd",
+	"2c1be27d-0494-409e-bee1-e788809c8dc5",
+	"bd0d79e5-8b72-439c-a575-cb80a89b4e3a");
+INSERT INTO SPR_RS
+	VALUES ("8f5cce9e-ad81-456b-9d9c-43da460ffacd",
+	'DeactivateExitStand',
+	'',
+	'select any operator from instances of Operator;
+operator.ExitStandDeactivated = true;',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("2c1be27d-0494-409e-bee1-e788809c8dc5",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'DeactivateExitStand',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("c9bec875-0c09-4938-bc20-08fb9b405cda",
+	"fb9ecbd5-8059-4308-9f0a-83969561ff04",
+	"bd0d79e5-8b72-439c-a575-cb80a89b4e3a");
+INSERT INTO SPR_RS
+	VALUES ("c9bec875-0c09-4938-bc20-08fb9b405cda",
+	'OccupancyUpdate',
+	'',
+	'select any operator from instances of Operator;
+if ( param.Occupancy < operator.Occupancy )
+  operator.OccupancyDecreased = operator.OccupancyDecreased + 1;
+else
+  operator.OccupancyIncreased = operator.OccupancyIncreased + 1;
+end if;
+operator.Occupancy = param.Occupancy;
+operator.OccupancyUpdated = true;
+',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("fb9ecbd5-8059-4308-9f0a-83969561ff04",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'OccupancyUpdate',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("9496f5a3-5606-4fea-bb3e-f7a381ff9e67",
+	"bb331470-fbd3-43d9-8d59-e5684346c197",
+	"bd0d79e5-8b72-439c-a575-cb80a89b4e3a");
+INSERT INTO SPR_RS
+	VALUES ("9496f5a3-5606-4fea-bb3e-f7a381ff9e67",
+	'IssueTicket',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("bb331470-fbd3-43d9-8d59-e5684346c197",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'IssueTicket',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("e4a6cfeb-e903-410d-9e77-e397fde5a3da",
+	"dc4b88ab-d520-4c50-ae78-e56474653079",
+	"bd0d79e5-8b72-439c-a575-cb80a89b4e3a");
+INSERT INTO SPR_RS
+	VALUES ("e4a6cfeb-e903-410d-9e77-e397fde5a3da",
+	'OpenEntryBarrier',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("dc4b88ab-d520-4c50-ae78-e56474653079",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'OpenEntryBarrier',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("638a0cdd-5bfa-4160-8b99-0deb0deef4c0",
+	"78dddf09-cf4f-4260-95da-dabf54002032",
+	"bd0d79e5-8b72-439c-a575-cb80a89b4e3a");
+INSERT INTO SPR_RS
+	VALUES ("638a0cdd-5bfa-4160-8b99-0deb0deef4c0",
+	'OpenCarpark',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("78dddf09-cf4f-4260-95da-dabf54002032",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'OpenCarpark',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("7f7dfd58-b6bb-4a31-811e-ca468e0153f2",
+	"314e787f-c1c2-425c-b684-c14acf073e80",
+	"bd0d79e5-8b72-439c-a575-cb80a89b4e3a");
+INSERT INTO SPR_RS
+	VALUES ("7f7dfd58-b6bb-4a31-811e-ca468e0153f2",
+	'CarparkOpened',
+	'',
+	'//select any bucket from instances of NominalBucket;
+//generate NominalBucket5:InitializationComplete() to bucket;
+',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("314e787f-c1c2-425c-b684-c14acf073e80",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'CarparkOpened',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("ffd2fac9-5c22-413b-a381-3ac6f7ff0c07",
+	"685996cf-e141-4a25-8095-b11c6e30fd38",
+	"bd0d79e5-8b72-439c-a575-cb80a89b4e3a");
+INSERT INTO SPR_RS
+	VALUES ("ffd2fac9-5c22-413b-a381-3ac6f7ff0c07",
+	'CloseCarpark',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("685996cf-e141-4a25-8095-b11c6e30fd38",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'CloseCarpark',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("58b3d2c7-9eae-46e2-b928-f6e0a89b19b3",
+	"643234c5-7a94-4834-81d1-69d996c5a76d",
+	"bd0d79e5-8b72-439c-a575-cb80a89b4e3a");
+INSERT INTO SPR_RS
+	VALUES ("58b3d2c7-9eae-46e2-b928-f6e0a89b19b3",
+	'CarparkClosed',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("643234c5-7a94-4834-81d1-69d996c5a76d",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'CarparkClosed',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("c71c6e61-6ac1-48d6-9793-085a04b9f53d",
+	"06d1a1ae-4cf0-4736-9880-66e81f19f2dd",
+	"bd0d79e5-8b72-439c-a575-cb80a89b4e3a");
+INSERT INTO SPR_RS
+	VALUES ("c71c6e61-6ac1-48d6-9793-085a04b9f53d",
+	'OpenExitBarrier',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("06d1a1ae-4cf0-4736-9880-66e81f19f2dd",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'OpenExitBarrier',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("f2ae5a35-9663-4b23-a863-1c0d0647029c",
+	"e5c28b7b-3074-4ec3-933c-109cc9064aac",
+	"bd0d79e5-8b72-439c-a575-cb80a89b4e3a");
+INSERT INTO SPR_RS
+	VALUES ("f2ae5a35-9663-4b23-a863-1c0d0647029c",
+	'DateTimeUpdate',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("e5c28b7b-3074-4ec3-933c-109cc9064aac",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'DateTimeUpdate',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO C_I_PROXY
+	VALUES ("b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	"00000000-0000-0000-0000-000000000000",
+	'OperatorConsole',
+	'Interaction with operator in the control room.',
+	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
+INSERT INTO C_PO
+	VALUES ("a5e7db47-a550-497a-bd84-ffba2e168f34",
+	"267abe01-5adc-42d6-aa1d-2adf945776bc",
+	'EntryStand',
+	0,
+	0);
+INSERT INTO C_IR
+	VALUES ("a40ddd81-ad50-41f6-a8a7-8cf0c07f48b6",
+	"a4174036-5fb5-4ca8-bc14-f60c13721964",
+	"00000000-0000-0000-0000-000000000000",
+	"a5e7db47-a550-497a-bd84-ffba2e168f34");
+INSERT INTO C_R
+	VALUES ("a40ddd81-ad50-41f6-a8a7-8cf0c07f48b6",
+	'EntryStand',
+	'',
+	'Unnamed Interface',
+	'CarParkTestbench::EntryStand::EntryStand');
+INSERT INTO SPR_REP
+	VALUES ("1b3d7a37-548c-4688-afba-85a2ef204936",
+	"9c8c4e52-3d03-4fd0-90c1-fd98b94dbf3a",
+	"a40ddd81-ad50-41f6-a8a7-8cf0c07f48b6");
+INSERT INTO SPR_RS
+	VALUES ("1b3d7a37-548c-4688-afba-85a2ef204936",
+	'VehicleWaiting',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("9c8c4e52-3d03-4fd0-90c1-fd98b94dbf3a",
+	"a4174036-5fb5-4ca8-bc14-f60c13721964",
+	-1,
+	'VehicleWaiting',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/EntryStand/EntryStand.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("68a9b49d-a78f-4214-9ca7-eeea9912de1d",
+	"aaab7b5e-4f98-4998-8be4-4d26b7279bdc",
+	"a40ddd81-ad50-41f6-a8a7-8cf0c07f48b6");
+INSERT INTO SPR_RS
+	VALUES ("68a9b49d-a78f-4214-9ca7-eeea9912de1d",
+	'VehicleEntered',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("aaab7b5e-4f98-4998-8be4-4d26b7279bdc",
+	"a4174036-5fb5-4ca8-bc14-f60c13721964",
+	-1,
+	'VehicleEntered',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/EntryStand/EntryStand.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("39e7c899-6cf1-4679-a340-42979b02f7c2",
+	"a9135539-d52d-430b-9204-de30fd3917e4",
+	"a40ddd81-ad50-41f6-a8a7-8cf0c07f48b6");
+INSERT INTO SPR_RS
+	VALUES ("39e7c899-6cf1-4679-a340-42979b02f7c2",
+	'IssueTicket',
+	'',
+	'create object instance t of Ticket;
+t.location = param.Location;
+t.number = param.Number;',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("a9135539-d52d-430b-9204-de30fd3917e4",
+	"a4174036-5fb5-4ca8-bc14-f60c13721964",
+	-1,
+	'IssueTicket',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/EntryStand/EntryStand.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("e38f3002-8f98-4e74-954d-cf15752cfafe",
+	"8f0421c7-8766-43ee-9926-ff840933d845",
+	"a40ddd81-ad50-41f6-a8a7-8cf0c07f48b6");
+INSERT INTO SPR_RS
+	VALUES ("e38f3002-8f98-4e74-954d-cf15752cfafe",
+	'OpenBarrier',
+	'',
+	'create object instance b of BarrierCommand;
+b.location = param.Location;
+b.stand = "Entry";
+b.open = True;',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("8f0421c7-8766-43ee-9926-ff840933d845",
+	"a4174036-5fb5-4ca8-bc14-f60c13721964",
+	-1,
+	'OpenBarrier',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/EntryStand/EntryStand.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("60a35953-f20c-4a3b-a934-675c0718d3be",
+	"65f8b110-e37a-4554-bb1b-f32011e90160",
+	"a40ddd81-ad50-41f6-a8a7-8cf0c07f48b6");
+INSERT INTO SPR_RS
+	VALUES ("60a35953-f20c-4a3b-a934-675c0718d3be",
+	'TicketCollected',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("65f8b110-e37a-4554-bb1b-f32011e90160",
+	"a4174036-5fb5-4ca8-bc14-f60c13721964",
+	-1,
+	'TicketCollected',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/EntryStand/EntryStand.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("95579a9d-6359-483d-a0ba-394df904bec1",
+	"b6122e79-e6b1-4317-9660-8f2915f6aa3d",
+	"a40ddd81-ad50-41f6-a8a7-8cf0c07f48b6");
+INSERT INTO SPR_RS
+	VALUES ("95579a9d-6359-483d-a0ba-394df904bec1",
+	'TicketRequested',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("b6122e79-e6b1-4317-9660-8f2915f6aa3d",
+	"a4174036-5fb5-4ca8-bc14-f60c13721964",
+	-1,
+	'TicketRequested',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/EntryStand/EntryStand.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("5f46f10f-5d5b-451d-86e2-7700441adb49",
+	"7505d600-9541-4f9d-a706-1332ed813b40",
+	"a40ddd81-ad50-41f6-a8a7-8cf0c07f48b6");
+INSERT INTO SPR_RS
+	VALUES ("5f46f10f-5d5b-451d-86e2-7700441adb49",
+	'TicketRequestEnabled',
+	'',
+	'LOG::LogInfo( message:"Entry Stand received TicketRequestEnabled at " + param.Location );
+create object instance req of ReceivedTicketRequest;
+req.location = param.Location;
+req.granted = True;',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("7505d600-9541-4f9d-a706-1332ed813b40",
+	"a4174036-5fb5-4ca8-bc14-f60c13721964",
+	-1,
+	'TicketRequestEnabled',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/EntryStand/EntryStand.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("6a07ad77-617c-40f0-8afc-8240176b531e",
+	"198f2473-7dbc-4032-af90-880de6c271ff",
+	"a40ddd81-ad50-41f6-a8a7-8cf0c07f48b6");
+INSERT INTO SPR_RS
+	VALUES ("6a07ad77-617c-40f0-8afc-8240176b531e",
+	'TicketRequestDisabled',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("198f2473-7dbc-4032-af90-880de6c271ff",
+	"a4174036-5fb5-4ca8-bc14-f60c13721964",
+	-1,
+	'TicketRequestDisabled',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/EntryStand/EntryStand.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("3762c62d-087e-4204-9b96-1616f25f1f04",
+	"7c4b090e-4c89-4572-bcaa-379127d653fd",
+	"a40ddd81-ad50-41f6-a8a7-8cf0c07f48b6");
+INSERT INTO SPR_RS
+	VALUES ("3762c62d-087e-4204-9b96-1616f25f1f04",
+	'CloseBarrier',
+	'',
+	'create object instance b of BarrierCommand;
+b.location = param.Location;
+b.stand = "Entry";
+b.open = False;',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("7c4b090e-4c89-4572-bcaa-379127d653fd",
+	"a4174036-5fb5-4ca8-bc14-f60c13721964",
+	-1,
+	'CloseBarrier',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/EntryStand/EntryStand.xtuml');
+INSERT INTO C_I_PROXY
+	VALUES ("a4174036-5fb5-4ca8-bc14-f60c13721964",
+	"00000000-0000-0000-0000-000000000000",
+	'EntryStand',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/EntryStand/EntryStand.xtuml');
+INSERT INTO C_PO
+	VALUES ("3b25f197-413e-4cc5-8984-e3cbf0be4c19",
+	"267abe01-5adc-42d6-aa1d-2adf945776bc",
+	'ExitStand',
+	0,
+	0);
+INSERT INTO C_IR
+	VALUES ("9ed87ac1-d91a-4819-bef5-4fe15fae6ea7",
+	"7899d3af-2715-4b8f-a3b5-f0508005328d",
+	"00000000-0000-0000-0000-000000000000",
+	"3b25f197-413e-4cc5-8984-e3cbf0be4c19");
+INSERT INTO C_R
+	VALUES ("9ed87ac1-d91a-4819-bef5-4fe15fae6ea7",
+	'ExitStand',
+	'',
+	'Unnamed Interface',
+	'CarParkTestbench::ExitStand::ExitStand');
+INSERT INTO SPR_REP
+	VALUES ("30fc03d7-e870-4aca-b602-34045fc84ca1",
+	"b3f31032-49a3-4845-9e8a-03103f750cdc",
+	"9ed87ac1-d91a-4819-bef5-4fe15fae6ea7");
+INSERT INTO SPR_RS
+	VALUES ("30fc03d7-e870-4aca-b602-34045fc84ca1",
+	'VehicleWaiting',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("b3f31032-49a3-4845-9e8a-03103f750cdc",
+	"7899d3af-2715-4b8f-a3b5-f0508005328d",
+	-1,
+	'VehicleWaiting',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/ExitStand/ExitStand.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("f76c133d-6973-4345-a171-2e03cd00d57c",
+	"ed36bd77-6fda-48f3-a9fb-7e00759b1b57",
+	"9ed87ac1-d91a-4819-bef5-4fe15fae6ea7");
+INSERT INTO SPR_RS
+	VALUES ("f76c133d-6973-4345-a171-2e03cd00d57c",
+	'VehicleExited',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("ed36bd77-6fda-48f3-a9fb-7e00759b1b57",
+	"7899d3af-2715-4b8f-a3b5-f0508005328d",
+	-1,
+	'VehicleExited',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/ExitStand/ExitStand.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("a4f9f287-62e3-4712-af22-7352bc789027",
+	"94176f94-59e4-424f-93c7-c63bd6df3325",
+	"9ed87ac1-d91a-4819-bef5-4fe15fae6ea7");
+INSERT INTO SPR_RS
+	VALUES ("a4f9f287-62e3-4712-af22-7352bc789027",
+	'OpenBarrier',
+	'',
+	'select any exit from instances of Exit;
+generate Exit2:BarrierOpened() to exit;',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("94176f94-59e4-424f-93c7-c63bd6df3325",
+	"7899d3af-2715-4b8f-a3b5-f0508005328d",
+	-1,
+	'OpenBarrier',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/ExitStand/ExitStand.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("c6dc9263-f895-4679-956c-80c33a18ebe2",
+	"edaae9b0-1293-42d5-9588-eebd4c4e58e9",
+	"9ed87ac1-d91a-4819-bef5-4fe15fae6ea7");
+INSERT INTO SPR_RS
+	VALUES ("c6dc9263-f895-4679-956c-80c33a18ebe2",
+	'InsertedTicket',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("edaae9b0-1293-42d5-9588-eebd4c4e58e9",
+	"7899d3af-2715-4b8f-a3b5-f0508005328d",
+	-1,
+	'InsertedTicket',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/ExitStand/ExitStand.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("52b7a6a0-4afc-4f83-88ec-2941b92d3e67",
+	"1156e097-b935-4375-835b-405ad15cc03d",
+	"9ed87ac1-d91a-4819-bef5-4fe15fae6ea7");
+INSERT INTO SPR_RS
+	VALUES ("52b7a6a0-4afc-4f83-88ec-2941b92d3e67",
+	'CloseBarrier',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("1156e097-b935-4375-835b-405ad15cc03d",
+	"7899d3af-2715-4b8f-a3b5-f0508005328d",
+	-1,
+	'CloseBarrier',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/ExitStand/ExitStand.xtuml');
+INSERT INTO C_I_PROXY
+	VALUES ("7899d3af-2715-4b8f-a3b5-f0508005328d",
+	"00000000-0000-0000-0000-000000000000",
+	'ExitStand',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/ExitStand/ExitStand.xtuml');
+INSERT INTO C_PO
+	VALUES ("25fc04a7-96b7-4bc6-b261-b7d91fe1b4f7",
+	"267abe01-5adc-42d6-aa1d-2adf945776bc",
+	'Payer',
+	0,
+	0);
+INSERT INTO C_IR
+	VALUES ("afa5e31a-c993-427d-b907-5786d5800b5f",
+	"1775761d-746e-41ae-a5e0-cd1a783dc665",
+	"00000000-0000-0000-0000-000000000000",
+	"25fc04a7-96b7-4bc6-b261-b7d91fe1b4f7");
+INSERT INTO C_R
+	VALUES ("afa5e31a-c993-427d-b907-5786d5800b5f",
+	'PaymentMachine',
+	'',
+	'Unnamed Interface',
+	'CarParkTestbench::Payer::PaymentMachine');
+INSERT INTO SPR_REP
+	VALUES ("6d9e2dff-4715-4b20-acf8-2e77b198e818",
+	"aeb8e261-7eb2-4971-a3cb-e35a714490b3",
+	"afa5e31a-c993-427d-b907-5786d5800b5f");
+INSERT INTO SPR_RS
+	VALUES ("6d9e2dff-4715-4b20-acf8-2e77b198e818",
+	'CancelledTransaction',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("aeb8e261-7eb2-4971-a3cb-e35a714490b3",
+	"1775761d-746e-41ae-a5e0-cd1a783dc665",
+	-1,
+	'CancelledTransaction',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("6fdd2e44-e91b-45ca-b7a8-9e1563f88d78",
+	"f66a3b7f-d47f-4c2b-9f66-1ce143dc9e4d",
+	"afa5e31a-c993-427d-b907-5786d5800b5f");
+INSERT INTO SPR_RS
+	VALUES ("6fdd2e44-e91b-45ca-b7a8-9e1563f88d78",
+	'WaivedChange',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("f66a3b7f-d47f-4c2b-9f66-1ce143dc9e4d",
+	"1775761d-746e-41ae-a5e0-cd1a783dc665",
+	-1,
+	'WaivedChange',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("64d55d95-1fd0-445f-bef9-4a540c3a0312",
+	"1a93d819-e152-409f-8b77-23b28cb652bb",
+	"afa5e31a-c993-427d-b907-5786d5800b5f");
+INSERT INTO SPR_RS
+	VALUES ("64d55d95-1fd0-445f-bef9-4a540c3a0312",
+	'TicketCollected',
+	'',
+	'LOG::LogInfo( message:"PaymentMachine received ticket collected." );
+',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("1a93d819-e152-409f-8b77-23b28cb652bb",
+	"1775761d-746e-41ae-a5e0-cd1a783dc665",
+	-1,
+	'TicketCollected',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("b9b189c9-3fb4-47a9-8008-c8533e8d0dfa",
+	"6bdbefd7-2814-447f-a902-ed56cfceddfb",
+	"afa5e31a-c993-427d-b907-5786d5800b5f");
+INSERT INTO SPR_RS
+	VALUES ("b9b189c9-3fb4-47a9-8008-c8533e8d0dfa",
+	'InsertedTicket',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("6bdbefd7-2814-447f-a902-ed56cfceddfb",
+	"1775761d-746e-41ae-a5e0-cd1a783dc665",
+	-1,
+	'InsertedTicket',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("84d6fd7e-d94b-48c8-abf6-509c6b7b53fa",
+	"ed039022-908c-4f0a-bb12-81c944031952",
+	"afa5e31a-c993-427d-b907-5786d5800b5f");
+INSERT INTO SPR_RS
+	VALUES ("84d6fd7e-d94b-48c8-abf6-509c6b7b53fa",
+	'InsertedCurrency',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("ed039022-908c-4f0a-bb12-81c944031952",
+	"1775761d-746e-41ae-a5e0-cd1a783dc665",
+	-1,
+	'InsertedCurrency',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("2e95b17f-8525-4948-b7ad-d103a380513e",
+	"e6bd25b1-8a4d-4a8a-a068-e149f8b48ebb",
+	"afa5e31a-c993-427d-b907-5786d5800b5f");
+INSERT INTO SPR_RS
+	VALUES ("2e95b17f-8525-4948-b7ad-d103a380513e",
+	'RemainingBalance',
+	'',
+	'LOG::LogInfo( message:"---- receiving updated balance for " + param.Location );
+select any b from instances of Balance
+ where ( selected.location == param.Location );
+if ( empty b )
+  create object instance b of Balance;
+  b.location = param.Location;
+end if;
+b.amount = param.Amount;',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("e6bd25b1-8a4d-4a8a-a068-e149f8b48ebb",
+	"1775761d-746e-41ae-a5e0-cd1a783dc665",
+	-1,
+	'RemainingBalance',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("893c3b33-ab41-4839-a4c6-f9581dd37919",
+	"acfc0128-4d4f-4a0e-87ed-988ebe170166",
+	"afa5e31a-c993-427d-b907-5786d5800b5f");
+INSERT INTO SPR_RS
+	VALUES ("893c3b33-ab41-4839-a4c6-f9581dd37919",
+	'InsufficientChange',
+	'',
+	'select any stand from instances of Paystand;
+generate Paystand4:NoChange() to stand;',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("acfc0128-4d4f-4a0e-87ed-988ebe170166",
+	"1775761d-746e-41ae-a5e0-cd1a783dc665",
+	-1,
+	'InsufficientChange',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("733ddba3-af68-41ff-b2d5-1e352f1243d5",
+	"ab99ffd4-de35-47a9-9eb4-ee31927071ec",
+	"afa5e31a-c993-427d-b907-5786d5800b5f");
+INSERT INTO SPR_RS
+	VALUES ("733ddba3-af68-41ff-b2d5-1e352f1243d5",
+	'ReturnedTicket',
+	'',
+	'LOG::LogInfo( message:"Returning ticket at " + param.Location );',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("ab99ffd4-de35-47a9-9eb4-ee31927071ec",
+	"1775761d-746e-41ae-a5e0-cd1a783dc665",
+	-1,
+	'ReturnedTicket',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("c62cb3e0-4035-4c41-a5bf-29b63d2b69e6",
+	"7d98badf-0872-49ac-a66e-72a2d0d07fa7",
+	"afa5e31a-c993-427d-b907-5786d5800b5f");
+INSERT INTO SPR_RS
+	VALUES ("c62cb3e0-4035-4c41-a5bf-29b63d2b69e6",
+	'ExitDeadline',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("7d98badf-0872-49ac-a66e-72a2d0d07fa7",
+	"1775761d-746e-41ae-a5e0-cd1a783dc665",
+	-1,
+	'ExitDeadline',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("4ffe69c6-eff9-4bf8-8240-31ff7622bf60",
+	"f6708800-f5f1-4db3-bf94-550b4dd6e170",
+	"afa5e31a-c993-427d-b907-5786d5800b5f");
+INSERT INTO SPR_RS
+	VALUES ("4ffe69c6-eff9-4bf8-8240-31ff7622bf60",
+	'DispenseChange',
+	'',
+	'LOG::LogReal( message:"Dispensing", r:param.Amount );',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("f6708800-f5f1-4db3-bf94-550b4dd6e170",
+	"1775761d-746e-41ae-a5e0-cd1a783dc665",
+	-1,
+	'DispenseChange',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("ac2494ef-8171-4c20-9e47-ac0d13ce2691",
+	"e25325e0-cebe-4e34-8814-1a1f84c7e4a4",
+	"afa5e31a-c993-427d-b907-5786d5800b5f");
+INSERT INTO SPR_RS
+	VALUES ("ac2494ef-8171-4c20-9e47-ac0d13ce2691",
+	'TransactionCancelled',
+	'',
+	'select any stand from instances of Paystand;
+generate Paystand3:Cancelled() to stand;
+stand.TransactionCancelled = true;',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("e25325e0-cebe-4e34-8814-1a1f84c7e4a4",
+	"1775761d-746e-41ae-a5e0-cd1a783dc665",
+	-1,
+	'TransactionCancelled',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
+INSERT INTO C_I_PROXY
+	VALUES ("1775761d-746e-41ae-a5e0-cd1a783dc665",
+	"00000000-0000-0000-0000-000000000000",
+	'PaymentMachine',
+	'',
+	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
+INSERT INTO C_PO
+	VALUES ("8929a9f4-47b0-4e2c-a54f-2f7430291c1f",
+	"267abe01-5adc-42d6-aa1d-2adf945776bc",
+	'TESTSEQ',
+	0,
+	0);
+INSERT INTO C_IR
+	VALUES ("90ea7117-8b0f-4f98-a679-70202e1c75cf",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	"00000000-0000-0000-0000-000000000000",
+	"8929a9f4-47b0-4e2c-a54f-2f7430291c1f");
+INSERT INTO C_R
+	VALUES ("90ea7117-8b0f-4f98-a679-70202e1c75cf",
+	'TestSequencing',
+	'',
+	'Unnamed Interface',
+	'CarParkTestbench::TESTSEQ::TestSequencing');
+INSERT INTO SPR_REP
+	VALUES ("4e33457f-6d06-4585-b369-a150938d2cca",
+	"abb1f40e-d7c8-4654-94f5-c0a999c3866a",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("4e33457f-6d06-4585-b369-a150938d2cca",
+	'InjectStimulus',
+	'Invoke injection of the identified stimulus in the test bench.',
+	'select any stim from instances of Stimulus
+  where ( selected.stimulusId == param.stimulusId );
+stim.Inject();
+',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("abb1f40e-d7c8-4654-94f5-c0a999c3866a",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'InjectStimulus',
+	'Invoke injection of the identified stimulus in the test bench.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("112e51de-abd4-40df-b821-099ad1930cf9",
+	"ed6e0575-1418-4e51-82ef-2f3bf15fbb57",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("112e51de-abd4-40df-b821-099ad1930cf9",
+	'TriggerObservation',
+	'Invoke evaluation of the identified observation in the test bench.',
+	'select any obs from instances of Observation
+  where ( selected.observationId == param.observationId );
+obs.Observe();',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("ed6e0575-1418-4e51-82ef-2f3bf15fbb57",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'TriggerObservation',
+	'Invoke evaluation of the identified observation in the test bench.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("4112aa2d-a2ac-4555-83de-8fc2732ca473",
+	"5df7def7-0028-4dc9-8578-87518097d737",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("4112aa2d-a2ac-4555-83de-8fc2732ca473",
+	'ObservationDone',
+	'Report to the Test sequencer service that an observation has completed.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("5df7def7-0028-4dc9-8578-87518097d737",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'ObservationDone',
+	'Report to the Test sequencer service that an observation has completed.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("e3a406b0-d41c-4f70-9f7b-a3a1914d1f65",
+	"b5ee9925-8760-47c6-a3ea-734b7d165169",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("e3a406b0-d41c-4f70-9f7b-a3a1914d1f65",
+	'InitializeTestCase',
+	'Testbench receives notification that a new test case has been selected to run.
+Initialize any pre-conditions and respond when ready for stimulus injection.',
+	'select any cond from instances of PreConditions
+ where ( selected.conditionsCaseLabel == param.caseLabel );
+if ( not_empty cond )
+  cond.Establish();
+end if;
+send TESTSEQ::TestCaseInitialized( caseLabel:param.caseLabel );
+',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("b5ee9925-8760-47c6-a3ea-734b7d165169",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'InitializeTestCase',
+	'Testbench receives notification that a new test case has been selected to run.
+Initialize any pre-conditions and respond when ready for stimulus injection.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("78f6c805-780e-4e33-aced-23e6e479659b",
+	"ef029a3f-8bbc-4d01-b248-9d10545d4527",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("78f6c805-780e-4e33-aced-23e6e479659b",
+	'StimulusDone',
+	'Respond with this signal when all observations for an executed stimulus are complete.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("ef029a3f-8bbc-4d01-b248-9d10545d4527",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'StimulusDone',
+	'Respond with this signal when all observations for an executed stimulus are complete.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("4043fd62-adca-435b-a27d-1180a35b104e",
+	"976b6c82-6628-4a51-b78f-8a11577ec800",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("4043fd62-adca-435b-a27d-1180a35b104e",
+	'TestCaseInitialized',
+	'Report back to the Test sequencer service that a testbench test case has completed initialization.
+This will initiate stimiuli injection, and thus observation reporting, for a test case.
+If the test case has more than one test sequence, these will start in parallel.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("976b6c82-6628-4a51-b78f-8a11577ec800",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'TestCaseInitialized',
+	'Report back to the Test sequencer service that a testbench test case has completed initialization.
+This will initiate stimiuli injection, and thus observation reporting, for a test case.
+If the test case has more than one test sequence, these will start in parallel.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("00425438-5827-4417-9510-ef6bf710b356",
+	"b5a796ca-6082-48ac-92dd-efc0a0922ce7",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("00425438-5827-4417-9510-ef6bf710b356",
+	'Assess',
+	'On this signal, any active observations with matching key value will be triggered to re-evaluate.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("b5a796ca-6082-48ac-92dd-efc0a0922ce7",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'Assess',
+	'On this signal, any active observations with matching key value will be triggered to re-evaluate.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("600111ab-1390-40fb-9bd3-a061082e4420",
+	"c7c36dbc-1771-40f5-9e73-c713d789f49a",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("600111ab-1390-40fb-9bd3-a061082e4420",
+	'LinkRequirement',
+	'Indicate that the given requirement is (partially) tested by the given test case.
+This is used for test coverage reporting.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("c7c36dbc-1771-40f5-9e73-c713d789f49a",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'LinkRequirement',
+	'Indicate that the given requirement is (partially) tested by the given test case.
+This is used for test coverage reporting.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("30496620-6255-443e-b418-d9a8e4bfc71f",
+	"acaa32df-c46b-4fb9-8a4d-e3da8ab0716a",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("30496620-6255-443e-b418-d9a8e4bfc71f",
+	'RunTestSuite',
+	'Run the sequence of test buckets associated with the singleton test suite.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("acaa32df-c46b-4fb9-8a4d-e3da8ab0716a",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'RunTestSuite',
+	'Run the sequence of test buckets associated with the singleton test suite.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("a6a0b31c-3bf7-46e4-83c3-f3a1c219f2c9",
+	"2410fcc8-0433-44ba-8e92-f529a7ae4e7d",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("a6a0b31c-3bf7-46e4-83c3-f3a1c219f2c9",
+	'MakeRequirement',
+	'Create an instance of a requirement which may be linked to test cases for coverage reporting.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("2410fcc8-0433-44ba-8e92-f529a7ae4e7d",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'MakeRequirement',
+	'Create an instance of a requirement which may be linked to test cases for coverage reporting.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("b151b77c-f65a-4aef-98fd-e6ea9259d7ec",
+	"b7c0a071-0d7d-4ad9-9d92-4170a9db8b0d",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("b151b77c-f65a-4aef-98fd-e6ea9259d7ec",
+	'BucketInitialized',
+	'Indicate to the test sequencer that the current test bucket is ready to run test cases.
+',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("b7c0a071-0d7d-4ad9-9d92-4170a9db8b0d",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'BucketInitialized',
+	'Indicate to the test sequencer that the current test bucket is ready to run test cases.
+',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("4cc8fa66-f8a1-4a2a-b160-8ed806a61df8",
+	"14882a87-5828-4191-a273-30b8788f3566",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("4cc8fa66-f8a1-4a2a-b160-8ed806a61df8",
+	'InitializeBucket',
+	'Signals a test bucket to instantiate its test case sequences.',
+	'select any tb from instances of TestBucket
+  where ( selected.bucketId == param.bucketId );
+tb.RunTestCases();
+',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("14882a87-5828-4191-a273-30b8788f3566",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'InitializeBucket',
+	'Signals a test bucket to instantiate its test case sequences.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("1ee78726-4534-4012-b1bc-21b2bd2e9aba",
+	"581dc69f-0c98-4ab6-baf0-a03c367e212f",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("1ee78726-4534-4012-b1bc-21b2bd2e9aba",
+	'InsertDelay',
+	'Request the test sequencer to include a timed delay before invoking the next stimulus or observation.
+For observations, consider using the polling capability which can repeatedly evaluate with delays.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("581dc69f-0c98-4ab6-baf0-a03c367e212f",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'InsertDelay',
+	'Request the test sequencer to include a timed delay before invoking the next stimulus or observation.
+For observations, consider using the polling capability which can repeatedly evaluate with delays.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("ef402a7d-a6c1-4230-881c-ef5aa8d2a443",
+	"bb4f4c38-32d2-41f1-a540-93e7d083ed70",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("ef402a7d-a6c1-4230-881c-ef5aa8d2a443",
+	'StartIntervalTimer',
+	'A stimulus may request start of the interval timer linked to its test sequence.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("bb4f4c38-32d2-41f1-a540-93e7d083ed70",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'StartIntervalTimer',
+	'A stimulus may request start of the interval timer linked to its test sequence.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("8ea91bb0-cf9a-4aea-a675-1fa5fee4afb5",
+	"8dd429c8-69fa-400e-93ff-d0db0ee2302a",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("8ea91bb0-cf9a-4aea-a675-1fa5fee4afb5",
+	'DeletePreCondition',
+	'Signals the testbench that the identified precodition instance can be disposed of.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("8dd429c8-69fa-400e-93ff-d0db0ee2302a",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'DeletePreCondition',
+	'Signals the testbench that the identified precodition instance can be disposed of.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("90f9ea74-8479-448f-8e6d-e5990e8c3ec4",
+	"d5a4cf86-3f41-407c-831c-18e679999a67",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("90f9ea74-8479-448f-8e6d-e5990e8c3ec4",
+	'DeleteStimulus',
+	'Signals the testbench that the identified stimulus sub/supertype can be disposed of.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("d5a4cf86-3f41-407c-831c-18e679999a67",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'DeleteStimulus',
+	'Signals the testbench that the identified stimulus sub/supertype can be disposed of.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("cf649e9c-fad9-4dde-8425-b7516843a14e",
+	"e3261067-756f-427b-94ca-307412068ce6",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("cf649e9c-fad9-4dde-8425-b7516843a14e",
+	'DeleteTestBucket',
+	'Signals the testbench that the identified test bucket sub/supertype can be disposed of.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("e3261067-756f-427b-94ca-307412068ce6",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'DeleteTestBucket',
+	'Signals the testbench that the identified test bucket sub/supertype can be disposed of.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("fb170680-063e-4339-ba8d-2ec42a5d841f",
+	"9ef51640-e733-4e08-87de-474d06cc17d7",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("fb170680-063e-4339-ba8d-2ec42a5d841f",
+	'SetTestBucketResolution',
+	'Test buckets inherit a default resolution from the test suite; this can be overridden.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("9ef51640-e733-4e08-87de-474d06cc17d7",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'SetTestBucketResolution',
+	'Test buckets inherit a default resolution from the test suite; this can be overridden.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("021ce2f7-f45e-4088-9d85-6976bf5f3b07",
+	"7db0ac18-85c0-4cf0-a9aa-cd3dc8466a8f",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("021ce2f7-f45e-4088-9d85-6976bf5f3b07",
+	'SetSequenceResolution',
+	'Test sequences inherit a default resolution from the test bucket; this can be overridden.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("7db0ac18-85c0-4cf0-a9aa-cd3dc8466a8f",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'SetSequenceResolution',
+	'Test sequences inherit a default resolution from the test bucket; this can be overridden.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("16d74b74-bb26-4533-9e06-c02f1623264f",
+	"e9a718cd-155e-4f82-ab40-9e08b065623a",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("16d74b74-bb26-4533-9e06-c02f1623264f",
+	'SetTestSuiteResolution',
+	'Set the timer resolution which will be default for the test buckets in this test suite.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("e9a718cd-155e-4f82-ab40-9e08b065623a",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'SetTestSuiteResolution',
+	'Set the timer resolution which will be default for the test buckets in this test suite.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("46267498-2c0a-45c1-af0d-2765da09b50b",
+	"b1465433-efc9-45bd-ad88-e5ead4500931",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("46267498-2c0a-45c1-af0d-2765da09b50b",
+	'RegisterTestSuite',
+	'A single instance of test suite must be created, to which will be added test bucket(s) containg test case(s).',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("b1465433-efc9-45bd-ad88-e5ead4500931",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'RegisterTestSuite',
+	'A single instance of test suite must be created, to which will be added test bucket(s) containg test case(s).',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("39a0ef60-1c7b-4c72-8bf9-e4251f5cf47e",
+	"9e278084-be96-4393-8eee-f1793a29017b",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("39a0ef60-1c7b-4c72-8bf9-e4251f5cf47e",
+	'SetTestCaseDurationLimit',
+	'Assign an optional overall duration limit for execution of a test case.
+If the limit is exceeded, the test case fails and terminates all sequence execution.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("9e278084-be96-4393-8eee-f1793a29017b",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'SetTestCaseDurationLimit',
+	'Assign an optional overall duration limit for execution of a test case.
+If the limit is exceeded, the test case fails and terminates all sequence execution.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("9ed0e418-1457-4e21-a7fc-a6bfc4be7086",
+	"a65ba45b-40f5-486e-9280-968e92d5d402",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("9ed0e418-1457-4e21-a7fc-a6bfc4be7086",
+	'DeleteObservation',
+	'Signals the testbench that the identified observation sub/supertype can be disposed of.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("a65ba45b-40f5-486e-9280-968e92d5d402",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'DeleteObservation',
+	'Signals the testbench that the identified observation sub/supertype can be disposed of.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("079aed8d-e4b4-4a1f-bd5c-14abc76a5d3d",
+	"43da9421-f19f-491d-b0de-6d07de88d215",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("079aed8d-e4b4-4a1f-bd5c-14abc76a5d3d",
+	'NameTestBucket',
+	'Assign an optional arbitrary naming label to a test bucket instance.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("43da9421-f19f-491d-b0de-6d07de88d215",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'NameTestBucket',
+	'Assign an optional arbitrary naming label to a test bucket instance.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("966caf7e-fbdf-4666-a00a-68a3878fca06",
+	"2ab9bd8f-a044-44bc-b988-74be588a3af7",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("966caf7e-fbdf-4666-a00a-68a3878fca06",
+	'TestSuiteComplete',
+	'Signals completion of the test suite.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("2ab9bd8f-a044-44bc-b988-74be588a3af7",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'TestSuiteComplete',
+	'Signals completion of the test suite.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("0da235f4-87c2-4e67-925b-616ba24e5831",
+	"3ab9f7fe-b572-4c34-98f5-076122029206",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("0da235f4-87c2-4e67-925b-616ba24e5831",
+	'AddBucket',
+	'Add an instance of a test bucket to the test suite.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("3ab9f7fe-b572-4c34-98f5-076122029206",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'AddBucket',
+	'Add an instance of a test bucket to the test suite.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("5eeb22b7-834e-472f-953f-f93e9b721a42",
+	"338f43fc-f8fd-4707-98a1-be43d1ec3394",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("5eeb22b7-834e-472f-953f-f93e9b721a42",
+	'CreateTestCase',
+	'Add an instance of a test case, identified by label, to the indicated test bucket.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("338f43fc-f8fd-4707-98a1-be43d1ec3394",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'CreateTestCase',
+	'Add an instance of a test case, identified by label, to the indicated test bucket.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("164c32c2-99c5-4312-97b5-9922c3e3a7d7",
+	"63e52cd1-3ec8-4352-ade8-ba438a671bd3",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("164c32c2-99c5-4312-97b5-9922c3e3a7d7",
+	'CreateStimulusSequence',
+	'A test case, identified by its label, can have one or more labeled sequences of stimuli.
+These sequences may run in parallel and may interact via assess signals.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("63e52cd1-3ec8-4352-ade8-ba438a671bd3",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'CreateStimulusSequence',
+	'A test case, identified by its label, can have one or more labeled sequences of stimuli.
+These sequences may run in parallel and may interact via assess signals.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("6fea8dff-cac1-4721-a366-672946507b16",
+	"ccdf5756-d7fc-4bb0-9a09-adbbe404ef3d",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("6fea8dff-cac1-4721-a366-672946507b16",
+	'AddStimulus',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("ccdf5756-d7fc-4bb0-9a09-adbbe404ef3d",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'AddStimulus',
+	'',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("cc3f0ad4-032f-4d53-b130-041bc07a4793",
+	"db8e25d9-f7a5-4738-85a0-ef4adc5bf3f2",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("cc3f0ad4-032f-4d53-b130-041bc07a4793",
+	'AddObservation',
+	'Add an observation to follow injection of a specified stimulus.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("db8e25d9-f7a5-4738-85a0-ef4adc5bf3f2",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'AddObservation',
+	'Add an observation to follow injection of a specified stimulus.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("281d378f-49f6-4d49-a3e9-0e385ed7a8dd",
+	"80b50e27-14fc-4cf7-9830-ef2a7c77d6fa",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("281d378f-49f6-4d49-a3e9-0e385ed7a8dd",
+	'RequestIntervalTimerValue',
+	'Request the value of the interval timer associated with the sequence to which the observation belongs.
+The value will be signalled to the testbench, attaching the observation identifier.
+Optionally, the timer can be reset.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("80b50e27-14fc-4cf7-9830-ef2a7c77d6fa",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'RequestIntervalTimerValue',
+	'Request the value of the interval timer associated with the sequence to which the observation belongs.
+The value will be signalled to the testbench, attaching the observation identifier.
+Optionally, the timer can be reset.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("a3973e07-348a-48f3-b3f3-66ab20849f0e",
+	"7c394270-a8ad-44af-a4ad-8601e7eebc96",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("a3973e07-348a-48f3-b3f3-66ab20849f0e",
+	'IntervalTimerValue',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("7c394270-a8ad-44af-a4ad-8601e7eebc96",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'IntervalTimerValue',
+	'',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO C_I_PROXY
+	VALUES ("eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	"00000000-0000-0000-0000-000000000000",
+	'TestSequencing',
+	'',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO PE_PE
+	VALUES ("267abe01-5adc-42d6-aa1d-2adf945776bc",
+	1,
+	"32976e65-7f9f-48f0-8fd6-0852aa06807f",
+	"00000000-0000-0000-0000-000000000000",
+	2);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("32976e65-7f9f-48f0-8fd6-0852aa06807f",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'Components',
+	'',
+	0,
+	'../Components.xtuml');

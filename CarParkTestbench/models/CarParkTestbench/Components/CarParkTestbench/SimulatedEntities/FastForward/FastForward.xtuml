@@ -1,0 +1,160 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("bf8f8359-ea95-4334-8024-52bba10c1d10",
+	'FastForward',
+	12,
+	'FastForward',
+	'A stimulus which advances the perceived current time in the application.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("c6a855c7-2902-4969-a89a-d335d106eae5",
+	"bf8f8359-ea95-4334-8024-52bba10c1d10",
+	'Create',
+	'Add an instance of a time advance request to the ''script'' of a test case.',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'create object instance ff of FastForward;
+ff.hours = param.hours;
+ff.minutes = param.minutes;
+ff.seconds = param.seconds;
+
+create object instance stimulus of Stimulus;
+relate stimulus to ff across R3;
+stimulus.AddToTest( seqLabel:param.seqLabel );
+return stimulus.stimulusId;
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("d8fd8ad8-f903-4e5a-ac77-87ef1d3cecea",
+	"c6a855c7-2902-4969-a89a-d335d106eae5",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("a3ed5826-f5de-40bd-a19b-9ede7ea4f0eb",
+	"c6a855c7-2902-4969-a89a-d335d106eae5",
+	'minutes',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"dabf26e9-c1cf-4ecc-8597-7ad78d9b918a",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("dabf26e9-c1cf-4ecc-8597-7ad78d9b918a",
+	"c6a855c7-2902-4969-a89a-d335d106eae5",
+	'hours',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"d8fd8ad8-f903-4e5a-ac77-87ef1d3cecea",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("16604121-67c9-4d58-bbc6-6746ef6d0cfe",
+	"c6a855c7-2902-4969-a89a-d335d106eae5",
+	'seconds',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"a3ed5826-f5de-40bd-a19b-9ede7ea4f0eb",
+	'');
+INSERT INTO O_TFR
+	VALUES ("592b3354-9d01-4a6b-b90e-75483fa0ed3f",
+	"bf8f8359-ea95-4334-8024-52bba10c1d10",
+	'Advance',
+	'When activated, advance the perceived time in the application.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'LOG::LogInfo( message:"FastForward injected" );
+
+select one stimulus related by self->Stimulus[R3];
+ts = TimeUtilities::AdvanceTime( hours:self.hours, minutes:self.minutes, seconds:self.seconds );
+
+stimulus.Complete();',
+	1,
+	'',
+	"c6a855c7-2902-4969-a89a-d335d106eae5",
+	0);
+INSERT INTO O_NBATTR
+	VALUES ("90bc5aa9-df65-41ff-84e8-b19a46cd5354",
+	"bf8f8359-ea95-4334-8024-52bba10c1d10");
+INSERT INTO O_BATTR
+	VALUES ("90bc5aa9-df65-41ff-84e8-b19a46cd5354",
+	"bf8f8359-ea95-4334-8024-52bba10c1d10");
+INSERT INTO O_ATTR
+	VALUES ("90bc5aa9-df65-41ff-84e8-b19a46cd5354",
+	"bf8f8359-ea95-4334-8024-52bba10c1d10",
+	"d9c878b3-8fcb-425d-96a3-7d3e76ccb09a",
+	'minutes',
+	'',
+	'',
+	'minutes',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("d9c878b3-8fcb-425d-96a3-7d3e76ccb09a",
+	"bf8f8359-ea95-4334-8024-52bba10c1d10");
+INSERT INTO O_BATTR
+	VALUES ("d9c878b3-8fcb-425d-96a3-7d3e76ccb09a",
+	"bf8f8359-ea95-4334-8024-52bba10c1d10");
+INSERT INTO O_ATTR
+	VALUES ("d9c878b3-8fcb-425d-96a3-7d3e76ccb09a",
+	"bf8f8359-ea95-4334-8024-52bba10c1d10",
+	"00000000-0000-0000-0000-000000000000",
+	'hours',
+	'',
+	'',
+	'hours',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("66f922ed-228a-4a2e-a3a8-6a348920051c",
+	"bf8f8359-ea95-4334-8024-52bba10c1d10");
+INSERT INTO O_BATTR
+	VALUES ("66f922ed-228a-4a2e-a3a8-6a348920051c",
+	"bf8f8359-ea95-4334-8024-52bba10c1d10");
+INSERT INTO O_ATTR
+	VALUES ("66f922ed-228a-4a2e-a3a8-6a348920051c",
+	"bf8f8359-ea95-4334-8024-52bba10c1d10",
+	"90bc5aa9-df65-41ff-84e8-b19a46cd5354",
+	'seconds',
+	'',
+	'',
+	'seconds',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"bf8f8359-ea95-4334-8024-52bba10c1d10");
+INSERT INTO O_ID
+	VALUES (1,
+	"bf8f8359-ea95-4334-8024-52bba10c1d10");
+INSERT INTO O_ID
+	VALUES (2,
+	"bf8f8359-ea95-4334-8024-52bba10c1d10");
+INSERT INTO PE_PE
+	VALUES ("bf8f8359-ea95-4334-8024-52bba10c1d10",
+	1,
+	"3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'SimulatedEntities',
+	'',
+	0,
+	'../SimulatedEntities.xtuml');

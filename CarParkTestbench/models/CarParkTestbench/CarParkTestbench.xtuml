@@ -1,0 +1,56 @@
+-- BP 7.1.6 content: SystemModel syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO S_SYS
+	VALUES ("87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'CarParkTestbench',
+	1);
+INSERT INTO GD_MD
+	VALUES ("af333fc8-906b-475b-b35e-5dcdb378af02",
+	108,
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	92,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'4.1.17',
+	'CarParkTestbench');
+INSERT INTO GD_GE
+	VALUES ("4e0455b4-7b5a-44f0-9dae-4ce1d8d8b5a7",
+	"af333fc8-906b-475b-b35e-5dcdb378af02",
+	"32976e65-7f9f-48f0-8fd6-0852aa06807f",
+	108,
+	0,
+	'CarParkTestbench::Components');
+INSERT INTO GD_SHP
+	VALUES ("4e0455b4-7b5a-44f0-9dae-4ce1d8d8b5a7");
+INSERT INTO GD_NCS
+	VALUES ("4e0455b4-7b5a-44f0-9dae-4ce1d8d8b5a7");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"4e0455b4-7b5a-44f0-9dae-4ce1d8d8b5a7");
+INSERT INTO DIM_GE
+	VALUES (4201.000000,
+	3029.000000,
+	"4e0455b4-7b5a-44f0-9dae-4ce1d8d8b5a7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("4e0455b4-7b5a-44f0-9dae-4ce1d8d8b5a7",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_DIA
+	VALUES ("af333fc8-906b-475b-b35e-5dcdb378af02",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
