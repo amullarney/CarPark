@@ -972,9 +972,7 @@ INSERT INTO SPR_RS
 	VALUES ("7f7dfd58-b6bb-4a31-811e-ca468e0153f2",
 	'CarparkOpened',
 	'',
-	'//select any bucket from instances of NominalBucket;
-//generate NominalBucket5:InitializationComplete() to bucket;
-',
+	'TestFunctions::RunNominalCases();',
 	1,
 	0);
 INSERT INTO C_EP_PROXY

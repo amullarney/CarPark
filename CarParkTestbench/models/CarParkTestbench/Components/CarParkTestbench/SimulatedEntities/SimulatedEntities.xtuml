@@ -882,7 +882,7 @@ INSERT INTO GD_GE
 	"0e3e5f3b-eb5c-42ea-b147-598d65f82154",
 	21,
 	0,
-	'CarParkTestbench::Components::CarParkTestbench::SimulatedEntities::TicketRequest');
+	'CarParkTestbench::Components::CarParkTestbench::SimulatedEntities::QueryTicketRequest');
 INSERT INTO GD_SHP
 	VALUES ("592efb96-bac5-4b4c-9002-c2dc1a2c600a");
 INSERT INTO GD_NCS
@@ -1465,7 +1465,7 @@ INSERT INTO GD_GE
 	"c5bab7ee-970a-47b4-9f8b-15137d20b9b2",
 	21,
 	0,
-	'CarParkTestbench::Components::CarParkTestbench::SimulatedEntities::VehicleGone');
+	'CarParkTestbench::Components::CarParkTestbench::SimulatedEntities::VehicleDeparture');
 INSERT INTO GD_SHP
 	VALUES ("8ae64c01-2461-48d1-a4e3-40ce592bb59b");
 INSERT INTO GD_NCS
@@ -2486,30 +2486,6 @@ INSERT INTO DIM_ED
 	VALUES ("c0903cce-8c06-485c-81af-f9e9ba9953c1",
 	"0e3325af-e963-4ddf-b11c-2707115f1632",
 	"e72cca8e-a45e-47c8-ba06-d8e8559f3387");
-INSERT INTO GD_GE
-	VALUES ("3a00a3ae-442a-41c5-b16b-62a5466fd1fd",
-	"dfaaf40c-adb0-489c-81b9-bd23a9109e9e",
-	"ae1754df-78e6-4776-9103-d17612298bb1",
-	108,
-	0,
-	'CarParkTestbench::Components::CarParkTestbench::TestFunctionsForCodeGen');
-INSERT INTO GD_SHP
-	VALUES ("3a00a3ae-442a-41c5-b16b-62a5466fd1fd");
-INSERT INTO GD_NCS
-	VALUES ("3a00a3ae-442a-41c5-b16b-62a5466fd1fd");
-INSERT INTO DIM_ND
-	VALUES (200.000000,
-	150.000000,
-	"3a00a3ae-442a-41c5-b16b-62a5466fd1fd");
-INSERT INTO DIM_GE
-	VALUES (6544.000000,
-	3852.000000,
-	"3a00a3ae-442a-41c5-b16b-62a5466fd1fd",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO DIM_ELE
-	VALUES ("3a00a3ae-442a-41c5-b16b-62a5466fd1fd",
-	0,
-	"00000000-0000-0000-0000-000000000000");
 INSERT INTO DIM_DIA
 	VALUES ("dfaaf40c-adb0-489c-81b9-bd23a9109e9e",
 	'',
