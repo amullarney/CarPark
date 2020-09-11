@@ -552,7 +552,7 @@ INSERT INTO GD_GE
 	"3430745e-1746-4e96-ac58-2ee3ee684b20",
 	108,
 	0,
-	'CarParkTestbench::Components::CarParkTestbench::SimulatedEntities');
+	'CarParkTestbench::Components::CarParkTestbench::Testbench');
 INSERT INTO GD_SHP
 	VALUES ("b6ea213b-d7c0-4a0e-8d91-793b6b257025");
 INSERT INTO GD_NCS
@@ -1487,13 +1487,17 @@ INSERT INTO SPR_RS
 	'RemainingBalance',
 	'',
 	'LOG::LogInfo( message:"---- receiving updated balance for " + param.Location );
+LOG::LogReal( message:"balance", r:param.Amount );
 select any b from instances of Balance
  where ( selected.location == param.Location );
 if ( empty b )
   create object instance b of Balance;
   b.location = param.Location;
 end if;
-b.amount = param.Amount;',
+b.amount = param.Amount;
+if ( param.Amount < 0.5 )
+  x = 1;
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY

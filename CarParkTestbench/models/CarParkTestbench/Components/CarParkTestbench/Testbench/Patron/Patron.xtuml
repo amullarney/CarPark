@@ -1,0 +1,110 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("c3aa7764-14ca-49ce-9180-ae317b43dedd",
+	'Patron',
+	3,
+	'Patron',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("f1e2e5a7-ead9-434b-b43a-1f41ec58f615",
+	"c3aa7764-14ca-49ce-9180-ae317b43dedd",
+	'Create',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance patron of Patron;
+patron.Behavior = param.behavior;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("ee310a40-b487-47f5-9ee5-dc05cf9d4a87",
+	"f1e2e5a7-ead9-434b-b43a-1f41ec58f615",
+	'behavior',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("c9fbc488-56ea-4596-9904-0ef4e9db3b89",
+	"c3aa7764-14ca-49ce-9180-ae317b43dedd");
+INSERT INTO O_BATTR
+	VALUES ("c9fbc488-56ea-4596-9904-0ef4e9db3b89",
+	"c3aa7764-14ca-49ce-9180-ae317b43dedd");
+INSERT INTO O_ATTR
+	VALUES ("c9fbc488-56ea-4596-9904-0ef4e9db3b89",
+	"c3aa7764-14ca-49ce-9180-ae317b43dedd",
+	"24608f6f-25ee-4a99-af76-325035efbe9e",
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000006",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("e16fbf6c-b5f5-4541-98af-b055689e916d",
+	"c3aa7764-14ca-49ce-9180-ae317b43dedd");
+INSERT INTO O_BATTR
+	VALUES ("e16fbf6c-b5f5-4541-98af-b055689e916d",
+	"c3aa7764-14ca-49ce-9180-ae317b43dedd");
+INSERT INTO O_ATTR
+	VALUES ("e16fbf6c-b5f5-4541-98af-b055689e916d",
+	"c3aa7764-14ca-49ce-9180-ae317b43dedd",
+	"00000000-0000-0000-0000-000000000000",
+	'BalanceOwed',
+	'',
+	'',
+	'BalanceOwed',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("24608f6f-25ee-4a99-af76-325035efbe9e",
+	"c3aa7764-14ca-49ce-9180-ae317b43dedd");
+INSERT INTO O_BATTR
+	VALUES ("24608f6f-25ee-4a99-af76-325035efbe9e",
+	"c3aa7764-14ca-49ce-9180-ae317b43dedd");
+INSERT INTO O_ATTR
+	VALUES ("24608f6f-25ee-4a99-af76-325035efbe9e",
+	"c3aa7764-14ca-49ce-9180-ae317b43dedd",
+	"e16fbf6c-b5f5-4541-98af-b055689e916d",
+	'Behavior',
+	'Used to direct different behaviors in test cases.
+Initial use is for delays in making payments.
+This may evolve to be an enumeration...',
+	'',
+	'Behavior',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"c3aa7764-14ca-49ce-9180-ae317b43dedd");
+INSERT INTO O_ID
+	VALUES (1,
+	"c3aa7764-14ca-49ce-9180-ae317b43dedd");
+INSERT INTO O_ID
+	VALUES (2,
+	"c3aa7764-14ca-49ce-9180-ae317b43dedd");
+INSERT INTO PE_PE
+	VALUES ("c3aa7764-14ca-49ce-9180-ae317b43dedd",
+	1,
+	"3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'Testbench',
+	'',
+	0,
+	'../Testbench.xtuml');

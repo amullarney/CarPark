@@ -1,0 +1,62 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("70a6498c-9690-4ea0-8fe7-a05ec30bcfe8",
+	'Entry',
+	1,
+	'Entry',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("52980b98-f281-49a5-89e9-fc0b18c36feb",
+	"70a6498c-9690-4ea0-8fe7-a05ec30bcfe8",
+	'Create',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance entry of Entry;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_NBATTR
+	VALUES ("26fe850b-5a42-4f7e-8c09-42ad0ed1c4ef",
+	"70a6498c-9690-4ea0-8fe7-a05ec30bcfe8");
+INSERT INTO O_BATTR
+	VALUES ("26fe850b-5a42-4f7e-8c09-42ad0ed1c4ef",
+	"70a6498c-9690-4ea0-8fe7-a05ec30bcfe8");
+INSERT INTO O_ATTR
+	VALUES ("26fe850b-5a42-4f7e-8c09-42ad0ed1c4ef",
+	"70a6498c-9690-4ea0-8fe7-a05ec30bcfe8",
+	"00000000-0000-0000-0000-000000000000",
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000006",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"70a6498c-9690-4ea0-8fe7-a05ec30bcfe8");
+INSERT INTO O_ID
+	VALUES (1,
+	"70a6498c-9690-4ea0-8fe7-a05ec30bcfe8");
+INSERT INTO O_ID
+	VALUES (2,
+	"70a6498c-9690-4ea0-8fe7-a05ec30bcfe8");
+INSERT INTO PE_PE
+	VALUES ("70a6498c-9690-4ea0-8fe7-a05ec30bcfe8",
+	1,
+	"3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'Testbench',
+	'',
+	0,
+	'../Testbench.xtuml');

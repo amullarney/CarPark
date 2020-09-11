@@ -1,0 +1,197 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("07bb7c29-6edc-408c-baf6-e7d254278371",
+	'Operator',
+	2,
+	'Operator',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("6ce95ccf-d5a1-4b32-b3f4-2fd03430b6bd",
+	"07bb7c29-6edc-408c-baf6-e7d254278371",
+	'Create',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance operator of Operator;
+operator.EntryStandActivated = false;
+operator.EntryStandDeactivated = false;
+operator.ExitStandActivated = false;
+operator.ExitStandDeactivated = false;
+operator.OccupancyUpdated = false;
+operator.Occupancy = 0;
+operator.OccupancyIncreased = 0;
+operator.OccupancyDecreased = 0;
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_NBATTR
+	VALUES ("cc3701eb-7e78-4fab-9df9-7939959c5492",
+	"07bb7c29-6edc-408c-baf6-e7d254278371");
+INSERT INTO O_BATTR
+	VALUES ("cc3701eb-7e78-4fab-9df9-7939959c5492",
+	"07bb7c29-6edc-408c-baf6-e7d254278371");
+INSERT INTO O_ATTR
+	VALUES ("cc3701eb-7e78-4fab-9df9-7939959c5492",
+	"07bb7c29-6edc-408c-baf6-e7d254278371",
+	"00000000-0000-0000-0000-000000000000",
+	'EntryStandActivated',
+	'',
+	'',
+	'EntryStandActivated',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("72a9edc6-4372-4a29-871a-48571f26eecb",
+	"07bb7c29-6edc-408c-baf6-e7d254278371");
+INSERT INTO O_BATTR
+	VALUES ("72a9edc6-4372-4a29-871a-48571f26eecb",
+	"07bb7c29-6edc-408c-baf6-e7d254278371");
+INSERT INTO O_ATTR
+	VALUES ("72a9edc6-4372-4a29-871a-48571f26eecb",
+	"07bb7c29-6edc-408c-baf6-e7d254278371",
+	"cc3701eb-7e78-4fab-9df9-7939959c5492",
+	'EntryStandDeactivated',
+	'',
+	'',
+	'EntryStandDeactivated',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("aa23f0d6-4666-4195-a0f3-ef5082f085a3",
+	"07bb7c29-6edc-408c-baf6-e7d254278371");
+INSERT INTO O_BATTR
+	VALUES ("aa23f0d6-4666-4195-a0f3-ef5082f085a3",
+	"07bb7c29-6edc-408c-baf6-e7d254278371");
+INSERT INTO O_ATTR
+	VALUES ("aa23f0d6-4666-4195-a0f3-ef5082f085a3",
+	"07bb7c29-6edc-408c-baf6-e7d254278371",
+	"72a9edc6-4372-4a29-871a-48571f26eecb",
+	'ExitStandActivated',
+	'',
+	'',
+	'ExitStandActivated',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("ebb0a387-272f-46c9-8640-043debb468b4",
+	"07bb7c29-6edc-408c-baf6-e7d254278371");
+INSERT INTO O_BATTR
+	VALUES ("ebb0a387-272f-46c9-8640-043debb468b4",
+	"07bb7c29-6edc-408c-baf6-e7d254278371");
+INSERT INTO O_ATTR
+	VALUES ("ebb0a387-272f-46c9-8640-043debb468b4",
+	"07bb7c29-6edc-408c-baf6-e7d254278371",
+	"aa23f0d6-4666-4195-a0f3-ef5082f085a3",
+	'ExitStandDeactivated',
+	'',
+	'',
+	'ExitStandDeactivated',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("f98e05d8-6e20-4844-a76c-d98b2d882a45",
+	"07bb7c29-6edc-408c-baf6-e7d254278371");
+INSERT INTO O_BATTR
+	VALUES ("f98e05d8-6e20-4844-a76c-d98b2d882a45",
+	"07bb7c29-6edc-408c-baf6-e7d254278371");
+INSERT INTO O_ATTR
+	VALUES ("f98e05d8-6e20-4844-a76c-d98b2d882a45",
+	"07bb7c29-6edc-408c-baf6-e7d254278371",
+	"ebb0a387-272f-46c9-8640-043debb468b4",
+	'OccupancyUpdated',
+	'',
+	'',
+	'OccupancyUpdated',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("3a219483-e7c4-4dd1-aa3b-f9bb5ccfaf69",
+	"07bb7c29-6edc-408c-baf6-e7d254278371");
+INSERT INTO O_BATTR
+	VALUES ("3a219483-e7c4-4dd1-aa3b-f9bb5ccfaf69",
+	"07bb7c29-6edc-408c-baf6-e7d254278371");
+INSERT INTO O_ATTR
+	VALUES ("3a219483-e7c4-4dd1-aa3b-f9bb5ccfaf69",
+	"07bb7c29-6edc-408c-baf6-e7d254278371",
+	"f98e05d8-6e20-4844-a76c-d98b2d882a45",
+	'Occupancy',
+	'',
+	'',
+	'Occupancy',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("09c03773-3da6-4cef-96ca-a860dd1b6dc1",
+	"07bb7c29-6edc-408c-baf6-e7d254278371");
+INSERT INTO O_BATTR
+	VALUES ("09c03773-3da6-4cef-96ca-a860dd1b6dc1",
+	"07bb7c29-6edc-408c-baf6-e7d254278371");
+INSERT INTO O_ATTR
+	VALUES ("09c03773-3da6-4cef-96ca-a860dd1b6dc1",
+	"07bb7c29-6edc-408c-baf6-e7d254278371",
+	"3a219483-e7c4-4dd1-aa3b-f9bb5ccfaf69",
+	'OccupancyIncreased',
+	'Number of times Occupancy increased.',
+	'',
+	'OccupancyIncreased',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("dbd6bc78-36fa-4391-9cce-502bdf8dc1dc",
+	"07bb7c29-6edc-408c-baf6-e7d254278371");
+INSERT INTO O_BATTR
+	VALUES ("dbd6bc78-36fa-4391-9cce-502bdf8dc1dc",
+	"07bb7c29-6edc-408c-baf6-e7d254278371");
+INSERT INTO O_ATTR
+	VALUES ("dbd6bc78-36fa-4391-9cce-502bdf8dc1dc",
+	"07bb7c29-6edc-408c-baf6-e7d254278371",
+	"09c03773-3da6-4cef-96ca-a860dd1b6dc1",
+	'OccupancyDecreased',
+	'Number of times Occupancy decreased.',
+	'',
+	'OccupancyDecreased',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"07bb7c29-6edc-408c-baf6-e7d254278371");
+INSERT INTO O_ID
+	VALUES (1,
+	"07bb7c29-6edc-408c-baf6-e7d254278371");
+INSERT INTO O_ID
+	VALUES (2,
+	"07bb7c29-6edc-408c-baf6-e7d254278371");
+INSERT INTO PE_PE
+	VALUES ("07bb7c29-6edc-408c-baf6-e7d254278371",
+	1,
+	"3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'Testbench',
+	'',
+	0,
+	'../Testbench.xtuml');

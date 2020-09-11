@@ -1,0 +1,153 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("5ce74c33-7425-4b7b-8fb7-124733628ac1",
+	'TicketIssued',
+	19,
+	'TicketIssued',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("72e606ed-28db-486c-a85a-fafc0a38e8cc",
+	"5ce74c33-7425-4b7b-8fb7-124733628ac1",
+	'CreatePolling',
+	'Add an observation of this type to the ''script'' of a test case.
+See Observation.AppendPolling for description.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance ti of TicketIssued;
+
+create object instance obs of Observation;
+relate ti to obs across R4;
+ti.location = param.location;
+
+obs.AppendPolling( stimulus:param.stimulus,
+                   pollInterval:param.pollInterval, 
+                   timeLimit:param.timeLimit );
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("6cdfe6be-42f7-4ba3-80f8-4f23635206f0",
+	"72e606ed-28db-486c-a85a-fafc0a38e8cc",
+	'pollInterval',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"355e4e4f-aed0-4f54-bbb8-7d3493c735cb",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("cc2e3d90-06e1-4bb6-b27b-5ad881720294",
+	"72e606ed-28db-486c-a85a-fafc0a38e8cc",
+	'timeLimit',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"6cdfe6be-42f7-4ba3-80f8-4f23635206f0",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("3c87d894-6004-47b1-b033-6a1031adba3a",
+	"72e606ed-28db-486c-a85a-fafc0a38e8cc",
+	'stimulus',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("355e4e4f-aed0-4f54-bbb8-7d3493c735cb",
+	"72e606ed-28db-486c-a85a-fafc0a38e8cc",
+	'location',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"3c87d894-6004-47b1-b033-6a1031adba3a",
+	'');
+INSERT INTO O_TFR
+	VALUES ("7a7c9029-1e19-4341-b9e1-9da53a8677c7",
+	"5ce74c33-7425-4b7b-8fb7-124733628ac1",
+	'CheckIssued',
+	'When invoked, search any existing notifications looking for a match.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'LOG::LogInfo( message:" --- Checking for ticket issued at " + self.location );
+select one obs related by self->Observation[R4]; 
+
+select any t from instances of Ticket
+ where ( selected.location == self.location );
+if ( not_empty t )
+  create object instance stay of Stay;
+  stay.ticketNumber = t.number;
+  stay.location = t.location;
+  stay.startTime = TIM::current_seconds();
+  delete object instance t;
+  obs.Complete( success:True );
+else
+  success = False;	// @TODO here to allow breakpoint only
+end if;
+',
+	1,
+	'',
+	"72e606ed-28db-486c-a85a-fafc0a38e8cc",
+	0);
+INSERT INTO O_NBATTR
+	VALUES ("666f1639-3b05-4464-b041-0127aae3eeb5",
+	"5ce74c33-7425-4b7b-8fb7-124733628ac1");
+INSERT INTO O_BATTR
+	VALUES ("666f1639-3b05-4464-b041-0127aae3eeb5",
+	"5ce74c33-7425-4b7b-8fb7-124733628ac1");
+INSERT INTO O_ATTR
+	VALUES ("666f1639-3b05-4464-b041-0127aae3eeb5",
+	"5ce74c33-7425-4b7b-8fb7-124733628ac1",
+	"00000000-0000-0000-0000-000000000000",
+	'location',
+	'',
+	'',
+	'location',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("1e4141d8-e5cf-4153-a58a-f46554ececa7",
+	"5ce74c33-7425-4b7b-8fb7-124733628ac1");
+INSERT INTO O_BATTR
+	VALUES ("1e4141d8-e5cf-4153-a58a-f46554ececa7",
+	"5ce74c33-7425-4b7b-8fb7-124733628ac1");
+INSERT INTO O_ATTR
+	VALUES ("1e4141d8-e5cf-4153-a58a-f46554ececa7",
+	"5ce74c33-7425-4b7b-8fb7-124733628ac1",
+	"666f1639-3b05-4464-b041-0127aae3eeb5",
+	'number',
+	'',
+	'',
+	'number',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"5ce74c33-7425-4b7b-8fb7-124733628ac1");
+INSERT INTO O_ID
+	VALUES (1,
+	"5ce74c33-7425-4b7b-8fb7-124733628ac1");
+INSERT INTO O_ID
+	VALUES (2,
+	"5ce74c33-7425-4b7b-8fb7-124733628ac1");
+INSERT INTO PE_PE
+	VALUES ("5ce74c33-7425-4b7b-8fb7-124733628ac1",
+	1,
+	"3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'Testbench',
+	'',
+	0,
+	'../Testbench.xtuml');
