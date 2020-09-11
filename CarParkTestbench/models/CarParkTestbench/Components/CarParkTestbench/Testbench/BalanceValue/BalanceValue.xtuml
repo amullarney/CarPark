@@ -78,7 +78,7 @@ select any b from instances of Balance
  where ( selected.location == self.location );
 if ( not_empty b )
   LOG::LogReal( message:"Balance ", r:b.amount );
-  if ( b.amount < 1.0 )
+  if ( b.amount <= 0.0 )
     LOG::LogInfo( message:"paid in full" );
     select one obs related by self->Observation[R4]; 
     obs.Complete( success:True );

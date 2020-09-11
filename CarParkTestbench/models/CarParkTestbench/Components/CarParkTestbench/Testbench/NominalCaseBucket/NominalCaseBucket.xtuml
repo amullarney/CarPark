@@ -35,7 +35,6 @@ send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC5" );
 send TESTSEQ::CreateStimulusSequence( caseLabel:"UC5", seqLabel:"seq05" );
 stId = FastForward::Create( seqLabel:"seq05", hours:5, minutes:0, seconds:0 );
 stId = TicketInserted::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay", number:1 );
-::InsertDelay( stimulus:stId, duration:1 );
 BalanceValue::CreatePolling( stimulus:stId, location:"1st Floor", pollInterval:1, timeLimit:30 );
 
 
