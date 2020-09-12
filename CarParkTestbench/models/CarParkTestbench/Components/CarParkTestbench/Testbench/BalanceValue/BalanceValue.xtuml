@@ -82,7 +82,7 @@ if ( not_empty b )
     LOG::LogInfo( message:"paid in full" );
     select one obs related by self->Observation[R4]; 
     obs.Complete( success:True );
-    //delete object instance b;
+    delete object instance b;
   else
     LOG::LogInfo( message:"sending more money" );
     send Payer::InsertedCurrency( Location:self.location, Amount:10 );

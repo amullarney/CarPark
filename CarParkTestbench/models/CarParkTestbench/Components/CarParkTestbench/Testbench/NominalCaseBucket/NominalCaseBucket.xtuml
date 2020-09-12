@@ -29,13 +29,43 @@ stId = TicketTaken::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 BarrierStatus::CreatePolling( stimulus:stId, location:"North", stand:"Entry", isopen:True, pollInterval:1, timeLimit:5 );
 stId = VehicleDeparture::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 BarrierStatus::CreatePolling( stimulus:stId, location:"North", stand:"Entry", isopen:False, pollInterval:1, timeLimit:5 );
+stId = FastForward::Create( seqLabel:"seq01", hours:1, minutes:50, seconds:0 );
+
+
+send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC1A" ); 
+send TESTSEQ::CreateStimulusSequence( caseLabel:"UC1A", seqLabel:"seq01a" );
+stId = VehicleArrived::Create( seqLabel:"seq01a", location:"North", stand:"Entry" );
+QueryTicketRequest::CreatePolling( stimulus:stId, location:"North", pollInterval:1, timeLimit:5 );
+stId = TicketRequested::Create( seqLabel:"seq01a", location:"North" );
+TicketIssued::CreatePolling( stimulus:stId, location:"North", pollInterval:1, timeLimit:5 );
+stId = TicketTaken::Create( seqLabel:"seq01a", location:"North", stand:"Entry" );
+BarrierStatus::CreatePolling( stimulus:stId, location:"North", stand:"Entry", isopen:True, pollInterval:1, timeLimit:5 );
+stId = VehicleDeparture::Create( seqLabel:"seq01a", location:"North", stand:"Entry" );
+BarrierStatus::CreatePolling( stimulus:stId, location:"North", stand:"Entry", isopen:False, pollInterval:1, timeLimit:5 );
+stId = FastForward::Create( seqLabel:"seq01a", hours:2, minutes:5, seconds:0 );
+
+
+send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC1B" ); 
+send TESTSEQ::CreateStimulusSequence( caseLabel:"UC1B", seqLabel:"seq01b" );
+stId = VehicleArrived::Create( seqLabel:"seq01b", location:"North", stand:"Entry" );
+//::InsertDelay( stimulus:stId, duration:7 );
+QueryTicketRequest::CreatePolling( stimulus:stId, location:"North", pollInterval:1, timeLimit:5 );
+stId = TicketRequested::Create( seqLabel:"seq01b", location:"North" );
+TicketIssued::CreatePolling( stimulus:stId, location:"North", pollInterval:1, timeLimit:5 );
+stId = TicketTaken::Create( seqLabel:"seq01b", location:"North", stand:"Entry" );
+BarrierStatus::CreatePolling( stimulus:stId, location:"North", stand:"Entry", isopen:True, pollInterval:1, timeLimit:5 );
+stId = VehicleDeparture::Create( seqLabel:"seq01b", location:"North", stand:"Entry" );
+BarrierStatus::CreatePolling( stimulus:stId, location:"North", stand:"Entry", isopen:False, pollInterval:1, timeLimit:5 );
+stId = FastForward::Create( seqLabel:"seq01a", hours:1, minutes:5, seconds:0 );
+
 
 
 send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC5" ); 
 send TESTSEQ::CreateStimulusSequence( caseLabel:"UC5", seqLabel:"seq05" );
-stId = FastForward::Create( seqLabel:"seq05", hours:5, minutes:0, seconds:0 );
 stId = TicketInserted::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay", number:1 );
-BalanceValue::CreatePolling( stimulus:stId, location:"1st Floor", pollInterval:1, timeLimit:30 );
+//::InsertDelay( stimulus:stId, duration:2 );
+BalanceValue::CreatePolling( stimulus:stId, location:"1st Floor", pollInterval:1, timeLimit:0 );
+BarrierStatus::CreatePolling( stimulus:stId, location:"North", stand:"Entry", isopen:False, pollInterval:1, timeLimit:5 );
 
 
 
