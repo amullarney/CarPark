@@ -10,11 +10,11 @@ INSERT INTO C_EP
 	"7899d3af-2715-4b8f-a3b5-f0508005328d",
 	-1,
 	'VehicleWaiting',
-	'');
+	'Indicates a vehicle has arrived and is waiting at the exit stand.');
 INSERT INTO C_AS
 	VALUES ("b3f31032-49a3-4845-9e8a-03103f750cdc",
 	'VehicleWaiting',
-	'',
+	'Indicates a vehicle has arrived and is waiting at the exit stand.',
 	0,
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO C_PP
@@ -22,7 +22,7 @@ INSERT INTO C_PP
 	"b3f31032-49a3-4845-9e8a-03103f750cdc",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the exit stand.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -31,11 +31,11 @@ INSERT INTO C_EP
 	"7899d3af-2715-4b8f-a3b5-f0508005328d",
 	-1,
 	'VehicleExited',
-	'');
+	'Indicates a vehicle has exited the carpark through the exit stand.');
 INSERT INTO C_AS
 	VALUES ("ed36bd77-6fda-48f3-a9fb-7e00759b1b57",
 	'VehicleExited',
-	'',
+	'Indicates a vehicle has exited the carpark through the exit stand.',
 	0,
 	"b3f31032-49a3-4845-9e8a-03103f750cdc");
 INSERT INTO C_PP
@@ -43,7 +43,7 @@ INSERT INTO C_PP
 	"ed36bd77-6fda-48f3-a9fb-7e00759b1b57",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the exit stand.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -52,11 +52,11 @@ INSERT INTO C_EP
 	"7899d3af-2715-4b8f-a3b5-f0508005328d",
 	-1,
 	'OpenBarrier',
-	'');
+	'Commands the exit stand to open the barrier, permitting vehicles to exit the carpark.');
 INSERT INTO C_AS
 	VALUES ("94176f94-59e4-424f-93c7-c63bd6df3325",
 	'OpenBarrier',
-	'',
+	'Commands the exit stand to open the barrier, permitting vehicles to exit the carpark.',
 	1,
 	"edaae9b0-1293-42d5-9588-eebd4c4e58e9");
 INSERT INTO C_PP
@@ -64,7 +64,7 @@ INSERT INTO C_PP
 	"94176f94-59e4-424f-93c7-c63bd6df3325",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the exit stand.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -73,11 +73,11 @@ INSERT INTO C_EP
 	"7899d3af-2715-4b8f-a3b5-f0508005328d",
 	-1,
 	'InsertedTicket',
-	'');
+	'Indicates a ticket has been inserted into the exit stand.');
 INSERT INTO C_AS
 	VALUES ("edaae9b0-1293-42d5-9588-eebd4c4e58e9",
 	'InsertedTicket',
-	'',
+	'Indicates a ticket has been inserted into the exit stand.',
 	0,
 	"ed36bd77-6fda-48f3-a9fb-7e00759b1b57");
 INSERT INTO C_PP
@@ -85,7 +85,7 @@ INSERT INTO C_PP
 	"edaae9b0-1293-42d5-9588-eebd4c4e58e9",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the exit stand.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -94,7 +94,7 @@ INSERT INTO C_PP
 	"edaae9b0-1293-42d5-9588-eebd4c4e58e9",
 	"ba5eda7a-def5-0000-0000-000000000002",
 	'TicketNumber',
-	'',
+	'Used as an identifier for the ticket, this is the number printed on the ticket, as read by the exit stand.',
 	0,
 	'',
 	"2ba71dae-d302-4236-9fd8-c1615627832c");
@@ -103,11 +103,11 @@ INSERT INTO C_EP
 	"7899d3af-2715-4b8f-a3b5-f0508005328d",
 	-1,
 	'CloseBarrier',
-	'');
+	'Commands the exit stand to close the barrier, preventing vehicles from exiting the carpark.');
 INSERT INTO C_AS
 	VALUES ("1156e097-b935-4375-835b-405ad15cc03d",
 	'CloseBarrier',
-	'',
+	'Commands the exit stand to close the barrier, preventing vehicles from exiting the carpark.',
 	1,
 	"94176f94-59e4-424f-93c7-c63bd6df3325");
 INSERT INTO C_PP
@@ -115,7 +115,7 @@ INSERT INTO C_PP
 	"1156e097-b935-4375-835b-405ad15cc03d",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the exit stand.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
