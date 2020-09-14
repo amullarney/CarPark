@@ -10,11 +10,11 @@ INSERT INTO C_EP
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'TardyExit',
-	'');
+	'Indicates the exit deadline printed on this ticket has been missed.');
 INSERT INTO C_AS
 	VALUES ("56dc2578-d45a-4a5c-86c8-ee5e3284e192",
 	'TardyExit',
-	'',
+	'Indicates the exit deadline printed on this ticket has been missed.',
 	1,
 	"dc4b88ab-d520-4c50-ae78-e56474653079");
 INSERT INTO C_PP
@@ -22,7 +22,8 @@ INSERT INTO C_PP
 	"56dc2578-d45a-4a5c-86c8-ee5e3284e192",
 	"ba5eda7a-def5-0000-0000-000000000002",
 	'TicketNumber',
-	'',
+	'Used as an identifier for the ticket, this is the number printed on the ticket for which 
+the exit deadline has been missed.',
 	0,
 	'',
 	"ed879797-6d8a-4a85-bd45-eca7a627c3cf");
@@ -31,7 +32,9 @@ INSERT INTO C_PP
 	"56dc2578-d45a-4a5c-86c8-ee5e3284e192",
 	"ba5eda7a-def5-0000-0000-000000000003",
 	'AdditionalCharge',
-	'',
+	'Value of the additional charge assessed for the elapsed time between the 
+exit deadline and the time at which the ticket was inserted into the exit stand.
+Units:  dollars',
 	0,
 	'',
 	"cae69e3d-af6e-48bb-bcf5-9872ee786dde");
@@ -50,7 +53,7 @@ INSERT INTO C_PP
 	"56dc2578-d45a-4a5c-86c8-ee5e3284e192",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the exit stand.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -59,11 +62,11 @@ INSERT INTO C_EP
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'UnpaidStayExit',
-	'');
+	'Indicates that a ticket for an unpaid stay has been inserted into an exit stand.');
 INSERT INTO C_AS
 	VALUES ("6addbc93-2516-4ff7-973f-4036661c3594",
 	'UnpaidStayExit',
-	'',
+	'Indicates that a ticket for an unpaid stay has been inserted into an exit stand.',
 	1,
 	"56dc2578-d45a-4a5c-86c8-ee5e3284e192");
 INSERT INTO C_PP
@@ -71,7 +74,9 @@ INSERT INTO C_PP
 	"6addbc93-2516-4ff7-973f-4036661c3594",
 	"ba5eda7a-def5-0000-0000-000000000002",
 	'TicketNumber',
-	'',
+	'Used as an identifier for the ticket, this is the number printed on the ticket for which 
+the stay was unpaid.  Perhaps the driver forgot to visit the payment machine before heading
+to the exit.',
 	0,
 	'',
 	"fb2b1d71-5066-4a89-887d-b61f86164793");
@@ -100,7 +105,7 @@ INSERT INTO C_PP
 	"6addbc93-2516-4ff7-973f-4036661c3594",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the exit stand.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -109,11 +114,11 @@ INSERT INTO C_EP
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'FeeWaived',
-	'');
+	'Indicates that the operator has chosen to waive a fee.');
 INSERT INTO C_AS
 	VALUES ("691fe067-ff91-4b3a-80b4-ac20b1a6f42c",
 	'FeeWaived',
-	'',
+	'Indicates that the operator has chosen to waive a fee.',
 	0,
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO C_PP
@@ -121,7 +126,7 @@ INSERT INTO C_PP
 	"691fe067-ff91-4b3a-80b4-ac20b1a6f42c",
 	"ba5eda7a-def5-0000-0000-000000000002",
 	'TicketNumber',
-	'',
+	'Used as an identifier for the ticket, this is the number printed on the ticket for which the fee has been waived.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -130,11 +135,11 @@ INSERT INTO C_EP
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'FeeCollected',
-	'');
+	'Indicates that the operator has collected a fee.');
 INSERT INTO C_AS
 	VALUES ("deabe881-00f0-46a6-8238-f0f211af4084",
 	'FeeCollected',
-	'',
+	'Indicates that the operator has collected a fee.',
 	0,
 	"691fe067-ff91-4b3a-80b4-ac20b1a6f42c");
 INSERT INTO C_PP
@@ -142,7 +147,7 @@ INSERT INTO C_PP
 	"deabe881-00f0-46a6-8238-f0f211af4084",
 	"ba5eda7a-def5-0000-0000-000000000002",
 	'TicketNumber',
-	'',
+	'Used as an identifier for the ticket, this is the number printed on the ticket for which the fee has been collected.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -151,11 +156,11 @@ INSERT INTO C_EP
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'ActivateEntryStand',
-	'');
+	'Activates the section of the operator console display for a particular entry stand.');
 INSERT INTO C_AS
 	VALUES ("decb291b-9729-42dc-9e3c-39bf58a3f0fe",
 	'ActivateEntryStand',
-	'',
+	'Activates the section of the operator console display for a particular entry stand.',
 	1,
 	"6addbc93-2516-4ff7-973f-4036661c3594");
 INSERT INTO C_PP
@@ -163,7 +168,7 @@ INSERT INTO C_PP
 	"decb291b-9729-42dc-9e3c-39bf58a3f0fe",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the entry stand.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -172,7 +177,7 @@ INSERT INTO C_PP
 	"decb291b-9729-42dc-9e3c-39bf58a3f0fe",
 	"f0c65a10-2e1e-4a19-8c3f-db9b478b5038",
 	'Barrier',
-	'',
+	'State of the barrier for this entry stand.',
 	0,
 	'',
 	"c274d66a-0549-4f5f-b6b0-b21314bc9ad2");
@@ -188,7 +193,7 @@ INSERT INTO C_PP
 	"decb291b-9729-42dc-9e3c-39bf58a3f0fe",
 	"cafec5d5-16a2-4bdd-9339-b4d98d011baa",
 	'Ticket',
-	'',
+	'An indication of whether a ticket has been requested, issued, or accepted.',
 	0,
 	'',
 	"a1c9b8b8-2fcc-4841-8a25-f12b4712d323");
@@ -204,11 +209,11 @@ INSERT INTO C_EP
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'DeactivateEntryStand',
-	'');
+	'Deactivates the section of the operator console display for a particular entry stand.');
 INSERT INTO C_AS
 	VALUES ("e498b425-5222-4bf7-beb4-dbf2b2ed21ef",
 	'DeactivateEntryStand',
-	'',
+	'Deactivates the section of the operator console display for a particular entry stand.',
 	1,
 	"decb291b-9729-42dc-9e3c-39bf58a3f0fe");
 INSERT INTO C_PP
@@ -216,7 +221,7 @@ INSERT INTO C_PP
 	"e498b425-5222-4bf7-beb4-dbf2b2ed21ef",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the entry stand.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -225,11 +230,15 @@ INSERT INTO C_EP
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'DelayedEntry',
-	'');
+	'Indicates that a vehicle has failed to enter the carpark
+within the expected time after collecting a ticket from
+an entry stand.');
 INSERT INTO C_AS
 	VALUES ("ceb70e8e-da44-4868-9afd-06ee51840aaf",
 	'DelayedEntry',
-	'',
+	'Indicates that a vehicle has failed to enter the carpark
+within the expected time after collecting a ticket from
+an entry stand.',
 	1,
 	"e498b425-5222-4bf7-beb4-dbf2b2ed21ef");
 INSERT INTO C_PP
@@ -237,7 +246,7 @@ INSERT INTO C_PP
 	"ceb70e8e-da44-4868-9afd-06ee51840aaf",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the entry stand.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -246,11 +255,11 @@ INSERT INTO C_EP
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'ActivateExitStand',
-	'');
+	'Activates the section of the operator console display for a particular exit stand.');
 INSERT INTO C_AS
 	VALUES ("a19289e3-ea62-417f-9a6d-5f05d709b9b8",
 	'ActivateExitStand',
-	'',
+	'Activates the section of the operator console display for a particular exit stand.',
 	1,
 	"ceb70e8e-da44-4868-9afd-06ee51840aaf");
 INSERT INTO C_PP
@@ -258,7 +267,7 @@ INSERT INTO C_PP
 	"a19289e3-ea62-417f-9a6d-5f05d709b9b8",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the exit stand.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -267,7 +276,7 @@ INSERT INTO C_PP
 	"a19289e3-ea62-417f-9a6d-5f05d709b9b8",
 	"9eade303-9285-4f04-b713-0845aa0189ab",
 	'Ticket',
-	'',
+	'Indication of whether a ticket has been inserted into the exist stand.',
 	0,
 	'',
 	"6a9d804d-4340-411f-ae14-597b402152a2");
@@ -283,7 +292,7 @@ INSERT INTO C_PP
 	"a19289e3-ea62-417f-9a6d-5f05d709b9b8",
 	"f0c65a10-2e1e-4a19-8c3f-db9b478b5038",
 	'Barrier',
-	'',
+	'State of the barrier for this exit stand.',
 	0,
 	'',
 	"ce9a4e95-3b88-4078-bd8f-acd4e2927fdc");
@@ -292,7 +301,7 @@ INSERT INTO C_PP
 	"a19289e3-ea62-417f-9a6d-5f05d709b9b8",
 	"4e43b16b-88e7-4162-a18d-c5f037d8ce33",
 	'ExitDeadline',
-	'',
+	'Date and time by which this vehicle must exit the carpark.',
 	0,
 	'',
 	"0c804f2f-0324-4c91-85dc-d7a3e9491184");
@@ -309,11 +318,11 @@ INSERT INTO C_EP
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'DeactivateExitStand',
-	'');
+	'Deactivates the section of the operator console display for a particular exit stand.');
 INSERT INTO C_AS
 	VALUES ("2c1be27d-0494-409e-bee1-e788809c8dc5",
 	'DeactivateExitStand',
-	'',
+	'Deactivates the section of the operator console display for a particular exit stand.',
 	1,
 	"a19289e3-ea62-417f-9a6d-5f05d709b9b8");
 INSERT INTO C_PP
@@ -321,7 +330,7 @@ INSERT INTO C_PP
 	"2c1be27d-0494-409e-bee1-e788809c8dc5",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the exit stand.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -330,11 +339,11 @@ INSERT INTO C_EP
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'OccupancyUpdate',
-	'');
+	'Provides current carpark occupancy data.');
 INSERT INTO C_AS
 	VALUES ("fb9ecbd5-8059-4308-9f0a-83969561ff04",
 	'OccupancyUpdate',
-	'',
+	'Provides current carpark occupancy data.',
 	1,
 	"2c1be27d-0494-409e-bee1-e788809c8dc5");
 INSERT INTO C_PP
@@ -342,7 +351,8 @@ INSERT INTO C_PP
 	"fb9ecbd5-8059-4308-9f0a-83969561ff04",
 	"ba5eda7a-def5-0000-0000-000000000002",
 	'Occupancy',
-	'',
+	'Current occupancy of the carpark.
+Units: vehicles',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -351,7 +361,8 @@ INSERT INTO C_PP
 	"fb9ecbd5-8059-4308-9f0a-83969561ff04",
 	"ba5eda7a-def5-0000-0000-000000000002",
 	'Capacity',
-	'',
+	'Current carpark capacity.
+Units: vehicles',
 	0,
 	'',
 	"a85749d9-9c06-4ef4-af4c-85acbb8cef6d");
@@ -360,7 +371,8 @@ INSERT INTO C_PP
 	"fb9ecbd5-8059-4308-9f0a-83969561ff04",
 	"ba5eda7a-def5-0000-0000-000000000002",
 	'Availability',
-	'',
+	'Number of currently available slots within the carpark.
+Units: vehicles',
 	0,
 	'',
 	"eb56b0cf-78a7-4360-8aa1-6fab846ab205");
@@ -369,11 +381,23 @@ INSERT INTO C_EP
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'IssueTicket',
-	'');
+	'Commands an entry stand to issue a ticket.  
+The operator may command the issuance of a ticket when there is a malfunction
+at the entry stand.  For example, a failure of the vehicle-waiting sensor or 
+the ticket-request facility would make it impossible for the driver to request
+a ticket.  The driver could then use the intercom system to explain the issue
+to the operator who would then command the entry stand, indirectly via the carpark
+system, to issue a ticket. ');
 INSERT INTO C_AS
 	VALUES ("bb331470-fbd3-43d9-8d59-e5684346c197",
 	'IssueTicket',
-	'',
+	'Commands an entry stand to issue a ticket.  
+The operator may command the issuance of a ticket when there is a malfunction
+at the entry stand.  For example, a failure of the vehicle-waiting sensor or 
+the ticket-request facility would make it impossible for the driver to request
+a ticket.  The driver could then use the intercom system to explain the issue
+to the operator who would then command the entry stand, indirectly via the carpark
+system, to issue a ticket. ',
 	0,
 	"deabe881-00f0-46a6-8238-f0f211af4084");
 INSERT INTO C_PP
@@ -381,7 +405,7 @@ INSERT INTO C_PP
 	"bb331470-fbd3-43d9-8d59-e5684346c197",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the entry stand.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -390,11 +414,21 @@ INSERT INTO C_EP
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'OpenEntryBarrier',
-	'');
+	'Commands an entry stand, indirectly through the carpark system, 
+to open the barrier, permitting vehicles to enter the carpark.
+The operator may command an entry stand to open the barrier when
+there is a malfunction at the entry stand (e.g., a failure of the
+ticket printer or the sensor detecting the collection of a ticket)
+or in unusual circumstances such as the arrival of a VIP.');
 INSERT INTO C_AS
 	VALUES ("dc4b88ab-d520-4c50-ae78-e56474653079",
 	'OpenEntryBarrier',
-	'',
+	'Commands an entry stand, indirectly through the carpark system, 
+to open the barrier, permitting vehicles to enter the carpark.
+The operator may command an entry stand to open the barrier when
+there is a malfunction at the entry stand (e.g., a failure of the
+ticket printer or the sensor detecting the collection of a ticket)
+or in unusual circumstances such as the arrival of a VIP.',
 	0,
 	"bb331470-fbd3-43d9-8d59-e5684346c197");
 INSERT INTO C_PP
@@ -402,7 +436,7 @@ INSERT INTO C_PP
 	"dc4b88ab-d520-4c50-ae78-e56474653079",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the entry stand.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -411,11 +445,11 @@ INSERT INTO C_EP
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'OpenCarpark',
-	'');
+	'Commands the carpark system to open the carpark.');
 INSERT INTO C_AS
 	VALUES ("78dddf09-cf4f-4260-95da-dabf54002032",
 	'OpenCarpark',
-	'',
+	'Commands the carpark system to open the carpark.',
 	0,
 	"fb9ecbd5-8059-4308-9f0a-83969561ff04");
 INSERT INTO C_EP
@@ -423,11 +457,13 @@ INSERT INTO C_EP
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'CarparkOpened',
-	'');
+	'Indicates that the carpark has completed initialization and is open and ready
+to accept vehicles.');
 INSERT INTO C_AS
 	VALUES ("314e787f-c1c2-425c-b684-c14acf073e80",
 	'CarparkOpened',
-	'',
+	'Indicates that the carpark has completed initialization and is open and ready
+to accept vehicles.',
 	1,
 	"78dddf09-cf4f-4260-95da-dabf54002032");
 INSERT INTO C_EP
@@ -435,11 +471,11 @@ INSERT INTO C_EP
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'CloseCarpark',
-	'');
+	'Commands the carpark system to close the carpark.');
 INSERT INTO C_AS
 	VALUES ("685996cf-e141-4a25-8095-b11c6e30fd38",
 	'CloseCarpark',
-	'',
+	'Commands the carpark system to close the carpark.',
 	0,
 	"314e787f-c1c2-425c-b684-c14acf073e80");
 INSERT INTO C_EP
@@ -447,11 +483,13 @@ INSERT INTO C_EP
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'CarparkClosed',
-	'');
+	'Indicates that the carpark has closed and is no longer permitting entry
+to or exit from the carpark.');
 INSERT INTO C_AS
 	VALUES ("643234c5-7a94-4834-81d1-69d996c5a76d",
 	'CarparkClosed',
-	'',
+	'Indicates that the carpark has closed and is no longer permitting entry
+to or exit from the carpark.',
 	1,
 	"685996cf-e141-4a25-8095-b11c6e30fd38");
 INSERT INTO C_EP
@@ -459,11 +497,17 @@ INSERT INTO C_EP
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'OpenExitBarrier',
-	'');
+	'Commands, indirectly through the carpark system, an exit stand to open the barrier.
+An operator may command an exit stand to open the barrier in unusual circumstances 
+such as an equipment failure (e.g., failed vehicle waiting sensor or ticket reader) 
+or in case of emergency.');
 INSERT INTO C_AS
 	VALUES ("06d1a1ae-4cf0-4736-9880-66e81f19f2dd",
 	'OpenExitBarrier',
-	'',
+	'Commands, indirectly through the carpark system, an exit stand to open the barrier.
+An operator may command an exit stand to open the barrier in unusual circumstances 
+such as an equipment failure (e.g., failed vehicle waiting sensor or ticket reader) 
+or in case of emergency.',
 	0,
 	"643234c5-7a94-4834-81d1-69d996c5a76d");
 INSERT INTO C_PP
@@ -471,7 +515,7 @@ INSERT INTO C_PP
 	"06d1a1ae-4cf0-4736-9880-66e81f19f2dd",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the exit stand.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -480,11 +524,11 @@ INSERT INTO C_EP
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'DateTimeUpdate',
-	'');
+	'Provides the current date and time according to the carpark system.');
 INSERT INTO C_AS
 	VALUES ("e5c28b7b-3074-4ec3-933c-109cc9064aac",
 	'DateTimeUpdate',
-	'',
+	'Provides the current date and time according to the carpark system.',
 	1,
 	"06d1a1ae-4cf0-4736-9880-66e81f19f2dd");
 INSERT INTO C_PP
@@ -492,7 +536,7 @@ INSERT INTO C_PP
 	"e5c28b7b-3074-4ec3-933c-109cc9064aac",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'DateTime',
-	'',
+	'Current data and time, formatted according to configuration parameters for the carpark system.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
