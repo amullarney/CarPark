@@ -10,11 +10,11 @@ INSERT INTO C_EP
 	"a4174036-5fb5-4ca8-bc14-f60c13721964",
 	-1,
 	'VehicleWaiting',
-	'');
+	'Indicates a vehicle has arrived and is waiting at the entry stand.');
 INSERT INTO C_AS
 	VALUES ("9c8c4e52-3d03-4fd0-90c1-fd98b94dbf3a",
 	'VehicleWaiting',
-	'',
+	'Indicates a vehicle has arrived and is waiting at the entry stand.',
 	0,
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO C_PP
@@ -22,7 +22,7 @@ INSERT INTO C_PP
 	"9c8c4e52-3d03-4fd0-90c1-fd98b94dbf3a",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the entry stand.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -31,11 +31,11 @@ INSERT INTO C_EP
 	"a4174036-5fb5-4ca8-bc14-f60c13721964",
 	-1,
 	'VehicleEntered',
-	'');
+	'Indicates a vehicle has entered the carpark.');
 INSERT INTO C_AS
 	VALUES ("aaab7b5e-4f98-4998-8be4-4d26b7279bdc",
 	'VehicleEntered',
-	'',
+	'Indicates a vehicle has entered the carpark.',
 	0,
 	"9c8c4e52-3d03-4fd0-90c1-fd98b94dbf3a");
 INSERT INTO C_PP
@@ -43,7 +43,7 @@ INSERT INTO C_PP
 	"aaab7b5e-4f98-4998-8be4-4d26b7279bdc",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the entry stand.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -52,11 +52,11 @@ INSERT INTO C_EP
 	"a4174036-5fb5-4ca8-bc14-f60c13721964",
 	-1,
 	'IssueTicket',
-	'');
+	'Commands the entry stand to issue a ticket.');
 INSERT INTO C_AS
 	VALUES ("a9135539-d52d-430b-9204-de30fd3917e4",
 	'IssueTicket',
-	'',
+	'Commands the entry stand to issue a ticket.',
 	1,
 	"b6122e79-e6b1-4317-9660-8f2915f6aa3d");
 INSERT INTO C_PP
@@ -64,7 +64,7 @@ INSERT INTO C_PP
 	"a9135539-d52d-430b-9204-de30fd3917e4",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the entry stand.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -73,7 +73,7 @@ INSERT INTO C_PP
 	"a9135539-d52d-430b-9204-de30fd3917e4",
 	"ba5eda7a-def5-0000-0000-000000000002",
 	'Number',
-	'',
+	'Used as an identifier for the ticket, this is the number printed on the ticket by the entry stand.',
 	0,
 	'',
 	"dec72679-ba56-4bdc-a88c-d2629ca1bba0");
@@ -82,11 +82,11 @@ INSERT INTO C_EP
 	"a4174036-5fb5-4ca8-bc14-f60c13721964",
 	-1,
 	'OpenBarrier',
-	'');
+	'Commands the entry stand to open the barrier, permitting vehicles to enter the carpark.');
 INSERT INTO C_AS
 	VALUES ("8f0421c7-8766-43ee-9926-ff840933d845",
 	'OpenBarrier',
-	'',
+	'Commands the entry stand to open the barrier, permitting vehicles to enter the carpark.',
 	1,
 	"a9135539-d52d-430b-9204-de30fd3917e4");
 INSERT INTO C_PP
@@ -94,7 +94,7 @@ INSERT INTO C_PP
 	"8f0421c7-8766-43ee-9926-ff840933d845",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the entry stand.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -103,11 +103,11 @@ INSERT INTO C_EP
 	"a4174036-5fb5-4ca8-bc14-f60c13721964",
 	-1,
 	'TicketCollected',
-	'');
+	'Indicates a ticket has been collected from the entry stand.');
 INSERT INTO C_AS
 	VALUES ("65f8b110-e37a-4554-bb1b-f32011e90160",
 	'TicketCollected',
-	'',
+	'Indicates a ticket has been collected from the entry stand.',
 	0,
 	"aaab7b5e-4f98-4998-8be4-4d26b7279bdc");
 INSERT INTO C_PP
@@ -115,7 +115,7 @@ INSERT INTO C_PP
 	"65f8b110-e37a-4554-bb1b-f32011e90160",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the entry stand.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -124,11 +124,11 @@ INSERT INTO C_EP
 	"a4174036-5fb5-4ca8-bc14-f60c13721964",
 	-1,
 	'TicketRequested',
-	'');
+	'Indicates a ticket has been requested by the driver waiting at the entry stand.');
 INSERT INTO C_AS
 	VALUES ("b6122e79-e6b1-4317-9660-8f2915f6aa3d",
 	'TicketRequested',
-	'',
+	'Indicates a ticket has been requested by the driver waiting at the entry stand.',
 	0,
 	"65f8b110-e37a-4554-bb1b-f32011e90160");
 INSERT INTO C_PP
@@ -136,7 +136,7 @@ INSERT INTO C_PP
 	"b6122e79-e6b1-4317-9660-8f2915f6aa3d",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the entry stand.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -145,11 +145,11 @@ INSERT INTO C_EP
 	"a4174036-5fb5-4ca8-bc14-f60c13721964",
 	-1,
 	'TicketRequestEnabled',
-	'');
+	'Enables ticket requests at the entry stand.  ');
 INSERT INTO C_AS
 	VALUES ("7505d600-9541-4f9d-a706-1332ed813b40",
 	'TicketRequestEnabled',
-	'',
+	'Enables ticket requests at the entry stand.  ',
 	1,
 	"7c4b090e-4c89-4572-bcaa-379127d653fd");
 INSERT INTO C_PP
@@ -157,7 +157,7 @@ INSERT INTO C_PP
 	"7505d600-9541-4f9d-a706-1332ed813b40",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the entry stand.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -166,11 +166,11 @@ INSERT INTO C_EP
 	"a4174036-5fb5-4ca8-bc14-f60c13721964",
 	-1,
 	'TicketRequestDisabled',
-	'');
+	'Disables ticket requests at the entry stand.');
 INSERT INTO C_AS
 	VALUES ("198f2473-7dbc-4032-af90-880de6c271ff",
 	'TicketRequestDisabled',
-	'',
+	'Disables ticket requests at the entry stand.',
 	1,
 	"7505d600-9541-4f9d-a706-1332ed813b40");
 INSERT INTO C_PP
@@ -178,7 +178,7 @@ INSERT INTO C_PP
 	"198f2473-7dbc-4032-af90-880de6c271ff",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the entry stand.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -187,11 +187,11 @@ INSERT INTO C_EP
 	"a4174036-5fb5-4ca8-bc14-f60c13721964",
 	-1,
 	'CloseBarrier',
-	'');
+	'Commands the entry stand to close the barrier, preventing vehicles from entering the carpark.');
 INSERT INTO C_AS
 	VALUES ("7c4b090e-4c89-4572-bcaa-379127d653fd",
 	'CloseBarrier',
-	'',
+	'Commands the entry stand to close the barrier, preventing vehicles from entering the carpark.',
 	1,
 	"8f0421c7-8766-43ee-9926-ff840933d845");
 INSERT INTO C_PP
@@ -199,7 +199,7 @@ INSERT INTO C_PP
 	"7c4b090e-4c89-4572-bcaa-379127d653fd",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the entry stand.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
