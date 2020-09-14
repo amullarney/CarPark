@@ -87,8 +87,20 @@ if ( not_empty b )
      where ( selected.payingAt == self.location );
     s.paid = true;
   else
-    LOG::LogInfo( message:"sending more money" );
-    send Payer::InsertedCurrency( Location:self.location, Amount:2 );
+    amount = 0;
+    if ( b.amount > 20 )
+      amount = 20;
+    elif ( b.amount > 10 )
+      amount = 10;
+    elif ( b.amount > 5 )
+      amount = 5;
+    elif ( b.amount > 2 )
+      amount = 2;
+    elif ( b.amount > 0 )
+      amount = 1;
+    end if;
+    LOG::LogReal( message:"Inserting money at " + self.location, r:amount );
+    send Payer::InsertedCurrency( Location:self.location, Amount:amount );
   end if;
   delete object instance b;
 else

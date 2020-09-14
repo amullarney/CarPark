@@ -1317,8 +1317,10 @@ INSERT INTO SPR_RS
 	VALUES ("a4f9f287-62e3-4712-af22-7352bc789027",
 	'OpenBarrier',
 	'',
-	'select any exit from instances of Exit;
-generate Exit2:BarrierOpened() to exit;',
+	'create object instance b of BarrierCommand;
+b.location = param.Location;
+b.stand = "Exit";
+b.open = True;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1354,7 +1356,10 @@ INSERT INTO SPR_RS
 	VALUES ("52b7a6a0-4afc-4f83-88ec-2941b92d3e67",
 	'CloseBarrier',
 	'',
-	'',
+	'create object instance b of BarrierCommand;
+b.location = param.Location;
+b.stand = "Exit";
+b.open = False;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1527,7 +1532,11 @@ INSERT INTO SPR_RS
 	VALUES ("733ddba3-af68-41ff-b2d5-1e352f1243d5",
 	'ReturnedTicket',
 	'',
-	'LOG::LogInfo( message:"Returning ticket at " + param.Location );',
+	'select any stay from instances of Stay
+ where ( selected.payingAt == param.Location );
+if ( not_empty stay )
+  LOG::LogInfo( message:"Returning ticket at " + param.Location );
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1545,7 +1554,11 @@ INSERT INTO SPR_RS
 	VALUES ("c62cb3e0-4035-4c41-a5bf-29b63d2b69e6",
 	'ExitDeadline',
 	'',
-	'',
+	'select any stay from instances of Stay
+ where ( selected.payingAt == param.Location );
+if ( not_empty stay )
+  stay.deadline = param.Deadline;
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1563,7 +1576,7 @@ INSERT INTO SPR_RS
 	VALUES ("4ffe69c6-eff9-4bf8-8240-31ff7622bf60",
 	'DispenseChange',
 	'',
-	'LOG::LogReal( message:"Dispensing", r:param.Amount );',
+	'LOG::LogReal( message:"Dispensing change at " + param.Location, r:param.Amount );',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1585,7 +1598,7 @@ INSERT INTO SPR_RS
  where ( selected.payingAt == param.Location );
 if ( not_empty stay )
   LOG::LogInfo( message:"Payment transaction cancelled at " + param.Location );
-  stay.payingAt = "";
+  stay.paid = false;
 end if;',
 	1,
 	0);

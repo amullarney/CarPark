@@ -92,7 +92,11 @@ INSERT INTO O_TFR
 	'When invoked, search any existing notifications looking for a match.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'LOG::LogInfo( message:" --- Checking for barrier status at " + self.location + " " + self.stand );
+	'status = " open ";
+if ( not self.open )
+  status = " closed ";
+end if;
+LOG::LogInfo( message:" --- Checking for barrier status " + status + "at " + self.location + " " + self.stand );
 select one obs related by self->Observation[R4]; 
 
 select any b from instances of BarrierCommand
