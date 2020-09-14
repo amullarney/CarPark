@@ -10,11 +10,11 @@ INSERT INTO C_EP
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'CancelledTransaction',
-	'');
+	'Indicates the patron cancelled the current transaction.');
 INSERT INTO C_AS
 	VALUES ("aeb8e261-7eb2-4971-a3cb-e35a714490b3",
 	'CancelledTransaction',
-	'',
+	'Indicates the patron cancelled the current transaction.',
 	0,
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO C_PP
@@ -22,7 +22,7 @@ INSERT INTO C_PP
 	"aeb8e261-7eb2-4971-a3cb-e35a714490b3",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the payment machine.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -31,11 +31,13 @@ INSERT INTO C_EP
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'WaivedChange',
-	'');
+	'Indicates the patron waived any change due at a payment machine
+containing insufficient change to settle the current transaction.');
 INSERT INTO C_AS
 	VALUES ("f66a3b7f-d47f-4c2b-9f66-1ce143dc9e4d",
 	'WaivedChange',
-	'',
+	'Indicates the patron waived any change due at a payment machine
+containing insufficient change to settle the current transaction.',
 	0,
 	"aeb8e261-7eb2-4971-a3cb-e35a714490b3");
 INSERT INTO C_PP
@@ -43,7 +45,7 @@ INSERT INTO C_PP
 	"f66a3b7f-d47f-4c2b-9f66-1ce143dc9e4d",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the payment machine.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -52,11 +54,11 @@ INSERT INTO C_EP
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'TicketCollected',
-	'');
+	'Indicates the patron collected a ticket returned by the payment machine.');
 INSERT INTO C_AS
 	VALUES ("1a93d819-e152-409f-8b77-23b28cb652bb",
 	'TicketCollected',
-	'',
+	'Indicates the patron collected a ticket returned by the payment machine.',
 	0,
 	"f66a3b7f-d47f-4c2b-9f66-1ce143dc9e4d");
 INSERT INTO C_PP
@@ -64,7 +66,7 @@ INSERT INTO C_PP
 	"1a93d819-e152-409f-8b77-23b28cb652bb",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the payment machine.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -73,11 +75,11 @@ INSERT INTO C_EP
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'InsertedTicket',
-	'');
+	'Indicates that a patron inserted a ticket into a payment machine.');
 INSERT INTO C_AS
 	VALUES ("6bdbefd7-2814-447f-a902-ed56cfceddfb",
 	'InsertedTicket',
-	'',
+	'Indicates that a patron inserted a ticket into a payment machine.',
 	0,
 	"1a93d819-e152-409f-8b77-23b28cb652bb");
 INSERT INTO C_PP
@@ -85,7 +87,7 @@ INSERT INTO C_PP
 	"6bdbefd7-2814-447f-a902-ed56cfceddfb",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the payment machine.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -94,7 +96,7 @@ INSERT INTO C_PP
 	"6bdbefd7-2814-447f-a902-ed56cfceddfb",
 	"ba5eda7a-def5-0000-0000-000000000002",
 	'TicketNumber',
-	'',
+	'Used as an identifier for the ticket, this is the number printed on the ticket, as read by the payment machine.',
 	0,
 	'',
 	"0f8b2255-2f71-4df4-a98f-901c41218dc7");
@@ -103,11 +105,11 @@ INSERT INTO C_EP
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'InsertedCurrency',
-	'');
+	'Indicates that a patron inserted currency into a payment machine.');
 INSERT INTO C_AS
 	VALUES ("ed039022-908c-4f0a-bb12-81c944031952",
 	'InsertedCurrency',
-	'',
+	'Indicates that a patron inserted currency into a payment machine.',
 	0,
 	"6bdbefd7-2814-447f-a902-ed56cfceddfb");
 INSERT INTO C_PP
@@ -115,7 +117,7 @@ INSERT INTO C_PP
 	"ed039022-908c-4f0a-bb12-81c944031952",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the payment machine.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -124,7 +126,8 @@ INSERT INTO C_PP
 	"ed039022-908c-4f0a-bb12-81c944031952",
 	"ba5eda7a-def5-0000-0000-000000000003",
 	'Amount',
-	'',
+	'Amount of currency inserted.
+Units: dollars',
 	0,
 	'',
 	"d952468b-a83e-4b9f-b43b-3ce2785bc9fc");
@@ -133,11 +136,13 @@ INSERT INTO C_EP
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'RemainingBalance',
-	'');
+	'Provides the remaining balance for the stay associated with the ticket
+currently inserted in a payment machine.');
 INSERT INTO C_AS
 	VALUES ("e6bd25b1-8a4d-4a8a-a068-e149f8b48ebb",
 	'RemainingBalance',
-	'',
+	'Provides the remaining balance for the stay associated with the ticket
+currently inserted in a payment machine.',
 	1,
 	"ed039022-908c-4f0a-bb12-81c944031952");
 INSERT INTO C_PP
@@ -145,7 +150,7 @@ INSERT INTO C_PP
 	"e6bd25b1-8a4d-4a8a-a068-e149f8b48ebb",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the payment machine.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -154,7 +159,8 @@ INSERT INTO C_PP
 	"e6bd25b1-8a4d-4a8a-a068-e149f8b48ebb",
 	"ba5eda7a-def5-0000-0000-000000000003",
 	'Amount',
-	'',
+	'Remaining balance for the stay.
+Units: dollars',
 	0,
 	'',
 	"0311b37c-bb98-439f-b05b-cec18fe6c0b8");
@@ -163,11 +169,13 @@ INSERT INTO C_EP
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'InsufficientChange',
-	'');
+	'Indicates that this payment machine contain insufficient change to settle
+the current transaction.');
 INSERT INTO C_AS
 	VALUES ("acfc0128-4d4f-4a0e-87ed-988ebe170166",
 	'InsufficientChange',
-	'',
+	'Indicates that this payment machine contain insufficient change to settle
+the current transaction.',
 	1,
 	"e6bd25b1-8a4d-4a8a-a068-e149f8b48ebb");
 INSERT INTO C_PP
@@ -175,7 +183,7 @@ INSERT INTO C_PP
 	"acfc0128-4d4f-4a0e-87ed-988ebe170166",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the payment machine.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -184,11 +192,11 @@ INSERT INTO C_EP
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'ReturnedTicket',
-	'');
+	'Commands a payment machine to return the currently-inserted ticket to the patron.');
 INSERT INTO C_AS
 	VALUES ("ab99ffd4-de35-47a9-9eb4-ee31927071ec",
 	'ReturnedTicket',
-	'',
+	'Commands a payment machine to return the currently-inserted ticket to the patron.',
 	1,
 	"acfc0128-4d4f-4a0e-87ed-988ebe170166");
 INSERT INTO C_PP
@@ -196,7 +204,7 @@ INSERT INTO C_PP
 	"ab99ffd4-de35-47a9-9eb4-ee31927071ec",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the payment machine.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -205,11 +213,13 @@ INSERT INTO C_EP
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'ExitDeadline',
-	'');
+	'Provides the exit deadline (date/time) from the carpark system to a payment machine, 
+so the latter can print it on the ticket before returning the ticket to the patron.');
 INSERT INTO C_AS
 	VALUES ("7d98badf-0872-49ac-a66e-72a2d0d07fa7",
 	'ExitDeadline',
-	'',
+	'Provides the exit deadline (date/time) from the carpark system to a payment machine, 
+so the latter can print it on the ticket before returning the ticket to the patron.',
 	1,
 	"ab99ffd4-de35-47a9-9eb4-ee31927071ec");
 INSERT INTO C_PP
@@ -217,7 +227,8 @@ INSERT INTO C_PP
 	"7d98badf-0872-49ac-a66e-72a2d0d07fa7",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Deadline',
-	'',
+	'Date and time by which the vehicle must exit the carpark to avoid
+an additional charge for an overstay.',
 	0,
 	'',
 	"de7c70c2-1466-4e3b-a7af-7336341e7e2f");
@@ -226,7 +237,7 @@ INSERT INTO C_PP
 	"7d98badf-0872-49ac-a66e-72a2d0d07fa7",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the payment machine.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -235,11 +246,11 @@ INSERT INTO C_EP
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'DispenseChange',
-	'');
+	'Commands a payment machine to dispense change to settle the current transaction.');
 INSERT INTO C_AS
 	VALUES ("f6708800-f5f1-4db3-bf94-550b4dd6e170",
 	'DispenseChange',
-	'',
+	'Commands a payment machine to dispense change to settle the current transaction.',
 	1,
 	"7d98badf-0872-49ac-a66e-72a2d0d07fa7");
 INSERT INTO C_PP
@@ -247,7 +258,7 @@ INSERT INTO C_PP
 	"f6708800-f5f1-4db3-bf94-550b4dd6e170",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the payment machine.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -256,7 +267,8 @@ INSERT INTO C_PP
 	"f6708800-f5f1-4db3-bf94-550b4dd6e170",
 	"ba5eda7a-def5-0000-0000-000000000003",
 	'Amount',
-	'',
+	'Amount of change to be dispensed.
+Units: dollars',
 	0,
 	'',
 	"8a961f65-cb8e-4db4-ba36-ca8f380225fd");
@@ -265,11 +277,11 @@ INSERT INTO C_EP
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'TransactionCancelled',
-	'');
+	'Indicates that the current transaction was cancelled by the carpark system.');
 INSERT INTO C_AS
 	VALUES ("e25325e0-cebe-4e34-8814-1a1f84c7e4a4",
 	'TransactionCancelled',
-	'',
+	'Indicates that the current transaction was cancelled by the carpark system.',
 	1,
 	"f6708800-f5f1-4db3-bf94-550b4dd6e170");
 INSERT INTO C_PP
@@ -277,7 +289,7 @@ INSERT INTO C_PP
 	"e25325e0-cebe-4e34-8814-1a1f84c7e4a4",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Location',
-	'',
+	'Used as an identifier, this is the location of the payment machine.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -286,7 +298,7 @@ INSERT INTO C_PP
 	"e25325e0-cebe-4e34-8814-1a1f84c7e4a4",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Why',
-	'',
+	'Indicates the reason for which the transaction was cancelled.',
 	0,
 	'',
 	"dd714b69-26b3-45dc-98ce-e661e9e8cfa2");
