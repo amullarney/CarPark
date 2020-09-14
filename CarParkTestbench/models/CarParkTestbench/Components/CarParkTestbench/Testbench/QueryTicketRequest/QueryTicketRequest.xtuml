@@ -5,7 +5,7 @@ INSERT INTO O_OBJ
 	'QueryTicketRequest',
 	13,
 	'QueryTicketRequest',
-	'This observation succeeds when it finds a notification from the application that matches its identification attribute.',
+	'Check whether a a ticket request will be accepted.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("03babdb5-d972-403b-bd28-cf8322b92453",

@@ -80,7 +80,7 @@ select any t from instances of Ticket
 if ( not_empty t )
   create object instance stay of Stay;
   stay.ticketNumber = t.number;
-  stay.location = t.location;
+  stay.issuedAt = t.location;
   stay.startTime = TIM::current_seconds();
   delete object instance t;
   obs.Complete( success:True );

@@ -93,6 +93,11 @@ else
       select one bv related by self->BalanceValue[R4];
       if ( not_empty bv )
         bv.CheckBalance();
+      else
+        select one rt related by self->TicketReturned[R4];
+        if ( not_empty rt )
+          rt.CheckReturned();
+        end if;
       end if;
   	end if;
   end if;

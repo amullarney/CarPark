@@ -5,8 +5,7 @@ INSERT INTO O_OBJ
 	'TicketRequested',
 	22,
 	'TicketRequested',
-	'An example of a stimulus invoking an interface signal to the application under test.
-This requests that payroll data be retrieved for review from the application.',
+	'Request the application to issue a ticket for entry.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("973d5519-08f2-4bdf-b953-33eaa0c2344f",

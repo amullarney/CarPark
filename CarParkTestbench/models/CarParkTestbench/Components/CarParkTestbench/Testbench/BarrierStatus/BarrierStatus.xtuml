@@ -5,7 +5,7 @@ INSERT INTO O_OBJ
 	'BarrierStatus',
 	18,
 	'BarrierStatus',
-	'',
+	'An observation which checks for expected barrier status - open/closed.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("63191854-a9b4-47e2-aae9-996940a69bd3",

@@ -78,6 +78,7 @@ INSERT INTO O_TFR
 
 select any stay from instances of Stay;
 if ( self.standType == "Pay" )
+  stay.payingAt = self.location;
   send Payer::InsertedTicket( Location:self.location, TicketNumber:stay.ticketNumber);
 else
   send ExitStand::InsertedTicket( Location:self.location, TicketNumber:stay.ticketNumber );

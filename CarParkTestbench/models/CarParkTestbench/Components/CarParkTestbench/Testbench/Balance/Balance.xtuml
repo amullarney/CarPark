@@ -5,7 +5,7 @@ INSERT INTO O_OBJ
 	'Balance',
 	25,
 	'Balance',
-	'',
+	'Represents a balance due at a pay stand.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_NBATTR
 	VALUES ("66c3f910-c022-487f-bd32-b023602b2f87",

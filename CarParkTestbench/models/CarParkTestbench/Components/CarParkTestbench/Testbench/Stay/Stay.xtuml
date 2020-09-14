@@ -71,10 +71,10 @@ INSERT INTO O_ATTR
 	VALUES ("8f9d2a19-75f0-46cf-99f0-6556f4427b80",
 	"1be5dd1b-f517-40ac-8691-0144999e11da",
 	"8ff422d7-76c4-44a9-a1bc-6c39c83e2ae2",
-	'location',
+	'issuedAt',
 	'',
 	'',
-	'location',
+	'issuedAt',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'',
@@ -95,6 +95,60 @@ INSERT INTO O_ATTR
 	'startTime',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("9b73c32c-969d-4951-9cdf-85737e729dcc",
+	"1be5dd1b-f517-40ac-8691-0144999e11da");
+INSERT INTO O_BATTR
+	VALUES ("9b73c32c-969d-4951-9cdf-85737e729dcc",
+	"1be5dd1b-f517-40ac-8691-0144999e11da");
+INSERT INTO O_ATTR
+	VALUES ("9b73c32c-969d-4951-9cdf-85737e729dcc",
+	"1be5dd1b-f517-40ac-8691-0144999e11da",
+	"249908c5-4d0e-4ed1-abf4-71d3510389c3",
+	'returnedAt',
+	'',
+	'',
+	'returnedAt',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("249908c5-4d0e-4ed1-abf4-71d3510389c3",
+	"1be5dd1b-f517-40ac-8691-0144999e11da");
+INSERT INTO O_BATTR
+	VALUES ("249908c5-4d0e-4ed1-abf4-71d3510389c3",
+	"1be5dd1b-f517-40ac-8691-0144999e11da");
+INSERT INTO O_ATTR
+	VALUES ("249908c5-4d0e-4ed1-abf4-71d3510389c3",
+	"1be5dd1b-f517-40ac-8691-0144999e11da",
+	"9121462d-e5a1-4bc2-b44c-3192fc52edf8",
+	'payingAt',
+	'',
+	'',
+	'payingAt',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("c6203d66-3232-461f-b59e-ee44f45df961",
+	"1be5dd1b-f517-40ac-8691-0144999e11da");
+INSERT INTO O_BATTR
+	VALUES ("c6203d66-3232-461f-b59e-ee44f45df961",
+	"1be5dd1b-f517-40ac-8691-0144999e11da");
+INSERT INTO O_ATTR
+	VALUES ("c6203d66-3232-461f-b59e-ee44f45df961",
+	"1be5dd1b-f517-40ac-8691-0144999e11da",
+	"9b73c32c-969d-4951-9cdf-85737e729dcc",
+	'paid',
+	'',
+	'',
+	'paid',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
 	'',
 	'');
 INSERT INTO O_ID

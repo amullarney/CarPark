@@ -5,7 +5,8 @@ INSERT INTO O_OBJ
 	'BalanceValue',
 	26,
 	'BalanceValue',
-	'',
+	'An observation which checks the outstanding balance at a pay stand and makes payment.
+The observation succeeds when the balance is paid in full.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("0b99b513-dff8-46d2-adcd-15ed347c1ed9",
@@ -82,11 +83,14 @@ if ( not_empty b )
     LOG::LogInfo( message:"paid in full" );
     select one obs related by self->Observation[R4]; 
     obs.Complete( success:True );
-    delete object instance b;
+    select any s from instances of Stay
+     where ( selected.payingAt == self.location );
+    s.paid = true;
   else
     LOG::LogInfo( message:"sending more money" );
-    send Payer::InsertedCurrency( Location:self.location, Amount:10 );
+    send Payer::InsertedCurrency( Location:self.location, Amount:2 );
   end if;
+  delete object instance b;
 else
   success = False;	// @TODO here to allow breakpoint only
 end if;

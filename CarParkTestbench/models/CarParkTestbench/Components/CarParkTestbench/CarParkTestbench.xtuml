@@ -1488,16 +1488,10 @@ INSERT INTO SPR_RS
 	'',
 	'LOG::LogInfo( message:"---- receiving updated balance for " + param.Location );
 LOG::LogReal( message:"balance", r:param.Amount );
-select any b from instances of Balance
- where ( selected.location == param.Location );
-if ( empty b )
-  create object instance b of Balance;
-  b.location = param.Location;
-end if;
+create object instance b of Balance;
+b.location = param.Location;
 b.amount = param.Amount;
-if ( param.Amount < 0.5 )
-  x = 1;
-end if;',
+',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1515,8 +1509,7 @@ INSERT INTO SPR_RS
 	VALUES ("893c3b33-ab41-4839-a4c6-f9581dd37919",
 	'InsufficientChange',
 	'',
-	'select any stand from instances of Paystand;
-generate Paystand4:NoChange() to stand;',
+	'LOG::LogInfo( message:"Insufficient change available at " + param.Location );',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1588,9 +1581,12 @@ INSERT INTO SPR_RS
 	VALUES ("ac2494ef-8171-4c20-9e47-ac0d13ce2691",
 	'TransactionCancelled',
 	'',
-	'select any stand from instances of Paystand;
-generate Paystand3:Cancelled() to stand;
-stand.TransactionCancelled = true;',
+	'select any stay from instances of Stay
+ where ( selected.payingAt == param.Location );
+if ( not_empty stay )
+  LOG::LogInfo( message:"Payment transaction cancelled at " + param.Location );
+  stay.payingAt = "";
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -2232,6 +2228,26 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'IntervalTimerValue',
 	'',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("738924ac-d1a8-4152-a0b7-05f980cf4ef6",
+	"d69685a1-d173-411e-954d-82338177cf09",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("738924ac-d1a8-4152-a0b7-05f980cf4ef6",
+	'AddStimulusSequence',
+	'A test case, identified by its label, can have one or more labeled sequences of stimuli.
+These sequences may run in parallel and may interact via assess signals.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("d69685a1-d173-411e-954d-82338177cf09",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'AddStimulusSequence',
+	'A test case, identified by its label, can have one or more labeled sequences of stimuli.
+These sequences may run in parallel and may interact via assess signals.',
 	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("eff7aa83-70b9-46a6-bfc0-08d66d36431e",

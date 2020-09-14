@@ -5,8 +5,7 @@ INSERT INTO O_OBJ
 	'VehicleDeparture',
 	16,
 	'VehicleDeparture',
-	'An example of a stimulus invoking an interface signal to the application under test.
-This requests that payroll data be retrieved for review from the application.',
+	'Signal departure of a vehicle from an entry or exit station.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("4ce15b39-f7da-48b0-83ae-720e05c13aac",
