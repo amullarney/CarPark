@@ -59,6 +59,11 @@ else
           select one ti related by self->TicketInserted[R3];
           if ( not_empty ti )
             ti.Inserted();
+          else
+            select one ns related by self->NullStimulus[R3];
+            if ( not_empty ns )
+              ns.Wait();
+            end if;
           end if;
         end if;
       end if;

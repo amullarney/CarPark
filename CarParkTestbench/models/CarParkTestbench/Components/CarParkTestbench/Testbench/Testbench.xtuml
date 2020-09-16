@@ -584,8 +584,8 @@ INSERT INTO DIM_ND
 	133.000000,
 	"b6d3f8fd-29ff-4347-bdef-59907910d8aa");
 INSERT INTO DIM_GE
-	VALUES (4176.000000,
-	3864.000000,
+	VALUES (4188.000000,
+	3840.000000,
 	"b6d3f8fd-29ff-4347-bdef-59907910d8aa",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO DIM_ELE
@@ -599,8 +599,8 @@ INSERT INTO DIM_CON
 	"b6d3f8fd-29ff-4347-bdef-59907910d8aa");
 INSERT INTO DIM_CON
 	VALUES ("ec451d40-4936-4167-9295-5fcb1535b88a",
-	4271.000000,
-	3864.000000,
+	4282.000000,
+	3840.000000,
 	"b6d3f8fd-29ff-4347-bdef-59907910d8aa");
 INSERT INTO GD_GE
 	VALUES ("2147ac16-a9b2-4b65-b25d-b6cb0923385e",
@@ -693,6 +693,9 @@ INSERT INTO GD_AOS
 INSERT INTO GD_AOS
 	VALUES ("579e8171-3bff-4955-9d5d-0aaccd4d9b87",
 	"2e570efd-3f95-42cd-b631-d777f4f3d677");
+INSERT INTO GD_AOS
+	VALUES ("ba5f73f8-d55a-4831-9d56-3921b1805c70",
+	"2e570efd-3f95-42cd-b631-d777f4f3d677");
 INSERT INTO DIM_WAY
 	VALUES ("b752c051-7913-4402-a7a1-26c2d8eed79a",
 	4632.000000,
@@ -743,6 +746,11 @@ INSERT INTO DIM_CON
 	"2147ac16-a9b2-4b65-b25d-b6cb0923385e");
 INSERT INTO DIM_CON
 	VALUES ("579e8171-3bff-4955-9d5d-0aaccd4d9b87",
+	4632.000000,
+	3802.000000,
+	"2147ac16-a9b2-4b65-b25d-b6cb0923385e");
+INSERT INTO DIM_CON
+	VALUES ("ba5f73f8-d55a-4831-9d56-3921b1805c70",
 	4632.000000,
 	3802.000000,
 	"2147ac16-a9b2-4b65-b25d-b6cb0923385e");
@@ -837,8 +845,8 @@ INSERT INTO GD_LS
 	"8bde87cb-e9a8-4e1e-979f-d1cb2ef07d4b");
 INSERT INTO DIM_WAY
 	VALUES ("9eceea03-74c4-4655-832e-d26202b4fdcc",
-	4271.000000,
-	3864.000000,
+	4282.000000,
+	3840.000000,
 	"288182cb-e18c-4738-bf71-913c0fb5bf4d",
 	"00000000-0000-0000-0000-000000000000",
 	"00000000-0000-0000-0000-000000000000");
@@ -851,8 +859,8 @@ INSERT INTO DIM_WAY
 	"9eceea03-74c4-4655-832e-d26202b4fdcc");
 INSERT INTO DIM_WAY
 	VALUES ("345d2c34-c95a-46fd-8923-594468e3240f",
-	4271.000000,
-	3804.000000,
+	4282.000000,
+	3802.000000,
 	"288182cb-e18c-4738-bf71-913c0fb5bf4d",
 	"00000000-0000-0000-0000-000000000000",
 	"00000000-0000-0000-0000-000000000000");
@@ -1184,8 +1192,8 @@ INSERT INTO DIM_ND
 	120.000000,
 	"03c0c431-5dbe-4161-87e4-e5c1c7690331");
 INSERT INTO DIM_GE
-	VALUES (4392.000000,
-	3876.000000,
+	VALUES (4440.000000,
+	3852.000000,
 	"03c0c431-5dbe-4161-87e4-e5c1c7690331",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO DIM_ELE
@@ -1199,8 +1207,8 @@ INSERT INTO DIM_CON
 	"03c0c431-5dbe-4161-87e4-e5c1c7690331");
 INSERT INTO DIM_CON
 	VALUES ("9ebfb226-3a06-40e7-bc47-ab0455434353",
-	4475.000000,
-	3876.000000,
+	4522.000000,
+	3852.000000,
 	"03c0c431-5dbe-4161-87e4-e5c1c7690331");
 INSERT INTO GD_GE
 	VALUES ("61a0e1af-1cb3-4d3b-90c1-8763cfd47914",
@@ -1283,8 +1291,8 @@ INSERT INTO GD_LS
 	"50492774-3c13-4325-b74d-7b8216f05544");
 INSERT INTO DIM_WAY
 	VALUES ("51457168-93ea-440b-9bf4-04b86d4bee02",
-	4475.000000,
-	3876.000000,
+	4522.000000,
+	3852.000000,
 	"61a0e1af-1cb3-4d3b-90c1-8763cfd47914",
 	"00000000-0000-0000-0000-000000000000",
 	"00000000-0000-0000-0000-000000000000");
@@ -1297,7 +1305,7 @@ INSERT INTO DIM_WAY
 	"51457168-93ea-440b-9bf4-04b86d4bee02");
 INSERT INTO DIM_WAY
 	VALUES ("cdda7ce4-58f2-4a19-9508-cf5dff435533",
-	4475.000000,
+	4522.000000,
 	3802.000000,
 	"61a0e1af-1cb3-4d3b-90c1-8763cfd47914",
 	"00000000-0000-0000-0000-000000000000",
@@ -2177,8 +2185,8 @@ INSERT INTO DIM_ND
 	120.000000,
 	"793c93aa-0d28-42b7-b125-33b12d23806a");
 INSERT INTO DIM_GE
-	VALUES (4964.000000,
-	4077.000000,
+	VALUES (4920.000000,
+	3996.000000,
 	"793c93aa-0d28-42b7-b125-33b12d23806a",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO DIM_ELE
@@ -2208,7 +2216,7 @@ INSERT INTO DIM_CON
 INSERT INTO DIM_CON
 	VALUES ("218f6bd0-bd8e-4e0b-8ab1-eead544a2c34",
 	5015.000000,
-	4077.000000,
+	3996.000000,
 	"793c93aa-0d28-42b7-b125-33b12d23806a");
 INSERT INTO GD_GE
 	VALUES ("50e8c76f-4258-4c4f-ae71-8c4dd77622f8",
@@ -2292,7 +2300,7 @@ INSERT INTO GD_LS
 INSERT INTO DIM_WAY
 	VALUES ("c3b18e0a-7f61-4b14-927a-018b3ac3de98",
 	5015.000000,
-	4077.000000,
+	3996.000000,
 	"50e8c76f-4258-4c4f-ae71-8c4dd77622f8",
 	"00000000-0000-0000-0000-000000000000",
 	"00000000-0000-0000-0000-000000000000");
@@ -2500,7 +2508,7 @@ INSERT INTO GD_GE
 	"5222933c-00db-4d32-b3a2-cf0a83991436",
 	21,
 	0,
-	'CarParkTestbench::Components::CarParkTestbench::Testbench::TicketIssued-1');
+	'CarParkTestbench::Components::CarParkTestbench::Testbench::TicketReturned');
 INSERT INTO GD_SHP
 	VALUES ("b6ba140a-2fda-48ec-b1ed-c401e393d0cb");
 INSERT INTO GD_NCS
@@ -2539,7 +2547,7 @@ INSERT INTO GD_GE
 	"5766aae4-bed3-4584-9e76-6c781f7edc0e",
 	35,
 	0,
-	'CarParkTestbench::Components::CarParkTestbench::Testbench::R4::TicketIssued-1');
+	'CarParkTestbench::Components::CarParkTestbench::Testbench::R4::TicketReturned');
 INSERT INTO GD_CON
 	VALUES ("264fc182-7ea0-4188-be29-6a5b41b54823",
 	"00000000-0000-0000-0000-000000000000");
@@ -2646,6 +2654,158 @@ INSERT INTO DIM_ED
 	VALUES ("06d71e74-0ff7-4349-b87c-6a851795a3ad",
 	"ec9610ce-c6dd-4c69-987b-5360629cb7c8",
 	"264fc182-7ea0-4188-be29-6a5b41b54823");
+INSERT INTO GD_GE
+	VALUES ("dc33af21-a06f-4ab2-be46-3189b5b817d0",
+	"dfaaf40c-adb0-489c-81b9-bd23a9109e9e",
+	"9408d3c3-e1b4-46f9-bfa5-d24bdb05d6e6",
+	21,
+	0,
+	'CarParkTestbench::Components::CarParkTestbench::Testbench::VehicleArrived-1');
+INSERT INTO GD_SHP
+	VALUES ("dc33af21-a06f-4ab2-be46-3189b5b817d0");
+INSERT INTO GD_NCS
+	VALUES ("dc33af21-a06f-4ab2-be46-3189b5b817d0");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	120.000000,
+	"dc33af21-a06f-4ab2-be46-3189b5b817d0");
+INSERT INTO DIM_GE
+	VALUES (4296.000000,
+	4008.000000,
+	"dc33af21-a06f-4ab2-be46-3189b5b817d0",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("dc33af21-a06f-4ab2-be46-3189b5b817d0",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_CON
+	VALUES ("9c312789-c178-4387-b60f-9f0bd4e7c88c",
+	4848.000000,
+	3803.000000,
+	"dc33af21-a06f-4ab2-be46-3189b5b817d0");
+INSERT INTO DIM_CON
+	VALUES ("b736a9fc-75a5-49e5-968c-d23bdd29f86f",
+	4475.000000,
+	3876.000000,
+	"dc33af21-a06f-4ab2-be46-3189b5b817d0");
+INSERT INTO DIM_CON
+	VALUES ("27e5f782-359e-4eb1-b3c0-9fbba9bbeb6f",
+	4416.000000,
+	4008.000000,
+	"dc33af21-a06f-4ab2-be46-3189b5b817d0");
+INSERT INTO GD_GE
+	VALUES ("b2f0ab3b-fe6e-4e3b-b7bf-e9b1a379d646",
+	"dfaaf40c-adb0-489c-81b9-bd23a9109e9e",
+	"2e2fd5e0-c8c2-4af3-841c-d8449fa85a83",
+	35,
+	0,
+	'CarParkTestbench::Components::CarParkTestbench::Testbench::R3::VehicleArrived-1');
+INSERT INTO GD_CON
+	VALUES ("b2f0ab3b-fe6e-4e3b-b7bf-e9b1a379d646",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("c2701f2d-24bf-41e8-9623-3018927925e9",
+	"b2f0ab3b-fe6e-4e3b-b7bf-e9b1a379d646",
+	0,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"c2701f2d-24bf-41e8-9623-3018927925e9");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"c2701f2d-24bf-41e8-9623-3018927925e9",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("c2701f2d-24bf-41e8-9623-3018927925e9",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("90137882-be5b-4372-a39c-13c240f77004",
+	"b2f0ab3b-fe6e-4e3b-b7bf-e9b1a379d646",
+	2,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"90137882-be5b-4372-a39c-13c240f77004");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"90137882-be5b-4372-a39c-13c240f77004",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("90137882-be5b-4372-a39c-13c240f77004",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("1405d930-658f-467a-8bdf-cd71e97af1f7",
+	"b2f0ab3b-fe6e-4e3b-b7bf-e9b1a379d646",
+	1,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"1405d930-658f-467a-8bdf-cd71e97af1f7");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"1405d930-658f-467a-8bdf-cd71e97af1f7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("1405d930-658f-467a-8bdf-cd71e97af1f7",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_LS
+	VALUES ("9bf326ab-b23c-4502-a6ab-4d4c24d2594a",
+	"b2f0ab3b-fe6e-4e3b-b7bf-e9b1a379d646",
+	"00000000-0000-0000-0000-000000000000",
+	"97582d1d-ddbc-4e99-913d-610ec5fb303b",
+	"be68e1e2-53dd-4d83-86b5-331a1788c097");
+INSERT INTO GD_LS
+	VALUES ("a544a565-5498-4c88-a85c-aaf5f33c153f",
+	"b2f0ab3b-fe6e-4e3b-b7bf-e9b1a379d646",
+	"9bf326ab-b23c-4502-a6ab-4d4c24d2594a",
+	"be68e1e2-53dd-4d83-86b5-331a1788c097",
+	"29927d04-1e71-4fb6-ace4-0ed9c3b60905");
+INSERT INTO DIM_WAY
+	VALUES ("97582d1d-ddbc-4e99-913d-610ec5fb303b",
+	4416.000000,
+	4008.000000,
+	"b2f0ab3b-fe6e-4e3b-b7bf-e9b1a379d646",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_WAY
+	VALUES ("29927d04-1e71-4fb6-ace4-0ed9c3b60905",
+	4632.000000,
+	3802.000000,
+	"b2f0ab3b-fe6e-4e3b-b7bf-e9b1a379d646",
+	"00000000-0000-0000-0000-000000000000",
+	"97582d1d-ddbc-4e99-913d-610ec5fb303b");
+INSERT INTO DIM_WAY
+	VALUES ("be68e1e2-53dd-4d83-86b5-331a1788c097",
+	4415.000000,
+	3802.000000,
+	"b2f0ab3b-fe6e-4e3b-b7bf-e9b1a379d646",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"b2f0ab3b-fe6e-4e3b-b7bf-e9b1a379d646",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("b2f0ab3b-fe6e-4e3b-b7bf-e9b1a379d646",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ED
+	VALUES ("27e5f782-359e-4eb1-b3c0-9fbba9bbeb6f",
+	"ba5f73f8-d55a-4831-9d56-3921b1805c70",
+	"b2f0ab3b-fe6e-4e3b-b7bf-e9b1a379d646");
 INSERT INTO DIM_DIA
 	VALUES ("dfaaf40c-adb0-489c-81b9-bd23a9109e9e",
 	'',
@@ -2707,7 +2867,7 @@ INSERT INTO O_OBJ_PROXY
 	'NominalCaseBucket',
 	7,
 	'NominalCaseBucket',
-	'A test bucket which runs a number of tests based on Use Cases for the Payroll application.',
+	'A test bucket which runs a number of tests based on Use Cases for the CarPark application.',
 	"00000000-0000-0000-0000-000000000000",
 	'./NominalCaseBucket/NominalCaseBucket.xtuml');
 INSERT INTO PE_PE
@@ -2785,8 +2945,7 @@ INSERT INTO O_OBJ_PROXY
 	'VehicleArrived',
 	14,
 	'VehicleArrived',
-	'An example of a stimulus invoking an interface signal to the application under test.
-This requests that payroll data be retrieved for review from the application.',
+	'Signal arrival of a vehicle at an entry or exit station.',
 	"00000000-0000-0000-0000-000000000000",
 	'./VehicleArrived/VehicleArrived.xtuml');
 INSERT INTO R_SUB
@@ -2807,8 +2966,7 @@ INSERT INTO O_OBJ_PROXY
 	'TicketTaken',
 	15,
 	'TicketTaken',
-	'An example of a stimulus invoking an interface signal to the application under test.
-This requests that payroll data be retrieved for review from the application.',
+	'Signal that a ticket has been removed from a device - entry/exit/pay stand.',
 	"00000000-0000-0000-0000-000000000000",
 	'./TicketTaken/TicketTaken.xtuml');
 INSERT INTO R_SUB
@@ -2829,8 +2987,7 @@ INSERT INTO O_OBJ_PROXY
 	'VehicleDeparture',
 	16,
 	'VehicleDeparture',
-	'An example of a stimulus invoking an interface signal to the application under test.
-This requests that payroll data be retrieved for review from the application.',
+	'Signal departure of a vehicle from an entry or exit station.',
 	"00000000-0000-0000-0000-000000000000",
 	'./VehicleDeparture/VehicleDeparture.xtuml');
 INSERT INTO R_SUB
@@ -2851,8 +3008,7 @@ INSERT INTO O_OBJ_PROXY
 	'TicketRequested',
 	22,
 	'TicketRequested',
-	'An example of a stimulus invoking an interface signal to the application under test.
-This requests that payroll data be retrieved for review from the application.',
+	'Request the application to issue a ticket for entry.',
 	"00000000-0000-0000-0000-000000000000",
 	'./TicketRequested/TicketRequested.xtuml');
 INSERT INTO R_SUB
@@ -2877,6 +3033,27 @@ INSERT INTO O_OBJ_PROXY
 This requests that payroll data be retrieved for review from the application.',
 	"00000000-0000-0000-0000-000000000000",
 	'./TicketInserted/TicketInserted.xtuml');
+INSERT INTO R_SUB
+	VALUES ("9408d3c3-e1b4-46f9-bfa5-d24bdb05d6e6",
+	"3f78d623-77cb-4f31-9805-b215fd16b639",
+	"2e2fd5e0-c8c2-4af3-841c-d8449fa85a83");
+INSERT INTO R_RGO
+	VALUES ("9408d3c3-e1b4-46f9-bfa5-d24bdb05d6e6",
+	"3f78d623-77cb-4f31-9805-b215fd16b639",
+	"2e2fd5e0-c8c2-4af3-841c-d8449fa85a83");
+INSERT INTO R_OIR
+	VALUES ("9408d3c3-e1b4-46f9-bfa5-d24bdb05d6e6",
+	"3f78d623-77cb-4f31-9805-b215fd16b639",
+	"2e2fd5e0-c8c2-4af3-841c-d8449fa85a83",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_OBJ_PROXY
+	VALUES ("9408d3c3-e1b4-46f9-bfa5-d24bdb05d6e6",
+	'VehicleArrived-1',
+	28,
+	'VehicleArrived-1',
+	'Signal arrival of a vehicle at an entry or exit station.',
+	"00000000-0000-0000-0000-000000000000",
+	'./VehicleArrived-1/VehicleArrived-1.xtuml');
 INSERT INTO PE_PE
 	VALUES ("3f78d623-77cb-4f31-9805-b215fd16b639",
 	1,
@@ -2943,7 +3120,7 @@ INSERT INTO O_OBJ_PROXY
 	'QueryTicketRequest',
 	13,
 	'QueryTicketRequest',
-	'This observation succeeds when it finds a notification from the application that matches its identification attribute.',
+	'Check whether a a ticket request will be accepted.',
 	"00000000-0000-0000-0000-000000000000",
 	'./QueryTicketRequest/QueryTicketRequest.xtuml');
 INSERT INTO R_SUB
@@ -2964,7 +3141,7 @@ INSERT INTO O_OBJ_PROXY
 	'BarrierStatus',
 	18,
 	'BarrierStatus',
-	'',
+	'An observation which checks for expected barrier status - open/closed.',
 	"00000000-0000-0000-0000-000000000000",
 	'./BarrierStatus/BarrierStatus.xtuml');
 INSERT INTO R_SUB
@@ -3006,7 +3183,8 @@ INSERT INTO O_OBJ_PROXY
 	'BalanceValue',
 	26,
 	'BalanceValue',
-	'',
+	'An observation which checks the outstanding balance at a pay stand and makes payment.
+The observation succeeds when the balance is paid in full.',
 	"00000000-0000-0000-0000-000000000000",
 	'./BalanceValue/BalanceValue.xtuml');
 INSERT INTO R_SUB
@@ -3024,12 +3202,13 @@ INSERT INTO R_OIR
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_OBJ_PROXY
 	VALUES ("5222933c-00db-4d32-b3a2-cf0a83991436",
-	'TicketIssued-1',
+	'TicketReturned',
 	27,
-	'TicketIssued-1',
-	'',
+	'TicketReturned',
+	'Observe that a ticket is returned at a pay station.
+It may be returned due to cancellation as well as full payment.',
 	"00000000-0000-0000-0000-000000000000",
-	'./TicketIssued-1/TicketIssued-1.xtuml');
+	'./TicketReturned/TicketReturned.xtuml');
 INSERT INTO PE_PE
 	VALUES ("5b5da086-6d28-45d8-9148-f0c05c7f8741",
 	1,

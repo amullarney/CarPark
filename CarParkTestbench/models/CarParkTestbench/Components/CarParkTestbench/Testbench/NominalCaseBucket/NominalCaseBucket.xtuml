@@ -33,8 +33,10 @@ stId = FastForward::Create( seqLabel:"seq01", hours:5, minutes:0, seconds:0 );
 
 send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC5" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq05" );
-stId = TicketInserted::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay", number:1 );
+send TESTSEQ::AddStimulusSequence( seqLabel:"seq05a" );
+stId = NullStimulus::Create( seqLabel:"seq05a" );
 BalanceValue::CreateTriggered( stimulus:stId, location:"1st Floor" );
+stId = TicketInserted::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay", number:1 );
 TicketReturned::CreateTriggered( stimulus:stId, location:"1st Floor" );
 stId = TicketTaken::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
 
