@@ -1588,7 +1588,10 @@ INSERT INTO SPR_RS
 	VALUES ("4ffe69c6-eff9-4bf8-8240-31ff7622bf60",
 	'DispenseChange',
 	'',
-	'LOG::LogReal( message:"Dispensing change at " + param.Location, r:param.Amount );',
+	'create object instance ch of Change;
+ch.location = param.Location;
+ch.amount = param.Amount;
+send TESTSEQ::Assess( key:"Dispensed" );',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
