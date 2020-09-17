@@ -2277,6 +2277,24 @@ INSERT INTO C_EP_PROXY
 	'A test case, identified by its label, can have one or more labeled sequences of stimuli.
 These sequences may run in parallel and may interact via assess signals.',
 	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("322abf3f-cccd-43fe-aaa7-e0979390316c",
+	"ca057380-3763-49be-a902-4f89bd14277c",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("322abf3f-cccd-43fe-aaa7-e0979390316c",
+	'CancelTriggeredObservation',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("ca057380-3763-49be-a902-4f89bd14277c",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'CancelTriggeredObservation',
+	'',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("eff7aa83-70b9-46a6-bfc0-08d66d36431e",
 	"00000000-0000-0000-0000-000000000000",
