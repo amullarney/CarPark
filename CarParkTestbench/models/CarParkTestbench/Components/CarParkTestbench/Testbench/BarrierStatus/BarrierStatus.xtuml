@@ -115,6 +115,65 @@ end if;
 	'',
 	"63191854-a9b4-47e2-aae9-996940a69bd3",
 	0);
+INSERT INTO O_TFR
+	VALUES ("eb7dac68-ce79-4ba7-8e1f-ad527f137ce9",
+	"3a3a75e6-c4b3-4e1f-a602-56400d1c4c0c",
+	'CreateTriggered',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance bs of BarrierStatus;
+
+create object instance obs of Observation;
+relate bs to obs across R4;
+bs.location = param.location;
+bs.stand = param.stand;
+bs.open = param.isopen; 
+
+obs.AppendTriggered( stimulus:param.stimulus, key:"BarrierCommand",
+                   pollInterval:0, 
+                   timeLimit:0 );
+',
+	1,
+	'',
+	"1d563d5d-4d85-42ae-8863-47d90b19a3ae",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("40403efa-0390-4ccc-98f9-818e07054d58",
+	"eb7dac68-ce79-4ba7-8e1f-ad527f137ce9",
+	'stimulus',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("634aa933-a682-4efc-be37-410670669434",
+	"eb7dac68-ce79-4ba7-8e1f-ad527f137ce9",
+	'location',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"40403efa-0390-4ccc-98f9-818e07054d58",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("6e6467c5-2db7-47ef-b55d-456c7bacdd1e",
+	"eb7dac68-ce79-4ba7-8e1f-ad527f137ce9",
+	'stand',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"634aa933-a682-4efc-be37-410670669434",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("2e03c0ae-33f9-4dbc-8316-70c4d4ea6292",
+	"eb7dac68-ce79-4ba7-8e1f-ad527f137ce9",
+	'isopen',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"6e6467c5-2db7-47ef-b55d-456c7bacdd1e",
+	'');
 INSERT INTO O_NBATTR
 	VALUES ("eb46d4fb-2ab1-42b2-a131-072df1efaf6a",
 	"3a3a75e6-c4b3-4e1f-a602-56400d1c4c0c");
