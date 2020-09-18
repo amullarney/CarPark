@@ -1,0 +1,107 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("38b50396-d9e6-4e1e-a730-ebe56eb6b528",
+	'TicketRequested',
+	22,
+	'TicketRequested',
+	'Request the application to issue a ticket for entry.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("973d5519-08f2-4bdf-b953-33eaa0c2344f",
+	"38b50396-d9e6-4e1e-a730-ebe56eb6b528",
+	'Create',
+	'Add a stimulus of this type to the ''script of a test case.
+',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'create object instance tr of TicketRequested;
+tr.location = param.location;
+
+create object instance stimulus of Stimulus;
+relate stimulus to tr across R3;
+
+stimulus.AddToTest( seqLabel:param.seqLabel );
+return stimulus.stimulusId;
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("97234214-3b83-4175-a63e-b7a80209be7a",
+	"973d5519-08f2-4bdf-b953-33eaa0c2344f",
+	'location',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"abc79d43-f089-4af8-ab60-fcd1765fdf4c",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("abc79d43-f089-4af8-ab60-fcd1765fdf4c",
+	"973d5519-08f2-4bdf-b953-33eaa0c2344f",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("fcd4d110-4e0b-4343-bf7a-a7f2122cf3a7",
+	"38b50396-d9e6-4e1e-a730-ebe56eb6b528",
+	'Requested',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'LOG::LogInfo( message:"Ticket requested at " + self.location );
+
+send EntryStand::TicketRequested( Location:self.location );
+
+select one stimulus related by self->Stimulus[R3]; 
+stimulus.Complete();
+',
+	1,
+	'',
+	"973d5519-08f2-4bdf-b953-33eaa0c2344f",
+	0);
+INSERT INTO O_NBATTR
+	VALUES ("26fdb71f-7336-4889-b14c-8b80b7730ff4",
+	"38b50396-d9e6-4e1e-a730-ebe56eb6b528");
+INSERT INTO O_BATTR
+	VALUES ("26fdb71f-7336-4889-b14c-8b80b7730ff4",
+	"38b50396-d9e6-4e1e-a730-ebe56eb6b528");
+INSERT INTO O_ATTR
+	VALUES ("26fdb71f-7336-4889-b14c-8b80b7730ff4",
+	"38b50396-d9e6-4e1e-a730-ebe56eb6b528",
+	"00000000-0000-0000-0000-000000000000",
+	'location',
+	'',
+	'',
+	'location',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"38b50396-d9e6-4e1e-a730-ebe56eb6b528");
+INSERT INTO O_ID
+	VALUES (1,
+	"38b50396-d9e6-4e1e-a730-ebe56eb6b528");
+INSERT INTO O_ID
+	VALUES (2,
+	"38b50396-d9e6-4e1e-a730-ebe56eb6b528");
+INSERT INTO PE_PE
+	VALUES ("38b50396-d9e6-4e1e-a730-ebe56eb6b528",
+	1,
+	"3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'Testbench',
+	'',
+	0,
+	'../Testbench.xtuml');

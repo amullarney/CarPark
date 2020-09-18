@@ -1,0 +1,122 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("cc521408-6dcf-4740-b70f-b30d4d5e1f14",
+	'NominalCaseBucket',
+	7,
+	'NominalCaseBucket',
+	'A test bucket which runs a number of tests based on Use Cases for the Payroll application.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("d46c90fe-f810-493d-bb6f-190f4fc6db0b",
+	"cc521408-6dcf-4740-b70f-b30d4d5e1f14",
+	'RunBucketTests',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one bucket related by self->TestBucket[R7];
+send TESTSEQ::NameTestBucket( bucketId:bucket.bucketId, bucketLabel:"CarPark_Bucket_1" );
+send TESTSEQ::SetTestBucketResolution( bucketId:bucket.bucketId, resolution:timerResolution::second );
+
+// Use Case UC1 
+send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC1" ); 
+//send TESTSEQ::CreateStimulusSequence( caseLabel:"UC1", seqLabel:"seq01" );
+send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
+stId = VehicleArrived::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
+QueryTicketRequest::CreatePolling( stimulus:stId, location:"North", pollInterval:1, timeLimit:5 );
+stId = TicketRequested::Create( seqLabel:"seq01", location:"North" );
+TicketIssued::CreatePolling( stimulus:stId, location:"North", pollInterval:1, timeLimit:5 );
+stId = TicketTaken::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
+BarrierStatus::CreatePolling( stimulus:stId, location:"North", stand:"Entry", isopen:True, pollInterval:1, timeLimit:5 );
+stId = VehicleDeparture::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
+BarrierStatus::CreatePolling( stimulus:stId, location:"North", stand:"Entry", isopen:False, pollInterval:1, timeLimit:5 );
+stId = FastForward::Create( seqLabel:"seq01", hours:5, minutes:0, seconds:0 );
+
+/*
+send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC1A" ); 
+send TESTSEQ::CreateStimulusSequence( caseLabel:"UC1A", seqLabel:"seq01a" );
+stId = VehicleArrived::Create( seqLabel:"seq01a", location:"North", stand:"Entry" );
+QueryTicketRequest::CreatePolling( stimulus:stId, location:"North", pollInterval:1, timeLimit:5 );
+stId = TicketRequested::Create( seqLabel:"seq01a", location:"North" );
+TicketIssued::CreatePolling( stimulus:stId, location:"North", pollInterval:1, timeLimit:5 );
+stId = TicketTaken::Create( seqLabel:"seq01a", location:"North", stand:"Entry" );
+BarrierStatus::CreatePolling( stimulus:stId, location:"North", stand:"Entry", isopen:True, pollInterval:1, timeLimit:5 );
+stId = VehicleDeparture::Create( seqLabel:"seq01a", location:"North", stand:"Entry" );
+BarrierStatus::CreatePolling( stimulus:stId, location:"North", stand:"Entry", isopen:False, pollInterval:1, timeLimit:5 );
+stId = FastForward::Create( seqLabel:"seq01a", hours:2, minutes:5, seconds:0 );
+
+
+send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC1B" ); 
+send TESTSEQ::CreateStimulusSequence( caseLabel:"UC1B", seqLabel:"seq01b" );
+stId = VehicleArrived::Create( seqLabel:"seq01b", location:"North", stand:"Entry" );
+QueryTicketRequest::CreatePolling( stimulus:stId, location:"North", pollInterval:1, timeLimit:5 );
+stId = TicketRequested::Create( seqLabel:"seq01b", location:"North" );
+TicketIssued::CreatePolling( stimulus:stId, location:"North", pollInterval:1, timeLimit:5 );
+stId = TicketTaken::Create( seqLabel:"seq01b", location:"North", stand:"Entry" );
+BarrierStatus::CreatePolling( stimulus:stId, location:"North", stand:"Entry", isopen:True, pollInterval:1, timeLimit:5 );
+stId = VehicleDeparture::Create( seqLabel:"seq01b", location:"North", stand:"Entry" );
+BarrierStatus::CreatePolling( stimulus:stId, location:"North", stand:"Entry", isopen:False, pollInterval:1, timeLimit:5 );
+stId = FastForward::Create( seqLabel:"seq01a", hours:1, minutes:5, seconds:0 );
+*/
+
+send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC5" ); 
+//send TESTSEQ::CreateStimulusSequence( caseLabel:"UC5", seqLabel:"seq05" );
+send TESTSEQ::AddStimulusSequence( seqLabel:"seq05" );
+stId = TicketInserted::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay", number:1 );
+BalanceValue::CreatePolling( stimulus:stId, location:"1st Floor", pollInterval:1, timeLimit:0 );
+TicketReturned::CreatePolling( stimulus:stId, location:"1st Floor", pollInterval:1, timeLimit:5 );
+stId = TicketTaken::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
+
+
+send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC11" ); 
+//send TESTSEQ::CreateStimulusSequence( caseLabel:"UC11", seqLabel:"seq11" );
+send TESTSEQ::AddStimulusSequence( seqLabel:"seq11" );
+stId = VehicleArrived::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
+stId = TicketInserted::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", number:1 );
+BarrierStatus::CreatePolling( stimulus:stId, location:"Lane 1", stand:"Exit", isopen:True, pollInterval:1, timeLimit:5 );
+stId = VehicleDeparture::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
+BarrierStatus::CreatePolling( stimulus:stId, location:"Lane 1", stand:"Exit", isopen:False, pollInterval:1, timeLimit:5 );
+
+bucket.Initialized();
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TFR
+	VALUES ("4665b329-5a15-481f-9370-bbcb69d99041",
+	"cc521408-6dcf-4740-b70f-b30d4d5e1f14",
+	'AddBucket',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'create object instance bucket of TestBucket;
+relate self to bucket across R7;
+bucket.AddToSuite();',
+	1,
+	'',
+	"d46c90fe-f810-493d-bb6f-190f4fc6db0b",
+	0);
+INSERT INTO O_ID
+	VALUES (0,
+	"cc521408-6dcf-4740-b70f-b30d4d5e1f14");
+INSERT INTO O_ID
+	VALUES (1,
+	"cc521408-6dcf-4740-b70f-b30d4d5e1f14");
+INSERT INTO O_ID
+	VALUES (2,
+	"cc521408-6dcf-4740-b70f-b30d4d5e1f14");
+INSERT INTO PE_PE
+	VALUES ("cc521408-6dcf-4740-b70f-b30d4d5e1f14",
+	1,
+	"3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'Testbench',
+	'',
+	0,
+	'../Testbench.xtuml');

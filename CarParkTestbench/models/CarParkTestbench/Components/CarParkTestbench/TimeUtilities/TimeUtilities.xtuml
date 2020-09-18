@@ -1,0 +1,164 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("2b2f0a23-82bc-45e3-9c08-5c0bb41b4329",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'TimeUtilities',
+	'Wrapper for TIM bridge operations to make it more convenient to operate on time scales 
+larger than one microsecond.',
+	0);
+INSERT INTO GD_MD
+	VALUES ("d314ddee-2520-4b83-b8ed-7031514568da",
+	112,
+	"2b2f0a23-82bc-45e3-9c08-5c0bb41b4329",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	200,
+	150,
+	0,
+	'4.1.17',
+	'CarParkTestbench::Components::CarParkTestbench::TimeUtilities');
+INSERT INTO GD_GE
+	VALUES ("b12206f3-2af3-4610-9e99-0bd8f46dd3d1",
+	"d314ddee-2520-4b83-b8ed-7031514568da",
+	"b399971f-82c6-42e7-854f-b1fb5fdf5761",
+	109,
+	0,
+	'CarParkTestbench::Components::CarParkTestbench::TimeUtilities::ConversionFactors');
+INSERT INTO GD_SHP
+	VALUES ("b12206f3-2af3-4610-9e99-0bd8f46dd3d1");
+INSERT INTO GD_NCS
+	VALUES ("b12206f3-2af3-4610-9e99-0bd8f46dd3d1");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"b12206f3-2af3-4610-9e99-0bd8f46dd3d1");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"b12206f3-2af3-4610-9e99-0bd8f46dd3d1",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("b12206f3-2af3-4610-9e99-0bd8f46dd3d1",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_GE
+	VALUES ("6f59ce2e-16a5-43a9-af85-a60b0115a436",
+	"d314ddee-2520-4b83-b8ed-7031514568da",
+	"98de1563-9bf8-4bbd-b2c0-29ee8d91185b",
+	21,
+	0,
+	'CarParkTestbench::Components::CarParkTestbench::TimeUtilities::TimeUtilities');
+INSERT INTO GD_SHP
+	VALUES ("6f59ce2e-16a5-43a9-af85-a60b0115a436");
+INSERT INTO GD_NCS
+	VALUES ("6f59ce2e-16a5-43a9-af85-a60b0115a436");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"6f59ce2e-16a5-43a9-af85-a60b0115a436");
+INSERT INTO DIM_GE
+	VALUES (220.000000,
+	0.000000,
+	"6f59ce2e-16a5-43a9-af85-a60b0115a436",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("6f59ce2e-16a5-43a9-af85-a60b0115a436",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_DIA
+	VALUES ("d314ddee-2520-4b83-b8ed-7031514568da",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_CSP
+	VALUES ("b399971f-82c6-42e7-854f-b1fb5fdf5761",
+	'ConversionFactors',
+	'The timestamp type is mapped to a long (64-bit) integer.  Constants 
+with this type can then be used in calculations that required long-integer math.
+Keep in mind that the value of the constant is limited, by the editor, to be no 
+larger 2^31 (signed integer).');
+INSERT INTO CNST_SYC
+	VALUES ("e1269db7-ad5c-4657-b338-f5bcc223e0f8",
+	'MicrosecondsPerHalfHour',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000010",
+	"b399971f-82c6-42e7-854f-b1fb5fdf5761",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_LFSC
+	VALUES ("e1269db7-ad5c-4657-b338-f5bcc223e0f8",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_LSC
+	VALUES ("e1269db7-ad5c-4657-b338-f5bcc223e0f8",
+	"00000000-0000-0000-0000-000000000000",
+	'1800000000');
+INSERT INTO CNST_SYC
+	VALUES ("8abd671e-d481-4b45-9c9b-94b33b4db3e0",
+	'MicrosecondsPerMinute',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000010",
+	"b399971f-82c6-42e7-854f-b1fb5fdf5761",
+	"e1269db7-ad5c-4657-b338-f5bcc223e0f8",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_LFSC
+	VALUES ("8abd671e-d481-4b45-9c9b-94b33b4db3e0",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_LSC
+	VALUES ("8abd671e-d481-4b45-9c9b-94b33b4db3e0",
+	"00000000-0000-0000-0000-000000000000",
+	'60000000');
+INSERT INTO CNST_SYC
+	VALUES ("960e225d-fb0d-432d-b5ec-e3d2361c8956",
+	'MicrosecondsPerSecond',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000010",
+	"b399971f-82c6-42e7-854f-b1fb5fdf5761",
+	"8abd671e-d481-4b45-9c9b-94b33b4db3e0",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_LFSC
+	VALUES ("960e225d-fb0d-432d-b5ec-e3d2361c8956",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_LSC
+	VALUES ("960e225d-fb0d-432d-b5ec-e3d2361c8956",
+	"00000000-0000-0000-0000-000000000000",
+	'1000000');
+INSERT INTO PE_PE
+	VALUES ("b399971f-82c6-42e7-854f-b1fb5fdf5761",
+	1,
+	"2b2f0a23-82bc-45e3-9c08-5c0bb41b4329",
+	"00000000-0000-0000-0000-000000000000",
+	10);
+INSERT INTO PE_PE
+	VALUES ("2b2f0a23-82bc-45e3-9c08-5c0bb41b4329",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"267abe01-5adc-42d6-aa1d-2adf945776bc",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("267abe01-5adc-42d6-aa1d-2adf945776bc",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'CarParkTestbench',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../CarParkTestbench.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'CarParkTestbench',
+	1,
+	'../../../CarParkTestbench.xtuml');

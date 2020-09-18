@@ -1,0 +1,111 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("e83ec484-5cef-45b8-8584-e5e8f0edf90f",
+	'TestBucket',
+	6,
+	'TestBucket',
+	'A test bucket is used to group related test cases; every test case must belong to a bucket.
+This supertype uses the test sequencer to manage the order of execution of test cases.
+This mechanism allows for postponment of instantiation of test case components.
+Each test bucket subtype is activated, in sequence, by the test sequencing service.
+Each subtype surfaces an operation which instantiates its stimuli or observations.
+These stimuli/observations are instantiated as each test bucket is activated.
+They may be deleted when the test bucket completes, dependent on configuration choice.
+',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("f8d8c213-10de-4616-8e7e-9380080d79b1",
+	"e83ec484-5cef-45b8-8584-e5e8f0edf90f",
+	'AddToSuite',
+	'Add a new instance of test bucket to the test suite.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'send TESTSEQ::AddBucket( ID:self.bucketId );',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TFR
+	VALUES ("1670b5e7-981e-4ec7-a3b0-203bdd25b593",
+	"e83ec484-5cef-45b8-8584-e5e8f0edf90f",
+	'Delete',
+	'Dispose of the test bucket instances after completion of execution.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one nominal related by self->NominalCaseBucket[R7];
+unrelate self from nominal across R7;
+delete object instance nominal;
+delete object instance self;',
+	1,
+	'',
+	"f8d8c213-10de-4616-8e7e-9380080d79b1",
+	0);
+INSERT INTO O_TFR
+	VALUES ("c4fe1a10-6340-4e74-84e8-bf3577b4ee0f",
+	"e83ec484-5cef-45b8-8584-e5e8f0edf90f",
+	'Initialized',
+	'Signal the test sequencer that the bucket test cases may start execution.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'send TESTSEQ::BucketInitialized( bucketId:self.bucketId );',
+	1,
+	'',
+	"1670b5e7-981e-4ec7-a3b0-203bdd25b593",
+	0);
+INSERT INTO O_TFR
+	VALUES ("2cf1ddc5-96e6-4fb5-a47d-07ff1c9a9fed",
+	"e83ec484-5cef-45b8-8584-e5e8f0edf90f",
+	'RunTestCases',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one nominal related by self->NominalCaseBucket[R7];
+nominal.RunBucketTests();
+',
+	1,
+	'',
+	"c4fe1a10-6340-4e74-84e8-bf3577b4ee0f",
+	0);
+INSERT INTO O_NBATTR
+	VALUES ("0de9532f-b79d-425b-b8c3-581f1259410a",
+	"e83ec484-5cef-45b8-8584-e5e8f0edf90f");
+INSERT INTO O_BATTR
+	VALUES ("0de9532f-b79d-425b-b8c3-581f1259410a",
+	"e83ec484-5cef-45b8-8584-e5e8f0edf90f");
+INSERT INTO O_ATTR
+	VALUES ("0de9532f-b79d-425b-b8c3-581f1259410a",
+	"e83ec484-5cef-45b8-8584-e5e8f0edf90f",
+	"00000000-0000-0000-0000-000000000000",
+	'bucketId',
+	'An identifier returned by the Test sequencer service.
+Used to identify an instance when being invoked by the Test sequencer.',
+	'',
+	'bucketId',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000005",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"e83ec484-5cef-45b8-8584-e5e8f0edf90f");
+INSERT INTO O_ID
+	VALUES (1,
+	"e83ec484-5cef-45b8-8584-e5e8f0edf90f");
+INSERT INTO O_ID
+	VALUES (2,
+	"e83ec484-5cef-45b8-8584-e5e8f0edf90f");
+INSERT INTO PE_PE
+	VALUES ("e83ec484-5cef-45b8-8584-e5e8f0edf90f",
+	1,
+	"3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'Testbench',
+	'',
+	0,
+	'../Testbench.xtuml');
