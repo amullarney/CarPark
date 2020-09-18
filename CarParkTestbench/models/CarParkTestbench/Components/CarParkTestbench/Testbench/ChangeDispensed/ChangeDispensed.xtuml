@@ -1,0 +1,173 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("2742e22a-5ee7-4d45-86c8-ae3a8bed7561",
+	'ChangeDispensed',
+	29,
+	'ChangeDispensed',
+	'An observation which checks the outstanding balance at a pay stand and makes payment.
+The observation succeeds when the balance is paid in full.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("057a56ec-bdd2-4e4e-b919-277cc731acad",
+	"2742e22a-5ee7-4d45-86c8-ae3a8bed7561",
+	'CreatePolling',
+	'Add an observation of this type to the ''script'' of a test case.
+See Observation.AppendPolling for description.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance cd of ChangeDispensed;
+
+create object instance obs of Observation;
+relate cd to obs across R4;
+cd.location = param.location;
+
+obs.AppendPolling( stimulus:param.stimulus,
+                   pollInterval:param.pollInterval, 
+                   timeLimit:param.timeLimit );
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("bf886d66-0452-43ce-9d7a-1a9d381254a5",
+	"057a56ec-bdd2-4e4e-b919-277cc731acad",
+	'pollInterval',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"176b1445-9cc6-4a23-af6d-1bba963692e4",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("b339ad6b-23aa-47ea-8239-cc8f6647c113",
+	"057a56ec-bdd2-4e4e-b919-277cc731acad",
+	'timeLimit',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"bf886d66-0452-43ce-9d7a-1a9d381254a5",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("b46d653b-0c92-49c2-ba5a-2a1b538f7889",
+	"057a56ec-bdd2-4e4e-b919-277cc731acad",
+	'stimulus',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("176b1445-9cc6-4a23-af6d-1bba963692e4",
+	"057a56ec-bdd2-4e4e-b919-277cc731acad",
+	'location',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"b46d653b-0c92-49c2-ba5a-2a1b538f7889",
+	'');
+INSERT INTO O_TFR
+	VALUES ("243e0b2b-e063-4e16-a903-4a16623adc67",
+	"2742e22a-5ee7-4d45-86c8-ae3a8bed7561",
+	'CheckDispensed',
+	'When invoked, search any existing notifications looking for a match.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select any ch from instances of Change
+ where ( selected.location == self.location );
+if ( not_empty ch )
+  if ( ch.amount > 0 )
+    LOG::LogInfo( message:" -- - Change dispensed at " + self.location  );
+  end if;
+  select one obs related by self->Observation[R4]; 
+  obs.Complete( success:True );
+  delete object instance ch;
+else
+  success = False;	// @TODO here to allow breakpoint only
+end if;
+',
+	1,
+	'',
+	"e54323ae-5f15-4558-a79a-9b467f00ec43",
+	0);
+INSERT INTO O_TFR
+	VALUES ("e54323ae-5f15-4558-a79a-9b467f00ec43",
+	"2742e22a-5ee7-4d45-86c8-ae3a8bed7561",
+	'CreateTriggered',
+	'Add an observation of this type to the ''script'' of a test case.
+See Observation.AppendPolling for description.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance cd of ChangeDispensed;
+
+create object instance obs of Observation;
+relate cd to obs across R4;
+cd.location = param.location;
+
+obs.AppendTriggered( stimulus:param.stimulus, key:"Dispensed",
+                   pollInterval:0, 
+                   timeLimit:0 );
+',
+	1,
+	'',
+	"057a56ec-bdd2-4e4e-b919-277cc731acad",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("deab9af3-0958-45b9-84c2-ff15d6c82026",
+	"e54323ae-5f15-4558-a79a-9b467f00ec43",
+	'stimulus',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("1cb5982f-9b81-4c44-af3c-04311999661c",
+	"e54323ae-5f15-4558-a79a-9b467f00ec43",
+	'location',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"deab9af3-0958-45b9-84c2-ff15d6c82026",
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("a34fd865-3f5a-462d-8853-1688fdffca30",
+	"2742e22a-5ee7-4d45-86c8-ae3a8bed7561");
+INSERT INTO O_BATTR
+	VALUES ("a34fd865-3f5a-462d-8853-1688fdffca30",
+	"2742e22a-5ee7-4d45-86c8-ae3a8bed7561");
+INSERT INTO O_ATTR
+	VALUES ("a34fd865-3f5a-462d-8853-1688fdffca30",
+	"2742e22a-5ee7-4d45-86c8-ae3a8bed7561",
+	"00000000-0000-0000-0000-000000000000",
+	'location',
+	'',
+	'',
+	'location',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"2742e22a-5ee7-4d45-86c8-ae3a8bed7561");
+INSERT INTO O_ID
+	VALUES (1,
+	"2742e22a-5ee7-4d45-86c8-ae3a8bed7561");
+INSERT INTO O_ID
+	VALUES (2,
+	"2742e22a-5ee7-4d45-86c8-ae3a8bed7561");
+INSERT INTO PE_PE
+	VALUES ("2742e22a-5ee7-4d45-86c8-ae3a8bed7561",
+	1,
+	"3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'Testbench',
+	'',
+	0,
+	'../Testbench.xtuml');

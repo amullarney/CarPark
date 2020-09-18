@@ -97,6 +97,11 @@ else
         select one rt related by self->TicketReturned[R4];
         if ( not_empty rt )
           rt.CheckReturned();
+        else
+          select one cd related by self->ChangeDispensed[R4];
+          if ( not_empty cd )
+            cd.CheckDispensed();
+          end if;
         end if;
       end if;
   	end if;

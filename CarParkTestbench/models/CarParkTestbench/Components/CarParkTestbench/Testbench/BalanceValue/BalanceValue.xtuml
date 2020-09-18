@@ -86,6 +86,11 @@ if ( not_empty b )
      where ( selected.payingAt == self.location );
     s.paid = true;
     LOG::LogInfo( message:"paid in full" );
+    if ( b.amount == 0.0 )  // exact - no change
+      create object instance ch of Change;
+      ch.location = self.location;
+      send TESTSEQ::Assess( key:"Dispensed" );
+    end if;
   else
     amount = 0;
     if ( b.amount > 20 )
