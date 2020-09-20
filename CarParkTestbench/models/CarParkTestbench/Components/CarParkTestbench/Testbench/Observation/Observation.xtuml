@@ -23,7 +23,7 @@ If an observation fails to succeed, the test case is deemed to have failed; all 
 INSERT INTO O_TFR
 	VALUES ("3eab7205-38dd-4e0a-a177-a5c994ff1229",
 	"765a75f4-57e1-4717-9b3e-fc9c61b630fb",
-	'AppendPolling',
+	'Add',
 	'Add an instance of Observation sub/supertype pair following the specified stimulus.
 A polling observation may be re-evaluated at specified intervals.
 An overall time limit for such re-evaluation may also be specified.
@@ -35,11 +35,12 @@ Note:
  the ordering of simultaneous event processing may affect success or failure.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'send TESTSEQ::AddObservation( stimulusId:param.stimulus, 
+	'send TESTSEQ::AddObservation( seqLabel:param.sequence,
                               observationId:self.observationId,
                               pollInterval:param.pollInterval, 
                               pollDuration:param.timeLimit, 
-                              eventKey:"");',
+                              eventKey:param.key,
+                              concurrent:param.concurrent);',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
@@ -47,8 +48,8 @@ Note:
 INSERT INTO O_TPARM
 	VALUES ("f3c2a672-6a13-4cc4-8c50-824b58627db1",
 	"3eab7205-38dd-4e0a-a177-a5c994ff1229",
-	'stimulus',
-	"ba5eda7a-def5-0000-0000-000000000005",
+	'sequence',
+	"ba5eda7a-def5-0000-0000-000000000004",
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000",
@@ -70,6 +71,24 @@ INSERT INTO O_TPARM
 	0,
 	'',
 	"f3c2a672-6a13-4cc4-8c50-824b58627db1",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("8b814d7f-79af-49ab-a537-6d9eb363fecb",
+	"3eab7205-38dd-4e0a-a177-a5c994ff1229",
+	'key',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"05e961e0-e5c1-4265-ac65-9c3bfe9d15a1",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("edf3ad1b-5100-4d23-ab70-a3a97830d37c",
+	"3eab7205-38dd-4e0a-a177-a5c994ff1229",
+	'concurrent',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"8b814d7f-79af-49ab-a537-6d9eb363fecb",
 	'');
 INSERT INTO O_TFR
 	VALUES ("be73cadd-dde6-4c6a-9072-f4ed26103cde",
@@ -109,7 +128,7 @@ else
 end if;',
 	1,
 	'',
-	"d7ab8883-a80f-4024-88f2-1ab6a93ad335",
+	"3eab7205-38dd-4e0a-a177-a5c994ff1229",
 	0);
 INSERT INTO O_TFR
 	VALUES ("27e7e100-3894-4a37-a05c-49d00e774f8d",
@@ -133,68 +152,13 @@ INSERT INTO O_TPARM
 	"00000000-0000-0000-0000-000000000000",
 	'');
 INSERT INTO O_TFR
-	VALUES ("d7ab8883-a80f-4024-88f2-1ab6a93ad335",
-	"765a75f4-57e1-4717-9b3e-fc9c61b630fb",
-	'AppendTriggered',
-	'Add an instance of Observation sub/supertype pair following the specified stimulus.
-A triggered observation will be re-evaluated whenever its key value matches that of a assess signal.
-An overall time limit for such re-evaluation may be specified.
-Failure to signal success within the time limit is considered a time-out failure.
-Any observation failure terminates the entire test case.',
-	"ba5eda7a-def5-0000-0000-000000000000",
-	1,
-	'send TESTSEQ::AddObservation( stimulusId:param.stimulus, observationId:self.observationId,
-                                                   pollInterval:param.pollInterval, 
-                                                   pollDuration:param.timeLimit, 
-                                                   eventKey:param.key );',
-	1,
-	'',
-	"3eab7205-38dd-4e0a-a177-a5c994ff1229",
-	0);
-INSERT INTO O_TPARM
-	VALUES ("3b30c1e0-8d94-4bcf-8143-a1003773f82e",
-	"d7ab8883-a80f-4024-88f2-1ab6a93ad335",
-	'stimulus',
-	"ba5eda7a-def5-0000-0000-000000000005",
-	0,
-	'',
-	"00000000-0000-0000-0000-000000000000",
-	'');
-INSERT INTO O_TPARM
-	VALUES ("2d50bdf5-011d-44ab-9929-9a1d2787c8fb",
-	"d7ab8883-a80f-4024-88f2-1ab6a93ad335",
-	'timeLimit',
-	"ba5eda7a-def5-0000-0000-000000000002",
-	0,
-	'',
-	"e0f7fd22-543b-48d9-978e-9ccfbf19878b",
-	'');
-INSERT INTO O_TPARM
-	VALUES ("e40193b7-7dc2-4701-996f-c96c92071dcd",
-	"d7ab8883-a80f-4024-88f2-1ab6a93ad335",
-	'key',
-	"ba5eda7a-def5-0000-0000-000000000004",
-	0,
-	'',
-	"3b30c1e0-8d94-4bcf-8143-a1003773f82e",
-	'');
-INSERT INTO O_TPARM
-	VALUES ("e0f7fd22-543b-48d9-978e-9ccfbf19878b",
-	"d7ab8883-a80f-4024-88f2-1ab6a93ad335",
-	'pollInterval',
-	"ba5eda7a-def5-0000-0000-000000000002",
-	0,
-	'',
-	"e40193b7-7dc2-4701-996f-c96c92071dcd",
-	'');
-INSERT INTO O_TFR
 	VALUES ("981e7c87-325e-4efb-ba73-a51e6e697322",
 	"765a75f4-57e1-4717-9b3e-fc9c61b630fb",
 	'ReadIntervalTimer',
 	'Request the value of the interval timer associated with the stimulus sequence this observation  belongs to.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'send TESTSEQ::RequestIntervalTimerValue( observationId:self.observationId, reset:param.reset );',
+	'send TESTSEQ::RequestIntervalTimerValue( observationId:self.observationId, key:"", reset:param.reset );',
 	1,
 	'',
 	"27e7e100-3894-4a37-a05c-49d00e774f8d",

@@ -2820,7 +2820,7 @@ INSERT INTO GD_GE
 	"2742e22a-5ee7-4d45-86c8-ae3a8bed7561",
 	21,
 	0,
-	'CarParkTestbench::Components::CarParkTestbench::Testbench::Change');
+	'CarParkTestbench::Components::CarParkTestbench::Testbench::ChangeDispensed');
 INSERT INTO GD_SHP
 	VALUES ("2a52bf16-3898-465d-b77e-9257ad2e6230");
 INSERT INTO GD_NCS
@@ -2859,7 +2859,7 @@ INSERT INTO GD_GE
 	"d6acdec8-fd41-42c7-a46b-f3788fb4c5bb",
 	35,
 	0,
-	'CarParkTestbench::Components::CarParkTestbench::Testbench::R4::Change');
+	'CarParkTestbench::Components::CarParkTestbench::Testbench::R4::ChangeDispensed');
 INSERT INTO GD_CON
 	VALUES ("4ca2e425-7d72-4e17-9c9b-fc9a05526474",
 	"00000000-0000-0000-0000-000000000000");
@@ -2972,7 +2972,7 @@ INSERT INTO GD_GE
 	"1843e6a5-3b07-48e7-9cc6-cece9e92db84",
 	21,
 	0,
-	'CarParkTestbench::Components::CarParkTestbench::Testbench::Balance-1');
+	'CarParkTestbench::Components::CarParkTestbench::Testbench::Change');
 INSERT INTO GD_SHP
 	VALUES ("734dfae4-a62a-4de0-b051-47a487cb7c4f");
 INSERT INTO GD_NCS
@@ -3409,13 +3409,13 @@ INSERT INTO R_OIR
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_OBJ_PROXY
 	VALUES ("2742e22a-5ee7-4d45-86c8-ae3a8bed7561",
-	'Change',
+	'ChangeDispensed',
 	29,
-	'Change',
+	'ChangeDispensed',
 	'An observation which checks the outstanding balance at a pay stand and makes payment.
 The observation succeeds when the balance is paid in full.',
 	"00000000-0000-0000-0000-000000000000",
-	'./Change/Change.xtuml');
+	'./ChangeDispensed/ChangeDispensed.xtuml');
 INSERT INTO PE_PE
 	VALUES ("5b5da086-6d28-45d8-9148-f0c05c7f8741",
 	1,
@@ -3429,7 +3429,7 @@ INSERT INTO S_SYNC
 	'Used to establish a time delay before the next observation in a sequence is triggered.
 The duration is specified at the current timer resolution of the associated sequence.',
 	'create object instance delay of Observation;
-send TESTSEQ::InsertDelay( stimulusId:param.stimulus, observationId: delay.observationId, duration:param.duration );
+send TESTSEQ::InsertDelay( seqLabel:param.sequence, observationId: delay.observationId, duration:param.duration );
 delete object instance delay; ',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
@@ -3438,8 +3438,8 @@ delete object instance delay; ',
 INSERT INTO S_SPARM
 	VALUES ("f8bb7ab1-cec1-46e8-b353-ee7604887e7d",
 	"86884735-4a1f-4109-a20c-11988fcaa7c4",
-	'stimulus',
-	"ba5eda7a-def5-0000-0000-000000000005",
+	'sequence',
+	"ba5eda7a-def5-0000-0000-000000000004",
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000",

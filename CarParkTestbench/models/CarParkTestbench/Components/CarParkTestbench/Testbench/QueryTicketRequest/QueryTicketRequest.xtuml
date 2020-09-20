@@ -10,7 +10,7 @@ INSERT INTO O_OBJ
 INSERT INTO O_TFR
 	VALUES ("03babdb5-d972-403b-bd28-cf8322b92453",
 	"0e3e5f3b-eb5c-42ea-b147-598d65f82154",
-	'CreatePolling',
+	'Create',
 	'Add an observation of this type to the ''script'' of a test case.
 See Observation.AppendPolling for description.',
 	"ba5eda7a-def5-0000-0000-000000000000",
@@ -21,37 +21,16 @@ create object instance obs of Observation;
 relate req to obs across R4;
 req.location = param.location;
 
-obs.AppendPolling( stimulus:param.stimulus,
-                   pollInterval:param.pollInterval, 
-                   timeLimit:param.timeLimit );
-',
+obs.Add( sequence:param.sequence, pollInterval:0, timeLimit:0, key:"TicketRequest", concurrent:False );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
 	0);
 INSERT INTO O_TPARM
-	VALUES ("8449e7a6-d4d9-4a39-aa30-f5d24c29cdd3",
-	"03babdb5-d972-403b-bd28-cf8322b92453",
-	'pollInterval',
-	"ba5eda7a-def5-0000-0000-000000000002",
-	0,
-	'',
-	"129ab8f2-4e79-4158-a49f-01d00d986452",
-	'');
-INSERT INTO O_TPARM
-	VALUES ("df1b89ac-f357-480f-a763-5133d23188e7",
-	"03babdb5-d972-403b-bd28-cf8322b92453",
-	'timeLimit',
-	"ba5eda7a-def5-0000-0000-000000000002",
-	0,
-	'',
-	"8449e7a6-d4d9-4a39-aa30-f5d24c29cdd3",
-	'');
-INSERT INTO O_TPARM
 	VALUES ("ed190f13-fd8b-49de-be9a-b88a7918880d",
 	"03babdb5-d972-403b-bd28-cf8322b92453",
-	'stimulus',
-	"ba5eda7a-def5-0000-0000-000000000005",
+	'sequence',
+	"ba5eda7a-def5-0000-0000-000000000004",
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000",
@@ -88,48 +67,8 @@ end if;
 ',
 	1,
 	'',
-	"c7d4370c-b73c-44c6-8684-e5145ba1a6c4",
-	0);
-INSERT INTO O_TFR
-	VALUES ("c7d4370c-b73c-44c6-8684-e5145ba1a6c4",
-	"0e3e5f3b-eb5c-42ea-b147-598d65f82154",
-	'CreateTriggered',
-	'Add an observation of this type to the ''script'' of a test case.
-See Observation.AppendPolling for description.',
-	"ba5eda7a-def5-0000-0000-000000000000",
-	0,
-	'create object instance req of QueryTicketRequest;
-
-create object instance obs of Observation;
-relate req to obs across R4;
-req.location = param.location;
-
-obs.AppendTriggered( stimulus:param.stimulus, key:"TicketRequest",
-                   pollInterval:0, 
-                   timeLimit:0 );
-',
-	1,
-	'',
 	"03babdb5-d972-403b-bd28-cf8322b92453",
 	0);
-INSERT INTO O_TPARM
-	VALUES ("47b2a357-73e2-4e67-b762-33ca573a1cc4",
-	"c7d4370c-b73c-44c6-8684-e5145ba1a6c4",
-	'stimulus',
-	"ba5eda7a-def5-0000-0000-000000000005",
-	0,
-	'',
-	"00000000-0000-0000-0000-000000000000",
-	'');
-INSERT INTO O_TPARM
-	VALUES ("3b924033-e438-4fdb-a8fc-70ca6259b49c",
-	"c7d4370c-b73c-44c6-8684-e5145ba1a6c4",
-	'location',
-	"ba5eda7a-def5-0000-0000-000000000004",
-	0,
-	'',
-	"47b2a357-73e2-4e67-b762-33ca573a1cc4",
-	'');
 INSERT INTO O_NBATTR
 	VALUES ("9d794e3d-1e4d-48ff-aac3-0c40cd0fe901",
 	"0e3e5f3b-eb5c-42ea-b147-598d65f82154");
