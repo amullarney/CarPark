@@ -62,9 +62,6 @@ if ( not_empty b )
   if ( b.amount <= 0.0 )
     select one obs related by self->Observation[R4]; 
     obs.Complete( success:True );
-    select any s from instances of Stay
-     where ( selected.payingAt == self.location );
-    s.paid = true;
     LOG::LogInfo( message:"paid in full" );
     if ( b.amount == 0.0 )  // exact - no change
       LOG::LogInfo( message:"Cancelling change dispensed observation at " + self.location );
