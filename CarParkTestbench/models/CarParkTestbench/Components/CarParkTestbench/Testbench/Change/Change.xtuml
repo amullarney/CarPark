@@ -5,7 +5,7 @@ INSERT INTO O_OBJ
 	'Change',
 	30,
 	'Change',
-	'Represents a balance due at a pay stand.',
+	'Represents a refund amount being dispensed at a payment location.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_NBATTR
 	VALUES ("73b85249-f925-4d74-907a-88abea9c86b0",
