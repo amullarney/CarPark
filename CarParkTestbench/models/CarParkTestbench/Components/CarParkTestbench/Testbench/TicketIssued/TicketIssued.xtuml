@@ -15,11 +15,11 @@ INSERT INTO O_TFR
 See Observation.AppendPolling for description.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'create object instance ti of TicketIssued;
+	'create object instance ticket of TicketIssued;
+ticket.location = param.location;
 
 create object instance obs of Observation;
-relate ti to obs across R4;
-ti.location = param.location;
+relate ticket to obs across R4;
 
 obs.Add( sequence:param.sequence, pollInterval:0, timeLimit:0, key:"TicketIssued", concurrent:False );',
 	1,

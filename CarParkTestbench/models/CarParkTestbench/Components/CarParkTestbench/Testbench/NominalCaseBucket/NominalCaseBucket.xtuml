@@ -21,35 +21,34 @@ send TESTSEQ::SetTestBucketResolution( bucketId:bucket.bucketId, resolution:time
 // Use Case UC1 
 send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC1" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
-stId = VehicleArrived::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
+VehicleArrived::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 QueryTicketRequest::Create( sequence:"seq01", location:"North" );
-stId = TicketRequested::Create( seqLabel:"seq01", location:"North" );
+TicketRequested::Create( seqLabel:"seq01", location:"North" );
 TicketIssued::Create( sequence:"seq01", location:"North" );
-stId = TicketTaken::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
+TicketTaken::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 BarrierStatus::Create( sequence:"seq01", location:"North", stand:"Entry", isopen:True );
-stId = VehicleDeparture::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
+VehicleDeparture::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 BarrierStatus::Create( sequence:"seq01", location:"North", stand:"Entry", isopen:False );
-stId = FastForward::Create( seqLabel:"seq01", hours:5, minutes:0, seconds:0 );
+FastForward::Create( seqLabel:"seq01", hours:5, minutes:0, seconds:0 );
 
 send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC5" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq05" );
-stId = TicketInserted::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay", number:1 );
+TicketInserted::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay", number:1 );
 TicketReturned::Create( sequence:"seq05", location:"1st Floor" );
 BalanceValue::Create( sequence:"seq05", location:"1st Floor" );
 ChangeDispensed::Create( sequence:"seq05", location:"1st Floor" );
-stId = TicketTaken::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
+TicketTaken::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
 
 
 send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC11" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq11" );
-stId = VehicleArrived::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
-stId = TicketInserted::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", number:1 );
+VehicleArrived::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
+TicketInserted::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", number:1 );
 BarrierStatus::Create( sequence:"seq11", location:"Lane 1", stand:"Exit", isopen:True );
-stId = VehicleDeparture::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
+VehicleDeparture::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
 BarrierStatus::Create( sequence:"seq11", location:"Lane 1", stand:"Exit", isopen:False );
 
-bucket.Initialized();
-',
+bucket.Initialized();',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",

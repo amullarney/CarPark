@@ -14,19 +14,17 @@ INSERT INTO O_TFR
 	'Create',
 	'Add a stimulus of this type to the ''script of a test case.
 ',
-	"ba5eda7a-def5-0000-0000-000000000005",
+	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'create object instance ti of TicketInserted;
-ti.location = param.location;
-ti.standType = param.stand;
-ti.number = param.number;
+	'create object instance insertion of TicketInserted;
+insertion.location = param.location;
+insertion.standType = param.stand;
+insertion.number = param.number;
 
 create object instance stimulus of Stimulus;
-relate stimulus to ti across R3; 
+relate stimulus to insertion across R3; 
 
-stimulus.AddToTest( seqLabel:param.seqLabel );
-return stimulus.stimulusId;
-',
+stimulus.AddToTest( seqLabel:param.seqLabel );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",

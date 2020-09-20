@@ -67,6 +67,7 @@ if ( not_empty b )
     s.paid = true;
     LOG::LogInfo( message:"paid in full" );
     if ( b.amount == 0.0 )  // exact - no change
+      LOG::LogInfo( message:"Cancelling change dispensed observation at " + self.location );
       send TESTSEQ::CancelTriggeredObservation( key:"Dispensed" );
     end if;
   else

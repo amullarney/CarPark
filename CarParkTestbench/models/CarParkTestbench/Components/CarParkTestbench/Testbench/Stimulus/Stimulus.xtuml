@@ -36,34 +36,29 @@ INSERT INTO O_TFR
 	'This operation will be invoked when the stimulus is encountered by the sequencing service.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select one va related by self->VehicleArrived[R3];
-if ( not_empty va )
-  va.VehicleArrival();
+	'select one arrival related by self->VehicleArrived[R3];
+if ( not_empty arrival )
+  arrival.VehicleArrival();
 else
-  select one tr related by self->TicketRequested[R3];
-  if ( not_empty tr )
-    tr.Requested();
+  select one request related by self->TicketRequested[R3];
+  if ( not_empty request )
+    request.Requested();
   else
-  	select one tt related by self->TicketTaken[R3];
-  	if ( not_empty tt )
-  	  tt.Collected();
+  	select one extract related by self->TicketTaken[R3];
+  	if ( not_empty extract )
+  	  extract.Collected();
   	else
-      select one vd related by self->VehicleDeparture[R3];
-      if ( not_empty vd )
-        vd.VehicleNotThere();
+      select one departure related by self->VehicleDeparture[R3];
+      if ( not_empty departure )
+        departure.VehicleNotThere();
       else
-        select one ff related by self->FastForward[R3];
-        if ( not_empty ff )
-          ff.Advance();
+        select one timewarp related by self->FastForward[R3];
+        if ( not_empty timewarp )
+          timewarp.Advance();
         else
-          select one ti related by self->TicketInserted[R3];
-          if ( not_empty ti )
-            ti.Inserted();
-          else
-            select one ns related by self->NullStimulus[R3];
-            if ( not_empty ns )
-              ns.Wait();
-            end if;
+          select one insert related by self->TicketInserted[R3];
+          if ( not_empty insert )
+            insert.Inserted();
           end if;
         end if;
       end if;

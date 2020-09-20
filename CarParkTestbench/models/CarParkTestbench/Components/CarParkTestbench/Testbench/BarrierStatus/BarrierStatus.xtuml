@@ -23,7 +23,7 @@ bs.location = param.location;
 bs.stand = param.stand;
 bs.open = param.isopen;
 
-obs.Add( sequence:param.sequence, pollInterval:0, timeLimit:0, key:"Barrier", concurrent:False );',
+obs.Add( sequence:param.sequence, pollInterval:0, timeLimit:0, key:"BarrierCommand", concurrent:False );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
