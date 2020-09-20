@@ -18,7 +18,6 @@ INSERT INTO O_TFR
 send TESTSEQ::NameTestBucket( bucketId:bucket.bucketId, bucketLabel:"CarPark_Bucket_1" );
 send TESTSEQ::SetTestBucketResolution( bucketId:bucket.bucketId, resolution:timerResolution::second );
 
-// Use Case UC1 
 send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC1" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
 VehicleArrived::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
@@ -38,7 +37,6 @@ TicketReturned::Create( sequence:"seq05", location:"1st Floor" );
 BalanceValue::Create( sequence:"seq05", location:"1st Floor" );
 ChangeDispensed::Create( sequence:"seq05", location:"1st Floor" );
 TicketTaken::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
-
 
 send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC11" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq11" );

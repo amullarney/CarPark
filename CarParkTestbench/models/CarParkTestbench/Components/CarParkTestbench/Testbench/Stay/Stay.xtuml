@@ -36,7 +36,7 @@ INSERT INTO O_ATTR
 	"1be5dd1b-f517-40ac-8691-0144999e11da",
 	"8ff422d7-76c4-44a9-a1bc-6c39c83e2ae2",
 	'payingAt',
-	'The location where payment is being attepted.',
+	'The location where payment is being attempted.',
 	'',
 	'payingAt',
 	0,
