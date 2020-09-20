@@ -5,7 +5,7 @@ INSERT INTO O_OBJ
 	'Operator',
 	2,
 	'Operator',
-	'',
+	'This class exists to record a number of status and value updates which are checked at test completion.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("6ce95ccf-d5a1-4b32-b3f4-2fd03430b6bd",
@@ -27,6 +27,66 @@ operator.OccupancyDecreased = 0;
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TFR
+	VALUES ("a645c509-ba6a-4ea0-a30a-d0ef1ea7b074",
+	"07bb7c29-6edc-408c-baf6-e7d254278371",
+	'Check',
+	'Check statuses are as expected when test suite completes.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Assume success and then look for failures.
+success = true;
+
+select any operator from instances of Operator;
+if ( not operator.EntryStandActivated )
+	success = false;
+    LOG::LogFailure( message:"Entry stand not activated." );
+end if;
+
+if ( not operator.EntryStandDeactivated )
+	success = false;
+    LOG::LogFailure( message:"Entry stand not deactivated." );
+end if;
+
+if ( not operator.ExitStandActivated )
+	success = false;
+    LOG::LogFailure( message:"Exit stand not activated." );
+end if;
+
+if ( not operator.ExitStandDeactivated )
+	success = false;
+    LOG::LogFailure( message:"Exit stand not deactivated." );
+end if;
+
+if ( not operator.OccupancyUpdated  )
+	success = false;
+    LOG::LogFailure( message:"Occupancy not updated." );
+end if;
+
+if ( operator.Occupancy != 0 )
+	success = false;
+    LOG::LogFailure( message:"Occuapncy value is wrong." );
+end if;
+
+if ( operator.OccupancyIncreased != 1 )
+	success = false;
+    LOG::LogFailure( message:"Occupancy did not increase by correct amount." );
+end if;
+
+if ( operator.OccupancyDecreased != 1 )
+	success = false;
+    LOG::LogFailure( message:"Occupancy did not decrease by correct amount." );
+end if;
+
+if ( success )
+	LOG::LogSuccess( message:"Test bucket successful." );
+else
+	LOG::LogFailure( message:"Test bucket failed." );
+end if;',
+	1,
+	'',
+	"6ce95ccf-d5a1-4b32-b3f4-2fd03430b6bd",
 	0);
 INSERT INTO O_NBATTR
 	VALUES ("cc3701eb-7e78-4fab-9df9-7939959c5492",

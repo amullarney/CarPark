@@ -725,7 +725,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("b9ad2e69-be84-48e2-ab73-4a723c6dd883",
 	'TardyExit',
-	'',
+	'Indicates the exit deadline printed on this ticket has been missed.',
 	'LOG::LogInfo( message:"Tardy exit." );',
 	1,
 	0);
@@ -734,7 +734,7 @@ INSERT INTO C_EP_PROXY
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'TardyExit',
-	'',
+	'Indicates the exit deadline printed on this ticket has been missed.',
 	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("b15a9460-75c6-4faa-a392-8dce9344e6b1",
@@ -743,7 +743,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("b15a9460-75c6-4faa-a392-8dce9344e6b1",
 	'UnpaidStayExit',
-	'',
+	'Indicates that a ticket for an unpaid stay has been inserted into an exit stand.',
 	'LOG::LogInfo( message:"Unpaid stay exit" );',
 	1,
 	0);
@@ -752,7 +752,7 @@ INSERT INTO C_EP_PROXY
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'UnpaidStayExit',
-	'',
+	'Indicates that a ticket for an unpaid stay has been inserted into an exit stand.',
 	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("04644983-1e73-42be-a023-a65e59c6356f",
@@ -761,7 +761,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("04644983-1e73-42be-a023-a65e59c6356f",
 	'FeeWaived',
-	'',
+	'Indicates that the operator has chosen to waive a fee.',
 	'',
 	1,
 	0);
@@ -770,7 +770,7 @@ INSERT INTO C_EP_PROXY
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'FeeWaived',
-	'',
+	'Indicates that the operator has chosen to waive a fee.',
 	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("75b0df71-52c0-4a70-9dc2-bac27605e6b2",
@@ -779,7 +779,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("75b0df71-52c0-4a70-9dc2-bac27605e6b2",
 	'FeeCollected',
-	'',
+	'Indicates that the operator has collected a fee.',
 	'',
 	1,
 	0);
@@ -788,7 +788,7 @@ INSERT INTO C_EP_PROXY
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'FeeCollected',
-	'',
+	'Indicates that the operator has collected a fee.',
 	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("9030b81f-3015-4b1d-9b1f-6217ddce858d",
@@ -797,7 +797,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("9030b81f-3015-4b1d-9b1f-6217ddce858d",
 	'ActivateEntryStand',
-	'',
+	'Activates the section of the operator console display for a particular entry stand.',
 	'select any operator from instances of Operator;
 operator.EntryStandActivated = true;',
 	1,
@@ -807,7 +807,7 @@ INSERT INTO C_EP_PROXY
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'ActivateEntryStand',
-	'',
+	'Activates the section of the operator console display for a particular entry stand.',
 	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("3ee2ab3c-3f90-41ae-9eeb-43a1f994e19c",
@@ -816,7 +816,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("3ee2ab3c-3f90-41ae-9eeb-43a1f994e19c",
 	'DeactivateEntryStand',
-	'',
+	'Deactivates the section of the operator console display for a particular entry stand.',
 	'select any operator from instances of Operator;
 operator.EntryStandDeactivated = true;',
 	1,
@@ -826,7 +826,7 @@ INSERT INTO C_EP_PROXY
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'DeactivateEntryStand',
-	'',
+	'Deactivates the section of the operator console display for a particular entry stand.',
 	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("fafcf6ae-8621-453e-b70d-29e3179bec96",
@@ -835,7 +835,9 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("fafcf6ae-8621-453e-b70d-29e3179bec96",
 	'DelayedEntry',
-	'',
+	'Indicates that a vehicle has failed to enter the carpark
+within the expected time after collecting a ticket from
+an entry stand.',
 	'LOG::LogInfo( message:"Delayed entry." );',
 	1,
 	0);
@@ -844,7 +846,9 @@ INSERT INTO C_EP_PROXY
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'DelayedEntry',
-	'',
+	'Indicates that a vehicle has failed to enter the carpark
+within the expected time after collecting a ticket from
+an entry stand.',
 	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("8e4d2896-2cb8-4bbf-bc8b-a9aecefa99fe",
@@ -853,7 +857,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("8e4d2896-2cb8-4bbf-bc8b-a9aecefa99fe",
 	'ActivateExitStand',
-	'',
+	'Activates the section of the operator console display for a particular exit stand.',
 	'select any operator from instances of Operator;
 operator.ExitStandActivated = true;',
 	1,
@@ -863,7 +867,7 @@ INSERT INTO C_EP_PROXY
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'ActivateExitStand',
-	'',
+	'Activates the section of the operator console display for a particular exit stand.',
 	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("8f5cce9e-ad81-456b-9d9c-43da460ffacd",
@@ -872,7 +876,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("8f5cce9e-ad81-456b-9d9c-43da460ffacd",
 	'DeactivateExitStand',
-	'',
+	'Deactivates the section of the operator console display for a particular exit stand.',
 	'select any operator from instances of Operator;
 operator.ExitStandDeactivated = true;',
 	1,
@@ -882,7 +886,7 @@ INSERT INTO C_EP_PROXY
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'DeactivateExitStand',
-	'',
+	'Deactivates the section of the operator console display for a particular exit stand.',
 	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("c9bec875-0c09-4938-bc20-08fb9b405cda",
@@ -891,7 +895,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("c9bec875-0c09-4938-bc20-08fb9b405cda",
 	'OccupancyUpdate',
-	'',
+	'Provides current carpark occupancy data.',
 	'select any operator from instances of Operator;
 if ( param.Occupancy < operator.Occupancy )
   operator.OccupancyDecreased = operator.OccupancyDecreased + 1;
@@ -908,7 +912,7 @@ INSERT INTO C_EP_PROXY
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'OccupancyUpdate',
-	'',
+	'Provides current carpark occupancy data.',
 	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("9496f5a3-5606-4fea-bb3e-f7a381ff9e67",
@@ -917,7 +921,13 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("9496f5a3-5606-4fea-bb3e-f7a381ff9e67",
 	'IssueTicket',
-	'',
+	'Commands an entry stand to issue a ticket.  
+The operator may command the issuance of a ticket when there is a malfunction
+at the entry stand.  For example, a failure of the vehicle-waiting sensor or 
+the ticket-request facility would make it impossible for the driver to request
+a ticket.  The driver could then use the intercom system to explain the issue
+to the operator who would then command the entry stand, indirectly via the carpark
+system, to issue a ticket. ',
 	'',
 	1,
 	0);
@@ -926,7 +936,13 @@ INSERT INTO C_EP_PROXY
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'IssueTicket',
-	'',
+	'Commands an entry stand to issue a ticket.  
+The operator may command the issuance of a ticket when there is a malfunction
+at the entry stand.  For example, a failure of the vehicle-waiting sensor or 
+the ticket-request facility would make it impossible for the driver to request
+a ticket.  The driver could then use the intercom system to explain the issue
+to the operator who would then command the entry stand, indirectly via the carpark
+system, to issue a ticket. ',
 	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("e4a6cfeb-e903-410d-9e77-e397fde5a3da",
@@ -935,7 +951,12 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("e4a6cfeb-e903-410d-9e77-e397fde5a3da",
 	'OpenEntryBarrier',
-	'',
+	'Commands an entry stand, indirectly through the carpark system, 
+to open the barrier, permitting vehicles to enter the carpark.
+The operator may command an entry stand to open the barrier when
+there is a malfunction at the entry stand (e.g., a failure of the
+ticket printer or the sensor detecting the collection of a ticket)
+or in unusual circumstances such as the arrival of a VIP.',
 	'',
 	1,
 	0);
@@ -944,7 +965,12 @@ INSERT INTO C_EP_PROXY
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'OpenEntryBarrier',
-	'',
+	'Commands an entry stand, indirectly through the carpark system, 
+to open the barrier, permitting vehicles to enter the carpark.
+The operator may command an entry stand to open the barrier when
+there is a malfunction at the entry stand (e.g., a failure of the
+ticket printer or the sensor detecting the collection of a ticket)
+or in unusual circumstances such as the arrival of a VIP.',
 	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("638a0cdd-5bfa-4160-8b99-0deb0deef4c0",
@@ -953,7 +979,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("638a0cdd-5bfa-4160-8b99-0deb0deef4c0",
 	'OpenCarpark',
-	'',
+	'Commands the carpark system to open the carpark.',
 	'',
 	1,
 	0);
@@ -962,7 +988,7 @@ INSERT INTO C_EP_PROXY
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'OpenCarpark',
-	'',
+	'Commands the carpark system to open the carpark.',
 	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("7f7dfd58-b6bb-4a31-811e-ca468e0153f2",
@@ -971,7 +997,8 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("7f7dfd58-b6bb-4a31-811e-ca468e0153f2",
 	'CarparkOpened',
-	'',
+	'Indicates that the carpark has completed initialization and is open and ready
+to accept vehicles.',
 	'TestFunctions::RunNominalCases();',
 	1,
 	0);
@@ -980,7 +1007,8 @@ INSERT INTO C_EP_PROXY
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'CarparkOpened',
-	'',
+	'Indicates that the carpark has completed initialization and is open and ready
+to accept vehicles.',
 	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("ffd2fac9-5c22-413b-a381-3ac6f7ff0c07",
@@ -989,7 +1017,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("ffd2fac9-5c22-413b-a381-3ac6f7ff0c07",
 	'CloseCarpark',
-	'',
+	'Commands the carpark system to close the carpark.',
 	'',
 	1,
 	0);
@@ -998,7 +1026,7 @@ INSERT INTO C_EP_PROXY
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'CloseCarpark',
-	'',
+	'Commands the carpark system to close the carpark.',
 	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("58b3d2c7-9eae-46e2-b928-f6e0a89b19b3",
@@ -1007,7 +1035,8 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("58b3d2c7-9eae-46e2-b928-f6e0a89b19b3",
 	'CarparkClosed',
-	'',
+	'Indicates that the carpark has closed and is no longer permitting entry
+to or exit from the carpark.',
 	'',
 	1,
 	0);
@@ -1016,7 +1045,8 @@ INSERT INTO C_EP_PROXY
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'CarparkClosed',
-	'',
+	'Indicates that the carpark has closed and is no longer permitting entry
+to or exit from the carpark.',
 	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("c71c6e61-6ac1-48d6-9793-085a04b9f53d",
@@ -1025,7 +1055,10 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("c71c6e61-6ac1-48d6-9793-085a04b9f53d",
 	'OpenExitBarrier',
-	'',
+	'Commands, indirectly through the carpark system, an exit stand to open the barrier.
+An operator may command an exit stand to open the barrier in unusual circumstances 
+such as an equipment failure (e.g., failed vehicle waiting sensor or ticket reader) 
+or in case of emergency.',
 	'',
 	1,
 	0);
@@ -1034,7 +1067,10 @@ INSERT INTO C_EP_PROXY
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'OpenExitBarrier',
-	'',
+	'Commands, indirectly through the carpark system, an exit stand to open the barrier.
+An operator may command an exit stand to open the barrier in unusual circumstances 
+such as an equipment failure (e.g., failed vehicle waiting sensor or ticket reader) 
+or in case of emergency.',
 	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("f2ae5a35-9663-4b23-a863-1c0d0647029c",
@@ -1043,7 +1079,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("f2ae5a35-9663-4b23-a863-1c0d0647029c",
 	'DateTimeUpdate',
-	'',
+	'Provides the current date and time according to the carpark system.',
 	'',
 	1,
 	0);
@@ -1052,7 +1088,7 @@ INSERT INTO C_EP_PROXY
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'DateTimeUpdate',
-	'',
+	'Provides the current date and time according to the carpark system.',
 	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("b4d0a598-e97a-4634-83e1-8a6ef06c38af",
@@ -1084,7 +1120,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("1b3d7a37-548c-4688-afba-85a2ef204936",
 	'VehicleWaiting',
-	'',
+	'Indicates a vehicle has arrived and is waiting at the entry stand.',
 	'',
 	1,
 	0);
@@ -1093,7 +1129,7 @@ INSERT INTO C_EP_PROXY
 	"a4174036-5fb5-4ca8-bc14-f60c13721964",
 	-1,
 	'VehicleWaiting',
-	'',
+	'Indicates a vehicle has arrived and is waiting at the entry stand.',
 	'../../../../../CarPark/models/CarPark/Interfaces/EntryStand/EntryStand.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("68a9b49d-a78f-4214-9ca7-eeea9912de1d",
@@ -1102,7 +1138,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("68a9b49d-a78f-4214-9ca7-eeea9912de1d",
 	'VehicleEntered',
-	'',
+	'Indicates a vehicle has entered the carpark.',
 	'',
 	1,
 	0);
@@ -1111,7 +1147,7 @@ INSERT INTO C_EP_PROXY
 	"a4174036-5fb5-4ca8-bc14-f60c13721964",
 	-1,
 	'VehicleEntered',
-	'',
+	'Indicates a vehicle has entered the carpark.',
 	'../../../../../CarPark/models/CarPark/Interfaces/EntryStand/EntryStand.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("39e7c899-6cf1-4679-a340-42979b02f7c2",
@@ -1120,7 +1156,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("39e7c899-6cf1-4679-a340-42979b02f7c2",
 	'IssueTicket',
-	'',
+	'Commands the entry stand to issue a ticket.',
 	'create object instance t of Ticket;
 t.location = param.Location;
 t.number = param.Number;
@@ -1132,7 +1168,7 @@ INSERT INTO C_EP_PROXY
 	"a4174036-5fb5-4ca8-bc14-f60c13721964",
 	-1,
 	'IssueTicket',
-	'',
+	'Commands the entry stand to issue a ticket.',
 	'../../../../../CarPark/models/CarPark/Interfaces/EntryStand/EntryStand.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("e38f3002-8f98-4e74-954d-cf15752cfafe",
@@ -1141,7 +1177,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("e38f3002-8f98-4e74-954d-cf15752cfafe",
 	'OpenBarrier',
-	'',
+	'Commands the entry stand to open the barrier, permitting vehicles to enter the carpark.',
 	'create object instance b of BarrierCommand;
 b.location = param.Location;
 b.stand = "Entry";
@@ -1154,7 +1190,7 @@ INSERT INTO C_EP_PROXY
 	"a4174036-5fb5-4ca8-bc14-f60c13721964",
 	-1,
 	'OpenBarrier',
-	'',
+	'Commands the entry stand to open the barrier, permitting vehicles to enter the carpark.',
 	'../../../../../CarPark/models/CarPark/Interfaces/EntryStand/EntryStand.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("60a35953-f20c-4a3b-a934-675c0718d3be",
@@ -1163,7 +1199,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("60a35953-f20c-4a3b-a934-675c0718d3be",
 	'TicketCollected',
-	'',
+	'Indicates a ticket has been collected from the entry stand.',
 	'',
 	1,
 	0);
@@ -1172,7 +1208,7 @@ INSERT INTO C_EP_PROXY
 	"a4174036-5fb5-4ca8-bc14-f60c13721964",
 	-1,
 	'TicketCollected',
-	'',
+	'Indicates a ticket has been collected from the entry stand.',
 	'../../../../../CarPark/models/CarPark/Interfaces/EntryStand/EntryStand.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("95579a9d-6359-483d-a0ba-394df904bec1",
@@ -1181,7 +1217,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("95579a9d-6359-483d-a0ba-394df904bec1",
 	'TicketRequested',
-	'',
+	'Indicates a ticket has been requested by the driver waiting at the entry stand.',
 	'',
 	1,
 	0);
@@ -1190,7 +1226,7 @@ INSERT INTO C_EP_PROXY
 	"a4174036-5fb5-4ca8-bc14-f60c13721964",
 	-1,
 	'TicketRequested',
-	'',
+	'Indicates a ticket has been requested by the driver waiting at the entry stand.',
 	'../../../../../CarPark/models/CarPark/Interfaces/EntryStand/EntryStand.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("5f46f10f-5d5b-451d-86e2-7700441adb49",
@@ -1199,7 +1235,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("5f46f10f-5d5b-451d-86e2-7700441adb49",
 	'TicketRequestEnabled',
-	'',
+	'Enables ticket requests at the entry stand.  ',
 	'LOG::LogInfo( message:"Entry Stand received TicketRequestEnabled at " + param.Location );
 create object instance req of ReceivedTicketRequest;
 req.location = param.Location;
@@ -1212,7 +1248,7 @@ INSERT INTO C_EP_PROXY
 	"a4174036-5fb5-4ca8-bc14-f60c13721964",
 	-1,
 	'TicketRequestEnabled',
-	'',
+	'Enables ticket requests at the entry stand.  ',
 	'../../../../../CarPark/models/CarPark/Interfaces/EntryStand/EntryStand.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("6a07ad77-617c-40f0-8afc-8240176b531e",
@@ -1221,7 +1257,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("6a07ad77-617c-40f0-8afc-8240176b531e",
 	'TicketRequestDisabled',
-	'',
+	'Disables ticket requests at the entry stand.',
 	'LOG::LogInfo( message:"Entry Stand received TicketRequestEnabled at " + param.Location );
 create object instance req of ReceivedTicketRequest;
 req.location = param.Location;
@@ -1234,7 +1270,7 @@ INSERT INTO C_EP_PROXY
 	"a4174036-5fb5-4ca8-bc14-f60c13721964",
 	-1,
 	'TicketRequestDisabled',
-	'',
+	'Disables ticket requests at the entry stand.',
 	'../../../../../CarPark/models/CarPark/Interfaces/EntryStand/EntryStand.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("3762c62d-087e-4204-9b96-1616f25f1f04",
@@ -1243,7 +1279,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("3762c62d-087e-4204-9b96-1616f25f1f04",
 	'CloseBarrier',
-	'',
+	'Commands the entry stand to close the barrier, preventing vehicles from entering the carpark.',
 	'create object instance b of BarrierCommand;
 b.location = param.Location;
 b.stand = "Entry";
@@ -1256,7 +1292,7 @@ INSERT INTO C_EP_PROXY
 	"a4174036-5fb5-4ca8-bc14-f60c13721964",
 	-1,
 	'CloseBarrier',
-	'',
+	'Commands the entry stand to close the barrier, preventing vehicles from entering the carpark.',
 	'../../../../../CarPark/models/CarPark/Interfaces/EntryStand/EntryStand.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("a4174036-5fb5-4ca8-bc14-f60c13721964",
@@ -1288,7 +1324,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("30fc03d7-e870-4aca-b602-34045fc84ca1",
 	'VehicleWaiting',
-	'',
+	'Indicates a vehicle has arrived and is waiting at the exit stand.',
 	'',
 	1,
 	0);
@@ -1297,7 +1333,7 @@ INSERT INTO C_EP_PROXY
 	"7899d3af-2715-4b8f-a3b5-f0508005328d",
 	-1,
 	'VehicleWaiting',
-	'',
+	'Indicates a vehicle has arrived and is waiting at the exit stand.',
 	'../../../../../CarPark/models/CarPark/Interfaces/ExitStand/ExitStand.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("f76c133d-6973-4345-a171-2e03cd00d57c",
@@ -1306,7 +1342,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("f76c133d-6973-4345-a171-2e03cd00d57c",
 	'VehicleExited',
-	'',
+	'Indicates a vehicle has exited the carpark through the exit stand.',
 	'',
 	1,
 	0);
@@ -1315,7 +1351,7 @@ INSERT INTO C_EP_PROXY
 	"7899d3af-2715-4b8f-a3b5-f0508005328d",
 	-1,
 	'VehicleExited',
-	'',
+	'Indicates a vehicle has exited the carpark through the exit stand.',
 	'../../../../../CarPark/models/CarPark/Interfaces/ExitStand/ExitStand.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("a4f9f287-62e3-4712-af22-7352bc789027",
@@ -1324,7 +1360,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("a4f9f287-62e3-4712-af22-7352bc789027",
 	'OpenBarrier',
-	'',
+	'Commands the exit stand to open the barrier, permitting vehicles to exit the carpark.',
 	'create object instance b of BarrierCommand;
 b.location = param.Location;
 b.stand = "Exit";
@@ -1337,7 +1373,7 @@ INSERT INTO C_EP_PROXY
 	"7899d3af-2715-4b8f-a3b5-f0508005328d",
 	-1,
 	'OpenBarrier',
-	'',
+	'Commands the exit stand to open the barrier, permitting vehicles to exit the carpark.',
 	'../../../../../CarPark/models/CarPark/Interfaces/ExitStand/ExitStand.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("c6dc9263-f895-4679-956c-80c33a18ebe2",
@@ -1346,7 +1382,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("c6dc9263-f895-4679-956c-80c33a18ebe2",
 	'InsertedTicket',
-	'',
+	'Indicates a ticket has been inserted into the exit stand.',
 	'',
 	1,
 	0);
@@ -1355,7 +1391,7 @@ INSERT INTO C_EP_PROXY
 	"7899d3af-2715-4b8f-a3b5-f0508005328d",
 	-1,
 	'InsertedTicket',
-	'',
+	'Indicates a ticket has been inserted into the exit stand.',
 	'../../../../../CarPark/models/CarPark/Interfaces/ExitStand/ExitStand.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("52b7a6a0-4afc-4f83-88ec-2941b92d3e67",
@@ -1364,7 +1400,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("52b7a6a0-4afc-4f83-88ec-2941b92d3e67",
 	'CloseBarrier',
-	'',
+	'Commands the exit stand to close the barrier, preventing vehicles from exiting the carpark.',
 	'create object instance b of BarrierCommand;
 b.location = param.Location;
 b.stand = "Exit";
@@ -1377,7 +1413,7 @@ INSERT INTO C_EP_PROXY
 	"7899d3af-2715-4b8f-a3b5-f0508005328d",
 	-1,
 	'CloseBarrier',
-	'',
+	'Commands the exit stand to close the barrier, preventing vehicles from exiting the carpark.',
 	'../../../../../CarPark/models/CarPark/Interfaces/ExitStand/ExitStand.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("7899d3af-2715-4b8f-a3b5-f0508005328d",
@@ -1409,7 +1445,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("6d9e2dff-4715-4b20-acf8-2e77b198e818",
 	'CancelledTransaction',
-	'',
+	'Indicates the patron cancelled the current transaction.',
 	'',
 	1,
 	0);
@@ -1418,7 +1454,7 @@ INSERT INTO C_EP_PROXY
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'CancelledTransaction',
-	'',
+	'Indicates the patron cancelled the current transaction.',
 	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("6fdd2e44-e91b-45ca-b7a8-9e1563f88d78",
@@ -1427,7 +1463,8 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("6fdd2e44-e91b-45ca-b7a8-9e1563f88d78",
 	'WaivedChange',
-	'',
+	'Indicates the patron waived any change due at a payment machine
+containing insufficient change to settle the current transaction.',
 	'',
 	1,
 	0);
@@ -1436,7 +1473,8 @@ INSERT INTO C_EP_PROXY
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'WaivedChange',
-	'',
+	'Indicates the patron waived any change due at a payment machine
+containing insufficient change to settle the current transaction.',
 	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("64d55d95-1fd0-445f-bef9-4a540c3a0312",
@@ -1445,7 +1483,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("64d55d95-1fd0-445f-bef9-4a540c3a0312",
 	'TicketCollected',
-	'',
+	'Indicates the patron collected a ticket returned by the payment machine.',
 	'LOG::LogInfo( message:"PaymentMachine received ticket collected." );
 ',
 	1,
@@ -1455,7 +1493,7 @@ INSERT INTO C_EP_PROXY
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'TicketCollected',
-	'',
+	'Indicates the patron collected a ticket returned by the payment machine.',
 	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("b9b189c9-3fb4-47a9-8008-c8533e8d0dfa",
@@ -1464,7 +1502,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("b9b189c9-3fb4-47a9-8008-c8533e8d0dfa",
 	'InsertedTicket',
-	'',
+	'Indicates that a patron inserted a ticket into a payment machine.',
 	'',
 	1,
 	0);
@@ -1473,7 +1511,7 @@ INSERT INTO C_EP_PROXY
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'InsertedTicket',
-	'',
+	'Indicates that a patron inserted a ticket into a payment machine.',
 	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("84d6fd7e-d94b-48c8-abf6-509c6b7b53fa",
@@ -1482,7 +1520,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("84d6fd7e-d94b-48c8-abf6-509c6b7b53fa",
 	'InsertedCurrency',
-	'',
+	'Indicates that a patron inserted currency into a payment machine.',
 	'',
 	1,
 	0);
@@ -1491,7 +1529,7 @@ INSERT INTO C_EP_PROXY
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'InsertedCurrency',
-	'',
+	'Indicates that a patron inserted currency into a payment machine.',
 	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("2e95b17f-8525-4948-b7ad-d103a380513e",
@@ -1500,7 +1538,8 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("2e95b17f-8525-4948-b7ad-d103a380513e",
 	'RemainingBalance',
-	'',
+	'Provides the remaining balance for the stay associated with the ticket
+currently inserted in a payment machine.',
 	'LOG::LogInfo( message:"---- receiving updated balance for " + param.Location );
 LOG::LogReal( message:"balance", r:param.Amount );
 create object instance b of Balance;
@@ -1515,7 +1554,8 @@ INSERT INTO C_EP_PROXY
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'RemainingBalance',
-	'',
+	'Provides the remaining balance for the stay associated with the ticket
+currently inserted in a payment machine.',
 	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("893c3b33-ab41-4839-a4c6-f9581dd37919",
@@ -1524,7 +1564,8 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("893c3b33-ab41-4839-a4c6-f9581dd37919",
 	'InsufficientChange',
-	'',
+	'Indicates that this payment machine contain insufficient change to settle
+the current transaction.',
 	'LOG::LogInfo( message:"Insufficient change available at " + param.Location );',
 	1,
 	0);
@@ -1533,7 +1574,8 @@ INSERT INTO C_EP_PROXY
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'InsufficientChange',
-	'',
+	'Indicates that this payment machine contain insufficient change to settle
+the current transaction.',
 	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("733ddba3-af68-41ff-b2d5-1e352f1243d5",
@@ -1542,7 +1584,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("733ddba3-af68-41ff-b2d5-1e352f1243d5",
 	'ReturnedTicket',
-	'',
+	'Commands a payment machine to return the currently-inserted ticket to the patron.',
 	'select any stay from instances of Stay
  where ( selected.payingAt == param.Location );
 if ( not_empty stay )
@@ -1556,7 +1598,7 @@ INSERT INTO C_EP_PROXY
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'ReturnedTicket',
-	'',
+	'Commands a payment machine to return the currently-inserted ticket to the patron.',
 	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("c62cb3e0-4035-4c41-a5bf-29b63d2b69e6",
@@ -1565,7 +1607,8 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("c62cb3e0-4035-4c41-a5bf-29b63d2b69e6",
 	'ExitDeadline',
-	'',
+	'Provides the exit deadline (date/time) from the carpark system to a payment machine, 
+so the latter can print it on the ticket before returning the ticket to the patron.',
 	'select any stay from instances of Stay
  where ( selected.payingAt == param.Location );
 if ( not_empty stay )
@@ -1578,7 +1621,8 @@ INSERT INTO C_EP_PROXY
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'ExitDeadline',
-	'',
+	'Provides the exit deadline (date/time) from the carpark system to a payment machine, 
+so the latter can print it on the ticket before returning the ticket to the patron.',
 	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("4ffe69c6-eff9-4bf8-8240-31ff7622bf60",
@@ -1587,7 +1631,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("4ffe69c6-eff9-4bf8-8240-31ff7622bf60",
 	'DispenseChange',
-	'',
+	'Commands a payment machine to dispense change to settle the current transaction.',
 	'create object instance ch of Change;
 ch.location = param.Location;
 ch.amount = param.Amount;
@@ -1599,7 +1643,7 @@ INSERT INTO C_EP_PROXY
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'DispenseChange',
-	'',
+	'Commands a payment machine to dispense change to settle the current transaction.',
 	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("ac2494ef-8171-4c20-9e47-ac0d13ce2691",
@@ -1608,12 +1652,11 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("ac2494ef-8171-4c20-9e47-ac0d13ce2691",
 	'TransactionCancelled',
-	'',
+	'Indicates that the current transaction was cancelled by the carpark system.',
 	'select any stay from instances of Stay
  where ( selected.payingAt == param.Location );
 if ( not_empty stay )
   LOG::LogInfo( message:"Payment transaction cancelled at " + param.Location );
-  stay.paid = false;
 end if;',
 	1,
 	0);
@@ -1622,7 +1665,7 @@ INSERT INTO C_EP_PROXY
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'TransactionCancelled',
-	'',
+	'Indicates that the current transaction was cancelled by the carpark system.',
 	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("1775761d-746e-41ae-a5e0-cd1a783dc665",
@@ -2115,7 +2158,8 @@ INSERT INTO SPR_RS
 	VALUES ("966caf7e-fbdf-4666-a00a-68a3878fca06",
 	'TestSuiteComplete',
 	'Signals completion of the test suite.',
-	'',
+	'select any operator from instances of Operator;
+operator.Check();',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -2168,7 +2212,8 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("164c32c2-99c5-4312-97b5-9922c3e3a7d7",
 	'CreateStimulusSequence',
-	'A test case, identified by its label, can have one or more labeled sequences of stimuli.
+	'Deprecated: AddStimulusSequence now adds a labelled sequence to the current test case.
+A test case, identified by its label, can have one or more labeled sequences of stimuli.
 These sequences may run in parallel and may interact via assess signals.',
 	'',
 	1,
@@ -2178,7 +2223,8 @@ INSERT INTO C_EP_PROXY
 	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
 	-1,
 	'CreateStimulusSequence',
-	'A test case, identified by its label, can have one or more labeled sequences of stimuli.
+	'Deprecated: AddStimulusSequence now adds a labelled sequence to the current test case.
+A test case, identified by its label, can have one or more labeled sequences of stimuli.
 These sequences may run in parallel and may interact via assess signals.',
 	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
 INSERT INTO SPR_REP
@@ -2224,8 +2270,8 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("281d378f-49f6-4d49-a3e9-0e385ed7a8dd",
 	'RequestIntervalTimerValue',
-	'Request the value of the interval timer associated with the sequence to which the observation belongs.
-The value will be signalled to the testbench, attaching the observation identifier.
+	'An observation may request the value of the interval timer associated with its stimulus sequence.
+The value will be signalled back to the testbench, along with the supplied identification key.
 Optionally, the timer can be reset.',
 	'',
 	1,
@@ -2235,8 +2281,8 @@ INSERT INTO C_EP_PROXY
 	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
 	-1,
 	'RequestIntervalTimerValue',
-	'Request the value of the interval timer associated with the sequence to which the observation belongs.
-The value will be signalled to the testbench, attaching the observation identifier.
+	'An observation may request the value of the interval timer associated with its stimulus sequence.
+The value will be signalled back to the testbench, along with the supplied identification key.
 Optionally, the timer can be reset.',
 	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
 INSERT INTO SPR_REP
@@ -2264,7 +2310,8 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("738924ac-d1a8-4152-a0b7-05f980cf4ef6",
 	'AddStimulusSequence',
-	'A test case, identified by its label, can have one or more labeled sequences of stimuli.
+	'A test case can have one or more labeled sequences of stimuli.
+A labelled sequence will be added to the test case currently being constructed.
 These sequences may run in parallel and may interact via assess signals.',
 	'',
 	1,
@@ -2274,7 +2321,8 @@ INSERT INTO C_EP_PROXY
 	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
 	-1,
 	'AddStimulusSequence',
-	'A test case, identified by its label, can have one or more labeled sequences of stimuli.
+	'A test case can have one or more labeled sequences of stimuli.
+A labelled sequence will be added to the test case currently being constructed.
 These sequences may run in parallel and may interact via assess signals.',
 	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
 INSERT INTO SPR_REP
@@ -2284,16 +2332,18 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("322abf3f-cccd-43fe-aaa7-e0979390316c",
 	'CancelTriggeredObservation',
+	'On this signal, any active observations with matching key value will be canceled.
+This has the effect of completing the observation without a failure penalty.',
 	'',
-	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("ca057380-3763-49be-a902-4f89bd14277c",
 	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
 	-1,
 	'CancelTriggeredObservation',
-	'',
+	'On this signal, any active observations with matching key value will be canceled.
+This has the effect of completing the observation without a failure penalty.',
 	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("eff7aa83-70b9-46a6-bfc0-08d66d36431e",

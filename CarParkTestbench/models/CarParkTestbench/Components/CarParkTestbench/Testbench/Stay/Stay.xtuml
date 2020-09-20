@@ -5,7 +5,7 @@ INSERT INTO O_OBJ
 	'Stay',
 	23,
 	'Stay',
-	'',
+	'Holds data pertinent to visit to the carpark.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_NBATTR
 	VALUES ("8ff422d7-76c4-44a9-a1bc-6c39c83e2ae2",
@@ -18,7 +18,7 @@ INSERT INTO O_ATTR
 	"1be5dd1b-f517-40ac-8691-0144999e11da",
 	"00000000-0000-0000-0000-000000000000",
 	'ticketNumber',
-	'',
+	'Ticket number associated with this stay.',
 	'',
 	'ticketNumber',
 	0,
@@ -26,143 +26,35 @@ INSERT INTO O_ATTR
 	'',
 	'');
 INSERT INTO O_NBATTR
-	VALUES ("993f6387-4172-4684-b398-46588624f021",
+	VALUES ("249908c5-4d0e-4ed1-abf4-71d3510389c3",
 	"1be5dd1b-f517-40ac-8691-0144999e11da");
 INSERT INTO O_BATTR
-	VALUES ("993f6387-4172-4684-b398-46588624f021",
+	VALUES ("249908c5-4d0e-4ed1-abf4-71d3510389c3",
 	"1be5dd1b-f517-40ac-8691-0144999e11da");
 INSERT INTO O_ATTR
-	VALUES ("993f6387-4172-4684-b398-46588624f021",
-	"1be5dd1b-f517-40ac-8691-0144999e11da",
-	"3753c386-f1e8-4d59-917d-47fefb9b0abb",
-	'hours',
-	'',
-	'',
-	'hours',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000002",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("9121462d-e5a1-4bc2-b44c-3192fc52edf8",
-	"1be5dd1b-f517-40ac-8691-0144999e11da");
-INSERT INTO O_BATTR
-	VALUES ("9121462d-e5a1-4bc2-b44c-3192fc52edf8",
-	"1be5dd1b-f517-40ac-8691-0144999e11da");
-INSERT INTO O_ATTR
-	VALUES ("9121462d-e5a1-4bc2-b44c-3192fc52edf8",
-	"1be5dd1b-f517-40ac-8691-0144999e11da",
-	"993f6387-4172-4684-b398-46588624f021",
-	'minutes',
-	'',
-	'',
-	'minutes',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000002",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("8f9d2a19-75f0-46cf-99f0-6556f4427b80",
-	"1be5dd1b-f517-40ac-8691-0144999e11da");
-INSERT INTO O_BATTR
-	VALUES ("8f9d2a19-75f0-46cf-99f0-6556f4427b80",
-	"1be5dd1b-f517-40ac-8691-0144999e11da");
-INSERT INTO O_ATTR
-	VALUES ("8f9d2a19-75f0-46cf-99f0-6556f4427b80",
+	VALUES ("249908c5-4d0e-4ed1-abf4-71d3510389c3",
 	"1be5dd1b-f517-40ac-8691-0144999e11da",
 	"8ff422d7-76c4-44a9-a1bc-6c39c83e2ae2",
-	'issuedAt',
+	'payingAt',
+	'The location where payment is being attempted.',
 	'',
-	'',
-	'issuedAt',
+	'payingAt',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'',
 	'');
 INSERT INTO O_NBATTR
-	VALUES ("3753c386-f1e8-4d59-917d-47fefb9b0abb",
+	VALUES ("984d2874-070d-4710-949f-3ce8fca04191",
 	"1be5dd1b-f517-40ac-8691-0144999e11da");
 INSERT INTO O_BATTR
-	VALUES ("3753c386-f1e8-4d59-917d-47fefb9b0abb",
+	VALUES ("984d2874-070d-4710-949f-3ce8fca04191",
 	"1be5dd1b-f517-40ac-8691-0144999e11da");
 INSERT INTO O_ATTR
-	VALUES ("3753c386-f1e8-4d59-917d-47fefb9b0abb",
-	"1be5dd1b-f517-40ac-8691-0144999e11da",
-	"8f9d2a19-75f0-46cf-99f0-6556f4427b80",
-	'startTime',
-	'',
-	'',
-	'startTime',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000002",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("9b73c32c-969d-4951-9cdf-85737e729dcc",
-	"1be5dd1b-f517-40ac-8691-0144999e11da");
-INSERT INTO O_BATTR
-	VALUES ("9b73c32c-969d-4951-9cdf-85737e729dcc",
-	"1be5dd1b-f517-40ac-8691-0144999e11da");
-INSERT INTO O_ATTR
-	VALUES ("9b73c32c-969d-4951-9cdf-85737e729dcc",
+	VALUES ("984d2874-070d-4710-949f-3ce8fca04191",
 	"1be5dd1b-f517-40ac-8691-0144999e11da",
 	"249908c5-4d0e-4ed1-abf4-71d3510389c3",
-	'returnedAt',
-	'',
-	'',
-	'returnedAt',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000004",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("249908c5-4d0e-4ed1-abf4-71d3510389c3",
-	"1be5dd1b-f517-40ac-8691-0144999e11da");
-INSERT INTO O_BATTR
-	VALUES ("249908c5-4d0e-4ed1-abf4-71d3510389c3",
-	"1be5dd1b-f517-40ac-8691-0144999e11da");
-INSERT INTO O_ATTR
-	VALUES ("249908c5-4d0e-4ed1-abf4-71d3510389c3",
-	"1be5dd1b-f517-40ac-8691-0144999e11da",
-	"9121462d-e5a1-4bc2-b44c-3192fc52edf8",
-	'payingAt',
-	'',
-	'',
-	'payingAt',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000004",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("c6203d66-3232-461f-b59e-ee44f45df961",
-	"1be5dd1b-f517-40ac-8691-0144999e11da");
-INSERT INTO O_BATTR
-	VALUES ("c6203d66-3232-461f-b59e-ee44f45df961",
-	"1be5dd1b-f517-40ac-8691-0144999e11da");
-INSERT INTO O_ATTR
-	VALUES ("c6203d66-3232-461f-b59e-ee44f45df961",
-	"1be5dd1b-f517-40ac-8691-0144999e11da",
-	"9b73c32c-969d-4951-9cdf-85737e729dcc",
-	'paid',
-	'',
-	'',
-	'paid',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000001",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("984d2874-070d-4710-949f-3ce8fca04191",
-	"1be5dd1b-f517-40ac-8691-0144999e11da");
-INSERT INTO O_BATTR
-	VALUES ("984d2874-070d-4710-949f-3ce8fca04191",
-	"1be5dd1b-f517-40ac-8691-0144999e11da");
-INSERT INTO O_ATTR
-	VALUES ("984d2874-070d-4710-949f-3ce8fca04191",
-	"1be5dd1b-f517-40ac-8691-0144999e11da",
-	"c6203d66-3232-461f-b59e-ee44f45df961",
 	'deadline',
-	'',
+	'Time by which car park should be vacated; not used in initial use cases.',
 	'',
 	'deadline',
 	0,

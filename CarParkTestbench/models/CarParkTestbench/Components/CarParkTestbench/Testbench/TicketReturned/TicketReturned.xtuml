@@ -11,52 +11,22 @@ It may be returned due to cancellation as well as full payment.',
 INSERT INTO O_TFR
 	VALUES ("1d410a38-a4bd-4b18-9622-b3ed27359bda",
 	"5222933c-00db-4d32-b3a2-cf0a83991436",
-	'CreatePolling',
+	'Create',
 	'Add an observation of this type to the ''script'' of a test case.
 See Observation.AppendPolling for description.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'create object instance tr of TicketReturned;
+	'create object instance ticket of TicketReturned;
+ticket.location = param.location;
 
 create object instance obs of Observation;
-relate tr to obs across R4;
-tr.location = param.location;
+relate ticket to obs across R4;
 
-obs.AppendPolling( stimulus:param.stimulus,
-                   pollInterval:param.pollInterval, 
-                   timeLimit:param.timeLimit );
-',
+obs.Add( sequence:param.sequence, pollInterval:0, timeLimit:0, key:"TicketReturned", concurrent:True );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
 	0);
-INSERT INTO O_TPARM
-	VALUES ("19ece96a-b80e-459e-9629-1e9b8fffed09",
-	"1d410a38-a4bd-4b18-9622-b3ed27359bda",
-	'pollInterval',
-	"ba5eda7a-def5-0000-0000-000000000002",
-	0,
-	'',
-	"3d3ce33c-980c-43f8-b231-7cab60e394e0",
-	'');
-INSERT INTO O_TPARM
-	VALUES ("d3be3d15-3df2-4825-952d-be6e1c58049f",
-	"1d410a38-a4bd-4b18-9622-b3ed27359bda",
-	'timeLimit',
-	"ba5eda7a-def5-0000-0000-000000000002",
-	0,
-	'',
-	"19ece96a-b80e-459e-9629-1e9b8fffed09",
-	'');
-INSERT INTO O_TPARM
-	VALUES ("2bc8c178-fc02-4a13-9338-fed691a9f2e3",
-	"1d410a38-a4bd-4b18-9622-b3ed27359bda",
-	'stimulus',
-	"ba5eda7a-def5-0000-0000-000000000005",
-	0,
-	'',
-	"00000000-0000-0000-0000-000000000000",
-	'');
 INSERT INTO O_TPARM
 	VALUES ("3d3ce33c-980c-43f8-b231-7cab60e394e0",
 	"1d410a38-a4bd-4b18-9622-b3ed27359bda",
@@ -64,7 +34,16 @@ INSERT INTO O_TPARM
 	"ba5eda7a-def5-0000-0000-000000000004",
 	0,
 	'',
-	"2bc8c178-fc02-4a13-9338-fed691a9f2e3",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("2d87870b-9a3e-4afa-a6d4-1503790319c1",
+	"1d410a38-a4bd-4b18-9622-b3ed27359bda",
+	'sequence',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"3d3ce33c-980c-43f8-b231-7cab60e394e0",
 	'');
 INSERT INTO O_TFR
 	VALUES ("96bc575a-109f-49be-97d0-a7153d1b0154",
@@ -86,48 +65,8 @@ end if;
 ',
 	1,
 	'',
-	"4565bd20-994c-449d-bcff-1ab853c71baf",
-	0);
-INSERT INTO O_TFR
-	VALUES ("4565bd20-994c-449d-bcff-1ab853c71baf",
-	"5222933c-00db-4d32-b3a2-cf0a83991436",
-	'CreateTriggered',
-	'Add an observation of this type to the ''script'' of a test case.
-See Observation.AppendPolling for description.',
-	"ba5eda7a-def5-0000-0000-000000000000",
-	0,
-	'create object instance tr of TicketReturned;
-
-create object instance obs of Observation;
-relate tr to obs across R4;
-tr.location = param.location;
-
-obs.AppendTriggered( stimulus:param.stimulus, key:"TicketReturned",
-                   pollInterval:0, 
-                   timeLimit:0 );
-',
-	1,
-	'',
 	"1d410a38-a4bd-4b18-9622-b3ed27359bda",
 	0);
-INSERT INTO O_TPARM
-	VALUES ("29c7c540-dfde-47c9-bbb4-1bd2015f10f2",
-	"4565bd20-994c-449d-bcff-1ab853c71baf",
-	'stimulus',
-	"ba5eda7a-def5-0000-0000-000000000005",
-	0,
-	'',
-	"00000000-0000-0000-0000-000000000000",
-	'');
-INSERT INTO O_TPARM
-	VALUES ("7a7f4e73-62ba-4245-88a1-9b07dbe1238a",
-	"4565bd20-994c-449d-bcff-1ab853c71baf",
-	'location',
-	"ba5eda7a-def5-0000-0000-000000000004",
-	0,
-	'',
-	"29c7c540-dfde-47c9-bbb4-1bd2015f10f2",
-	'');
 INSERT INTO O_NBATTR
 	VALUES ("178adcab-7277-4875-ba4a-fa59c32e69b5",
 	"5222933c-00db-4d32-b3a2-cf0a83991436");

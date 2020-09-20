@@ -13,17 +13,15 @@ INSERT INTO O_TFR
 	'Create',
 	'Add a stimulus of this type to the ''script of a test case.
 ',
-	"ba5eda7a-def5-0000-0000-000000000005",
+	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'create object instance tr of TicketRequested;
-tr.location = param.location;
+	'create object instance request of TicketRequested;
+request.location = param.location;
 
 create object instance stimulus of Stimulus;
-relate stimulus to tr across R3;
+relate stimulus to request across R3;
 
-stimulus.AddToTest( seqLabel:param.seqLabel );
-return stimulus.stimulusId;
-',
+stimulus.AddToTest( seqLabel:param.seqLabel );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
