@@ -137,7 +137,7 @@ INSERT INTO O_TFR
 	'Modify the timer resolution of the associated stimulus sequence.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'send TESTSEQ::SetSequenceResolution( stimulusId:self.stimulusId, 
+	'send TESTSEQ::SetSequenceResolution( seqLabel:param.seqLabel, 
                                      resolution:param.resolution );',
 	1,
 	'',
@@ -150,7 +150,7 @@ INSERT INTO O_TPARM
 	"74e39e3b-eaad-47cb-889d-3ede473b7f8b",
 	0,
 	'',
-	"00000000-0000-0000-0000-000000000000",
+	"79c09976-004d-4285-bb06-abba3f568e5c",
 	'');
 INSERT INTO S_DT_PROXY
 	VALUES ("74e39e3b-eaad-47cb-889d-3ede473b7f8b",
@@ -159,6 +159,15 @@ INSERT INTO S_DT_PROXY
 	'',
 	'',
 	'../../../../../../../TestFramework/models/TestFramework/SharedDatatypes/SharedDatatypes.xtuml');
+INSERT INTO O_TPARM
+	VALUES ("79c09976-004d-4285-bb06-abba3f568e5c",
+	"650494c9-b7f8-473d-a12e-4edbbc7dfb88",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
 INSERT INTO O_NBATTR
 	VALUES ("6663c5ad-4d93-406a-88e4-7083ec0b544f",
 	"0279c804-9fcf-4db2-bcfa-077aadf90fb2");
