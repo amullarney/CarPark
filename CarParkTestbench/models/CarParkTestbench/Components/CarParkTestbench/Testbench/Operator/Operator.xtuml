@@ -66,7 +66,7 @@ end if;
 
 if ( operator.Occupancy != 0 )
 	success = false;
-    LOG::LogFailure( message:"Occuapncy value is wrong." );
+    LOG::LogFailure( message:"Occupancy value is wrong." );
 end if;
 
 if ( operator.OccupancyIncreased != 1 )

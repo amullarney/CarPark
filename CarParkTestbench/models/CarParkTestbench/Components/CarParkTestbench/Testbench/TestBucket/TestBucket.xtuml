@@ -61,8 +61,13 @@ INSERT INTO O_TFR
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'select one nominal related by self->NominalCaseBucket[R7];
-nominal.RunBucketTests();
-',
+if ( not_empty nominal )
+  nominal.RunBucketTests();
+end if;
+select one nonnominal related by self->NonNominalCaseBucket[R7];
+if ( not_empty nonnominal )
+  nonnominal.RunBucketTests();
+end if;',
 	1,
 	'',
 	"c4fe1a10-6340-4e74-84e8-bf3577b4ee0f",
