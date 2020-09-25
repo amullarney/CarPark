@@ -2732,7 +2732,7 @@ INSERT INTO GD_GE
 	"6e4007fa-f375-4c49-9cd6-be2522d4e869",
 	21,
 	0,
-	'CarParkTestbench::Components::CarParkTestbench::Testbench::NonNominalCaseBucket');
+	'CarParkTestbench::Components::CarParkTestbench::Testbench::PaymentDelayedBucket');
 INSERT INTO GD_SHP
 	VALUES ("d60195f1-4ad2-491a-bb7a-55184e96655a");
 INSERT INTO GD_NCS
@@ -2771,7 +2771,7 @@ INSERT INTO GD_GE
 	"faddc0ac-22ee-4d6c-a3a5-9d06fcd60f80",
 	35,
 	0,
-	'CarParkTestbench::Components::CarParkTestbench::Testbench::R7::NonNominalCaseBucket');
+	'CarParkTestbench::Components::CarParkTestbench::Testbench::R7::PaymentDelayedBucket');
 INSERT INTO GD_CON
 	VALUES ("e5ae6f0d-a923-42ed-a9d0-3e38e0532dcc",
 	"00000000-0000-0000-0000-000000000000");
@@ -2957,12 +2957,12 @@ INSERT INTO R_OIR
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_OBJ_PROXY
 	VALUES ("6e4007fa-f375-4c49-9cd6-be2522d4e869",
-	'NonNominalCaseBucket',
+	'PaymentDelayedBucket',
 	31,
-	'NonNominalCaseBucket',
+	'PaymentDelayedBucket',
 	'A test bucket which runs a number of tests based on Use Cases for the CarPark application.',
 	"00000000-0000-0000-0000-000000000000",
-	'./NonNominalCaseBucket/NonNominalCaseBucket.xtuml');
+	'./PaymentDelayedBucket/PaymentDelayedBucket.xtuml');
 INSERT INTO PE_PE
 	VALUES ("1ede6a71-f75b-43e3-beca-1fc6da5524e2",
 	1,
@@ -3123,7 +3123,7 @@ INSERT INTO O_OBJ_PROXY
 	24,
 	'TicketInserted',
 	'An example of a stimulus invoking an interface signal to the application under test.
-This requests that payroll data be retrieved for review from the application.',
+This signals that a ticket has been inserted in either a payment stand or an exit stand.',
 	"00000000-0000-0000-0000-000000000000",
 	'./TicketInserted/TicketInserted.xtuml');
 INSERT INTO PE_PE
@@ -3316,7 +3316,7 @@ INSERT INTO S_SYNC
 	'Used to establish a time delay before the next observation in a sequence is triggered.
 The duration is specified at the current timer resolution of the associated sequence.',
 	'create object instance delay of Observation;
-send TESTSEQ::InsertDelay( seqLabel:param.sequence, observationId: delay.observationId, duration:param.duration );
+send TESTSEQ::InsertDelay( seqLabel:param.seqLabel, observationId: delay.observationId, duration:param.duration );
 delete object instance delay; ',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
@@ -3325,7 +3325,7 @@ delete object instance delay; ',
 INSERT INTO S_SPARM
 	VALUES ("f8bb7ab1-cec1-46e8-b353-ee7604887e7d",
 	"86884735-4a1f-4109-a20c-11988fcaa7c4",
-	'sequence',
+	'seqLabel',
 	"ba5eda7a-def5-0000-0000-000000000004",
 	0,
 	'',

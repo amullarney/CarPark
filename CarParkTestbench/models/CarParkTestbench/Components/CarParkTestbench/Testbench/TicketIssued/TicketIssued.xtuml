@@ -21,7 +21,7 @@ ticket.location = param.location;
 create object instance obs of Observation;
 relate ticket to obs across R4;
 
-obs.Add( sequence:param.sequence, pollInterval:0, timeLimit:0, key:"TicketIssued", concurrent:False );',
+obs.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"TicketIssued", concurrent:False );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
@@ -38,7 +38,7 @@ INSERT INTO O_TPARM
 INSERT INTO O_TPARM
 	VALUES ("5724376d-828d-4978-9b24-4978295ea683",
 	"72e606ed-28db-486c-a85a-fafc0a38e8cc",
-	'sequence',
+	'seqLabel',
 	"ba5eda7a-def5-0000-0000-000000000004",
 	0,
 	'',
@@ -52,7 +52,7 @@ INSERT INTO O_TFR
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'LOG::LogInfo( message:" --- Checking for ticket issued at " + self.location );
-select one obs related by self->Observation[R4]; 
+select one observation related by self->Observation[R4]; 
 
 select any t from instances of Ticket
  where ( selected.location == self.location );
@@ -60,7 +60,7 @@ if ( not_empty t )
   create object instance stay of Stay;
   stay.ticketNumber = t.number;
   delete object instance t;
-  obs.Complete( success:True );
+  observation.Complete( success:True );
 else
   success = False;	// @TODO here to allow breakpoint only
 end if;

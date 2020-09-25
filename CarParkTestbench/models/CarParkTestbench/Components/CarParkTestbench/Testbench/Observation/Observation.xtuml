@@ -35,7 +35,7 @@ Note:
  the ordering of simultaneous event processing may affect success or failure.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'send TESTSEQ::AddObservation( seqLabel:param.sequence,
+	'send TESTSEQ::AddObservation( seqLabel:param.seqLabel,
                               observationId:self.observationId,
                               pollInterval:param.pollInterval, 
                               pollDuration:param.timeLimit, 
@@ -48,12 +48,12 @@ Note:
 INSERT INTO O_TPARM
 	VALUES ("f3c2a672-6a13-4cc4-8c50-824b58627db1",
 	"3eab7205-38dd-4e0a-a177-a5c994ff1229",
-	'sequence',
+	'seqLabel',
 	"ba5eda7a-def5-0000-0000-000000000004",
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000",
-	'');
+	'An observation is added to the currently latest stimulus on the specified sequence.');
 INSERT INTO O_TPARM
 	VALUES ("05e961e0-e5c1-4265-ac65-9c3bfe9d15a1",
 	"3eab7205-38dd-4e0a-a177-a5c994ff1229",

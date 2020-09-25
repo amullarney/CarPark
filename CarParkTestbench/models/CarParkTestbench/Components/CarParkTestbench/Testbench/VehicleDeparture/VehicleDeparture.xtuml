@@ -66,6 +66,9 @@ if ( self.standType == "Entry" )
   send EntryStand::VehicleEntered( Location:self.location );
 else
   send ExitStand::VehicleExited( Location:self.location );
+  select any stay from instances of Stay
+   where ( selected.exitedAt == self.location );
+  delete object instance stay;
 end if;
 
 select one stimulus related by self->Stimulus[R3];

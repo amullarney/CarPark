@@ -22,7 +22,7 @@ create object instance obs of Observation;
 relate cd to obs across R4;
 cd.location = param.location;
 
-obs.Add( sequence:param.sequence, pollInterval:0, timeLimit:0, key:"Dispensed", concurrent:True );',
+obs.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"Dispensed", concurrent:True );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
@@ -39,7 +39,7 @@ INSERT INTO O_TPARM
 INSERT INTO O_TPARM
 	VALUES ("97be00ab-9c50-4ab9-bfc2-7a4383d88d7d",
 	"057a56ec-bdd2-4e4e-b919-277cc731acad",
-	'sequence',
+	'seqLabel',
 	"ba5eda7a-def5-0000-0000-000000000004",
 	0,
 	'',
@@ -52,15 +52,15 @@ INSERT INTO O_TFR
 	'When invoked, search any existing notifications looking for a match.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select any ch from instances of Change
+	'select any change from instances of Change
  where ( selected.location == self.location );
-if ( not_empty ch )
-  if ( ch.amount > 0 )
+if ( not_empty change )
+  if ( change.amount > 0 )
     LOG::LogInfo( message:" -- - Change dispensed at " + self.location  );
   end if;
-  select one obs related by self->Observation[R4]; 
-  obs.Complete( success:True );
-  delete object instance ch;
+  select one observation related by self->Observation[R4]; 
+  observation.Complete( success:True );
+  delete object instance change;
 else
   success = False;	// @TODO here to allow breakpoint only
 end if;
