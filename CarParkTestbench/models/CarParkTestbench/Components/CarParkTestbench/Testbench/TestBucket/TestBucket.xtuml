@@ -56,17 +56,17 @@ INSERT INTO O_TFR
 INSERT INTO O_TFR
 	VALUES ("2cf1ddc5-96e6-4fb5-a47d-07ff1c9a9fed",
 	"e83ec484-5cef-45b8-8584-e5e8f0edf90f",
-	'RunTestCases',
+	'CreateTestCases',
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'select one nominal related by self->NominalCaseBucket[R7];
 if ( not_empty nominal )
-  nominal.RunBucketTests();
+  nominal.CreateBucketTests();
 end if;
-select one nonnominal related by self->NonNominalCaseBucket[R7];
+select one nonnominal related by self->PaymentDelayedBucket[R7];
 if ( not_empty nonnominal )
-  nonnominal.RunBucketTests();
+  nonnominal.CreateBucketTests();
 end if;',
 	1,
 	'',

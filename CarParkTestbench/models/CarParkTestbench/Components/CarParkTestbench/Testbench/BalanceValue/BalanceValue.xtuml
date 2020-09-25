@@ -17,11 +17,11 @@ See Observation.AppendPolling for description.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
 	'create object instance balanceValue of BalanceValue;
+balanceValue.location = param.location;
+balanceValue.pay = param.pay;
 
 create object instance obs of Observation;
 relate balanceValue to obs across R4;
-
-balanceValue.location = param.location;
 
 obs.Add( sequence:param.sequence, pollInterval:0, timeLimit:0, key:"Balance", concurrent:True );',
 	1,
@@ -46,6 +46,15 @@ INSERT INTO O_TPARM
 	'',
 	"489257c2-21c8-4cbc-a803-32789338e963",
 	'');
+INSERT INTO O_TPARM
+	VALUES ("9f6da3d2-1b58-49c7-b777-ceac989641d3",
+	"0b99b513-dff8-46d2-adcd-15ed347c1ed9",
+	'pay',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"160e84a3-db3a-4fd7-a2ce-73bc14fd97c6",
+	'');
 INSERT INTO O_TFR
 	VALUES ("6922d6cb-3230-415e-a11f-7b4d9255795f",
 	"02570cd5-45d0-4ab0-9f80-9e0d84e616ed",
@@ -59,10 +68,17 @@ select any b from instances of Balance
  where ( selected.location == self.location );
 if ( not_empty b )
   LOG::LogReal( message:"Balance ", r:b.amount );
+  select one obs related by self->Observation[R4]; 
+  if ( not self.pay )  // testing non-payment timeout
+    obs.Complete( success:True );
+    return;
+  end if;
   if ( b.amount <= 0.0 )
-    select one obs related by self->Observation[R4]; 
     obs.Complete( success:True );
     LOG::LogInfo( message:"paid in full" );
+    select any stay from instances of Stay
+     where ( selected.payingAt == self.location );
+    stay.paid = True;
     if ( b.amount == 0.0 )  // exact - no change
       LOG::LogInfo( message:"Cancelling change dispensed observation at " + self.location );
       send TESTSEQ::CancelTriggeredObservation( key:"Dispensed" );
@@ -84,8 +100,6 @@ if ( not_empty b )
     send Payer::InsertedCurrency( Location:self.location, Amount:amount );
   end if;
   delete object instance b;
-else
-  success = False;	// @TODO here to allow breakpoint only
 end if;
 ',
 	1,
@@ -108,6 +122,24 @@ INSERT INTO O_ATTR
 	'location',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("ca6d5695-80c0-4cc0-8570-c7ef5ebe964c",
+	"02570cd5-45d0-4ab0-9f80-9e0d84e616ed");
+INSERT INTO O_BATTR
+	VALUES ("ca6d5695-80c0-4cc0-8570-c7ef5ebe964c",
+	"02570cd5-45d0-4ab0-9f80-9e0d84e616ed");
+INSERT INTO O_ATTR
+	VALUES ("ca6d5695-80c0-4cc0-8570-c7ef5ebe964c",
+	"02570cd5-45d0-4ab0-9f80-9e0d84e616ed",
+	"d57ead3c-a41e-45e9-9c48-186fab91c284",
+	'pay',
+	'',
+	'',
+	'pay',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
 	'',
 	'');
 INSERT INTO O_ID

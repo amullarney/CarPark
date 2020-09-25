@@ -10,8 +10,8 @@ INSERT INTO O_OBJ
 INSERT INTO O_TFR
 	VALUES ("d46c90fe-f810-493d-bb6f-190f4fc6db0b",
 	"cc521408-6dcf-4740-b70f-b30d4d5e1f14",
-	'RunBucketTests',
-	'',
+	'CreateBucketTests',
+	'Script the sequences of stimuli and observations for each test case in this bucket.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'select one bucket related by self->TestBucket[R7];
@@ -19,6 +19,9 @@ send TESTSEQ::NameTestBucket( bucketId:bucket.bucketId, bucketLabel:"CarPark_Buc
 send TESTSEQ::SetTestBucketResolution( bucketId:bucket.bucketId, resolution:timerResolution::second );
 
 send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC1" ); 
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:3, caseLabel:"UC1" );
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:6, caseLabel:"UC1" );
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:7, caseLabel:"UC1" );
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
 VehicleArrived::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 QueryTicketRequest::Create( sequence:"seq01", location:"North" );
@@ -31,17 +34,22 @@ BarrierStatus::Create( sequence:"seq01", location:"North", stand:"Entry", isopen
 FastForward::Create( seqLabel:"seq01", hours:5, minutes:0, seconds:0 );
 
 send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC5" ); 
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:17, caseLabel:"UC5" );
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:22, caseLabel:"UC5" );
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:32, caseLabel:"UC5" );
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq05" );
-TicketInserted::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay", number:1 );
+TicketInserted::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
 TicketReturned::Create( sequence:"seq05", location:"1st Floor" );
-BalanceValue::Create( sequence:"seq05", location:"1st Floor" );
+BalanceValue::Create( sequence:"seq05", location:"1st Floor", pay:True );
 ChangeDispensed::Create( sequence:"seq05", location:"1st Floor" );
 TicketTaken::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
 
 send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC11" ); 
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:39, caseLabel:"UC11" );
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:41, caseLabel:"UC11" );
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq11" );
 VehicleArrived::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
-TicketInserted::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", number:1 );
+TicketInserted::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
 BarrierStatus::Create( sequence:"seq11", location:"Lane 1", stand:"Exit", isopen:True );
 VehicleDeparture::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
 BarrierStatus::Create( sequence:"seq11", location:"Lane 1", stand:"Exit", isopen:False );
@@ -55,7 +63,7 @@ INSERT INTO O_TFR
 	VALUES ("4665b329-5a15-481f-9370-bbcb69d99041",
 	"cc521408-6dcf-4740-b70f-b30d4d5e1f14",
 	'AddBucketToSuite',
-	'',
+	'Configure the Test Suite to include this bucket''s set of test cases when run.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
 	'create object instance nominal of NominalCaseBucket;
@@ -70,7 +78,7 @@ INSERT INTO O_TFR
 	VALUES ("3cd64fce-6b83-4f3b-aa4b-09aec8a972f9",
 	"cc521408-6dcf-4740-b70f-b30d4d5e1f14",
 	'RunSolo',
-	'',
+	'Execute the set of tests in this bucket stand-alone.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
 	'create object instance operator of Operator;  // for status checks..

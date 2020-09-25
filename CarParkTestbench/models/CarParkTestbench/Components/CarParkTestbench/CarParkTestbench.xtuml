@@ -1585,6 +1585,7 @@ INSERT INTO SPR_RS
  where ( selected.payingAt == param.Location );
 if ( not_empty stay )
   LOG::LogInfo( message:"Returning ticket at " + param.Location );
+  stay.ticketReturned = True;
 end if;
 send TESTSEQ::Assess( key:"TicketReturned" );',
 	1,
@@ -1653,7 +1654,9 @@ INSERT INTO SPR_RS
  where ( selected.payingAt == param.Location );
 if ( not_empty stay )
   LOG::LogInfo( message:"Payment transaction cancelled at " + param.Location );
-end if;',
+end if;
+send TESTSEQ::CancelTriggeredObservation( key:"Dispensed" );
+send TESTSEQ::CancelTriggeredObservation( key:"Balance" );',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1916,7 +1919,7 @@ INSERT INTO SPR_RS
 	'select any bucket from instances of TestBucket
   where ( selected.bucketId == param.bucketId );
 LOG::LogInfo( message:"!!!! Initializing Test Bucket " );
-bucket.RunTestCases();',
+bucket.CreateTestCases();',
 	1,
 	0);
 INSERT INTO C_EP_PROXY

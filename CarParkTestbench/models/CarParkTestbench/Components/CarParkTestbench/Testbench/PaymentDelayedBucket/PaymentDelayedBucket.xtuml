@@ -2,16 +2,16 @@
 
 INSERT INTO O_OBJ
 	VALUES ("6e4007fa-f375-4c49-9cd6-be2522d4e869",
-	'NonNominalCaseBucket',
+	'PaymentDelayedBucket',
 	31,
-	'NonNominalCaseBucket',
+	'PaymentDelayedBucket',
 	'A test bucket which runs a number of tests based on Use Cases for the CarPark application.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("75547086-6396-4515-a0b0-880e79ee6311",
 	"6e4007fa-f375-4c49-9cd6-be2522d4e869",
-	'RunBucketTests',
-	'',
+	'CreateBucketTests',
+	'Script the sequences of stimuli and observations for each test case in this bucket.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'select one bucket related by self->TestBucket[R7];
@@ -31,22 +31,14 @@ BarrierStatus::Create( sequence:"seq01", location:"North", stand:"Entry", isopen
 FastForward::Create( seqLabel:"seq01", hours:0, minutes:5, seconds:0 );
 
 send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC5_a" ); 
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:27, caseLabel:"UC5_a" );
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:33, caseLabel:"UC5_a" );
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq05" );
-TicketInserted::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay", number:1 );
-//::InsertDelay( sequence:"seq05", duration:31 );
+TicketInserted::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
+BalanceValue::Create( sequence:"seq05", location:"1st Floor", pay:False );
 TicketReturned::Create( sequence:"seq05", location:"1st Floor" );
-BalanceValue::Create( sequence:"seq05", location:"1st Floor" );
 ChangeDispensed::Create( sequence:"seq05", location:"1st Floor" );
 TicketTaken::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
-
-send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC11_a" ); 
-send TESTSEQ::AddStimulusSequence( seqLabel:"seq11" );
-VehicleArrived::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
-TicketInserted::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", number:1 );
-BarrierStatus::Create( sequence:"seq11", location:"Lane 1", stand:"Exit", isopen:True );
-::InsertDelay( sequence:"seq11", duration:40 );
-VehicleDeparture::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
-BarrierStatus::Create( sequence:"seq11", location:"Lane 1", stand:"Exit", isopen:False );
 
 bucket.Initialized();',
 	1,
@@ -57,12 +49,12 @@ INSERT INTO O_TFR
 	VALUES ("e52ffdae-5abf-468a-8d51-58e7136f8c5c",
 	"6e4007fa-f375-4c49-9cd6-be2522d4e869",
 	'AddBucketToSuite',
-	'',
+	'Configure the Test Suite to include this bucket''s set of test cases when run.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'create object instance problems of NonNominalCaseBucket;
+	'create object instance problem of PaymentDelayedBucket;
 create object instance bucket of TestBucket;
-relate problems to bucket across R7;
+relate problem to bucket across R7;
 bucket.AddToSuite();',
 	1,
 	'',
@@ -72,12 +64,12 @@ INSERT INTO O_TFR
 	VALUES ("b995823e-33f0-44d2-85bc-13d529efc878",
 	"6e4007fa-f375-4c49-9cd6-be2522d4e869",
 	'RunSolo',
-	'',
+	'Execute the set of tests in this bucket stand-alone.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
 	'create object instance operator of Operator;  // for status checks..
 send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark NonNominal Test Suite", keepAllCases:False ); 
-NonNominalCaseBucket::AddBucketToSuite();
+PaymentDelayedBucket::AddBucketToSuite();
 send Operator::OpenCarpark();',
 	1,
 	'',

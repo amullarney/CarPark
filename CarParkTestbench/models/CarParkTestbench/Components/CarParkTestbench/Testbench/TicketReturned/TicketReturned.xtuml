@@ -56,7 +56,8 @@ INSERT INTO O_TFR
 select one obs related by self->Observation[R4]; 
 
 select any stay from instances of Stay
- where ( selected.payingAt == self.location );
+ where ( selected.payingAt == self.location )
+  and ( selected.ticketReturned == True );
 if ( not_empty stay )
   obs.Complete( success:True );
 else

@@ -19,7 +19,6 @@ INSERT INTO O_TFR
 	'create object instance insertion of TicketInserted;
 insertion.location = param.location;
 insertion.standType = param.stand;
-insertion.number = param.number;
 
 create object instance stimulus of Stimulus;
 relate stimulus to insertion across R3; 
@@ -56,15 +55,6 @@ INSERT INTO O_TPARM
 	'',
 	"233db851-8730-405a-b6f6-c765bb91f902",
 	'');
-INSERT INTO O_TPARM
-	VALUES ("476a8e19-8f73-4cdd-b41d-b0c2fe7f694a",
-	"165f67eb-f21a-4f39-9700-ba93b069b8e7",
-	'number',
-	"ba5eda7a-def5-0000-0000-000000000002",
-	0,
-	'',
-	"575eeeb4-9a17-4225-be04-7bb8d6d35bf2",
-	'');
 INSERT INTO O_TFR
 	VALUES ("cda2beec-3e37-4d70-be67-8417cc30c9a9",
 	"0886984c-f53c-40d8-a864-555ceb665749",
@@ -74,11 +64,15 @@ INSERT INTO O_TFR
 	1,
 	'LOG::LogInfo( message:"Ticket inserted at " + self.location + self.standType );
 
-select any stay from instances of Stay;
 if ( self.standType == "Pay" )
+  select any stay from instances of Stay
+   where ( not selected.paid );
   stay.payingAt = self.location;
   send Payer::InsertedTicket( Location:self.location, TicketNumber:stay.ticketNumber);
 else
+  select any stay from instances of Stay
+   where ( selected.paid );
+  stay.exitedAt = self.location;
   send ExitStand::InsertedTicket( Location:self.location, TicketNumber:stay.ticketNumber );
 end if;
 
@@ -123,24 +117,6 @@ INSERT INTO O_ATTR
 	'standType',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000004",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("7be046be-992e-4b3c-b45b-f6806e0d6b82",
-	"0886984c-f53c-40d8-a864-555ceb665749");
-INSERT INTO O_BATTR
-	VALUES ("7be046be-992e-4b3c-b45b-f6806e0d6b82",
-	"0886984c-f53c-40d8-a864-555ceb665749");
-INSERT INTO O_ATTR
-	VALUES ("7be046be-992e-4b3c-b45b-f6806e0d6b82",
-	"0886984c-f53c-40d8-a864-555ceb665749",
-	"6edc5077-78c5-47b2-b34c-abb7372f4406",
-	'number',
-	'',
-	'',
-	'number',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
 INSERT INTO O_ID
