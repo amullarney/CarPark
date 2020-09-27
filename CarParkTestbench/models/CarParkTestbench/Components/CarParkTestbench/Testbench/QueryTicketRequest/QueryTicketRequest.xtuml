@@ -21,7 +21,7 @@ request.location = param.location;
 create object instance obs of Observation;
 relate request to obs across R4;
 
-obs.Add( sequence:param.sequence, pollInterval:0, timeLimit:0, key:"TicketRequest", concurrent:False );',
+obs.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"TicketRequest", concurrent:False );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
@@ -29,7 +29,7 @@ obs.Add( sequence:param.sequence, pollInterval:0, timeLimit:0, key:"TicketReques
 INSERT INTO O_TPARM
 	VALUES ("ed190f13-fd8b-49de-be9a-b88a7918880d",
 	"03babdb5-d972-403b-bd28-cf8322b92453",
-	'sequence',
+	'seqLabel',
 	"ba5eda7a-def5-0000-0000-000000000004",
 	0,
 	'',
@@ -52,14 +52,14 @@ INSERT INTO O_TFR
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'LOG::LogInfo( message:" --- Checking ticket request enabled for entry at " + self.location );
-select one obs related by self->Observation[R4]; 
+select one observation related by self->Observation[R4]; 
 
 select any request from instances of ReceivedTicketRequest
  where ( selected.location == self.location );
 if ( not_empty request )
   if ( request.granted )
     delete object instance request;
-    obs.Complete( success:True );
+    observation.Complete( success:True );
   end if;
 else
   success = False;	// @TODO here to allow breakpoint only

@@ -504,7 +504,7 @@ INSERT INTO GD_GE
 	"68e29e87-70d2-4c06-97db-6b293da075ca",
 	108,
 	0,
-	'CarParkTestbench::Components::CarParkTestbench::Functions');
+	'CarParkTestbench::Components::CarParkTestbench::TestFunctions');
 INSERT INTO GD_SHP
 	VALUES ("36c76d6f-7873-44bc-b7d8-c32db7395a3e");
 INSERT INTO GD_NCS
@@ -999,7 +999,7 @@ INSERT INTO SPR_RS
 	'CarparkOpened',
 	'Indicates that the carpark has completed initialization and is open and ready
 to accept vehicles.',
-	'TestFunctions::RunNominalCases();',
+	'send TESTSEQ::RunTestSuite();',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1258,11 +1258,7 @@ INSERT INTO SPR_RS
 	VALUES ("6a07ad77-617c-40f0-8afc-8240176b531e",
 	'TicketRequestDisabled',
 	'Disables ticket requests at the entry stand.',
-	'LOG::LogInfo( message:"Entry Stand received TicketRequestEnabled at " + param.Location );
-create object instance req of ReceivedTicketRequest;
-req.location = param.Location;
-req.granted = False;
-send TESTSEQ::Assess( key:"TicketRequest" );',
+	'LOG::LogInfo( message:"Entry Stand received TicketRequestDisabled at " + param.Location );',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1589,6 +1585,7 @@ INSERT INTO SPR_RS
  where ( selected.payingAt == param.Location );
 if ( not_empty stay )
   LOG::LogInfo( message:"Returning ticket at " + param.Location );
+  stay.ticketReturned = True;
 end if;
 send TESTSEQ::Assess( key:"TicketReturned" );',
 	1,
@@ -1657,7 +1654,9 @@ INSERT INTO SPR_RS
  where ( selected.payingAt == param.Location );
 if ( not_empty stay )
   LOG::LogInfo( message:"Payment transaction cancelled at " + param.Location );
-end if;',
+end if;
+send TESTSEQ::CancelTriggeredObservation( key:"Dispensed" );
+send TESTSEQ::CancelTriggeredObservation( key:"Balance" );',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1917,10 +1916,10 @@ INSERT INTO SPR_RS
 	VALUES ("4cc8fa66-f8a1-4a2a-b160-8ed806a61df8",
 	'InitializeBucket',
 	'Signals a test bucket to instantiate its test case sequences.',
-	'select any tb from instances of TestBucket
+	'select any bucket from instances of TestBucket
   where ( selected.bucketId == param.bucketId );
-tb.RunTestCases();
-',
+LOG::LogInfo( message:"!!!! Initializing Test Bucket " );
+bucket.CreateTestCases();',
 	1,
 	0);
 INSERT INTO C_EP_PROXY

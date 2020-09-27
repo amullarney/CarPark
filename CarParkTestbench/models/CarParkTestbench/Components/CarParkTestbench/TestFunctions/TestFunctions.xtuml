@@ -1,0 +1,118 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("68e29e87-70d2-4c06-97db-6b293da075ca",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'TestFunctions',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("04f6191e-6c87-4a07-b6c9-92b1c2662975",
+	112,
+	"68e29e87-70d2-4c06-97db-6b293da075ca",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'4.1.17',
+	'CarParkTestbench::Components::CarParkTestbench::TestFunctions');
+INSERT INTO DIM_DIA
+	VALUES ("04f6191e-6c87-4a07-b6c9-92b1c2662975",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_SYNC
+	VALUES ("8ead4405-31c0-4b5c-a9a5-07e3b7222436",
+	"00000000-0000-0000-0000-000000000000",
+	'RunNominalCases',
+	'Configure the Test Suite to include selected Test Bucket subtypes.
+The test scripts in each bucket will execute in the order the buckets are added.',
+	'create object instance operator of Operator;  // for status checks..
+send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Nominal Test Suite", keepAllCases:False ); 
+NominalCaseBucket::AddBucketToSuite();
+send Operator::OpenCarpark();',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("8ead4405-31c0-4b5c-a9a5-07e3b7222436",
+	1,
+	"68e29e87-70d2-4c06-97db-6b293da075ca",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("72bb9eb4-ab85-4a27-8a0f-e7d69307d6b3",
+	"00000000-0000-0000-0000-000000000000",
+	'RunAllCases',
+	'Configure the Test Suite to include each of the Test Bucket subtypes.
+The test scripts in each bucket will execute in the order the buckets are added.',
+	'create object instance operator of Operator;  // for status checks..
+send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Comprehensive Test Suite", keepAllCases:False ); 
+NominalCaseBucket::AddBucketToSuite();
+PaymentDelayedBucket::AddBucketToSuite();
+send Operator::OpenCarpark();',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("72bb9eb4-ab85-4a27-8a0f-e7d69307d6b3",
+	1,
+	"68e29e87-70d2-4c06-97db-6b293da075ca",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("04200a9e-d961-44bc-92f1-43afbe9cec1d",
+	"00000000-0000-0000-0000-000000000000",
+	'RunNonNominalCases',
+	'Configure the Test Suite to include selected Test Bucket subtypes.
+The test scripts in each bucket will execute in the order the buckets are added.',
+	'create object instance operator of Operator;  // for status checks..
+send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Nominal Test Suite", keepAllCases:False ); 
+PaymentDelayedBucket::AddBucketToSuite();
+send Operator::OpenCarpark();',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("04200a9e-d961-44bc-92f1-43afbe9cec1d",
+	1,
+	"68e29e87-70d2-4c06-97db-6b293da075ca",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO PE_PE
+	VALUES ("68e29e87-70d2-4c06-97db-6b293da075ca",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"267abe01-5adc-42d6-aa1d-2adf945776bc",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("267abe01-5adc-42d6-aa1d-2adf945776bc",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'CarParkTestbench',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../CarParkTestbench.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'CarParkTestbench',
+	1,
+	'../../../CarParkTestbench.xtuml');

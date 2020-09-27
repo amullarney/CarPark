@@ -22,7 +22,7 @@ ticket.location = param.location;
 create object instance obs of Observation;
 relate ticket to obs across R4;
 
-obs.Add( sequence:param.sequence, pollInterval:0, timeLimit:0, key:"TicketReturned", concurrent:True );',
+obs.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"TicketReturned", concurrent:True );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
@@ -34,16 +34,16 @@ INSERT INTO O_TPARM
 	"ba5eda7a-def5-0000-0000-000000000004",
 	0,
 	'',
-	"00000000-0000-0000-0000-000000000000",
+	"2d87870b-9a3e-4afa-a6d4-1503790319c1",
 	'');
 INSERT INTO O_TPARM
 	VALUES ("2d87870b-9a3e-4afa-a6d4-1503790319c1",
 	"1d410a38-a4bd-4b18-9622-b3ed27359bda",
-	'sequence',
+	'seqLabel',
 	"ba5eda7a-def5-0000-0000-000000000004",
 	0,
 	'',
-	"3d3ce33c-980c-43f8-b231-7cab60e394e0",
+	"00000000-0000-0000-0000-000000000000",
 	'');
 INSERT INTO O_TFR
 	VALUES ("96bc575a-109f-49be-97d0-a7153d1b0154",
@@ -53,12 +53,13 @@ INSERT INTO O_TFR
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'LOG::LogInfo( message:" --- Checking for ticket returned at " + self.location );
-select one obs related by self->Observation[R4]; 
+select one observation related by self->Observation[R4]; 
 
 select any stay from instances of Stay
- where ( selected.payingAt == self.location );
+ where ( selected.payingAt == self.location )
+  and ( selected.ticketReturned == True );
 if ( not_empty stay )
-  obs.Complete( success:True );
+  observation.Complete( success:True );
 else
   success = False;	// @TODO here to allow breakpoint only
 end if;
