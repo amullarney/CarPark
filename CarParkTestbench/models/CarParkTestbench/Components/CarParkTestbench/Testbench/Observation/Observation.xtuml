@@ -101,7 +101,7 @@ INSERT INTO O_TFR
 if ( not_empty tr )
   tr.CheckRequest();
 else
-  select one bs related by self->BarrierStatus[R4];
+  select one bs related by self->BarrierCheck[R4];
   if ( not_empty bs )
   	bs.CheckStatus(); 
   else
@@ -191,7 +191,7 @@ if ( not_empty ti )
   unrelate ti from self across R4;
   delete object instance ti;
 end if;
-select one bs related by self->BarrierStatus[R4];
+select one bs related by self->BarrierCheck[R4];
 if ( not_empty bs )
   unrelate bs from self across R4;
   delete object instance bs;

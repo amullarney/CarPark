@@ -28,9 +28,9 @@ QueryTicketRequest::Create( seqLabel:"seq01", location:"North" );
 TicketRequested::Create( seqLabel:"seq01", location:"North" );
 TicketIssued::Create( seqLabel:"seq01", location:"North" );
 TicketTaken::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
-BarrierStatus::Create( seqLabel:"seq01", location:"North", stand:"Entry", isopen:True );
+BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:BarrierState::Open );
 VehicleDeparture::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
-BarrierStatus::Create( seqLabel:"seq01", location:"North", stand:"Entry", isopen:False );
+BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:BarrierState::Closed );
 FastForward::Create( seqLabel:"seq01", hours:5, minutes:0, seconds:0 );
 
 send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC5" ); 
@@ -50,9 +50,9 @@ send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:41, caseLabel:"UC11" );
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq11" );
 VehicleArrived::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
 TicketInserted::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
-BarrierStatus::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", isopen:True );
+BarrierCheck::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", state:BarrierState::Open );
 VehicleDeparture::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
-BarrierStatus::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", isopen:False );
+BarrierCheck::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", state:BarrierState::Closed );
 
 bucket.Initialized();',
 	1,

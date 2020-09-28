@@ -53,14 +53,21 @@ INSERT INTO O_ATTR
 	VALUES ("b59dae22-4767-41c9-bf90-c436f7d5ff89",
 	"8cd8b251-9bb6-48fb-a3c2-e50de3168a93",
 	"cbe94237-6e41-44fe-85a2-af91fb9ba2c6",
-	'open',
+	'state',
 	'',
 	'',
-	'open',
+	'state',
 	0,
-	"ba5eda7a-def5-0000-0000-000000000001",
+	"f0c65a10-2e1e-4a19-8c3f-db9b478b5038",
 	'',
 	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("f0c65a10-2e1e-4a19-8c3f-db9b478b5038",
+	"00000000-0000-0000-0000-000000000000",
+	'BarrierState',
+	'',
+	'',
+	'../../../../../../../CarPark/models/CarPark/SharedTypes/SharedTypes.xtuml');
 INSERT INTO O_ID
 	VALUES (0,
 	"8cd8b251-9bb6-48fb-a3c2-e50de3168a93");

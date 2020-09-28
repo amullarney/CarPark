@@ -1561,7 +1561,7 @@ INSERT INTO GD_GE
 	"3a3a75e6-c4b3-4e1f-a602-56400d1c4c0c",
 	21,
 	0,
-	'CarParkTestbench::Components::CarParkTestbench::Testbench::BarrierStatus');
+	'CarParkTestbench::Components::CarParkTestbench::Testbench::BarrierCheck');
 INSERT INTO GD_SHP
 	VALUES ("d71b4a9e-297c-4575-8641-a3840e00e7a5");
 INSERT INTO GD_NCS
@@ -1590,7 +1590,7 @@ INSERT INTO GD_GE
 	"92c08fec-a572-4eb7-8131-40b79792fadd",
 	35,
 	0,
-	'CarParkTestbench::Components::CarParkTestbench::Testbench::R4::BarrierStatus');
+	'CarParkTestbench::Components::CarParkTestbench::Testbench::R4::BarrierCheck');
 INSERT INTO GD_CON
 	VALUES ("12845d9c-abb6-4249-8eff-c6022e33cd22",
 	"00000000-0000-0000-0000-000000000000");
@@ -3395,12 +3395,12 @@ INSERT INTO R_OIR
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_OBJ_PROXY
 	VALUES ("3a3a75e6-c4b3-4e1f-a602-56400d1c4c0c",
-	'BarrierStatus',
+	'BarrierCheck',
 	18,
-	'BarrierStatus',
+	'BarrierCheck',
 	'An observation which checks for expected barrier status - open/closed.',
 	"00000000-0000-0000-0000-000000000000",
-	'./BarrierStatus/BarrierStatus.xtuml');
+	'./BarrierCheck/BarrierCheck.xtuml');
 INSERT INTO R_SUB
 	VALUES ("5ce74c33-7425-4b7b-8fb7-124733628ac1",
 	"5b5da086-6d28-45d8-9148-f0c05c7f8741",
