@@ -51,18 +51,20 @@ INSERT INTO O_TFR
 	'When invoked, search any existing notifications looking for a match.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'LOG::LogInfo( message:" --- Checking for ticket issued at " + self.location );
+	'// Observe that a ticket has been issued as requested at the specified entry stand.
+
+LOG::LogInfo( message:" --- Checking for ticket issued at " + self.location );
 select one observation related by self->Observation[R4]; 
 
-select any t from instances of Ticket
+select any ticket from instances of Ticket
  where ( selected.location == self.location );
-if ( not_empty t )
+if ( not_empty ticket )
   create object instance stay of Stay;
-  stay.ticketNumber = t.number;
-  delete object instance t;
+  stay.ticketNumber = ticket.number;
+  delete object instance ticket;
   observation.Complete( success:True );
 else
-  success = False;	// @TODO here to allow breakpoint only
+  observation.Complete( success:False );
 end if;
 ',
 	1,

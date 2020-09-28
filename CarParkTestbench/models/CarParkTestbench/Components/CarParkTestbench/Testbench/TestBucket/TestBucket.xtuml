@@ -34,8 +34,20 @@ INSERT INTO O_TFR
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'select one nominal related by self->NominalCaseBucket[R7];
-unrelate self from nominal across R7;
-delete object instance nominal;
+if ( not_empty nominal )
+  unrelate self from nominal across R7;
+  delete object instance nominal;
+end if;
+select one nonnominal related by self->PaymentDelayedBucket[R7];
+if ( not_empty nonnominal )
+  unrelate self from nonnominal across R7;
+  delete object instance nonnominal;
+end if;
+select one failures related by self->FailuresCaseBucket[R7];
+if ( not_empty failures )
+  unrelate self from failures across R7;
+  delete object instance failures;
+end if;
 delete object instance self;',
 	1,
 	'',
@@ -67,6 +79,10 @@ end if;
 select one nonnominal related by self->PaymentDelayedBucket[R7];
 if ( not_empty nonnominal )
   nonnominal.CreateBucketTests();
+end if;
+select one failures related by self->FailuresCaseBucket[R7];
+if ( not_empty failures )
+  failures.CreateBucketTests();
 end if;',
 	1,
 	'',

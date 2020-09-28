@@ -63,6 +63,7 @@ The test scripts in each bucket will execute in the order the buckets are added.
 send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Comprehensive Test Suite", keepAllCases:False ); 
 NominalCaseBucket::AddBucketToSuite();
 PaymentDelayedBucket::AddBucketToSuite();
+FailuresCaseBucket::AddBucketToSuite();
 send Operator::OpenCarpark();',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
@@ -90,6 +91,25 @@ send Operator::OpenCarpark();',
 	0);
 INSERT INTO PE_PE
 	VALUES ("04200a9e-d961-44bc-92f1-43afbe9cec1d",
+	1,
+	"68e29e87-70d2-4c06-97db-6b293da075ca",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("953f634c-3b10-4837-b42f-c6844f50c554",
+	"00000000-0000-0000-0000-000000000000",
+	'RunFailureCases',
+	'',
+	'create object instance operator of Operator;  // for status checks..
+send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Failure Test Suite", keepAllCases:False ); 
+FailuresCaseBucket::AddBucketToSuite();
+send Operator::OpenCarpark();',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("953f634c-3b10-4837-b42f-c6844f50c554",
 	1,
 	"68e29e87-70d2-4c06-97db-6b293da075ca",
 	"00000000-0000-0000-0000-000000000000",
