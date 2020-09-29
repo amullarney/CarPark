@@ -62,7 +62,7 @@ if ( not_empty request )
     observation.Complete( success:True );
   end if;
 else
-  success = False;	// @TODO here to allow breakpoint only
+  observation.Complete( success:False );
 end if;
 ',
 	1,

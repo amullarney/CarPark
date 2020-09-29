@@ -2,10 +2,14 @@
 
 INSERT INTO O_OBJ
 	VALUES ("6e4007fa-f375-4c49-9cd6-be2522d4e869",
-	'PaymentDelayedBucket',
+	'NonNominalCaseBucket',
 	31,
-	'PaymentDelayedBucket',
-	'A test bucket which runs a number of tests based on Use Cases for the CarPark application.',
+	'NonNominalCaseBucket',
+	'A test bucket which runs a number of non-nominal tests for the CarPark application.
+
+Non-Nominal cases are intended to test behavior under abnormal conditions.
+Such conditions might include time-outs, insufficient change, car park full, etc.
+All tests are expected to pass.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("75547086-6396-4515-a0b0-880e79ee6311",
@@ -14,11 +18,14 @@ INSERT INTO O_TFR
 	'Script the seqLabels of stimuli and observations for each test case in this bucket.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select one bucket related by self->TestBucket[R7];
-send TESTSEQ::NameTestBucket( bucketId:bucket.bucketId, bucketLabel:"CarPark_Bucket_2" );
+	'// The following test is a scenario where the customer waits too long before making payment.
+
+select one bucket related by self->TestBucket[R7];
+send TESTSEQ::NameTestBucket( bucketId:bucket.bucketId, bucketLabel:"CarPark_Non-Nominal Test Cases" );
 send TESTSEQ::SetTestBucketResolution( bucketId:bucket.bucketId, resolution:timerResolution::second );
 
-send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC1_a" ); 
+send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"PaymentFailure" ); 
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:33, caseLabel:"PaymentFailure" );
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
 VehicleArrived::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 QueryTicketRequest::Create( seqLabel:"seq01", location:"North" );
@@ -28,17 +35,12 @@ TicketTaken::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 BarrierStatus::Create( seqLabel:"seq01", location:"North", stand:"Entry", isopen:True );
 VehicleDeparture::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 BarrierStatus::Create( seqLabel:"seq01", location:"North", stand:"Entry", isopen:False );
-FastForward::Create( seqLabel:"seq01", hours:0, minutes:5, seconds:0 );
-
-send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC5_a" ); 
-send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:27, caseLabel:"UC5_a" );
-send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:33, caseLabel:"UC5_a" );
-send TESTSEQ::AddStimulusSequence( seqLabel:"seq05" );
-TicketInserted::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
-BalanceValue::Create( seqLabel:"seq05", location:"1st Floor", pay:False );
-TicketReturned::Create( seqLabel:"seq05", location:"1st Floor" );
-ChangeDispensed::Create( seqLabel:"seq05", location:"1st Floor" );
-TicketTaken::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
+FastForward::Create( seqLabel:"seq01", hours:1, minutes:5, seconds:0 );
+TicketInserted::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay" );
+BalanceValue::Create( seqLabel:"seq01", location:"1st Floor", pay:False );  // do not pay!
+TicketReturned::Create( seqLabel:"seq01", location:"1st Floor" );
+ChangeDispensed::Create( seqLabel:"seq01", location:"1st Floor" );
+TicketTaken::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay" );
 
 bucket.Initialized();',
 	1,
@@ -52,7 +54,7 @@ INSERT INTO O_TFR
 	'Configure the Test Suite to include this bucket''s set of test cases when run.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'create object instance problem of PaymentDelayedBucket;
+	'create object instance problem of NonNominalCaseBucket;
 create object instance bucket of TestBucket;
 relate problem to bucket across R7;
 bucket.AddToSuite();',
@@ -69,7 +71,7 @@ INSERT INTO O_TFR
 	0,
 	'create object instance operator of Operator;  // for status checks..
 send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark NonNominal Test Suite", keepAllCases:False ); 
-PaymentDelayedBucket::AddBucketToSuite();
+NonNominalCaseBucket::AddBucketToSuite();
 send Operator::OpenCarpark();',
 	1,
 	'',

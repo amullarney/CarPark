@@ -137,7 +137,9 @@ INSERT INTO O_TFR
 	'Respond to the sequencing service with success or failure of the observation subtype.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'send TESTSEQ::ObservationDone( observationId:self.observationId, success:param.success );',
+	'// Report succcess or failure of an observation to the test sequencing service.
+
+send TESTSEQ::ObservationDone( observationId:self.observationId, success:param.success );',
 	1,
 	'',
 	"be73cadd-dde6-4c6a-9072-f4ed26103cde",

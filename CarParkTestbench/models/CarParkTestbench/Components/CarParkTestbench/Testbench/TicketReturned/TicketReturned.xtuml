@@ -61,7 +61,7 @@ select any stay from instances of Stay
 if ( not_empty stay )
   observation.Complete( success:True );
 else
-  success = False;	// @TODO here to allow breakpoint only
+  observation.Complete( success:False );
 end if;
 ',
 	1,

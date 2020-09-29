@@ -52,17 +52,19 @@ INSERT INTO O_TFR
 	'When invoked, search any existing notifications looking for a match.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select any change from instances of Change
+	'// Look for a change amount being dispensed at the appropriate pay station location.
+
+select one observation related by self->Observation[R4]; 
+select any change from instances of Change
  where ( selected.location == self.location );
 if ( not_empty change )
   if ( change.amount > 0 )
     LOG::LogInfo( message:" -- - Change dispensed at " + self.location  );
   end if;
-  select one observation related by self->Observation[R4]; 
   observation.Complete( success:True );
   delete object instance change;
 else
-  success = False;	// @TODO here to allow breakpoint only
+  observation.Complete( success:False );
 end if;
 ',
 	1,

@@ -1,33 +1,31 @@
 -- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
 
 INSERT INTO O_OBJ
-	VALUES ("cc521408-6dcf-4740-b70f-b30d4d5e1f14",
-	'NominalCaseBucket',
-	7,
-	'NominalCaseBucket',
-	'A test bucket which runs a number of tests based on Use Cases for the CarPark application.
+	VALUES ("51d1e804-b212-47e0-a6c7-6e8e9d8940c8",
+	'DemonstrationCaseBucket',
+	32,
+	'DemonstrationCaseBucket',
+	'A test bucket which demonstrates some capbilities of the Test Framework.
 
-These so called "Nominal" cases are intended to test behavior under normal conditions.
-All tests are expected to pass; these serve as useful regression tests after any development work.
-They also serve to verify that a number of requirements are covered by the test cases.',
+These feature demmonstrations must be built around the available application - car park control.
+However, these demonstration cases do not form any part of normal testing.
+Some tests are useful in verifying behavior of the Test Framework itself - e.g. error handling.
+Not all tests are expected to pass - indeed, some are designed to exhibit failure.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
-	VALUES ("d46c90fe-f810-493d-bb6f-190f4fc6db0b",
-	"cc521408-6dcf-4740-b70f-b30d4d5e1f14",
+	VALUES ("7b34384a-973f-48a7-8678-1f8b01c42506",
+	"51d1e804-b212-47e0-a6c7-6e8e9d8940c8",
 	'CreateBucketTests',
 	'Script the seqLabels of stimuli and observations for each test case in this bucket.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'// The following tests are intended to validate the use cases by which they are named.
+	'// the following tests are based on use cases but cases UC1 and UC11 have deliberate failures.
 
 select one bucket related by self->TestBucket[R7];
-send TESTSEQ::NameTestBucket( bucketId:bucket.bucketId, bucketLabel:"CarPark Nominal Test Cases" );
+send TESTSEQ::NameTestBucket( bucketId:bucket.bucketId, bucketLabel:"CarPark_Bucket_2" );
 send TESTSEQ::SetTestBucketResolution( bucketId:bucket.bucketId, resolution:timerResolution::second );
 
-send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC1" ); 
-send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:3, caseLabel:"UC1" );
-send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:6, caseLabel:"UC1" );
-send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:7, caseLabel:"UC1" );
+send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC1_failure" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
 VehicleArrived::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 QueryTicketRequest::Create( seqLabel:"seq01", location:"North" );
@@ -36,13 +34,11 @@ TicketIssued::Create( seqLabel:"seq01", location:"North" );
 TicketTaken::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 BarrierStatus::Create( seqLabel:"seq01", location:"North", stand:"Entry", isopen:True );
 VehicleDeparture::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
-BarrierStatus::Create( seqLabel:"seq01", location:"North", stand:"Entry", isopen:False );
-FastForward::Create( seqLabel:"seq01", hours:5, minutes:0, seconds:0 );
+// Now, incorrectly attempt to check that the barrier is open; in fact, it should be closed.
+BarrierStatus::Create( seqLabel:"seq01", location:"North", stand:"Entry", isopen:True );
+FastForward::Create( seqLabel:"seq01", hours:1, minutes:0, seconds:0 );
 
-send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC5" ); 
-send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:17, caseLabel:"UC5" );
-send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:22, caseLabel:"UC5" );
-send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:32, caseLabel:"UC5" );
+send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC5_pay" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq05" );
 TicketInserted::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
 BalanceValue::Create( seqLabel:"seq05", location:"1st Floor", pay:True );
@@ -50,15 +46,14 @@ TicketReturned::Create( seqLabel:"seq05", location:"1st Floor" );
 ChangeDispensed::Create( seqLabel:"seq05", location:"1st Floor" );
 TicketTaken::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
 
-send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC11" ); 
-send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:39, caseLabel:"UC11" );
-send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:41, caseLabel:"UC11" );
+send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC11_failure" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq11" );
 VehicleArrived::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
 TicketInserted::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
 BarrierStatus::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", isopen:True );
 VehicleDeparture::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
-BarrierStatus::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", isopen:False );
+// Now, incorrectly attempt to check that the barrier is open; in fact, it should be closed.
+BarrierStatus::Create( seqLabel:"seq11", location:"Lane 2", stand:"Exit", isopen:True );
 
 bucket.Initialized();',
 	1,
@@ -66,46 +61,46 @@ bucket.Initialized();',
 	"00000000-0000-0000-0000-000000000000",
 	0);
 INSERT INTO O_TFR
-	VALUES ("4665b329-5a15-481f-9370-bbcb69d99041",
-	"cc521408-6dcf-4740-b70f-b30d4d5e1f14",
+	VALUES ("aa04c61b-ee1f-48da-8998-5b3f965c3b06",
+	"51d1e804-b212-47e0-a6c7-6e8e9d8940c8",
 	'AddBucketToSuite',
 	'Configure the Test Suite to include this bucket''s set of test cases when run.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'create object instance nominal of NominalCaseBucket;
+	'create object instance failures of DemonstrationCaseBucket;
 create object instance bucket of TestBucket;
-relate nominal to bucket across R7;
+relate failures to bucket across R7;
 bucket.AddToSuite();',
 	1,
 	'',
-	"d46c90fe-f810-493d-bb6f-190f4fc6db0b",
+	"7b34384a-973f-48a7-8678-1f8b01c42506",
 	0);
 INSERT INTO O_TFR
-	VALUES ("3cd64fce-6b83-4f3b-aa4b-09aec8a972f9",
-	"cc521408-6dcf-4740-b70f-b30d4d5e1f14",
+	VALUES ("7bf67c40-7508-4c4e-92bb-209c7df960da",
+	"51d1e804-b212-47e0-a6c7-6e8e9d8940c8",
 	'RunSolo',
 	'Execute the set of tests in this bucket stand-alone.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
 	'create object instance operator of Operator;  // for status checks..
-send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Nominal Test Suite", keepAllCases:False ); 
-NominalCaseBucket::AddBucketToSuite();
+send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Demonstration Test Suite", keepAllCases:False ); 
+DemonstrationCaseBucket::AddBucketToSuite();
 send Operator::OpenCarpark();',
 	1,
 	'',
-	"4665b329-5a15-481f-9370-bbcb69d99041",
+	"aa04c61b-ee1f-48da-8998-5b3f965c3b06",
 	0);
 INSERT INTO O_ID
 	VALUES (0,
-	"cc521408-6dcf-4740-b70f-b30d4d5e1f14");
+	"51d1e804-b212-47e0-a6c7-6e8e9d8940c8");
 INSERT INTO O_ID
 	VALUES (1,
-	"cc521408-6dcf-4740-b70f-b30d4d5e1f14");
+	"51d1e804-b212-47e0-a6c7-6e8e9d8940c8");
 INSERT INTO O_ID
 	VALUES (2,
-	"cc521408-6dcf-4740-b70f-b30d4d5e1f14");
+	"51d1e804-b212-47e0-a6c7-6e8e9d8940c8");
 INSERT INTO PE_PE
-	VALUES ("cc521408-6dcf-4740-b70f-b30d4d5e1f14",
+	VALUES ("51d1e804-b212-47e0-a6c7-6e8e9d8940c8",
 	1,
 	"3430745e-1746-4e96-ac58-2ee3ee684b20",
 	"00000000-0000-0000-0000-000000000000",

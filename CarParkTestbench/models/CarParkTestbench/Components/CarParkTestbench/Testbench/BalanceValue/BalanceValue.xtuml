@@ -65,13 +65,14 @@ If the balance is paid - perhaps, incrementally - the observation succeeds norma
 If no payment is made a timeout is expected.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'LOG::LogInfo( message:" --- Checking for payment balance at " + self.location  );
+	'// Look for balance value at appropriate pay station location
 
+LOG::LogInfo( message:" --- Checking for payment balance at " + self.location  );
+select one observation related by self->Observation[R4];  // for success/fail signal
 select any balance from instances of Balance
  where ( selected.location == self.location );
 if ( not_empty balance )
   LOG::LogReal( message:"Balance ", r:balance.amount );
-  select one observation related by self->Observation[R4];  // for success/fail signal
   if ( balance.amount <= 0.0 )
     observation.Complete( success:True );
     LOG::LogInfo( message:"paid in full" );
@@ -105,6 +106,8 @@ if ( not_empty balance )
     end if;
   end if;
   delete object instance balance;
+else
+  observation.Complete( success:False );
 end if;
 ',
 	1,

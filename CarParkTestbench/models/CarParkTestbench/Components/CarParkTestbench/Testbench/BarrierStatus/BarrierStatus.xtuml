@@ -71,7 +71,9 @@ INSERT INTO O_TFR
 	'When invoked, search any existing notifications looking for a match.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'status = " open ";
+	'// Observe that the barrier at the specified entry/exit station is open or closed as appropriate.
+
+status = " open ";
 if ( not self.open )
   status = " closed ";
 end if;
@@ -83,11 +85,13 @@ select any bcmd from instances of BarrierCommand
  and ( selected.stand == self.stand );
 if ( not_empty bcmd )
   if ( bcmd.open == self.open )
-    delete object instance bcmd;
     observation.Complete( success:True );
+  else
+    observation.Complete( success:False );
   end if;
+  delete object instance bcmd;
 else
-  success = False;	// @TODO here to allow breakpoint only
+  observation.Complete( success:False );
 end if;
 ',
 	1,
