@@ -24,7 +24,7 @@ send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:6, caseLabel:"UC1" );
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:7, caseLabel:"UC1" );
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
 VehicleArrived::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
-QueryTicketRequest::Create( seqLabel:"seq01", location:"North" );
+QueryTicketRequest::Create( seqLabel:"seq01", location:"North", enabled:True );
 TicketRequested::Create( seqLabel:"seq01", location:"North" );
 TicketIssued::Create( seqLabel:"seq01", location:"North" );
 TicketTaken::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
