@@ -34,6 +34,7 @@ TicketIssued::Create( seqLabel:"seq01", location:"North" );
 TicketTaken::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 BarrierStatus::Create( seqLabel:"seq01", location:"North", stand:"Entry", isopen:True );
 VehicleDeparture::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
+// Now, incorrectly attempt to check that the barrier is open; in fact, it should be closed.
 BarrierStatus::Create( seqLabel:"seq01", location:"North", stand:"Entry", isopen:True );
 FastForward::Create( seqLabel:"seq01", hours:1, minutes:0, seconds:0 );
 
@@ -51,6 +52,7 @@ VehicleArrived::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
 TicketInserted::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
 BarrierStatus::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", isopen:True );
 VehicleDeparture::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
+// Now, incorrectly attempt to check that the barrier is open; in fact, it should be closed.
 BarrierStatus::Create( seqLabel:"seq11", location:"Lane 2", stand:"Exit", isopen:True );
 
 bucket.Initialized();',

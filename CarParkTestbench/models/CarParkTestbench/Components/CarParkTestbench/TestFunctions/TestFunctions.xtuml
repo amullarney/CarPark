@@ -57,7 +57,7 @@ INSERT INTO S_SYNC
 	VALUES ("72bb9eb4-ab85-4a27-8a0f-e7d69307d6b3",
 	"00000000-0000-0000-0000-000000000000",
 	'RunAllCarParkTestCases',
-	'Configure the Test Suite to include each of the Test Bucket subtypes.
+	'Configure the Test Suite to include all tests for the CarPark application.
 The test scripts in each bucket will execute in the order the buckets are added.',
 	'create object instance operator of Operator;  // for status checks..
 send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Comprehensive Test Suite", keepAllCases:False ); 
