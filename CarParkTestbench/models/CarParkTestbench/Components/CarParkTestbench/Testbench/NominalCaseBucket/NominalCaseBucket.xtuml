@@ -14,7 +14,9 @@ INSERT INTO O_TFR
 	'Script the seqLabels of stimuli and observations for each test case in this bucket.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select one bucket related by self->TestBucket[R7];
+	'// The following tests are intended to validate the use cases by which they are named.
+
+select one bucket related by self->TestBucket[R7];
 send TESTSEQ::NameTestBucket( bucketId:bucket.bucketId, bucketLabel:"CarPark_Bucket_1" );
 send TESTSEQ::SetTestBucketResolution( bucketId:bucket.bucketId, resolution:timerResolution::second );
 
