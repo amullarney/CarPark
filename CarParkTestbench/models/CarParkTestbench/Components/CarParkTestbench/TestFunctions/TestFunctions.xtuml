@@ -56,14 +56,13 @@ INSERT INTO PE_PE
 INSERT INTO S_SYNC
 	VALUES ("72bb9eb4-ab85-4a27-8a0f-e7d69307d6b3",
 	"00000000-0000-0000-0000-000000000000",
-	'RunAllCases',
+	'RunAllCarParkTestCases',
 	'Configure the Test Suite to include each of the Test Bucket subtypes.
 The test scripts in each bucket will execute in the order the buckets are added.',
 	'create object instance operator of Operator;  // for status checks..
 send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Comprehensive Test Suite", keepAllCases:False ); 
 NominalCaseBucket::AddBucketToSuite();
-PaymentDelayedBucket::AddBucketToSuite();
-FailuresCaseBucket::AddBucketToSuite();
+NonNominalCaseBucket::AddBucketToSuite();
 send Operator::OpenCarpark();',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
@@ -83,7 +82,7 @@ INSERT INTO S_SYNC
 The test scripts in each bucket will execute in the order the buckets are added.',
 	'create object instance operator of Operator;  // for status checks..
 send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Nominal Test Suite", keepAllCases:False ); 
-PaymentDelayedBucket::AddBucketToSuite();
+NonNominalCaseBucket::AddBucketToSuite();
 send Operator::OpenCarpark();',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
@@ -98,11 +97,11 @@ INSERT INTO PE_PE
 INSERT INTO S_SYNC
 	VALUES ("953f634c-3b10-4837-b42f-c6844f50c554",
 	"00000000-0000-0000-0000-000000000000",
-	'RunFailureCases',
+	'RunDemonstrationCases',
 	'',
 	'create object instance operator of Operator;  // for status checks..
 send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Failure Test Suite", keepAllCases:False ); 
-FailuresCaseBucket::AddBucketToSuite();
+DemonstrationCaseBucket::AddBucketToSuite();
 send Operator::OpenCarpark();',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,

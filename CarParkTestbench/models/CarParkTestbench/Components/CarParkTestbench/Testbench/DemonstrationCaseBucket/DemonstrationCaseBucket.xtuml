@@ -2,10 +2,15 @@
 
 INSERT INTO O_OBJ
 	VALUES ("51d1e804-b212-47e0-a6c7-6e8e9d8940c8",
-	'FailuresCaseBucket',
+	'DemonstrationCaseBucket',
 	32,
-	'FailuresCaseBucket',
-	'A test bucket which runs a number of failing tests for the CarPark application.',
+	'DemonstrationCaseBucket',
+	'A test bucket which demonstrates some capbilities of the Test Framework.
+
+These feature demmonstrations must be built around the available application - car park control.
+However, these demonstration cases do not form any part of normal testing.
+Some tests are useful in verifying behavior of the Test Framework itself - e.g. error handling.
+Not all tests are expected to pass - indeed, some are designed to exhibit failure.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("7b34384a-973f-48a7-8678-1f8b01c42506",
@@ -14,11 +19,13 @@ INSERT INTO O_TFR
 	'Script the seqLabels of stimuli and observations for each test case in this bucket.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select one bucket related by self->TestBucket[R7];
+	'// the following tests are based on use cases but cases UC1 and UC11 have deliberate failures.
+
+select one bucket related by self->TestBucket[R7];
 send TESTSEQ::NameTestBucket( bucketId:bucket.bucketId, bucketLabel:"CarPark_Bucket_2" );
 send TESTSEQ::SetTestBucketResolution( bucketId:bucket.bucketId, resolution:timerResolution::second );
 
-send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC1_b" ); 
+send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC1_failure" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
 VehicleArrived::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 QueryTicketRequest::Create( seqLabel:"seq01", location:"North" );
@@ -30,7 +37,7 @@ VehicleDeparture::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 BarrierStatus::Create( seqLabel:"seq01", location:"North", stand:"Entry", isopen:True );
 FastForward::Create( seqLabel:"seq01", hours:1, minutes:0, seconds:0 );
 
-send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC5_b" ); 
+send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC5_pay" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq05" );
 TicketInserted::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
 BalanceValue::Create( seqLabel:"seq05", location:"1st Floor", pay:True );
@@ -38,7 +45,7 @@ TicketReturned::Create( seqLabel:"seq05", location:"1st Floor" );
 ChangeDispensed::Create( seqLabel:"seq05", location:"1st Floor" );
 TicketTaken::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
 
-send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC11_b" ); 
+send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC11_failure" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq11" );
 VehicleArrived::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
 TicketInserted::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
@@ -58,7 +65,7 @@ INSERT INTO O_TFR
 	'Configure the Test Suite to include this bucket''s set of test cases when run.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'create object instance failures of FailuresCaseBucket;
+	'create object instance failures of DemonstrationCaseBucket;
 create object instance bucket of TestBucket;
 relate failures to bucket across R7;
 bucket.AddToSuite();',
@@ -74,8 +81,8 @@ INSERT INTO O_TFR
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
 	'create object instance operator of Operator;  // for status checks..
-send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Failures Test Suite", keepAllCases:False ); 
-FailuresCaseBucket::AddBucketToSuite();
+send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Demonstration Test Suite", keepAllCases:False ); 
+DemonstrationCaseBucket::AddBucketToSuite();
 send Operator::OpenCarpark();',
 	1,
 	'',

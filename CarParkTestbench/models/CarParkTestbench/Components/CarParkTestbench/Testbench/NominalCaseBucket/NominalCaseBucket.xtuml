@@ -5,7 +5,11 @@ INSERT INTO O_OBJ
 	'NominalCaseBucket',
 	7,
 	'NominalCaseBucket',
-	'A test bucket which runs a number of tests based on Use Cases for the CarPark application.',
+	'A test bucket which runs a number of tests based on Use Cases for the CarPark application.
+
+These so called "Nominal" cases are intended to test behavior under normal conditions.
+All tests are expected to pass; these serve as useful regression tests after any development work.
+They also serve to verify that a number of requirements are covered by the test cases.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("d46c90fe-f810-493d-bb6f-190f4fc6db0b",
@@ -14,8 +18,10 @@ INSERT INTO O_TFR
 	'Script the seqLabels of stimuli and observations for each test case in this bucket.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select one bucket related by self->TestBucket[R7];
-send TESTSEQ::NameTestBucket( bucketId:bucket.bucketId, bucketLabel:"CarPark_Bucket_1" );
+	'// The following tests are intended to validate the use cases by which they are named.
+
+select one bucket related by self->TestBucket[R7];
+send TESTSEQ::NameTestBucket( bucketId:bucket.bucketId, bucketLabel:"CarPark Nominal Test Cases" );
 send TESTSEQ::SetTestBucketResolution( bucketId:bucket.bucketId, resolution:timerResolution::second );
 
 send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC1" ); 
