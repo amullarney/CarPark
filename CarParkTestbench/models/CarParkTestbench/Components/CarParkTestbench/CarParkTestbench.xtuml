@@ -1239,7 +1239,7 @@ INSERT INTO SPR_RS
 	'LOG::LogInfo( message:"Entry Stand received TicketRequestEnabled at " + param.Location );
 create object instance req of ReceivedTicketRequest;
 req.location = param.Location;
-req.granted = True;
+req.enabled = True;
 send TESTSEQ::Assess( key:"TicketRequest" );',
 	1,
 	0);
@@ -1258,7 +1258,12 @@ INSERT INTO SPR_RS
 	VALUES ("6a07ad77-617c-40f0-8afc-8240176b531e",
 	'TicketRequestDisabled',
 	'Disables ticket requests at the entry stand.',
-	'LOG::LogInfo( message:"Entry Stand received TicketRequestDisabled at " + param.Location );',
+	'LOG::LogInfo( message:"Entry Stand received TicketRequestDisabled at " + param.Location );
+create object instance req of ReceivedTicketRequest;
+req.location = param.Location;
+req.enabled = False;
+send TESTSEQ::Assess( key:"TicketRequest" );
+',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
