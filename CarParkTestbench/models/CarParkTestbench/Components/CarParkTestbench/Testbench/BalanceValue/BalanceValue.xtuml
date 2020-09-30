@@ -69,32 +69,30 @@ If no payment is made a timeout is expected.',
 
 LOG::LogInfo( message:" --- Checking for payment balance at " + self.location  );
 select one observation related by self->Observation[R4];  // for success/fail signal
-select any balance from instances of Balance
- where ( selected.location == self.location );
-if ( not_empty balance )
-  LOG::LogReal( message:"Balance ", r:balance.amount );
-  if ( balance.amount <= 0.0 )
+select any tracker from instances of VisitTracking
+ where ( selected.payingAt == self.location );
+if ( not_empty tracker )
+  LOG::LogReal( message:"Balance ", r:tracker.amountDue );
+  if ( tracker.amountDue <= 0.0 )
     observation.Complete( success:True );
     LOG::LogInfo( message:"paid in full" );
-    select any stay from instances of Stay
-     where ( selected.payingAt == self.location );
-    stay.paid = True;  // required at exit
-    if ( balance.amount == 0.0 )  // exact - no change will be dispensed
+    tracker.paid = True;  // required at exit
+    if ( tracker.amountDue == 0.0 )  // exact - no change will be dispensed
       LOG::LogInfo( message:"Cancelling change dispensed observation at " + self.location );
       send TESTSEQ::CancelTriggeredObservation( key:"Dispensed" );
     end if;
   else
     if ( self.willpay )
       amount = 0;
-      if ( balance.amount > 20 )
+      if ( tracker.amountDue > 20 )
         amount = 20;
-      elif ( balance.amount > 10 )
+      elif ( tracker.amountDue > 10 )
         amount = 10;
-      elif ( balance.amount > 5 )
+      elif ( tracker.amountDue > 5 )
         amount = 5;
-      elif ( balance.amount > 2 )
+      elif ( tracker.amountDue > 2 )
         amount = 2;
-      elif ( balance.amount > 0 )
+      elif ( tracker.amountDue > 0 )
         amount = 1;
       end if;
       LOG::LogReal( message:"Inserting money at " + self.location, r:amount );
@@ -105,7 +103,6 @@ if ( not_empty balance )
       observation.Complete( success:True );
     end if;
   end if;
-  delete object instance balance;
 else
   observation.Complete( success:False );
 end if;

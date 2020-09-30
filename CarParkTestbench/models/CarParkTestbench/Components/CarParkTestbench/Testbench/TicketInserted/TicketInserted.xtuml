@@ -61,18 +61,20 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'LOG::LogInfo( message:"Ticket inserted at " + self.location + self.standType );
+	'// A ticket has been inserted - at either a pay station or an exit station.
+
+LOG::LogInfo( message:"Ticket inserted at " + self.location + self.standType );
 
 if ( self.standType == "Pay" )
-  select any stay from instances of Stay
+  select any tracker from instances of VisitTracking
    where ( not selected.paid );
-  stay.payingAt = self.location;
-  send Payer::InsertedTicket( Location:self.location, TicketNumber:stay.ticketNumber);
+  tracker.payingAt = self.location;
+  send Payer::InsertedTicket( Location:self.location, TicketNumber:tracker.ticketNumber);
 else
-  select any stay from instances of Stay
+  select any tracker from instances of VisitTracking
    where ( selected.paid );
-  stay.exitedAt = self.location;
-  send ExitStand::InsertedTicket( Location:self.location, TicketNumber:stay.ticketNumber );
+  tracker.exitedAt = self.location;
+  send ExitStand::InsertedTicket( Location:self.location, TicketNumber:tracker.ticketNumber );
 end if;
 
 select one stimulus related by self->Stimulus[R3];

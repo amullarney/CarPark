@@ -55,10 +55,11 @@ INSERT INTO O_TFR
 	'LOG::LogInfo( message:" --- Checking for ticket returned at " + self.location );
 select one observation related by self->Observation[R4]; 
 
-select any stay from instances of Stay
+select any tracker from instances of VisitTracking
  where ( selected.payingAt == self.location )
   and ( selected.ticketReturned == True );
-if ( not_empty stay )
+if ( not_empty tracker )
+  tracker.ticketReturned = False;  // if for cancellation, may try again elsewhere.
   observation.Complete( success:True );
 else
   observation.Complete( success:False );
