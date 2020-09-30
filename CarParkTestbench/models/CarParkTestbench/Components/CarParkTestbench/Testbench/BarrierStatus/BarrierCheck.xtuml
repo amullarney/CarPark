@@ -15,15 +15,15 @@ INSERT INTO O_TFR
 See Observation.AppendPolling for description.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'create object instance check of BarrierCheck;
+	'create object instance bs of BarrierStatus;
 
-create object instance observation of Observation;
-relate check to observation across R4;
-check.location = param.location;
-check.stand = param.stand;
-check.state = param.state;
+create object instance obs of Observation;
+relate bs to obs across R4;
+bs.location = param.location;
+bs.stand = param.stand;
+bs.state = param.state; 
 
-observation.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"BarrierCommand", concurrent:False );',
+obs.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"BarrierCommand", concurrent:False );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
