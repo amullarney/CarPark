@@ -1178,10 +1178,10 @@ INSERT INTO SPR_RS
 	VALUES ("e38f3002-8f98-4e74-954d-cf15752cfafe",
 	'OpenBarrier',
 	'Commands the entry stand to open the barrier, permitting vehicles to enter the carpark.',
-	'create object instance b of BarrierCommand;
-b.location = param.Location;
-b.stand = "Entry";
-b.open = True;
+	'create object instance bcmd of BarrierCommand;
+bcmd.location = param.Location;
+bcmd.stand = "Entry";
+bcmd.state = BarrierState::Open;
 send TESTSEQ::Assess( key:"BarrierCommand" );',
 	1,
 	0);
@@ -1276,10 +1276,10 @@ INSERT INTO SPR_RS
 	VALUES ("3762c62d-087e-4204-9b96-1616f25f1f04",
 	'CloseBarrier',
 	'Commands the entry stand to close the barrier, preventing vehicles from entering the carpark.',
-	'create object instance b of BarrierCommand;
-b.location = param.Location;
-b.stand = "Entry";
-b.open = False;
+	'create object instance bcmd of BarrierCommand;
+bcmd.location = param.Location;
+bcmd.stand = "Entry";
+bcmd.state = BarrierState::Closed;
 send TESTSEQ::Assess( key:"BarrierCommand" );',
 	1,
 	0);
@@ -1357,10 +1357,10 @@ INSERT INTO SPR_RS
 	VALUES ("a4f9f287-62e3-4712-af22-7352bc789027",
 	'OpenBarrier',
 	'Commands the exit stand to open the barrier, permitting vehicles to exit the carpark.',
-	'create object instance b of BarrierCommand;
-b.location = param.Location;
-b.stand = "Exit";
-b.open = True;
+	'create object instance bcmd of BarrierCommand;
+bcmd.location = param.Location;
+bcmd.stand = "Exit";
+bcmd.state = BarrierState::Open;
 send TESTSEQ::Assess( key:"BarrierCommand" );',
 	1,
 	0);
@@ -1397,10 +1397,10 @@ INSERT INTO SPR_RS
 	VALUES ("52b7a6a0-4afc-4f83-88ec-2941b92d3e67",
 	'CloseBarrier',
 	'Commands the exit stand to close the barrier, preventing vehicles from exiting the carpark.',
-	'create object instance b of BarrierCommand;
-b.location = param.Location;
-b.stand = "Exit";
-b.open = False;
+	'create object instance bcmd of BarrierCommand;
+bcmd.location = param.Location;
+bcmd.stand = "Exit";
+bcmd.state = BarrierState::Closed;
 send TESTSEQ::Assess( key:"BarrierCommand" );',
 	1,
 	0);

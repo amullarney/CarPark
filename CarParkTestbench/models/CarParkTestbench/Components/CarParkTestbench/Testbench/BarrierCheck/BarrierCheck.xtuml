@@ -2,9 +2,9 @@
 
 INSERT INTO O_OBJ
 	VALUES ("3a3a75e6-c4b3-4e1f-a602-56400d1c4c0c",
-	'BarrierStatus',
+	'BarrierCheck',
 	18,
-	'BarrierStatus',
+	'BarrierCheck',
 	'An observation which checks for expected barrier status - open/closed.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
@@ -15,15 +15,15 @@ INSERT INTO O_TFR
 See Observation.AppendPolling for description.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'create object instance bs of BarrierStatus;
+	'create object instance check of BarrierCheck;
 
-create object instance obs of Observation;
-relate bs to obs across R4;
-bs.location = param.location;
-bs.stand = param.stand;
-bs.open = param.isopen;
+create object instance observation of Observation;
+relate check to observation across R4;
+check.location = param.location;
+check.stand = param.stand;
+check.state = param.state;
 
-obs.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"BarrierCommand", concurrent:False );',
+observation.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"BarrierCommand", concurrent:False );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
@@ -40,12 +40,19 @@ INSERT INTO O_TPARM
 INSERT INTO O_TPARM
 	VALUES ("7c74eff9-0d9e-444b-9ae8-af4b19f551ac",
 	"63191854-a9b4-47e2-aae9-996940a69bd3",
-	'isopen',
-	"ba5eda7a-def5-0000-0000-000000000001",
+	'state',
+	"f0c65a10-2e1e-4a19-8c3f-db9b478b5038",
 	0,
 	'',
 	"4e1f8c5d-c75c-4a6e-981d-a579711dd35f",
 	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("f0c65a10-2e1e-4a19-8c3f-db9b478b5038",
+	"00000000-0000-0000-0000-000000000000",
+	'BarrierState',
+	'',
+	'',
+	'../../../../../../../CarPark/models/CarPark/SharedTypes/SharedTypes.xtuml');
 INSERT INTO O_TPARM
 	VALUES ("4e1f8c5d-c75c-4a6e-981d-a579711dd35f",
 	"63191854-a9b4-47e2-aae9-996940a69bd3",
@@ -73,18 +80,14 @@ INSERT INTO O_TFR
 	1,
 	'// Observe that the barrier at the specified entry/exit station is open or closed as appropriate.
 
-status = " open ";
-if ( not self.open )
-  status = " closed ";
-end if;
-LOG::LogInfo( message:" --- Checking for barrier status " + status + "at " + self.location + " " + self.stand );
+LOG::LogInfo( message:" --- Checking for barrier status " + "at " + self.location + " " + self.stand );
 select one observation related by self->Observation[R4]; 
 
 select any bcmd from instances of BarrierCommand
  where ( selected.location == self.location ) 
  and ( selected.stand == self.stand );
 if ( not_empty bcmd )
-  if ( bcmd.open == self.open )
+  if ( bcmd.state == self.state )
     observation.Complete( success:True );
   else
     observation.Complete( success:False );
@@ -92,8 +95,7 @@ if ( not_empty bcmd )
   delete object instance bcmd;
 else
   observation.Complete( success:False );
-end if;
-',
+end if;',
 	1,
 	'',
 	"63191854-a9b4-47e2-aae9-996940a69bd3",
@@ -126,12 +128,12 @@ INSERT INTO O_ATTR
 	VALUES ("589f629c-05e1-42fc-b93a-c02e3dede145",
 	"3a3a75e6-c4b3-4e1f-a602-56400d1c4c0c",
 	"7cadbf20-82b8-4f29-919b-77e81b54bd68",
-	'open',
+	'state',
 	'',
 	'',
-	'open',
+	'state',
 	0,
-	"ba5eda7a-def5-0000-0000-000000000001",
+	"f0c65a10-2e1e-4a19-8c3f-db9b478b5038",
 	'',
 	'');
 INSERT INTO O_NBATTR
