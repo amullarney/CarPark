@@ -56,12 +56,9 @@ INSERT INTO O_TFR
 LOG::LogInfo( message:" --- Checking for ticket issued at " + self.location );
 select one observation related by self->Observation[R4]; 
 
-select any ticket from instances of Ticket
- where ( selected.location == self.location );
-if ( not_empty ticket )
-  create object instance stay of Stay;
-  stay.ticketNumber = ticket.number;
-  delete object instance ticket;
+select any tracker from instances of VisitTracking
+ where ( selected.enteredAt == self.location );
+if ( not_empty tracker )
   observation.Complete( success:True );
 else
   observation.Complete( success:False );

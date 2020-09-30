@@ -1157,9 +1157,10 @@ INSERT INTO SPR_RS
 	VALUES ("39e7c899-6cf1-4679-a340-42979b02f7c2",
 	'IssueTicket',
 	'Commands the entry stand to issue a ticket.',
-	'create object instance t of Ticket;
-t.location = param.Location;
-t.number = param.Number;
+	'// Create an instance which tracks progress through a visit.
+create object instance tracker of VisitTracking;
+tracker.enteredAt = param.Location;
+tracker.ticketNumber = param.Number;
 send TESTSEQ::Assess( key:"TicketIssued" );',
 	1,
 	0);
@@ -1543,9 +1544,10 @@ INSERT INTO SPR_RS
 currently inserted in a payment machine.',
 	'LOG::LogInfo( message:"---- receiving updated balance for " + param.Location );
 LOG::LogReal( message:"balance", r:param.Amount );
-create object instance b of Balance;
-b.location = param.Location;
-b.amount = param.Amount;
+
+select any tracker from instances of VisitTracking
+ where ( selected.payingAt == param.Location );
+tracker.amountDue = param.Amount;
 send TESTSEQ::Assess( key:"Balance" );
 ',
 	1,
@@ -1586,11 +1588,11 @@ INSERT INTO SPR_RS
 	VALUES ("733ddba3-af68-41ff-b2d5-1e352f1243d5",
 	'ReturnedTicket',
 	'Commands a payment machine to return the currently-inserted ticket to the patron.',
-	'select any stay from instances of Stay
+	'select any tracker from instances of VisitTracking
  where ( selected.payingAt == param.Location );
-if ( not_empty stay )
+if ( not_empty tracker )
   LOG::LogInfo( message:"Returning ticket at " + param.Location );
-  stay.ticketReturned = True;
+  tracker.ticketReturned = True;
 end if;
 send TESTSEQ::Assess( key:"TicketReturned" );',
 	1,
@@ -1611,10 +1613,12 @@ INSERT INTO SPR_RS
 	'ExitDeadline',
 	'Provides the exit deadline (date/time) from the carpark system to a payment machine, 
 so the latter can print it on the ticket before returning the ticket to the patron.',
-	'select any stay from instances of Stay
+	'// Record an exit deadline for checking at exit.
+
+select any tracker from instances of VisitTracking
  where ( selected.payingAt == param.Location );
-if ( not_empty stay )
-  stay.deadline = param.Deadline;
+if ( not_empty tracker )
+  tracker.deadline = param.Deadline;
 end if;',
 	1,
 	0);
@@ -1634,9 +1638,11 @@ INSERT INTO SPR_RS
 	VALUES ("4ffe69c6-eff9-4bf8-8240-31ff7622bf60",
 	'DispenseChange',
 	'Commands a payment machine to dispense change to settle the current transaction.',
-	'create object instance ch of Change;
-ch.location = param.Location;
-ch.amount = param.Amount;
+	'// Record the amount dispensed so that it can be checked by ann observation.
+
+select any tracker from instances of VisitTracking
+ where ( selected.payingAt == param.Location );
+tracker.amountDispensed = param.Amount;
 send TESTSEQ::Assess( key:"Dispensed" );',
 	1,
 	0);
@@ -1655,10 +1661,11 @@ INSERT INTO SPR_RS
 	VALUES ("ac2494ef-8171-4c20-9e47-ac0d13ce2691",
 	'TransactionCancelled',
 	'Indicates that the current transaction was cancelled by the carpark system.',
-	'select any stay from instances of Stay
+	'select any tracker from instances of VisitTracking
  where ( selected.payingAt == param.Location );
-if ( not_empty stay )
+if ( not_empty tracker )
   LOG::LogInfo( message:"Payment transaction cancelled at " + param.Location );
+  tracker.payingAt = "";  // cancelled: may try paying again elsewhere.
 end if;
 send TESTSEQ::CancelTriggeredObservation( key:"Dispensed" );
 send TESTSEQ::CancelTriggeredObservation( key:"Balance" );',

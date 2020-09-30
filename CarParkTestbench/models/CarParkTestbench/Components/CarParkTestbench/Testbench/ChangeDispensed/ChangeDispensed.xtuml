@@ -55,14 +55,13 @@ INSERT INTO O_TFR
 	'// Look for a change amount being dispensed at the appropriate pay station location.
 
 select one observation related by self->Observation[R4]; 
-select any change from instances of Change
- where ( selected.location == self.location );
-if ( not_empty change )
-  if ( change.amount > 0 )
+select any tracker from instances of VisitTracking
+ where ( selected.payingAt == self.location );
+if ( not_empty tracker )
+  if ( tracker.amountDispensed > 0 )
     LOG::LogInfo( message:" -- - Change dispensed at " + self.location  );
   end if;
   observation.Complete( success:True );
-  delete object instance change;
 else
   observation.Complete( success:False );
 end if;

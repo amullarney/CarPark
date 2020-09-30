@@ -2,9 +2,9 @@
 
 INSERT INTO O_OBJ
 	VALUES ("1be5dd1b-f517-40ac-8691-0144999e11da",
-	'Stay',
+	'VisitTracking',
 	23,
-	'Stay',
+	'VisitTracking',
 	'Holds data pertinent to visit to the carpark.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_NBATTR
@@ -16,9 +16,9 @@ INSERT INTO O_BATTR
 INSERT INTO O_ATTR
 	VALUES ("8ff422d7-76c4-44a9-a1bc-6c39c83e2ae2",
 	"1be5dd1b-f517-40ac-8691-0144999e11da",
-	"00000000-0000-0000-0000-000000000000",
+	"cabe68b1-d01b-4fd6-ab16-1a373bd2e727",
 	'ticketNumber',
-	'Ticket number associated with this stay.',
+	'Ticket number associated with this visit; assigned by the application.',
 	'',
 	'ticketNumber',
 	0,
@@ -52,7 +52,7 @@ INSERT INTO O_BATTR
 INSERT INTO O_ATTR
 	VALUES ("984d2874-070d-4710-949f-3ce8fca04191",
 	"1be5dd1b-f517-40ac-8691-0144999e11da",
-	"a70b8d8c-5996-4ffc-8341-1297a8bbbb81",
+	"835ff994-5d2c-4cbb-9ea1-5c35fa569053",
 	'deadline',
 	'Time by which car park should be vacated; not used in initial use cases.',
 	'',
@@ -72,7 +72,7 @@ INSERT INTO O_ATTR
 	"1be5dd1b-f517-40ac-8691-0144999e11da",
 	"d39d10e4-7976-489b-9477-4118f3e7d30d",
 	'ticketReturned',
-	'',
+	'If true, the ticket has been returned because of a cancelled transaction at a pay station.',
 	'',
 	'ticketReturned',
 	0,
@@ -88,9 +88,9 @@ INSERT INTO O_BATTR
 INSERT INTO O_ATTR
 	VALUES ("d39d10e4-7976-489b-9477-4118f3e7d30d",
 	"1be5dd1b-f517-40ac-8691-0144999e11da",
-	"249908c5-4d0e-4ed1-abf4-71d3510389c3",
+	"d3edc705-76e8-4b4f-8401-707e2578de4c",
 	'paid',
-	'',
+	'If true, the balance requested at the pay station has been paid in full.',
 	'',
 	'paid',
 	0,
@@ -108,11 +108,65 @@ INSERT INTO O_ATTR
 	"1be5dd1b-f517-40ac-8691-0144999e11da",
 	"984d2874-070d-4710-949f-3ce8fca04191",
 	'exitedAt',
-	'',
+	'The location of the exit station where a visit ends.',
 	'',
 	'exitedAt',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("cabe68b1-d01b-4fd6-ab16-1a373bd2e727",
+	"1be5dd1b-f517-40ac-8691-0144999e11da");
+INSERT INTO O_BATTR
+	VALUES ("cabe68b1-d01b-4fd6-ab16-1a373bd2e727",
+	"1be5dd1b-f517-40ac-8691-0144999e11da");
+INSERT INTO O_ATTR
+	VALUES ("cabe68b1-d01b-4fd6-ab16-1a373bd2e727",
+	"1be5dd1b-f517-40ac-8691-0144999e11da",
+	"00000000-0000-0000-0000-000000000000",
+	'enteredAt',
+	'The location of the entry stand where a visit begins.',
+	'',
+	'enteredAt',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("d3edc705-76e8-4b4f-8401-707e2578de4c",
+	"1be5dd1b-f517-40ac-8691-0144999e11da");
+INSERT INTO O_BATTR
+	VALUES ("d3edc705-76e8-4b4f-8401-707e2578de4c",
+	"1be5dd1b-f517-40ac-8691-0144999e11da");
+INSERT INTO O_ATTR
+	VALUES ("d3edc705-76e8-4b4f-8401-707e2578de4c",
+	"1be5dd1b-f517-40ac-8691-0144999e11da",
+	"249908c5-4d0e-4ed1-abf4-71d3510389c3",
+	'amountDue',
+	'Balance due at pay station.',
+	'',
+	'amountDue',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("835ff994-5d2c-4cbb-9ea1-5c35fa569053",
+	"1be5dd1b-f517-40ac-8691-0144999e11da");
+INSERT INTO O_BATTR
+	VALUES ("835ff994-5d2c-4cbb-9ea1-5c35fa569053",
+	"1be5dd1b-f517-40ac-8691-0144999e11da");
+INSERT INTO O_ATTR
+	VALUES ("835ff994-5d2c-4cbb-9ea1-5c35fa569053",
+	"1be5dd1b-f517-40ac-8691-0144999e11da",
+	"a70b8d8c-5996-4ffc-8341-1297a8bbbb81",
+	'amountDispensed',
+	'Money dispensed - either change due or a refund for a cancelled transaction.',
+	'',
+	'amountDispensed',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000003",
 	'',
 	'');
 INSERT INTO O_ID
