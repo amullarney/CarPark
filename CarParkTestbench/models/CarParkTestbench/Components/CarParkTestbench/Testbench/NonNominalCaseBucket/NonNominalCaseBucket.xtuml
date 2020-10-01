@@ -33,7 +33,10 @@ TicketRequested::Create( seqLabel:"seq01", location:"North" );
 TicketIssued::Create( seqLabel:"seq01", location:"North" );
 TicketTaken::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:BarrierState::Open );
+/*
+By removing this, a 30-second timeout should be generated as the vehicle delays entering
 VehicleDeparture::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
+*/
 BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:BarrierState::Closed );
 FastForward::Create( seqLabel:"seq01", hours:1, minutes:5, seconds:0 );
 TicketInserted::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay" );
