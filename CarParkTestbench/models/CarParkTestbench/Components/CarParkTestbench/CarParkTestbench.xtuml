@@ -2005,7 +2005,11 @@ INSERT INTO SPR_RS
 	VALUES ("90f9ea74-8479-448f-8e6d-e5990e8c3ec4",
 	'DeleteStimulus',
 	'Signals the testbench that the identified stimulus sub/supertype can be disposed of.',
-	'',
+	'select any stimulus from instances of Stimulus
+ where ( selected.stimulusId == param.stimulusId );
+if ( not_empty stimulus )
+  stimulus.Delete();
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -2023,7 +2027,11 @@ INSERT INTO SPR_RS
 	VALUES ("cf649e9c-fad9-4dde-8425-b7516843a14e",
 	'DeleteTestBucket',
 	'Signals the testbench that the identified test bucket sub/supertype can be disposed of.',
-	'',
+	'select any bucket from instances of TestBucket
+ where ( selected.bucketId == param.bucketId );
+if ( not_empty bucket )
+  bucket.Delete();
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -2059,7 +2067,11 @@ INSERT INTO SPR_RS
 	VALUES ("9ed0e418-1457-4e21-a7fc-a6bfc4be7086",
 	'DeleteObservation',
 	'Signals the testbench that the identified observation sub/supertype can be disposed of.',
-	'',
+	'select any observation from instances of Observation
+ where ( selected.observationId == param.observationId );
+if ( not_empty observation )
+  observation.Delete();
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY

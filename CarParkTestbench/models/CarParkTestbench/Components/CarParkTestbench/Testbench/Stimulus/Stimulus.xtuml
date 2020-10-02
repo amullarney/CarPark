@@ -102,28 +102,37 @@ INSERT INTO O_TFR
 	'Dispose of the client instances when the test sequence service no longer needs them.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select one ff related by self->FastForward[R3];
-if ( not_empty ff )
-  unrelate ff from self across R3;
-  delete object instance ff;
-else
-  select one va related by self->VehicleArrived[R3];
-  if ( not_empty va )
-  	unrelate va from self across R3;
-  	delete object instance va;
-  else
-  	select one tt related by self->TicketTaken[R3];
-  	if ( not_empty tt )
-  	  unrelate tt from self across R3;
-  	  delete object instance tt;
-    else
-      select one vd related by self->VehicleDeparture[R3];
-      if ( not_empty vd )
-        unrelate vd from self across R3; 
-        delete object instance vd;
-      end if;
-  	end if;
-  end if;
+	'// One of these subtypes should match...
+
+select one fastforward related by self->FastForward[R3];
+if ( not_empty fastforward )
+  unrelate fastforward from self across R3;
+  delete object instance fastforward;
+end if;
+select one arrival related by self->VehicleArrived[R3];
+if ( not_empty arrival )
+  unrelate arrival from self across R3;
+  delete object instance arrival;
+end if;
+select one ticket related by self->TicketRequested[R3];
+if ( not_empty ticket )
+  unrelate ticket from self across R3;
+  delete object instance ticket;
+end if;
+select one take related by self->TicketTaken[R3];
+if ( not_empty take )
+  unrelate take from self across R3;
+  delete object instance take;
+end if;
+select one insert related by self->TicketInserted[R3];
+if ( not_empty insert )
+  unrelate insert from self across R3;
+  delete object instance insert;
+end if;
+select one departure related by self->VehicleDeparture[R3];
+if ( not_empty departure )
+  unrelate departure from self across R3; 
+  delete object instance departure;
 end if;
 delete object instance self;',
 	1,

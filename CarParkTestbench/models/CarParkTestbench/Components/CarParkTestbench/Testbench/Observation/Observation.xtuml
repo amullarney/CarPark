@@ -183,7 +183,9 @@ INSERT INTO O_TFR
 	'Dispose of the client instances when the test sequence service no longer needs them.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select one req related by self->QueryTicketRequest[R4];
+	'// one of these subtypes should match...
+
+select one req related by self->QueryTicketRequest[R4];
 if ( not_empty req )
   unrelate req from self across R4;
   delete object instance req;
@@ -202,6 +204,16 @@ select one bv related by self->BalanceValue[R4];
 if ( not_empty bv )
   unrelate bv from self across R4;
   delete object instance bv;
+end if;
+select one giveback related by self->TicketReturned[R4];
+if ( not_empty giveback )
+  unrelate giveback from self across R4;
+  delete object instance giveback;
+end if;
+select one amount related by self->ChangeDispensed[R4];
+if ( not_empty amount )
+  unrelate amount from self across R4;
+  delete object instance amount;
 end if;
 
 delete object instance self;',
