@@ -79,7 +79,7 @@ if ( not_empty tracker )
     tracker.paid = True;  // required at exit
     if ( tracker.amountDue == 0.0 )  // exact - no change will be dispensed
       LOG::LogInfo( message:"Cancelling change dispensed observation at " + self.location );
-      send TESTSEQ::CancelTriggeredObservation( key:"Dispensed" );
+      send TESTSEQ::RemoveTriggeredObservation( key:"Dispensed" );
     end if;
   else
     if ( self.willpay )

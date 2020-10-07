@@ -1667,8 +1667,8 @@ if ( not_empty tracker )
   LOG::LogInfo( message:"Payment transaction cancelled at " + param.Location );
   tracker.payingAt = "";  // cancelled: may try paying again elsewhere.
 end if;
-send TESTSEQ::CancelTriggeredObservation( key:"Dispensed" );
-send TESTSEQ::CancelTriggeredObservation( key:"Balance" );',
+send TESTSEQ::RemoveTriggeredObservation( key:"Dispensed" );
+send TESTSEQ::RemoveTriggeredObservation( key:"Balance" );',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -2219,7 +2219,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("a3973e07-348a-48f3-b3f3-66ab20849f0e",
 	'IntervalTimerValue',
-	'',
+	'Respond to a request to read the interval timer on a sequence. The key supplied by the request is echoed back.',
 	'',
 	1,
 	0);
@@ -2228,7 +2228,7 @@ INSERT INTO C_EP_PROXY
 	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
 	-1,
 	'IntervalTimerValue',
-	'',
+	'Respond to a request to read the interval timer on a sequence. The key supplied by the request is echoed back.',
 	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("738924ac-d1a8-4152-a0b7-05f980cf4ef6",
@@ -2258,8 +2258,8 @@ INSERT INTO SPR_REP
 	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
 INSERT INTO SPR_RS
 	VALUES ("322abf3f-cccd-43fe-aaa7-e0979390316c",
-	'CancelTriggeredObservation',
-	'On this signal, any active observations with matching key value will be canceled.
+	'RemoveTriggeredObservation',
+	'On this signal, any active observations with matching key value will be deactivated.
 This has the effect of completing the observation without a failure penalty.',
 	'',
 	1,
@@ -2268,8 +2268,8 @@ INSERT INTO C_EP_PROXY
 	VALUES ("ca057380-3763-49be-a902-4f89bd14277c",
 	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
 	-1,
-	'CancelTriggeredObservation',
-	'On this signal, any active observations with matching key value will be canceled.
+	'RemoveTriggeredObservation',
+	'On this signal, any active observations with matching key value will be deactivated.
 This has the effect of completing the observation without a failure penalty.',
 	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
 INSERT INTO SPR_REP
@@ -2278,8 +2278,8 @@ INSERT INTO SPR_REP
 	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
 INSERT INTO SPR_RS
 	VALUES ("6ee925c3-4eb8-451a-968c-cbe3c6680718",
-	'SetTestBucketResolution',
-	'Test buckets inherit a default resolution from the test suite; this can be overridden.',
+	'SetTestBucketTimeResolutions',
+	'Test buckets inherit default resolutions from the test suite; these can be overridden.',
 	'',
 	1,
 	0);
@@ -2287,8 +2287,8 @@ INSERT INTO C_EP_PROXY
 	VALUES ("de9c9d7b-2d7a-4144-923a-4f0477575d03",
 	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
 	-1,
-	'SetTestBucketResolution',
-	'Test buckets inherit a default resolution from the test suite; this can be overridden.',
+	'SetTestBucketTimeResolutions',
+	'Test buckets inherit default resolutions from the test suite; these can be overridden.',
 	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("08243830-532e-4cae-a668-dddc1a563b2c",
@@ -2296,8 +2296,8 @@ INSERT INTO SPR_REP
 	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
 INSERT INTO SPR_RS
 	VALUES ("08243830-532e-4cae-a668-dddc1a563b2c",
-	'SetSequenceResolution',
-	'Test sequences inherit a default resolution from the test bucket; this can be overridden.',
+	'SetSequenceTimeResolutions',
+	'Test sequences inherit default resolutions from the test case they are attatched to; these can be overridden.',
 	'',
 	1,
 	0);
@@ -2305,8 +2305,8 @@ INSERT INTO C_EP_PROXY
 	VALUES ("092a77de-9124-470e-9e04-e55568aebdc9",
 	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
 	-1,
-	'SetSequenceResolution',
-	'Test sequences inherit a default resolution from the test bucket; this can be overridden.',
+	'SetSequenceTimeResolutions',
+	'Test sequences inherit default resolutions from the test case they are attatched to; these can be overridden.',
 	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("d1e773aa-2f28-4beb-98c5-2f4c25666782",
@@ -2314,8 +2314,8 @@ INSERT INTO SPR_REP
 	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
 INSERT INTO SPR_RS
 	VALUES ("d1e773aa-2f28-4beb-98c5-2f4c25666782",
-	'SetTestSuiteResolution',
-	'Set the timer resolution which will be default for the test buckets in this test suite.',
+	'SetTestSuiteTimeResolutions',
+	'Set the timer resolutions which will be defaults for the test buckets in this test suite.',
 	'',
 	1,
 	0);
@@ -2323,8 +2323,8 @@ INSERT INTO C_EP_PROXY
 	VALUES ("168e2aad-1615-4146-ac35-e977e2dbf6c5",
 	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
 	-1,
-	'SetTestSuiteResolution',
-	'Set the timer resolution which will be default for the test buckets in this test suite.',
+	'SetTestSuiteTimeResolutions',
+	'Set the timer resolutions which will be defaults for the test buckets in this test suite.',
 	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("24b280bc-6e76-4f23-8a7e-d0ff72653616",
@@ -2332,8 +2332,8 @@ INSERT INTO SPR_REP
 	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
 INSERT INTO SPR_RS
 	VALUES ("24b280bc-6e76-4f23-8a7e-d0ff72653616",
-	'SetTestCaseResolution',
-	'Test sequences inherit a default resolution from the test bucket; this can be overridden.',
+	'SetTestCaseTimeResolutions',
+	'Test cases inherit default resolutions from their test bucket; these can be overridden.',
 	'',
 	1,
 	0);
@@ -2341,8 +2341,44 @@ INSERT INTO C_EP_PROXY
 	VALUES ("80147fc1-3758-4e4b-b996-66d26cfeffd2",
 	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
 	-1,
-	'SetTestCaseResolution',
-	'Test sequences inherit a default resolution from the test bucket; this can be overridden.',
+	'SetTestCaseTimeResolutions',
+	'Test cases inherit default resolutions from their test bucket; these can be overridden.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("9f243831-32e4-4375-81bc-60ff592f6a65",
+	"abe4b64e-9b6b-4aa3-a59c-1c6df05a312a",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("9f243831-32e4-4375-81bc-60ff592f6a65",
+	'SetSequenceIntervalTimerResolution',
+	'Set a time resolution specific to interval timing measurements on the sequence.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("abe4b64e-9b6b-4aa3-a59c-1c6df05a312a",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'SetSequenceIntervalTimerResolution',
+	'Set a time resolution specific to interval timing measurements on the sequence.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("34ac1fd4-e847-4bfa-80c7-59fb6db2e233",
+	"33169678-f345-469d-ac15-ea1c7322c7a9",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("34ac1fd4-e847-4bfa-80c7-59fb6db2e233",
+	'SetObservationTimeResolutions',
+	'Observations inherit default resolutions from the sequence they are added to; these can be overridden.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("33169678-f345-469d-ac15-ea1c7322c7a9",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'SetObservationTimeResolutions',
+	'Observations inherit default resolutions from the sequence they are added to; these can be overridden.',
 	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("eff7aa83-70b9-46a6-bfc0-08d66d36431e",
