@@ -21,11 +21,9 @@ INSERT INTO O_TFR
 	1,
 	'// the following tests are based on use cases but cases UC1 and UC11 have deliberate failures.
 
-select one bucket related by self->TestBucket[R7];
-send TESTSEQ::NameTestBucket( bucketId:bucket.bucketId, bucketLabel:"CarPark_Bucket_2" );
-send TESTSEQ::SetTestBucketTimeResolutions( bucketId:bucket.bucketId, timeResolution:timeResolution::second, pollResolution:timeResolution::second );
+select one bucket related by self->TestBucket[R7];send TESTSEQ::SetTestBucketTimeResolutions( bucketId:bucket.bucketId, timeResolution:timeResolution::second, pollResolution:timeResolution::second );
 
-send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC1_failure" ); 
+send TESTSEQ::AddTestCase( caseLabel:"UC1_failure" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
 VehicleArrived::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 QueryTicketRequest::Create( seqLabel:"seq01", location:"North", enabled:True );
@@ -38,7 +36,7 @@ VehicleDeparture::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:BarrierState::Open );
 FastForward::Create( seqLabel:"seq01", hours:1, minutes:0, seconds:0 );
 
-send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC5_pay" ); 
+send TESTSEQ::AddTestCase( caseLabel:"UC5_pay" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq05" );
 TicketInserted::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
 BalanceValue::Create( seqLabel:"seq05", location:"1st Floor", pay:True );
@@ -46,7 +44,7 @@ TicketReturned::Create( seqLabel:"seq05", location:"1st Floor" );
 ChangeDispensed::Create( seqLabel:"seq05", location:"1st Floor" );
 TicketTaken::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
 
-send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC11_failure" ); 
+send TESTSEQ::AddTestCase( caseLabel:"UC11_failure" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq11" );
 VehicleArrived::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
 TicketInserted::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
@@ -69,6 +67,7 @@ INSERT INTO O_TFR
 	0,
 	'create object instance failures of DemonstrationCaseBucket;
 create object instance bucket of TestBucket;
+bucket.name = "Demonstration cases";
 relate failures to bucket across R7;
 bucket.AddToSuite();',
 	1,
