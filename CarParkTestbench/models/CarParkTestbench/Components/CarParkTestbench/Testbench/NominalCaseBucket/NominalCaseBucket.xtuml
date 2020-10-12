@@ -21,10 +21,9 @@ INSERT INTO O_TFR
 	'// The following tests are intended to validate the use cases by which they are named.
 
 select one bucket related by self->TestBucket[R7];
-send TESTSEQ::NameTestBucket( bucketId:bucket.bucketId, bucketLabel:"CarPark Nominal Test Cases" );
 send TESTSEQ::SetTestBucketTimeResolutions( bucketId:bucket.bucketId, timeResolution:timeResolution::second, pollResolution:timeResolution::second );
 
-send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC1" ); 
+send TESTSEQ::AddTestCase( caseLabel:"UC1" ); 
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:3, caseLabel:"UC1" );
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:6, caseLabel:"UC1" );
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:7, caseLabel:"UC1" );
@@ -40,7 +39,7 @@ BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:B
 QueryTicketRequest::Create( seqLabel:"seq01", location:"North", enabled:False );
 FastForward::Create( seqLabel:"seq01", hours:5, minutes:0, seconds:0 );
 
-send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC5" ); 
+send TESTSEQ::AddTestCase( caseLabel:"UC5" ); 
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:17, caseLabel:"UC5" );
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:22, caseLabel:"UC5" );
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:32, caseLabel:"UC5" );
@@ -51,7 +50,7 @@ TicketReturned::Create( seqLabel:"seq05", location:"1st Floor" );
 ChangeDispensed::Create( seqLabel:"seq05", location:"1st Floor" );
 TicketTaken::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
 
-send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC11" ); 
+send TESTSEQ::AddTestCase( caseLabel:"UC11" ); 
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:39, caseLabel:"UC11" );
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:41, caseLabel:"UC11" );
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq11" );
@@ -75,6 +74,7 @@ INSERT INTO O_TFR
 	0,
 	'create object instance nominal of NominalCaseBucket;
 create object instance bucket of TestBucket;
+bucket.name = "Nominal Cases";
 relate nominal to bucket across R7;
 bucket.AddToSuite();',
 	1,
