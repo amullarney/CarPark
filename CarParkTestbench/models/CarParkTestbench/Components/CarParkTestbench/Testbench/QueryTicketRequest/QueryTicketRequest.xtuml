@@ -22,7 +22,7 @@ request.location = param.location;
 request.enabled = param.enabled;
 
 create object instance observation of Observation;
-relate request to observation across R4;
+relate request to observation across R400;
 
 observation.Add( seqLabel:param.seqLabel, 
                  pollInterval:0, 
@@ -68,7 +68,7 @@ INSERT INTO O_TFR
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'LOG::LogInfo( message:" --- Checking ticket request status for entry stand at " + self.location );
-select one observation related by self->Observation[R4]; 
+select one observation related by self->Observation[R400]; 
 
 select any request from instances of ReceivedTicketRequest
  where ( selected.location == self.location );

@@ -97,27 +97,27 @@ INSERT INTO O_TFR
 	'This operation will be invoked when the counterpart instance is encountered by the sequencing service.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select one tr related by self->QueryTicketRequest[R4];
+	'select one tr related by self->QueryTicketRequest[R400];
 if ( not_empty tr )
   tr.CheckRequest();
 else
-  select one bs related by self->BarrierCheck[R4];
+  select one bs related by self->BarrierCheck[R400];
   if ( not_empty bs )
   	bs.CheckStatus(); 
   else
-  	select one ti related by self->TicketIssued[R4];
+  	select one ti related by self->TicketIssued[R400];
   	if ( not_empty ti )
   	  ti.CheckIssued();
     else
-      select one bv related by self->BalanceValue[R4];
+      select one bv related by self->BalanceValue[R400];
       if ( not_empty bv )
         bv.CheckBalance();
       else
-        select one rt related by self->TicketReturned[R4];
+        select one rt related by self->TicketReturned[R400];
         if ( not_empty rt )
           rt.CheckReturned();
         else
-          select one cd related by self->ChangeDispensed[R4];
+          select one cd related by self->ChangeDispensed[R400];
           if ( not_empty cd )
             cd.CheckDispensed();
           end if;
@@ -185,34 +185,34 @@ INSERT INTO O_TFR
 	1,
 	'// one of these subtypes should match...
 
-select one req related by self->QueryTicketRequest[R4];
+select one req related by self->QueryTicketRequest[R400];
 if ( not_empty req )
-  unrelate req from self across R4;
+  unrelate req from self across R400;
   delete object instance req;
 end if;
-select one ti related by self->TicketIssued[R4];
+select one ti related by self->TicketIssued[R400];
 if ( not_empty ti )
-  unrelate ti from self across R4;
+  unrelate ti from self across R400;
   delete object instance ti;
 end if;
-select one bs related by self->BarrierCheck[R4];
+select one bs related by self->BarrierCheck[R400];
 if ( not_empty bs )
-  unrelate bs from self across R4;
+  unrelate bs from self across R400;
   delete object instance bs;
 end if;
-select one bv related by self->BalanceValue[R4];
+select one bv related by self->BalanceValue[R400];
 if ( not_empty bv )
-  unrelate bv from self across R4;
+  unrelate bv from self across R400;
   delete object instance bv;
 end if;
-select one giveback related by self->TicketReturned[R4];
+select one giveback related by self->TicketReturned[R400];
 if ( not_empty giveback )
-  unrelate giveback from self across R4;
+  unrelate giveback from self across R400;
   delete object instance giveback;
 end if;
-select one amount related by self->ChangeDispensed[R4];
+select one amount related by self->ChangeDispensed[R400];
 if ( not_empty amount )
-  unrelate amount from self across R4;
+  unrelate amount from self across R400;
   delete object instance amount;
 end if;
 
