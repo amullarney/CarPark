@@ -20,7 +20,7 @@ INSERT INTO O_TFR
 	1,
 	'// The following tests are intended to validate the use cases by which they are named.
 
-select one bucket related by self->TestBucket[R7];
+select one bucket related by self->TestBucket[R700];
 send TESTSEQ::SetTestBucketTimeResolutions( bucketId:bucket.bucketId, timeResolution:timeResolution::second, pollResolution:timeResolution::second );
 
 send TESTSEQ::AddTestCase( caseLabel:"UC1" ); 
@@ -75,7 +75,7 @@ INSERT INTO O_TFR
 	'create object instance nominal of NominalCaseBucket;
 create object instance bucket of TestBucket;
 bucket.name = "Nominal Cases";
-relate nominal to bucket across R7;
+relate nominal to bucket across R700;
 bucket.AddToSuite();',
 	1,
 	'',

@@ -21,7 +21,7 @@ balanceValue.location = param.location;
 balanceValue.willpay = param.pay;
 
 create object instance obs of Observation;
-relate balanceValue to obs across R4;
+relate balanceValue to obs across R400;
 
 obs.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"Balance", concurrent:True );',
 	1,
@@ -68,7 +68,7 @@ If no payment is made a timeout is expected.',
 	'// Look for balance value at appropriate pay station location
 
 LOG::LogInfo( message:" --- Checking for payment balance at " + self.location  );
-select one observation related by self->Observation[R4];  // for success/fail signal
+select one observation related by self->Observation[R400];  // for success/fail signal
 select any tracker from instances of VisitTracking
  where ( selected.payingAt == self.location );
 if ( not_empty tracker )

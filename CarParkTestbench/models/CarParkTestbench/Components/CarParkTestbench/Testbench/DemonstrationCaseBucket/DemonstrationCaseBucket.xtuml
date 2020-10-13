@@ -21,7 +21,7 @@ INSERT INTO O_TFR
 	1,
 	'// the following tests are based on use cases but cases UC1 and UC11 have deliberate failures.
 
-select one bucket related by self->TestBucket[R7];send TESTSEQ::SetTestBucketTimeResolutions( bucketId:bucket.bucketId, timeResolution:timeResolution::second, pollResolution:timeResolution::second );
+select one bucket related by self->TestBucket[R700];send TESTSEQ::SetTestBucketTimeResolutions( bucketId:bucket.bucketId, timeResolution:timeResolution::second, pollResolution:timeResolution::second );
 
 send TESTSEQ::AddTestCase( caseLabel:"UC1_failure" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
@@ -68,7 +68,7 @@ INSERT INTO O_TFR
 	'create object instance failures of DemonstrationCaseBucket;
 create object instance bucket of TestBucket;
 bucket.name = "Demonstration cases";
-relate failures to bucket across R7;
+relate failures to bucket across R700;
 bucket.AddToSuite();',
 	1,
 	'',

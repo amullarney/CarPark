@@ -19,7 +19,7 @@ See Observation.AppendPolling for description.',
 	'create object instance cd of ChangeDispensed;
 
 create object instance obs of Observation;
-relate cd to obs across R4;
+relate cd to obs across R400;
 cd.location = param.location;
 
 obs.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"Dispensed", concurrent:True );',
@@ -54,7 +54,7 @@ INSERT INTO O_TFR
 	1,
 	'// Look for a change amount being dispensed at the appropriate pay station location.
 
-select one observation related by self->Observation[R4]; 
+select one observation related by self->Observation[R400]; 
 select any tracker from instances of VisitTracking
  where ( selected.payingAt == self.location );
 if ( not_empty tracker )

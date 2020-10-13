@@ -20,7 +20,7 @@ insertion.location = param.location;
 insertion.standType = param.stand;
 
 create object instance stimulus of Stimulus;
-relate stimulus to insertion across R3; 
+relate stimulus to insertion across R300; 
 
 stimulus.AddToTest( seqLabel:param.seqLabel );',
 	1,
@@ -77,7 +77,7 @@ else
   send ExitStand::InsertedTicket( Location:self.location, TicketNumber:tracker.ticketNumber );
 end if;
 
-select one stimulus related by self->Stimulus[R3];
+select one stimulus related by self->Stimulus[R300];
 stimulus.Complete();
 ',
 	1,

@@ -20,7 +20,7 @@ departure.location = param.location;
 departure.standType = param.stand;
 
 create object instance stimulus of Stimulus;
-relate stimulus to departure across R3;
+relate stimulus to departure across R300;
 
 stimulus.AddToTest( seqLabel:param.seqLabel );',
 	1,
@@ -71,7 +71,7 @@ else
   delete object instance tracker;
 end if;
 
-select one stimulus related by self->Stimulus[R3];
+select one stimulus related by self->Stimulus[R300];
 stimulus.Complete();
 ',
 	1,

@@ -20,7 +20,7 @@ ticket.location = param.location;
 ticket.standType = param.stand;
 
 create object instance stimulus of Stimulus;
-relate stimulus to ticket across R3;
+relate stimulus to ticket across R300;
 
 stimulus.AddToTest( seqLabel:param.seqLabel );',
 	1,
@@ -68,7 +68,7 @@ else
   send Payer::TicketCollected( Location:self.location );
 end if;
 
-select one stimulus related by self->Stimulus[R3];
+select one stimulus related by self->Stimulus[R300];
 stimulus.Complete();
 ',
 	1,
