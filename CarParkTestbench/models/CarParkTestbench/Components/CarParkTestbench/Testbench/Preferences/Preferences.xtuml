@@ -5,7 +5,7 @@ INSERT INTO O_OBJ
 	'Preferences',
 	37,
 	'Preferences',
-	'',
+	'Controls which observations are to supported in test cases.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("9e6efff6-4959-4f89-bc14-889d8440fe94",
@@ -17,6 +17,8 @@ INSERT INTO O_TFR
 	'select any prefs from instances of Preferences;
 if ( param.off )
   prefs.EntryActivation = False;
+else
+  prefs.EntryActivation = True;
 end if;',
 	1,
 	'',
@@ -41,6 +43,8 @@ INSERT INTO O_TFR
 	'select any prefs from instances of Preferences;
 if ( param.off )
   prefs.ExitActivation = False;
+else
+  prefs.ExitActivation = True;
 end if;',
 	1,
 	'',

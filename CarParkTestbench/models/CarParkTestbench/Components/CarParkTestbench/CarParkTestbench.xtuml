@@ -800,7 +800,7 @@ INSERT INTO SPR_RS
 	'Activates the section of the operator console display for a particular entry stand.',
 	'select any prefs from instances of Preferences;
 if ( prefs.EntryActivation == True )
-  create object instance activ of Activation;
+  create object instance activ of EntryActivation;
   activ.location = param.Location;
   activ.active = True;
   send TESTSEQ::Assess( key:"EntryActivation" );
@@ -824,7 +824,7 @@ INSERT INTO SPR_RS
 	'Deactivates the section of the operator console display for a particular entry stand.',
 	'select any prefs from instances of Preferences;
 if ( prefs.EntryActivation == True )
-  create object instance activ of Activation;
+  create object instance activ of EntryActivation;
   activ.location = param.Location;
   activ.active = False;
   send TESTSEQ::Assess( key:"EntryActivation" );
@@ -870,7 +870,7 @@ INSERT INTO SPR_RS
 	'Activates the section of the operator console display for a particular exit stand.',
 	'select any prefs from instances of Preferences;
 if ( prefs.ExitActivation == True )
-  create object instance activ of Activation;
+  create object instance activ of EntryActivation;	// @TODO - make exit
   activ.location = param.Location;
   activ.active = True;
   send TESTSEQ::Assess( key:"ExitActivation" );
@@ -894,7 +894,7 @@ INSERT INTO SPR_RS
 	'Deactivates the section of the operator console display for a particular exit stand.',
 	'select any prefs from instances of Preferences;
 if ( prefs.ExitActivation == True )
-  create object instance activ of Activation;
+  create object instance activ of EntryActivation;  // @TODO - make exit
   activ.location = param.Location;
   activ.active = False;
   send TESTSEQ::Assess( key:"ExitActivation" );
@@ -1787,6 +1787,11 @@ INSERT INTO SPR_RS
 	'Testbench receives notification that a new test case has been selected to run.
 Initialize any pre-conditions and respond when ready for stimulus injection.',
 	'LOG::LogInfo( message:"Starting test case execution: " + param.caseLabel );
+if ( param.caseLabel == "UC1" )
+  Preferences::EntryActivation( off:False );
+else
+  Preferences::EntryActivation( off:True );
+end if;
 send TESTSEQ::TestCaseInitialized( caseLabel:param.caseLabel );',
 	1,
 	0);
@@ -1940,7 +1945,11 @@ INSERT INTO SPR_RS
 	VALUES ("4cc8fa66-f8a1-4a2a-b160-8ed806a61df8",
 	'InitializeBucket',
 	'Signals a test bucket to instantiate its test case sequences.',
-	'select any bucket from instances of TestBucket
+	'Preferences::Create();
+Preferences::EntryActivation( off:True );
+Preferences::ExitActivation( off:True );
+
+select any bucket from instances of TestBucket
   where ( selected.bucketId == param.bucketId );
 LOG::LogInfo( message:"Configuring test cases for test bucket " + bucket.name );
 bucket.AddTestCases();',

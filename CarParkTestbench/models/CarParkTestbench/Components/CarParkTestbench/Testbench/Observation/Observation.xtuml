@@ -125,7 +125,7 @@ else
             if ( not_empty oc )
               oc.OccupancyChange();
             else
-              select one ac related by self->Activation[R400];
+              select one ac related by self->EntryActivation[R400];
               if ( not_empty ac )
                 ac.CheckActivation();
               end if;
@@ -228,7 +228,7 @@ if ( not_empty contents )
   unrelate contents from self across R400;
   delete object instance contents;
 end if;
-select one activ related by self->Activation[R400];
+select one activ related by self->EntryActivation[R400];
 if ( not_empty activ )
   unrelate activ from self across R400;
   delete object instance activ;

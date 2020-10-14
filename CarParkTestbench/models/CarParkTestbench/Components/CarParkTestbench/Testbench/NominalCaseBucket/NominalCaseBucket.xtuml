@@ -23,9 +23,6 @@ INSERT INTO O_TFR
 select one bucket related by self->TestBucket[R700];
 send TESTSEQ::SetTestBucketTimeResolutions( bucketId:bucket.bucketId, timeResolution:timeResolution::second, pollResolution:timeResolution::second );
 
-Preferences::Create();
-Preferences::EntryActivation( off:True );
-Preferences::ExitActivation( off:True );
 
 send TESTSEQ::AddTestCase( caseLabel:"UC1" ); 
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:3, caseLabel:"UC1" );
@@ -34,12 +31,17 @@ send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:7, caseLabel:"UC1" );
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
 VehicleArrived::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 QueryTicketRequest::Create( seqLabel:"seq01", location:"North", enabled:True );
+EntryActivation::Create( seqLabel:"seq01", activate:True, location:"North", barrier: BarrierState::Closed, ticket: EntryTicketState::NotRequested );
 TicketRequested::Create( seqLabel:"seq01", location:"North" );
+EntryActivation::Create( seqLabel:"seq01", activate:True, location:"North", barrier: BarrierState::Closed, ticket: EntryTicketState::Requested );
 TicketIssued::Create( seqLabel:"seq01", location:"North" );
+EntryActivation::Create( seqLabel:"seq01", activate:True, location:"North", barrier: BarrierState::Closed, ticket: EntryTicketState::Issued );
 TicketTaken::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
+EntryActivation::Create( seqLabel:"seq01", activate:True, location:"North", barrier: BarrierState::Open, ticket: EntryTicketState::Accepted );
 BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:BarrierState::Open );
 VehicleDeparture::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:BarrierState::Closed );
+EntryActivation::Create( seqLabel:"seq01", activate:False, location:"North", barrier: BarrierState::Closed, ticket: EntryTicketState::Accepted );
 QueryTicketRequest::Create( seqLabel:"seq01", location:"North", enabled:False );
 OccupancyCount::Create( seqLabel:"seq01", count:1 );
 FastForward::Create( seqLabel:"seq01", hours:5, minutes:0, seconds:0 );

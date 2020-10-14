@@ -21,7 +21,7 @@ ticket.location = param.location;
 create object instance obs of Observation;
 relate ticket to obs across R400;
 
-obs.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"TicketIssued", concurrent:False );',
+obs.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"TicketIssued", concurrent:True );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
