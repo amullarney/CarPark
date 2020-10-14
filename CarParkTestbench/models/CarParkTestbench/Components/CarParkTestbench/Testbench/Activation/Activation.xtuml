@@ -1,0 +1,172 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("4c19c8d4-3363-474a-ac24-e179d2242f14",
+	'Activation',
+	35,
+	'Activation',
+	'An observation which checks for operator console activation/deactivation.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("eadca89d-13b0-451f-8e67-7a61adfb9b22",
+	"4c19c8d4-3363-474a-ac24-e179d2242f14",
+	'Create',
+	'Add an observation of this type to the ''script'' of a test case.
+See Observation.AppendPolling for description.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance check of Activation;
+
+create object instance observation of Observation;
+relate check to observation across R400;
+check.location = param.location;
+check.stand = param.stand;
+check.active = param.activate;
+
+observation.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"Activation", concurrent:True );',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("35facfc8-9a03-41b2-a427-13a8738849c4",
+	"eadca89d-13b0-451f-8e67-7a61adfb9b22",
+	'location',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"35627ff3-4470-448a-839e-9f2538fe0ee3",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("c4d44c2b-2f5c-41ef-b6b3-3edb040900a4",
+	"eadca89d-13b0-451f-8e67-7a61adfb9b22",
+	'activate',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"bc5d3178-d529-4aeb-9ecd-38139741578e",
+	'Indicate whether to check for activate or deactivate.');
+INSERT INTO O_TPARM
+	VALUES ("bc5d3178-d529-4aeb-9ecd-38139741578e",
+	"eadca89d-13b0-451f-8e67-7a61adfb9b22",
+	'stand',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"35facfc8-9a03-41b2-a427-13a8738849c4",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("35627ff3-4470-448a-839e-9f2538fe0ee3",
+	"eadca89d-13b0-451f-8e67-7a61adfb9b22",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("5934191a-5882-484c-ad95-60dcae2d09da",
+	"4c19c8d4-3363-474a-ac24-e179d2242f14",
+	'CheckActivation',
+	'When invoked, search any existing notifications looking for a match.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Observe that the operator console for the specified entry/exit station is activated/deactivated as appropriate.
+
+LOG::LogInfo( message:" --- Checking for activation status " + "for " + self.location + " " + self.stand );
+select one observation related by self->Observation[R400]; 
+
+select any activ from instances of Activation
+ where ( selected.location == self.location ) 
+ and ( selected.stand == self.stand );
+if ( not_empty activ )
+  if ( activ.active == self.active )
+    observation.Complete( success:True );
+  else
+    observation.Complete( success:False );
+  end if;
+  delete object instance activ;
+else
+  observation.Complete( success:False );
+end if;',
+	1,
+	'',
+	"eadca89d-13b0-451f-8e67-7a61adfb9b22",
+	0);
+INSERT INTO O_NBATTR
+	VALUES ("6d0bded4-78f3-45c6-be2f-394eadb0bf6b",
+	"4c19c8d4-3363-474a-ac24-e179d2242f14");
+INSERT INTO O_BATTR
+	VALUES ("6d0bded4-78f3-45c6-be2f-394eadb0bf6b",
+	"4c19c8d4-3363-474a-ac24-e179d2242f14");
+INSERT INTO O_ATTR
+	VALUES ("6d0bded4-78f3-45c6-be2f-394eadb0bf6b",
+	"4c19c8d4-3363-474a-ac24-e179d2242f14",
+	"00000000-0000-0000-0000-000000000000",
+	'location',
+	'',
+	'',
+	'location',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("d7f04946-737b-49db-a498-6ae70712df04",
+	"4c19c8d4-3363-474a-ac24-e179d2242f14");
+INSERT INTO O_BATTR
+	VALUES ("d7f04946-737b-49db-a498-6ae70712df04",
+	"4c19c8d4-3363-474a-ac24-e179d2242f14");
+INSERT INTO O_ATTR
+	VALUES ("d7f04946-737b-49db-a498-6ae70712df04",
+	"4c19c8d4-3363-474a-ac24-e179d2242f14",
+	"ea657732-94d7-4da2-a50c-22194274330e",
+	'active',
+	'If True, this represents activation; if False, deactivation.',
+	'',
+	'active',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("ea657732-94d7-4da2-a50c-22194274330e",
+	"4c19c8d4-3363-474a-ac24-e179d2242f14");
+INSERT INTO O_BATTR
+	VALUES ("ea657732-94d7-4da2-a50c-22194274330e",
+	"4c19c8d4-3363-474a-ac24-e179d2242f14");
+INSERT INTO O_ATTR
+	VALUES ("ea657732-94d7-4da2-a50c-22194274330e",
+	"4c19c8d4-3363-474a-ac24-e179d2242f14",
+	"6d0bded4-78f3-45c6-be2f-394eadb0bf6b",
+	'stand',
+	'',
+	'',
+	'stand',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"4c19c8d4-3363-474a-ac24-e179d2242f14");
+INSERT INTO O_ID
+	VALUES (1,
+	"4c19c8d4-3363-474a-ac24-e179d2242f14");
+INSERT INTO O_ID
+	VALUES (2,
+	"4c19c8d4-3363-474a-ac24-e179d2242f14");
+INSERT INTO PE_PE
+	VALUES ("4c19c8d4-3363-474a-ac24-e179d2242f14",
+	1,
+	"3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'Testbench',
+	'',
+	0,
+	'../Testbench.xtuml');
