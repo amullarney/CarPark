@@ -37,6 +37,7 @@ BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:B
 VehicleDeparture::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:BarrierState::Closed );
 QueryTicketRequest::Create( seqLabel:"seq01", location:"North", enabled:False );
+OccupancyCount::Create( seqLabel:"seq01", count:1 );
 FastForward::Create( seqLabel:"seq01", hours:5, minutes:0, seconds:0 );
 
 send TESTSEQ::AddTestCase( caseLabel:"UC5" ); 
@@ -59,6 +60,7 @@ TicketInserted::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
 BarrierCheck::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", state:BarrierState::Open );
 VehicleDeparture::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
 BarrierCheck::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", state:BarrierState::Closed );
+OccupancyCount::Create( seqLabel:"seq11", count:0 );
 
 bucket.Initialized();',
 	1,
@@ -88,8 +90,7 @@ INSERT INTO O_TFR
 	'Execute the set of tests in this bucket stand-alone.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'create object instance operator of Operator;  // for status checks..
-send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Nominal Test Suite", keepAllCases:False ); 
+	'send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Nominal Test Suite", keepAllCases:False ); 
 NominalCaseBucket::AddBucketToSuite();
 send Operator::OpenCarpark();',
 	1,

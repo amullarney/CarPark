@@ -798,8 +798,10 @@ INSERT INTO SPR_RS
 	VALUES ("9030b81f-3015-4b1d-9b1f-6217ddce858d",
 	'ActivateEntryStand',
 	'Activates the section of the operator console display for a particular entry stand.',
-	'select any operator from instances of Operator;
-operator.EntryStandActivated = true;',
+	'create object instance activ of Activation;
+activ.location = param.Location;
+activ.active = True;
+send TESTSEQ::Assess( key:"Activation" );',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -817,8 +819,10 @@ INSERT INTO SPR_RS
 	VALUES ("3ee2ab3c-3f90-41ae-9eeb-43a1f994e19c",
 	'DeactivateEntryStand',
 	'Deactivates the section of the operator console display for a particular entry stand.',
-	'select any operator from instances of Operator;
-operator.EntryStandDeactivated = true;',
+	'create object instance activ of Activation;
+activ.location = param.Location;
+activ.active = False;
+send TESTSEQ::Assess( key:"Activation" );',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -858,8 +862,10 @@ INSERT INTO SPR_RS
 	VALUES ("8e4d2896-2cb8-4bbf-bc8b-a9aecefa99fe",
 	'ActivateExitStand',
 	'Activates the section of the operator console display for a particular exit stand.',
-	'select any operator from instances of Operator;
-operator.ExitStandActivated = true;',
+	'create object instance activ of Activation;
+activ.location = param.Location;
+activ.active = True;
+send TESTSEQ::Assess( key:"Activation" );',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -877,8 +883,10 @@ INSERT INTO SPR_RS
 	VALUES ("8f5cce9e-ad81-456b-9d9c-43da460ffacd",
 	'DeactivateExitStand',
 	'Deactivates the section of the operator console display for a particular exit stand.',
-	'select any operator from instances of Operator;
-operator.ExitStandDeactivated = true;',
+	'create object instance activ of Activation;
+activ.location = param.Location;
+activ.active = False;
+send TESTSEQ::Assess( key:"Activation" );',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -896,15 +904,12 @@ INSERT INTO SPR_RS
 	VALUES ("c9bec875-0c09-4938-bc20-08fb9b405cda",
 	'OccupancyUpdate',
 	'Provides current carpark occupancy data.',
-	'select any operator from instances of Operator;
-if ( param.Occupancy < operator.Occupancy )
-  operator.OccupancyDecreased = operator.OccupancyDecreased + 1;
-else
-  operator.OccupancyIncreased = operator.OccupancyIncreased + 1;
+	'select any contents from instances of Occupancy;
+if ( empty contents )
+  create object instance contents of Occupancy;
 end if;
-operator.Occupancy = param.Occupancy;
-operator.OccupancyUpdated = true;
-',
+contents.count = param.Occupancy;
+send TESTSEQ::Assess( key:"Occupancy" );',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -2066,8 +2071,7 @@ INSERT INTO SPR_RS
 	VALUES ("966caf7e-fbdf-4666-a00a-68a3878fca06",
 	'TestSuiteComplete',
 	'Signals completion of the test suite.',
-	'select any operator from instances of Operator;
-operator.Check();',
+	'',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
