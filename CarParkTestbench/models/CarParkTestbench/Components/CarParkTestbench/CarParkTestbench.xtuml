@@ -798,10 +798,13 @@ INSERT INTO SPR_RS
 	VALUES ("9030b81f-3015-4b1d-9b1f-6217ddce858d",
 	'ActivateEntryStand',
 	'Activates the section of the operator console display for a particular entry stand.',
-	'create object instance activ of Activation;
-activ.location = param.Location;
-activ.active = True;
-send TESTSEQ::Assess( key:"Activation" );',
+	'select any prefs from instances of Preferences;
+if ( prefs.EntryActivation == True )
+  create object instance activ of Activation;
+  activ.location = param.Location;
+  activ.active = True;
+  send TESTSEQ::Assess( key:"EntryActivation" );
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -819,10 +822,13 @@ INSERT INTO SPR_RS
 	VALUES ("3ee2ab3c-3f90-41ae-9eeb-43a1f994e19c",
 	'DeactivateEntryStand',
 	'Deactivates the section of the operator console display for a particular entry stand.',
-	'create object instance activ of Activation;
-activ.location = param.Location;
-activ.active = False;
-send TESTSEQ::Assess( key:"Activation" );',
+	'select any prefs from instances of Preferences;
+if ( prefs.EntryActivation == True )
+  create object instance activ of Activation;
+  activ.location = param.Location;
+  activ.active = False;
+  send TESTSEQ::Assess( key:"EntryActivation" );
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -862,10 +868,13 @@ INSERT INTO SPR_RS
 	VALUES ("8e4d2896-2cb8-4bbf-bc8b-a9aecefa99fe",
 	'ActivateExitStand',
 	'Activates the section of the operator console display for a particular exit stand.',
-	'create object instance activ of Activation;
-activ.location = param.Location;
-activ.active = True;
-send TESTSEQ::Assess( key:"Activation" );',
+	'select any prefs from instances of Preferences;
+if ( prefs.ExitActivation == True )
+  create object instance activ of Activation;
+  activ.location = param.Location;
+  activ.active = True;
+  send TESTSEQ::Assess( key:"ExitActivation" );
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -883,10 +892,13 @@ INSERT INTO SPR_RS
 	VALUES ("8f5cce9e-ad81-456b-9d9c-43da460ffacd",
 	'DeactivateExitStand',
 	'Deactivates the section of the operator console display for a particular exit stand.',
-	'create object instance activ of Activation;
-activ.location = param.Location;
-activ.active = False;
-send TESTSEQ::Assess( key:"Activation" );',
+	'select any prefs from instances of Preferences;
+if ( prefs.ExitActivation == True )
+  create object instance activ of Activation;
+  activ.location = param.Location;
+  activ.active = False;
+  send TESTSEQ::Assess( key:"ExitActivation" );
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY

@@ -23,6 +23,10 @@ INSERT INTO O_TFR
 select one bucket related by self->TestBucket[R700];
 send TESTSEQ::SetTestBucketTimeResolutions( bucketId:bucket.bucketId, timeResolution:timeResolution::second, pollResolution:timeResolution::second );
 
+Preferences::Create();
+Preferences::EntryActivation( off:True );
+Preferences::ExitActivation( off:True );
+
 send TESTSEQ::AddTestCase( caseLabel:"UC1" ); 
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:3, caseLabel:"UC1" );
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:6, caseLabel:"UC1" );
