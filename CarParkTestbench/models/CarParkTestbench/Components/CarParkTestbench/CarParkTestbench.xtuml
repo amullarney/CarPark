@@ -800,10 +800,18 @@ INSERT INTO SPR_RS
 	'Activates the section of the operator console display for a particular entry stand.',
 	'select any prefs from instances of Preferences;
 if ( prefs.EntryActivation == True )
-  create object instance activ of EntryActivation;
+  create object instance activ of Activation;
   activ.location = param.Location;
   activ.active = True;
-  send TESTSEQ::Assess( key:"EntryActivation" );
+  activ.barrier = param.Barrier;
+  activ.ticketEntry = param.Ticket;
+  send TESTSEQ::Assess( key:"Activation" );
+end if;
+if ( param.Ticket == EntryTicketState::Issued );
+  LOG::LogInfo( message:"activity Issued" );
+end if;
+if ( param.Ticket == EntryTicketState::Accepted );
+  LOG::LogInfo( message:"activity Accepted" );
 end if;',
 	1,
 	0);
@@ -824,10 +832,10 @@ INSERT INTO SPR_RS
 	'Deactivates the section of the operator console display for a particular entry stand.',
 	'select any prefs from instances of Preferences;
 if ( prefs.EntryActivation == True )
-  create object instance activ of EntryActivation;
+  create object instance activ of Activation;
   activ.location = param.Location;
   activ.active = False;
-  send TESTSEQ::Assess( key:"EntryActivation" );
+  send TESTSEQ::Assess( key:"Activation" );
 end if;',
 	1,
 	0);
@@ -869,11 +877,13 @@ INSERT INTO SPR_RS
 	'ActivateExitStand',
 	'Activates the section of the operator console display for a particular exit stand.',
 	'select any prefs from instances of Preferences;
-if ( prefs.ExitActivation == True )
-  create object instance activ of EntryActivation;	// @TODO - make exit
+if ( prefs.EntryActivation == True )
+  create object instance activ of Activation;
   activ.location = param.Location;
   activ.active = True;
-  send TESTSEQ::Assess( key:"ExitActivation" );
+  activ.barrier = param.Barrier;
+  activ.ticketExit = param.Ticket;
+  send TESTSEQ::Assess( key:"Activation" );
 end if;',
 	1,
 	0);
@@ -894,10 +904,10 @@ INSERT INTO SPR_RS
 	'Deactivates the section of the operator console display for a particular exit stand.',
 	'select any prefs from instances of Preferences;
 if ( prefs.ExitActivation == True )
-  create object instance activ of EntryActivation;  // @TODO - make exit
+  create object instance activ of Activation;
   activ.location = param.Location;
   activ.active = False;
-  send TESTSEQ::Assess( key:"ExitActivation" );
+  send TESTSEQ::Assess( key:"Activation" );
 end if;',
 	1,
 	0);
@@ -1787,10 +1797,13 @@ INSERT INTO SPR_RS
 	'Testbench receives notification that a new test case has been selected to run.
 Initialize any pre-conditions and respond when ready for stimulus injection.',
 	'LOG::LogInfo( message:"Starting test case execution: " + param.caseLabel );
+Preferences::EntryActivation( off:True );
+Preferences::ExitActivation( off:True );
 if ( param.caseLabel == "UC1" )
   Preferences::EntryActivation( off:False );
-else
-  Preferences::EntryActivation( off:True );
+end if;
+if ( param.caseLabel == "UC11" )
+  Preferences::ExitActivation( off:False );
 end if;
 send TESTSEQ::TestCaseInitialized( caseLabel:param.caseLabel );',
 	1,

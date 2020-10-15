@@ -1,2 +1,1 @@
-*,RootPackage,*,CarParkTestbench::AutoTest
 Components::CarParkTestbench,InitFunction,Component,RunNominalCases

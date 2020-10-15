@@ -2,27 +2,28 @@
 
 INSERT INTO O_OBJ
 	VALUES ("4c19c8d4-3363-474a-ac24-e179d2242f14",
-	'EntryActivation',
+	'ActivityCheck',
 	35,
-	'EntryActivation',
+	'ActivityCheck',
 	'An observation which checks for operator console activation/deactivation.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("eadca89d-13b0-451f-8e67-7a61adfb9b22",
 	"4c19c8d4-3363-474a-ac24-e179d2242f14",
-	'Create',
+	'CreateEntry',
 	'Add an observation of this type to the ''script'' of a test case.
 See Observation.AppendPolling for description.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'create object instance activ of EntryActivation;
+	'create object instance activ of ActivityCheck;
 
 create object instance observation of Observation;
 relate activ to observation across R400;
 activ.location = param.location;
 activ.active = param.activate;
-
-observation.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"EntryActivation", concurrent:True );',
+activ.barrier = param.barrier;
+activ.ticketEntry = param.ticket;
+observation.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"Activation", concurrent:True );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
@@ -93,27 +94,114 @@ INSERT INTO O_TFR
 	'When invoked, search any existing notifications looking for a match.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'// Observe that the operator console for the specified entry/exit station is activated/deactivated as appropriate.
+	'// Observe that the operator console for the specified entry/exit station is activated.
+select one observation related by self->Observation[R400]; 
+select any prefs from instances of Preferences;
+if ( not prefs.EntryActivation )
+  observation.Complete( success:True );
+  return;
+end if;
+
+
+if ( self.ticketEntry == EntryTicketState::Requested );
+  LOG::LogInfo( message:"checking Requested" );
+end if;
+if ( self.ticketEntry == EntryTicketState::Issued );
+  LOG::LogInfo( message:"checking Issued" );
+end if;
+if ( self.ticketEntry == EntryTicketState::Accepted );
+  LOG::LogInfo( message:"checking Accepted" );
+end if;
 
 LOG::LogInfo( message:" --- Checking for activation status " + "for " + self.location );
-select one observation related by self->Observation[R400]; 
 
-select any activ from instances of EntryActivation
- where ( selected.location == self.location );
+select any activ from instances of Activation 
+ where ( selected.location == self.location )
+ and ( selected.active == self.active );
 if ( not_empty activ )
-  if ( activ.active == self.active )
-    observation.Complete( success:True );
-  else
-    observation.Complete( success:False );
-  end if;
+  observation.Complete( success:True );
   delete object instance activ;
 else
   observation.Complete( success:False );
 end if;',
 	1,
 	'',
+	"d6f2577d-b5d5-40a0-ba8c-28c2ad4699f6",
+	0);
+INSERT INTO O_TFR
+	VALUES ("d6f2577d-b5d5-40a0-ba8c-28c2ad4699f6",
+	"4c19c8d4-3363-474a-ac24-e179d2242f14",
+	'CreateExit',
+	'Add an observation of this type to the ''script'' of a test case.
+See Observation.AppendPolling for description.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance activ of ActivityCheck;
+
+create object instance observation of Observation;
+relate activ to observation across R400;
+activ.location = param.location;
+activ.active = param.activate;
+activ.barrier = param.barrier;
+activ.ticketExit = param.ticket;
+
+observation.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"Activation", concurrent:True );',
+	1,
+	'',
 	"eadca89d-13b0-451f-8e67-7a61adfb9b22",
 	0);
+INSERT INTO O_TPARM
+	VALUES ("7e1c529a-7596-4575-886f-539a49eb8391",
+	"d6f2577d-b5d5-40a0-ba8c-28c2ad4699f6",
+	'location',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"98f880d4-8ab2-44ce-afc7-59155522127b",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("98f880d4-8ab2-44ce-afc7-59155522127b",
+	"d6f2577d-b5d5-40a0-ba8c-28c2ad4699f6",
+	'activate',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"4883859a-95fb-42c5-9262-5daf33c74d32",
+	'Indicate whether to check for activate or deactivate.');
+INSERT INTO O_TPARM
+	VALUES ("4883859a-95fb-42c5-9262-5daf33c74d32",
+	"d6f2577d-b5d5-40a0-ba8c-28c2ad4699f6",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("cdc4e03b-0b58-4655-a2c2-52ef702408f4",
+	"d6f2577d-b5d5-40a0-ba8c-28c2ad4699f6",
+	'barrier',
+	"f0c65a10-2e1e-4a19-8c3f-db9b478b5038",
+	0,
+	'',
+	"7e1c529a-7596-4575-886f-539a49eb8391",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("5f7519aa-8c05-4397-b9d1-bee6314cc611",
+	"d6f2577d-b5d5-40a0-ba8c-28c2ad4699f6",
+	'ticket',
+	"9eade303-9285-4f04-b713-0845aa0189ab",
+	0,
+	'',
+	"cdc4e03b-0b58-4655-a2c2-52ef702408f4",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("9eade303-9285-4f04-b713-0845aa0189ab",
+	"00000000-0000-0000-0000-000000000000",
+	'ExitTicketState',
+	'',
+	'',
+	'../../../../../../../CarPark/models/CarPark/SharedTypes/SharedTypes.xtuml');
 INSERT INTO O_NBATTR
 	VALUES ("6d0bded4-78f3-45c6-be2f-394eadb0bf6b",
 	"4c19c8d4-3363-474a-ac24-e179d2242f14");
@@ -178,12 +266,30 @@ INSERT INTO O_ATTR
 	VALUES ("6deefe64-c959-4dd2-8b2c-0263ba40201c",
 	"4c19c8d4-3363-474a-ac24-e179d2242f14",
 	"7832a9f0-8e38-4e09-af95-8fbbe4ec149b",
-	'ticket',
+	'ticketEntry',
 	'',
 	'',
-	'ticket',
+	'ticketEntry',
 	0,
 	"cafec5d5-16a2-4bdd-9339-b4d98d011baa",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("ea1407eb-e2f5-4b36-873f-1404ae1ee71a",
+	"4c19c8d4-3363-474a-ac24-e179d2242f14");
+INSERT INTO O_BATTR
+	VALUES ("ea1407eb-e2f5-4b36-873f-1404ae1ee71a",
+	"4c19c8d4-3363-474a-ac24-e179d2242f14");
+INSERT INTO O_ATTR
+	VALUES ("ea1407eb-e2f5-4b36-873f-1404ae1ee71a",
+	"4c19c8d4-3363-474a-ac24-e179d2242f14",
+	"6deefe64-c959-4dd2-8b2c-0263ba40201c",
+	'ticketExit',
+	'',
+	'',
+	'ticketExit',
+	0,
+	"9eade303-9285-4f04-b713-0845aa0189ab",
 	'',
 	'');
 INSERT INTO O_ID
