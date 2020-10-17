@@ -120,14 +120,22 @@ else
           select one cd related by self->ChangeDispensed[R400];
           if ( not_empty cd )
             cd.CheckDispensed();
+          else
+            select one oc related by self->OccupancyCount[R400];
+            if ( not_empty oc )
+              oc.OccupancyChange();
+            else
+              select one ac related by self->ActivityCheck[R400];
+              if ( not_empty ac )
+                ac.CheckActivation();
+              end if;
+            end if;
           end if;
         end if;
       end if;
   	end if;
   end if;
-end if;
-
-',
+end if;',
 	1,
 	'',
 	"3eab7205-38dd-4e0a-a177-a5c994ff1229",
@@ -214,6 +222,16 @@ select one amount related by self->ChangeDispensed[R400];
 if ( not_empty amount )
   unrelate amount from self across R400;
   delete object instance amount;
+end if;
+select one contents related by self->OccupancyCount[R400];
+if ( not_empty contents )
+  unrelate contents from self across R400;
+  delete object instance contents;
+end if;
+select one activ related by self->ActivityCheck[R400];
+if ( not_empty activ )
+  unrelate activ from self across R400;
+  delete object instance activ;
 end if;
 
 delete object instance self;',

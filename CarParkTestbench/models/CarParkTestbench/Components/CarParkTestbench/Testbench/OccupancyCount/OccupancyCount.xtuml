@@ -1,0 +1,111 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("69af8d7d-58da-44dc-a76f-fc8f46797f94",
+	'OccupancyCount',
+	33,
+	'OccupancyCount',
+	'Monitor occupancy changes.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("9f635928-8952-4df1-8dc6-9f322393a5ce",
+	"69af8d7d-58da-44dc-a76f-fc8f46797f94",
+	'Create',
+	'Add an observation of this type to the ''script'' of a test case.
+See Observation.AppendPolling for description.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance contents of OccupancyCount;
+contents.count = param.count;
+
+create object instance obs of Observation;
+relate contents to obs across R400;
+
+obs.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"Occupancy", concurrent:True );',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("3f35fba6-82b1-4a8c-8e51-409bca763364",
+	"9f635928-8952-4df1-8dc6-9f322393a5ce",
+	'count',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"a75bf7f2-45af-4075-ab1f-ddc3ddbf2d5b",
+	'Expected occupancy at time of observation.');
+INSERT INTO O_TPARM
+	VALUES ("a75bf7f2-45af-4075-ab1f-ddc3ddbf2d5b",
+	"9f635928-8952-4df1-8dc6-9f322393a5ce",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("b6e30b7b-4838-49f7-89e9-2813134401f8",
+	"69af8d7d-58da-44dc-a76f-fc8f46797f94",
+	'OccupancyChange',
+	'When invoked, search any existing notifications looking for a match.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one observation related by self->Observation[R400]; 
+
+select any contents from instances of Occupancy;
+if ( not_empty contents )
+  if ( contents.count == self.count )
+    LOG::LogInfo( message:"---- Occupancy checked - correct" );
+    observation.Complete( success:True );
+  else
+    observation.Complete( success:False );
+  end if;
+else
+  LOG::LogInfo( message:"Occupancy checking not in effect." );
+end if;',
+	1,
+	'',
+	"9f635928-8952-4df1-8dc6-9f322393a5ce",
+	0);
+INSERT INTO O_NBATTR
+	VALUES ("15f25468-c668-403d-ab2c-7692eefccc05",
+	"69af8d7d-58da-44dc-a76f-fc8f46797f94");
+INSERT INTO O_BATTR
+	VALUES ("15f25468-c668-403d-ab2c-7692eefccc05",
+	"69af8d7d-58da-44dc-a76f-fc8f46797f94");
+INSERT INTO O_ATTR
+	VALUES ("15f25468-c668-403d-ab2c-7692eefccc05",
+	"69af8d7d-58da-44dc-a76f-fc8f46797f94",
+	"00000000-0000-0000-0000-000000000000",
+	'count',
+	'',
+	'',
+	'count',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"69af8d7d-58da-44dc-a76f-fc8f46797f94");
+INSERT INTO O_ID
+	VALUES (1,
+	"69af8d7d-58da-44dc-a76f-fc8f46797f94");
+INSERT INTO O_ID
+	VALUES (2,
+	"69af8d7d-58da-44dc-a76f-fc8f46797f94");
+INSERT INTO PE_PE
+	VALUES ("69af8d7d-58da-44dc-a76f-fc8f46797f94",
+	1,
+	"3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'Testbench',
+	'',
+	0,
+	'../Testbench.xtuml');

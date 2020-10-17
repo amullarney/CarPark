@@ -798,8 +798,16 @@ INSERT INTO SPR_RS
 	VALUES ("9030b81f-3015-4b1d-9b1f-6217ddce858d",
 	'ActivateEntryStand',
 	'Activates the section of the operator console display for a particular entry stand.',
-	'select any operator from instances of Operator;
-operator.EntryStandActivated = true;',
+	'select any prefs from instances of Preferences;
+if ( prefs.EntryActivation == True )  // Checking Entry stand data.
+  create object instance activ of Activation;
+  activ.location = param.Location;
+  activ.active = True;
+  activ.barrier = param.Barrier;
+  activ.ticketEntry = param.Ticket;
+  send TESTSEQ::Assess( key:"Activation" );
+end if;
+',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -817,8 +825,13 @@ INSERT INTO SPR_RS
 	VALUES ("3ee2ab3c-3f90-41ae-9eeb-43a1f994e19c",
 	'DeactivateEntryStand',
 	'Deactivates the section of the operator console display for a particular entry stand.',
-	'select any operator from instances of Operator;
-operator.EntryStandDeactivated = true;',
+	'select any prefs from instances of Preferences;
+if ( prefs.EntryActivation == True )  // Checking Entry stand data.
+  create object instance activ of Activation;
+  activ.location = param.Location;
+  activ.active = False;
+  send TESTSEQ::Assess( key:"Activation" );
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -858,8 +871,15 @@ INSERT INTO SPR_RS
 	VALUES ("8e4d2896-2cb8-4bbf-bc8b-a9aecefa99fe",
 	'ActivateExitStand',
 	'Activates the section of the operator console display for a particular exit stand.',
-	'select any operator from instances of Operator;
-operator.ExitStandActivated = true;',
+	'select any prefs from instances of Preferences;
+if ( prefs.ExitActivation == True )  // Checking Exit stand data.
+  create object instance activ of Activation;
+  activ.location = param.Location;
+  activ.active = True;
+  activ.barrier = param.Barrier;
+  activ.ticketExit = param.Ticket;
+  send TESTSEQ::Assess( key:"Activation" );
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -877,8 +897,13 @@ INSERT INTO SPR_RS
 	VALUES ("8f5cce9e-ad81-456b-9d9c-43da460ffacd",
 	'DeactivateExitStand',
 	'Deactivates the section of the operator console display for a particular exit stand.',
-	'select any operator from instances of Operator;
-operator.ExitStandDeactivated = true;',
+	'select any prefs from instances of Preferences;
+if ( prefs.ExitActivation == True )  // Checking Exit stand data.
+  create object instance activ of Activation;
+  activ.location = param.Location;
+  activ.active = False;
+  send TESTSEQ::Assess( key:"Activation" );
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -896,15 +921,15 @@ INSERT INTO SPR_RS
 	VALUES ("c9bec875-0c09-4938-bc20-08fb9b405cda",
 	'OccupancyUpdate',
 	'Provides current carpark occupancy data.',
-	'select any operator from instances of Operator;
-if ( param.Occupancy < operator.Occupancy )
-  operator.OccupancyDecreased = operator.OccupancyDecreased + 1;
-else
-  operator.OccupancyIncreased = operator.OccupancyIncreased + 1;
-end if;
-operator.Occupancy = param.Occupancy;
-operator.OccupancyUpdated = true;
-',
+	'select any prefs from instances of Preferences;
+if ( prefs.Occupancy == True )  // Checking Occupancy data.
+  select any contents from instances of Occupancy;
+  if ( empty contents )
+    create object instance contents of Occupancy;
+  end if;
+  contents.count = param.Occupancy;
+  send TESTSEQ::Assess( key:"Occupancy" );
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1770,6 +1795,14 @@ INSERT INTO SPR_RS
 	'Testbench receives notification that a new test case has been selected to run.
 Initialize any pre-conditions and respond when ready for stimulus injection.',
 	'LOG::LogInfo( message:"Starting test case execution: " + param.caseLabel );
+Preferences::EntryActivation( off:True );
+Preferences::ExitActivation( off:True );
+if ( param.caseLabel == "UC1" )
+  Preferences::EntryActivation( off:False );  // Enable activation data checking at Entry.
+end if;
+if ( param.caseLabel == "UC11" )
+  Preferences::ExitActivation( off:False );  // Enable activation data checking at Exit.
+end if;
 send TESTSEQ::TestCaseInitialized( caseLabel:param.caseLabel );',
 	1,
 	0);
@@ -1923,7 +1956,11 @@ INSERT INTO SPR_RS
 	VALUES ("4cc8fa66-f8a1-4a2a-b160-8ed806a61df8",
 	'InitializeBucket',
 	'Signals a test bucket to instantiate its test case sequences.',
-	'select any bucket from instances of TestBucket
+	'Preferences::Create();
+Preferences::EntryActivation( off:True );
+Preferences::ExitActivation( off:True );
+
+select any bucket from instances of TestBucket
   where ( selected.bucketId == param.bucketId );
 LOG::LogInfo( message:"Configuring test cases for test bucket " + bucket.name );
 bucket.AddTestCases();',
@@ -2066,8 +2103,7 @@ INSERT INTO SPR_RS
 	VALUES ("966caf7e-fbdf-4666-a00a-68a3878fca06",
 	'TestSuiteComplete',
 	'Signals completion of the test suite.',
-	'select any operator from instances of Operator;
-operator.Check();',
+	'',
 	1,
 	0);
 INSERT INTO C_EP_PROXY

@@ -81,8 +81,7 @@ INSERT INTO O_TFR
 	'Execute the set of tests in this bucket stand-alone.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'create object instance operator of Operator;  // for status checks..
-send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Demonstration Test Suite", keepAllCases:False ); 
+	'send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Demonstration Test Suite", keepAllCases:False ); 
 DemonstrationCaseBucket::AddBucketToSuite();
 send Operator::OpenCarpark();',
 	1,

@@ -23,7 +23,7 @@ check.location = param.location;
 check.stand = param.stand;
 check.state = param.state;
 
-observation.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"BarrierCommand", concurrent:False );',
+observation.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"BarrierCommand", concurrent:True );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
@@ -80,18 +80,15 @@ INSERT INTO O_TFR
 	1,
 	'// Observe that the barrier at the specified entry/exit station is open or closed as appropriate.
 
-LOG::LogInfo( message:" --- Checking for barrier status " + "at " + self.location + " " + self.stand );
 select one observation related by self->Observation[R400]; 
 
 select any bcmd from instances of BarrierCommand
  where ( selected.location == self.location ) 
- and ( selected.stand == self.stand );
+ and ( selected.stand == self.stand )
+ and ( selected.state == self.state );
 if ( not_empty bcmd )
-  if ( bcmd.state == self.state )
-    observation.Complete( success:True );
-  else
-    observation.Complete( success:False );
-  end if;
+  LOG::LogInfo( message:" --- Barrier status correct at " + self.location + " " + self.stand );
+  observation.Complete( success:True );
   delete object instance bcmd;
 else
   observation.Complete( success:False );

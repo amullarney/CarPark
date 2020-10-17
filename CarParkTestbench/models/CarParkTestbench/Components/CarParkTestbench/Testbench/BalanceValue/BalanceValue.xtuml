@@ -23,7 +23,8 @@ balanceValue.willpay = param.pay;
 create object instance obs of Observation;
 relate balanceValue to obs across R400;
 
-obs.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"Balance", concurrent:True );',
+// This observation must have a timeout - this also allows repeat triggering.
+obs.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:60, key:"Balance", concurrent:True );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",

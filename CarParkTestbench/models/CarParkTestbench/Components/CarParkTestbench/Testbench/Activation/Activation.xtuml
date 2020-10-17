@@ -1,0 +1,143 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("04e25aa0-7969-4e18-b203-420cd7359a51",
+	'Activation',
+	38,
+	'Activation',
+	'Captures operator console data associated with entry/exit stand activation - to be checked for accuracy.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("e8922f5b-408b-4c0b-ba62-0b12b45bec39",
+	"04e25aa0-7969-4e18-b203-420cd7359a51");
+INSERT INTO O_BATTR
+	VALUES ("e8922f5b-408b-4c0b-ba62-0b12b45bec39",
+	"04e25aa0-7969-4e18-b203-420cd7359a51");
+INSERT INTO O_ATTR
+	VALUES ("e8922f5b-408b-4c0b-ba62-0b12b45bec39",
+	"04e25aa0-7969-4e18-b203-420cd7359a51",
+	"00000000-0000-0000-0000-000000000000",
+	'active',
+	'If True, this represents activation; if False, deactivation.',
+	'',
+	'active',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("a39cd19c-1c8e-45c2-a286-db7e28f245b0",
+	"04e25aa0-7969-4e18-b203-420cd7359a51");
+INSERT INTO O_BATTR
+	VALUES ("a39cd19c-1c8e-45c2-a286-db7e28f245b0",
+	"04e25aa0-7969-4e18-b203-420cd7359a51");
+INSERT INTO O_ATTR
+	VALUES ("a39cd19c-1c8e-45c2-a286-db7e28f245b0",
+	"04e25aa0-7969-4e18-b203-420cd7359a51",
+	"e8922f5b-408b-4c0b-ba62-0b12b45bec39",
+	'location',
+	'',
+	'',
+	'location',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("c706de7c-1fcb-491e-92f7-accb86999975",
+	"04e25aa0-7969-4e18-b203-420cd7359a51");
+INSERT INTO O_BATTR
+	VALUES ("c706de7c-1fcb-491e-92f7-accb86999975",
+	"04e25aa0-7969-4e18-b203-420cd7359a51");
+INSERT INTO O_ATTR
+	VALUES ("c706de7c-1fcb-491e-92f7-accb86999975",
+	"04e25aa0-7969-4e18-b203-420cd7359a51",
+	"a39cd19c-1c8e-45c2-a286-db7e28f245b0",
+	'barrier',
+	'',
+	'',
+	'barrier',
+	0,
+	"f0c65a10-2e1e-4a19-8c3f-db9b478b5038",
+	'',
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("f0c65a10-2e1e-4a19-8c3f-db9b478b5038",
+	"00000000-0000-0000-0000-000000000000",
+	'BarrierState',
+	'',
+	'',
+	'../../../../../../../CarPark/models/CarPark/SharedTypes/SharedTypes.xtuml');
+INSERT INTO O_NBATTR
+	VALUES ("9a42fbd1-107c-468e-8a42-98672fe0e738",
+	"04e25aa0-7969-4e18-b203-420cd7359a51");
+INSERT INTO O_BATTR
+	VALUES ("9a42fbd1-107c-468e-8a42-98672fe0e738",
+	"04e25aa0-7969-4e18-b203-420cd7359a51");
+INSERT INTO O_ATTR
+	VALUES ("9a42fbd1-107c-468e-8a42-98672fe0e738",
+	"04e25aa0-7969-4e18-b203-420cd7359a51",
+	"c706de7c-1fcb-491e-92f7-accb86999975",
+	'ticketEntry',
+	'',
+	'',
+	'ticketEntry',
+	0,
+	"cafec5d5-16a2-4bdd-9339-b4d98d011baa",
+	'',
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("cafec5d5-16a2-4bdd-9339-b4d98d011baa",
+	"00000000-0000-0000-0000-000000000000",
+	'EntryTicketState',
+	'',
+	'',
+	'../../../../../../../CarPark/models/CarPark/SharedTypes/SharedTypes.xtuml');
+INSERT INTO O_NBATTR
+	VALUES ("cc601ab6-82bd-473d-b1a2-e956c6a736ca",
+	"04e25aa0-7969-4e18-b203-420cd7359a51");
+INSERT INTO O_BATTR
+	VALUES ("cc601ab6-82bd-473d-b1a2-e956c6a736ca",
+	"04e25aa0-7969-4e18-b203-420cd7359a51");
+INSERT INTO O_ATTR
+	VALUES ("cc601ab6-82bd-473d-b1a2-e956c6a736ca",
+	"04e25aa0-7969-4e18-b203-420cd7359a51",
+	"9a42fbd1-107c-468e-8a42-98672fe0e738",
+	'ticketExit',
+	'',
+	'',
+	'ticketExit',
+	0,
+	"9eade303-9285-4f04-b713-0845aa0189ab",
+	'',
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("9eade303-9285-4f04-b713-0845aa0189ab",
+	"00000000-0000-0000-0000-000000000000",
+	'ExitTicketState',
+	'',
+	'',
+	'../../../../../../../CarPark/models/CarPark/SharedTypes/SharedTypes.xtuml');
+INSERT INTO O_ID
+	VALUES (0,
+	"04e25aa0-7969-4e18-b203-420cd7359a51");
+INSERT INTO O_ID
+	VALUES (1,
+	"04e25aa0-7969-4e18-b203-420cd7359a51");
+INSERT INTO O_ID
+	VALUES (2,
+	"04e25aa0-7969-4e18-b203-420cd7359a51");
+INSERT INTO PE_PE
+	VALUES ("04e25aa0-7969-4e18-b203-420cd7359a51",
+	1,
+	"3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'Testbench',
+	'',
+	0,
+	'../Testbench.xtuml');
