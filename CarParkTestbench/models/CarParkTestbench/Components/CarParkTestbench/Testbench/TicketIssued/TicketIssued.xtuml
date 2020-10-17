@@ -53,12 +53,12 @@ INSERT INTO O_TFR
 	1,
 	'// Observe that a ticket has been issued as requested at the specified entry stand.
 
-LOG::LogInfo( message:" --- Checking for ticket issued at " + self.location );
 select one observation related by self->Observation[R400]; 
 
 select any tracker from instances of VisitTracking
  where ( selected.enteredAt == self.location );
 if ( not_empty tracker )
+  LOG::LogInfo( message:" --- Ticket issued at " + self.location );
   observation.Complete( success:True );
 else
   observation.Complete( success:False );

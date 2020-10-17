@@ -63,7 +63,7 @@ INSERT INTO O_TFR
 	1,
 	'// A ticket has been inserted - at either a pay station or an exit station.
 
-LOG::LogInfo( message:"Ticket inserted at " + self.location + self.standType );
+LOG::LogInfo( message:"Ticket inserted at " + self.location + " " + self.standType );
 
 if ( self.standType == "Pay" )
   select any tracker from instances of VisitTracking

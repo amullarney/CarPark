@@ -5,7 +5,7 @@ INSERT INTO O_OBJ
 	'Activation',
 	38,
 	'Activation',
-	'',
+	'Captures operator console data associated with entry/exit stand activation - to be checked for accuracy.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_NBATTR
 	VALUES ("e8922f5b-408b-4c0b-ba62-0b12b45bec39",

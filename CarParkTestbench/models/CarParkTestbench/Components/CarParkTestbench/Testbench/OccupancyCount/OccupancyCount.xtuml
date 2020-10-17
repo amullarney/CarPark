@@ -51,18 +51,18 @@ INSERT INTO O_TFR
 	'When invoked, search any existing notifications looking for a match.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'LOG::LogInfo( message:"Checking occupancy" );
-select one observation related by self->Observation[R400]; 
+	'select one observation related by self->Observation[R400]; 
 
 select any contents from instances of Occupancy;
 if ( not_empty contents )
   if ( contents.count == self.count )
+    LOG::LogInfo( message:"---- Occupancy checked - correct" );
     observation.Complete( success:True );
   else
     observation.Complete( success:False );
   end if;
 else
-  observation.Complete( success:False );
+  LOG::LogInfo( message:"Occupancy checking not in effect." );
 end if;',
 	1,
 	'',

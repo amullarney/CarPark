@@ -20,9 +20,11 @@ See Observation.AppendPolling for description.',
 create object instance observation of Observation;
 relate activ to observation across R400;
 activ.location = param.location;
+activ.stand = "Entry";
 activ.active = param.activate;
 activ.barrier = param.barrier;
 activ.ticketEntry = param.ticket;
+
 observation.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"Activation", concurrent:True );',
 	1,
 	'',
@@ -94,36 +96,39 @@ INSERT INTO O_TFR
 	'When invoked, search any existing notifications looking for a match.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'// Observe that the operator console for the specified entry/exit station is activated.
+	'// Observe that operator console for the specified entry/exit station is activated with correct data.
 select one observation related by self->Observation[R400]; 
-select any prefs from instances of Preferences;
-if ( not prefs.EntryActivation )
-  observation.Complete( success:True );
-  return;
-end if;
+select any activ from instances of Activation;  // need a typed local variable
 
-
-if ( self.ticketEntry == EntryTicketState::Requested );
-  LOG::LogInfo( message:"checking Requested" );
+if ( not self.active )  // a deactivate - nothing more to check
+  select any activ from instances of Activation
+   where ( selected.location == self.location )
+   and ( not selected.active );
+else
+  // find an activation matching expected values...
+  if ( self.stand == "Entry" )
+    select any activ from instances of Activation
+     where ( selected.location == self.location )
+     and ( selected.barrier == self.barrier )
+     and ( selected.ticketEntry == self.ticketEntry )
+     and (selected.active );
+  else
+    select any activ from instances of Activation
+     where ( selected.location == self.location )
+     and ( selected.barrier == self.barrier )
+     and ( selected.ticketExit == self.ticketExit )
+     and ( selected.active );
+  end if;
 end if;
-if ( self.ticketEntry == EntryTicketState::Issued );
-  LOG::LogInfo( message:"checking Issued" );
-end if;
-if ( self.ticketEntry == EntryTicketState::Accepted );
-  LOG::LogInfo( message:"checking Accepted" );
-end if;
-
-LOG::LogInfo( message:" --- Checking for activation status " + "for " + self.location );
-
-select any activ from instances of Activation 
- where ( selected.location == self.location )
- and ( selected.active == self.active );
 if ( not_empty activ )
+  LOG::LogInfo( message:" --- Activation data checked " + "for " + self.location );
   observation.Complete( success:True );
   delete object instance activ;
 else
   observation.Complete( success:False );
-end if;',
+end if;
+
+',
 	1,
 	'',
 	"d6f2577d-b5d5-40a0-ba8c-28c2ad4699f6",
@@ -141,6 +146,7 @@ See Observation.AppendPolling for description.',
 create object instance observation of Observation;
 relate activ to observation across R400;
 activ.location = param.location;
+activ.stand = "Exit";
 activ.active = param.activate;
 activ.barrier = param.barrier;
 activ.ticketExit = param.ticket;
@@ -247,7 +253,7 @@ INSERT INTO O_BATTR
 INSERT INTO O_ATTR
 	VALUES ("7832a9f0-8e38-4e09-af95-8fbbe4ec149b",
 	"4c19c8d4-3363-474a-ac24-e179d2242f14",
-	"6d0bded4-78f3-45c6-be2f-394eadb0bf6b",
+	"60431b81-e0df-40f9-afe2-d6b169850189",
 	'barrier',
 	'',
 	'',
@@ -290,6 +296,24 @@ INSERT INTO O_ATTR
 	'ticketExit',
 	0,
 	"9eade303-9285-4f04-b713-0845aa0189ab",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("60431b81-e0df-40f9-afe2-d6b169850189",
+	"4c19c8d4-3363-474a-ac24-e179d2242f14");
+INSERT INTO O_BATTR
+	VALUES ("60431b81-e0df-40f9-afe2-d6b169850189",
+	"4c19c8d4-3363-474a-ac24-e179d2242f14");
+INSERT INTO O_ATTR
+	VALUES ("60431b81-e0df-40f9-afe2-d6b169850189",
+	"4c19c8d4-3363-474a-ac24-e179d2242f14",
+	"6d0bded4-78f3-45c6-be2f-394eadb0bf6b",
+	'stand',
+	'Whether an entry or exit.',
+	'',
+	'stand',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
 	'',
 	'');
 INSERT INTO O_ID

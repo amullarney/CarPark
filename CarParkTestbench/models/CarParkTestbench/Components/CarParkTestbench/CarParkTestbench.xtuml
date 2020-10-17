@@ -799,7 +799,7 @@ INSERT INTO SPR_RS
 	'ActivateEntryStand',
 	'Activates the section of the operator console display for a particular entry stand.',
 	'select any prefs from instances of Preferences;
-if ( prefs.EntryActivation == True )
+if ( prefs.EntryActivation == True )  // Checking Entry stand data.
   create object instance activ of Activation;
   activ.location = param.Location;
   activ.active = True;
@@ -807,12 +807,7 @@ if ( prefs.EntryActivation == True )
   activ.ticketEntry = param.Ticket;
   send TESTSEQ::Assess( key:"Activation" );
 end if;
-if ( param.Ticket == EntryTicketState::Issued );
-  LOG::LogInfo( message:"activity Issued" );
-end if;
-if ( param.Ticket == EntryTicketState::Accepted );
-  LOG::LogInfo( message:"activity Accepted" );
-end if;',
+',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -831,7 +826,7 @@ INSERT INTO SPR_RS
 	'DeactivateEntryStand',
 	'Deactivates the section of the operator console display for a particular entry stand.',
 	'select any prefs from instances of Preferences;
-if ( prefs.EntryActivation == True )
+if ( prefs.EntryActivation == True )  // Checking Entry stand data.
   create object instance activ of Activation;
   activ.location = param.Location;
   activ.active = False;
@@ -877,7 +872,7 @@ INSERT INTO SPR_RS
 	'ActivateExitStand',
 	'Activates the section of the operator console display for a particular exit stand.',
 	'select any prefs from instances of Preferences;
-if ( prefs.EntryActivation == True )
+if ( prefs.ExitActivation == True )  // Checking Exit stand data.
   create object instance activ of Activation;
   activ.location = param.Location;
   activ.active = True;
@@ -903,7 +898,7 @@ INSERT INTO SPR_RS
 	'DeactivateExitStand',
 	'Deactivates the section of the operator console display for a particular exit stand.',
 	'select any prefs from instances of Preferences;
-if ( prefs.ExitActivation == True )
+if ( prefs.ExitActivation == True )  // Checking Exit stand data.
   create object instance activ of Activation;
   activ.location = param.Location;
   activ.active = False;
@@ -926,12 +921,15 @@ INSERT INTO SPR_RS
 	VALUES ("c9bec875-0c09-4938-bc20-08fb9b405cda",
 	'OccupancyUpdate',
 	'Provides current carpark occupancy data.',
-	'select any contents from instances of Occupancy;
-if ( empty contents )
-  create object instance contents of Occupancy;
-end if;
-contents.count = param.Occupancy;
-send TESTSEQ::Assess( key:"Occupancy" );',
+	'select any prefs from instances of Preferences;
+if ( prefs.Occupancy == True )  // Checking Occupancy data.
+  select any contents from instances of Occupancy;
+  if ( empty contents )
+    create object instance contents of Occupancy;
+  end if;
+  contents.count = param.Occupancy;
+  send TESTSEQ::Assess( key:"Occupancy" );
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1800,10 +1798,10 @@ Initialize any pre-conditions and respond when ready for stimulus injection.',
 Preferences::EntryActivation( off:True );
 Preferences::ExitActivation( off:True );
 if ( param.caseLabel == "UC1" )
-  Preferences::EntryActivation( off:False );
+  Preferences::EntryActivation( off:False );  // Enable activation data checking at Entry.
 end if;
 if ( param.caseLabel == "UC11" )
-  Preferences::ExitActivation( off:False );
+  Preferences::ExitActivation( off:False );  // Enable activation data checking at Exit.
 end if;
 send TESTSEQ::TestCaseInitialized( caseLabel:param.caseLabel );',
 	1,
