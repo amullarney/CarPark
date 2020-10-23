@@ -1,3 +1,11 @@
+Vue.component('op-entry-console', {
+  template: '#entry-console-display'
+});
+
+Vue.component('op-exit-console', {
+  template: '#exit-console-display'
+});
+
 var stompClient = null;
 
 var vm = new Vue({
@@ -37,6 +45,22 @@ function initialize() {
     vm.Lane1UnpaidStayExit = false;
 }
 
+function makeEntry() {
+    var opc = new Vue({
+     template: '#entry-console-display'
+    });
+    opc.$mount();
+    document.getElementById('entry-consoles').appendChild(opc.$el);
+}
+
+function makeExit() {
+    var opc = new Vue({
+     template: '#exit-console-display'
+    });
+    opc.$mount();
+    document.getElementById('exit-consoles').appendChild(opc.$el);
+}
+
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
@@ -61,6 +85,8 @@ function connect() {
         stompClient.subscribe('/topic/OperatorConsole', function (reply) {
             handleReply(reply);
         });
+    makeEntry();
+    makeExit();
     });
 }
 
@@ -82,8 +108,10 @@ function sendToServer( messageName, paramName, paramValue ) {
 // Display a message received from the server and
 // update data as necessary.
 function handleReply(reply) {
-    $("#replies").append("<tr><td>" + JSON.stringify( JSON.parse( reply.body ) ) + "</td></tr>");
     var messageName = JSON.parse( reply.body ).messageName;
+    if ( messageName !== "DateTimeUpdate" ) {
+        $("#replies").append("<tr><td>" + JSON.stringify( JSON.parse( reply.body ) ) + "</td></tr>");
+    }
     if ( messageName == "ActivateEntryStand" ) {
     	vm.NorthBarrier = JSON.parse( reply.body ).barrier;
     	vm.NorthTicket = JSON.parse( reply.body ).ticket;
