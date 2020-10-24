@@ -1,12 +1,7 @@
-Vue.component('op-entry-console', {
-  template: '#entry-console-display'
-});
-
-Vue.component('op-exit-console', {
-  template: '#exit-console-display'
-});
-
 var stompClient = null;
+
+var entry = null;
+var exit = null;
 
 var vm = new Vue({
 	el: '#main-content',
@@ -33,6 +28,50 @@ var vm = new Vue({
     }
 })
 
+const EntryStand = {
+  template: '#entry-console-display',
+  data: function () {
+    return {
+      location: 'somewhere',
+      ticket: 'not requested',
+      barrier: 'closed'
+    }
+  },
+  methods: {
+    setLoc: function() {
+      this.location = 'South';
+    },
+    setTicket(ticket) {
+      this.ticket = ticket;
+    },
+    setBarrier(barrier) {
+      this.barrier = barrier;
+    }
+  }
+}
+
+const ExitStand = {
+  template: '#exit-console-display',
+  data: function () {
+    return {
+      location: 'wayout',
+      ticket: 'none',
+      barrier: 'stuck'
+    }
+  },
+  methods: {
+    setLoc: function() {
+      this.location = 'East';
+    },
+    setTicket(ticket) {
+      this.ticket = ticket;
+    },
+    setBarrier(barrier) {
+      this.barrier = barrier;
+    }
+  }
+}
+
 function initialize() {
 	vm.DateTime = "";
 	vm.Capacity = "";
@@ -46,19 +85,18 @@ function initialize() {
 }
 
 function makeEntry() {
-    var opc = new Vue({
-     template: '#entry-console-display'
-    });
-    opc.$mount();
-    document.getElementById('entry-consoles').appendChild(opc.$el);
+    const entryClass = Vue.extend(EntryStand);
+    var theEntry = new entryClass;
+    entry = theEntry.$mount();
+    document.getElementById('entry-consoles').appendChild(theEntry.$el);
+    entry.setLoc();
 }
 
 function makeExit() {
-    var opc = new Vue({
-     template: '#exit-console-display'
-    });
-    opc.$mount();
-    document.getElementById('exit-consoles').appendChild(opc.$el);
+    const exitClass = Vue.extend(ExitStand);
+    var theExit= new exitClass;
+    exit = theExit.$mount();
+    document.getElementById('exit-consoles').appendChild(theExit.$el);
 }
 
 function setConnected(connected) {
@@ -116,6 +154,8 @@ function handleReply(reply) {
     	vm.NorthBarrier = JSON.parse( reply.body ).barrier;
     	vm.NorthTicket = JSON.parse( reply.body ).ticket;
     	vm.NorthEntry = true;
+    	entry.setTicket(vm.NorthTicket);
+    	entry.setBarrier(vm.NorthBarrier);
     } else if ( messageName == "ActivateExitStand" ) {
     	vm.Lane1Ticket = JSON.parse( reply.body ).ticket;
     	vm.Lane1Barrier = JSON.parse( reply.body ).barrier;
