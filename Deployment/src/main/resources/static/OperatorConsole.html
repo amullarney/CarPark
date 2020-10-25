@@ -56,10 +56,10 @@
 
 <script type="text/x-template" id="entry-console-display"  
     <div class="entrystand">
-        <div v-show=visible class="col-md-6">
+        <div v-show=activated class="col-md-6">
             <h4>Entry Stand</h4>
             <h5>Location: {{ location }}</h5>
-            <h5>Ticket: {{ ticket }}</h5>
+            <h5>Ticket: {{ ticketStatus }}</h5>
             <h5>Barrier: {{ barrier }}</h5>
             <button onclick="OpenEntry( this )" class="btn btn-primary">Open Barrier</button>
             <button onclick="IssueTicket( this )" class="btn btn-primary">Issue Ticket</button>
@@ -69,27 +69,27 @@
 </script>
 
 <script type="text/x-template" id="exit-console-display"    
-    <div class="exitstand">
+    <div v-show=activated class="exitstand">
         <div class="col-md-6">
             <h4>Exit Stand</h4>
             <h5>Location: {{ location }}</h5>
-            <h5>Ticket: {{ ticket }}</h5>
+            <h5>Ticket: {{ ticketStatus }}</h5>
             <h5>Exit Deadline: {{ exitDeadline }}</h5>
             <h5>Barrier: {{ barrier }}</h5>
-            <button id="OpenExitBarrier" class="btn btn-primary" type="submit">Open Barrier</button>
-            <div v-show="Lane1TardyExit" class="row">
+            <button onclick="OpenExit( this )" class="btn btn-primary">Open Barrier</button>
+            <div v-show="tardyExit" class="row">
                 <h5 style="color:red">Missed exit deadline!</h5>
-                <h5>Additional charge: {{ Lane1AdditionalCharge }}</h5>
-                <h5>Overstay: {{ Lane1Overstay }} minutes</h5>
-                <button id="Lane1TardyCancel" class="btn btn-primary" type="submit">Cancel Extra</button>
-                <button id="Lane1TardyPaid" class="btn btn-primary" type="submit">Extra Paid</button>
+                <h5>Additional charge: {{ additionalCharge }}</h5>
+                <h5>Overstay: {{ overstay }} minutes</h5>
+                <button onclick="FeeWaived( this )" class="btn btn-primary">Cancel Extra</button>
+                <button onclick="FeePaid( this )" class="btn btn-primary">Extra Paid</button>
             </div>
-            <div v-show="Lane1UnpaidStayExit" class="row">
+            <div v-show="unpaidStayExit" class="row">
                 <h5 style="color:red">Unpaid stay!</h5>
-                <h5>Charge: {{ Lane1Charge }}</h5>
-                <h5>Duration: {{ Lane1Duration }} hours</h5>
-                <button id="Lane1UnpaidCancel" class="btn btn-primary" type="submit">Cancel Extra</button>
-                <button id="Lane1UnpaidPaid" class="btn btn-primary" type="submit">Extra Paid</button>
+                <h5>Charge: {{ charge }}</h5>
+                <h5>Duration: {{ duration }} hours</h5>
+                <button onclick="FeeWaived( this )" class="btn btn-primary">Cancel Extra</button>
+                <button onclick="FeePaid( this )" class="btn btn-primary">Extra Paid</button>
             </div>
         </div>
     </div>

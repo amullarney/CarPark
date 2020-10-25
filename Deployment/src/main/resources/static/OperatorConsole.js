@@ -3,28 +3,16 @@ var stompClient = null;
 var entry = null;
 var exit = null;
 
+const entries = new Map()
+const exits = new Map()
+
 var vm = new Vue({
 	el: '#main-content',
 	data: {
 	    DateTime: "",
 	    Capacity: "",
 	    Occupancy: "",
-	    Availability: "",
-	    NorthEntry: false,
-	    NorthTicket: "",
-	    NorthBarrier: "",
-	    NorthDelayedEntry: false,
-	    Lane1Exit: false,
-	    Lane1Ticket: "",
-	    Lane1ExitDeadline: "",
-	    Lane1Barrier: "",
-	    Lane1TicketNumber: "",
-	    Lane1AdditionalCharge: "",
-	    Lane1Overstay: "",
-	    Lane1Charge: "",
-	    Lane1Duration: "",
-	    Lane1TardyExit: false,
-	    Lane1UnpaidStayExit: false
+	    Availability: ""
     }
 })
 
@@ -33,24 +21,24 @@ const EntryStand = {
   data: function () {
     return {
       location: 'North',
-      ticket: 'not requested',
+      activated: false,
+      ticketStatus: 'not requested',
       barrier: 'closed',
-      visible: false,
       delayed: false
     }
   },
   methods: {
-    setLoc: function(location) {
+    setLocation: function(location) {
       this.location = location;
     },
-    setTicket(ticket) {
-      this.ticket = ticket;
+    setActive(activated) {
+      this.activated = activated;
+    },
+    setTicketStatus(ticketStatus) {
+      this.ticketStatus = ticketStatus;
     },
     setBarrier(barrier) {
       this.barrier = barrier;
-    },
-    setVisible(visible) {
-      this.visible = visible;
     },
     setDelayed(delayed) {
       this.delayed = delayed;
@@ -63,20 +51,55 @@ const ExitStand = {
   data: function () {
     return {
       location: 'wayout',
-      ticket: 'none',
+      activated: false,
+      ticketStatus: 'none',
+      exitDeadline: 'None',
       barrier: 'stuck',
-      exitDeadline: 'None'
+      ticketNumber: '',
+      additionalCharge: '',
+      overstay: '',
+      charge: '',
+      duration: '', 
+      tardyExit: false,
+      unpaidStayExit: false
     }
   },
   methods: {
-    setLoc: function(location) {
+    setLocation: function(location) {
       this.location = location;
     },
-    setTicket(ticket) {
-      this.ticket = ticket;
+    setActive(activated) {
+      this.activated = activated;
+    },
+    setTicketStatus(ticketStatus) {
+      this.ticketStatus = ticketStatus;
+    },
+    setExitDeadline(deadline) {
+      this.exitDeadline = deadline;
     },
     setBarrier(barrier) {
       this.barrier = barrier;
+    },
+    setTicketNumber(number) {
+      this.ticketNumber = number;
+    },
+    setAdditionalCharge(amount) {
+      this.additionalCharge = amount;
+    },
+    setOverstay(amount) {
+      this.overstay = amount;
+    },
+    setCharge(amount) {
+      this.charge = amount;
+    },
+    setDuration(amount) {
+      this.duration = amount;
+    },
+    setTardyExit(condition) {
+      this.tardyExit = condition;
+    },
+    setUnpaidStayExit(condition) {
+      this.unpaidStayExit = condition;
     }
   }
 }
@@ -86,11 +109,6 @@ function initialize() {
 	vm.Capacity = "";
 	vm.Occupancy = "";
 	vm.Availability = "";
-	vm.NorthEntry = false;
-	vm.Lane1Exit = false;
-	vm.NorthDelayedEntry = false;
-    vm.Lane1TardyExit = false;
-    vm.Lane1UnpaidStayExit = false;
 }
 
 function makeEntry() {
@@ -98,7 +116,8 @@ function makeEntry() {
     var theEntry = new entryClass;
     entry = theEntry.$mount();
     document.getElementById('entry-consoles').appendChild(theEntry.$el);
-    entry.setLoc("North");
+    entry.setLocation("North");
+    entries.set (entry.location, entry )
 }
 
 function makeExit() {
@@ -106,6 +125,8 @@ function makeExit() {
     var theExit= new exitClass;
     exit = theExit.$mount();
     document.getElementById('exit-consoles').appendChild(theExit.$el);
+    exit.setLocation("Lane 1")
+    exits.set(exit.location, exit )
 }
 
 function setConnected(connected) {
@@ -132,7 +153,7 @@ function connect() {
         stompClient.subscribe('/topic/OperatorConsole', function (reply) {
             handleReply(reply);
         });
-    makeEntry();
+    makeEntry();  // @TODO - move to register
     makeExit();
     });
 }
@@ -157,76 +178,126 @@ function sendToServer( messageName, paramName, paramValue ) {
 function handleReply(reply) {
     var location ="";
     var barrier = "";
-    var ticket = "";
+    var ticketStatus = "";
     var visible = false;
-    var condition = false;
+    var ticketNumber = "";
+    var exitDeadline = "";
+    var amount = "";
+    var duration = "";
    
     var messageName = JSON.parse( reply.body ).messageName;
     if ( messageName !== "DateTimeUpdate" ) {
         $("#replies").append("<tr><td>" + JSON.stringify( JSON.parse( reply.body ) ) + "</td></tr>");
     }
+    // Instance-specific messages.
     if ( messageName == "ActivateEntryStand" ) {
     	location = JSON.parse( reply.body ).location;
     	barrier = JSON.parse( reply.body ).barrier;
-    	ticket = JSON.parse( reply.body ).ticket;
+    	ticketStatus = JSON.parse( reply.body ).ticket;
     	if ( entry.location == location ) {
-    	  entry.setTicket(ticket);
+    	  entry.setTicketStatus(ticketStatus);
     	  entry.setBarrier(barrier);
-    	  entry.setVisible(true);
+    	  entry.setActive(true);
     	}
     } else if ( messageName == "ActivateExitStand" ) {
-    	vm.Lane1Ticket = JSON.parse( reply.body ).ticket;
-    	vm.Lane1Barrier = JSON.parse( reply.body ).barrier;
-    	vm.Lane1ExitDeadline = JSON.parse( reply.body ).exitDeadline;
-        vm.Lane1Exit = true;
+    	location = JSON.parse( reply.body ).location;
+    	barrier = JSON.parse( reply.body ).barrier;
+    	exitDeadline = JSON.parse( reply.body ).exitDeadline;
+    	if (exit.location == location ) {
+    	  exit.setTicketStatus(ticketStatus);
+    	  exit.setBarrier(barrier);
+    	  exit.setExitDeadline(exitDeadline);
+    	  exit.setActive(true);
+    	}
     } else if ( messageName == "DeactivateEntryStand" ) {
     	location = JSON.parse( reply.body ).location;
     	if ( entry.location == location ) {
+    	  entry.setActive(false);
     	  entry.setDelayed(false);
-    	  entry.setVisible(false);
     	}
     } else if ( messageName == "DeactivateExitStand" ) {
-    	vm.Lane1Exit = false;
-    	vm.Lane1TardyExit = false;
-    	vm.Lane1UnpaidStayExit = false;
+    	location = JSON.parse( reply.body ).location;
+    	if ( exit.location == location ) {
+    	  exit.setActive(false);
+    	  exit.setTardyExit(false);
+    	  exit.setUnpaidStayExit(false);
+    	}
     } else if ( messageName == "DelayedEntry" ) {
-    	entry.setDelayed(true);  // @TODO - assuming entry here
+    	location = JSON.parse( reply.body ).location;
+    	if ( entry.location == location ) {
+    	  entry.setDelayed(true);
+    	}
+    } else if ( messageName == "TardyExit" ) {
+    	location = JSON.parse( reply.body ).location;
+    	ticketNumber = JSON.parse( reply.body ).ticketNumber;
+    	amount = Number( JSON.parse( reply.body ).additionalCharge ).toFixed(2);
+    	duration = Number( JSON.parse( reply.body ).overstay ).toFixed(2);
+    	if ( exit.location == location ) {
+    	  exit.setTicketNumber(ticketNumber);
+    	  exit.setAdditionalCharge(amount);
+    	  exit.setOverstay(duration);
+    	  exit.setTardyExit(true);
+    	}
+    } else if ( messageName == "UnpaidStayExit" ) {
+    	location = JSON.parse( reply.body ).location;
+    	ticketNumber = JSON.parse( reply.body ).ticketNumber;
+    	amount = Number( JSON.parse( reply.body ).charge ).toFixed(2);
+    	duration = Number( JSON.parse( reply.body ).duration ).toFixed(2);
+    	if ( exit.location == location ) {
+    	  exit.setTicketNumber(ticketNumber);
+    	  exit.setCharge(amount);
+    	  exit.setDuration(duration);
+    	  exit.setUnpaidStayExit(true);
+    	}
+    // Non-instance-specific.
     } else if ( messageName == "OccupancyUpdate" ) {
     	vm.Occupancy = JSON.parse( reply.body ).occupancy;
     	vm.Capacity = JSON.parse( reply.body ).capacity;
     	vm.Availability = JSON.parse( reply.body ).availability;
-    } else if ( messageName == "TardyExit" ) {
-    	vm.Lane1TicketNumber = JSON.parse( reply.body ).ticketNumber;
-    	vm.Lane1AdditionalCharge = Number( JSON.parse( reply.body ).additionalCharge ).toFixed(2);
-    	vm.Lane1Overstay = Number( JSON.parse( reply.body ).overstay ).toFixed(2);
-    	vm.Lane1TardyExit = true;
-    } else if ( messageName == "UnpaidStayExit" ) {
-    	vm.Lane1TicketNumber = JSON.parse( reply.body ).ticketNumber;
-    	vm.Lane1Charge = Number( JSON.parse( reply.body ).charge ).toFixed(2);
-    	vm.Lane1Duration = Number( JSON.parse( reply.body ).duration ).toFixed(2);
-    	vm.Lane1UnpaidStayExit = true;
     } else if ( messageName == "DateTimeUpdate" ) {
     	vm.DateTime = JSON.parse( reply.body ).dateTime;
     }
 }
 
-// Seek to identify which instance owns the button that was clicked.
 function OpenEntry( element ) {
-  parent = element.parentNode;
+  parent = element.parentNode;  // Seek to identify which instance owns the button that was clicked.
   if ( entry.$el == parent ) {
-  loc = entry.location;  // @TODO - helps debug
-  sendToServer( "OpenEntryBarrier", "location", entry.location );
+    loc = entry.location;  // @TODO - helps debug
+    sendToServer( "OpenEntryBarrier", "location", entry.location );
   }
 }
 
 function IssueTicket( element ) {
   parent = element.parentNode;
   if ( entry.$el == parent ) {
-  loc = entry.location;  // @TODO - helps debug
-  sendToServer( "OperatorIssueTicket", "location", entry.location );
+    loc = entry.location;  // @TODO - helps debug
+    sendToServer( "OperatorIssueTicket", "location", entry.location );
   }
 }
 
+function OpenExit( element ) {
+  parent = element.parentNode;
+  if ( exit.$el == parent ) {
+    loc = exit.location;  // @TODO - helps debug
+    sendToServer( "OpenExitBarrier", "location", exit.location );
+  }
+}
+
+function FeeWaived( element ) {
+  parent = element.parentNode;
+  if ( exit.$el == parent ) {
+    tkt = exit.ticketNumber;  // @TODO - helps debug
+    sendToServer( "FeeWaived", "ticketNumber", exit.ticketNumber );
+  }
+}
+
+function FeeCollected( element ) {
+  parent = element.parentNode;
+  if ( exit.$el == parent ) {
+    tkt = exit.ticketNumber;  // @TODO - helps debug
+    sendToServer( "FeeCollected", "ticketNumber", exit.ticketNumber );
+  }
+}
 
 // Map buttons to functions.
 $(function () {
@@ -235,13 +306,4 @@ $(function () {
     });
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
-/*
-    $( "#IssueTicket" ).click(function() { sendToServer( "OperatorIssueTicket", "location", "North" ); });
-    $( "#OpenEntryBarrier" ).click(function() { sendToServer( "OpenEntryBarrier", "location", "North" ); });
-    $( "#OpenExitBarrier" ).click(function() { sendToServer( "OpenExitBarrier", "location", "Lane 1" ); });
-    $( "#Lane1TardyCancel" ).click(function() { sendToServer( "FeeWaived", "ticketNumber", vm.Lane1TicketNumber ); });
-    $( "#Lane1TardyPaid" ).click(function() { sendToServer( "FeeCollected", "ticketNumber", vm.Lane1TicketNumber ); });
-    $( "#Lane1UnpaidCancel" ).click(function() { sendToServer( "FeeWaived", "ticketNumber", vm.Lane1TicketNumber ); });
-    $( "#Lane1UnpaidPaid" ).click(function() { sendToServer( "FeeCollected", "ticketNumber", vm.Lane1TicketNumber ); });
-*/
 });
