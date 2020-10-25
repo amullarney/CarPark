@@ -1,10 +1,12 @@
 var stompClient = null;
 
+
+8// @TODO - get rid of these
 var entry = null;
 var exit = null;
 
-const entries = new Map()
-const exits = new Map()
+const entrystands = new Map()
+const exitstands = new Map()
 
 var vm = new Vue({
 	el: '#main-content',
@@ -111,22 +113,22 @@ function initialize() {
 	vm.Availability = "";
 }
 
-function makeEntry() {
+function makeEntry(location) {
     const entryClass = Vue.extend(EntryStand);
     var theEntry = new entryClass;
     entry = theEntry.$mount();
     document.getElementById('entry-consoles').appendChild(theEntry.$el);
-    entry.setLocation("North");
-    entries.set (entry.location, entry )
+    entry.setLocation(location);
+    entrystands.set (entry.location, entry )
 }
 
-function makeExit() {
+function makeExit(location) {
     const exitClass = Vue.extend(ExitStand);
     var theExit= new exitClass;
     exit = theExit.$mount();
     document.getElementById('exit-consoles').appendChild(theExit.$el);
-    exit.setLocation("Lane 1")
-    exits.set(exit.location, exit )
+    exit.setLocation(location)
+    exitstands.set(exit.location, exit )
 }
 
 function setConnected(connected) {
@@ -153,8 +155,10 @@ function connect() {
         stompClient.subscribe('/topic/OperatorConsole', function (reply) {
             handleReply(reply);
         });
-    makeEntry();  // @TODO - move to register
-    makeExit();
+    makeEntry('North');  // @TODO - move to register
+    makeEntry('South');
+    makeExit('Lane 1');
+    makeExit('Lane 2');
     });
 }
 
@@ -194,7 +198,8 @@ function handleReply(reply) {
     	location = JSON.parse( reply.body ).location;
     	barrier = JSON.parse( reply.body ).barrier;
     	ticketStatus = JSON.parse( reply.body ).ticket;
-    	if ( entry.location == location ) {
+    	entry = entrystands.get(location);
+    	if ( entry ) {
     	  entry.setTicketStatus(ticketStatus);
     	  entry.setBarrier(barrier);
     	  entry.setActive(true);
@@ -203,7 +208,8 @@ function handleReply(reply) {
     	location = JSON.parse( reply.body ).location;
     	barrier = JSON.parse( reply.body ).barrier;
     	exitDeadline = JSON.parse( reply.body ).exitDeadline;
-    	if (exit.location == location ) {
+    	exit = exitstands.get(location);
+    	if ( exit ) {
     	  exit.setTicketStatus(ticketStatus);
     	  exit.setBarrier(barrier);
     	  exit.setExitDeadline(exitDeadline);
@@ -211,20 +217,23 @@ function handleReply(reply) {
     	}
     } else if ( messageName == "DeactivateEntryStand" ) {
     	location = JSON.parse( reply.body ).location;
-    	if ( entry.location == location ) {
+    	entry = entrystands.get(location);
+    	if ( entry ) {
     	  entry.setActive(false);
     	  entry.setDelayed(false);
     	}
     } else if ( messageName == "DeactivateExitStand" ) {
     	location = JSON.parse( reply.body ).location;
-    	if ( exit.location == location ) {
+    	exit = exitstands.get(location);
+    	if ( exit ) {
     	  exit.setActive(false);
     	  exit.setTardyExit(false);
     	  exit.setUnpaidStayExit(false);
     	}
     } else if ( messageName == "DelayedEntry" ) {
     	location = JSON.parse( reply.body ).location;
-    	if ( entry.location == location ) {
+    	entry = entrystands.get(location);
+    	if ( entry ) {
     	  entry.setDelayed(true);
     	}
     } else if ( messageName == "TardyExit" ) {
@@ -232,7 +241,8 @@ function handleReply(reply) {
     	ticketNumber = JSON.parse( reply.body ).ticketNumber;
     	amount = Number( JSON.parse( reply.body ).additionalCharge ).toFixed(2);
     	duration = Number( JSON.parse( reply.body ).overstay ).toFixed(2);
-    	if ( exit.location == location ) {
+     	exit = exitstands.get(location);
+    	if ( exit ) {
     	  exit.setTicketNumber(ticketNumber);
     	  exit.setAdditionalCharge(amount);
     	  exit.setOverstay(duration);
@@ -243,7 +253,8 @@ function handleReply(reply) {
     	ticketNumber = JSON.parse( reply.body ).ticketNumber;
     	amount = Number( JSON.parse( reply.body ).charge ).toFixed(2);
     	duration = Number( JSON.parse( reply.body ).duration ).toFixed(2);
-    	if ( exit.location == location ) {
+     	exit = exitstands.get(location);
+    	if ( exit ) {
     	  exit.setTicketNumber(ticketNumber);
     	  exit.setCharge(amount);
     	  exit.setDuration(duration);
@@ -284,7 +295,7 @@ function OpenExit( element ) {
 }
 
 function FeeWaived( element ) {
-  parent = element.parentNode;
+  parent = element.parentNode.parentNode;
   if ( exit.$el == parent ) {
     tkt = exit.ticketNumber;  // @TODO - helps debug
     sendToServer( "FeeWaived", "ticketNumber", exit.ticketNumber );
@@ -292,7 +303,7 @@ function FeeWaived( element ) {
 }
 
 function FeeCollected( element ) {
-  parent = element.parentNode;
+  parent = element.parentNode.parentNode;
   if ( exit.$el == parent ) {
     tkt = exit.ticketNumber;  // @TODO - helps debug
     sendToServer( "FeeCollected", "ticketNumber", exit.ticketNumber );

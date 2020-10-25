@@ -29,9 +29,6 @@
     <div class="row">
         <h5>{{ DateTime }}</h5>
         <h5>Capacity: {{ Capacity }}, Occupancy: {{ Occupancy }}, Availability: {{ Availability }}</h5>
-            <div v-bind:id="NorthTicket">{{ NorthTicket }}</div>
-            <div v-bind:id="NorthBarrier">{{ NorthBarrier }}</div>
-            <h5 v-if="NorthDelayedEntry" style="color:red">Delayed entry!</h5>
     </div>
 
     <div class="row">
@@ -69,8 +66,8 @@
 </script>
 
 <script type="text/x-template" id="exit-console-display"    
-    <div v-show=activated class="exitstand">
-        <div class="col-md-6">
+    <div class="exitstand">
+        <div v-show=activated class="col-md-6">
             <h4>Exit Stand</h4>
             <h5>Location: {{ location }}</h5>
             <h5>Ticket: {{ ticketStatus }}</h5>
