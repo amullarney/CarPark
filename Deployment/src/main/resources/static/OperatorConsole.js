@@ -32,14 +32,14 @@ const EntryStand = {
   template: '#entry-console-display',
   data: function () {
     return {
-      location: 'somewhere',
+      location: 'North',
       ticket: 'not requested',
       barrier: 'closed'
     }
   },
   methods: {
-    setLoc: function() {
-      this.location = 'South';
+    setLoc: function(location) {
+      this.location = location;
     },
     setTicket(ticket) {
       this.ticket = ticket;
@@ -56,12 +56,13 @@ const ExitStand = {
     return {
       location: 'wayout',
       ticket: 'none',
-      barrier: 'stuck'
+      barrier: 'stuck',
+      exitDeadline: 'None'
     }
   },
   methods: {
-    setLoc: function() {
-      this.location = 'East';
+    setLoc: function(location) {
+      this.location = location;
     },
     setTicket(ticket) {
       this.ticket = ticket;
@@ -89,7 +90,7 @@ function makeEntry() {
     var theEntry = new entryClass;
     entry = theEntry.$mount();
     document.getElementById('entry-consoles').appendChild(theEntry.$el);
-    entry.setLoc();
+    entry.setLoc("North");
 }
 
 function makeExit() {
@@ -146,22 +147,30 @@ function sendToServer( messageName, paramName, paramValue ) {
 // Display a message received from the server and
 // update data as necessary.
 function handleReply(reply) {
+    var location ="";
+    var barrier = "";
+    var ticket = "";
+   
     var messageName = JSON.parse( reply.body ).messageName;
     if ( messageName !== "DateTimeUpdate" ) {
         $("#replies").append("<tr><td>" + JSON.stringify( JSON.parse( reply.body ) ) + "</td></tr>");
     }
     if ( messageName == "ActivateEntryStand" ) {
-    	vm.NorthBarrier = JSON.parse( reply.body ).barrier;
-    	vm.NorthTicket = JSON.parse( reply.body ).ticket;
+    	location = JSON.parse( reply.body ).location;
+    	barrier = JSON.parse( reply.body ).barrier;
+    	ticket = JSON.parse( reply.body ).ticket;
     	vm.NorthEntry = true;
-    	entry.setTicket(vm.NorthTicket);
-    	entry.setBarrier(vm.NorthBarrier);
+    	if ( entry.location == location ) {
+    	  entry.setTicket(ticket);
+    	  entry.setBarrier(barrier);
+    	}
     } else if ( messageName == "ActivateExitStand" ) {
     	vm.Lane1Ticket = JSON.parse( reply.body ).ticket;
     	vm.Lane1Barrier = JSON.parse( reply.body ).barrier;
     	vm.Lane1ExitDeadline = JSON.parse( reply.body ).exitDeadline;
         vm.Lane1Exit = true;
     } else if ( messageName == "DeactivateEntryStand" ) {
+    	location = JSON.parse( reply.body ).location;
     	vm.NorthEntry = false;
     	vm.NorthDelayedEntry = false;
     } else if ( messageName == "DeactivateExitStand" ) {
@@ -189,6 +198,24 @@ function handleReply(reply) {
     }
 }
 
+// Seek to identify which instance owns the button that was clicked.
+function OpenEntry( element ) {
+  parent = element.parentNode;
+  if ( entry.$el == parent ) {
+  loc = entry.location;  // @TODO - helps debug
+  sendToServer( "OpenEntryBarrier", "location", entry.location );
+  }
+}
+
+function IssueTicket( element ) {
+  parent = element.parentNode;
+  if ( entry.$el == parent ) {
+  loc = entry.location;  // @TODO - helps debug
+  sendToServer( "OperatorIssueTicket", "location", entry.location );
+  }
+}
+
+
 // Map buttons to functions.
 $(function () {
     $("form").on('submit', function (e) {
@@ -196,11 +223,13 @@ $(function () {
     });
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
-    $( "#NorthIssueTicket" ).click(function() { sendToServer( "OperatorIssueTicket", "location", "North" ); });
-    $( "#NorthOpenBarrier" ).click(function() { sendToServer( "OpenEntryBarrier", "location", "North" ); });
-    $( "#Lane1OpenBarrier" ).click(function() { sendToServer( "OpenExitBarrier", "location", "Lane 1" ); });
+/*
+    $( "#IssueTicket" ).click(function() { sendToServer( "OperatorIssueTicket", "location", "North" ); });
+    $( "#OpenEntryBarrier" ).click(function() { sendToServer( "OpenEntryBarrier", "location", "North" ); });
+    $( "#OpenExitBarrier" ).click(function() { sendToServer( "OpenExitBarrier", "location", "Lane 1" ); });
     $( "#Lane1TardyCancel" ).click(function() { sendToServer( "FeeWaived", "ticketNumber", vm.Lane1TicketNumber ); });
     $( "#Lane1TardyPaid" ).click(function() { sendToServer( "FeeCollected", "ticketNumber", vm.Lane1TicketNumber ); });
     $( "#Lane1UnpaidCancel" ).click(function() { sendToServer( "FeeWaived", "ticketNumber", vm.Lane1TicketNumber ); });
     $( "#Lane1UnpaidPaid" ).click(function() { sendToServer( "FeeCollected", "ticketNumber", vm.Lane1TicketNumber ); });
+*/
 });

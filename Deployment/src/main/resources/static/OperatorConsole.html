@@ -61,9 +61,9 @@
             <h5>Location: {{ location }}</h5>
             <h5>Ticket: {{ ticket }}</h5>
             <h5>Barrier: {{ barrier }}</h5>
-            <h5 v-if="NorthDelayedEntry" style="color:red">Delayed entry!</h5>
-            <button id="NorthIssueTicket" class="btn btn-primary" type="submit">Issue Ticket</button>
-            <button id="NorthOpenBarrier" class="btn btn-primary" type="submit">Open Barrier</button>
+            <button onclick="OpenEntry( this )" class="btn btn-primary">Open Barrier</button>
+            <button onclick="IssueTicket( this )" class="btn btn-primary">Issue Ticket</button>
+            <h5 v-if="DelayedEntry" style="color:red">Delayed entry!</h5>
         </div>
     </div>
 </script>
@@ -72,10 +72,11 @@
     <div class="exitstand">
         <div class="col-md-6">
             <h4>Exit Stand</h4>
-            <h5>Ticket: {{ Lane1Ticket }}</h5>
-            <h5>Exit Deadline: {{ Lane1ExitDeadline }}</h5>
-            <h5>Barrier: {{ Lane1Barrier }}</h5>
-            <button id="Lane1OpenBarrier" class="btn btn-primary" type="submit">Open Barrier</button>
+            <h5>Location: {{ location }}</h5>
+            <h5>Ticket: {{ ticket }}</h5>
+            <h5>Exit Deadline: {{ exitDeadline }}</h5>
+            <h5>Barrier: {{ barrier }}</h5>
+            <button id="OpenExitBarrier" class="btn btn-primary" type="submit">Open Barrier</button>
             <div v-show="Lane1TardyExit" class="row">
                 <h5 style="color:red">Missed exit deadline!</h5>
                 <h5>Additional charge: {{ Lane1AdditionalCharge }}</h5>
