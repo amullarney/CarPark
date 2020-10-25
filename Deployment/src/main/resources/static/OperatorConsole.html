@@ -56,14 +56,14 @@
 
 <script type="text/x-template" id="entry-console-display"  
     <div class="entrystand">
-        <div class="col-md-6">
+        <div v-show=visible class="col-md-6">
             <h4>Entry Stand</h4>
             <h5>Location: {{ location }}</h5>
             <h5>Ticket: {{ ticket }}</h5>
             <h5>Barrier: {{ barrier }}</h5>
             <button onclick="OpenEntry( this )" class="btn btn-primary">Open Barrier</button>
             <button onclick="IssueTicket( this )" class="btn btn-primary">Issue Ticket</button>
-            <h5 v-if="DelayedEntry" style="color:red">Delayed entry!</h5>
+            <h5 v-show=delayed style="color:red">Delayed entry!</h5>
         </div>
     </div>
 </script>

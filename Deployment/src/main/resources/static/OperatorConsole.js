@@ -34,7 +34,9 @@ const EntryStand = {
     return {
       location: 'North',
       ticket: 'not requested',
-      barrier: 'closed'
+      barrier: 'closed',
+      visible: false,
+      delayed: false
     }
   },
   methods: {
@@ -46,6 +48,12 @@ const EntryStand = {
     },
     setBarrier(barrier) {
       this.barrier = barrier;
+    },
+    setVisible(visible) {
+      this.visible = visible;
+    },
+    setDelayed(delayed) {
+      this.delayed = delayed;
     }
   }
 }
@@ -150,6 +158,8 @@ function handleReply(reply) {
     var location ="";
     var barrier = "";
     var ticket = "";
+    var visible = false;
+    var condition = false;
    
     var messageName = JSON.parse( reply.body ).messageName;
     if ( messageName !== "DateTimeUpdate" ) {
@@ -159,10 +169,10 @@ function handleReply(reply) {
     	location = JSON.parse( reply.body ).location;
     	barrier = JSON.parse( reply.body ).barrier;
     	ticket = JSON.parse( reply.body ).ticket;
-    	vm.NorthEntry = true;
     	if ( entry.location == location ) {
     	  entry.setTicket(ticket);
     	  entry.setBarrier(barrier);
+    	  entry.setVisible(true);
     	}
     } else if ( messageName == "ActivateExitStand" ) {
     	vm.Lane1Ticket = JSON.parse( reply.body ).ticket;
@@ -171,14 +181,16 @@ function handleReply(reply) {
         vm.Lane1Exit = true;
     } else if ( messageName == "DeactivateEntryStand" ) {
     	location = JSON.parse( reply.body ).location;
-    	vm.NorthEntry = false;
-    	vm.NorthDelayedEntry = false;
+    	if ( entry.location == location ) {
+    	  entry.setDelayed(false);
+    	  entry.setVisible(false);
+    	}
     } else if ( messageName == "DeactivateExitStand" ) {
     	vm.Lane1Exit = false;
     	vm.Lane1TardyExit = false;
     	vm.Lane1UnpaidStayExit = false;
     } else if ( messageName == "DelayedEntry" ) {
-    	vm.NorthDelayedEntry = true;
+    	entry.setDelayed(true);  // @TODO - assuming entry here
     } else if ( messageName == "OccupancyUpdate" ) {
     	vm.Occupancy = JSON.parse( reply.body ).occupancy;
     	vm.Capacity = JSON.parse( reply.body ).capacity;
