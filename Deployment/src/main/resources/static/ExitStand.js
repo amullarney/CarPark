@@ -20,6 +20,7 @@ function setConnected(connected) {
     $("#disconnect").prop("disabled", !connected);
     if (connected) {
         $("#conversation").show();
+        stompClient.send("/app/EXRegister", {}, JSON.stringify({'location': $("#location").val()}));
     }
     else {
         $("#conversation").hide();
@@ -39,7 +40,6 @@ function connect() {
         stompClient.subscribe('/topic/ExitStand/' + $("#location").val(), function (reply) {
             showReply(JSON.parse(reply.body).content);
         });
-     stompClient.send("/app/EXRegister", {}, JSON.stringify({'location': $("#location").val()}));
     });
 }
 

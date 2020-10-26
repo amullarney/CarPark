@@ -1050,7 +1050,8 @@ INSERT INTO SPR_PEP
 INSERT INTO SPR_PS
 	VALUES ("8a219dd9-be5c-4cbe-a968-f67aefc4588b",
 	'Register',
-	'',
+	'Register existence of an instance of a peripheral of the specified type at the specified location.
+This allows communication between the console and the peripheral instance via carpark control.',
 	'',
 	3,
 	0);
@@ -1059,7 +1060,8 @@ INSERT INTO C_EP_PROXY
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'Register',
-	'',
+	'Register existence of an instance of a peripheral of the specified type at the specified location.
+This allows communication between the console and the peripheral instance via carpark control.',
 	'../../Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("b4d0a598-e97a-4634-83e1-8a6ef06c38af",
@@ -1261,16 +1263,17 @@ INSERT INTO SPR_PEP
 INSERT INTO SPR_PS
 	VALUES ("e414baf5-6274-4c1b-afb5-5f35c0606f18",
 	'Register',
-	'',
-	'',
-	3,
+	'Announce the creation of a new instance at the specified location.',
+	'EntryStand::Create( Location:param.Location );
+LOG::LogInfo( message:"registering entry at " + param.Location );',
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("66899918-c568-4d94-b0a3-87d21a637061",
 	"a4174036-5fb5-4ca8-bc14-f60c13721964",
 	-1,
 	'Register',
-	'',
+	'Announce the creation of a new instance at the specified location.',
 	'../../Interfaces/EntryStand/EntryStand.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("a4174036-5fb5-4ca8-bc14-f60c13721964",
@@ -1398,16 +1401,16 @@ INSERT INTO SPR_PEP
 INSERT INTO SPR_PS
 	VALUES ("718ea696-9664-430b-9f14-b3b70bb87bec",
 	'Register',
-	'',
-	'',
-	3,
+	'Announce the creation of a new instance at the specified location.',
+	'ExitStand::Create( Location:param.Location );',
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("771c37e5-26b2-4cd4-bcfa-01ccfb15a164",
 	"7899d3af-2715-4b8f-a3b5-f0508005328d",
 	-1,
 	'Register',
-	'',
+	'Announce the creation of a new instance at the specified location.',
 	'../../Interfaces/ExitStand/ExitStand.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("7899d3af-2715-4b8f-a3b5-f0508005328d",
@@ -1655,16 +1658,16 @@ INSERT INTO SPR_PEP
 INSERT INTO SPR_PS
 	VALUES ("59b52585-7082-46c6-bf80-346b1684c94c",
 	'Register',
-	'',
-	'',
-	3,
+	'Announce the creation of a new instance at the specified location.',
+	'PaymentMachine::Create( Location:param.Location );',
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("564726c1-9ef0-4f1f-b299-5d272941b451",
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'Register',
-	'',
+	'Announce the creation of a new instance at the specified location.',
 	'../../Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("1775761d-746e-41ae-a5e0-cd1a783dc665",

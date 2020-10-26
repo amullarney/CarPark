@@ -190,11 +190,11 @@ function handleReply(reply) {
     	location = JSON.parse( reply.body ).location;
     	peripheral = JSON.parse( reply.body ).peripheral;
     	if ( peripheral == "Entry" ) {
-    	  if ( not entrystands.has( location ) {
+    	  if ( ! entrystands.has( location ) ) {
     	      makeEntry(location);
     	  }
     	} else if ( peripheral == "Exit" ) {
-    	  if ( not exitstands.has( location ) {
+    	  if ( ! exitstands.has( location ) ) {
     	      makeExit(location);
     	  }
     	}

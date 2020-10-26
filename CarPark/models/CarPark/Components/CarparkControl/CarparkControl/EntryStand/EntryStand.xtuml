@@ -57,7 +57,8 @@ EntryStand.VehicleWaiting = false;
 EntryStand.VehicleArrived = false;
 select any carpark from instances of Carpark;
 relate EntryStand to carpark across R4.''controls entry to'';
-send Operator::Register( Location:param.Location, Peripheral:"Entry" );',
+send Operator::Register( Location:param.Location, Peripheral:"Entry" );
+LOG::LogInfo( message:"Created entry at " + param.Location );',
 	1,
 	'',
 	"e524167a-78e1-46df-90ba-0a13fd9d60b2",
