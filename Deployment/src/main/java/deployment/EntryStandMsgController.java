@@ -70,6 +70,16 @@ public class EntryStandMsgController {
 	// For example, when the JavaScript client sends a message to "/app/VehicleWaiting",
 	// the method annoated with @MessageMapping( "/VehicleWaiting" ) is invoked, and
 	// an instance of the message is passed to it as a parameter.
+    @MessageMapping( "/Register" )
+    public void Register( RegisterMsg message ) throws Exception {
+    	try {
+      	  EntryStand.Singleton().CarPark().Register( message.getLocation() );
+      	}
+      	catch ( Exception e ) {
+        	  System.out.printf( "Exception, %s, in Register()\n", e );    			
+      	}
+    }
+
     @MessageMapping( "/VehicleWaiting" )
     public void VehicleWaiting( VehicleWaitingMsg message ) throws Exception {
     	try {

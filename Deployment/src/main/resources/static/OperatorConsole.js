@@ -183,11 +183,27 @@ function handleReply(reply) {
     var exitDeadline = "";
     var amount = "";
     var duration = "";
+    var peripheral = "";
    
     var messageName = JSON.parse( reply.body ).messageName;
     if ( messageName !== "DateTimeUpdate" ) {
         $("#replies").append("<tr><td>" + JSON.stringify( JSON.parse( reply.body ) ) + "</td></tr>");
     }
+
+    if ( messageName == "Register" ) {
+    	location = JSON.parse( reply.body ).location;
+    	peripheral = JSON.parse( reply.body ).peripheral;
+    	if ( peripheral == "Entry" ) {
+    	  if ( not entrystands.has( location ) {
+    	      makeEntry(location);
+    	  }
+    	} else if ( peripheral == "Exit" ) {
+    	  if ( not exitstands.has( location ) {
+    	      makeExit(location);
+    	  }
+    	}
+    }
+    
     // Instance-specific messages.
     if ( messageName == "ActivateEntryStand" ) {
     	location = JSON.parse( reply.body ).location;

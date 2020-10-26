@@ -135,6 +135,12 @@ public class OperatorConsoleMsgController {
     // The following methods forward incoming messages to the (JavaScript) client which
     // subscribes to the message-broker topic, /topic/OperatorConsole.  There can be any
     // number of instances of operator consoles, but they all receive the same data.
+    public void SendRegisterMessage ( String Location, String Peripheral ) throws Exception {
+    	RegisterMsg msg = new RegisterMsg( "Register", Location, Peripheral );
+        String topic = "/topic/OperatorConsole";
+        this.template.convertAndSend( topic, msg );
+    }
+
     public void SendTardyExitMessage ( String Location, int TicketNumber, double AdditionalCharge, int Overstay ) throws Exception {
     	TardyExitMsg msg = new TardyExitMsg( "TardyExit", Location, 
           String.valueOf( TicketNumber ), String.valueOf( AdditionalCharge ), String.valueOf( Overstay ) );

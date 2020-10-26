@@ -42,6 +42,7 @@ function connect() {
             showReply(JSON.parse(reply.body).content);
         });
     });
+    stompClient.send("/app/Register", {}, JSON.stringify({'location': $("#location").val()}));
 }
 
 function disconnect() {
