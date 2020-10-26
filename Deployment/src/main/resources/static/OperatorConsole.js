@@ -1,10 +1,5 @@
 var stompClient = null;
 
-
-8// @TODO - get rid of these
-var entry = null;
-var exit = null;
-
 const entrystands = new Map()
 const exitstands = new Map()
 
@@ -119,7 +114,7 @@ function makeEntry(location) {
     entry = theEntry.$mount();
     document.getElementById('entry-consoles').appendChild(theEntry.$el);
     entry.setLocation(location);
-    entrystands.set (entry.location, entry )
+    entrystands.set( entry.location, entry )
 }
 
 function makeExit(location) {
@@ -128,7 +123,7 @@ function makeExit(location) {
     exit = theExit.$mount();
     document.getElementById('exit-consoles').appendChild(theExit.$el);
     exit.setLocation(location)
-    exitstands.set(exit.location, exit )
+    exitstands.set( exit.location, exit )
 }
 
 function setConnected(connected) {
@@ -270,47 +265,59 @@ function handleReply(reply) {
     }
 }
 
+
+// Act on instance button clicks
 function OpenEntry( element ) {
   parent = element.parentNode;  // Seek to identify which instance owns the button that was clicked.
-  if ( entry.$el == parent ) {
-    loc = entry.location;  // @TODO - helps debug
-    sendToServer( "OpenEntryBarrier", "location", entry.location );
+  for ( entry of entrystands.values() ) {
+    if ( entry.$el == parent ) {
+      sendToServer( "OpenEntryBarrier", "location", entry.location );
+      break;
+    }
   }
 }
 
 function IssueTicket( element ) {
   parent = element.parentNode;
-  if ( entry.$el == parent ) {
-    loc = entry.location;  // @TODO - helps debug
-    sendToServer( "OperatorIssueTicket", "location", entry.location );
+  for ( entry of entrystands.values() ) {
+    if ( entry.$el == parent ) {
+      sendToServer( "OperatorIssueTicket", "location", entry.location );
+      break;
+    }
   }
 }
 
 function OpenExit( element ) {
   parent = element.parentNode;
-  if ( exit.$el == parent ) {
-    loc = exit.location;  // @TODO - helps debug
-    sendToServer( "OpenExitBarrier", "location", exit.location );
+  for ( exit of exitstands.values() ) {
+    if ( exit.$el == parent ) {
+      sendToServer( "OpenExitBarrier", "location", exit.location );
+      break;
+    }
   }
 }
 
 function FeeWaived( element ) {
   parent = element.parentNode.parentNode;
-  if ( exit.$el == parent ) {
-    tkt = exit.ticketNumber;  // @TODO - helps debug
-    sendToServer( "FeeWaived", "ticketNumber", exit.ticketNumber );
+  for ( exit of exitstands.values() ) {
+    if ( exit.$el == parent ) {
+      sendToServer( "FeeWaived", "ticketNumber", exit.ticketNumber );
+      break;
+    }
   }
 }
 
 function FeeCollected( element ) {
   parent = element.parentNode.parentNode;
-  if ( exit.$el == parent ) {
-    tkt = exit.ticketNumber;  // @TODO - helps debug
-    sendToServer( "FeeCollected", "ticketNumber", exit.ticketNumber );
+  for ( exit of exitstands.values() ) {
+    if ( exit.$el == parent ) {
+      sendToServer( "FeeCollected", "ticketNumber", exit.ticketNumber );
+      break;
+    }
   }
 }
 
-// Map buttons to functions.
+// Map non-instance buttons to functions.
 $(function () {
     $("form").on('submit', function (e) {
         e.preventDefault();
