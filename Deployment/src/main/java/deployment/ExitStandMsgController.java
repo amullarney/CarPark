@@ -68,7 +68,7 @@ public class ExitStandMsgController {
 	// an instance of the message is passed to it as a parameter.
 	// The Entry Stand also handles the VehicleWaiting message, so the Exit Stand uses
 	// a prefix on the mapping to enable the framework to disambiguate the two recipients.
-    @MessageMapping( "/Register" )
+    @MessageMapping( "/EXRegister" )
     public void Register( RegisterMsg message ) throws Exception {
     	try {
       	  ExitStand.Singleton().CarPark().Register( message.getLocation() );

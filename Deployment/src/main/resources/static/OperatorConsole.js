@@ -150,10 +150,6 @@ function connect() {
         stompClient.subscribe('/topic/OperatorConsole', function (reply) {
             handleReply(reply);
         });
-    makeEntry('North');  // @TODO - move to register
-    makeEntry('South');
-    makeExit('Lane 1');
-    makeExit('Lane 2');
     });
 }
 

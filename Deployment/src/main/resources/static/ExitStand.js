@@ -39,7 +39,7 @@ function connect() {
         stompClient.subscribe('/topic/ExitStand/' + $("#location").val(), function (reply) {
             showReply(JSON.parse(reply.body).content);
         });
-     stompClient.send("/app/Register", {}, JSON.stringify({'location': $("#location").val()}));
+     stompClient.send("/app/EXRegister", {}, JSON.stringify({'location': $("#location").val()}));
     });
 }
 
