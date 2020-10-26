@@ -540,6 +540,38 @@ INSERT INTO C_PP
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("25b5186b-bc28-4f4d-bdd6-81028ae8abfc",
+	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
+	-1,
+	'Register',
+	'Register existence of an instance of a peripheral of the specified type at the specified location.
+This allows communication between the console and the peripheral instance via carpark control.');
+INSERT INTO C_AS
+	VALUES ("25b5186b-bc28-4f4d-bdd6-81028ae8abfc",
+	'Register',
+	'Register existence of an instance of a peripheral of the specified type at the specified location.
+This allows communication between the console and the peripheral instance via carpark control.',
+	1,
+	"e5c28b7b-3074-4ec3-933c-109cc9064aac");
+INSERT INTO C_PP
+	VALUES ("17fddbef-c0fd-46b8-9e3c-452086be11a7",
+	"25b5186b-bc28-4f4d-bdd6-81028ae8abfc",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'Location',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("57aaea20-4e1e-4189-ba30-baf45da0862e",
+	"25b5186b-bc28-4f4d-bdd6-81028ae8abfc",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'Peripheral',
+	'',
+	0,
+	'',
+	"17fddbef-c0fd-46b8-9e3c-452086be11a7");
 INSERT INTO PE_PE
 	VALUES ("b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	1,

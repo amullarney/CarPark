@@ -119,6 +119,27 @@ INSERT INTO C_PP
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("771c37e5-26b2-4cd4-bcfa-01ccfb15a164",
+	"7899d3af-2715-4b8f-a3b5-f0508005328d",
+	-1,
+	'Register',
+	'Announce the creation of a new instance at the specified location.');
+INSERT INTO C_AS
+	VALUES ("771c37e5-26b2-4cd4-bcfa-01ccfb15a164",
+	'Register',
+	'Announce the creation of a new instance at the specified location.',
+	0,
+	"1156e097-b935-4375-835b-405ad15cc03d");
+INSERT INTO C_PP
+	VALUES ("80e5d242-f722-4cd7-b900-c23384c12fd7",
+	"771c37e5-26b2-4cd4-bcfa-01ccfb15a164",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'Location',
+	'Used as an identifier, this is the location of the entry stand.',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
 INSERT INTO PE_PE
 	VALUES ("7899d3af-2715-4b8f-a3b5-f0508005328d",
 	1,

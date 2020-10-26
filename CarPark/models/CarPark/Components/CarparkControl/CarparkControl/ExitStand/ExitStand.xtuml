@@ -10,6 +10,34 @@ Receives active notification of:
   - arrival of vehicle at the stand ("waiting" detector)
   - exit of vehicle from the stand ("exited" detector)',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("d24b05fc-9c77-4b11-ac97-e09a6743786f",
+	"3828d09c-9652-4fa9-bda3-ff2c25ab6cb5",
+	'Create',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance ExitStand of ExitStand;
+ExitStand.Location = param.Location;
+ExitStand.Barrier = BarrierState::Closed;
+ExitStand.VehicleWaiting = false;
+ExitStand.VehicleArrived = false;
+select any carpark from instances of Carpark;
+relate ExitStand to carpark across R10.''controls exit from'';
+send Operator::Register( Location:param.Location, Peripheral:"Exit" );',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("439a4ffc-9822-4b08-a0e1-7a464f1f7d42",
+	"d24b05fc-9c77-4b11-ac97-e09a6743786f",
+	'Location',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'An identifier for the instance being created.');
 INSERT INTO O_NBATTR
 	VALUES ("1601c35e-c93d-4217-8df1-31bcfb282d01",
 	"3828d09c-9652-4fa9-bda3-ff2c25ab6cb5");
