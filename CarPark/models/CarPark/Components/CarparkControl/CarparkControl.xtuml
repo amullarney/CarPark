@@ -913,7 +913,7 @@ INSERT INTO SPR_PS
 	'Commands the carpark system to open the carpark.',
 	'select any carpark from instances of Carpark;
 if ( empty carpark )
-  ::Initialize();
+  ::InitializeWithPeripheralPEIs();
 else
   if ( not carpark.Open )
   	generate Carpark1:Open() to carpark;
@@ -1053,7 +1053,7 @@ INSERT INTO SPR_PS
 	'Register existence of an instance of a peripheral of the specified type at the specified location.
 This allows communication between the console and the peripheral instance via carpark control.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("25b5186b-bc28-4f4d-bdd6-81028ae8abfc",
@@ -1264,8 +1264,7 @@ INSERT INTO SPR_PS
 	VALUES ("e414baf5-6274-4c1b-afb5-5f35c0606f18",
 	'Register',
 	'Announce the creation of a new instance at the specified location.',
-	'EntryStand::Create( Location:param.Location );
-LOG::LogInfo( message:"registering entry at " + param.Location );',
+	'EntryStand::Create( Location:param.Location );',
 	1,
 	0);
 INSERT INTO C_EP_PROXY

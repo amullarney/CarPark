@@ -17,14 +17,18 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'create object instance ExitStand of ExitStand;
-ExitStand.Location = param.Location;
-ExitStand.Barrier = BarrierState::Closed;
-ExitStand.VehicleWaiting = false;
-ExitStand.VehicleArrived = false;
-select any carpark from instances of Carpark;
-relate ExitStand to carpark across R10.''controls exit from'';
-send Operator::Register( Location:param.Location, Peripheral:"Exit" );',
+	'select any ExitStand from instances of ExitStand
+ where ( selected.Location == param.Location );
+if ( empty ExitStand )
+  create object instance ExitStand of ExitStand;
+  ExitStand.Location = param.Location;
+  ExitStand.Barrier = BarrierState::Closed;
+  ExitStand.VehicleWaiting = false;
+  ExitStand.VehicleArrived = false;
+  select any carpark from instances of Carpark;
+  relate ExitStand to carpark across R10.''controls exit from'';
+  send Operator::Register( Location:param.Location, Peripheral:"Exit" );
+end if;',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",

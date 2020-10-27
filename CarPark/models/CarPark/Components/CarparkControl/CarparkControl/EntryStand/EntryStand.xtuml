@@ -50,15 +50,18 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'create object instance EntryStand of EntryStand;
-EntryStand.Location = param.Location;
-EntryStand.Barrier = BarrierState::Closed;
-EntryStand.VehicleWaiting = false; 
-EntryStand.VehicleArrived = false;
-select any carpark from instances of Carpark;
-relate EntryStand to carpark across R4.''controls entry to'';
-send Operator::Register( Location:param.Location, Peripheral:"Entry" );
-LOG::LogInfo( message:"Created entry at " + param.Location );',
+	'select any EntryStand from instances of EntryStand
+ where ( selected.Location == param.Location );
+if ( empty EntryStand )
+  create object instance EntryStand of EntryStand;
+  EntryStand.Location = param.Location;
+  EntryStand.Barrier = BarrierState::Closed;
+  EntryStand.VehicleWaiting = false; 
+  EntryStand.VehicleArrived = false;
+  select any carpark from instances of Carpark;
+  relate EntryStand to carpark across R4.''controls entry to'';
+  send Operator::Register( Location:param.Location, Peripheral:"Entry" );
+end if;',
 	1,
 	'',
 	"e524167a-78e1-46df-90ba-0a13fd9d60b2",

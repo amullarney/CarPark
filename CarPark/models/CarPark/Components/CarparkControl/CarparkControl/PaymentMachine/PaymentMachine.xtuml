@@ -31,12 +31,16 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'create object instance PaymentMachine of PaymentMachine;
-PaymentMachine.Location = "1st Floor";
-PaymentMachine.SlotsOpen = false;
-PaymentMachine.SufficientChange = true;
-select any carpark from instances of Carpark;
-relate PaymentMachine to carpark across R11.''accepts payments for'';',
+	'select any PaymentMachine from instances of PaymentMachine
+ where ( selected.Location == param.Location );
+if ( empty PaymentMachine )
+  create object instance PaymentMachine of PaymentMachine;
+  PaymentMachine.Location = param.Location;
+  PaymentMachine.SlotsOpen = false;
+  PaymentMachine.SufficientChange = true;
+  select any carpark from instances of Carpark;
+  relate PaymentMachine to carpark across R11.''accepts payments for'';
+end if;',
 	1,
 	'',
 	"1641f20c-c0d1-4c1a-a70a-aaeb6ffbe487",
