@@ -72,6 +72,16 @@ public class PaymentMachineMsgController {
 	// the method annotated with @MessageMapping( "/InsertedTicket" ) is invoked, and
 	// an instance of the message is passed to it as a parameter.
 	
+	// Entry/exit stands have Register message, so this one uses a prefix to distinguish it.
+    @MessageMapping( "/PMRegister" )
+    public void Register( RegisterMsg message ) throws Exception {
+    	try {
+    		PaymentMachine.Singleton().CarPark().Register( message.getLocation() );
+      	}
+      	catch ( Exception e ) {
+        	  System.out.printf( "Exception, %s, in PMRegister()\n", e );    			
+      	}
+    }
 	// The exit stand has an InsertedTicket message, so this one uses a prefix to distinguish it.
     @MessageMapping( "/PMInsertedTicket" )
     public void InsertedTicket( InsertedTicketMsg message ) throws Exception {

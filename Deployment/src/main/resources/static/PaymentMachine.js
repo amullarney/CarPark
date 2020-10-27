@@ -34,6 +34,7 @@ function setConnected(connected) {
     $("#disconnect").prop("disabled", !connected);
     if (connected) {
         $("#conversation").show();
+        stompClient.send("/app/PMRegister", {}, JSON.stringify({'location': $("#location").val()}));
     }
     else {
         $("#conversation").hide();
