@@ -1,2 +1,2 @@
 *,RootPackage,*,InteractiveTesting::InteractiveTesting
-Components::InteractiveTestbench,InitFunction,Component,InitializeWithPeripheralPEIs
+Components::InteractiveTestbench,InitFunction,Component,Initialize
