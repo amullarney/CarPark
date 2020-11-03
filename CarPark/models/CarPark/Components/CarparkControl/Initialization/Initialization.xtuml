@@ -293,7 +293,7 @@ INSERT INTO S_SYNC
 	VALUES ("df086320-14c4-4bb3-bb79-134294a2fc3b",
 	"00000000-0000-0000-0000-000000000000",
 	'InitializeWithoutPeripheralPEIs',
-	'Initialize for deployment; peripherals will register dynamically from client broeser(s).',
+	'Initialize for deployment; peripherals will register dynamically.',
 	'::CreateNonPeripheralPEIs();
 ::Create040121FeeSchedules();
 ::Run();',
