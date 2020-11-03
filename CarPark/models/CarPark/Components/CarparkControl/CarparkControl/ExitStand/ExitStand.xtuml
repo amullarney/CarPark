@@ -28,6 +28,8 @@ if ( empty ExitStand )
   select any carpark from instances of Carpark;
   relate ExitStand to carpark across R10.''controls exit from'';
   send Operator::Register( Location:param.Location, Peripheral:"Exit" );
+else
+  LOG::LogFailure( message:"Attempt to register a duplicate exit station at " + param.Location );
 end if;',
 	1,
 	'',
