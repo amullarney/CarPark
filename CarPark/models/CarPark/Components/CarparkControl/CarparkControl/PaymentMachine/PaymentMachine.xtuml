@@ -40,6 +40,8 @@ if ( empty PaymentMachine )
   PaymentMachine.SufficientChange = true;
   select any carpark from instances of Carpark;
   relate PaymentMachine to carpark across R11.''accepts payments for'';
+else
+  LOG::LogFailure( message:"Attempt to register a duplicate payment machine at " + param.Location );
 end if;',
 	1,
 	'',

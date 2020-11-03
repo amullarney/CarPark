@@ -61,6 +61,8 @@ if ( empty EntryStand )
   select any carpark from instances of Carpark;
   relate EntryStand to carpark across R4.''controls entry to'';
   send Operator::Register( Location:param.Location, Peripheral:"Entry" );
+else
+  LOG::LogFailure( message:"Attempt to register a duplicate entry station at " + param.Location );
 end if;',
 	1,
 	'',
