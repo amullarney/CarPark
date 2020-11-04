@@ -214,6 +214,7 @@ function handleReply(reply) {
     } else if ( messageName == "ActivateExitStand" ) {
     	location = JSON.parse( reply.body ).location;
     	barrier = JSON.parse( reply.body ).barrier;
+    	ticketStatus = JSON.parse( reply.body ).ticket;
     	exitDeadline = JSON.parse( reply.body ).exitDeadline;
     	exit = exitstands.get(location);
     	if ( exit ) {
