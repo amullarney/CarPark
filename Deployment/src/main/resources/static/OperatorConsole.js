@@ -281,7 +281,7 @@ function handleReply(reply) {
 
 // Act on instance button clicks
 function OpenEntry( element ) {
-  parent = element.parentNode;  // Seek to identify which instance owns the button that was clicked.
+  parent = element.parentNode.parentNode;  // Seek to identify which instance owns the button that was clicked.
   for ( entry of entrystands.values() ) {
     if ( entry.$el == parent ) {
       sendToServer( "OpenEntryBarrier", "location", entry.location );
@@ -291,7 +291,7 @@ function OpenEntry( element ) {
 }
 
 function IssueTicket( element ) {
-  parent = element.parentNode;
+  parent = element.parentNode.parentNode;
   for ( entry of entrystands.values() ) {
     if ( entry.$el == parent ) {
       sendToServer( "OperatorIssueTicket", "location", entry.location );
@@ -301,7 +301,7 @@ function IssueTicket( element ) {
 }
 
 function OpenExit( element ) {
-  parent = element.parentNode;
+  parent = element.parentNode.parentNode;
   for ( exit of exitstands.values() ) {
     if ( exit.$el == parent ) {
       sendToServer( "OpenExitBarrier", "location", exit.location );
@@ -311,7 +311,7 @@ function OpenExit( element ) {
 }
 
 function FeeWaived( element ) {
-  parent = element.parentNode.parentNode;
+  parent = element.parentNode.parentNode.parentNode;
   for ( exit of exitstands.values() ) {
     if ( exit.$el == parent ) {
       sendToServer( "FeeWaived", "ticketNumber", exit.ticketNumber );
@@ -321,7 +321,7 @@ function FeeWaived( element ) {
 }
 
 function FeeCollected( element ) {
-  parent = element.parentNode.parentNode;
+  parent = element.parentNode.parentNode.parentNode;
   for ( exit of exitstands.values() ) {
     if ( exit.$el == parent ) {
       sendToServer( "FeeCollected", "ticketNumber", exit.ticketNumber );
