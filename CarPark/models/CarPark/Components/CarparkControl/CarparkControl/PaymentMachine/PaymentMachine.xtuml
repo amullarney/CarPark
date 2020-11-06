@@ -24,6 +24,38 @@ self.TimeoutTimer = TIM::timer_start( event_inst:Timeout, microseconds:TimerValu
 	'',
 	"00000000-0000-0000-0000-000000000000",
 	0);
+INSERT INTO O_TFR
+	VALUES ("06259896-ef15-4e0a-bf5f-546cdcb1ff8e",
+	"71fc749d-1e1a-472f-a507-e927aa1c4890",
+	'Create',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'select any PaymentMachine from instances of PaymentMachine
+ where ( selected.Location == param.Location );
+if ( empty PaymentMachine )
+  create object instance PaymentMachine of PaymentMachine;
+  PaymentMachine.Location = param.Location;
+  PaymentMachine.SlotsOpen = false;
+  PaymentMachine.SufficientChange = true;
+  select any carpark from instances of Carpark;
+  relate PaymentMachine to carpark across R11.''accepts payments for'';
+else
+  LOG::LogFailure( message:"Attempt to register a duplicate payment machine at " + param.Location );
+end if;',
+	1,
+	'',
+	"1641f20c-c0d1-4c1a-a70a-aaeb6ffbe487",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("0428aeee-9616-4b51-86b2-150b73ec6daf",
+	"06259896-ef15-4e0a-bf5f-546cdcb1ff8e",
+	'Location',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'An identifier for the instance being created.');
 INSERT INTO O_NBATTR
 	VALUES ("628ad614-ae00-4cb1-a340-a4046e14978f",
 	"71fc749d-1e1a-472f-a507-e927aa1c4890");

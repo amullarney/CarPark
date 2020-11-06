@@ -36,8 +36,8 @@ INSERT INTO DIM_DIA
 INSERT INTO S_SYNC
 	VALUES ("a93d30a1-090d-45a5-aa24-320d8639ea8d",
 	"00000000-0000-0000-0000-000000000000",
-	'CreatePEIs',
-	'',
+	'CreateNonPeripheralPEIs',
+	'Essential: create Carpark and date/time management.',
 	'// Carpark
 create object instance carpark of Carpark;
 carpark.Capacity = 5;
@@ -52,80 +52,7 @@ DateTime::Create(
   Delimiter:" on ", 
   DateFirst:false, 
   UpdatePeriod:1, 
-  UTC_Offset:-7*TimeConversion::QuantumPerHour );
-
-// Entry Stands
-create object instance EntryStand of EntryStand;
-EntryStand.Barrier = BarrierState::Closed;
-EntryStand.Location = "North";
-EntryStand.VehicleWaiting = false; 
-EntryStand.VehicleArrived = false;
-relate EntryStand to carpark across R4.''controls entry to'';
-
-create object instance EntryStand of EntryStand;
-EntryStand.Barrier = BarrierState::Closed;
-EntryStand.Location = "East";
-EntryStand.VehicleWaiting = false; 
-EntryStand.VehicleArrived = false;
-relate EntryStand to carpark across R4.''controls entry to'';
-
-create object instance EntryStand of EntryStand;
-EntryStand.Barrier = BarrierState::Closed;
-EntryStand.Location = "South";
-EntryStand.VehicleWaiting = false; 
-EntryStand.VehicleArrived = false;
-relate EntryStand to carpark across R4.''controls entry to'';
-
-create object instance EntryStand of EntryStand;
-EntryStand.Barrier = BarrierState::Closed;
-EntryStand.Location = "West";
-EntryStand.VehicleWaiting = false; 
-EntryStand.VehicleArrived = false;
-relate EntryStand to carpark across R4.''controls entry to'';
-
-// Exit Stands
-create object instance ExitStand of ExitStand;
-ExitStand.Barrier = BarrierState::Closed;
-ExitStand.Location = "Lane 1";
-ExitStand.VehicleWaiting = false;
-ExitStand.VehicleArrived = false;
-relate ExitStand to carpark across R10.''controls exit from'';
-
-create object instance ExitStand of ExitStand;
-ExitStand.Barrier = BarrierState::Closed;
-ExitStand.Location = "Lane 2";
-ExitStand.VehicleWaiting = false;
-ExitStand.VehicleArrived = false;
-relate ExitStand to carpark across R10.''controls exit from'';
-
-// Payment Machines
-create object instance PaymentMachine of PaymentMachine;
-PaymentMachine.Location = "1st Floor";
-PaymentMachine.SlotsOpen = false;
-PaymentMachine.SufficientChange = true;
-relate PaymentMachine to carpark across R11.''accepts payments for'';
-
-create object instance PaymentMachine of PaymentMachine;
-PaymentMachine.Location = "2nd Floor";
-PaymentMachine.SlotsOpen = false;
-PaymentMachine.SufficientChange = false;
-relate PaymentMachine to carpark across R11.''accepts payments for'';
-
-create object instance PaymentMachine of PaymentMachine;
-PaymentMachine.Location = "3rd Floor";
-PaymentMachine.SlotsOpen = false;
-PaymentMachine.SufficientChange = true;
-relate PaymentMachine to carpark across R11.''accepts payments for'';
-
-create object instance PaymentMachine of PaymentMachine;
-PaymentMachine.Location = "Control Room";
-PaymentMachine.SlotsOpen = false;
-PaymentMachine.SufficientChange = true;
-relate PaymentMachine to carpark across R11.''accepts payments for'';
-
-// Fee Schedules
-::CreateFeeSchedules();
-',
+  UTC_Offset:-7*TimeConversion::QuantumPerHour );',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'',
@@ -140,7 +67,7 @@ INSERT INTO S_SYNC
 	VALUES ("fdf6ae16-d9e5-423d-a18b-ebc98bd74e6c",
 	"00000000-0000-0000-0000-000000000000",
 	'Run',
-	'',
+	'Start execution.',
 	'select any carpark from instances of Carpark;
 generate Carpark1:Open() to carpark;',
 	"ba5eda7a-def5-0000-0000-000000000000",
@@ -154,27 +81,10 @@ INSERT INTO PE_PE
 	"00000000-0000-0000-0000-000000000000",
 	1);
 INSERT INTO S_SYNC
-	VALUES ("03db68a9-a87e-4cd2-992e-0f8a04d7a6d1",
-	"00000000-0000-0000-0000-000000000000",
-	'Initialize',
-	'',
-	'::CreatePEIs();
-::Run();',
-	"ba5eda7a-def5-0000-0000-000000000000",
-	1,
-	'',
-	0);
-INSERT INTO PE_PE
-	VALUES ("03db68a9-a87e-4cd2-992e-0f8a04d7a6d1",
-	1,
-	"b2c7f429-04de-41ed-be2b-e72245892361",
-	"00000000-0000-0000-0000-000000000000",
-	1);
-INSERT INTO S_SYNC
 	VALUES ("a5e051a2-7e87-4f8a-a732-29bd93619287",
 	"00000000-0000-0000-0000-000000000000",
-	'CreateFeeSchedules',
-	'',
+	'Create040121FeeSchedules',
+	'Create fee schedules for April 1, 2021.',
 	'select any carpark from instances of Carpark;
 
 // This fee schedule is valid only for the specified day.  When testing expands
@@ -268,6 +178,131 @@ relate Step1_LatePM to FeeSched_LatePM across R22.''is rate for'';',
 	0);
 INSERT INTO PE_PE
 	VALUES ("a5e051a2-7e87-4f8a-a732-29bd93619287",
+	1,
+	"b2c7f429-04de-41ed-be2b-e72245892361",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("22140147-998b-49ec-ab68-48995a6fc4f8",
+	"00000000-0000-0000-0000-000000000000",
+	'CreatePeripheralPEIs',
+	'',
+	'// Create sample peripherals for automated regression testing
+
+select any carpark from instances of Carpark;
+
+// Entry Stands
+create object instance EntryStand of EntryStand;
+EntryStand.Barrier = BarrierState::Closed;
+EntryStand.Location = "North";
+EntryStand.VehicleWaiting = false; 
+EntryStand.VehicleArrived = false;
+relate EntryStand to carpark across R4.''controls entry to'';
+
+create object instance EntryStand of EntryStand;
+EntryStand.Barrier = BarrierState::Closed;
+EntryStand.Location = "East";
+EntryStand.VehicleWaiting = false; 
+EntryStand.VehicleArrived = false;
+relate EntryStand to carpark across R4.''controls entry to'';
+
+create object instance EntryStand of EntryStand;
+EntryStand.Barrier = BarrierState::Closed;
+EntryStand.Location = "South";
+EntryStand.VehicleWaiting = false; 
+EntryStand.VehicleArrived = false;
+relate EntryStand to carpark across R4.''controls entry to'';
+
+create object instance EntryStand of EntryStand;
+EntryStand.Barrier = BarrierState::Closed;
+EntryStand.Location = "West";
+EntryStand.VehicleWaiting = false; 
+EntryStand.VehicleArrived = false;
+relate EntryStand to carpark across R4.''controls entry to'';
+
+// Exit Stands
+create object instance ExitStand of ExitStand;
+ExitStand.Barrier = BarrierState::Closed;
+ExitStand.Location = "Lane 1";
+ExitStand.VehicleWaiting = false;
+ExitStand.VehicleArrived = false;
+relate ExitStand to carpark across R10.''controls exit from'';
+
+create object instance ExitStand of ExitStand;
+ExitStand.Barrier = BarrierState::Closed;
+ExitStand.Location = "Lane 2";
+ExitStand.VehicleWaiting = false;
+ExitStand.VehicleArrived = false;
+relate ExitStand to carpark across R10.''controls exit from'';
+
+// Payment Machines
+create object instance PaymentMachine of PaymentMachine;
+PaymentMachine.Location = "1st Floor";
+PaymentMachine.SlotsOpen = false;
+PaymentMachine.SufficientChange = true;
+relate PaymentMachine to carpark across R11.''accepts payments for'';
+
+create object instance PaymentMachine of PaymentMachine;
+PaymentMachine.Location = "2nd Floor";
+PaymentMachine.SlotsOpen = false;
+PaymentMachine.SufficientChange = false;
+relate PaymentMachine to carpark across R11.''accepts payments for'';
+
+create object instance PaymentMachine of PaymentMachine;
+PaymentMachine.Location = "3rd Floor";
+PaymentMachine.SlotsOpen = false;
+PaymentMachine.SufficientChange = true;
+relate PaymentMachine to carpark across R11.''accepts payments for'';
+
+create object instance PaymentMachine of PaymentMachine;
+PaymentMachine.Location = "Control Room";
+PaymentMachine.SlotsOpen = false;
+PaymentMachine.SufficientChange = true;
+relate PaymentMachine to carpark across R11.''accepts payments for'';
+',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("22140147-998b-49ec-ab68-48995a6fc4f8",
+	1,
+	"b2c7f429-04de-41ed-be2b-e72245892361",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("74018c44-1961-4d44-a55f-4de35e78db22",
+	"00000000-0000-0000-0000-000000000000",
+	'InitializeWithPeripheralPEIs',
+	'Initialize with ''canned'' peripherals for automated testing.',
+	'::CreateNonPeripheralPEIs();
+::CreatePeripheralPEIs();
+::Create040121FeeSchedules();
+::Run();',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("74018c44-1961-4d44-a55f-4de35e78db22",
+	1,
+	"b2c7f429-04de-41ed-be2b-e72245892361",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("df086320-14c4-4bb3-bb79-134294a2fc3b",
+	"00000000-0000-0000-0000-000000000000",
+	'InitializeWithoutPeripheralPEIs',
+	'Initialize for deployment; peripherals will register dynamically.',
+	'::CreateNonPeripheralPEIs();
+::Create040121FeeSchedules();
+::Run();',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("df086320-14c4-4bb3-bb79-134294a2fc3b",
 	1,
 	"b2c7f429-04de-41ed-be2b-e72245892361",
 	"00000000-0000-0000-0000-000000000000",

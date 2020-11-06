@@ -20,6 +20,7 @@ function setConnected(connected) {
     $("#disconnect").prop("disabled", !connected);
     if (connected) {
         $("#conversation").show();
+        stompClient.send("/app/EXRegister", {}, JSON.stringify({'location': $("#location").val()}));
     }
     else {
         $("#conversation").hide();

@@ -11,8 +11,12 @@
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
   <modules>
-    <module>CarParkTestbench</module>
+    <module>Deployment</module>
     <module>CarPark</module>
-    <module>../TestFramework/TestFramework</module>
+    <module>EntryStand</module>
+    <module>ExitStand</module>
+    <module>PaymentMachine</module>
+    <module>OperatorConsole</module>
+    <module>TestControl</module>
   </modules>
 </project>

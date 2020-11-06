@@ -90,6 +90,12 @@ public class OperatorConsole extends Component<OperatorConsole> {
       	} catch ( Exception e ) {}
     }
 
+    public void Register( final String p_Location,  final String p_Peripheral ) throws XtumlException {
+    	try {
+            OperatorConsoleMsgController.Singleton().SendRegisterMessage( p_Location, p_Peripheral );
+      	} catch ( Exception e ) {}
+    }
+
     public void TardyExit( final String p_Location,  final int p_TicketNumber,  final double p_AdditionalCharge,  final int p_Overstay ) throws XtumlException {
     	try {
             OperatorConsoleMsgController.Singleton().SendTardyExitMessage( p_Location, p_TicketNumber, p_AdditionalCharge, p_Overstay );

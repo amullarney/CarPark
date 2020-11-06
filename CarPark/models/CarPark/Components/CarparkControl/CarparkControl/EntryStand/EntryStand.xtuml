@@ -43,6 +43,40 @@ generate EntryStand6:TicketIssued() to self;',
 	'',
 	"00000000-0000-0000-0000-000000000000",
 	0);
+INSERT INTO O_TFR
+	VALUES ("ee8ea1dd-9141-48e6-86b1-559b19c5f9b1",
+	"39148ad1-bde4-4b19-abb9-fd6d50f5f07e",
+	'Create',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'select any EntryStand from instances of EntryStand
+ where ( selected.Location == param.Location );
+if ( empty EntryStand )
+  create object instance EntryStand of EntryStand;
+  EntryStand.Location = param.Location;
+  EntryStand.Barrier = BarrierState::Closed;
+  EntryStand.VehicleWaiting = false; 
+  EntryStand.VehicleArrived = false;
+  select any carpark from instances of Carpark;
+  relate EntryStand to carpark across R4.''controls entry to'';
+  send Operator::Register( Location:param.Location, Peripheral:"Entry" );
+else
+  LOG::LogFailure( message:"Attempt to register a duplicate entry station at " + param.Location );
+end if;',
+	1,
+	'',
+	"e524167a-78e1-46df-90ba-0a13fd9d60b2",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("f7569b8d-fc7f-4598-ac1c-19206a765c8d",
+	"ee8ea1dd-9141-48e6-86b1-559b19c5f9b1",
+	'Location',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'An identifier for the instance being created.');
 INSERT INTO O_NBATTR
 	VALUES ("962ece7a-b12a-4591-9baa-e33ec6205778",
 	"39148ad1-bde4-4b19-abb9-fd6d50f5f07e");
