@@ -2450,6 +2450,41 @@ INSERT INTO C_EP_PROXY
 	'SetObservationTimeResolutions',
 	'Observations inherit default resolutions from the sequence they are added to; these can be overridden.',
 	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("acdb853b-055f-4d49-b234-3cedd6e22356",
+	"2e275a42-594f-477a-86c9-6a263a8b1e41",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("acdb853b-055f-4d49-b234-3cedd6e22356",
+	'TestCaseComplete',
+	'Signal completion of a test case.',
+	'if ( param.success )
+  LOG::LogSuccess( message:"Test case " + param.caseLabel + " passed." );
+else
+  LOG::LogFailure( message:"Test case " + param.caseLabel + " failed." );
+end if;
+LOG::LogInfo( message:" ------------------------------ ");
+select many reqests from instances of ReceivedTicketRequest;
+for each request in reqests
+  delete object instance request;
+end for;
+select many occs from instances of Occupancy;
+for each occ in occs
+  delete object instance occ;
+end for;
+select many bcmds from instances of BarrierCommand;
+for each bcmd in bcmds
+  delete object instance bcmd;
+end for;',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("2e275a42-594f-477a-86c9-6a263a8b1e41",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'TestCaseComplete',
+	'Signal completion of a test case.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("eff7aa83-70b9-46a6-bfc0-08d66d36431e",
 	"00000000-0000-0000-0000-000000000000",

@@ -24,7 +24,6 @@ send TESTSEQ::SetTestBucketTimeResolutions( bucketId:bucket.bucketId, timeResolu
 // This will require stimuli and observations which represent interaction with the Operator.
 
 send TESTSEQ::AddTestCase( caseLabel:"Overstay" ); 
-send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:33, caseLabel:"Overstay" );
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
 FastForward::Create( seqLabel:"seq01", hours:1, minutes:42, seconds:0 );
 VehicleArrived::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
@@ -57,10 +56,10 @@ INSERT INTO O_TFR
 	'Configure the Test Suite to include this bucket''s set of test cases when run.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'create object instance failures of DemonstrationCaseBucket;
+	'create object instance escapes of EscapeCaseBucket;
 create object instance bucket of TestBucket;
-bucket.name = "Demonstration cases";
-relate failures to bucket across R700;
+bucket.name = "Escape cases";
+relate escapes to bucket across R700;
 bucket.AddToSuite();',
 	1,
 	'',
@@ -73,8 +72,8 @@ INSERT INTO O_TFR
 	'Execute the set of tests in this bucket stand-alone.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Demonstration Test Suite", keepAllCases:False ); 
-DemonstrationCaseBucket::AddBucketToSuite();
+	'send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Escape Test Suite", keepAllCases:False ); 
+EscapeCaseBucket::AddBucketToSuite();
 send Operator::OpenCarpark();',
 	1,
 	'',

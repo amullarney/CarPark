@@ -109,6 +109,24 @@ INSERT INTO PE_PE
 	"68e29e87-70d2-4c06-97db-6b293da075ca",
 	"00000000-0000-0000-0000-000000000000",
 	1);
+INSERT INTO S_SYNC
+	VALUES ("ba2c6c34-50e4-41f5-a78a-952638baf966",
+	"00000000-0000-0000-0000-000000000000",
+	'RunEscapeCases',
+	'',
+	'send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Escape Test Suite", keepAllCases:False ); 
+EscapeCaseBucket::AddBucketToSuite();
+send Operator::OpenCarpark();',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("ba2c6c34-50e4-41f5-a78a-952638baf966",
+	1,
+	"68e29e87-70d2-4c06-97db-6b293da075ca",
+	"00000000-0000-0000-0000-000000000000",
+	1);
 INSERT INTO PE_PE
 	VALUES ("68e29e87-70d2-4c06-97db-6b293da075ca",
 	1,
