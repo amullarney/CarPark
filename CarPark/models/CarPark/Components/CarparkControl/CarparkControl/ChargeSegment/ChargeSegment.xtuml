@@ -88,14 +88,9 @@ INSERT INTO O_ATTR
 	"ba5eda7a-def5-0000-0000-000000000003",
 	'',
 	'');
-INSERT INTO O_DBATTR
+INSERT INTO O_NBATTR
 	VALUES ("8fb95a71-1aad-42d4-9ba5-4b52be9df49f",
-	"94a3e097-a7c1-4fa8-a43d-b79524106049",
-	'select one FeeSchedule related by self->FeeSchedule[R15.''spans''];
-select one stay related by self->Stay[R15.''applies to''];
-self.Start = ::Max( a:stay.EntryTime, b:FeeSchedule.Start );',
-	1,
-	0);
+	"94a3e097-a7c1-4fa8-a43d-b79524106049");
 INSERT INTO O_BATTR
 	VALUES ("8fb95a71-1aad-42d4-9ba5-4b52be9df49f",
 	"94a3e097-a7c1-4fa8-a43d-b79524106049");
@@ -113,14 +108,9 @@ Origin: start of epoch',
 	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
-INSERT INTO O_DBATTR
+INSERT INTO O_NBATTR
 	VALUES ("7bb5f88a-b33d-40f9-a0ad-f90525a280c1",
-	"94a3e097-a7c1-4fa8-a43d-b79524106049",
-	'select one FeeSchedule related by self->FeeSchedule[R15.''spans''];
-select one payment related by self->Stay[R15.''applies to'']->Payment[R16.''solicits''];
-self.End = ::Min( a:payment.ExitTime, b:FeeSchedule.End );',
-	1,
-	0);
+	"94a3e097-a7c1-4fa8-a43d-b79524106049");
 INSERT INTO O_BATTR
 	VALUES ("7bb5f88a-b33d-40f9-a0ad-f90525a280c1",
 	"94a3e097-a7c1-4fa8-a43d-b79524106049");

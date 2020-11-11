@@ -726,7 +726,8 @@ INSERT INTO SPR_RS
 	VALUES ("b9ad2e69-be84-48e2-ab73-4a723c6dd883",
 	'TardyExit',
 	'Indicates the exit deadline printed on this ticket has been missed.',
-	'LOG::LogInfo( message:"Tardy exit." );',
+	'LOG::LogInfo( message:"Tardy exit at " + param.Location );
+LOG::LogReal( message:"Additional fee: ", r:param.AdditionalCharge );',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1122,16 +1123,18 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("4961ae10-1455-43a1-8bcc-96157655b63b",
 	'Register',
+	'Register existence of an instance of a peripheral of the specified type at the specified location.
+This allows communication between the console and the peripheral instance via carpark control.',
 	'',
-	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("25b5186b-bc28-4f4d-bdd6-81028ae8abfc",
 	"b4d0a598-e97a-4634-83e1-8a6ef06c38af",
 	-1,
 	'Register',
-	'',
+	'Register existence of an instance of a peripheral of the specified type at the specified location.
+This allows communication between the console and the peripheral instance via carpark control.',
 	'../../../../../CarPark/models/CarPark/Interfaces/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("b4d0a598-e97a-4634-83e1-8a6ef06c38af",
@@ -1346,16 +1349,16 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("32128690-8993-4e47-8892-4c5455277b30",
 	'Register',
+	'Announce the creation of a new instance at the specified location.',
 	'',
-	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("66899918-c568-4d94-b0a3-87d21a637061",
 	"a4174036-5fb5-4ca8-bc14-f60c13721964",
 	-1,
 	'Register',
-	'',
+	'Announce the creation of a new instance at the specified location.',
 	'../../../../../CarPark/models/CarPark/Interfaces/EntryStand/EntryStand.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("a4174036-5fb5-4ca8-bc14-f60c13721964",
@@ -1485,16 +1488,16 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("c53292bd-e977-48da-b6cb-385f1c36061e",
 	'Register',
+	'Announce the creation of a new instance at the specified location.',
 	'',
-	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("771c37e5-26b2-4cd4-bcfa-01ccfb15a164",
 	"7899d3af-2715-4b8f-a3b5-f0508005328d",
 	-1,
 	'Register',
-	'',
+	'Announce the creation of a new instance at the specified location.',
 	'../../../../../CarPark/models/CarPark/Interfaces/ExitStand/ExitStand.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("7899d3af-2715-4b8f-a3b5-f0508005328d",
@@ -1764,16 +1767,16 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("eefb6b99-56ff-4e94-a847-667f68c172ab",
 	'Register',
+	'Announce the creation of a new instance at the specified location.',
 	'',
-	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("564726c1-9ef0-4f1f-b299-5d272941b451",
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'Register',
-	'',
+	'Announce the creation of a new instance at the specified location.',
 	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("1775761d-746e-41ae-a5e0-cd1a783dc665",
