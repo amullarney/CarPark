@@ -141,6 +141,8 @@ while ( cursor <= EndPosition )
     Carpark[R7.''generates revenue for'']->
     FeeSchedule[R14.''applies'']
     where ( selected.Position == cursor );
+  ChgSeg.Start = ::Max( a:param.Start, b:FeeSched.Start );
+  ChgSeg.End = ::Min( a:param.End, b: FeeSched.End );
   relate FeeSched to self across R15.''applies to'' using ChgSeg;
   ChgSeg.CalculateCharge();
   cursor = cursor + 1;
