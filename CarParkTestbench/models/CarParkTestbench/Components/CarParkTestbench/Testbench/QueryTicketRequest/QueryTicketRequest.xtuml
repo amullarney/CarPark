@@ -71,18 +71,14 @@ INSERT INTO O_TFR
 select one observation related by self->Observation[R400]; 
 
 select any request from instances of ReceivedTicketRequest
- where ( selected.location == self.location );
+ where ( selected.location == self.location )
+ and ( selected.enabled == self.enabled );
 if ( not_empty request )
-  if ( request.enabled == self.enabled )
-    observation.Complete( success:True );
-  else
-    observation.Complete( success:False );
-  end if;
+  observation.Complete( success:True );
+  delete object instance request;
 else
   observation.Complete( success:False );
-end if;
-delete object instance request;
-',
+end if;',
 	1,
 	'',
 	"03babdb5-d972-403b-bd28-cf8322b92453",

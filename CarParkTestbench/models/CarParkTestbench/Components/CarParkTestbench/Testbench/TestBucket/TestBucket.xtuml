@@ -83,6 +83,10 @@ end if;
 select one failures related by self->DemonstrationCaseBucket[R700];
 if ( not_empty failures )
   failures.CreateBucketTests();
+end if;
+select one escapes related by self->EscapeCaseBucket[R700];
+if ( not_empty escapes )
+  escapes.CreateBucketTests();
 end if;',
 	1,
 	'',
