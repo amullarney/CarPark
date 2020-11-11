@@ -22,29 +22,6 @@ INSERT INTO O_TFR
 	'select one bucket related by self->TestBucket[R700];
 send TESTSEQ::SetTestBucketTimeResolutions( bucketId:bucket.bucketId, timeResolution:timeResolution::second, pollResolution:timeResolution::second );
 
-// The following test is a scenario where the customer takes too long to get to the exit stand.
-
-send TESTSEQ::AddTestCase( caseLabel:"Overstay" ); 
-send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:33, caseLabel:"Overstay" );
-send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
-FastForward::Create( seqLabel:"seq01", hours:1, minutes:42, seconds:0 );
-VehicleArrived::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
-QueryTicketRequest::Create( seqLabel:"seq01", location:"North", enabled:True );
-TicketRequested::Create( seqLabel:"seq01", location:"North" );
-TicketIssued::Create( seqLabel:"seq01", location:"North" );
-TicketTaken::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
-VehicleDeparture::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
-FastForward::Create( seqLabel:"seq01", hours:5, minutes:0, seconds:0 );
-TicketInserted::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay" );
-BalanceValue::Create( seqLabel:"seq01", location:"1st Floor", pay:True );  // do not pay!
-TicketReturned::Create( seqLabel:"seq01", location:"1st Floor" );
-ChangeDispensed::Create( seqLabel:"seq01", location:"1st Floor" );
-TicketTaken::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay" );
-FastForward::Create( seqLabel:"seq01", hours:0, minutes:16, seconds:0 );
-VehicleArrived::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit" );
-TicketInserted::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit" );
-VehicleDeparture::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit" );
-
 // The following tests are based on use cases but cases UC1 and UC11 have deliberate failures.
 
 send TESTSEQ::AddTestCase( caseLabel:"UC1_failure" ); 
