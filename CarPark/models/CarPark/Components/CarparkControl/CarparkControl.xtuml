@@ -1658,7 +1658,7 @@ INSERT INTO SPR_PS
 	VALUES ("59b52585-7082-46c6-bf80-346b1684c94c",
 	'Register',
 	'Announce the creation of a new instance at the specified location.',
-	'PaymentMachine::Create( Location:param.Location, MakesChange:param.MakesChange );	',
+	'PaymentMachine::Create( Location:param.Location, MakesChange:param.MakesChange );',
 	1,
 	0);
 INSERT INTO C_EP_PROXY

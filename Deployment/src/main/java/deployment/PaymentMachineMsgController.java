@@ -76,8 +76,7 @@ public class PaymentMachineMsgController {
     @MessageMapping( "/PMRegister" )
     public void Register( RegisterPayMsg message ) throws Exception {
     	boolean MakesChange = false;
-		System.out.print( "MakesChange: " + message.getDispenses() );
-    	if ( message.getDispenses() != "" )
+    	if ( message.getDispenses() == "true" )
     		MakesChange = true;
     	try {
     		PaymentMachine.Singleton().CarPark().Register( message.getLocation(), MakesChange );
