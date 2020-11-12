@@ -323,6 +323,15 @@ INSERT INTO C_PP
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("20e3ae1b-f416-4dda-a440-2639f6e03fbc",
+	"564726c1-9ef0-4f1f-b299-5d272941b451",
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'MakesChange',
+	'If true, this machine will dispense change as needed.',
+	0,
+	'',
+	"b3045a05-275a-40ca-8d6a-d4aace525c14");
 INSERT INTO PE_PE
 	VALUES ("1775761d-746e-41ae-a5e0-cd1a783dc665",
 	1,

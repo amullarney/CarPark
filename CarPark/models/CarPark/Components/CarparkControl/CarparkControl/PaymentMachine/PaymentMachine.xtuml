@@ -37,7 +37,7 @@ if ( empty PaymentMachine )
   create object instance PaymentMachine of PaymentMachine;
   PaymentMachine.Location = param.Location;
   PaymentMachine.SlotsOpen = false;
-  PaymentMachine.SufficientChange = true;
+  PaymentMachine.SufficientChange = param.MakesChange;
   select any carpark from instances of Carpark;
   relate PaymentMachine to carpark across R11.''accepts payments for'';
 else
@@ -56,6 +56,15 @@ INSERT INTO O_TPARM
 	'',
 	"00000000-0000-0000-0000-000000000000",
 	'An identifier for the instance being created.');
+INSERT INTO O_TPARM
+	VALUES ("4a96c77c-77c2-44d8-bc28-cc952c1bc49c",
+	"06259896-ef15-4e0a-bf5f-546cdcb1ff8e",
+	'MakesChange',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"0428aeee-9616-4b51-86b2-150b73ec6daf",
+	'');
 INSERT INTO O_NBATTR
 	VALUES ("628ad614-ae00-4cb1-a340-a4046e14978f",
 	"71fc749d-1e1a-472f-a507-e927aa1c4890");

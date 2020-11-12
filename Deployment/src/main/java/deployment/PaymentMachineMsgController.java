@@ -74,15 +74,20 @@ public class PaymentMachineMsgController {
 	
 	// Entry/exit stands have Register message, so this one uses a prefix to distinguish it.
     @MessageMapping( "/PMRegister" )
-    public void Register( RegisterMsg message ) throws Exception {
+    public void Register( RegisterPayMsg message ) throws Exception {
+    	boolean MakesChange = false;
+		System.out.print( "MakesChange: " + message.getDispenses() );
+    	if ( message.getDispenses() != "" )
+    		MakesChange = true;
     	try {
-    		PaymentMachine.Singleton().CarPark().Register( message.getLocation() );
+    		PaymentMachine.Singleton().CarPark().Register( message.getLocation(), MakesChange );
       	}
       	catch ( Exception e ) {
         	  System.out.printf( "Exception, %s, in PMRegister()\n", e );    			
       	}
     }
-	// The exit stand has an InsertedTicket message, so this one uses a prefix to distinguish it.
+	
+    // The exit stand has an InsertedTicket message, so this one uses a prefix to distinguish it.
     @MessageMapping( "/PMInsertedTicket" )
     public void InsertedTicket( InsertedTicketMsg message ) throws Exception {
     	try {
