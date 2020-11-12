@@ -30,11 +30,15 @@ function initialize() {
 }
 
 function setConnected(connected) {
+    var makesChange = false;
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
     if (connected) {
         $("#conversation").show();
-        stompClient.send("/app/PMRegister", {}, JSON.stringify({'location': $("#location").val()}));
+        if (document.getElementById('dispenses').checked){
+            makesChange = true;
+        }
+        stompClient.send("/app/PMRegister", {}, JSON.stringify({'location': $("#location").val(), 'dispenses': makesChange}));
     }
     else {
         $("#conversation").hide();
