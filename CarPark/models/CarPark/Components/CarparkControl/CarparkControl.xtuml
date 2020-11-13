@@ -913,7 +913,7 @@ INSERT INTO SPR_PS
 	'Commands the carpark system to open the carpark.',
 	'select any carpark from instances of Carpark;
 if ( empty carpark )
-  ::InitializeWithPeripheralPEIs();
+  ::InitializeWithoutPeripheralPEIs();
 else
   if ( not carpark.Open )
   	generate Carpark1:Open() to carpark;

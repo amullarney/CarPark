@@ -5,7 +5,12 @@ INSERT INTO EP_PKG
 	"00000000-0000-0000-0000-000000000000",
 	"887b82b9-56ec-4387-b15a-8b42f655cdba",
 	'Initialization',
-	'',
+	'This package contains a number of functions which support setup for various purposes.
+
+Two functions support initialization with or without peripheral PEIs (pre-existing instances)''
+In the deployed application-as-server, the peripherals are registered by browser clients.
+For debug/testing the peripherals may be configured either as PEIs or by registration.
+',
 	0);
 INSERT INTO GD_MD
 	VALUES ("6fddd23c-1aaf-4db7-b655-312c9f2e2d7a",
