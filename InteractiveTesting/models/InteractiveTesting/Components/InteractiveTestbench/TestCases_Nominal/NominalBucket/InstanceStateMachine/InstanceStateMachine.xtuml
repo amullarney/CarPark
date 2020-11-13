@@ -507,7 +507,12 @@ INSERT INTO SM_ACT
 	VALUES ("4ce633c6-3508-45f1-aa37-4d679e1fcf6a",
 	"7b2d84a3-f43a-42bc-a73e-2ccdc37c96a7",
 	1,
-	'// Set the entry time for the vehicle.
+	'// Register those peripherals needed by the test scenario.
+send EntryStand::Register( Location:"North" );
+send Payer::Register( Location:"1st Floor", MakesChange:true );
+send ExitStand::Register( Location:"Lane 1" );
+
+// Set the entry time for the vehicle.
 // TIM operates in UTC, but the application under test
 // operates on local time, so adjust the desired local
 // time to UTC before passing it to TIM.

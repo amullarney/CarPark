@@ -1,0 +1,67 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("2da336a1-de8f-4b05-8bb0-b515ada7672b",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'AuxiliaryFunctions',
+	'',
+	0);
+INSERT INTO S_SYNC
+	VALUES ("4dae8666-c3cc-463f-b19f-f1f4c1c25d49",
+	"00000000-0000-0000-0000-000000000000",
+	'RegisterPeripherals',
+	'Configure periphereals in the carpark model as needed for test scenarios.',
+	'// Register those peripherals needed by the test scenarios.
+send EntryStand::Register( Location:"North" );
+send Payer::Register( Location:"1st Floor", MakesChange:true );
+send ExitStand::Register( Location:"Lane 1" );',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("4dae8666-c3cc-463f-b19f-f1f4c1c25d49",
+	1,
+	"2da336a1-de8f-4b05-8bb0-b515ada7672b",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("26ddbc16-2d72-472c-ac6d-115668326344",
+	"00000000-0000-0000-0000-000000000000",
+	'Initialize',
+	'Initialize the application under test; establish test scenario support.',
+	'send Operator::OpenCarpark();  // Initialize the application.
+::RegisterPeripherals();       // Create peripherals needed by test scenario(s)',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("26ddbc16-2d72-472c-ac6d-115668326344",
+	1,
+	"2da336a1-de8f-4b05-8bb0-b515ada7672b",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO PE_PE
+	VALUES ("2da336a1-de8f-4b05-8bb0-b515ada7672b",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"267abe01-5adc-42d6-aa1d-2adf945776bc",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("267abe01-5adc-42d6-aa1d-2adf945776bc",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'CarParkTestbench',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../CarParkTestbench.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'CarParkTestbench',
+	1,
+	'../../../CarParkTestbench.xtuml');
