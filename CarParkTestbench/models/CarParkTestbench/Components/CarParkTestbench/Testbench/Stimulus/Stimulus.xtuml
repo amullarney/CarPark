@@ -36,9 +36,9 @@ INSERT INTO O_TFR
 	'This operation will be invoked when the stimulus is encountered by the sequencing service.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select one arrival related by self->VehicleArrived[R300];
-if ( not_empty arrival )
-  arrival.VehicleArrival();
+	'select one move related by self->VehicleMovement[R300];
+if ( not_empty move )
+  move.VehicleMove();
 else
   select one request related by self->TicketRequested[R300];
   if ( not_empty request )
@@ -109,10 +109,10 @@ if ( not_empty fastforward )
   unrelate fastforward from self across R300;
   delete object instance fastforward;
 end if;
-select one arrival related by self->VehicleArrived[R300];
-if ( not_empty arrival )
-  unrelate arrival from self across R300;
-  delete object instance arrival;
+select one move related by self->VehicleMovement[R300];
+if ( not_empty move )
+  unrelate move from self across R300;
+  delete object instance move;
 end if;
 select one ticket related by self->TicketRequested[R300];
 if ( not_empty ticket )

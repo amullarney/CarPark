@@ -2,9 +2,9 @@
 
 INSERT INTO O_OBJ
 	VALUES ("c5bab7ee-970a-47b4-9f8b-15137d20b9b2",
-	'VehicleDeparture',
+	'VehicleDepartureX',
 	16,
-	'VehicleDeparture',
+	'VehicleDepartureX',
 	'Signal departure of a vehicle from an entry or exit station.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR

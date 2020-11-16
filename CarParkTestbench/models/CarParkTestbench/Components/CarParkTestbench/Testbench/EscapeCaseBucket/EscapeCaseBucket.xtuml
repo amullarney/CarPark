@@ -26,7 +26,7 @@ send TESTSEQ::SetTestBucketTimeResolutions( bucketId:bucket.bucketId, timeResolu
 send TESTSEQ::AddTestCase( caseLabel:"Overstay" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
 FastForward::Create( seqLabel:"seq01", hours:1, minutes:42, seconds:0 );
-VehicleArrived::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
+VehicleMovement::Create( seqLabel:"seq01", location:"North", stand:"Entry", movement: Movement::Arrive );
 QueryTicketRequest::Create( seqLabel:"seq01", location:"North", enabled:True );
 TicketRequested::Create( seqLabel:"seq01", location:"North" );
 TicketIssued::Create( seqLabel:"seq01", location:"North" );
@@ -39,9 +39,9 @@ TicketReturned::Create( seqLabel:"seq01", location:"1st Floor" );
 ChangeDispensed::Create( seqLabel:"seq01", location:"1st Floor" );
 TicketTaken::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay" );
 FastForward::Create( seqLabel:"seq01", hours:0, minutes:16, seconds:0 );
-VehicleArrived::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit" );
+VehicleMovement::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", movement: Movement::Arrive );
 TicketInserted::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit" );
-VehicleDeparture::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit" );
+VehicleMovement::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", movement: Movement::Depart );
 
 
 bucket.Initialized();',

@@ -26,13 +26,13 @@ send TESTSEQ::SetTestBucketTimeResolutions( bucketId:bucket.bucketId, timeResolu
 send TESTSEQ::AddTestCase( caseLabel:"PaymentFailure" ); 
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:33, caseLabel:"PaymentFailure" );
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
-VehicleArrived::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
+VehicleMovement::Create( seqLabel:"seq01", location:"North", stand:"Entry", movement: Movement::Arrive );
 QueryTicketRequest::Create( seqLabel:"seq01", location:"North", enabled:True );
 TicketRequested::Create( seqLabel:"seq01", location:"North" );
 TicketIssued::Create( seqLabel:"seq01", location:"North" );
 TicketTaken::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:BarrierState::Open );
-VehicleDeparture::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
+VehicleMovement::Create( seqLabel:"seq01", location:"North", stand:"Entry", movement: Movement::Depart );
 BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:BarrierState::Closed );
 FastForward::Create( seqLabel:"seq01", hours:1, minutes:5, seconds:0 );
 TicketInserted::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay" );

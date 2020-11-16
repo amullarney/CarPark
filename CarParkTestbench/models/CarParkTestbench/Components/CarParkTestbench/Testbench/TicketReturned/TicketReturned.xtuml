@@ -60,6 +60,7 @@ select any tracker from instances of VisitTracking
   and ( selected.ticketReturned == True );
 if ( not_empty tracker )
   tracker.ticketReturned = False;  // if for cancellation, may try again elsewhere.
+  tracker.payingAt = "";
   observation.Complete( success:True );
 else
   observation.Complete( success:False );
