@@ -1771,7 +1771,6 @@ INSERT INTO SPR_RS
  where ( selected.payingAt == param.Location );
 if ( not_empty tracker )
   LOG::LogInfo( message:"Payment transaction cancelled at " + param.Location );
-  tracker.payingAt = "";  // cancelled: may try paying again elsewhere.
 end if;
 send TESTSEQ::RemoveTriggeredObservation( key:"Dispensed" );
 send TESTSEQ::RemoveTriggeredObservation( key:"Balance" );',

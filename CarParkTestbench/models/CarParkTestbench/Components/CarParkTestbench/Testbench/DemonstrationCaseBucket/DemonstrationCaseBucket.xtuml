@@ -38,7 +38,7 @@ FastForward::Create( seqLabel:"seq01", hours:0, minutes:10, seconds:0 );
 
 send TESTSEQ::AddTestCase( caseLabel:"UC5_pay" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq05" );
-TicketInserted::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
+TicketInserted::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay", number:1 );
 BalanceValue::Create( seqLabel:"seq05", location:"1st Floor", pay:True );
 TicketReturned::Create( seqLabel:"seq05", location:"1st Floor" );
 ChangeDispensed::Create( seqLabel:"seq05", location:"1st Floor" );
@@ -47,7 +47,7 @@ TicketTaken::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
 send TESTSEQ::AddTestCase( caseLabel:"UC11_failure" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq11" );
 VehicleMovement::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", movement: Movement::Arrive );
-TicketInserted::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
+TicketInserted::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", number:1 );
 BarrierCheck::Create( seqLabel:"seq11", location:"North", stand:"Entry", state:BarrierState::Open );
 VehicleMovement::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", movement: Movement::Depart );
 // Now, incorrectly attempt to check that the barrier is open; in fact, it should be closed.

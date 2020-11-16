@@ -91,6 +91,9 @@ else
     send ExitStand::VehicleWaiting( Location:self.location );
   else
     send ExitStand::VehicleExited( Location:self.location );
+    select any tracker from instances of VisitTracking
+     where ( selected.exitingAt == self.location );
+    delete object instance tracker;
   end if;
 end if;
 

@@ -81,9 +81,8 @@ INSERT INTO S_SYNC
 	'Configure the Test Suite to include selected Test Bucket subtypes.
 The test scripts in each bucket will execute in the order the buckets are added.',
 	'::Initialize();
-send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Nominal Test Suite", keepAllCases:False ); 
-NonNominalCaseBucket::AddBucketToSuite();
-send Operator::OpenCarpark();',
+send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark NonNominal Test Suite", keepAllCases:False ); 
+NonNominalCaseBucket::AddBucketToSuite();',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'',
