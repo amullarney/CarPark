@@ -39,7 +39,7 @@ FastForward::Create( seqLabel:"seq01", hours:0, minutes:10, seconds:0 );
 send TESTSEQ::AddTestCase( caseLabel:"UC5_pay" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq05" );
 TicketInserted::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay", number:1 );
-BalanceValue::Create( seqLabel:"seq05", location:"1st Floor", pay:True );
+BalanceValue::Create( seqLabel:"seq05", location:"1st Floor", pay:True, wantChange:False );
 TicketReturned::Create( seqLabel:"seq05", location:"1st Floor" );
 ChangeDispensed::Create( seqLabel:"seq05", location:"1st Floor" );
 TicketTaken::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );

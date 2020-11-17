@@ -19,6 +19,7 @@ See Observation.AppendPolling for description.',
 	'create object instance balanceValue of BalanceValue;
 balanceValue.location = param.location;
 balanceValue.willpay = param.pay;
+balanceValue.wantChange = param.wantChange;
 
 create object instance obs of Observation;
 relate balanceValue to obs across R400;
@@ -57,6 +58,15 @@ INSERT INTO O_TPARM
 	"160e84a3-db3a-4fd7-a2ce-73bc14fd97c6",
 	'If true, indicates that the balance due will be paid.
 If not, payment will be withheld triggering a timeout transaction cancellation.');
+INSERT INTO O_TPARM
+	VALUES ("81d49a26-0f21-41a1-9e01-9e01affbe69b",
+	"0b99b513-dff8-46d2-adcd-15ed347c1ed9",
+	'wantChange',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"9f6da3d2-1b58-49c7-b777-ceac989641d3",
+	'');
 INSERT INTO O_TFR
 	VALUES ("6922d6cb-3230-415e-a11f-7b4d9255795f",
 	"02570cd5-45d0-4ab0-9f80-9e0d84e616ed",
@@ -77,10 +87,13 @@ if ( not_empty tracker )
   if ( tracker.amountDue <= 0.0 )
     observation.Complete( success:True );
     LOG::LogInfo( message:"paid in full" );
-    tracker.paid = True;  // required at exit
+    tracker.payStatus = PayStatus::paid;  // required at exit
+    tracker.deadline = TIM::current_seconds() + 15;	// see CP29 in CarPark SRS
     if ( tracker.amountDue == 0.0 )  // exact - no change will be dispensed
       LOG::LogInfo( message:"Cancelling change dispensed observation at " + self.location );
       send TESTSEQ::RemoveTriggeredObservation( key:"Dispensed" );
+    else
+      tracker.wantChange = self.wantChange;  // for decision, if change unavailable
     end if;
   else
     if ( self.willpay )
@@ -144,6 +157,24 @@ INSERT INTO O_ATTR
 	'If False, no payment will be made. This should induce a timeout from the application.',
 	'',
 	'willpay',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("efe3e256-7f19-426e-9d66-7ba593b753d0",
+	"02570cd5-45d0-4ab0-9f80-9e0d84e616ed");
+INSERT INTO O_BATTR
+	VALUES ("efe3e256-7f19-426e-9d66-7ba593b753d0",
+	"02570cd5-45d0-4ab0-9f80-9e0d84e616ed");
+INSERT INTO O_ATTR
+	VALUES ("efe3e256-7f19-426e-9d66-7ba593b753d0",
+	"02570cd5-45d0-4ab0-9f80-9e0d84e616ed",
+	"ca6d5695-80c0-4cc0-8570-c7ef5ebe964c",
+	'wantChange',
+	'If true, payment will be cancelled if change unavailable.',
+	'',
+	'wantChange',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000001",
 	'',

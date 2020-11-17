@@ -128,6 +128,11 @@ else
               select one ac related by self->ActivityCheck[R400];
               if ( not_empty ac )
                 ac.CheckActivation();
+              else
+                select one vc related by self->VisitCheck[R400];
+                if ( not_empty vc )
+                  vc.CheckTracking();
+                end if;
               end if;
             end if;
           end if;
@@ -232,6 +237,11 @@ select one activ related by self->ActivityCheck[R400];
 if ( not_empty activ )
   unrelate activ from self across R400;
   delete object instance activ;
+end if;
+select one visit related by self->VisitCheck[R400];
+if ( not_empty visit )
+  unrelate visit from self across R400;
+  delete object instance visit;
 end if;
 
 delete object instance self;',

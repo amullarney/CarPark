@@ -59,7 +59,7 @@ select any tracker from instances of VisitTracking
  where ( selected.payingAt == self.location )
   and ( selected.ticketReturned == True );
 if ( not_empty tracker )
-  if ( not tracker.paid )
+  if ( tracker.payStatus != PayStatus::paid )
     tracker.payingAt = "";  // cancellation, may try again elsewhere.
   end if;
   observation.Complete( success:True );

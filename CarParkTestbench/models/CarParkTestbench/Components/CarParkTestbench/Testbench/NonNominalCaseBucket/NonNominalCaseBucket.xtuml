@@ -22,7 +22,7 @@ INSERT INTO O_TFR
 select one bucket related by self->TestBucket[R700];
 send TESTSEQ::SetTestBucketTimeResolutions( bucketId:bucket.bucketId, timeResolution:timeResolution::second, pollResolution:timeResolution::second );
 
-// The following test is a scenario where the entry stand waiting sensor is faulty; the operator issues a ticket.
+// The following is a scenario where the entry stand waiting sensor is faulty; the operator issues a ticket.
 send TESTSEQ::AddTestCase( caseLabel:"UC02" ); 
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:11, caseLabel:"UC02" );
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:61, caseLabel:"UC02" );
@@ -34,18 +34,18 @@ BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:B
 VehicleMovement::Create( seqLabel:"seq01", location:"North", stand:"Entry", movement: Movement::Depart );
 BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:BarrierState::Closed );
 
-// The following test is a scenario where the customer waits too long before making payment.
+// The following is a scenario where the customer waits too long before making payment.
 send TESTSEQ::AddTestCase( caseLabel:"UC08" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:33, caseLabel:"UC08" );
 FastForward::Create( seqLabel:"seq01", hours:1, minutes:5, seconds:0 );
 TicketInserted::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay", number:1 );
-BalanceValue::Create( seqLabel:"seq01", location:"1st Floor", pay:False );  // do not pay!
+BalanceValue::Create( seqLabel:"seq01", location:"1st Floor", pay:False, wantChange:False );  // do not pay!
 TicketReturned::Create( seqLabel:"seq01", location:"1st Floor" );
 ChangeDispensed::Create( seqLabel:"seq01", location:"1st Floor" );
 TicketTaken::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay" );
 
-// The following test is a scenario where the customer has not paid; the fee is waived.
+// The following is a scenario where the customer has not paid; the fee is waived.
 send TESTSEQ::AddTestCase( caseLabel:"UC14" ); 
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:43, caseLabel:"UC14" );
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:45, caseLabel:"UC14" );

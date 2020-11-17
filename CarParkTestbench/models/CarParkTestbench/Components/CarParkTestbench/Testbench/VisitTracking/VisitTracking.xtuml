@@ -52,13 +52,13 @@ INSERT INTO O_BATTR
 INSERT INTO O_ATTR
 	VALUES ("984d2874-070d-4710-949f-3ce8fca04191",
 	"1be5dd1b-f517-40ac-8691-0144999e11da",
-	"835ff994-5d2c-4cbb-9ea1-5c35fa569053",
+	"8f86105d-c7bb-49aa-b82d-fa24c28fb483",
 	'deadline',
 	'Time by which car park should be vacated; not used in initial use cases.',
 	'',
 	'deadline',
 	0,
-	"ba5eda7a-def5-0000-0000-000000000004",
+	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
 INSERT INTO O_NBATTR
@@ -89,14 +89,21 @@ INSERT INTO O_ATTR
 	VALUES ("d39d10e4-7976-489b-9477-4118f3e7d30d",
 	"1be5dd1b-f517-40ac-8691-0144999e11da",
 	"d3edc705-76e8-4b4f-8401-707e2578de4c",
-	'paid',
+	'payStatus',
 	'If true, the balance requested at the pay station has been paid in full.',
 	'',
-	'paid',
+	'payStatus',
 	0,
-	"ba5eda7a-def5-0000-0000-000000000001",
+	"ded3bca0-4d1e-414f-8227-dc8fc8fd64d9",
 	'',
 	'false');
+INSERT INTO S_DT_PROXY
+	VALUES ("ded3bca0-4d1e-414f-8227-dc8fc8fd64d9",
+	"00000000-0000-0000-0000-000000000000",
+	'PayStatus',
+	'If not "ignored" must be matched by checking observation.',
+	'',
+	'../../Types/Types.xtuml');
 INSERT INTO O_NBATTR
 	VALUES ("b1ab809b-cc27-43eb-8d7e-0d3b5d7f3ec0",
 	"1be5dd1b-f517-40ac-8691-0144999e11da");
@@ -160,7 +167,7 @@ INSERT INTO O_BATTR
 INSERT INTO O_ATTR
 	VALUES ("835ff994-5d2c-4cbb-9ea1-5c35fa569053",
 	"1be5dd1b-f517-40ac-8691-0144999e11da",
-	"a70b8d8c-5996-4ffc-8341-1297a8bbbb81",
+	"6d506113-88ff-4a05-9877-088204918ca9",
 	'amountDispensed',
 	'Money dispensed - either change due or a refund for a cancelled transaction.',
 	'',
@@ -169,6 +176,49 @@ INSERT INTO O_ATTR
 	"ba5eda7a-def5-0000-0000-000000000003",
 	'',
 	'');
+INSERT INTO O_NBATTR
+	VALUES ("6d506113-88ff-4a05-9877-088204918ca9",
+	"1be5dd1b-f517-40ac-8691-0144999e11da");
+INSERT INTO O_BATTR
+	VALUES ("6d506113-88ff-4a05-9877-088204918ca9",
+	"1be5dd1b-f517-40ac-8691-0144999e11da");
+INSERT INTO O_ATTR
+	VALUES ("6d506113-88ff-4a05-9877-088204918ca9",
+	"1be5dd1b-f517-40ac-8691-0144999e11da",
+	"a70b8d8c-5996-4ffc-8341-1297a8bbbb81",
+	'wantChange',
+	'',
+	'',
+	'wantChange',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("8f86105d-c7bb-49aa-b82d-fa24c28fb483",
+	"1be5dd1b-f517-40ac-8691-0144999e11da");
+INSERT INTO O_BATTR
+	VALUES ("8f86105d-c7bb-49aa-b82d-fa24c28fb483",
+	"1be5dd1b-f517-40ac-8691-0144999e11da");
+INSERT INTO O_ATTR
+	VALUES ("8f86105d-c7bb-49aa-b82d-fa24c28fb483",
+	"1be5dd1b-f517-40ac-8691-0144999e11da",
+	"835ff994-5d2c-4cbb-9ea1-5c35fa569053",
+	'changeStatus',
+	'',
+	'',
+	'changeStatus',
+	0,
+	"44e7f67d-7896-4de3-b311-9aee3cb5b226",
+	'',
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("44e7f67d-7896-4de3-b311-9aee3cb5b226",
+	"00000000-0000-0000-0000-000000000000",
+	'ChangeStatus',
+	'If not "ignored" must be matched by checking observation.',
+	'',
+	'../../Types/Types.xtuml');
 INSERT INTO O_ID
 	VALUES (0,
 	"1be5dd1b-f517-40ac-8691-0144999e11da");
