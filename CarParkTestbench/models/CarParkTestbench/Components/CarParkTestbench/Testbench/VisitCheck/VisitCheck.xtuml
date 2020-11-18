@@ -19,7 +19,8 @@ See Observation.AppendPolling for description.',
 	'create object instance check of VisitCheck;
 check.ticketNumber = param.ticket;
 check.payDisposition = param.payment;
-check.deadline = DeadlineStatus::ignore; // @TODO
+check.changeDisposition = param.change; 
+check.deadlineStatus = param.deadlineStatus;
 
 create object instance obs of Observation;
 relate check to obs across R400;
@@ -63,6 +64,38 @@ INSERT INTO S_DT_PROXY
 	'If not "ignored" must be matched by checking observation.',
 	'',
 	'../../Types/Types.xtuml');
+INSERT INTO O_TPARM
+	VALUES ("58b72733-f24a-48d2-a77d-0e2055835d4c",
+	"b41f439d-7751-4d2b-8075-5a2b157fb38e",
+	'change',
+	"44e7f67d-7896-4de3-b311-9aee3cb5b226",
+	0,
+	'',
+	"26d0e501-3fed-49fa-b435-41eafec184fe",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("44e7f67d-7896-4de3-b311-9aee3cb5b226",
+	"00000000-0000-0000-0000-000000000000",
+	'ChangeStatus',
+	'If not "ignored" must be matched by checking observation.',
+	'',
+	'../../Types/Types.xtuml');
+INSERT INTO O_TPARM
+	VALUES ("757f7522-a8c2-494d-b3e8-aa6d4802b5d1",
+	"b41f439d-7751-4d2b-8075-5a2b157fb38e",
+	'deadlineStatus',
+	"01e593e1-d9ae-4124-b4c0-98d3952a808a",
+	0,
+	'',
+	"58b72733-f24a-48d2-a77d-0e2055835d4c",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("01e593e1-d9ae-4124-b4c0-98d3952a808a",
+	"00000000-0000-0000-0000-000000000000",
+	'DeadlineStatus',
+	'If not "ignored" must be matched by checking observation.',
+	'',
+	'../../Types/Types.xtuml');
 INSERT INTO O_TFR
 	VALUES ("71acc951-8272-43fc-ac78-6267bc2036ab",
 	"4fcf002f-293e-439e-8797-150b17c09a95",
@@ -76,9 +109,15 @@ success = true;
 select any tracker from instances of VisitTracking
  where ( selected.ticketNumber == self.ticketNumber );
 if ( not_empty tracker )
-  if ( self.deadline != DeadlineStatus::ignore )
-    if ( self.deadline == DeadlineStatus::valid )
+  if ( self.deadlineStatus != DeadlineStatus::ignore )
+    if ( self.deadlineStatus == DeadlineStatus::valid )
+     and ( TIM::current_seconds() >= tracker.deadline )
+      success = false;
     else
+      if ( self.deadlineStatus == DeadlineStatus::expired )
+       and ( TIM::current_seconds() < tracker.deadline )
+        success = false;
+      end if;
     end if;
   end if;
   if ( self.payDisposition != PayStatus::ignore )
@@ -86,10 +125,15 @@ if ( not_empty tracker )
       success = false;
     end if;
   end if;
-else
+  if ( self.changeDisposition != ChangeStatus::ignore )
+    if ( self.changeDisposition != tracker.changeStatus )
+      success = false;
+    end if;
+  end if;else
   success = false;
 end if;
 if ( success )
+  LOG::LogSuccess( message:"Visit data checked OK." );
   observation.Complete( success:True );
 else
   observation.Complete( success:False );
@@ -109,21 +153,14 @@ INSERT INTO O_ATTR
 	VALUES ("066b3ce0-ff48-4946-9cab-8b01225d5e80",
 	"4fcf002f-293e-439e-8797-150b17c09a95",
 	"b844e7b6-6488-419f-a733-ab295ec9ffb7",
-	'deadline',
+	'deadlineStatus',
 	'If true, check exit deadline against current time.',
 	'',
-	'deadline',
+	'deadlineStatus',
 	0,
 	"01e593e1-d9ae-4124-b4c0-98d3952a808a",
 	'',
 	'');
-INSERT INTO S_DT_PROXY
-	VALUES ("01e593e1-d9ae-4124-b4c0-98d3952a808a",
-	"00000000-0000-0000-0000-000000000000",
-	'DeadlineStatus',
-	'If not "ignored" must be matched by checking observation.',
-	'',
-	'../../Types/Types.xtuml');
 INSERT INTO O_NBATTR
 	VALUES ("b844e7b6-6488-419f-a733-ab295ec9ffb7",
 	"4fcf002f-293e-439e-8797-150b17c09a95");
@@ -158,6 +195,24 @@ INSERT INTO O_ATTR
 	'payDisposition',
 	0,
 	"ded3bca0-4d1e-414f-8227-dc8fc8fd64d9",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("c138b3d2-c56a-4905-b4df-18893c64820a",
+	"4fcf002f-293e-439e-8797-150b17c09a95");
+INSERT INTO O_BATTR
+	VALUES ("c138b3d2-c56a-4905-b4df-18893c64820a",
+	"4fcf002f-293e-439e-8797-150b17c09a95");
+INSERT INTO O_ATTR
+	VALUES ("c138b3d2-c56a-4905-b4df-18893c64820a",
+	"4fcf002f-293e-439e-8797-150b17c09a95",
+	"ccdf81e2-3838-4e0f-824d-257c2e039fa7",
+	'changeDisposition',
+	'',
+	'',
+	'changeDisposition',
+	0,
+	"44e7f67d-7896-4de3-b311-9aee3cb5b226",
 	'',
 	'');
 INSERT INTO O_ID

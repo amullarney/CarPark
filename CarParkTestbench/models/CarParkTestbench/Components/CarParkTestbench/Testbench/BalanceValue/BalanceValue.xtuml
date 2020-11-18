@@ -86,7 +86,6 @@ if ( not_empty tracker )
   LOG::LogReal( message:"Balance ", r:tracker.amountDue );
   if ( tracker.amountDue <= 0.0 )
     observation.Complete( success:True );
-    LOG::LogInfo( message:"paid in full" );
     tracker.payStatus = PayStatus::paid;  // required at exit
     tracker.deadline = TIM::current_seconds() + 15;	// see CP29 in CarPark SRS
     if ( tracker.amountDue == 0.0 )  // exact - no change will be dispensed

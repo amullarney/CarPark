@@ -27,7 +27,8 @@ send TESTSEQ::AddTestCase( caseLabel:"UC02" );
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:11, caseLabel:"UC02" );
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:61, caseLabel:"UC02" );
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
-send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
+// Move to mid-morning for a linear rate with no minimum.
+FastForward::Create( seqLabel:"seq01", hours:3, minutes:0, seconds:2 );
 OpAction::Create( seqLabel:"seq01", location:"North", stand:"Entry", action: OperatorAction::IssueTicket );
 TicketTaken::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:BarrierState::Open );
@@ -38,12 +39,25 @@ BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:B
 send TESTSEQ::AddTestCase( caseLabel:"UC08" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:33, caseLabel:"UC08" );
-FastForward::Create( seqLabel:"seq01", hours:1, minutes:5, seconds:0 );
+FastForward::Create( seqLabel:"seq01", hours:0, minutes:1, seconds:0 );
 TicketInserted::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay", number:1 );
 BalanceValue::Create( seqLabel:"seq01", location:"1st Floor", pay:False, wantChange:False );  // do not pay!
 TicketReturned::Create( seqLabel:"seq01", location:"1st Floor" );
 ChangeDispensed::Create( seqLabel:"seq01", location:"1st Floor" );
 TicketTaken::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay" );
+
+// The following is a scenario where change is unavailable; the customer cancels.
+send TESTSEQ::AddTestCase( caseLabel:"UC07" ); 
+send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:25, caseLabel:"UC07" );
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:27, caseLabel:"UC07" );
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:28, caseLabel:"UC07" );
+TicketInserted::Create( seqLabel:"seq01", location:"Street", stand:"Pay", number:1 );
+BalanceValue::Create( seqLabel:"seq01", location:"Street", pay:True, wantChange:True );
+TicketReturned::Create( seqLabel:"seq01", location:"Street" );
+ChangeDispensed::Create( seqLabel:"seq01", location:"Street" );
+TicketTaken::Create( seqLabel:"seq01", location:"Street", stand:"Pay" );
+VisitCheck::Create( seqLabel:"seq01", ticket:1, payment:PayStatus::cancelled, change:ChangeStatus::ignore, deadlineStatus:DeadlineStatus::ignore ); 
 
 // The following is a scenario where the customer has not paid; the fee is waived.
 send TESTSEQ::AddTestCase( caseLabel:"UC14" ); 
@@ -55,6 +69,7 @@ VehicleMovement::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", move
 TicketInserted::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", number:1 );
 OpAction::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", action: OperatorAction::WaiveFee );
 BarrierCheck::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", state:BarrierState::Open );
+VisitCheck::Create( seqLabel:"seq11", ticket:1, payment:PayStatus::unpaid, change: ChangeStatus::ignore, deadlineStatus:DeadlineStatus::valid ); 
 VehicleMovement::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", movement: Movement::Depart );
 BarrierCheck::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", state:BarrierState::Closed );
 OccupancyCount::Create( seqLabel:"seq01", count:0 );
