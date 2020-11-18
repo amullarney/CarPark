@@ -70,7 +70,7 @@ INSERT INTO S_DT_PROXY
 	'OperatorAction',
 	'',
 	'',
-	'../../../../../../../CarPark/models/CarPark/SharedTypes/SharedTypes.xtuml');
+	'../../Types/Types.xtuml');
 INSERT INTO O_TFR
 	VALUES ("637ae9fe-5046-4d69-879a-b998d250e1db",
 	"c5bab7ee-970a-47b4-9f8b-15137d20b9b2",
@@ -79,16 +79,24 @@ INSERT INTO O_TFR
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'LOG::LogInfo( message:"Action at " + self.standType + " " + self.location );
-if ( self.action == OperatorAction::IssueTicket )
-  send Operator::IssueTicket( Location:self.location );
+if ( self.standType == "Entry" )
+  if ( self.action == OperatorAction::IssueTicket )
+    send Operator::IssueTicket( Location:self.location );
+  else
+    send Operator::OpenEntryBarrier( Location:self.location);
+  end if;
 else
-  if ( self.standType == "Exit" )
+  if ( self.action == OperatorAction::OpenBarrier )
+    send Operator::OpenExitBarrier( Location:self.location);
+  else
     select any tracker from instances of VisitTracking
      where ( selected.exitingAt == self.location );
     if ( self.action == OperatorAction::WaiveFee )
       send Operator::FeeWaived( TicketNumber:tracker.ticketNumber );
+      tracker.payStatus = PayStatus::waived;
     else
       send Operator::FeeCollected( TicketNumber:tracker.ticketNumber );
+      tracker.payStatus = PayStatus::paid;
     end if;
   end if;
 end if;

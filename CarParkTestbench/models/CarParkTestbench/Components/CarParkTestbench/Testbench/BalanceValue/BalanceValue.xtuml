@@ -83,6 +83,7 @@ select one observation related by self->Observation[R400];  // for success/fail 
 select any tracker from instances of VisitTracking
  where ( selected.payingAt == self.location );
 if ( not_empty tracker )
+  tracker.wantChange = self.wantChange;  // for decision, if change unavailable
   LOG::LogReal( message:"Balance ", r:tracker.amountDue );
   if ( tracker.amountDue <= 0.0 )
     observation.Complete( success:True );
@@ -110,6 +111,7 @@ if ( not_empty tracker )
       end if;
       LOG::LogReal( message:"Inserting money at " + self.location, r:amount );
       send Payer::InsertedCurrency( Location:self.location, Amount:amount );
+      tracker.payStatus = PayStatus::paying;
     else
       // Just observe that balance has been seen, but do nothing about it!
       // This is intended to test transaction cancelled by application.

@@ -52,14 +52,16 @@ INSERT INTO O_TFR
 	'When invoked, search any existing notifications looking for a match.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'// Look for a change amount being dispensed at the appropriate pay station location.
+	'// Look for a change/refund amount being dispensed at the appropriate pay station location.
 
 select one observation related by self->Observation[R400]; 
 select any tracker from instances of VisitTracking
  where ( selected.payingAt == self.location );
+
 if ( not_empty tracker )
   if ( tracker.amountDispensed > 0 )
     LOG::LogInfo( message:" -- - Change dispensed at " + self.location  );
+    tracker.changeStatus = ChangeStatus::dispensed;
   end if;
   observation.Complete( success:True );
 else

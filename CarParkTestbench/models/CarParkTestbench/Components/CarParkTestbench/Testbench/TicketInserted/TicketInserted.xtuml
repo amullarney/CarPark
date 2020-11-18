@@ -79,6 +79,7 @@ select any tracker from instances of VisitTracking
  where ( selected.ticketNumber == self.number );
 if ( self.standType == "Pay" )
   tracker.payingAt = self.location;
+  tracker.payStatus = PayStatus::unpaid;
   send Payer::InsertedTicket( Location:self.location, TicketNumber:tracker.ticketNumber); 
 else
   tracker.exitingAt = self.location;

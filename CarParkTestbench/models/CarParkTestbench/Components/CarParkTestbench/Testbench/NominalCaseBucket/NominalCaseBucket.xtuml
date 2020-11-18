@@ -47,6 +47,7 @@ OccupancyCount::Create( seqLabel:"seq01", count:1 );
 FastForward::Create( seqLabel:"seq01", hours:5, minutes:0, seconds:0 );
 
 send TESTSEQ::AddTestCase( caseLabel:"UC5" ); 
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:16, caseLabel:"UC5" );
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:17, caseLabel:"UC5" );
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:22, caseLabel:"UC5" );
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:32, caseLabel:"UC5" );

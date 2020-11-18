@@ -775,7 +775,12 @@ INSERT INTO SPR_RS
 	'TardyExit',
 	'Indicates the exit deadline printed on this ticket has been missed.',
 	'LOG::LogInfo( message:"Tardy exit at " + param.Location );
-LOG::LogReal( message:"Additional fee: ", r:param.AdditionalCharge );',
+LOG::LogReal( message:"Additional fee: ", r:param.AdditionalCharge );
+select any tracker from instances of VisitTracking
+ where ( selected.exitingAt == param.Location );
+if ( not_empty tracker )
+  tracker.payStatus = PayStatus::excess;
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1710,14 +1715,19 @@ INSERT INTO SPR_RS
 	'Indicates that this payment machine contain insufficient change to settle
 the current transaction.',
 	'LOG::LogInfo( message:"Insufficient change available at " + param.Location );
+// Record the amount dispensed so that it can be checked by an observation.
+
 select any tracker from instances of VisitTracking
  where ( selected.payingAt == param.Location );
-if ( tracker.wantChange )
-  send Payer::CancelledTransaction( Location:param.Location );
-else
-  send Payer::WaivedChange( Location:param.Location );
-  tracker.changeStatus = ChangeStatus::forfeit;
-end if;',
+if ( tracker.amountDue < 0.0 )
+  if ( tracker.wantChange )
+    send Payer::CancelledTransaction( Location:param.Location );
+  else
+    send Payer::WaivedChange( Location:param.Location );
+    tracker.changeStatus = ChangeStatus::forfeit;
+  end if;
+end if;
+',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1806,11 +1816,12 @@ INSERT INTO SPR_RS
 	'select any tracker from instances of VisitTracking
  where ( selected.payingAt == param.Location );
 if ( not_empty tracker )
+  if ( tracker.payStatus == PayStatus::unpaid )  // no payment to return
+    send TESTSEQ::RemoveTriggeredObservation( key:"Dispensed" );
+  end if;
   LOG::LogInfo( message:"Payment transaction cancelled at " + param.Location );
   tracker.payStatus = PayStatus::cancelled;
 end if;
-// Ensure that the test case does not hang waiting for these observations
-send TESTSEQ::RemoveTriggeredObservation( key:"Dispensed" );
 send TESTSEQ::RemoveTriggeredObservation( key:"Balance" );',
 	1,
 	0);

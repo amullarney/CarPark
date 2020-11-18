@@ -236,7 +236,7 @@ INSERT INTO S_ENUM
 	'paid',
 	'',
 	"ded3bca0-4d1e-414f-8227-dc8fc8fd64d9",
-	"020deda9-87b3-4a49-9980-425641ab07a1");
+	"64160aff-cab3-4cef-8fa7-8382a8cc01ac");
 INSERT INTO S_ENUM
 	VALUES ("2026d279-35b6-406e-8466-879412a6b4b1",
 	'waived',
@@ -261,6 +261,12 @@ INSERT INTO S_ENUM
 	'',
 	"ded3bca0-4d1e-414f-8227-dc8fc8fd64d9",
 	"be6b6bbc-f733-455c-af8e-62c292f17cbe");
+INSERT INTO S_ENUM
+	VALUES ("64160aff-cab3-4cef-8fa7-8382a8cc01ac",
+	'paying',
+	'',
+	"ded3bca0-4d1e-414f-8227-dc8fc8fd64d9",
+	"020deda9-87b3-4a49-9980-425641ab07a1");
 INSERT INTO PE_PE
 	VALUES ("ded3bca0-4d1e-414f-8227-dc8fc8fd64d9",
 	1,
