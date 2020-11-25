@@ -40,6 +40,7 @@ TicketTaken::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 ActivityCheck::CreateEntry( seqLabel:"seq01", activate:True, location:"North", barrier: BarrierState::Open, ticket: EntryTicketState::Accepted );
 BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:BarrierState::Open );
 VehicleMovement::Create( seqLabel:"seq01", location:"North", stand:"Entry", movement: Movement::Depart );
+ActivityCheck::CreateEntry( seqLabel:"seq01", activate:True, location:"North", barrier: BarrierState::Closed, ticket: EntryTicketState::Accepted );
 ActivityCheck::CreateEntry( seqLabel:"seq01", activate:False, location:"North", barrier: BarrierState::Closed, ticket: EntryTicketState::Accepted );
 QueryTicketRequest::Create( seqLabel:"seq01", location:"North", enabled:False );
 BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:BarrierState::Closed );
@@ -67,8 +68,8 @@ ActivityCheck::CreateExit( seqLabel:"seq11", activate:True, location:"Lane 1", b
 TicketInserted::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", number:1 );
 ActivityCheck::CreateExit( seqLabel:"seq11", activate:True, location:"Lane 1", barrier: BarrierState::Closed, ticket: ExitTicketState::Inserted );
 BarrierCheck::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", state:BarrierState::Open );
-ActivityCheck::CreateExit( seqLabel:"seq11", activate:True, location:"Lane 1", barrier: BarrierState::Open, ticket: ExitTicketState::Inserted );
 VisitCheck::Create( seqLabel:"seq11", ticket:1, payment:PayStatus::paid, change: ChangeStatus::ignore, deadlineStatus:DeadlineStatus::valid ); 
+ActivityCheck::CreateExit( seqLabel:"seq11", activate:True, location:"Lane 1", barrier: BarrierState::Open, ticket: ExitTicketState::Inserted );
 VehicleMovement::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", movement: Movement::Depart );
 ActivityCheck::CreateExit( seqLabel:"seq11", activate:True, location:"Lane 1", barrier: BarrierState::Closed, ticket: ExitTicketState::Inserted );
 BarrierCheck::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", state:BarrierState::Closed );

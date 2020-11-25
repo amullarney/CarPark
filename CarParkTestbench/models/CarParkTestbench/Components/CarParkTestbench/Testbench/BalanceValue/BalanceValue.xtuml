@@ -112,6 +112,7 @@ if ( not_empty tracker )
       LOG::LogReal( message:"Inserting money at " + self.location, r:amount );
       send Payer::InsertedCurrency( Location:self.location, Amount:amount );
       tracker.payStatus = PayStatus::paying;
+      observation.Unfinished();
     else
       // Just observe that balance has been seen, but do nothing about it!
       // This is intended to test transaction cancelled by application.

@@ -157,7 +157,7 @@ INSERT INTO O_TFR
 send TESTSEQ::ObservationDone( observationId:self.observationId, success:param.success );',
 	1,
 	'',
-	"be73cadd-dde6-4c6a-9072-f4ed26103cde",
+	"f94ae17c-42be-4dae-9417-35c53e08dea3",
 	0);
 INSERT INTO O_TPARM
 	VALUES ("f6182e05-576b-4e97-a096-78fc76f227bf",
@@ -248,6 +248,18 @@ delete object instance self;',
 	1,
 	'',
 	"981e7c87-325e-4efb-ba73-a51e6e697322",
+	0);
+INSERT INTO O_TFR
+	VALUES ("f94ae17c-42be-4dae-9417-35c53e08dea3",
+	"765a75f4-57e1-4717-9b3e-fc9c61b630fb",
+	'Unfinished',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'send TESTSEQ::ObservationIncomplete( observationId:self.observationId );',
+	1,
+	'',
+	"be73cadd-dde6-4c6a-9072-f4ed26103cde",
 	0);
 INSERT INTO O_NBATTR
 	VALUES ("7a72127c-a70e-4591-b816-853bb177486c",

@@ -2547,6 +2547,10 @@ end for;
 select many bcmds from instances of BarrierCommand;
 for each bcmd in bcmds
   delete object instance bcmd;
+end for;
+select many actvs from instances of Activation;
+for each actv in actvs
+  delete object instance actv;
 end for;',
 	1,
 	0);
@@ -2556,6 +2560,24 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'TestCaseComplete',
 	'Signal completion of a test case.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("0e9025a1-4b29-4169-b0ef-e6896a54e70e",
+	"5c356dfd-5197-46e8-8f38-d8d4f740788a",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("0e9025a1-4b29-4169-b0ef-e6896a54e70e",
+	'ObservationIncomplete',
+	'Allow this obbservation to be invoked again, attempting completion.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("5c356dfd-5197-46e8-8f38-d8d4f740788a",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'ObservationIncomplete',
+	'Allow this obbservation to be invoked again, attempting completion.',
 	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("eff7aa83-70b9-46a6-bfc0-08d66d36431e",
