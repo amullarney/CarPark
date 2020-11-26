@@ -41,7 +41,7 @@ send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:33, caseLabel:"UC08" );
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
 FastForward::Create( seqLabel:"seq01", hours:0, minutes:1, seconds:0 );
 TicketInserted::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay", number:1 );
-BalanceValue::Create( seqLabel:"seq01", location:"1st Floor", pay:False, wantChange:False );  // do not pay!
+id = BalanceValue::Create( seqLabel:"seq01", location:"1st Floor", pay:False, wantChange:False );  // do not pay!
 TicketReturned::Create( seqLabel:"seq01", location:"1st Floor" );
 TicketTaken::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay" );
 VisitCheck::Create( seqLabel:"seq01", ticket:1, payment:PayStatus::cancelled, change:ChangeStatus::ignore, deadlineStatus:DeadlineStatus::ignore ); 
@@ -53,9 +53,9 @@ send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:27, caseLabel:"UC07" );
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:28, caseLabel:"UC07" );
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
 TicketInserted::Create( seqLabel:"seq01", location:"Street", stand:"Pay", number:1 );
-BalanceValue::Create( seqLabel:"seq01", location:"Street", pay:True, wantChange:True );
+id = BalanceValue::Create( seqLabel:"seq01", location:"Street", pay:True, wantChange:True );
 TicketReturned::Create( seqLabel:"seq01", location:"Street" );
-ChangeDispensed::Create( seqLabel:"seq01", location:"Street" );
+ChangeDispensed::Create( seqLabel:"seq01", location:"Street", parent:id );
 TicketTaken::Create( seqLabel:"seq01", location:"Street", stand:"Pay" );
 VisitCheck::Create( seqLabel:"seq01", ticket:1, payment:PayStatus::cancelled, change:ChangeStatus::dispensed, deadlineStatus:DeadlineStatus::ignore ); 
 
@@ -93,7 +93,7 @@ send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:26, caseLabel:"UC06" );
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
 FastForward::Create( seqLabel:"seq01", hours:0, minutes:1, seconds:0 );
 TicketInserted::Create( seqLabel:"seq01", location:"Street", stand:"Pay", number:2 );
-BalanceValue::Create( seqLabel:"seq01", location:"Street", pay:True, wantChange:False );
+id = BalanceValue::Create( seqLabel:"seq01", location:"Street", pay:True, wantChange:False );
 TicketReturned::Create( seqLabel:"seq01", location:"Street" );
 TicketTaken::Create( seqLabel:"seq01", location:"Street", stand:"Pay" );
 VisitCheck::Create( seqLabel:"seq01", ticket:2, payment:PayStatus::paid, change:ChangeStatus::forfeit, deadlineStatus:DeadlineStatus::ignore ); 
@@ -107,7 +107,7 @@ send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
 FastForward::Create( seqLabel:"seq01", hours:0, minutes:16, seconds:0 );
 VehicleMovement::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", movement: Movement::Arrive );
 TicketInserted::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", number:2 );
-VisitCheck::Create( seqLabel:"seq01", ticket:2, payment:PayStatus::excess, change:ChangeStatus::ignore, deadlineStatus:DeadlineStatus::expired ); 
+VisitCheck::Create( seqLabel:"seq01", ticket:2, payment:PayStatus::paid, change:ChangeStatus::ignore, deadlineStatus:DeadlineStatus::expired ); 
 OpAction::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", action: OperatorAction::WaiveFee );
 VisitCheck::Create( seqLabel:"seq01", ticket:2, payment:PayStatus::waived, change:ChangeStatus::ignore, deadlineStatus:DeadlineStatus::expired ); 
 VehicleMovement::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", movement: Movement::Depart );

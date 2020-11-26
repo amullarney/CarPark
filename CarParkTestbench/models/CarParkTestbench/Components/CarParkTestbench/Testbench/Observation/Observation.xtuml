@@ -261,6 +261,55 @@ INSERT INTO O_TFR
 	'',
 	"be73cadd-dde6-4c6a-9072-f4ed26103cde",
 	0);
+INSERT INTO O_TFR
+	VALUES ("8e7f8afc-978f-40e6-995d-08e2ede74dcc",
+	"765a75f4-57e1-4717-9b3e-fc9c61b630fb",
+	'CancelDependents',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select many observations related by self->Observation[R701.''can cancel''];
+for each observation in observations
+  send TESTSEQ::CancelObservation( observationId: observation.observationId );
+end for;',
+	1,
+	'',
+	"7555b918-dbfd-4cb7-8e5f-80d8fbd65a72",
+	0);
+INSERT INTO O_TFR
+	VALUES ("6adfc8b1-bc75-4672-adf5-3923a036eb55",
+	"765a75f4-57e1-4717-9b3e-fc9c61b630fb",
+	'CancelableBy',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'select any canceler from instances of Observation
+ where ( selected.observationId == param.Canceler );
+select any cancelee from instances of Observation
+ where ( selected.observationId == param.Cancelee );
+relate cancelee to canceler across R701.''can be cancelled by'';',
+	1,
+	'',
+	"8e7f8afc-978f-40e6-995d-08e2ede74dcc",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("c3bbb02b-17ba-481f-acf5-ccafe9dc8ce8",
+	"6adfc8b1-bc75-4672-adf5-3923a036eb55",
+	'Canceler',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("ede17b3e-a0bf-40e2-91d6-dcf2c4ba4625",
+	"6adfc8b1-bc75-4672-adf5-3923a036eb55",
+	'Cancelee',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"c3bbb02b-17ba-481f-acf5-ccafe9dc8ce8",
+	'');
 INSERT INTO O_NBATTR
 	VALUES ("7a72127c-a70e-4591-b816-853bb177486c",
 	"765a75f4-57e1-4717-9b3e-fc9c61b630fb");
@@ -283,6 +332,11 @@ Used to identify an instance when being invoked by the Test sequencer.',
 INSERT INTO O_ID
 	VALUES (0,
 	"765a75f4-57e1-4717-9b3e-fc9c61b630fb");
+INSERT INTO O_OIDA
+	VALUES ("7a72127c-a70e-4591-b816-853bb177486c",
+	"765a75f4-57e1-4717-9b3e-fc9c61b630fb",
+	0,
+	'observationId');
 INSERT INTO O_ID
 	VALUES (1,
 	"765a75f4-57e1-4717-9b3e-fc9c61b630fb");

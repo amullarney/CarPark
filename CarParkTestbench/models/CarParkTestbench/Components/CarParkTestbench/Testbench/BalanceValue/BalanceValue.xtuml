@@ -14,18 +14,19 @@ INSERT INTO O_TFR
 	'Create',
 	'Add an observation of this type to the ''script'' of a test case.
 See Observation.AppendPolling for description.',
-	"ba5eda7a-def5-0000-0000-000000000000",
+	"ba5eda7a-def5-0000-0000-000000000005",
 	0,
 	'create object instance balanceValue of BalanceValue;
 balanceValue.location = param.location;
 balanceValue.willpay = param.pay;
 balanceValue.wantChange = param.wantChange;
 
-create object instance obs of Observation;
-relate balanceValue to obs across R400;
+create object instance observation of Observation;
+relate balanceValue to observation across R400;
 
-// This observation must have a timeout - this also allows repeat triggering.
-obs.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:60, key:"Balance", concurrent:True );',
+observation.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:60, key:"Balance", concurrent:True );
+
+return observation.observationId;',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
@@ -76,25 +77,24 @@ If the balance is paid - perhaps, incrementally - the observation succeeds norma
 If no payment is made a timeout is expected.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'// Look for balance value at appropriate pay station location
+	'// Look for a balance value observation at the appropriate pay station location.
+// 
 
 LOG::LogInfo( message:" --- Checking for payment balance at " + self.location  );
 select one observation related by self->Observation[R400];  // for success/fail signal
 select any tracker from instances of VisitTracking
  where ( selected.payingAt == self.location );
 if ( not_empty tracker )
-  tracker.wantChange = self.wantChange;  // for decision, if change unavailable
+   tracker.wantChange = self.wantChange;  // for decision, if change unavailable
   LOG::LogReal( message:"Balance ", r:tracker.amountDue );
-  if ( tracker.amountDue <= 0.0 )
-    observation.Complete( success:True );
-    tracker.payStatus = PayStatus::paid;  // required at exit
+  if ( tracker.amountDue <= 0.0 )                   // no more money required
     tracker.deadline = TIM::current_seconds() + 15;	// see CP29 in CarPark SRS
-    if ( tracker.amountDue == 0.0 )  // exact - no change will be dispensed
+    if ( tracker.amountDue == 0.0 )                 // exact payment- no change will be dispensed.
+      tracker.payStatus = PayStatus::paid;          // required at exit
+      observation.Complete( success:True );         // no chance of cancel, so signal completion.
+      observation.CancelDependents();               // make sure no observation hangs up.
       LOG::LogInfo( message:"Cancelling change dispensed observation at " + self.location );
-      send TESTSEQ::RemoveTriggeredObservation( key:"Dispensed" );
-    else
-      tracker.wantChange = self.wantChange;  // for decision, if change unavailable
-    end if;
+    end if;                                         // change due: dispense/cancel/waive
   else
     if ( self.willpay )
       amount = 0;
@@ -116,7 +116,6 @@ if ( not_empty tracker )
     else
       // Just observe that balance has been seen, but do nothing about it!
       // This is intended to test transaction cancelled by application.
-      observation.Complete( success:True );
     end if;
   end if;
 else

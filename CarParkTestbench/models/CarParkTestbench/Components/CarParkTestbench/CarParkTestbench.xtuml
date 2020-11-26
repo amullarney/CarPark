@@ -1725,9 +1725,13 @@ if ( tracker.amountDue < 0.0 )
   else
     send Payer::WaivedChange( Location:param.Location );
     tracker.changeStatus = ChangeStatus::forfeit;
+    tracker.payStatus = PayStatus::paid;            // required at exit
+    select any balance from instances of BalanceValue
+     where ( selected.location == param.Location );
+    select one observation related by balance->Observation[R400];
+    observation.Complete( success:true );
   end if;
-end if;
-',
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1795,7 +1799,14 @@ INSERT INTO SPR_RS
 select any tracker from instances of VisitTracking
  where ( selected.payingAt == param.Location );
 tracker.amountDispensed = param.Amount;
-send TESTSEQ::Assess( key:"Dispensed" );',
+send TESTSEQ::Assess( key:"Dispensed" );
+if ( tracker.payStatus != PayStatus::cancelled )
+  select any balance from instances of BalanceValue
+   where ( selected.location == param.Location );
+  select one observation related by balance->Observation[R400];
+  observation.Complete( success:true );
+end if;
+',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1813,16 +1824,23 @@ INSERT INTO SPR_RS
 	VALUES ("ac2494ef-8171-4c20-9e47-ac0d13ce2691",
 	'TransactionCancelled',
 	'Indicates that the current transaction was cancelled by the carpark system.',
-	'select any tracker from instances of VisitTracking
+	'select any observation from instances of Observation where ( false );
+select any tracker from instances of VisitTracking
  where ( selected.payingAt == param.Location );
 if ( not_empty tracker )
-  if ( tracker.payStatus == PayStatus::unpaid )  // no payment to return
-    send TESTSEQ::RemoveTriggeredObservation( key:"Dispensed" );
-  end if;
-  LOG::LogInfo( message:"Payment transaction cancelled at " + param.Location );
-  tracker.payStatus = PayStatus::cancelled;
+  select any balance from instances of BalanceValue
+   where ( selected.location == tracker.payingAt );
+  if ( not_empty balance )
+    select one observation related by balance->Observation[R400];
+    if ( tracker.payStatus == PayStatus::unpaid )  // no payment to return
+      observation.CancelDependents();
+    end if;
+    LOG::LogInfo( message:"Payment transaction cancelled at " + param.Location );
+    tracker.payStatus = PayStatus::cancelled;
+  else
+    LOG::LogInfo( message:"Unable to cancel transaction at " + param.Location );  end if;
 end if;
-send TESTSEQ::RemoveTriggeredObservation( key:"Balance" );',
+send TESTSEQ::CancelObservation( observationId: observation.observationId );',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -2400,8 +2418,8 @@ INSERT INTO SPR_REP
 	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
 INSERT INTO SPR_RS
 	VALUES ("322abf3f-cccd-43fe-aaa7-e0979390316c",
-	'RemoveTriggeredObservation',
-	'On this signal, any active observations with matching key value will be deactivated.
+	'CancelObservation',
+	'On this signal, an active observation will be cancelled.
 This has the effect of completing the observation without a failure penalty.',
 	'',
 	1,
@@ -2410,8 +2428,8 @@ INSERT INTO C_EP_PROXY
 	VALUES ("ca057380-3763-49be-a902-4f89bd14277c",
 	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
 	-1,
-	'RemoveTriggeredObservation',
-	'On this signal, any active observations with matching key value will be deactivated.
+	'CancelObservation',
+	'On this signal, an active observation will be cancelled.
 This has the effect of completing the observation without a failure penalty.',
 	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
 INSERT INTO SPR_REP

@@ -35,9 +35,9 @@ TicketTaken::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 VehicleMovement::Create( seqLabel:"seq01", location:"North", stand:"Entry", movement: Movement::Depart );
 FastForward::Create( seqLabel:"seq01", hours:5, minutes:0, seconds:0 );
 TicketInserted::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay", number:1 );
-BalanceValue::Create( seqLabel:"seq01", location:"1st Floor", pay:True, wantChange:False );  // do not pay!
+id = BalanceValue::Create( seqLabel:"seq01", location:"1st Floor", pay:True, wantChange:False );  // do not pay!
 TicketReturned::Create( seqLabel:"seq01", location:"1st Floor" );
-ChangeDispensed::Create( seqLabel:"seq01", location:"1st Floor" );
+ChangeDispensed::Create( seqLabel:"seq01", location:"1st Floor", parent:id );
 TicketTaken::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay" );
 FastForward::Create( seqLabel:"seq01", hours:0, minutes:16, seconds:0 );
 VehicleMovement::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", movement: Movement::Arrive );
