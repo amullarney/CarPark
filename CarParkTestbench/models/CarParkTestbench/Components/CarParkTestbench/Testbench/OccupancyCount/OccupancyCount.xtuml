@@ -21,7 +21,7 @@ contents.count = param.count;
 create object instance obs of Observation;
 relate contents to obs across R400;
 
-obs.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"Occupancy", concurrent:True );',
+obs.AddTriggered( seqLabel:param.seqLabel, timeLimit:0, key:"Occupancy", concurrent:True );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",

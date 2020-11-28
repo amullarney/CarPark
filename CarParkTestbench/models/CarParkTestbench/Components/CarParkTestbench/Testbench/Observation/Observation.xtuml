@@ -23,7 +23,7 @@ If an observation fails to succeed, the test case is deemed to have failed; all 
 INSERT INTO O_TFR
 	VALUES ("3eab7205-38dd-4e0a-a177-a5c994ff1229",
 	"765a75f4-57e1-4717-9b3e-fc9c61b630fb",
-	'Add',
+	'AddTriggered',
 	'Add an instance of Observation sub/supertype pair following the specified stimulus.
 A polling observation may be re-evaluated at specified intervals.
 An overall time limit for such re-evaluation may also be specified.
@@ -35,15 +35,14 @@ Note:
  the ordering of simultaneous event processing may affect success or failure.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'send TESTSEQ::AddObservation( seqLabel:param.seqLabel,
-                              observationId:self.observationId,
-                              pollInterval:param.pollInterval, 
-                              pollDuration:param.timeLimit, 
-                              eventKey:param.key,
-                              concurrent:param.concurrent);',
+	'send TESTSEQ::AddTriggeredObservation( seqLabel:param.seqLabel,
+                                       observationId:self.observationId,
+                                       durationLimit:param.timeLimit, 
+                                       eventKey:param.key,
+                                       concurrent:param.concurrent);',
 	1,
 	'',
-	"00000000-0000-0000-0000-000000000000",
+	"4126b274-3482-4ea0-9058-bc6a4e39b929",
 	0);
 INSERT INTO O_TPARM
 	VALUES ("f3c2a672-6a13-4cc4-8c50-824b58627db1",
@@ -58,15 +57,6 @@ INSERT INTO O_TPARM
 	VALUES ("05e961e0-e5c1-4265-ac65-9c3bfe9d15a1",
 	"3eab7205-38dd-4e0a-a177-a5c994ff1229",
 	'timeLimit',
-	"ba5eda7a-def5-0000-0000-000000000002",
-	0,
-	'',
-	"51af09b4-07ed-4f36-9723-8711f3d4b2e9",
-	'');
-INSERT INTO O_TPARM
-	VALUES ("51af09b4-07ed-4f36-9723-8711f3d4b2e9",
-	"3eab7205-38dd-4e0a-a177-a5c994ff1229",
-	'pollInterval',
 	"ba5eda7a-def5-0000-0000-000000000002",
 	0,
 	'',
@@ -309,6 +299,66 @@ INSERT INTO O_TPARM
 	0,
 	'',
 	"c3bbb02b-17ba-481f-acf5-ccafe9dc8ce8",
+	'');
+INSERT INTO O_TFR
+	VALUES ("4126b274-3482-4ea0-9058-bc6a4e39b929",
+	"765a75f4-57e1-4717-9b3e-fc9c61b630fb",
+	'AddImmediate',
+	'Add an instance of Observation sub/supertype pair following the specified stimulus.
+A polling observation may be re-evaluated at specified intervals.
+An overall time limit for such re-evaluation may also be specified.
+Failure to signal success within the time limit is considered a time-out failure.
+Any observation failure terminates the entire test case.
+Note: 
+ if both poll interval and time limit are zero, the observation will be invoked once only;
+ this invocation may occur before all events at this time instance have been processed;
+ the ordering of simultaneous event processing may affect success or failure.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'send TESTSEQ::AddImmediateObservation( seqLabel:param.seqLabel,
+                                       observationId:self.observationId,
+                                       pollInterval:param.pollInterval, 
+                                       pollDuration:param.timeLimit, 
+                                       concurrent:param.concurrent);',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("91ebb36f-9a01-48dc-8b9c-de25984d68b6",
+	"4126b274-3482-4ea0-9058-bc6a4e39b929",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'An observation is added to the currently latest stimulus on the specified sequence.');
+INSERT INTO O_TPARM
+	VALUES ("aa726da0-de8f-416d-b681-2cd3069ef8b2",
+	"4126b274-3482-4ea0-9058-bc6a4e39b929",
+	'timeLimit',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"c4c505be-4711-4bb5-860f-3c2310a82d41",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("c4c505be-4711-4bb5-860f-3c2310a82d41",
+	"4126b274-3482-4ea0-9058-bc6a4e39b929",
+	'pollInterval',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"91ebb36f-9a01-48dc-8b9c-de25984d68b6",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("a3123095-49f4-4ac1-a8ee-484b634cb24c",
+	"4126b274-3482-4ea0-9058-bc6a4e39b929",
+	'concurrent',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"aa726da0-de8f-416d-b681-2cd3069ef8b2",
 	'');
 INSERT INTO O_NBATTR
 	VALUES ("7a72127c-a70e-4591-b816-853bb177486c",

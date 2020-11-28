@@ -37,11 +37,11 @@ ActivityCheck::CreateEntry( seqLabel:"seq01", activate:True, location:"North", b
 TicketIssued::Create( seqLabel:"seq01", location:"North" );
 ActivityCheck::CreateEntry( seqLabel:"seq01", activate:True, location:"North", barrier: BarrierState::Closed, ticket: EntryTicketState::Issued );
 TicketTaken::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
-ActivityCheck::CreateEntry( seqLabel:"seq01", activate:True, location:"North", barrier: BarrierState::Open, ticket: EntryTicketState::Accepted );
 BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:BarrierState::Open );
+ActivityCheck::CreateEntry( seqLabel:"seq01", activate:True, location:"North", barrier: BarrierState::Open, ticket: EntryTicketState::Accepted );
 VehicleMovement::Create( seqLabel:"seq01", location:"North", stand:"Entry", movement: Movement::Depart );
 ActivityCheck::CreateEntry( seqLabel:"seq01", activate:True, location:"North", barrier: BarrierState::Closed, ticket: EntryTicketState::Accepted );
-ActivityCheck::CreateEntry( seqLabel:"seq01", activate:False, location:"North", barrier: BarrierState::Closed, ticket: EntryTicketState::Accepted );
+ActivityCheck::CreateEntry( seqLabel:"seq01", activate:False, location:"North", barrier: BarrierState::Closed, ticket: EntryTicketState::Issued );
 QueryTicketRequest::Create( seqLabel:"seq01", location:"North", enabled:False );
 BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:BarrierState::Closed );
 OccupancyCount::Create( seqLabel:"seq01", count:1 );

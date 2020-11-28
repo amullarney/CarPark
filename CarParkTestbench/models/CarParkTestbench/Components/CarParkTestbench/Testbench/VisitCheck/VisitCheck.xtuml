@@ -25,7 +25,7 @@ check.deadlineStatus = param.deadlineStatus;
 create object instance obs of Observation;
 relate check to obs across R400;
 
-obs.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"", concurrent:True );',
+obs.AddImmediate( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, concurrent:True );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",

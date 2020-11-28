@@ -25,7 +25,8 @@ activ.active = param.activate;
 activ.barrier = param.barrier;
 activ.ticketEntry = param.ticket;
 
-observation.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"Activation", concurrent:True );',
+//observation.AddTriggered( seqLabel:param.seqLabel, timeLimit:0, key:"Activation", concurrent:True );
+observation.AddImmediate( seqLabel:param.seqLabel, pollInterval:1, timeLimit:5, concurrent:True );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
@@ -125,7 +126,9 @@ if ( not_empty activ )
   observation.Complete( success:True );
   delete object instance activ;
 else
-  observation.Complete( success:False );
+  LOG::LogInfo( message:" --- Activation data missing " + "for " + self.location );
+
+//  observation.Complete( success:False );
 end if;
 
 ',
@@ -151,7 +154,8 @@ activ.active = param.activate;
 activ.barrier = param.barrier;
 activ.ticketExit = param.ticket;
 
-observation.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"Activation", concurrent:True );',
+//observation.AddTriggered( seqLabel:param.seqLabel, timeLimit:0, key:"Activation", concurrent:True );
+observation.AddImmediate( seqLabel:param.seqLabel, pollInterval:1, timeLimit:5, concurrent:True );',
 	1,
 	'',
 	"eadca89d-13b0-451f-8e67-7a61adfb9b22",

@@ -24,11 +24,7 @@ request.enabled = param.enabled;
 create object instance observation of Observation;
 relate request to observation across R400;
 
-observation.Add( seqLabel:param.seqLabel, 
-                 pollInterval:0, 
-                 timeLimit:0, 
-                 key:"TicketRequest", 
-                 concurrent:True );',
+observation.AddTriggered( seqLabel:param.seqLabel, timeLimit:0, key:"TicketRequest", concurrent:True );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",

@@ -23,7 +23,7 @@ check.location = param.location;
 check.stand = param.stand;
 check.state = param.state;
 
-observation.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"BarrierCommand", concurrent:True );',
+observation.AddTriggered( seqLabel:param.seqLabel, timeLimit:0, key:"BarrierCommand", concurrent:True );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",

@@ -22,7 +22,7 @@ create object instance observation of Observation;
 relate cd to observation across R400;
 cd.location = param.location;
 
-observation.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"Dispensed", concurrent:True );
+observation.AddTriggered( seqLabel:param.seqLabel, timeLimit:0, key:"Dispensed", concurrent:True );
 
 Observation::CancelableBy( Canceler:param.parent, Cancelee: observation.observationId );',
 	1,

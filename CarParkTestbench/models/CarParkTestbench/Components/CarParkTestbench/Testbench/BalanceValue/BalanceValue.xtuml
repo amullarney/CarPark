@@ -24,7 +24,7 @@ balanceValue.wantChange = param.wantChange;
 create object instance observation of Observation;
 relate balanceValue to observation across R400;
 
-observation.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:60, key:"Balance", concurrent:True );
+observation.AddTriggered( seqLabel:param.seqLabel, timeLimit:60, key:"Balance", concurrent:True );
 
 return observation.observationId;',
 	1,

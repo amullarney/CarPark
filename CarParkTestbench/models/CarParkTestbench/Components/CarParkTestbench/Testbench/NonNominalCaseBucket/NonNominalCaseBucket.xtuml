@@ -107,7 +107,9 @@ send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
 FastForward::Create( seqLabel:"seq01", hours:0, minutes:16, seconds:0 );
 VehicleMovement::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", movement: Movement::Arrive );
 TicketInserted::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", number:2 );
-VisitCheck::Create( seqLabel:"seq01", ticket:2, payment:PayStatus::paid, change:ChangeStatus::ignore, deadlineStatus:DeadlineStatus::expired ); 
+VisitCheck::Create( seqLabel:"seq01", ticket:2, payment:PayStatus::paid, change:ChangeStatus::ignore, deadlineStatus:DeadlineStatus::expired );
+FastForward::Create( seqLabel:"seq01", hours:0, minutes:0, seconds:1 ); // allow time for "Tardy Exit"
+VisitCheck::Create( seqLabel:"seq01", ticket:2, payment:PayStatus::excess, change:ChangeStatus::ignore, deadlineStatus:DeadlineStatus::expired ); 
 OpAction::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", action: OperatorAction::WaiveFee );
 VisitCheck::Create( seqLabel:"seq01", ticket:2, payment:PayStatus::waived, change:ChangeStatus::ignore, deadlineStatus:DeadlineStatus::expired ); 
 VehicleMovement::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", movement: Movement::Depart );
