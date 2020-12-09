@@ -853,13 +853,12 @@ INSERT INTO SPR_RS
 	'ActivateEntryStand',
 	'Activates the section of the operator console display for a particular entry stand.',
 	'select any prefs from instances of Preferences;
-if ( prefs.EntryActivation == False )  // Checking Entry stand data. @TODO
+if ( prefs.EntryActivation == True )  // Checking Entry stand data.
   create object instance activ of Activation;
   activ.location = param.Location;
   activ.active = True;
   activ.barrier = param.Barrier;
   activ.ticketEntry = param.Ticket;
-//  send TESTSEQ::Assess( key:"Activation" ); @TODO
 end if;',
 	1,
 	0);
@@ -883,7 +882,6 @@ if ( prefs.EntryActivation == True )  // Checking Entry stand data.
   create object instance activ of Activation;
   activ.location = param.Location;
   activ.active = False;
-//  send TESTSEQ::Assess( key:"Activation" );
 end if;',
 	1,
 	0);
@@ -931,7 +929,6 @@ if ( prefs.ExitActivation == True )  // Checking Exit stand data.
   activ.active = True;
   activ.barrier = param.Barrier;
   activ.ticketExit = param.Ticket;
-//  send TESTSEQ::Assess( key:"Activation" );
 end if;',
 	1,
 	0);
@@ -955,7 +952,6 @@ if ( prefs.ExitActivation == True )  // Checking Exit stand data.
   create object instance activ of Activation;
   activ.location = param.Location;
   activ.active = False;
-//  send TESTSEQ::Assess( key:"Activation" );
 end if;',
 	1,
 	0);
@@ -1268,7 +1264,6 @@ tracker.amountDispensed = 0.0;
 tracker.payStatus = PayStatus::unpaid;
 tracker.changeStatus = ChangeStatus::ignore;
 tracker.wantChange = true;
-
 send TESTSEQ::Assess( key:"TicketIssued" );',
 	1,
 	0);
@@ -1686,9 +1681,7 @@ INSERT INTO SPR_RS
 	'RemainingBalance',
 	'Provides the remaining balance for the stay associated with the ticket
 currently inserted in a payment machine.',
-	'LOG::LogInfo( message:"---- receiving updated balance for " + param.Location );
-LOG::LogReal( message:"balance", r:param.Amount );
-
+	'// Update balance due in visit track data and request observation evaluation.
 select any tracker from instances of VisitTracking
  where ( selected.payingAt == param.Location );
 tracker.amountDue = param.Amount;
@@ -1724,11 +1717,7 @@ if ( tracker.amountDue < 0.0 )
   else
     send Payer::WaivedChange( Location:param.Location );
     tracker.changeStatus = ChangeStatus::forfeit;
-    tracker.payStatus = PayStatus::paid;            // required at exit
-    select any balance from instances of BalanceValue
-     where ( selected.location == param.Location );
-    select one observation related by balance->Observation[R400];
-    observation.Complete( success:true );
+    tracker.payStatus = PayStatus::paid;
   end if;
 end if;',
 	1,
@@ -1798,14 +1787,7 @@ INSERT INTO SPR_RS
 select any tracker from instances of VisitTracking
  where ( selected.payingAt == param.Location );
 tracker.amountDispensed = param.Amount;
-send TESTSEQ::Assess( key:"Dispensed" );
-if ( tracker.payStatus != PayStatus::cancelled )
-  select any balance from instances of BalanceValue
-   where ( selected.location == param.Location );
-  select one observation related by balance->Observation[R400];
-  observation.Complete( success:true );
-end if;
-',
+send TESTSEQ::Assess( key:"Dispensed" );',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1836,10 +1818,10 @@ if ( not_empty tracker )
     end if;
     LOG::LogInfo( message:"Payment transaction cancelled at " + param.Location );
     tracker.payStatus = PayStatus::cancelled;
+    send TESTSEQ::CancelObservation( observationId: observation.observationId );
   else
     LOG::LogInfo( message:"Unable to cancel transaction at " + param.Location );  end if;
-end if;
-send TESTSEQ::CancelObservation( observationId: observation.observationId );',
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -2330,24 +2312,6 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'AddStimulus',
 	'',
-	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
-INSERT INTO SPR_REP
-	VALUES ("cc3f0ad4-032f-4d53-b130-041bc07a4793",
-	"db8e25d9-f7a5-4738-85a0-ef4adc5bf3f2",
-	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
-INSERT INTO SPR_RS
-	VALUES ("cc3f0ad4-032f-4d53-b130-041bc07a4793",
-	'AddObservation',
-	'Add an observation to follow injection of a specified stimulus.',
-	'',
-	1,
-	0);
-INSERT INTO C_EP_PROXY
-	VALUES ("db8e25d9-f7a5-4738-85a0-ef4adc5bf3f2",
-	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
-	-1,
-	'AddObservation',
-	'Add an observation to follow injection of a specified stimulus.',
 	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("281d378f-49f6-4d49-a3e9-0e385ed7a8dd",

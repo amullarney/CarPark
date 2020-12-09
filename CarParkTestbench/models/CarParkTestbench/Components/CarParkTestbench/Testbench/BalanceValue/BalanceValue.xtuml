@@ -77,41 +77,44 @@ If the balance is paid - perhaps, incrementally - the observation succeeds norma
 If no payment is made a timeout is expected.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'// Look for a balance value observation at the appropriate pay station location.
-// 
+	'// Find the tracked record for this visitor, which contains the upodated balance due.
+// Make a payment ( unless otherwise dispositioned - see self.willpay )
+// If payment is complete, determine whether change is due; set exit deadline
 
-LOG::LogInfo( message:" --- Checking for payment balance at " + self.location  );
 select one observation related by self->Observation[R400];  // for success/fail signal
 select any tracker from instances of VisitTracking
  where ( selected.payingAt == self.location );
 if ( not_empty tracker )
-   tracker.wantChange = self.wantChange;  // for decision, if change unavailable
-  LOG::LogReal( message:"Balance ", r:tracker.amountDue );
-  if ( tracker.amountDue <= 0.0 )                   // no more money required
-    tracker.deadline = TIM::current_seconds() + 15;	// see CP29 in CarPark SRS
-    if ( tracker.amountDue == 0.0 )                 // exact payment- no change will be dispensed.
-      tracker.payStatus = PayStatus::paid;          // required at exit
-      observation.Complete( success:True );         // no chance of cancel, so signal completion.
-      observation.CancelDependents();               // make sure no observation hangs up.
-      LOG::LogInfo( message:"Cancelling change dispensed observation at " + self.location );
-    end if;                                         // change due: dispense/cancel/waive
+  tracker.wantChange = self.wantChange;  // for decision, if change unavailable
+  LOG::LogReal( message:"Balance due ", r:tracker.amountDue );
+  if ( tracker.amountDue <= 0.0 )                       // no more money required
+    if ( tracker.amountDue == 0.0 )                     // exact payment- no change will be dispensed.
+      observation.CancelDependents();                   // make sure no observation hangs up.
+    end if;                                             // change may be due: dispense/cancel/waive
+    if ( tracker.payStatus == PayStatus::cancelled )
+      tracker.deadline = 0;
+    else
+      tracker.payStatus = PayStatus::paid;              // may possibly be cancelled...
+      tracker.deadline = TIM::current_seconds() + 15;	// see CP29 in CarPark SRS
+      observation.Complete( success:True );
+    end if;
   else
     if ( self.willpay )
+      tracker.payStatus = PayStatus::paying;
       amount = 0;
-      if ( tracker.amountDue > 20 )
+      if ( tracker.amountDue >= 20 )
         amount = 20;
-      elif ( tracker.amountDue > 10 )
+      elif ( tracker.amountDue >= 10 )
         amount = 10;
-      elif ( tracker.amountDue > 5 )
+      elif ( tracker.amountDue >= 5 )
         amount = 5;
-      elif ( tracker.amountDue > 2 )
+      elif ( tracker.amountDue >= 2 )
         amount = 2;
       elif ( tracker.amountDue > 0 )
         amount = 1;
       end if;
       LOG::LogReal( message:"Inserting money at " + self.location, r:amount );
       send Payer::InsertedCurrency( Location:self.location, Amount:amount );
-      tracker.payStatus = PayStatus::paying;
       observation.Unfinished();
     else
       // Just observe that balance has been seen, but do nothing about it!

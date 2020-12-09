@@ -106,16 +106,17 @@ INSERT INTO O_TFR
 	'select one observation related by self->Observation[R400]; 
 
 success = true;
+now = TIM::current_seconds();
 select any tracker from instances of VisitTracking
  where ( selected.ticketNumber == self.ticketNumber );
 if ( not_empty tracker )
   if ( self.deadlineStatus != DeadlineStatus::ignore )
     if ( self.deadlineStatus == DeadlineStatus::valid )
-     and ( TIM::current_seconds() >= tracker.deadline )
+     and ( now >= tracker.deadline )
       success = false;
     else
       if ( self.deadlineStatus == DeadlineStatus::expired )
-       and ( TIM::current_seconds() < tracker.deadline )
+       and ( now < tracker.deadline )
         success = false;
       end if;
     end if;
@@ -129,7 +130,8 @@ if ( not_empty tracker )
     if ( self.changeDisposition != tracker.changeStatus )
       success = false;
     end if;
-  end if;else
+  end if;
+else
   success = false;
 end if;
 if ( success )

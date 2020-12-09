@@ -24,7 +24,7 @@ cd.location = param.location;
 
 observation.AddTriggered( seqLabel:param.seqLabel, timeLimit:0, key:"Dispensed", concurrent:True );
 
-Observation::CancelableBy( Canceler:param.parent, Cancelee: observation.observationId );',
+Observation::CancelableBy( Canceler:param.dependee, Cancelee: observation.observationId );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
@@ -50,7 +50,7 @@ INSERT INTO O_TPARM
 INSERT INTO O_TPARM
 	VALUES ("1a1442cb-fb2b-455a-b603-95f26e9c6851",
 	"057a56ec-bdd2-4e4e-b919-277cc731acad",
-	'parent',
+	'dependee',
 	"ba5eda7a-def5-0000-0000-000000000005",
 	0,
 	'',
@@ -71,7 +71,7 @@ select any tracker from instances of VisitTracking
 
 if ( not_empty tracker )
   if ( tracker.amountDispensed > 0 )
-    LOG::LogInfo( message:" --- Change dispensed at " + self.location  );
+    LOG::LogInfo( message:" --- Money dispensed at " + self.location  );
     tracker.changeStatus = ChangeStatus::dispensed;
   end if;
   observation.Complete( success:True );

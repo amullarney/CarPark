@@ -41,7 +41,7 @@ send TESTSEQ::AddStimulusSequence( seqLabel:"seq05" );
 TicketInserted::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay", number:1 );
 id = BalanceValue::Create( seqLabel:"seq05", location:"1st Floor", pay:True, wantChange:False );
 TicketReturned::Create( seqLabel:"seq05", location:"1st Floor" );
-ChangeDispensed::Create( seqLabel:"seq05", location:"1st Floor", parent:id );
+ChangeDispensed::Create( seqLabel:"seq05", location:"1st Floor", dependee:id );
 TicketTaken::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
 
 send TESTSEQ::AddTestCase( caseLabel:"UC11_failure" ); 

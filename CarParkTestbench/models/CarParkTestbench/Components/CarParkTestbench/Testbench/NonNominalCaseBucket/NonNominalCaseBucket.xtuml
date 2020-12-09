@@ -35,6 +35,7 @@ BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:B
 VehicleMovement::Create( seqLabel:"seq01", location:"North", stand:"Entry", movement: Movement::Depart );
 BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:BarrierState::Closed );
 
+
 // The following is a scenario where the customer waits too long before making payment.
 send TESTSEQ::AddTestCase( caseLabel:"UC08" ); 
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:33, caseLabel:"UC08" );
@@ -46,6 +47,7 @@ TicketReturned::Create( seqLabel:"seq01", location:"1st Floor" );
 TicketTaken::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay" );
 VisitCheck::Create( seqLabel:"seq01", ticket:1, payment:PayStatus::cancelled, change:ChangeStatus::ignore, deadlineStatus:DeadlineStatus::ignore ); 
 
+
 // The following is a scenario where change is unavailable; the customer cancels.
 send TESTSEQ::AddTestCase( caseLabel:"UC07" ); 
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:25, caseLabel:"UC07" );
@@ -55,7 +57,7 @@ send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
 TicketInserted::Create( seqLabel:"seq01", location:"Street", stand:"Pay", number:1 );
 id = BalanceValue::Create( seqLabel:"seq01", location:"Street", pay:True, wantChange:True );
 TicketReturned::Create( seqLabel:"seq01", location:"Street" );
-ChangeDispensed::Create( seqLabel:"seq01", location:"Street", parent:id );
+ChangeDispensed::Create( seqLabel:"seq01", location:"Street", dependee:id );
 TicketTaken::Create( seqLabel:"seq01", location:"Street", stand:"Pay" );
 VisitCheck::Create( seqLabel:"seq01", ticket:1, payment:PayStatus::cancelled, change:ChangeStatus::dispensed, deadlineStatus:DeadlineStatus::ignore ); 
 
@@ -68,7 +70,7 @@ VehicleMovement::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", move
 TicketInserted::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", number:1 );
 OpAction::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", action: OperatorAction::WaiveFee );
 BarrierCheck::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", state:BarrierState::Open );
-VisitCheck::Create( seqLabel:"seq01", ticket:1, payment:PayStatus::waived, change: ChangeStatus::ignore, deadlineStatus:DeadlineStatus::valid ); 
+VisitCheck::Create( seqLabel:"seq01", ticket:1, payment:PayStatus::waived, change: ChangeStatus::ignore, deadlineStatus:DeadlineStatus::ignore ); 
 VehicleMovement::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", movement: Movement::Depart );
 BarrierCheck::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", state:BarrierState::Closed );
 OccupancyCount::Create( seqLabel:"seq01", count:0 );
