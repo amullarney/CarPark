@@ -36,7 +36,10 @@ INSERT INTO O_TFR
 	'This operation will be invoked when the stimulus is encountered by the sequencing service.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select one move related by self->VehicleMovement[R300];
+	'// The following is a work around for lack of polymorphic operation in Verifier.
+// See https://support.onefact.net/issues/12032 @TODO
+
+select one move related by self->VehicleMovement[R300];
 if ( not_empty move )
   move.VehicleMove();
 else
@@ -102,7 +105,8 @@ INSERT INTO O_TFR
 	'Dispose of the client instances when the test sequence service no longer needs them.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'// One of these subtypes should match...
+	'// The following is a work around for lack of polymorphic operation in Verifier.
+// See https://support.onefact.net/issues/12032 @TODO
 
 select one fastforward related by self->FastForward[R300];
 if ( not_empty fastforward )

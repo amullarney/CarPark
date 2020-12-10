@@ -164,13 +164,13 @@ INSERT INTO S_EDT
 INSERT INTO S_ENUM
 	VALUES ("9c876910-13ca-4c70-8e20-dd2775f0390a",
 	'Arrive',
-	'',
+	'A vehicle has triggered the arrival sensor at either an entry or exit stand.',
 	"df1143c8-99e2-433b-9e64-5a44d4fe730f",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO S_ENUM
 	VALUES ("e9f866bb-4455-47b1-891e-ac5d197552db",
 	'Depart',
-	'',
+	'A vehicle has triggered the departure sensor at either an entry or exit stand.',
 	"df1143c8-99e2-433b-9e64-5a44d4fe730f",
 	"9c876910-13ca-4c70-8e20-dd2775f0390a");
 INSERT INTO PE_PE
@@ -190,25 +190,25 @@ INSERT INTO S_EDT
 INSERT INTO S_ENUM
 	VALUES ("8540b4cb-b985-45fd-837d-22575069bb8f",
 	'IssueTicket',
-	'',
+	'The testbench is emulating a customer requesting the operator to issue a ticket due to entry stand failure to do so.',
 	"d19af320-46d3-4fa9-bc93-8eff5cb690b0",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO S_ENUM
 	VALUES ("41baf5d9-c84e-454a-9ef2-ba9589448143",
 	'WaiveFee',
-	'',
+	'The testbench is emulating the operator action in waiving a due payment.',
 	"d19af320-46d3-4fa9-bc93-8eff5cb690b0",
 	"f4f92251-93ad-49db-918c-9439b9fdd1cd");
 INSERT INTO S_ENUM
 	VALUES ("b6303622-7cd2-4bd1-ad7a-4f5b4e34548f",
 	'CollectFee',
-	'',
+	'The testbench is emulating the operator action in collecting a due payment.',
 	"d19af320-46d3-4fa9-bc93-8eff5cb690b0",
 	"41baf5d9-c84e-454a-9ef2-ba9589448143");
 INSERT INTO S_ENUM
 	VALUES ("f4f92251-93ad-49db-918c-9439b9fdd1cd",
 	'OpenBarrier',
-	'',
+	'The testbench is emulating a customer requesting the operator to open the barrier of a faulty entry or exit stand.',
 	"d19af320-46d3-4fa9-bc93-8eff5cb690b0",
 	"8540b4cb-b985-45fd-837d-22575069bb8f");
 INSERT INTO PE_PE
@@ -228,43 +228,43 @@ INSERT INTO S_EDT
 INSERT INTO S_ENUM
 	VALUES ("020deda9-87b3-4a49-9980-425641ab07a1",
 	'unpaid',
-	'',
+	'No payment has been made for a stay.',
 	"ded3bca0-4d1e-414f-8227-dc8fc8fd64d9",
 	"310ac6e5-d3b7-4203-9ca1-3299a8c5c321");
 INSERT INTO S_ENUM
 	VALUES ("a80592c4-d84f-47ab-bf6b-eda66105f124",
 	'paid',
-	'',
+	'Payment for a stay has been completed.',
 	"ded3bca0-4d1e-414f-8227-dc8fc8fd64d9",
 	"64160aff-cab3-4cef-8fa7-8382a8cc01ac");
 INSERT INTO S_ENUM
 	VALUES ("2026d279-35b6-406e-8466-879412a6b4b1",
 	'waived',
-	'',
+	'A payment, either for a stay or for late exit, has been waived by the operator.',
 	"ded3bca0-4d1e-414f-8227-dc8fc8fd64d9",
 	"a80592c4-d84f-47ab-bf6b-eda66105f124");
 INSERT INTO S_ENUM
 	VALUES ("be6b6bbc-f733-455c-af8e-62c292f17cbe",
 	'excess',
-	'',
+	'An additional charge that may be levied when a customer overstays the exit deadline on a ticket.',
 	"ded3bca0-4d1e-414f-8227-dc8fc8fd64d9",
 	"2026d279-35b6-406e-8466-879412a6b4b1");
 INSERT INTO S_ENUM
 	VALUES ("310ac6e5-d3b7-4203-9ca1-3299a8c5c321",
 	'ignore',
-	'',
+	'This status is not relevant in an instance of the multi-parameter observation that references it.',
 	"ded3bca0-4d1e-414f-8227-dc8fc8fd64d9",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO S_ENUM
 	VALUES ("e5aa001a-6fe4-417d-b11c-30f66a306c38",
 	'cancelled',
-	'',
+	'Payment has been cancelled, either by customer choice or by payment machine timeout.',
 	"ded3bca0-4d1e-414f-8227-dc8fc8fd64d9",
 	"be6b6bbc-f733-455c-af8e-62c292f17cbe");
 INSERT INTO S_ENUM
 	VALUES ("64160aff-cab3-4cef-8fa7-8382a8cc01ac",
 	'paying',
-	'',
+	'Payment is being made at a payment machine.',
 	"ded3bca0-4d1e-414f-8227-dc8fc8fd64d9",
 	"020deda9-87b3-4a49-9980-425641ab07a1");
 INSERT INTO PE_PE
@@ -284,19 +284,19 @@ INSERT INTO S_EDT
 INSERT INTO S_ENUM
 	VALUES ("a746d392-86be-4356-b58a-de8bd6878657",
 	'ignore',
-	'',
+	'This status is not relevant in an instance of the multi-parameter observation that references it.',
 	"01e593e1-d9ae-4124-b4c0-98d3952a808a",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO S_ENUM
 	VALUES ("db59701d-cf14-436d-a6b2-6b3444b45ca8",
 	'valid',
-	'',
+	'A customer is exiting within the allowed time period after making payment.',
 	"01e593e1-d9ae-4124-b4c0-98d3952a808a",
 	"a746d392-86be-4356-b58a-de8bd6878657");
 INSERT INTO S_ENUM
 	VALUES ("3423b7cf-af36-47b1-8844-bf1c2d36ca69",
 	'expired',
-	'',
+	'The time period allowed for exit after making payment mhas been exceeded.',
 	"01e593e1-d9ae-4124-b4c0-98d3952a808a",
 	"db59701d-cf14-436d-a6b2-6b3444b45ca8");
 INSERT INTO PE_PE
@@ -316,19 +316,19 @@ INSERT INTO S_EDT
 INSERT INTO S_ENUM
 	VALUES ("d7f2f823-6efb-4d55-bfda-56f71ac3afca",
 	'ignore',
-	'',
+	'This status is not relevant in an instance of the multi-parameter observation that references it.',
 	"44e7f67d-7896-4de3-b311-9aee3cb5b226",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO S_ENUM
 	VALUES ("29a555b0-138d-435c-aa9c-af1ba777196e",
 	'dispensed',
-	'',
+	'Either change or a refund has been dispensed at a pay station.',
 	"44e7f67d-7896-4de3-b311-9aee3cb5b226",
 	"d7f2f823-6efb-4d55-bfda-56f71ac3afca");
 INSERT INTO S_ENUM
 	VALUES ("8d228b70-c35a-4710-99bc-2e333a224278",
 	'forfeit',
-	'',
+	'A customer has accepted that no change is available even though due.',
 	"44e7f67d-7896-4de3-b311-9aee3cb5b226",
 	"29a555b0-138d-435c-aa9c-af1ba777196e");
 INSERT INTO PE_PE

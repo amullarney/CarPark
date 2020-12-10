@@ -87,7 +87,10 @@ INSERT INTO O_TFR
 	'This operation will be invoked when the counterpart instance is encountered by the sequencing service.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select one tr related by self->QueryTicketRequest[R400];
+	'// The following is a work around for lack of polymorphic operation in Verifier.
+// See https://support.onefact.net/issues/12032 @TODO
+
+select one tr related by self->QueryTicketRequest[R400];
 if ( not_empty tr )
   tr.CheckRequest();
 else

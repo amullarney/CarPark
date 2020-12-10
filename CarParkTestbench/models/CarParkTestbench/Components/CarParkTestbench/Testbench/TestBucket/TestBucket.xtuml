@@ -33,7 +33,10 @@ INSERT INTO O_TFR
 	'Dispose of the test bucket instances after completion of execution.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select one nominal related by self->NominalCaseBucket[R700];
+	'// The following is a work around for lack of polymorphic operation in Verifier.
+// See https://support.onefact.net/issues/12032 @TODO
+
+select one nominal related by self->NominalCaseBucket[R700];
 if ( not_empty nominal )
   unrelate self from nominal across R700;
   delete object instance nominal;
@@ -72,7 +75,10 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select one nominal related by self->NominalCaseBucket[R700];
+	'// The following is a work around for lack of polymorphic operation in Verifier.
+// See https://support.onefact.net/issues/12032 @TODO
+
+select one nominal related by self->NominalCaseBucket[R700];
 if ( not_empty nominal )
   nominal.CreateBucketTests();
 end if;

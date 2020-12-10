@@ -19,10 +19,8 @@ INSERT INTO O_TFR
 	'select one bucket related by self->TestBucket[R700];
 send TESTSEQ::SetTestBucketTimeResolutions( bucketId:bucket.bucketId, timeResolution:timeResolution::second, pollResolution:timeResolution::second );
 
-// The following test is a scenario where the customer takes too long to get to the exit stand.
-// When this testbench evolves, this scenario will be extended to cover UC12 and UC13.
-// This will require stimuli and observations which represent interaction with the Operator.
-
+// The customer takes too long to get to the exit stand.
+// See UC12, 13 in NonNominal test cases.
 send TESTSEQ::AddTestCase( caseLabel:"Overstay" ); 
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:29, caseLabel:"Overstay" );
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );

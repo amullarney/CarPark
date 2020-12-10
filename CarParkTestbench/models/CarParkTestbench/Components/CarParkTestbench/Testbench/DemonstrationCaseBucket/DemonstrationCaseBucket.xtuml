@@ -19,7 +19,9 @@ INSERT INTO O_TFR
 	'Script the seqLabels of stimuli and observations for each test case in this bucket.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'// In time, demonstration cases will live here''; for npw, just some failure cases.
+	'// Cases which demonstrate how failure is reported by a testbench using the test framework.
+// Not wishing to introduce defects in the application, deliberate errors in observations are used.
+// 
 select one bucket related by self->TestBucket[R700];
 send TESTSEQ::SetTestBucketTimeResolutions( bucketId:bucket.bucketId, timeResolution:timeResolution::second, pollResolution:timeResolution::second );
 

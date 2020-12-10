@@ -94,8 +94,7 @@ if ( not_empty tracker )
     if ( tracker.payStatus == PayStatus::cancelled )
       tracker.deadline = 0;
     else
-      tracker.payStatus = PayStatus::paid;              // may possibly be cancelled...
-      tracker.deadline = TIM::current_seconds() + 15;	// see CP29 in CarPark SRS
+      tracker.payStatus = PayStatus::paid;              // may yet be cancelled for insufficient change.
       observation.Complete( success:True );
     end if;
   else

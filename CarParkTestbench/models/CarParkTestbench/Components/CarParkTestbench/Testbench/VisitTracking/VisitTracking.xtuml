@@ -90,7 +90,7 @@ INSERT INTO O_ATTR
 	"1be5dd1b-f517-40ac-8691-0144999e11da",
 	"d3edc705-76e8-4b4f-8401-707e2578de4c",
 	'payStatus',
-	'If true, the balance requested at the pay station has been paid in full.',
+	'Tracks the payment status throughout a visit.',
 	'',
 	'payStatus',
 	0,

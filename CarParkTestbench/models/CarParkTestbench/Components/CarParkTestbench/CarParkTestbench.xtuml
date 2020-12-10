@@ -1706,9 +1706,8 @@ INSERT INTO SPR_RS
 	'InsufficientChange',
 	'Indicates that this payment machine contain insufficient change to settle
 the current transaction.',
-	'LOG::LogInfo( message:"Insufficient change available at " + param.Location );
-// Record the amount dispensed so that it can be checked by an observation.
-
+	'// Allow the customer the option of cancelling, for a refund, or waiving the change due.
+LOG::LogInfo( message:"Insufficient change available at " + param.Location );
 select any tracker from instances of VisitTracking
  where ( selected.payingAt == param.Location );
 if ( tracker.amountDue < 0.0 )
@@ -1763,7 +1762,13 @@ INSERT INTO SPR_RS
 	'ExitDeadline',
 	'Provides the exit deadline (date/time) from the carpark system to a payment machine, 
 so the latter can print it on the ticket before returning the ticket to the patron.',
-	'',
+	'// The Deadline parameter here is a formatted string which does not lend itself to checking at exit.
+// Based on CP29 in the CarPark SRS, compute a 15 minute expiration time.
+select any tracker from instances of VisitTracking
+ where ( selected.payingAt == param.Location );
+if ( not_empty tracker )
+  tracker.deadline = TIM::current_seconds() + 15 * 60;	// see CP29 in CarPark SRS
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1805,7 +1810,11 @@ INSERT INTO SPR_RS
 	VALUES ("ac2494ef-8171-4c20-9e47-ac0d13ce2691",
 	'TransactionCancelled',
 	'Indicates that the current transaction was cancelled by the carpark system.',
-	'select any observation from instances of Observation where ( false );
+	'// A payment transaction has been cancelled either by timeout or customer choice.
+// Any payment made, partial or full, will be refunded.
+// This also signals the completion of the observation monitoring the payment transaction.
+//
+select any observation from instances of Observation where ( false );  // declaration
 select any tracker from instances of VisitTracking
  where ( selected.payingAt == param.Location );
 if ( not_empty tracker )
@@ -1947,6 +1956,8 @@ if ( param.caseLabel == "UC1" )
   Preferences::EntryActivation( off:False );  // Enable activation data checking at Entry.
 end if;
 if ( param.caseLabel == "UC11" )
+ or ( param.caseLabel == "UC12" )
+ or ( param.caseLabel == "UC13" )
   Preferences::ExitActivation( off:False );  // Enable activation data checking at Exit.
 end if;
 send TESTSEQ::TestCaseInitialized( caseLabel:param.caseLabel );',
