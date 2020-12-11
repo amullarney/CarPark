@@ -15,6 +15,7 @@ INSERT INTO S_SYNC
 	'// Register those peripherals needed by the test scenarios.
 send EntryStand::Register( Location:"North" );
 send Payer::Register( Location:"1st Floor", MakesChange:true );
+send Payer::Register( Location:"Street", MakesChange:false );
 send ExitStand::Register( Location:"Lane 1" );',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,

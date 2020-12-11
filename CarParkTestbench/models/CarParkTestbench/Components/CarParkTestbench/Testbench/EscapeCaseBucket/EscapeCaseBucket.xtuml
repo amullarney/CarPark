@@ -19,29 +19,28 @@ INSERT INTO O_TFR
 	'select one bucket related by self->TestBucket[R700];
 send TESTSEQ::SetTestBucketTimeResolutions( bucketId:bucket.bucketId, timeResolution:timeResolution::second, pollResolution:timeResolution::second );
 
-// The following test is a scenario where the customer takes too long to get to the exit stand.
-// When this testbench evolves, this scenario will be extended to cover UC12 and UC13.
-// This will require stimuli and observations which represent interaction with the Operator.
-
+// The customer takes too long to get to the exit stand.
+// See UC12, 13 in NonNominal test cases.
 send TESTSEQ::AddTestCase( caseLabel:"Overstay" ); 
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:29, caseLabel:"Overstay" );
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
 FastForward::Create( seqLabel:"seq01", hours:1, minutes:42, seconds:0 );
-VehicleArrived::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
+VehicleMovement::Create( seqLabel:"seq01", location:"North", stand:"Entry", movement: Movement::Arrive );
 QueryTicketRequest::Create( seqLabel:"seq01", location:"North", enabled:True );
 TicketRequested::Create( seqLabel:"seq01", location:"North" );
 TicketIssued::Create( seqLabel:"seq01", location:"North" );
 TicketTaken::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
-VehicleDeparture::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
+VehicleMovement::Create( seqLabel:"seq01", location:"North", stand:"Entry", movement: Movement::Depart );
 FastForward::Create( seqLabel:"seq01", hours:5, minutes:0, seconds:0 );
-TicketInserted::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay" );
-BalanceValue::Create( seqLabel:"seq01", location:"1st Floor", pay:True );  // do not pay!
+TicketInserted::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay", number:1 );
+id = BalanceValue::Create( seqLabel:"seq01", location:"1st Floor", pay:True, wantChange:False );  // do not pay!
 TicketReturned::Create( seqLabel:"seq01", location:"1st Floor" );
-ChangeDispensed::Create( seqLabel:"seq01", location:"1st Floor" );
+ChangeDispensed::Create( seqLabel:"seq01", location:"1st Floor", dependee:id );
 TicketTaken::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay" );
 FastForward::Create( seqLabel:"seq01", hours:0, minutes:16, seconds:0 );
-VehicleArrived::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit" );
-TicketInserted::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit" );
-VehicleDeparture::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit" );
+VehicleMovement::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", movement: Movement::Arrive );
+TicketInserted::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", number:1 );
+VehicleMovement::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", movement: Movement::Depart );
 
 
 bucket.Initialized();',

@@ -22,7 +22,7 @@ ticket.location = param.location;
 create object instance obs of Observation;
 relate ticket to obs across R400;
 
-obs.Add( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, key:"TicketReturned", concurrent:True );',
+obs.AddTriggered( seqLabel:param.seqLabel, timeLimit:0, key:"TicketReturned", concurrent:True );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
@@ -59,7 +59,6 @@ select any tracker from instances of VisitTracking
  where ( selected.payingAt == self.location )
   and ( selected.ticketReturned == True );
 if ( not_empty tracker )
-  tracker.ticketReturned = False;  // if for cancellation, may try again elsewhere.
   observation.Complete( success:True );
 else
   observation.Complete( success:False );

@@ -54,36 +54,14 @@ INSERT INTO PE_PE
 	"00000000-0000-0000-0000-000000000000",
 	1);
 INSERT INTO S_SYNC
-	VALUES ("72bb9eb4-ab85-4a27-8a0f-e7d69307d6b3",
-	"00000000-0000-0000-0000-000000000000",
-	'RunAllCarParkTestCases',
-	'Configure the Test Suite to include all tests for the CarPark application.
-The test scripts in each bucket will execute in the order the buckets are added.',
-	'::Initialize();
-send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Comprehensive Test Suite", keepAllCases:False ); 
-NominalCaseBucket::AddBucketToSuite();
-NonNominalCaseBucket::AddBucketToSuite();
-send Operator::OpenCarpark();',
-	"ba5eda7a-def5-0000-0000-000000000000",
-	1,
-	'',
-	0);
-INSERT INTO PE_PE
-	VALUES ("72bb9eb4-ab85-4a27-8a0f-e7d69307d6b3",
-	1,
-	"68e29e87-70d2-4c06-97db-6b293da075ca",
-	"00000000-0000-0000-0000-000000000000",
-	1);
-INSERT INTO S_SYNC
 	VALUES ("04200a9e-d961-44bc-92f1-43afbe9cec1d",
 	"00000000-0000-0000-0000-000000000000",
 	'RunNonNominalCases',
 	'Configure the Test Suite to include selected Test Bucket subtypes.
 The test scripts in each bucket will execute in the order the buckets are added.',
 	'::Initialize();
-send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Nominal Test Suite", keepAllCases:False ); 
-NonNominalCaseBucket::AddBucketToSuite();
-send Operator::OpenCarpark();',
+send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark NonNominal Test Suite", keepAllCases:False ); 
+NonNominalCaseBucket::AddBucketToSuite();',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'',
@@ -100,9 +78,8 @@ INSERT INTO S_SYNC
 	'RunDemonstrationCases',
 	'',
 	'::Initialize();
-send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Failure Test Suite", keepAllCases:False ); 
-DemonstrationCaseBucket::AddBucketToSuite();
-send Operator::OpenCarpark();',
+send TESTSEQ::RegisterTestSuite( suiteLabel:"Demonstration Test Suite", keepAllCases:False ); 
+DemonstrationCaseBucket::AddBucketToSuite();',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'',
@@ -120,8 +97,7 @@ INSERT INTO S_SYNC
 	'',
 	'::Initialize();
 send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Escape Test Suite", keepAllCases:False ); 
-EscapeCaseBucket::AddBucketToSuite();
-send Operator::OpenCarpark();',
+EscapeCaseBucket::AddBucketToSuite();',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'',

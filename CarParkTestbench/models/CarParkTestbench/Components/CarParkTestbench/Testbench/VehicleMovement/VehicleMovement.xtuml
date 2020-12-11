@@ -2,9 +2,9 @@
 
 INSERT INTO O_OBJ
 	VALUES ("76982554-b9dd-4bb2-81d8-f57877cade8e",
-	'VehicleArrived',
+	'VehicleMovement',
 	14,
-	'VehicleArrived',
+	'VehicleMovement',
 	'Signal arrival of a vehicle at an entry or exit station.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
@@ -15,12 +15,14 @@ INSERT INTO O_TFR
 ',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'create object instance arrival of VehicleArrived;
-arrival.location = param.location;
-arrival.standType = param.stand;
+	'// Simulates vehicle arrival/departure at entry/exit stand
+create object instance move of VehicleMovement;
+move.location = param.location;
+move.standType = param.stand;
+move.movement = param.movement;
 
 create object instance stimulus of Stimulus;
-relate stimulus to arrival across R300;
+relate stimulus to move across R300;
 
 stimulus.AddToTest( seqLabel:param.seqLabel );',
 	1,
@@ -54,23 +56,49 @@ INSERT INTO O_TPARM
 	'',
 	"00000000-0000-0000-0000-000000000000",
 	'');
+INSERT INTO O_TPARM
+	VALUES ("3021f587-08de-4dd2-96dd-b92892028cb1",
+	"89d3f23d-eb53-4fbc-b30c-088697738580",
+	'movement',
+	"df1143c8-99e2-433b-9e64-5a44d4fe730f",
+	0,
+	'',
+	"8d27d9ee-09e4-43b0-a984-3be79aba8b86",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("df1143c8-99e2-433b-9e64-5a44d4fe730f",
+	"00000000-0000-0000-0000-000000000000",
+	'Movement',
+	'',
+	'',
+	'../../../../../../../CarPark/models/CarPark/SharedTypes/SharedTypes.xtuml');
 INSERT INTO O_TFR
 	VALUES ("1f10d4da-bd03-41eb-bd54-e6e02a7c29bc",
 	"76982554-b9dd-4bb2-81d8-f57877cade8e",
-	'VehicleArrival',
+	'VehicleMove',
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'LOG::LogInfo( message:"Vehicle arrived at " + self.standType + " " + self.location );
+	'LOG::LogInfo( message:"Vehicle movement at " + self.standType + " " + self.location );
 if ( self.standType == "Entry" )
-  send EntryStand::VehicleWaiting( Location:self.location );
+  if ( self.movement == Movement::Arrive )
+    send EntryStand::VehicleWaiting( Location:self.location );
+  else
+    send EntryStand::VehicleEntered( Location:self.location );
+  end if;
 else
-  send ExitStand::VehicleWaiting( Location:self.location );
+  if ( self.movement == Movement::Arrive )
+    send ExitStand::VehicleWaiting( Location:self.location );
+  else
+    send ExitStand::VehicleExited( Location:self.location );
+    select any tracker from instances of VisitTracking
+     where ( selected.exitingAt == self.location );
+    delete object instance tracker;
+  end if;
 end if;
 
 select one stimulus related by self->Stimulus[R300];
-stimulus.Complete();
-',
+stimulus.Complete();',
 	1,
 	'',
 	"89d3f23d-eb53-4fbc-b30c-088697738580",
@@ -109,6 +137,24 @@ INSERT INTO O_ATTR
 	'standType',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("54aaca95-f97d-432b-bfba-8f0282f2a874",
+	"76982554-b9dd-4bb2-81d8-f57877cade8e");
+INSERT INTO O_BATTR
+	VALUES ("54aaca95-f97d-432b-bfba-8f0282f2a874",
+	"76982554-b9dd-4bb2-81d8-f57877cade8e");
+INSERT INTO O_ATTR
+	VALUES ("54aaca95-f97d-432b-bfba-8f0282f2a874",
+	"76982554-b9dd-4bb2-81d8-f57877cade8e",
+	"3fe007c5-aa0e-4f87-9304-a37e9aa67074",
+	'movement',
+	'',
+	'',
+	'movement',
+	0,
+	"df1143c8-99e2-433b-9e64-5a44d4fe730f",
 	'',
 	'');
 INSERT INTO O_ID

@@ -36,9 +36,12 @@ INSERT INTO O_TFR
 	'This operation will be invoked when the stimulus is encountered by the sequencing service.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select one arrival related by self->VehicleArrived[R300];
-if ( not_empty arrival )
-  arrival.VehicleArrival();
+	'// The following is a work around for lack of polymorphic operation in Verifier.
+// See https://support.onefact.net/issues/12032 @TODO
+
+select one move related by self->VehicleMovement[R300];
+if ( not_empty move )
+  move.VehicleMove();
 else
   select one request related by self->TicketRequested[R300];
   if ( not_empty request )
@@ -48,9 +51,9 @@ else
   	if ( not_empty extract )
   	  extract.Collected();
   	else
-      select one departure related by self->VehicleDeparture[R300];
-      if ( not_empty departure )
-        departure.VehicleNotThere();
+      select one action related by self->OpAction[R300];
+      if ( not_empty action )
+        action.Act();
       else
         select one timewarp related by self->FastForward[R300];
         if ( not_empty timewarp )
@@ -102,17 +105,18 @@ INSERT INTO O_TFR
 	'Dispose of the client instances when the test sequence service no longer needs them.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'// One of these subtypes should match...
+	'// The following is a work around for lack of polymorphic operation in Verifier.
+// See https://support.onefact.net/issues/12032 @TODO
 
 select one fastforward related by self->FastForward[R300];
 if ( not_empty fastforward )
   unrelate fastforward from self across R300;
   delete object instance fastforward;
 end if;
-select one arrival related by self->VehicleArrived[R300];
-if ( not_empty arrival )
-  unrelate arrival from self across R300;
-  delete object instance arrival;
+select one move related by self->VehicleMovement[R300];
+if ( not_empty move )
+  unrelate move from self across R300;
+  delete object instance move;
 end if;
 select one ticket related by self->TicketRequested[R300];
 if ( not_empty ticket )
@@ -129,10 +133,10 @@ if ( not_empty insert )
   unrelate insert from self across R300;
   delete object instance insert;
 end if;
-select one departure related by self->VehicleDeparture[R300];
-if ( not_empty departure )
-  unrelate departure from self across R300; 
-  delete object instance departure;
+select one action related by self->OpAction[R300];
+if ( not_empty action )
+  unrelate action from self across R300; 
+  delete object instance action;
 end if;
 delete object instance self;',
 	1,

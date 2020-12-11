@@ -25,6 +25,24 @@ INSERT INTO O_ATTR
 	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
+INSERT INTO O_NBATTR
+	VALUES ("569d6f59-f1b6-4773-9b62-9f8a5427d726",
+	"086a178c-b528-4fef-a80e-5d8139bd59b5");
+INSERT INTO O_BATTR
+	VALUES ("569d6f59-f1b6-4773-9b62-9f8a5427d726",
+	"086a178c-b528-4fef-a80e-5d8139bd59b5");
+INSERT INTO O_ATTR
+	VALUES ("569d6f59-f1b6-4773-9b62-9f8a5427d726",
+	"086a178c-b528-4fef-a80e-5d8139bd59b5",
+	"fc488be7-9769-4a44-bc5b-5405b157b27b",
+	'available',
+	'Number of free spaces.',
+	'',
+	'available',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
 INSERT INTO O_ID
 	VALUES (0,
 	"086a178c-b528-4fef-a80e-5d8139bd59b5");

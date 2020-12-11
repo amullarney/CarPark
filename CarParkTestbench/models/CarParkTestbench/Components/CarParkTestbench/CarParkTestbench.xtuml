@@ -41,7 +41,7 @@ INSERT INTO GD_SHP
 INSERT INTO GD_CTR
 	VALUES ("49745cba-7b3d-4bcb-abae-81214c483983");
 INSERT INTO DIM_ND
-	VALUES (3368.000000,
+	VALUES (3588.000000,
 	3580.000000,
 	"49745cba-7b3d-4bcb-abae-81214c483983");
 INSERT INTO DIM_GE
@@ -718,6 +718,30 @@ INSERT INTO DIM_ELE
 	VALUES ("a749502c-282d-4434-99b8-1e8ef4a4dc85",
 	0,
 	"49745cba-7b3d-4bcb-abae-81214c483983");
+INSERT INTO GD_GE
+	VALUES ("7be19670-d3b8-4a8a-adfe-96b5ec879fd5",
+	"77c51073-d550-49a0-9c24-1958fb700e9e",
+	"a1e74b07-fdc2-4e68-8259-e6ccfeb920f1",
+	108,
+	0,
+	'CarParkTestbench::Components::CarParkTestbench::Types');
+INSERT INTO GD_SHP
+	VALUES ("7be19670-d3b8-4a8a-adfe-96b5ec879fd5");
+INSERT INTO GD_NCS
+	VALUES ("7be19670-d3b8-4a8a-adfe-96b5ec879fd5");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"7be19670-d3b8-4a8a-adfe-96b5ec879fd5");
+INSERT INTO DIM_GE
+	VALUES (7476.000000,
+	3100.000000,
+	"7be19670-d3b8-4a8a-adfe-96b5ec879fd5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("7be19670-d3b8-4a8a-adfe-96b5ec879fd5",
+	0,
+	"49745cba-7b3d-4bcb-abae-81214c483983");
 INSERT INTO DIM_DIA
 	VALUES ("77c51073-d550-49a0-9c24-1958fb700e9e",
 	'',
@@ -751,7 +775,12 @@ INSERT INTO SPR_RS
 	'TardyExit',
 	'Indicates the exit deadline printed on this ticket has been missed.',
 	'LOG::LogInfo( message:"Tardy exit at " + param.Location );
-LOG::LogReal( message:"Additional fee: ", r:param.AdditionalCharge );',
+LOG::LogReal( message:"Additional fee: ", r:param.AdditionalCharge );
+select any tracker from instances of VisitTracking
+ where ( selected.exitingAt == param.Location );
+if ( not_empty tracker )
+  tracker.payStatus = PayStatus::excess;
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -830,9 +859,7 @@ if ( prefs.EntryActivation == True )  // Checking Entry stand data.
   activ.active = True;
   activ.barrier = param.Barrier;
   activ.ticketEntry = param.Ticket;
-  send TESTSEQ::Assess( key:"Activation" );
-end if;
-',
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -855,7 +882,6 @@ if ( prefs.EntryActivation == True )  // Checking Entry stand data.
   create object instance activ of Activation;
   activ.location = param.Location;
   activ.active = False;
-  send TESTSEQ::Assess( key:"Activation" );
 end if;',
 	1,
 	0);
@@ -903,7 +929,6 @@ if ( prefs.ExitActivation == True )  // Checking Exit stand data.
   activ.active = True;
   activ.barrier = param.Barrier;
   activ.ticketExit = param.Ticket;
-  send TESTSEQ::Assess( key:"Activation" );
 end if;',
 	1,
 	0);
@@ -927,7 +952,6 @@ if ( prefs.ExitActivation == True )  // Checking Exit stand data.
   create object instance activ of Activation;
   activ.location = param.Location;
   activ.active = False;
-  send TESTSEQ::Assess( key:"Activation" );
 end if;',
 	1,
 	0);
@@ -953,6 +977,7 @@ if ( prefs.Occupancy == True )  // Checking Occupancy data.
     create object instance contents of Occupancy;
   end if;
   contents.count = param.Occupancy;
+  contents.available = param.Availability;
   send TESTSEQ::Assess( key:"Occupancy" );
 end if;',
 	1,
@@ -1229,8 +1254,16 @@ INSERT INTO SPR_RS
 	'Commands the entry stand to issue a ticket.',
 	'// Create an instance which tracks progress through a visit.
 create object instance tracker of VisitTracking;
-tracker.enteredAt = param.Location;
 tracker.ticketNumber = param.Number;
+tracker.enteredAt = param.Location;
+tracker.payingAt = "";
+tracker.exitingAt = "";
+tracker.ticketReturned = false;
+tracker.amountDue = 0.0;
+tracker.amountDispensed = 0.0;
+tracker.payStatus = PayStatus::unpaid;
+tracker.changeStatus = ChangeStatus::ignore;
+tracker.wantChange = true;
 send TESTSEQ::Assess( key:"TicketIssued" );',
 	1,
 	0);
@@ -1648,9 +1681,7 @@ INSERT INTO SPR_RS
 	'RemainingBalance',
 	'Provides the remaining balance for the stay associated with the ticket
 currently inserted in a payment machine.',
-	'LOG::LogInfo( message:"---- receiving updated balance for " + param.Location );
-LOG::LogReal( message:"balance", r:param.Amount );
-
+	'// Update balance due in visit track data and request observation evaluation.
 select any tracker from instances of VisitTracking
  where ( selected.payingAt == param.Location );
 tracker.amountDue = param.Amount;
@@ -1675,7 +1706,19 @@ INSERT INTO SPR_RS
 	'InsufficientChange',
 	'Indicates that this payment machine contain insufficient change to settle
 the current transaction.',
-	'LOG::LogInfo( message:"Insufficient change available at " + param.Location );',
+	'// Allow the customer the option of cancelling, for a refund, or waiving the change due.
+LOG::LogInfo( message:"Insufficient change available at " + param.Location );
+select any tracker from instances of VisitTracking
+ where ( selected.payingAt == param.Location );
+if ( tracker.amountDue < 0.0 )
+  if ( tracker.wantChange )
+    send Payer::CancelledTransaction( Location:param.Location );
+  else
+    send Payer::WaivedChange( Location:param.Location );
+    tracker.changeStatus = ChangeStatus::forfeit;
+    tracker.payStatus = PayStatus::paid;
+  end if;
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1719,12 +1762,12 @@ INSERT INTO SPR_RS
 	'ExitDeadline',
 	'Provides the exit deadline (date/time) from the carpark system to a payment machine, 
 so the latter can print it on the ticket before returning the ticket to the patron.',
-	'// Record an exit deadline for checking at exit.
-
+	'// The Deadline parameter here is a formatted string which does not lend itself to checking at exit.
+// Based on CP29 in the CarPark SRS, compute a 15 minute expiration time.
 select any tracker from instances of VisitTracking
  where ( selected.payingAt == param.Location );
 if ( not_empty tracker )
-  tracker.deadline = param.Deadline;
+  tracker.deadline = TIM::current_seconds() + 15 * 60;	// see CP29 in CarPark SRS
 end if;',
 	1,
 	0);
@@ -1744,7 +1787,7 @@ INSERT INTO SPR_RS
 	VALUES ("4ffe69c6-eff9-4bf8-8240-31ff7622bf60",
 	'DispenseChange',
 	'Commands a payment machine to dispense change to settle the current transaction.',
-	'// Record the amount dispensed so that it can be checked by ann observation.
+	'// Record the amount dispensed so that it can be checked by an observation.
 
 select any tracker from instances of VisitTracking
  where ( selected.payingAt == param.Location );
@@ -1767,14 +1810,27 @@ INSERT INTO SPR_RS
 	VALUES ("ac2494ef-8171-4c20-9e47-ac0d13ce2691",
 	'TransactionCancelled',
 	'Indicates that the current transaction was cancelled by the carpark system.',
-	'select any tracker from instances of VisitTracking
+	'// A payment transaction has been cancelled either by timeout or customer choice.
+// Any payment made, partial or full, will be refunded.
+// This also signals the completion of the observation monitoring the payment transaction.
+//
+select any observation from instances of Observation where ( false );  // declaration
+select any tracker from instances of VisitTracking
  where ( selected.payingAt == param.Location );
 if ( not_empty tracker )
-  LOG::LogInfo( message:"Payment transaction cancelled at " + param.Location );
-  tracker.payingAt = "";  // cancelled: may try paying again elsewhere.
-end if;
-send TESTSEQ::RemoveTriggeredObservation( key:"Dispensed" );
-send TESTSEQ::RemoveTriggeredObservation( key:"Balance" );',
+  select any balance from instances of BalanceValue
+   where ( selected.location == tracker.payingAt );
+  if ( not_empty balance )
+    select one observation related by balance->Observation[R400];
+    if ( tracker.payStatus == PayStatus::unpaid )  // no payment to return
+      observation.CancelDependents();
+    end if;
+    LOG::LogInfo( message:"Payment transaction cancelled at " + param.Location );
+    tracker.payStatus = PayStatus::cancelled;
+    send TESTSEQ::CancelObservation( observationId: observation.observationId );
+  else
+    LOG::LogInfo( message:"Unable to cancel transaction at " + param.Location );  end if;
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1900,6 +1956,8 @@ if ( param.caseLabel == "UC1" )
   Preferences::EntryActivation( off:False );  // Enable activation data checking at Entry.
 end if;
 if ( param.caseLabel == "UC11" )
+ or ( param.caseLabel == "UC12" )
+ or ( param.caseLabel == "UC13" )
   Preferences::ExitActivation( off:False );  // Enable activation data checking at Exit.
 end if;
 send TESTSEQ::TestCaseInitialized( caseLabel:param.caseLabel );',
@@ -2267,24 +2325,6 @@ INSERT INTO C_EP_PROXY
 	'',
 	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
 INSERT INTO SPR_REP
-	VALUES ("cc3f0ad4-032f-4d53-b130-041bc07a4793",
-	"db8e25d9-f7a5-4738-85a0-ef4adc5bf3f2",
-	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
-INSERT INTO SPR_RS
-	VALUES ("cc3f0ad4-032f-4d53-b130-041bc07a4793",
-	'AddObservation',
-	'Add an observation to follow injection of a specified stimulus.',
-	'',
-	1,
-	0);
-INSERT INTO C_EP_PROXY
-	VALUES ("db8e25d9-f7a5-4738-85a0-ef4adc5bf3f2",
-	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
-	-1,
-	'AddObservation',
-	'Add an observation to follow injection of a specified stimulus.',
-	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
-INSERT INTO SPR_REP
 	VALUES ("281d378f-49f6-4d49-a3e9-0e385ed7a8dd",
 	"80b50e27-14fc-4cf7-9830-ef2a7c77d6fa",
 	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
@@ -2352,8 +2392,8 @@ INSERT INTO SPR_REP
 	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
 INSERT INTO SPR_RS
 	VALUES ("322abf3f-cccd-43fe-aaa7-e0979390316c",
-	'RemoveTriggeredObservation',
-	'On this signal, any active observations with matching key value will be deactivated.
+	'CancelObservation',
+	'On this signal, an active observation will be cancelled.
 This has the effect of completing the observation without a failure penalty.',
 	'',
 	1,
@@ -2362,8 +2402,8 @@ INSERT INTO C_EP_PROXY
 	VALUES ("ca057380-3763-49be-a902-4f89bd14277c",
 	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
 	-1,
-	'RemoveTriggeredObservation',
-	'On this signal, any active observations with matching key value will be deactivated.
+	'CancelObservation',
+	'On this signal, an active observation will be cancelled.
 This has the effect of completing the observation without a failure penalty.',
 	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
 INSERT INTO SPR_REP
@@ -2499,6 +2539,10 @@ end for;
 select many bcmds from instances of BarrierCommand;
 for each bcmd in bcmds
   delete object instance bcmd;
+end for;
+select many actvs from instances of Activation;
+for each actv in actvs
+  delete object instance actv;
 end for;',
 	1,
 	0);
@@ -2508,6 +2552,78 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'TestCaseComplete',
 	'Signal completion of a test case.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("0e9025a1-4b29-4169-b0ef-e6896a54e70e",
+	"5c356dfd-5197-46e8-8f38-d8d4f740788a",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("0e9025a1-4b29-4169-b0ef-e6896a54e70e",
+	'ObservationIncomplete',
+	'Allow this obbservation to be invoked again, attempting completion.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("5c356dfd-5197-46e8-8f38-d8d4f740788a",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'ObservationIncomplete',
+	'Allow this obbservation to be invoked again, attempting completion.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("e1d53445-bf71-49b1-a5f5-c02efe427f12",
+	"082333f2-efc5-427f-b3e7-f2c296eb4bed",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("e1d53445-bf71-49b1-a5f5-c02efe427f12",
+	'AddImmediateObservation',
+	'Add an observation which will evaluate as soon as it becomes eligible following a stimulus.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("082333f2-efc5-427f-b3e7-f2c296eb4bed",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'AddImmediateObservation',
+	'Add an observation which will evaluate as soon as it becomes eligible following a stimulus.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("eea925c5-81e1-4ed2-8637-64b82de01703",
+	"09c40bff-dfaf-4ccb-be7c-87e520743fcf",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("eea925c5-81e1-4ed2-8637-64b82de01703",
+	'AddTriggeredObservation',
+	'Add an observation which will only evaluate in response to signalled trigger occurrence.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("09c40bff-dfaf-4ccb-be7c-87e520743fcf",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'AddTriggeredObservation',
+	'Add an observation which will only evaluate in response to signalled trigger occurrence.',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("933e8d06-9c70-4fc5-b7d0-4411222ebd4a",
+	"18966c4a-2804-4b67-8933-5275d471cb7c",
+	"90ea7117-8b0f-4f98-a679-70202e1c75cf");
+INSERT INTO SPR_RS
+	VALUES ("933e8d06-9c70-4fc5-b7d0-4411222ebd4a",
+	'MigrateTriggeredObservation',
+	'Change an existing triggered observation to a polling immediate observation.',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("18966c4a-2804-4b67-8933-5275d471cb7c",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'MigrateTriggeredObservation',
+	'Change an existing triggered observation to a polling immediate observation.',
 	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("eff7aa83-70b9-46a6-bfc0-08d66d36431e",

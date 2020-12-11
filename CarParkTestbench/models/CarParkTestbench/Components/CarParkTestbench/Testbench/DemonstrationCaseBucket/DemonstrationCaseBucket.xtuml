@@ -19,37 +19,40 @@ INSERT INTO O_TFR
 	'Script the seqLabels of stimuli and observations for each test case in this bucket.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select one bucket related by self->TestBucket[R700];
+	'// Cases which demonstrate how failure is reported by a testbench using the test framework.
+// Not wishing to introduce defects in the application, deliberate errors in observations are used.
+// 
+select one bucket related by self->TestBucket[R700];
 send TESTSEQ::SetTestBucketTimeResolutions( bucketId:bucket.bucketId, timeResolution:timeResolution::second, pollResolution:timeResolution::second );
 
 // The following tests are based on use cases but cases UC1 and UC11 have deliberate failures.
 
 send TESTSEQ::AddTestCase( caseLabel:"UC1_failure" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
-VehicleArrived::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
+VehicleMovement::Create( seqLabel:"seq01", location:"North", stand:"Entry", movement: Movement::Arrive );
 QueryTicketRequest::Create( seqLabel:"seq01", location:"North", enabled:True );
 TicketRequested::Create( seqLabel:"seq01", location:"North" );
 TicketIssued::Create( seqLabel:"seq01", location:"North" );
 TicketTaken::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
-VehicleDeparture::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
+VehicleMovement::Create( seqLabel:"seq01", location:"North", stand:"Entry", movement: Movement::Depart );
 // Now, incorrectly attempt to check that the barrier is open; in fact, it should be closed.
 BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:BarrierState::Open );
 FastForward::Create( seqLabel:"seq01", hours:0, minutes:10, seconds:0 );
 
 send TESTSEQ::AddTestCase( caseLabel:"UC5_pay" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq05" );
-TicketInserted::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
-BalanceValue::Create( seqLabel:"seq05", location:"1st Floor", pay:True );
+TicketInserted::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay", number:1 );
+id = BalanceValue::Create( seqLabel:"seq05", location:"1st Floor", pay:True, wantChange:False );
 TicketReturned::Create( seqLabel:"seq05", location:"1st Floor" );
-ChangeDispensed::Create( seqLabel:"seq05", location:"1st Floor" );
+ChangeDispensed::Create( seqLabel:"seq05", location:"1st Floor", dependee:id );
 TicketTaken::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
 
 send TESTSEQ::AddTestCase( caseLabel:"UC11_failure" ); 
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq11" );
-VehicleArrived::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
-TicketInserted::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
+VehicleMovement::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", movement: Movement::Arrive );
+TicketInserted::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", number:1 );
 BarrierCheck::Create( seqLabel:"seq11", location:"North", stand:"Entry", state:BarrierState::Open );
-VehicleDeparture::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit" );
+VehicleMovement::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", movement: Movement::Depart );
 // Now, incorrectly attempt to check that the barrier is open; in fact, it should be closed.
 BarrierCheck::Create( seqLabel:"seq11", location:"North", stand:"Entry", state:BarrierState::Open );
 
