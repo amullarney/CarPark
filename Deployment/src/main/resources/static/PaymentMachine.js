@@ -12,7 +12,8 @@ var vm = new Vue({
 	    InsufficientChange: false,
 	    ExitDeadline: "",
 	    ChangeDispensed: "",
-	    CancelReason: ""
+	    CancelReason: "",
+	    ShowMsgs: false
     }
 })
 
@@ -34,17 +35,19 @@ function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
     if (connected) {
-        $("#conversation").show();
         if (document.getElementById('dispenses').checked){
             makesChange = true;
         }
         stompClient.send("/app/PMRegister", {}, JSON.stringify({'location': $("#location").val(), 'dispenses': makesChange}));
     }
     else {
-        $("#conversation").hide();
         initialize();
     }
     $("#replies").html("");
+}
+
+function toggleMsgs() {
+    vm.ShowMsgs = !vm.ShowMsgs;
 }
 
 // When connecting, subscribe to a location-specific topic to receive
@@ -136,4 +139,5 @@ $(function () {
     $( "#CancelledTransaction" ).click(function() { sendToServer( "CancelledTransaction" ); });
     $( "#WaivedChange" ).click(function() { sendToServer( "WaivedChange" ); });
     $( "#TicketCollected" ).click(function() { sendToServer( "PMTicketCollected" ); });
+    $( "#msgdisplay" ).click(function() { toggleMsgs(); });
 });

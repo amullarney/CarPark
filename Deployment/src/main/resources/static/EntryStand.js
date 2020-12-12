@@ -6,7 +6,8 @@ var vm = new Vue({
 	    TicketRequestDisabled: true,
 	    TicketCollectedDisabled : true,
 	    VehicleEnteredDisabled: true,
-	    BarrierOpen: false
+	    BarrierOpen: false,
+	    ShowMsgs: false
     }
 })
 
@@ -21,14 +22,16 @@ function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
     if (connected) {
-        $("#conversation").show();
         stompClient.send("/app/Register", {}, JSON.stringify({'location': $("#location").val()}));
     }
     else {
-        $("#conversation").hide();
         initialize();
     }
     $("#replies").html("");
+}
+
+function toggleMsgs() {
+    vm.ShowMsgs = !vm.ShowMsgs;
 }
 
 // When connecting, subscribe to a location-specific topic to receive
@@ -89,4 +92,5 @@ $(function () {
     $( "#TicketRequest" ).click(function() { sendToServer( "TicketRequested" ); });
     $( "#TicketCollected" ).click(function() { sendToServer( "TicketCollected" ); });
     $( "#VehicleEntered" ).click(function() { sendToServer( "VehicleEntered" ); });
+    $( "#msgdisplay" ).click(function() { toggleMsgs(); });
 });

@@ -6,6 +6,7 @@ var vm = new Vue({
 	    VehicleExitedDisabled : true,
 	    InsertedTicketDisabled: true,
 	    BarrierOpen: false,
+	    ShowMsgs: false
     }
 })
 
@@ -19,11 +20,9 @@ function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
     if (connected) {
-        $("#conversation").show();
         stompClient.send("/app/EXRegister", {}, JSON.stringify({'location': $("#location").val()}));
     }
     else {
-        $("#conversation").hide();
         initialize();
     }
     $("#replies").html("");
@@ -49,6 +48,10 @@ function disconnect() {
     }
     setConnected(false);
     console.log("Disconnected");
+}
+
+function toggleMsgs() {
+    vm.ShowMsgs = !vm.ShowMsgs;
 }
 
 // Client-to-server messages.
@@ -88,4 +91,5 @@ $(function () {
     $( "#VehicleWaiting" ).click(function() { sendToServer( "EXVehicleWaiting" ); });
     $( "#InsertedTicket" ).click(function() { sendInsertedTicket(); });
     $( "#VehicleExited" ).click(function() { sendToServer( "VehicleExited" ); });
+    $( "#msgdisplay" ).click(function() { toggleMsgs(); });
 });

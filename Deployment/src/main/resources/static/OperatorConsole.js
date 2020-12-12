@@ -130,11 +130,7 @@ function makeExit(location) {
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
-    if (connected) {
-//        $("#conversation").show();
-    }
-    else {
-//        $("#conversation").hide();
+    if (!connected) {
         initialize();
     }
     $("#replies").html("");
