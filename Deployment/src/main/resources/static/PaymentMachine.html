@@ -18,8 +18,8 @@
                 <div class="form-group">
                     <label for="connect">WebSocket connection:</label>
                     <button id="connect" class="btn btn-default" type="submit">Connect</button>
-                    <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect
-                    </button>
+                    <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect</button>
+                    <button id="msgdisplay" class="btn btn-default" type="submit">Toggle Message Display</button>
                 </div>
             </form>
         </div>
@@ -70,7 +70,7 @@
     <div class="row">
         <h5 style="color:blue;">{{ CancelReason }}</h5>
     </div>
-    <div class="row">
+    <div v-show="ShowMsgs" class="row">
         <div class="col-md-12">
             <table id="conversation" class="table table-striped">
                 <thead>
