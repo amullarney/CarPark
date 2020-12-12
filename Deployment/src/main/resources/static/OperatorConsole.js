@@ -9,7 +9,8 @@ var vm = new Vue({
 	    DateTime: "",
 	    Capacity: "",
 	    Occupancy: "",
-	    Availability: ""
+	    Availability: "",
+	    ShowMsgs: false
     }
 })
 
@@ -130,10 +131,10 @@ function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
     if (connected) {
-        $("#conversation").show();
+//        $("#conversation").show();
     }
     else {
-        $("#conversation").hide();
+//        $("#conversation").hide();
         initialize();
     }
     $("#replies").html("");
@@ -159,6 +160,10 @@ function disconnect() {
     }
     setConnected(false);
     console.log("Disconnected");
+}
+
+function toggleMsgs() {
+    vm.ShowMsgs = !vm.ShowMsgs;
 }
 
 // Client-to-server messages.
@@ -337,4 +342,5 @@ $(function () {
     });
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
+    $( "#msgdisplay" ).click(function() { toggleMsgs(); });
 });
