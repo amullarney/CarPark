@@ -199,7 +199,11 @@ public class OperatorConsoleMsgController {
         String topic = "/topic/OperatorConsole";
         this.template.convertAndSend( topic, msg );
     }
-    
 
+    public void SendHelpRequestMessage ( String Location ) throws Exception {
+    	HelpRequestMsg msg = new HelpRequestMsg( "HelpRequest", Location );
+        String topic = "/topic/OperatorConsole";
+        this.template.convertAndSend( topic, msg );
+    }
     // End of incoming messages.
 }

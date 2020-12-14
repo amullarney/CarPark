@@ -93,4 +93,5 @@ $(function () {
     $( "#TicketCollected" ).click(function() { sendToServer( "TicketCollected" ); });
     $( "#VehicleEntered" ).click(function() { sendToServer( "VehicleEntered" ); });
     $( "#msgdisplay" ).click(function() { toggleMsgs(); });
+    $( "#help" ).click(function() { sendToServer( "HelpRequest" ); });
 });

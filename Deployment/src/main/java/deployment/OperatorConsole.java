@@ -109,7 +109,6 @@ public class OperatorConsole extends Component<OperatorConsole> {
     }
 
 
-
     // relates and unrelates
 
 
