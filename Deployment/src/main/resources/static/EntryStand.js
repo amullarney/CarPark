@@ -63,7 +63,7 @@ function sendToServer( messageName ) {
 
 // Client-to-client messages.
 function sendToOperator( messageName ) {
-    stompClient.send("/topic/OperatorConsole/" + messageName, {}, 
+    stompClient.send("/app/" + messageName, {}, 
                      JSON.stringify({'location': $("#location").val(), 'peripheral': "Entry"}));
 }
 

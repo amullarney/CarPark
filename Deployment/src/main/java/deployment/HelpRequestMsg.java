@@ -5,8 +5,7 @@ public class HelpRequestMsg {
 	private String messageName;
 	private String location;
 	private String peripheral;
-	public HelpRequestMsg() {
-  	  System.out.printf( "Creating HelpRequest message \n" );    			
+	public HelpRequestMsg() {			
 	}
 	public HelpRequestMsg( String messageName, String location, String peripheral ) {
 		this.messageName = messageName;
@@ -26,7 +25,6 @@ public class HelpRequestMsg {
 		this.messageName = messageName;
 	}
 	public void setLocation( String location ) {
-  	  System.out.printf( "Setting HelpRequest location\n" );    			
 		this.location = location;
 	}
 	public void setPeripheral( String peripheral ) {

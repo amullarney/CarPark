@@ -61,6 +61,12 @@ function sendToServer( messageName ) {
     	vm.InsertedTicketDisabled = false;
 }
 
+// Client-to-client messages.
+function sendToOperator( messageName ) {
+    stompClient.send("/app/" + messageName, {}, 
+                     JSON.stringify({'location': $("#location").val(), 'peripheral': "Exit"}));
+}
+
 function sendInsertedTicket() {
     stompClient.send("/app/InsertedTicket", {}, 
       JSON.stringify({'location': $("#location").val(), 'ticketNumber': $("#TicketNumber").val()}));
@@ -92,4 +98,5 @@ $(function () {
     $( "#InsertedTicket" ).click(function() { sendInsertedTicket(); });
     $( "#VehicleExited" ).click(function() { sendToServer( "VehicleExited" ); });
     $( "#msgdisplay" ).click(function() { toggleMsgs(); });
+    $( "#help" ).click(function() { sendToOperator( "HelpRequest" ); });
 });

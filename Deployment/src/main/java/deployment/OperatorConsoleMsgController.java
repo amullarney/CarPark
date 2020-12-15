@@ -200,5 +200,11 @@ public class OperatorConsoleMsgController {
         this.template.convertAndSend( topic, msg );
     }
 
+    public void SendHelpRequestMessage ( String Location, String Peripheral ) throws Exception {			
+    	HelpRequestMsg msg = new HelpRequestMsg( "HelpRequest", Location, Peripheral );
+        String topic = "/topic/OperatorConsole";
+        this.template.convertAndSend( topic, msg );
+    }
+
     // End of incoming messages.
 }
