@@ -120,15 +120,6 @@ public class EntryStandMsgController {
       	}
     }
     
-    @MessageMapping( "/HelpRequest" )
-    public void HelpRequest( HelpRequestMsg message ) throws Exception {
-    	try {
-      	  EntryStand.Singleton().Intercom().HelpRequest( message.getLocation(), "Entry" );
-      	}
-      	catch ( Exception e ) {
-        	  System.out.printf( "Exception, %s, in HelpRequest()\n", e );    			
-      	}
-    }
     // End of outgoing messages.
     
     // Incoming (to this component) messages.

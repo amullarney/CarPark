@@ -61,6 +61,12 @@ function sendToServer( messageName ) {
     stompClient.send("/app/" + messageName, {}, JSON.stringify({'location': $("#location").val()}));
 }
 
+// Client-to-client messages.
+function sendToOperator( messageName ) {
+    stompClient.send("/topic/OperatorConsole/" + messageName, {}, 
+                     JSON.stringify({'location': $("#location").val(), 'peripheral': "Entry"}));
+}
+
 // Display a message received from the server and 
 // update the enable/disable states of buttons based on the 
 // the incoming message.
@@ -93,5 +99,5 @@ $(function () {
     $( "#TicketCollected" ).click(function() { sendToServer( "TicketCollected" ); });
     $( "#VehicleEntered" ).click(function() { sendToServer( "VehicleEntered" ); });
     $( "#msgdisplay" ).click(function() { toggleMsgs(); });
-    $( "#help" ).click(function() { sendToServer( "HelpRequest" ); });
+    $( "#help" ).click(function() { sendToOperator( "HelpRequest" ); });
 });

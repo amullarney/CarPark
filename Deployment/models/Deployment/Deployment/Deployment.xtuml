@@ -887,8 +887,8 @@ INSERT INTO DIM_ND
 	0.000000,
 	"4a3a90db-596b-4548-84b1-456ed39abb2a");
 INSERT INTO DIM_GE
-	VALUES (601.000000,
-	148.000000,
+	VALUES (578.000000,
+	181.000000,
 	"4a3a90db-596b-4548-84b1-456ed39abb2a",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO DIM_ELE
@@ -1098,7 +1098,7 @@ INSERT INTO GD_GE
 	"8fe9d6df-be6a-45c7-a456-d04445618a49",
 	105,
 	0,
-	'Deployment::Deployment::OperatorConsole::Components::OperatorConsole::Port1::Intercom');
+	'Deployment::Deployment::OperatorConsole::Components::OperatorConsole::ExitHelp::Intercom');
 INSERT INTO GD_CON
 	VALUES ("615e955a-d422-4ec7-957f-f8338e087400",
 	"00000000-0000-0000-0000-000000000000");
@@ -1206,7 +1206,7 @@ INSERT INTO GD_GE
 	"ea412f01-1fd5-4195-a43e-0ebbd5db375e",
 	105,
 	0,
-	'Deployment::Deployment::OperatorConsole::Components::OperatorConsole::Port2::Intercom');
+	'Deployment::Deployment::OperatorConsole::Components::OperatorConsole::EntryHelp::Intercom');
 INSERT INTO GD_CON
 	VALUES ("5ccef5a7-7eb2-41a9-972c-cd81b9d69c6e",
 	"00000000-0000-0000-0000-000000000000");
@@ -1314,7 +1314,7 @@ INSERT INTO GD_GE
 	"c6ea46b1-02d9-46f2-9d78-361734024982",
 	106,
 	0,
-	'Deployment::Deployment::EntryStand::Components::EntryStand::Port1::Intercom');
+	'Deployment::Deployment::EntryStand::Components::EntryStand::Operator::Intercom');
 INSERT INTO GD_CON
 	VALUES ("7189a924-f050-444a-a7b7-55e5ae5239b6",
 	"00000000-0000-0000-0000-000000000000");
@@ -1414,7 +1414,7 @@ INSERT INTO GD_GE
 	"9484593d-204b-40fd-bf96-3b1c4499e9af",
 	106,
 	0,
-	'Deployment::Deployment::ExitStand::Components::ExitStand::Port1::Intercom');
+	'Deployment::Deployment::ExitStand::Components::ExitStand::Operator::Intercom');
 INSERT INTO GD_CON
 	VALUES ("394c0e9e-8471-447d-b865-48beca29b42c",
 	"00000000-0000-0000-0000-000000000000");
@@ -1717,7 +1717,7 @@ INSERT INTO C_PO_PROXY
 INSERT INTO CL_POR
 	VALUES ("24d714f2-1d5f-4a76-a0c9-fe3acab0fde9",
 	"0fc240ce-1e09-463f-a4c8-610fbc604c1d",
-	'Port1',
+	'Operator',
 	"dcf328c5-4dc7-4c73-b33f-b2570cd4bc98");
 INSERT INTO CL_IIR
 	VALUES ("c6ea46b1-02d9-46f2-9d78-361734024982",
@@ -1740,7 +1740,7 @@ INSERT INTO C_IR_PROXY
 INSERT INTO C_PO_PROXY
 	VALUES ("0fc240ce-1e09-463f-a4c8-610fbc604c1d",
 	"cf7a3d2b-ed93-4406-9369-9394eec5a5fd",
-	'Port1',
+	'Operator',
 	0,
 	0,
 	'../../../../EntryStand/models/EntryStand/Components/EntryStand/EntryStand.xtuml');
@@ -1803,7 +1803,7 @@ INSERT INTO C_PO_PROXY
 INSERT INTO CL_POR
 	VALUES ("e21aa37f-f287-47f4-9e29-bb840490f255",
 	"ebbf9887-11e3-44fc-8afd-adc16ae4fd42",
-	'Port1',
+	'Operator',
 	"27a7d5af-b3e2-4b0c-a481-a60f4142e68c");
 INSERT INTO CL_IIR
 	VALUES ("9484593d-204b-40fd-bf96-3b1c4499e9af",
@@ -1826,7 +1826,7 @@ INSERT INTO C_IR_PROXY
 INSERT INTO C_PO_PROXY
 	VALUES ("ebbf9887-11e3-44fc-8afd-adc16ae4fd42",
 	"05de1619-41b1-467d-858f-929e0131b332",
-	'Port1',
+	'Operator',
 	0,
 	0,
 	'../../../../ExitStand/models/ExitStand/Components/ExitStand/ExitStand.xtuml');
@@ -1889,7 +1889,7 @@ INSERT INTO C_PO_PROXY
 INSERT INTO CL_POR
 	VALUES ("25dcce9a-7f60-4d40-8e47-7185e086a3a4",
 	"137d4abe-e526-4f86-ac15-ec2381851c57",
-	'Port1',
+	'ExitHelp',
 	"ecafa953-b1ea-4885-813a-7eeed6005af3");
 INSERT INTO CL_IIR
 	VALUES ("8fe9d6df-be6a-45c7-a456-d04445618a49",
@@ -1914,14 +1914,14 @@ INSERT INTO C_IR_PROXY
 INSERT INTO C_PO_PROXY
 	VALUES ("137d4abe-e526-4f86-ac15-ec2381851c57",
 	"62598ed2-34fc-47d2-b195-4f5078774955",
-	'Port1',
+	'ExitHelp',
 	0,
 	0,
 	'../../../../OperatorConsole/models/OperatorConsole/Components/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO CL_POR
 	VALUES ("25dcce9a-7f60-4d40-8e47-7185e086a3a4",
 	"06b033c3-1f75-494b-bbea-1ee65a2b4133",
-	'Port2',
+	'EntryHelp',
 	"288e6dac-847c-4ef6-ba1a-ca09983548ce");
 INSERT INTO CL_IIR
 	VALUES ("ea412f01-1fd5-4195-a43e-0ebbd5db375e",
@@ -1946,7 +1946,7 @@ INSERT INTO C_IR_PROXY
 INSERT INTO C_PO_PROXY
 	VALUES ("06b033c3-1f75-494b-bbea-1ee65a2b4133",
 	"62598ed2-34fc-47d2-b195-4f5078774955",
-	'Port2',
+	'EntryHelp',
 	0,
 	0,
 	'../../../../OperatorConsole/models/OperatorConsole/Components/OperatorConsole/OperatorConsole.xtuml');
@@ -2158,7 +2158,7 @@ INSERT INTO C_SF
 	"19010449-8aed-4ab1-a6ff-480630acdc9c",
 	"d572c889-e4e1-4eb3-88f7-aa712f8a9ec5",
 	'',
-	'OperatorConsole::Port2::Intercom -o)- EntryStand::Port1::Intercom');
+	'OperatorConsole::EntryHelp::Intercom -o)- EntryStand::Operator::Intercom');
 INSERT INTO PE_PE
 	VALUES ("fa8338a5-9cc3-4735-ac37-8b5d4c0b45c9",
 	1,
@@ -2170,21 +2170,21 @@ INSERT INTO C_R_PROXY
 	'Intercom',
 	'',
 	'Unnamed Interface',
-	'EntryStand::Port1::Intercom',
+	'EntryStand::Operator::Intercom',
 	'../../../../EntryStand/models/EntryStand/Components/EntryStand/EntryStand.xtuml');
 INSERT INTO C_P_PROXY
 	VALUES ("d572c889-e4e1-4eb3-88f7-aa712f8a9ec5",
 	'Intercom',
 	'Unnamed Interface',
 	'',
-	'OperatorConsole::Port2::Intercom',
+	'OperatorConsole::EntryHelp::Intercom',
 	'../../../../OperatorConsole/models/OperatorConsole/Components/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO C_SF
 	VALUES ("97461e2f-bb96-4217-9dce-d622253d095d",
 	"3134e0f0-1e20-48b6-a799-5de4502cda60",
 	"465be930-6ffb-4223-8d35-9301b70cf278",
 	'',
-	'OperatorConsole::Port1::Intercom -o)- ExitStand::Port1::Intercom');
+	'OperatorConsole::ExitHelp::Intercom -o)- ExitStand::Operator::Intercom');
 INSERT INTO PE_PE
 	VALUES ("97461e2f-bb96-4217-9dce-d622253d095d",
 	1,
@@ -2196,14 +2196,14 @@ INSERT INTO C_R_PROXY
 	'Intercom',
 	'',
 	'Unnamed Interface',
-	'ExitStand::Port1::Intercom',
+	'ExitStand::Operator::Intercom',
 	'../../../../ExitStand/models/ExitStand/Components/ExitStand/ExitStand.xtuml');
 INSERT INTO C_P_PROXY
 	VALUES ("465be930-6ffb-4223-8d35-9301b70cf278",
 	'Intercom',
 	'Unnamed Interface',
 	'',
-	'OperatorConsole::Port1::Intercom',
+	'OperatorConsole::ExitHelp::Intercom',
 	'../../../../OperatorConsole/models/OperatorConsole/Components/OperatorConsole/OperatorConsole.xtuml');
 INSERT INTO PE_PE
 	VALUES ("cc44dcb6-e8fb-416b-b79f-4dc711038b1e",

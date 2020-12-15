@@ -110,15 +110,6 @@ public class ExitStandMsgController {
       	}
     }
 
-    @MessageMapping( "/EXHelpRequest" )
-    public void HelpRequest( HelpRequestMsg message ) throws Exception {
-    	try {
-      	  ExitStand.Singleton().Intercom().HelpRequest( message.getLocation(), "Exit" );
-      	}
-      	catch ( Exception e ) {
-        	  System.out.printf( "Exception, %s, in HelpRequest()\n", e );    			
-      	}
-    }
     // End of outgoing messages.
     
     // Incoming (to this component) messages.

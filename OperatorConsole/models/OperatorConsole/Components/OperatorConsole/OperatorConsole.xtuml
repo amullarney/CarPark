@@ -198,7 +198,7 @@ INSERT INTO GD_GE
 	"465be930-6ffb-4223-8d35-9301b70cf278",
 	94,
 	0,
-	'OperatorConsole::Components::OperatorConsole::EntryHelp::Intercom');
+	'OperatorConsole::Components::OperatorConsole::ExitHelp::Intercom');
 INSERT INTO GD_CON
 	VALUES ("45374a81-4844-4e6a-b03c-6a0bd51a7f73",
 	"00000000-0000-0000-0000-000000000000");
@@ -298,7 +298,7 @@ INSERT INTO GD_GE
 	"d572c889-e4e1-4eb3-88f7-aa712f8a9ec5",
 	94,
 	0,
-	'OperatorConsole::Components::OperatorConsole::ExitHelp::Intercom');
+	'OperatorConsole::Components::OperatorConsole::EntryHelp::Intercom');
 INSERT INTO GD_CON
 	VALUES ("28562a7d-1784-49fe-b33b-71cac1495ed8",
 	"00000000-0000-0000-0000-000000000000");
@@ -461,7 +461,7 @@ INSERT INTO SPR_RS
 	'FeeWaived',
 	'Indicates that the operator has chosen to waive a fee.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("691fe067-ff91-4b3a-80b4-ac20b1a6f42c",
@@ -479,7 +479,7 @@ INSERT INTO SPR_RS
 	'FeeCollected',
 	'Indicates that the operator has collected a fee.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("deabe881-00f0-46a6-8238-f0f211af4084",
@@ -615,7 +615,7 @@ a ticket.  The driver could then use the intercom system to explain the issue
 to the operator who would then command the entry stand, indirectly via the carpark
 system, to issue a ticket. ',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("bb331470-fbd3-43d9-8d59-e5684346c197",
@@ -644,7 +644,7 @@ there is a malfunction at the entry stand (e.g., a failure of the
 ticket printer or the sensor detecting the collection of a ticket)
 or in unusual circumstances such as the arrival of a VIP.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("dc4b88ab-d520-4c50-ae78-e56474653079",
@@ -667,7 +667,7 @@ INSERT INTO SPR_RS
 	'OpenCarpark',
 	'Commands the carpark system to open the carpark.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("78dddf09-cf4f-4260-95da-dabf54002032",
@@ -705,7 +705,7 @@ INSERT INTO SPR_RS
 	'CloseCarpark',
 	'Commands the carpark system to close the carpark.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("685996cf-e141-4a25-8095-b11c6e30fd38",
@@ -746,7 +746,7 @@ An operator may command an exit stand to open the barrier in unusual circumstanc
 such as an equipment failure (e.g., failed vehicle waiting sensor or ticket reader) 
 or in case of emergency.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("06d1a1ae-4cf0-4736-9880-66e81f19f2dd",
@@ -805,7 +805,7 @@ INSERT INTO C_I_PROXY
 INSERT INTO C_PO
 	VALUES ("137d4abe-e526-4f86-ac15-ec2381851c57",
 	"62598ed2-34fc-47d2-b195-4f5078774955",
-	'EntryHelp',
+	'ExitHelp',
 	0,
 	0);
 INSERT INTO C_IR
@@ -818,7 +818,7 @@ INSERT INTO C_P
 	'Intercom',
 	'Unnamed Interface',
 	'',
-	'OperatorConsole::EntryHelp::Intercom');
+	'OperatorConsole::ExitHelp::Intercom');
 INSERT INTO SPR_PEP
 	VALUES ("be9e081b-8003-4134-8ed2-cc40b4cb8111",
 	"b348d4a2-0167-4b5a-a92a-6bd0ff46a050",
@@ -827,7 +827,7 @@ INSERT INTO SPR_PS
 	VALUES ("be9e081b-8003-4134-8ed2-cc40b4cb8111",
 	'CallOperator',
 	'Ask operator for assistance in case of fault at stand.',
-	'::HelpRequest( Location:param.Location, Peripheral:param.Peripheral );',
+	'',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -846,7 +846,7 @@ INSERT INTO C_I_PROXY
 INSERT INTO C_PO
 	VALUES ("06b033c3-1f75-494b-bbea-1ee65a2b4133",
 	"62598ed2-34fc-47d2-b195-4f5078774955",
-	'ExitHelp',
+	'EntryHelp',
 	0,
 	0);
 INSERT INTO C_IR
@@ -859,7 +859,7 @@ INSERT INTO C_P
 	'Intercom',
 	'Unnamed Interface',
 	'',
-	'OperatorConsole::ExitHelp::Intercom');
+	'OperatorConsole::EntryHelp::Intercom');
 INSERT INTO SPR_PEP
 	VALUES ("62665247-53fb-4dda-9ed4-b1c25f6c62a4",
 	"b348d4a2-0167-4b5a-a92a-6bd0ff46a050",
@@ -868,7 +868,7 @@ INSERT INTO SPR_PS
 	VALUES ("62665247-53fb-4dda-9ed4-b1c25f6c62a4",
 	'CallOperator',
 	'Ask operator for assistance in case of fault at stand.',
-	'::HelpRequest( Location:param.Location, Peripheral:param.Peripheral );',
+	'',
 	1,
 	0);
 INSERT INTO PE_PE
