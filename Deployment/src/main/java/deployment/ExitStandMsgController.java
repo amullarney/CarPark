@@ -110,6 +110,8 @@ public class ExitStandMsgController {
       	}
     }
 
+    // *** Note: mapping of 'HelpRequest' from Exit stand is handled in EntryStandMsgController. ***
+
     // End of outgoing messages.
     
     // Incoming (to this component) messages.

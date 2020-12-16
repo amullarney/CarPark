@@ -56,12 +56,12 @@ function disconnect() {
     console.log("Disconnected");
 }
 
-// Client-to-client messages - in fact, uses client-server-client path.
+// Client-to-server messages.
 function sendToServer( messageName ) {
     stompClient.send("/app/" + messageName, {}, JSON.stringify({'location': $("#location").val()}));
 }
 
-// Client-to-client messages.
+// Client-to-client messages - in fact, uses client-server-client path.
 function sendToOperator( messageName ) {
     stompClient.send("/app/" + messageName, {}, 
                      JSON.stringify({'location': $("#location").val(), 'peripheral': "Entry"}));

@@ -121,7 +121,9 @@ public class EntryStandMsgController {
         	  System.out.printf( "Exception, %s, in VehicleEntered()\n", e );    			
       	}
     }
-    
+
+    // *** Note: this mapping handles 'HelpRequest' from either an Entry or an Exit stand. ***
+    // *** The same message, with peripheral, is sent to Operator Console in either case.  ***
     @MessageMapping( "/HelpRequest" )
     public void HelpRequest( HelpRequestMsg message ) throws Exception {
     	try {

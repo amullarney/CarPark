@@ -20,8 +20,8 @@ const EntryStand = {
     return {
       location: '',
       activated: false,
-      ticketStatus: '',
-      barrier: '',
+      ticketStatus: 'NOTREQUESTED',
+      barrier: 'CLOSED',
       delayed: false,
       help: false
     }
@@ -47,8 +47,8 @@ const EntryStand = {
     },
     reset() {
       this.activated = false;
-      this.ticketStatus = "NotRequested";
-      this.barrier = "Closed";
+      this.ticketStatus = "NOTREQUESTED";
+      this.barrier = "CLOSED";
       this.delayed = false;
       this.help = false;
     }
@@ -61,9 +61,9 @@ const ExitStand = {
     return {
       location: '',
       activated: false,
-      ticketStatus: '',
-      exitDeadline: '',
-      barrier: 'closed',
+      ticketStatus: 'NOTINSERTED',
+      exitDeadline: 'NONE',
+      barrier: 'CLOSED',
       ticketNumber: '',
       additionalCharge: '',
       overstay: '',
@@ -116,9 +116,9 @@ const ExitStand = {
     },
     reset() {
       this.activated = false;
-      this.ticketStatus = "NotInserted";
-      this.exitDeadline = "None";
-      this.barrier = "Closed";
+      this.ticketStatus = "NOTINSERTED";
+      this.exitDeadline = "NONE";
+      this.barrier = "CLOSED";
       this.tardyExit = false;
       this.unpaidStayExit = false;
       this.help = false;
