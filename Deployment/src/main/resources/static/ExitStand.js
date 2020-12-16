@@ -3,6 +3,7 @@ var stompClient = null;
 var vm = new Vue({
 	el: '#main-content',
 	data: {
+	    VehicleWaitingDisabled: false,
 	    VehicleExitedDisabled : true,
 	    InsertedTicketDisabled: true,
 	    BarrierOpen: false,
@@ -11,6 +12,7 @@ var vm = new Vue({
 })
 
 function initialize() {
+    vm.VehicleWaitingDisabled = false;
 	vm.VehicleExitedDisabled = true;
 	vm.InsertedTicketDisabled = true;
 	vm.BarrierOpen = false;
@@ -57,21 +59,27 @@ function toggleMsgs() {
 // Client-to-server messages.
 function sendToServer( messageName ) {
     stompClient.send("/app/" + messageName, {}, JSON.stringify({'location': $("#location").val()}));
-    if ( messageName == "EXVehicleWaiting" )
+    if ( messageName == "EXVehicleWaiting" ) {
     	vm.InsertedTicketDisabled = false;
+    	vm.VehicleWaitingDisabled = true;
+    } else if ( messageName == "VehicleExited" )
+    	vm.VehicleWaitingDisabled = false;
 }
 
-// Client-to-client messages.
+function sendInsertedTicket() {
+    if ( $("#TicketNumber").val() != 0 ) {
+        stompClient.send("/app/InsertedTicket", {}, 
+          JSON.stringify({'location': $("#location").val(), 'ticketNumber': $("#TicketNumber").val()}));
+        vm.InsertedTicketDisabled = true;
+    }
+}
+
+// Client-to-client messages - in fact, uses client-server-client path.
 function sendToOperator( messageName ) {
     stompClient.send("/app/" + messageName, {}, 
                      JSON.stringify({'location': $("#location").val(), 'peripheral': "Exit"}));
 }
 
-function sendInsertedTicket() {
-    stompClient.send("/app/InsertedTicket", {}, 
-      JSON.stringify({'location': $("#location").val(), 'ticketNumber': $("#TicketNumber").val()}));
-    vm.InsertedTicketDisabled = true;
-}
 
 // Display a message received from the server and 
 // update the enable/disable states of buttons based on the 

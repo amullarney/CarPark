@@ -44,6 +44,13 @@ const EntryStand = {
     },
     setHelp(help) {
       this.help = help;
+    },
+    reset() {
+      this.activated = false;
+      this.ticketStatus = "NotRequested";
+      this.barrier = "Closed";
+      this.delayed = false;
+      this.help = false;
     }
   }
 }
@@ -106,6 +113,15 @@ const ExitStand = {
     },
     setHelp(help) {
       this.help = help;
+    },
+    reset() {
+      this.activated = false;
+      this.ticketStatus = "NotInserted";
+      this.exitDeadline = "None";
+      this.barrier = "Closed";
+      this.tardyExit = false;
+      this.unpaidStayExit = false;
+      this.help = false;
     }
   }
 }
@@ -236,16 +252,13 @@ function handleReply(reply) {
     	location = JSON.parse( reply.body ).location;
     	entry = entrystands.get(location);
     	if ( entry ) {
-    	  entry.setActive(false);
-    	  entry.setDelayed(false);
+    	  entry.reset();
     	}
     } else if ( messageName == "DeactivateExitStand" ) {
     	location = JSON.parse( reply.body ).location;
     	exit = exitstands.get(location);
     	if ( exit ) {
-    	  exit.setActive(false);
-    	  exit.setTardyExit(false);
-    	  exit.setUnpaidStayExit(false);
+    	  exit.reset();
     	}
     } else if ( messageName == "DelayedEntry" ) {
     	location = JSON.parse( reply.body ).location;

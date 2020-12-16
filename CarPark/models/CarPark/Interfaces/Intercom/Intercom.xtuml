@@ -4,17 +4,21 @@ INSERT INTO C_I
 	VALUES ("65263c05-9f4e-4876-85d0-8be1231ea965",
 	"00000000-0000-0000-0000-000000000000",
 	'Intercom',
-	'');
+	'This interface is not actually implemented, but represents, conceptually, what is desired.
+The present implementation uses socket communication only for the application interfaces.
+A help request bypasses the application and directly invokes messaging to the operator.');
 INSERT INTO C_EP
 	VALUES ("b348d4a2-0167-4b5a-a92a-6bd0ff46a050",
 	"65263c05-9f4e-4876-85d0-8be1231ea965",
 	-1,
-	'CallOperator',
-	'Ask operator for assistance in case of fault at stand.');
+	'HelpRequest',
+	'Ask operator for assistance in case of a fault at an entry or exit stand.
+This signal is not implemented; currently there is no support for client-to-client communication.');
 INSERT INTO C_AS
 	VALUES ("b348d4a2-0167-4b5a-a92a-6bd0ff46a050",
-	'CallOperator',
-	'Ask operator for assistance in case of fault at stand.',
+	'HelpRequest',
+	'Ask operator for assistance in case of a fault at an entry or exit stand.
+This signal is not implemented; currently there is no support for client-to-client communication.',
 	0,
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO C_PP
