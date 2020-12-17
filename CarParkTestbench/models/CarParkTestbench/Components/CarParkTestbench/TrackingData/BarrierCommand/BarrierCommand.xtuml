@@ -1,0 +1,93 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("5a0423ca-21de-4d89-bfc2-0d8a165f9c8d",
+	'BarrierCommand',
+	20,
+	'BarrierCommand',
+	'Represents a command to open or close a barrier for entry or exit.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("209fe343-0fd9-4985-8b9d-32deff37026e",
+	"5a0423ca-21de-4d89-bfc2-0d8a165f9c8d");
+INSERT INTO O_BATTR
+	VALUES ("209fe343-0fd9-4985-8b9d-32deff37026e",
+	"5a0423ca-21de-4d89-bfc2-0d8a165f9c8d");
+INSERT INTO O_ATTR
+	VALUES ("209fe343-0fd9-4985-8b9d-32deff37026e",
+	"5a0423ca-21de-4d89-bfc2-0d8a165f9c8d",
+	"00000000-0000-0000-0000-000000000000",
+	'location',
+	'',
+	'',
+	'location',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("da93d953-fac5-4fa4-b4e7-56eae5469045",
+	"5a0423ca-21de-4d89-bfc2-0d8a165f9c8d");
+INSERT INTO O_BATTR
+	VALUES ("da93d953-fac5-4fa4-b4e7-56eae5469045",
+	"5a0423ca-21de-4d89-bfc2-0d8a165f9c8d");
+INSERT INTO O_ATTR
+	VALUES ("da93d953-fac5-4fa4-b4e7-56eae5469045",
+	"5a0423ca-21de-4d89-bfc2-0d8a165f9c8d",
+	"209fe343-0fd9-4985-8b9d-32deff37026e",
+	'stand',
+	'',
+	'',
+	'stand',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("4e3a5066-bbf9-48ff-969d-93a31e378774",
+	"5a0423ca-21de-4d89-bfc2-0d8a165f9c8d");
+INSERT INTO O_BATTR
+	VALUES ("4e3a5066-bbf9-48ff-969d-93a31e378774",
+	"5a0423ca-21de-4d89-bfc2-0d8a165f9c8d");
+INSERT INTO O_ATTR
+	VALUES ("4e3a5066-bbf9-48ff-969d-93a31e378774",
+	"5a0423ca-21de-4d89-bfc2-0d8a165f9c8d",
+	"da93d953-fac5-4fa4-b4e7-56eae5469045",
+	'state',
+	'',
+	'',
+	'state',
+	0,
+	"f0c65a10-2e1e-4a19-8c3f-db9b478b5038",
+	'',
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("f0c65a10-2e1e-4a19-8c3f-db9b478b5038",
+	"00000000-0000-0000-0000-000000000000",
+	'BarrierState',
+	'',
+	'',
+	'../../../../../../../CarPark/models/CarPark/SharedTypes/SharedTypes.xtuml');
+INSERT INTO O_ID
+	VALUES (0,
+	"5a0423ca-21de-4d89-bfc2-0d8a165f9c8d");
+INSERT INTO O_ID
+	VALUES (1,
+	"5a0423ca-21de-4d89-bfc2-0d8a165f9c8d");
+INSERT INTO O_ID
+	VALUES (2,
+	"5a0423ca-21de-4d89-bfc2-0d8a165f9c8d");
+INSERT INTO PE_PE
+	VALUES ("5a0423ca-21de-4d89-bfc2-0d8a165f9c8d",
+	1,
+	"94a87a4e-cf93-40fb-b34c-da75c6d9267a",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("94a87a4e-cf93-40fb-b34c-da75c6d9267a",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'TrackingData',
+	'',
+	0,
+	'../TrackingData.xtuml');

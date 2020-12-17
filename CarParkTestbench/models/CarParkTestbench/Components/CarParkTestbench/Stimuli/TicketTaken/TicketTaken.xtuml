@@ -1,0 +1,136 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("f4f086c7-ebee-447d-b4ba-e48a416d665f",
+	'TicketTaken',
+	15,
+	'TicketTaken',
+	'Signal that a ticket has been removed from a device - entry/exit/pay stand.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("0c2d42a8-ec7c-45fb-ba78-d464dd762fa5",
+	"f4f086c7-ebee-447d-b4ba-e48a416d665f",
+	'Create',
+	'Add a stimulus of this type to the ''script of a test case.
+',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance ticket of TicketTaken;
+ticket.location = param.location;
+ticket.standType = param.stand;
+
+create object instance stimulus of Stimulus;
+relate stimulus to ticket across R300;
+
+stimulus.AddToTest( seqLabel:param.seqLabel );',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("a1d21eb2-ba36-49f7-944c-80964a17c624",
+	"0c2d42a8-ec7c-45fb-ba78-d464dd762fa5",
+	'location',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"793b9fc4-dca8-42cd-be70-1e913a9fb370",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("72a28536-22f8-4d98-8509-f3ad668268d7",
+	"0c2d42a8-ec7c-45fb-ba78-d464dd762fa5",
+	'stand',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"a1d21eb2-ba36-49f7-944c-80964a17c624",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("793b9fc4-dca8-42cd-be70-1e913a9fb370",
+	"0c2d42a8-ec7c-45fb-ba78-d464dd762fa5",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("8e327d16-2f60-41d1-8ead-09818785fb04",
+	"f4f086c7-ebee-447d-b4ba-e48a416d665f",
+	'Collected',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'LOG::LogInfo( message:"Ticket collected at " + self.standType + " " + self.location );
+if ( self.standType == "Entry" )
+  send EntryStand::TicketCollected( Location:self.location );
+else
+  send Payer::TicketCollected( Location:self.location );
+end if;
+
+select one stimulus related by self->Stimulus[R300];
+stimulus.Complete();
+',
+	1,
+	'',
+	"0c2d42a8-ec7c-45fb-ba78-d464dd762fa5",
+	0);
+INSERT INTO O_NBATTR
+	VALUES ("0ec24d32-0f5b-4b76-a5ea-ebff922e8212",
+	"f4f086c7-ebee-447d-b4ba-e48a416d665f");
+INSERT INTO O_BATTR
+	VALUES ("0ec24d32-0f5b-4b76-a5ea-ebff922e8212",
+	"f4f086c7-ebee-447d-b4ba-e48a416d665f");
+INSERT INTO O_ATTR
+	VALUES ("0ec24d32-0f5b-4b76-a5ea-ebff922e8212",
+	"f4f086c7-ebee-447d-b4ba-e48a416d665f",
+	"00000000-0000-0000-0000-000000000000",
+	'location',
+	'',
+	'',
+	'location',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("2742ca3a-ec0c-4980-b9ef-1e72ef8d5d5c",
+	"f4f086c7-ebee-447d-b4ba-e48a416d665f");
+INSERT INTO O_BATTR
+	VALUES ("2742ca3a-ec0c-4980-b9ef-1e72ef8d5d5c",
+	"f4f086c7-ebee-447d-b4ba-e48a416d665f");
+INSERT INTO O_ATTR
+	VALUES ("2742ca3a-ec0c-4980-b9ef-1e72ef8d5d5c",
+	"f4f086c7-ebee-447d-b4ba-e48a416d665f",
+	"0ec24d32-0f5b-4b76-a5ea-ebff922e8212",
+	'standType',
+	'',
+	'',
+	'standType',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"f4f086c7-ebee-447d-b4ba-e48a416d665f");
+INSERT INTO O_ID
+	VALUES (1,
+	"f4f086c7-ebee-447d-b4ba-e48a416d665f");
+INSERT INTO O_ID
+	VALUES (2,
+	"f4f086c7-ebee-447d-b4ba-e48a416d665f");
+INSERT INTO PE_PE
+	VALUES ("f4f086c7-ebee-447d-b4ba-e48a416d665f",
+	1,
+	"f3cba374-1086-4f35-ae97-68a635f058c5",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("f3cba374-1086-4f35-ae97-68a635f058c5",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'Stimuli',
+	'',
+	0,
+	'../Stimuli.xtuml');

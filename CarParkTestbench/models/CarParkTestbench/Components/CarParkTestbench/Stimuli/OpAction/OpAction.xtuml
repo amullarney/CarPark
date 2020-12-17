@@ -1,0 +1,186 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("5aab2874-9b5f-420e-94f0-20910d4f4c74",
+	'OpAction',
+	16,
+	'OpAction',
+	'Signal departure of a vehicle from an entry or exit station.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("432fb13d-f2e1-4f14-b19f-60a3fc552346",
+	"5aab2874-9b5f-420e-94f0-20910d4f4c74",
+	'Create',
+	'Add a stimulus of this type to the ''script of a test case.
+',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance action of OpAction;
+action.location = param.location;
+action.standType = param.stand;
+action.action = param.action;
+
+create object instance stimulus of Stimulus;
+relate stimulus to action across R300;
+
+stimulus.AddToTest( seqLabel:param.seqLabel );',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("f436e4ac-f1b2-40f3-9fd4-c1941030a977",
+	"432fb13d-f2e1-4f14-b19f-60a3fc552346",
+	'location',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"9bdd3f3d-3eae-4595-b0aa-d434df447445",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("a2c300c0-dc22-44c8-ad6c-43e8d2af8727",
+	"432fb13d-f2e1-4f14-b19f-60a3fc552346",
+	'stand',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"f436e4ac-f1b2-40f3-9fd4-c1941030a977",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("9bdd3f3d-3eae-4595-b0aa-d434df447445",
+	"432fb13d-f2e1-4f14-b19f-60a3fc552346",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("ffeb1061-8047-4816-867f-7b10875fa02d",
+	"432fb13d-f2e1-4f14-b19f-60a3fc552346",
+	'action',
+	"d19af320-46d3-4fa9-bc93-8eff5cb690b0",
+	0,
+	'',
+	"a2c300c0-dc22-44c8-ad6c-43e8d2af8727",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("d19af320-46d3-4fa9-bc93-8eff5cb690b0",
+	"00000000-0000-0000-0000-000000000000",
+	'OperatorAction',
+	'',
+	'',
+	'../../Types/Types.xtuml');
+INSERT INTO O_TFR
+	VALUES ("0d79c871-6c65-4854-8e7c-0542f607078d",
+	"5aab2874-9b5f-420e-94f0-20910d4f4c74",
+	'Act',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'LOG::LogInfo( message:"Action at " + self.standType + " " + self.location );
+if ( self.standType == "Entry" )
+  if ( self.action == OperatorAction::IssueTicket )
+    send Operator::IssueTicket( Location:self.location );
+  else
+    send Operator::OpenEntryBarrier( Location:self.location);
+  end if;
+else
+  if ( self.action == OperatorAction::OpenBarrier )
+    send Operator::OpenExitBarrier( Location:self.location);
+  else
+    select any tracker from instances of VisitTracking
+     where ( selected.exitingAt == self.location );
+    if ( self.action == OperatorAction::WaiveFee )
+      send Operator::FeeWaived( TicketNumber:tracker.ticketNumber );
+      tracker.payStatus = PayStatus::waived;
+    else
+      send Operator::FeeCollected( TicketNumber:tracker.ticketNumber );
+      tracker.payStatus = PayStatus::paid;
+    end if;
+  end if;
+end if;
+
+select one stimulus related by self->Stimulus[R300];
+stimulus.Complete();',
+	1,
+	'',
+	"432fb13d-f2e1-4f14-b19f-60a3fc552346",
+	0);
+INSERT INTO O_NBATTR
+	VALUES ("4205e585-c1c9-44f6-91ad-489b34c7bb49",
+	"5aab2874-9b5f-420e-94f0-20910d4f4c74");
+INSERT INTO O_BATTR
+	VALUES ("4205e585-c1c9-44f6-91ad-489b34c7bb49",
+	"5aab2874-9b5f-420e-94f0-20910d4f4c74");
+INSERT INTO O_ATTR
+	VALUES ("4205e585-c1c9-44f6-91ad-489b34c7bb49",
+	"5aab2874-9b5f-420e-94f0-20910d4f4c74",
+	"00000000-0000-0000-0000-000000000000",
+	'location',
+	'',
+	'',
+	'location',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("d672c2a0-13fb-436b-a8d4-7f9f9ff3de9f",
+	"5aab2874-9b5f-420e-94f0-20910d4f4c74");
+INSERT INTO O_BATTR
+	VALUES ("d672c2a0-13fb-436b-a8d4-7f9f9ff3de9f",
+	"5aab2874-9b5f-420e-94f0-20910d4f4c74");
+INSERT INTO O_ATTR
+	VALUES ("d672c2a0-13fb-436b-a8d4-7f9f9ff3de9f",
+	"5aab2874-9b5f-420e-94f0-20910d4f4c74",
+	"4205e585-c1c9-44f6-91ad-489b34c7bb49",
+	'standType',
+	'',
+	'',
+	'standType',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("279dd19c-a2a3-4a3a-84b8-c645051bb273",
+	"5aab2874-9b5f-420e-94f0-20910d4f4c74");
+INSERT INTO O_BATTR
+	VALUES ("279dd19c-a2a3-4a3a-84b8-c645051bb273",
+	"5aab2874-9b5f-420e-94f0-20910d4f4c74");
+INSERT INTO O_ATTR
+	VALUES ("279dd19c-a2a3-4a3a-84b8-c645051bb273",
+	"5aab2874-9b5f-420e-94f0-20910d4f4c74",
+	"d672c2a0-13fb-436b-a8d4-7f9f9ff3de9f",
+	'action',
+	'',
+	'',
+	'action',
+	0,
+	"d19af320-46d3-4fa9-bc93-8eff5cb690b0",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"5aab2874-9b5f-420e-94f0-20910d4f4c74");
+INSERT INTO O_ID
+	VALUES (1,
+	"5aab2874-9b5f-420e-94f0-20910d4f4c74");
+INSERT INTO O_ID
+	VALUES (2,
+	"5aab2874-9b5f-420e-94f0-20910d4f4c74");
+INSERT INTO PE_PE
+	VALUES ("5aab2874-9b5f-420e-94f0-20910d4f4c74",
+	1,
+	"f3cba374-1086-4f35-ae97-68a635f058c5",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("f3cba374-1086-4f35-ae97-68a635f058c5",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'Stimuli',
+	'',
+	0,
+	'../Stimuli.xtuml');

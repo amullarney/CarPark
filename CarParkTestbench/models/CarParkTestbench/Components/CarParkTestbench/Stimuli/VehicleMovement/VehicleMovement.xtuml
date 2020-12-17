@@ -1,0 +1,182 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("5e085479-b8d0-416c-98f4-fbe53add6632",
+	'VehicleMovement',
+	14,
+	'VehicleMovement',
+	'Signal arrival of a vehicle at an entry or exit station.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("f425565f-a7af-49b3-99c9-d13b76414bb4",
+	"5e085479-b8d0-416c-98f4-fbe53add6632",
+	'Create',
+	'Add a stimulus of this type to the ''script of a test case.
+',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'// Simulates vehicle arrival/departure at entry/exit stand
+create object instance move of VehicleMovement;
+move.location = param.location;
+move.standType = param.stand;
+move.movement = param.movement;
+
+create object instance stimulus of Stimulus;
+relate stimulus to move across R300;
+
+stimulus.AddToTest( seqLabel:param.seqLabel );',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("c9ad0582-8bc5-40ea-ba32-bf0f07df39df",
+	"f425565f-a7af-49b3-99c9-d13b76414bb4",
+	'location',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"471899f8-b86c-4fc5-a5d8-b1f45c3ea2da",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("5aa62455-945b-4a51-820f-47276cfb5f32",
+	"f425565f-a7af-49b3-99c9-d13b76414bb4",
+	'stand',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"c9ad0582-8bc5-40ea-ba32-bf0f07df39df",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("471899f8-b86c-4fc5-a5d8-b1f45c3ea2da",
+	"f425565f-a7af-49b3-99c9-d13b76414bb4",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("38647484-a495-406c-a640-89b73a3010f3",
+	"f425565f-a7af-49b3-99c9-d13b76414bb4",
+	'movement',
+	"df1143c8-99e2-433b-9e64-5a44d4fe730f",
+	0,
+	'',
+	"5aa62455-945b-4a51-820f-47276cfb5f32",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("df1143c8-99e2-433b-9e64-5a44d4fe730f",
+	"00000000-0000-0000-0000-000000000000",
+	'Movement',
+	'',
+	'',
+	'../../Types/Types.xtuml');
+INSERT INTO O_TFR
+	VALUES ("000b35f7-8026-4819-89ed-0c6f7725083f",
+	"5e085479-b8d0-416c-98f4-fbe53add6632",
+	'VehicleMove',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'LOG::LogInfo( message:"Vehicle movement at " + self.standType + " " + self.location );
+if ( self.standType == "Entry" )
+  if ( self.movement == Movement::Arrive )
+    send EntryStand::VehicleWaiting( Location:self.location );
+  else
+    send EntryStand::VehicleEntered( Location:self.location );
+  end if;
+else
+  if ( self.movement == Movement::Arrive )
+    send ExitStand::VehicleWaiting( Location:self.location );
+  else
+    send ExitStand::VehicleExited( Location:self.location );
+    select any tracker from instances of VisitTracking
+     where ( selected.exitingAt == self.location );
+    delete object instance tracker;
+  end if;
+end if;
+
+select one stimulus related by self->Stimulus[R300];
+stimulus.Complete();',
+	1,
+	'',
+	"f425565f-a7af-49b3-99c9-d13b76414bb4",
+	0);
+INSERT INTO O_NBATTR
+	VALUES ("0fa43be1-8c00-46f1-a2b7-2dd40d1b0f7d",
+	"5e085479-b8d0-416c-98f4-fbe53add6632");
+INSERT INTO O_BATTR
+	VALUES ("0fa43be1-8c00-46f1-a2b7-2dd40d1b0f7d",
+	"5e085479-b8d0-416c-98f4-fbe53add6632");
+INSERT INTO O_ATTR
+	VALUES ("0fa43be1-8c00-46f1-a2b7-2dd40d1b0f7d",
+	"5e085479-b8d0-416c-98f4-fbe53add6632",
+	"00000000-0000-0000-0000-000000000000",
+	'location',
+	'',
+	'',
+	'location',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("62970c16-52c0-4bc7-b685-9a7663d0c3ed",
+	"5e085479-b8d0-416c-98f4-fbe53add6632");
+INSERT INTO O_BATTR
+	VALUES ("62970c16-52c0-4bc7-b685-9a7663d0c3ed",
+	"5e085479-b8d0-416c-98f4-fbe53add6632");
+INSERT INTO O_ATTR
+	VALUES ("62970c16-52c0-4bc7-b685-9a7663d0c3ed",
+	"5e085479-b8d0-416c-98f4-fbe53add6632",
+	"0fa43be1-8c00-46f1-a2b7-2dd40d1b0f7d",
+	'standType',
+	'',
+	'',
+	'standType',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("2d8b64e6-ccca-4bc1-8b31-536038c800ae",
+	"5e085479-b8d0-416c-98f4-fbe53add6632");
+INSERT INTO O_BATTR
+	VALUES ("2d8b64e6-ccca-4bc1-8b31-536038c800ae",
+	"5e085479-b8d0-416c-98f4-fbe53add6632");
+INSERT INTO O_ATTR
+	VALUES ("2d8b64e6-ccca-4bc1-8b31-536038c800ae",
+	"5e085479-b8d0-416c-98f4-fbe53add6632",
+	"62970c16-52c0-4bc7-b685-9a7663d0c3ed",
+	'movement',
+	'',
+	'',
+	'movement',
+	0,
+	"df1143c8-99e2-433b-9e64-5a44d4fe730f",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"5e085479-b8d0-416c-98f4-fbe53add6632");
+INSERT INTO O_ID
+	VALUES (1,
+	"5e085479-b8d0-416c-98f4-fbe53add6632");
+INSERT INTO O_ID
+	VALUES (2,
+	"5e085479-b8d0-416c-98f4-fbe53add6632");
+INSERT INTO PE_PE
+	VALUES ("5e085479-b8d0-416c-98f4-fbe53add6632",
+	1,
+	"f3cba374-1086-4f35-ae97-68a635f058c5",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("f3cba374-1086-4f35-ae97-68a635f058c5",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'Stimuli',
+	'',
+	0,
+	'../Stimuli.xtuml');

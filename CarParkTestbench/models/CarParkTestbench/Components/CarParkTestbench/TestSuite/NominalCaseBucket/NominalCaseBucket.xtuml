@@ -1,0 +1,136 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("cc612e86-65b6-460c-a5b7-064f232c42b8",
+	'NominalCaseBucket',
+	7,
+	'NominalCaseBucket',
+	'A test bucket which runs a number of tests based on Use Cases for the CarPark application.
+
+These so called "Nominal" cases are intended to test behavior under normal conditions.
+All tests are expected to pass; these serve as useful regression tests after any development work.
+They also serve to verify that a number of requirements are covered by the test cases.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("22efdff2-44f3-4f48-b960-dcf5e6821b79",
+	"cc612e86-65b6-460c-a5b7-064f232c42b8",
+	'CreateBucketTests',
+	'Script the seqLabels of stimuli and observations for each test case in this bucket.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// The following tests are intended to validate the use cases by which they are named.
+
+select one bucket related by self->TestBucket[R700];
+send TESTSEQ::SetTestBucketTimeResolutions( bucketId:bucket.bucketId, timeResolution:timeResolution::second, pollResolution:timeResolution::second );
+
+
+send TESTSEQ::AddTestCase( caseLabel:"UC1" ); 
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:3, caseLabel:"UC1" );
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:6, caseLabel:"UC1" );
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:7, caseLabel:"UC1" );
+send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
+VehicleMovement::Create( seqLabel:"seq01", location:"North", stand:"Entry", movement:Movement::Arrive );
+ActivityCheck::CreateEntry( seqLabel:"seq01", activate:True, location:"North", barrier:BarrierState::Closed, ticket:EntryTicketState::NotRequested );
+QueryTicketRequest::Create( seqLabel:"seq01", location:"North", enabled:True );
+TicketRequested::Create( seqLabel:"seq01", location:"North" );
+ActivityCheck::CreateEntry( seqLabel:"seq01", activate:True, location:"North", barrier:BarrierState::Closed, ticket:EntryTicketState::Requested );
+TicketIssued::Create( seqLabel:"seq01", location:"North" );
+ActivityCheck::CreateEntry( seqLabel:"seq01", activate:True, location:"North", barrier:BarrierState::Closed, ticket:EntryTicketState::Issued );
+TicketTaken::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
+BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:BarrierState::Open );
+ActivityCheck::CreateEntry( seqLabel:"seq01", activate:True, location:"North", barrier:BarrierState::Open, ticket:EntryTicketState::Accepted );
+VehicleMovement::Create( seqLabel:"seq01", location:"North", stand:"Entry", movement:Movement::Depart );
+ActivityCheck::CreateEntry( seqLabel:"seq01", activate:True, location:"North", barrier:BarrierState::Closed, ticket:EntryTicketState::Accepted );
+ActivityCheck::CreateEntry( seqLabel:"seq01", activate:False, location:"North", barrier:BarrierState::Closed, ticket:EntryTicketState::Accepted );
+QueryTicketRequest::Create( seqLabel:"seq01", location:"North", enabled:False );
+BarrierCheck::Create( seqLabel:"seq01", location:"North", stand:"Entry", state:BarrierState::Closed );
+OccupancyCount::Create( seqLabel:"seq01", count:1 );
+FastForward::Create( seqLabel:"seq01", hours:5, minutes:0, seconds:0 );
+
+send TESTSEQ::AddTestCase( caseLabel:"UC5" ); 
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:16, caseLabel:"UC5" );
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:17, caseLabel:"UC5" );
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:22, caseLabel:"UC5" );
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:32, caseLabel:"UC5" );
+send TESTSEQ::AddStimulusSequence( seqLabel:"seq05" );
+TicketInserted::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay", number:1 ); 
+id = BalanceValue::Create( seqLabel:"seq05", location:"1st Floor", pay:True, wantChange:False );
+TicketReturned::Create( seqLabel:"seq05", location:"1st Floor" );
+ChangeDispensed::Create( seqLabel:"seq05", location:"1st Floor", dependee:id );
+TicketTaken::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
+
+send TESTSEQ::AddTestCase( caseLabel:"UC11" ); 
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:39, caseLabel:"UC11" );
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:41, caseLabel:"UC11" );
+send TESTSEQ::AddStimulusSequence( seqLabel:"seq11" );
+VehicleMovement::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", movement:Movement::Arrive );
+ActivityCheck::CreateExit( seqLabel:"seq11", activate:True, location:"Lane 1", barrier:BarrierState::Closed, ticket:ExitTicketState::NotInserted );
+TicketInserted::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", number:1 );
+ActivityCheck::CreateExit( seqLabel:"seq11", activate:True, location:"Lane 1", barrier:BarrierState::Closed, ticket:ExitTicketState::Inserted );
+BarrierCheck::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", state:BarrierState::Open );
+VisitCheck::Create( seqLabel:"seq11", ticket:1, payment:PayStatus::paid, change:ChangeStatus::ignore, deadlineStatus:DeadlineStatus::valid ); 
+ActivityCheck::CreateExit( seqLabel:"seq11", activate:True, location:"Lane 1", barrier:BarrierState::Open, ticket:ExitTicketState::Inserted );
+VehicleMovement::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", movement:Movement::Depart );
+ActivityCheck::CreateExit( seqLabel:"seq11", activate:True, location:"Lane 1", barrier:BarrierState::Closed, ticket:ExitTicketState::Inserted );
+BarrierCheck::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", state:BarrierState::Closed );
+OccupancyCount::Create( seqLabel:"seq11", count:0 );
+ActivityCheck::CreateExit( seqLabel:"seq11", activate:False, location:"Lane 1", barrier: BarrierState::Closed, ticket:ExitTicketState::Inserted );
+
+bucket.Initialized();',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TFR
+	VALUES ("79914b6c-4162-491d-9e82-22b65c4e0225",
+	"cc612e86-65b6-460c-a5b7-064f232c42b8",
+	'AddBucketToSuite',
+	'Configure the Test Suite to include this bucket''s set of test cases when run.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance nominal of NominalCaseBucket;
+create object instance bucket of TestBucket;
+bucket.name = "Nominal Cases";
+relate nominal to bucket across R700;
+bucket.AddToSuite();',
+	1,
+	'',
+	"22efdff2-44f3-4f48-b960-dcf5e6821b79",
+	0);
+INSERT INTO O_TFR
+	VALUES ("5fea5cec-b882-427d-8bb0-0b534f74ad9b",
+	"cc612e86-65b6-460c-a5b7-064f232c42b8",
+	'RunSolo',
+	'Execute the set of tests in this bucket stand-alone.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'send TESTSEQ::RegisterTestSuite( suiteLabel:"CarPark Nominal Test Suite", keepAllCases:False ); 
+NominalCaseBucket::AddBucketToSuite();
+send Operator::OpenCarpark();',
+	1,
+	'',
+	"79914b6c-4162-491d-9e82-22b65c4e0225",
+	0);
+INSERT INTO O_ID
+	VALUES (0,
+	"cc612e86-65b6-460c-a5b7-064f232c42b8");
+INSERT INTO O_ID
+	VALUES (1,
+	"cc612e86-65b6-460c-a5b7-064f232c42b8");
+INSERT INTO O_ID
+	VALUES (2,
+	"cc612e86-65b6-460c-a5b7-064f232c42b8");
+INSERT INTO PE_PE
+	VALUES ("cc612e86-65b6-460c-a5b7-064f232c42b8",
+	1,
+	"b5a0758b-c174-4581-a756-efc1476e998f",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("b5a0758b-c174-4581-a756-efc1476e998f",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'TestSuite',
+	'',
+	0,
+	'../TestSuite.xtuml');

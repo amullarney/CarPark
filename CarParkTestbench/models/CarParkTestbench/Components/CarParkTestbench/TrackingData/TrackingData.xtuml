@@ -1,0 +1,238 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("94a87a4e-cf93-40fb-b34c-da75c6d9267a",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'TrackingData',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("d771a20a-af3c-4143-8cf3-fedf5f9eab1e",
+	112,
+	"94a87a4e-cf93-40fb-b34c-da75c6d9267a",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	200,
+	150,
+	0,
+	'4.1.17',
+	'CarParkTestbench::Components::CarParkTestbench::TrackingData');
+INSERT INTO GD_GE
+	VALUES ("6843449f-8b85-4374-80aa-255f5d82a225",
+	"d771a20a-af3c-4143-8cf3-fedf5f9eab1e",
+	"04797ea4-ff17-4ed8-807d-c8e87401fe61",
+	21,
+	0,
+	'CarParkTestbench::Components::CarParkTestbench::TrackingData::ReceivedTicketRequest');
+INSERT INTO GD_SHP
+	VALUES ("6843449f-8b85-4374-80aa-255f5d82a225");
+INSERT INTO GD_NCS
+	VALUES ("6843449f-8b85-4374-80aa-255f5d82a225");
+INSERT INTO DIM_ND
+	VALUES (168.000000,
+	96.000000,
+	"6843449f-8b85-4374-80aa-255f5d82a225");
+INSERT INTO DIM_GE
+	VALUES (5220.000000,
+	3624.000000,
+	"6843449f-8b85-4374-80aa-255f5d82a225",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("6843449f-8b85-4374-80aa-255f5d82a225",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_GE
+	VALUES ("972526e3-280c-41a7-a691-730d97032f80",
+	"d771a20a-af3c-4143-8cf3-fedf5f9eab1e",
+	"5a0423ca-21de-4d89-bfc2-0d8a165f9c8d",
+	21,
+	0,
+	'CarParkTestbench::Components::CarParkTestbench::TrackingData::BarrierCommand');
+INSERT INTO GD_SHP
+	VALUES ("972526e3-280c-41a7-a691-730d97032f80");
+INSERT INTO GD_NCS
+	VALUES ("972526e3-280c-41a7-a691-730d97032f80");
+INSERT INTO DIM_ND
+	VALUES (168.000000,
+	108.000000,
+	"972526e3-280c-41a7-a691-730d97032f80");
+INSERT INTO DIM_GE
+	VALUES (5220.000000,
+	3480.000000,
+	"972526e3-280c-41a7-a691-730d97032f80",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("972526e3-280c-41a7-a691-730d97032f80",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_GE
+	VALUES ("76b6b6a7-f531-4764-8518-c284970f7364",
+	"d771a20a-af3c-4143-8cf3-fedf5f9eab1e",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315",
+	21,
+	0,
+	'CarParkTestbench::Components::CarParkTestbench::TrackingData::VisitTracking');
+INSERT INTO GD_SHP
+	VALUES ("76b6b6a7-f531-4764-8518-c284970f7364");
+INSERT INTO GD_NCS
+	VALUES ("76b6b6a7-f531-4764-8518-c284970f7364");
+INSERT INTO DIM_ND
+	VALUES (180.000000,
+	240.000000,
+	"76b6b6a7-f531-4764-8518-c284970f7364");
+INSERT INTO DIM_GE
+	VALUES (5016.000000,
+	3480.000000,
+	"76b6b6a7-f531-4764-8518-c284970f7364",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("76b6b6a7-f531-4764-8518-c284970f7364",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_GE
+	VALUES ("1ad3ae30-dadd-4c14-89f9-f45d3bf7cbc2",
+	"d771a20a-af3c-4143-8cf3-fedf5f9eab1e",
+	"c5f2c3ca-1ca7-4677-be40-463565c3515f",
+	21,
+	0,
+	'CarParkTestbench::Components::CarParkTestbench::TrackingData::Occupancy');
+INSERT INTO GD_SHP
+	VALUES ("1ad3ae30-dadd-4c14-89f9-f45d3bf7cbc2");
+INSERT INTO GD_NCS
+	VALUES ("1ad3ae30-dadd-4c14-89f9-f45d3bf7cbc2");
+INSERT INTO DIM_ND
+	VALUES (168.000000,
+	96.000000,
+	"1ad3ae30-dadd-4c14-89f9-f45d3bf7cbc2");
+INSERT INTO DIM_GE
+	VALUES (5412.000000,
+	3624.000000,
+	"1ad3ae30-dadd-4c14-89f9-f45d3bf7cbc2",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("1ad3ae30-dadd-4c14-89f9-f45d3bf7cbc2",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_GE
+	VALUES ("f5b3cd44-56ed-4827-97da-76b56ea550c6",
+	"d771a20a-af3c-4143-8cf3-fedf5f9eab1e",
+	"e0c2be7d-3c8a-48a0-9110-25a29b1be1f5",
+	21,
+	0,
+	'CarParkTestbench::Components::CarParkTestbench::TrackingData::Preferences');
+INSERT INTO GD_SHP
+	VALUES ("f5b3cd44-56ed-4827-97da-76b56ea550c6");
+INSERT INTO GD_NCS
+	VALUES ("f5b3cd44-56ed-4827-97da-76b56ea550c6");
+INSERT INTO DIM_ND
+	VALUES (192.000000,
+	169.000000,
+	"f5b3cd44-56ed-4827-97da-76b56ea550c6");
+INSERT INTO DIM_GE
+	VALUES (5616.000000,
+	3480.000000,
+	"f5b3cd44-56ed-4827-97da-76b56ea550c6",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("f5b3cd44-56ed-4827-97da-76b56ea550c6",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_GE
+	VALUES ("5c695a10-4bf6-4f80-9d6d-0866d9960aad",
+	"d771a20a-af3c-4143-8cf3-fedf5f9eab1e",
+	"1c66f1f4-d580-496e-bc96-593c08665269",
+	21,
+	0,
+	'CarParkTestbench::Components::CarParkTestbench::TrackingData::Activation');
+INSERT INTO GD_SHP
+	VALUES ("5c695a10-4bf6-4f80-9d6d-0866d9960aad");
+INSERT INTO GD_NCS
+	VALUES ("5c695a10-4bf6-4f80-9d6d-0866d9960aad");
+INSERT INTO DIM_ND
+	VALUES (167.000000,
+	131.000000,
+	"5c695a10-4bf6-4f80-9d6d-0866d9960aad");
+INSERT INTO DIM_GE
+	VALUES (5412.000000,
+	3481.000000,
+	"5c695a10-4bf6-4f80-9d6d-0866d9960aad",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("5c695a10-4bf6-4f80-9d6d-0866d9960aad",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_DIA
+	VALUES ("d771a20a-af3c-4143-8cf3-fedf5f9eab1e",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_SYNC
+	VALUES ("4600cebf-a8a4-4a9e-8717-8374a4e1da02",
+	"00000000-0000-0000-0000-000000000000",
+	'InsertDelay',
+	'Used to establish a time delay before the next observation in a sequence is triggered.
+The duration is specified at the current timer resolution of the associated sequence.',
+	'create object instance delay of Observation;
+send TESTSEQ::InsertDelay( seqLabel:param.seqLabel, observationId: delay.observationId, duration:param.duration );
+delete object instance delay; ',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO S_SPARM
+	VALUES ("085c6cd3-986b-48dc-9244-09b89b571c88",
+	"4600cebf-a8a4-4a9e-8717-8374a4e1da02",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("a0f9d3e5-6ae1-48c2-b1e1-185e2c0da207",
+	"4600cebf-a8a4-4a9e-8717-8374a4e1da02",
+	'duration',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"085c6cd3-986b-48dc-9244-09b89b571c88",
+	'');
+INSERT INTO PE_PE
+	VALUES ("4600cebf-a8a4-4a9e-8717-8374a4e1da02",
+	1,
+	"94a87a4e-cf93-40fb-b34c-da75c6d9267a",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO PE_PE
+	VALUES ("94a87a4e-cf93-40fb-b34c-da75c6d9267a",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"267abe01-5adc-42d6-aa1d-2adf945776bc",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("267abe01-5adc-42d6-aa1d-2adf945776bc",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'CarParkTestbench',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../CarParkTestbench.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'CarParkTestbench',
+	1,
+	'../../../CarParkTestbench.xtuml');

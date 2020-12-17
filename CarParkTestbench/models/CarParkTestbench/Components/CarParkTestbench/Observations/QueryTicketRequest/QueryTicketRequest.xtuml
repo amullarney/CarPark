@@ -1,0 +1,140 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("c0ceb4db-c66f-4151-967b-437c9d4be88b",
+	'QueryTicketRequest',
+	13,
+	'QueryTicketRequest',
+	'Check whether a a ticket request will be accepted.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("9319eb71-f999-450a-9330-51c9a69a3406",
+	"c0ceb4db-c66f-4151-967b-437c9d4be88b",
+	'Create',
+	'Add an observation of this type to the ''script'' of a test case.
+See Observation.AppendPolling for description.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'// Add an observation to check whether ticket request is enabled or not at the specified entry stand.
+
+create object instance request of QueryTicketRequest;
+request.location = param.location;
+request.enabled = param.enabled;
+
+create object instance observation of Observation;
+relate request to observation across R400;
+
+observation.AddTriggered( seqLabel:param.seqLabel, timeLimit:0, key:"TicketRequest", concurrent:True );',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("ec249fa8-9ea1-403e-9ec9-b8d3a37d9f47",
+	"9319eb71-f999-450a-9330-51c9a69a3406",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("8b2b88d7-84ad-43c9-aadc-a9d3aed779d5",
+	"9319eb71-f999-450a-9330-51c9a69a3406",
+	'location',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"ec249fa8-9ea1-403e-9ec9-b8d3a37d9f47",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("83e2e02a-cf93-4b97-861f-04e7626eab08",
+	"9319eb71-f999-450a-9330-51c9a69a3406",
+	'enabled',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"8b2b88d7-84ad-43c9-aadc-a9d3aed779d5",
+	'Select whether ticket request status is being checked for enabled or disabled.');
+INSERT INTO O_TFR
+	VALUES ("342d2885-1c87-4cad-9e25-2604b3530f08",
+	"c0ceb4db-c66f-4151-967b-437c9d4be88b",
+	'CheckRequest',
+	'When invoked, search any existing notifications looking for a match.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'LOG::LogInfo( message:" --- Checking ticket request status for entry stand at " + self.location );
+select one observation related by self->Observation[R400]; 
+
+select any request from instances of ReceivedTicketRequest
+ where ( selected.location == self.location )
+ and ( selected.enabled == self.enabled );
+if ( not_empty request )
+  observation.Complete( success:True );
+  delete object instance request;
+else
+  observation.Complete( success:False );
+end if;',
+	1,
+	'',
+	"9319eb71-f999-450a-9330-51c9a69a3406",
+	0);
+INSERT INTO O_NBATTR
+	VALUES ("c6798ca2-49a1-4fdd-a233-b9d474312f2e",
+	"c0ceb4db-c66f-4151-967b-437c9d4be88b");
+INSERT INTO O_BATTR
+	VALUES ("c6798ca2-49a1-4fdd-a233-b9d474312f2e",
+	"c0ceb4db-c66f-4151-967b-437c9d4be88b");
+INSERT INTO O_ATTR
+	VALUES ("c6798ca2-49a1-4fdd-a233-b9d474312f2e",
+	"c0ceb4db-c66f-4151-967b-437c9d4be88b",
+	"00000000-0000-0000-0000-000000000000",
+	'location',
+	'Location of the entry stand where request status is to be checked.',
+	'',
+	'location',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("06455ccc-8710-4771-b050-89b58630f52a",
+	"c0ceb4db-c66f-4151-967b-437c9d4be88b");
+INSERT INTO O_BATTR
+	VALUES ("06455ccc-8710-4771-b050-89b58630f52a",
+	"c0ceb4db-c66f-4151-967b-437c9d4be88b");
+INSERT INTO O_ATTR
+	VALUES ("06455ccc-8710-4771-b050-89b58630f52a",
+	"c0ceb4db-c66f-4151-967b-437c9d4be88b",
+	"c6798ca2-49a1-4fdd-a233-b9d474312f2e",
+	'enabled',
+	'',
+	'',
+	'enabled',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"c0ceb4db-c66f-4151-967b-437c9d4be88b");
+INSERT INTO O_ID
+	VALUES (1,
+	"c0ceb4db-c66f-4151-967b-437c9d4be88b");
+INSERT INTO O_ID
+	VALUES (2,
+	"c0ceb4db-c66f-4151-967b-437c9d4be88b");
+INSERT INTO PE_PE
+	VALUES ("c0ceb4db-c66f-4151-967b-437c9d4be88b",
+	1,
+	"8d0b291c-e8aa-44d2-8917-c259479b29a2",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("8d0b291c-e8aa-44d2-8917-c259479b29a2",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'Observations',
+	'',
+	0,
+	'../Observations.xtuml');
