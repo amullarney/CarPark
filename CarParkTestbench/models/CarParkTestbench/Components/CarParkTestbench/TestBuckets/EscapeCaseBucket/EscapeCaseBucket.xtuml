@@ -1,7 +1,7 @@
 -- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
 
 INSERT INTO O_OBJ
-	VALUES ("13d3642d-07f2-4dc4-baac-7bd276787ffb",
+	VALUES ("180713b6-31e3-4cd4-92ce-0fb7853f7a65",
 	'EscapeCaseBucket',
 	39,
 	'EscapeCaseBucket',
@@ -10,8 +10,8 @@ These are cases of interest that represent some unusual behavior that calls for 
 ',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
-	VALUES ("9166fc91-aa2e-4819-b7ea-27ef297dc318",
-	"13d3642d-07f2-4dc4-baac-7bd276787ffb",
+	VALUES ("9d22bca8-749e-4add-bcfa-e51cca7e2891",
+	"180713b6-31e3-4cd4-92ce-0fb7853f7a65",
 	'CreateBucketTests',
 	'Script the seqLabels of stimuli and observations for each test case in this bucket.',
 	"ba5eda7a-def5-0000-0000-000000000000",
@@ -49,8 +49,8 @@ bucket.Initialized();',
 	"00000000-0000-0000-0000-000000000000",
 	0);
 INSERT INTO O_TFR
-	VALUES ("d3f8e965-397e-47cf-9426-b41f53dfc5a0",
-	"13d3642d-07f2-4dc4-baac-7bd276787ffb",
+	VALUES ("3258bf83-0a62-4d3d-9018-1790dfd6a84f",
+	"180713b6-31e3-4cd4-92ce-0fb7853f7a65",
 	'AddBucketToSuite',
 	'Configure the Test Suite to include this bucket''s set of test cases when run.',
 	"ba5eda7a-def5-0000-0000-000000000000",
@@ -62,11 +62,11 @@ relate escapes to bucket across R700;
 bucket.AddToSuite();',
 	1,
 	'',
-	"9166fc91-aa2e-4819-b7ea-27ef297dc318",
+	"9d22bca8-749e-4add-bcfa-e51cca7e2891",
 	0);
 INSERT INTO O_TFR
-	VALUES ("706eb3e8-70bf-4ffa-b2bd-5ba28a7853bf",
-	"13d3642d-07f2-4dc4-baac-7bd276787ffb",
+	VALUES ("91a2ca48-abff-4e1d-9115-98b903a0af77",
+	"180713b6-31e3-4cd4-92ce-0fb7853f7a65",
 	'RunSolo',
 	'Execute the set of tests in this bucket stand-alone.',
 	"ba5eda7a-def5-0000-0000-000000000000",
@@ -76,28 +76,28 @@ EscapeCaseBucket::AddBucketToSuite();
 send Operator::OpenCarpark();',
 	1,
 	'',
-	"d3f8e965-397e-47cf-9426-b41f53dfc5a0",
+	"3258bf83-0a62-4d3d-9018-1790dfd6a84f",
 	0);
 INSERT INTO O_ID
 	VALUES (0,
-	"13d3642d-07f2-4dc4-baac-7bd276787ffb");
+	"180713b6-31e3-4cd4-92ce-0fb7853f7a65");
 INSERT INTO O_ID
 	VALUES (1,
-	"13d3642d-07f2-4dc4-baac-7bd276787ffb");
+	"180713b6-31e3-4cd4-92ce-0fb7853f7a65");
 INSERT INTO O_ID
 	VALUES (2,
-	"13d3642d-07f2-4dc4-baac-7bd276787ffb");
+	"180713b6-31e3-4cd4-92ce-0fb7853f7a65");
 INSERT INTO PE_PE
-	VALUES ("13d3642d-07f2-4dc4-baac-7bd276787ffb",
+	VALUES ("180713b6-31e3-4cd4-92ce-0fb7853f7a65",
 	1,
-	"3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"b5a0758b-c174-4581-a756-efc1476e998f",
 	"00000000-0000-0000-0000-000000000000",
 	4);
 INSERT INTO EP_PKG_PROXY
-	VALUES ("3430745e-1746-4e96-ac58-2ee3ee684b20",
+	VALUES ("b5a0758b-c174-4581-a756-efc1476e998f",
 	"00000000-0000-0000-0000-000000000000",
 	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
-	'Testbench',
+	'TestBuckets',
 	'',
 	0,
-	'../Testbench.xtuml');
+	'../TestBuckets.xtuml');

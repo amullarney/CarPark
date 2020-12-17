@@ -1,7 +1,7 @@
 -- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
 
 INSERT INTO O_OBJ
-	VALUES ("e83ec484-5cef-45b8-8584-e5e8f0edf90f",
+	VALUES ("16897b1e-6136-49aa-9b9c-6df3d050bfa2",
 	'TestBucket',
 	6,
 	'TestBucket',
@@ -15,8 +15,8 @@ They may be deleted when the test bucket completes, dependent on configuration c
 ',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
-	VALUES ("f8d8c213-10de-4616-8e7e-9380080d79b1",
-	"e83ec484-5cef-45b8-8584-e5e8f0edf90f",
+	VALUES ("9e2f82f6-ca33-4973-83c1-c3ddcc3c78a2",
+	"16897b1e-6136-49aa-9b9c-6df3d050bfa2",
 	'AddToSuite',
 	'Add a new instance of test bucket to the test suite.',
 	"ba5eda7a-def5-0000-0000-000000000000",
@@ -27,8 +27,8 @@ INSERT INTO O_TFR
 	"00000000-0000-0000-0000-000000000000",
 	0);
 INSERT INTO O_TFR
-	VALUES ("1670b5e7-981e-4ec7-a3b0-203bdd25b593",
-	"e83ec484-5cef-45b8-8584-e5e8f0edf90f",
+	VALUES ("15a0cfd7-25d3-4255-bd8f-7e24496c123a",
+	"16897b1e-6136-49aa-9b9c-6df3d050bfa2",
 	'Delete',
 	'Dispose of the test bucket instances after completion of execution.',
 	"ba5eda7a-def5-0000-0000-000000000000",
@@ -54,11 +54,11 @@ end if;
 delete object instance self;',
 	1,
 	'',
-	"f8d8c213-10de-4616-8e7e-9380080d79b1",
+	"9e2f82f6-ca33-4973-83c1-c3ddcc3c78a2",
 	0);
 INSERT INTO O_TFR
-	VALUES ("c4fe1a10-6340-4e74-84e8-bf3577b4ee0f",
-	"e83ec484-5cef-45b8-8584-e5e8f0edf90f",
+	VALUES ("730ee9f9-3ba1-4bd2-9f66-8580d3c7f16e",
+	"16897b1e-6136-49aa-9b9c-6df3d050bfa2",
 	'Initialized',
 	'Signal the test sequencer that the bucket test cases may start execution.',
 	"ba5eda7a-def5-0000-0000-000000000000",
@@ -66,11 +66,11 @@ INSERT INTO O_TFR
 	'send TESTSEQ::BucketInitialized( bucketId:self.bucketId );',
 	1,
 	'',
-	"1670b5e7-981e-4ec7-a3b0-203bdd25b593",
+	"15a0cfd7-25d3-4255-bd8f-7e24496c123a",
 	0);
 INSERT INTO O_TFR
-	VALUES ("2cf1ddc5-96e6-4fb5-a47d-07ff1c9a9fed",
-	"e83ec484-5cef-45b8-8584-e5e8f0edf90f",
+	VALUES ("de94156e-56ed-4008-8b2c-56aa3c4a68e3",
+	"16897b1e-6136-49aa-9b9c-6df3d050bfa2",
 	'AddTestCases',
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
@@ -96,17 +96,17 @@ if ( not_empty escapes )
 end if;',
 	1,
 	'',
-	"c4fe1a10-6340-4e74-84e8-bf3577b4ee0f",
+	"730ee9f9-3ba1-4bd2-9f66-8580d3c7f16e",
 	0);
 INSERT INTO O_NBATTR
-	VALUES ("0de9532f-b79d-425b-b8c3-581f1259410a",
-	"e83ec484-5cef-45b8-8584-e5e8f0edf90f");
+	VALUES ("6f0ad9d1-0e79-4a12-986a-84cab223229e",
+	"16897b1e-6136-49aa-9b9c-6df3d050bfa2");
 INSERT INTO O_BATTR
-	VALUES ("0de9532f-b79d-425b-b8c3-581f1259410a",
-	"e83ec484-5cef-45b8-8584-e5e8f0edf90f");
+	VALUES ("6f0ad9d1-0e79-4a12-986a-84cab223229e",
+	"16897b1e-6136-49aa-9b9c-6df3d050bfa2");
 INSERT INTO O_ATTR
-	VALUES ("0de9532f-b79d-425b-b8c3-581f1259410a",
-	"e83ec484-5cef-45b8-8584-e5e8f0edf90f",
+	VALUES ("6f0ad9d1-0e79-4a12-986a-84cab223229e",
+	"16897b1e-6136-49aa-9b9c-6df3d050bfa2",
 	"00000000-0000-0000-0000-000000000000",
 	'bucketId',
 	'An identifier returned by the Test sequencer service.
@@ -118,15 +118,15 @@ Used to identify an instance when being invoked by the Test sequencer.',
 	'',
 	'');
 INSERT INTO O_NBATTR
-	VALUES ("0686792c-55ae-40d7-b6f2-ed13c5e705e3",
-	"e83ec484-5cef-45b8-8584-e5e8f0edf90f");
+	VALUES ("b5a17ab2-648b-4338-88b3-5fa209dedb3a",
+	"16897b1e-6136-49aa-9b9c-6df3d050bfa2");
 INSERT INTO O_BATTR
-	VALUES ("0686792c-55ae-40d7-b6f2-ed13c5e705e3",
-	"e83ec484-5cef-45b8-8584-e5e8f0edf90f");
+	VALUES ("b5a17ab2-648b-4338-88b3-5fa209dedb3a",
+	"16897b1e-6136-49aa-9b9c-6df3d050bfa2");
 INSERT INTO O_ATTR
-	VALUES ("0686792c-55ae-40d7-b6f2-ed13c5e705e3",
-	"e83ec484-5cef-45b8-8584-e5e8f0edf90f",
-	"0de9532f-b79d-425b-b8c3-581f1259410a",
+	VALUES ("b5a17ab2-648b-4338-88b3-5fa209dedb3a",
+	"16897b1e-6136-49aa-9b9c-6df3d050bfa2",
+	"6f0ad9d1-0e79-4a12-986a-84cab223229e",
 	'name',
 	'',
 	'',
@@ -137,24 +137,24 @@ INSERT INTO O_ATTR
 	'');
 INSERT INTO O_ID
 	VALUES (0,
-	"e83ec484-5cef-45b8-8584-e5e8f0edf90f");
+	"16897b1e-6136-49aa-9b9c-6df3d050bfa2");
 INSERT INTO O_ID
 	VALUES (1,
-	"e83ec484-5cef-45b8-8584-e5e8f0edf90f");
+	"16897b1e-6136-49aa-9b9c-6df3d050bfa2");
 INSERT INTO O_ID
 	VALUES (2,
-	"e83ec484-5cef-45b8-8584-e5e8f0edf90f");
+	"16897b1e-6136-49aa-9b9c-6df3d050bfa2");
 INSERT INTO PE_PE
-	VALUES ("e83ec484-5cef-45b8-8584-e5e8f0edf90f",
+	VALUES ("16897b1e-6136-49aa-9b9c-6df3d050bfa2",
 	1,
-	"3430745e-1746-4e96-ac58-2ee3ee684b20",
+	"b5a0758b-c174-4581-a756-efc1476e998f",
 	"00000000-0000-0000-0000-000000000000",
 	4);
 INSERT INTO EP_PKG_PROXY
-	VALUES ("3430745e-1746-4e96-ac58-2ee3ee684b20",
+	VALUES ("b5a0758b-c174-4581-a756-efc1476e998f",
 	"00000000-0000-0000-0000-000000000000",
 	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
-	'Testbench',
+	'TestBuckets',
 	'',
 	0,
-	'../Testbench.xtuml');
+	'../TestBuckets.xtuml');
