@@ -1,6 +1,8 @@
 package deployment;
 
 import io.ciera.runtime.summit.application.IApplication;
+import deployment.OperatorConsoleMsgController;
+
 import io.ciera.runtime.summit.application.IRunContext;
 import io.ciera.runtime.summit.application.tasks.GenericExecutionTask;
 import io.ciera.runtime.summit.application.tasks.HaltExecutionTask;
@@ -119,6 +121,18 @@ public class EntryStandMsgController {
         	  System.out.printf( "Exception, %s, in VehicleEntered()\n", e );    			
       	}
     }
+
+    // *** Note: this mapping handles 'HelpRequest' from either an Entry or an Exit stand. ***
+    // *** The same message, with peripheral, is sent to Operator Console in either case.  ***
+    @MessageMapping( "/HelpRequest" )
+    public void HelpRequest( HelpRequestMsg message ) throws Exception {
+    	try {
+    		OperatorConsoleMsgController.Singleton().SendHelpRequestMessage( message.getLocation(), message.getPeripheral() );
+    	}
+      	catch ( Exception e ) {
+        	  System.out.printf( "Exception, %s, in HelpRequest()\n", e );    			
+      	}
+    }
     // End of outgoing messages.
     
     // Incoming (to this component) messages.
@@ -149,7 +163,7 @@ public class EntryStandMsgController {
         this.template.convertAndSend( topic, msg );
     }
     
-    public void SendTicketRequestDisabledMessage ( String Location ) throws Exception {
+   public void SendTicketRequestDisabledMessage ( String Location ) throws Exception {
     	TicketRequestDisabledMsg msg = new TicketRequestDisabledMsg( "Ticket request disabled");
         String topic = "/topic/EntryStand/" + Location;
         this.template.convertAndSend( topic, msg );

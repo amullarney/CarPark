@@ -109,6 +109,9 @@ public class ExitStandMsgController {
         	  System.out.printf( "Exception, %s, in VehicleExited()\n", e );    			
       	}
     }
+
+    // *** Note: mapping of 'HelpRequest' from Exit stand is handled in EntryStandMsgController. ***
+
     // End of outgoing messages.
     
     // Incoming (to this component) messages.

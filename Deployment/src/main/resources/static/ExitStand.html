@@ -20,6 +20,7 @@
                     <button id="connect" class="btn btn-default" type="submit">Connect</button>
                     <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect</button>
                     <button id="msgdisplay" class="btn btn-default" type="submit">Toggle Message Display</button>
+                    <button id="help" class="btn btn-default" type="submit">Intercom</button>
                 </div>
             </form>
         </div>
@@ -35,7 +36,7 @@
     <div class="row">
         <div class="col-md-6">
             <form class="form-inline">
-                <button id="VehicleWaiting" class="btn btn-primary" type="submit">Vehicle Waiting</button>
+                <button v-bind:disabled="VehicleWaitingDisabled" id="VehicleWaiting" class="btn btn-primary" type="submit">Vehicle Waiting</button>
             </form>
         </div>
     </div>

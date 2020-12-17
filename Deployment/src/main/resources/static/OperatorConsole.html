@@ -50,10 +50,11 @@
    
 </div>
 
-<script type="text/x-template" id="entry-console-display">
+<script type="text/x-template" id="entry-console-display">  <! Warning: any change in div nesting will break .js parent identification >
     <div class="entrystand">
         <div v-show="activated" class="col-md-6">
             <h4>Entry Stand</h4>
+            <h5 v-show="help" style="color:blue">Help requested</h5>
             <h5>Location: {{ location }}</h5>
             <h5>Ticket: {{ ticketStatus }}</h5>
             <h5>Barrier: {{ barrier }}</h5>
@@ -64,10 +65,11 @@
     </div>
 </script>
 
-<script type="text/x-template" id="exit-console-display">    
+<script type="text/x-template" id="exit-console-display">  <! Warning: any change in div nesting will break .js parent identification >  
     <div class="exitstand">
         <div v-show="activated" class="col-md-6">
-            <h4>Exit Stand</h4>
+            <h4>Exit Stand</h4> 
+            <h5 v-show="help" style="color:blue">Help requested</h5>
             <h5>Location: {{ location }}</h5>
             <h5>Ticket: {{ ticketStatus }}</h5>
             <h5>Exit Deadline: {{ exitDeadline }}</h5>

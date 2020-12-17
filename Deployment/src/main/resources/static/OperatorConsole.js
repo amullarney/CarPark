@@ -18,11 +18,12 @@ const EntryStand = {
   template: '#entry-console-display',
   data: function () {
     return {
-      location: 'North',
+      location: '',
       activated: false,
-      ticketStatus: 'not requested',
-      barrier: 'closed',
-      delayed: false
+      ticketStatus: 'NOTREQUESTED',
+      barrier: 'CLOSED',
+      delayed: false,
+      help: false
     }
   },
   methods: {
@@ -40,6 +41,16 @@ const EntryStand = {
     },
     setDelayed(delayed) {
       this.delayed = delayed;
+    },
+    setHelp(help) {
+      this.help = help;
+    },
+    reset() {
+      this.activated = false;
+      this.ticketStatus = "NOTREQUESTED";
+      this.barrier = "CLOSED";
+      this.delayed = false;
+      this.help = false;
     }
   }
 }
@@ -48,18 +59,19 @@ const ExitStand = {
   template: '#exit-console-display',
   data: function () {
     return {
-      location: 'wayout',
+      location: '',
       activated: false,
-      ticketStatus: 'none',
-      exitDeadline: 'None',
-      barrier: 'stuck',
+      ticketStatus: 'NOTINSERTED',
+      exitDeadline: 'NONE',
+      barrier: 'CLOSED',
       ticketNumber: '',
       additionalCharge: '',
       overstay: '',
       charge: '',
       duration: '', 
       tardyExit: false,
-      unpaidStayExit: false
+      unpaidStayExit: false,
+      help: false
     }
   },
   methods: {
@@ -98,6 +110,18 @@ const ExitStand = {
     },
     setUnpaidStayExit(condition) {
       this.unpaidStayExit = condition;
+    },
+    setHelp(help) {
+      this.help = help;
+    },
+    reset() {
+      this.activated = false;
+      this.ticketStatus = "NOTINSERTED";
+      this.exitDeadline = "NONE";
+      this.barrier = "CLOSED";
+      this.tardyExit = false;
+      this.unpaidStayExit = false;
+      this.help = false;
     }
   }
 }
@@ -228,16 +252,13 @@ function handleReply(reply) {
     	location = JSON.parse( reply.body ).location;
     	entry = entrystands.get(location);
     	if ( entry ) {
-    	  entry.setActive(false);
-    	  entry.setDelayed(false);
+    	  entry.reset();
     	}
     } else if ( messageName == "DeactivateExitStand" ) {
     	location = JSON.parse( reply.body ).location;
     	exit = exitstands.get(location);
     	if ( exit ) {
-    	  exit.setActive(false);
-    	  exit.setTardyExit(false);
-    	  exit.setUnpaidStayExit(false);
+    	  exit.reset();
     	}
     } else if ( messageName == "DelayedEntry" ) {
     	location = JSON.parse( reply.body ).location;
@@ -269,6 +290,23 @@ function handleReply(reply) {
     	  exit.setDuration(duration);
     	  exit.setUnpaidStayExit(true);
     	}
+    } else if ( messageName == "HelpRequest" ) {
+    	location = JSON.parse( reply.body ).location;
+    	peripheral = JSON.parse( reply.body ).peripheral;
+    	if ( peripheral == "Entry" ) {
+    	  entry = entrystands.get(location);
+    	  if ( entry ) {
+    	    entry.setActive(true);
+    	    entry.setHelp(true);
+    	  }
+    	}
+    	if ( peripheral == "Exit" ) {
+    	  exit = exitstands.get(location);
+    	  if ( exit ) {
+    	    exit.setActive(true);
+    	    exit.setHelp(true);
+    	  }
+    	}
     // Non-instance-specific.
     } else if ( messageName == "OccupancyUpdate" ) {
     	vm.Occupancy = JSON.parse( reply.body ).occupancy;
@@ -286,6 +324,7 @@ function OpenEntry( element ) {
   for ( entry of entrystands.values() ) {
     if ( entry.$el == parent ) {
       sendToServer( "OpenEntryBarrier", "location", entry.location );
+      entry.setHelp(false);
       break;
     }
   }
@@ -296,6 +335,7 @@ function IssueTicket( element ) {
   for ( entry of entrystands.values() ) {
     if ( entry.$el == parent ) {
       sendToServer( "OperatorIssueTicket", "location", entry.location );
+      entry.setHelp(false);
       break;
     }
   }
@@ -306,6 +346,7 @@ function OpenExit( element ) {
   for ( exit of exitstands.values() ) {
     if ( exit.$el == parent ) {
       sendToServer( "OpenExitBarrier", "location", exit.location );
+      exit.setHelp(false);
       break;
     }
   }
@@ -316,6 +357,7 @@ function FeeWaived( element ) {
   for ( exit of exitstands.values() ) {
     if ( exit.$el == parent ) {
       sendToServer( "FeeWaived", "ticketNumber", exit.ticketNumber );
+      exit.setHelp(false);
       break;
     }
   }
@@ -326,6 +368,7 @@ function FeeCollected( element ) {
   for ( exit of exitstands.values() ) {
     if ( exit.$el == parent ) {
       sendToServer( "FeeCollected", "ticketNumber", exit.ticketNumber );
+      exit.setHelp(false);
       break;
     }
   }
