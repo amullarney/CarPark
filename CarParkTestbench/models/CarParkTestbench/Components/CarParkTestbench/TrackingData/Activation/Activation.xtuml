@@ -1,0 +1,143 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("1c66f1f4-d580-496e-bc96-593c08665269",
+	'Activation',
+	38,
+	'Activation',
+	'Captures operator console data associated with entry/exit stand activation - to be checked for accuracy.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("1005c4df-ff90-49f2-8c4c-7d6200602148",
+	"1c66f1f4-d580-496e-bc96-593c08665269");
+INSERT INTO O_BATTR
+	VALUES ("1005c4df-ff90-49f2-8c4c-7d6200602148",
+	"1c66f1f4-d580-496e-bc96-593c08665269");
+INSERT INTO O_ATTR
+	VALUES ("1005c4df-ff90-49f2-8c4c-7d6200602148",
+	"1c66f1f4-d580-496e-bc96-593c08665269",
+	"00000000-0000-0000-0000-000000000000",
+	'active',
+	'If True, this represents activation; if False, deactivation.',
+	'',
+	'active',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("8bb1dedf-d638-4b75-858a-63c6fbab12ca",
+	"1c66f1f4-d580-496e-bc96-593c08665269");
+INSERT INTO O_BATTR
+	VALUES ("8bb1dedf-d638-4b75-858a-63c6fbab12ca",
+	"1c66f1f4-d580-496e-bc96-593c08665269");
+INSERT INTO O_ATTR
+	VALUES ("8bb1dedf-d638-4b75-858a-63c6fbab12ca",
+	"1c66f1f4-d580-496e-bc96-593c08665269",
+	"1005c4df-ff90-49f2-8c4c-7d6200602148",
+	'location',
+	'',
+	'',
+	'location',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("151d1f3f-fa8d-461e-b65e-9193b5078673",
+	"1c66f1f4-d580-496e-bc96-593c08665269");
+INSERT INTO O_BATTR
+	VALUES ("151d1f3f-fa8d-461e-b65e-9193b5078673",
+	"1c66f1f4-d580-496e-bc96-593c08665269");
+INSERT INTO O_ATTR
+	VALUES ("151d1f3f-fa8d-461e-b65e-9193b5078673",
+	"1c66f1f4-d580-496e-bc96-593c08665269",
+	"8bb1dedf-d638-4b75-858a-63c6fbab12ca",
+	'barrier',
+	'',
+	'',
+	'barrier',
+	0,
+	"f0c65a10-2e1e-4a19-8c3f-db9b478b5038",
+	'',
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("f0c65a10-2e1e-4a19-8c3f-db9b478b5038",
+	"00000000-0000-0000-0000-000000000000",
+	'BarrierState',
+	'',
+	'',
+	'../../../../../../../CarPark/models/CarPark/SharedTypes/SharedTypes.xtuml');
+INSERT INTO O_NBATTR
+	VALUES ("50cd78cc-4cf0-4d4d-b57d-29f934edcb82",
+	"1c66f1f4-d580-496e-bc96-593c08665269");
+INSERT INTO O_BATTR
+	VALUES ("50cd78cc-4cf0-4d4d-b57d-29f934edcb82",
+	"1c66f1f4-d580-496e-bc96-593c08665269");
+INSERT INTO O_ATTR
+	VALUES ("50cd78cc-4cf0-4d4d-b57d-29f934edcb82",
+	"1c66f1f4-d580-496e-bc96-593c08665269",
+	"151d1f3f-fa8d-461e-b65e-9193b5078673",
+	'ticketEntry',
+	'',
+	'',
+	'ticketEntry',
+	0,
+	"cafec5d5-16a2-4bdd-9339-b4d98d011baa",
+	'',
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("cafec5d5-16a2-4bdd-9339-b4d98d011baa",
+	"00000000-0000-0000-0000-000000000000",
+	'EntryTicketState',
+	'',
+	'',
+	'../../../../../../../CarPark/models/CarPark/SharedTypes/SharedTypes.xtuml');
+INSERT INTO O_NBATTR
+	VALUES ("be50cfb1-9c01-49fe-93cc-2a91bb95a2d2",
+	"1c66f1f4-d580-496e-bc96-593c08665269");
+INSERT INTO O_BATTR
+	VALUES ("be50cfb1-9c01-49fe-93cc-2a91bb95a2d2",
+	"1c66f1f4-d580-496e-bc96-593c08665269");
+INSERT INTO O_ATTR
+	VALUES ("be50cfb1-9c01-49fe-93cc-2a91bb95a2d2",
+	"1c66f1f4-d580-496e-bc96-593c08665269",
+	"50cd78cc-4cf0-4d4d-b57d-29f934edcb82",
+	'ticketExit',
+	'',
+	'',
+	'ticketExit',
+	0,
+	"9eade303-9285-4f04-b713-0845aa0189ab",
+	'',
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("9eade303-9285-4f04-b713-0845aa0189ab",
+	"00000000-0000-0000-0000-000000000000",
+	'ExitTicketState',
+	'',
+	'',
+	'../../../../../../../CarPark/models/CarPark/SharedTypes/SharedTypes.xtuml');
+INSERT INTO O_ID
+	VALUES (0,
+	"1c66f1f4-d580-496e-bc96-593c08665269");
+INSERT INTO O_ID
+	VALUES (1,
+	"1c66f1f4-d580-496e-bc96-593c08665269");
+INSERT INTO O_ID
+	VALUES (2,
+	"1c66f1f4-d580-496e-bc96-593c08665269");
+INSERT INTO PE_PE
+	VALUES ("1c66f1f4-d580-496e-bc96-593c08665269",
+	1,
+	"94a87a4e-cf93-40fb-b34c-da75c6d9267a",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("94a87a4e-cf93-40fb-b34c-da75c6d9267a",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'TrackingData',
+	'',
+	0,
+	'../TrackingData.xtuml');

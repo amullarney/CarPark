@@ -1,0 +1,176 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("89e2d473-7188-417e-b83e-b1706212ab9a",
+	'BarrierCheck',
+	18,
+	'BarrierCheck',
+	'An observation which checks for expected barrier status - open/closed.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("c15958c2-3db1-4e76-bd93-56a32871612f",
+	"89e2d473-7188-417e-b83e-b1706212ab9a",
+	'Create',
+	'Add an observation of this type to the ''script'' of a test case.
+See Observation.AppendPolling for description.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance check of BarrierCheck;
+
+create object instance observation of Observation;
+relate check to observation across R400;
+check.location = param.location;
+check.stand = param.stand;
+check.state = param.state;
+
+observation.AddTriggered( seqLabel:param.seqLabel, timeLimit:0, key:"BarrierCommand", concurrent:True );',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("d1fab847-4cb1-4350-b3ea-606459aa374c",
+	"c15958c2-3db1-4e76-bd93-56a32871612f",
+	'location',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"7474bca1-2720-43a5-881d-b3fd52a16ecd",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("11e938d5-5972-4f83-8ad9-5d57e47cec83",
+	"c15958c2-3db1-4e76-bd93-56a32871612f",
+	'state',
+	"f0c65a10-2e1e-4a19-8c3f-db9b478b5038",
+	0,
+	'',
+	"ac87a484-6f8e-4595-9d61-603364a83fa2",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("f0c65a10-2e1e-4a19-8c3f-db9b478b5038",
+	"00000000-0000-0000-0000-000000000000",
+	'BarrierState',
+	'',
+	'',
+	'../../../../../../../CarPark/models/CarPark/SharedTypes/SharedTypes.xtuml');
+INSERT INTO O_TPARM
+	VALUES ("ac87a484-6f8e-4595-9d61-603364a83fa2",
+	"c15958c2-3db1-4e76-bd93-56a32871612f",
+	'stand',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"d1fab847-4cb1-4350-b3ea-606459aa374c",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("7474bca1-2720-43a5-881d-b3fd52a16ecd",
+	"c15958c2-3db1-4e76-bd93-56a32871612f",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("f264cc35-3228-4cde-a049-3813723c319d",
+	"89e2d473-7188-417e-b83e-b1706212ab9a",
+	'CheckStatus',
+	'When invoked, search any existing notifications looking for a match.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Observe that the barrier at the specified entry/exit station is open or closed as appropriate.
+
+select one observation related by self->Observation[R400]; 
+
+select any bcmd from instances of BarrierCommand
+ where ( selected.location == self.location ) 
+ and ( selected.stand == self.stand )
+ and ( selected.state == self.state );
+if ( not_empty bcmd )
+  LOG::LogInfo( message:" --- Barrier status correct at " + self.location + " " + self.stand );
+  observation.Complete( success:True );
+  delete object instance bcmd;
+else
+  observation.Complete( success:False );
+end if;',
+	1,
+	'',
+	"c15958c2-3db1-4e76-bd93-56a32871612f",
+	0);
+INSERT INTO O_NBATTR
+	VALUES ("fe586aa6-8e7c-4f1d-98cc-ae7460f52eee",
+	"89e2d473-7188-417e-b83e-b1706212ab9a");
+INSERT INTO O_BATTR
+	VALUES ("fe586aa6-8e7c-4f1d-98cc-ae7460f52eee",
+	"89e2d473-7188-417e-b83e-b1706212ab9a");
+INSERT INTO O_ATTR
+	VALUES ("fe586aa6-8e7c-4f1d-98cc-ae7460f52eee",
+	"89e2d473-7188-417e-b83e-b1706212ab9a",
+	"00000000-0000-0000-0000-000000000000",
+	'location',
+	'',
+	'',
+	'location',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("637e6d37-276c-4483-9b1b-3969db5b41ee",
+	"89e2d473-7188-417e-b83e-b1706212ab9a");
+INSERT INTO O_BATTR
+	VALUES ("637e6d37-276c-4483-9b1b-3969db5b41ee",
+	"89e2d473-7188-417e-b83e-b1706212ab9a");
+INSERT INTO O_ATTR
+	VALUES ("637e6d37-276c-4483-9b1b-3969db5b41ee",
+	"89e2d473-7188-417e-b83e-b1706212ab9a",
+	"8d22762e-be77-4c50-8aca-ff6ce0ddf8ae",
+	'state',
+	'',
+	'',
+	'state',
+	0,
+	"f0c65a10-2e1e-4a19-8c3f-db9b478b5038",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("8d22762e-be77-4c50-8aca-ff6ce0ddf8ae",
+	"89e2d473-7188-417e-b83e-b1706212ab9a");
+INSERT INTO O_BATTR
+	VALUES ("8d22762e-be77-4c50-8aca-ff6ce0ddf8ae",
+	"89e2d473-7188-417e-b83e-b1706212ab9a");
+INSERT INTO O_ATTR
+	VALUES ("8d22762e-be77-4c50-8aca-ff6ce0ddf8ae",
+	"89e2d473-7188-417e-b83e-b1706212ab9a",
+	"fe586aa6-8e7c-4f1d-98cc-ae7460f52eee",
+	'stand',
+	'',
+	'',
+	'stand',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"89e2d473-7188-417e-b83e-b1706212ab9a");
+INSERT INTO O_ID
+	VALUES (1,
+	"89e2d473-7188-417e-b83e-b1706212ab9a");
+INSERT INTO O_ID
+	VALUES (2,
+	"89e2d473-7188-417e-b83e-b1706212ab9a");
+INSERT INTO PE_PE
+	VALUES ("89e2d473-7188-417e-b83e-b1706212ab9a",
+	1,
+	"8d0b291c-e8aa-44d2-8917-c259479b29a2",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("8d0b291c-e8aa-44d2-8917-c259479b29a2",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'Observations',
+	'',
+	0,
+	'../Observations.xtuml');

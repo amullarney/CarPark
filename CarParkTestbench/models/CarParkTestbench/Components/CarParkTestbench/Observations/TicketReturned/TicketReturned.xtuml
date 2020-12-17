@@ -1,0 +1,129 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("c8b2d620-fe1b-4583-a7f8-e1d705d065c6",
+	'TicketReturned',
+	27,
+	'TicketReturned',
+	'Observe that a ticket is returned at a pay station.
+It may be returned due to cancellation as well as full payment.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("b5fa2fec-0eac-49de-93f4-82eba55a9efb",
+	"c8b2d620-fe1b-4583-a7f8-e1d705d065c6",
+	'Create',
+	'Add an observation of this type to the ''script'' of a test case.
+See Observation.AppendPolling for description.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance ticket of TicketReturned;
+ticket.location = param.location;
+
+create object instance obs of Observation;
+relate ticket to obs across R400;
+
+obs.AddTriggered( seqLabel:param.seqLabel, timeLimit:0, key:"TicketReturned", concurrent:True );',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("1165dc10-ad7c-45fa-9108-00b71042545e",
+	"b5fa2fec-0eac-49de-93f4-82eba55a9efb",
+	'location',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"4a97ed14-68ae-4b38-8fa5-783f066d7dbe",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("4a97ed14-68ae-4b38-8fa5-783f066d7dbe",
+	"b5fa2fec-0eac-49de-93f4-82eba55a9efb",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("52bcc98e-e4fe-4e9a-962a-48b799e27bd1",
+	"c8b2d620-fe1b-4583-a7f8-e1d705d065c6",
+	'CheckReturned',
+	'When invoked, search any existing notifications looking for a match.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'LOG::LogInfo( message:" --- Checking for ticket returned at " + self.location );
+select one observation related by self->Observation[R400]; 
+
+select any tracker from instances of VisitTracking
+ where ( selected.payingAt == self.location )
+  and ( selected.ticketReturned == True );
+if ( not_empty tracker )
+  observation.Complete( success:True );
+else
+  observation.Complete( success:False );
+end if;
+',
+	1,
+	'',
+	"b5fa2fec-0eac-49de-93f4-82eba55a9efb",
+	0);
+INSERT INTO O_NBATTR
+	VALUES ("49bc5d85-3372-41c9-94b7-b12545a4cb21",
+	"c8b2d620-fe1b-4583-a7f8-e1d705d065c6");
+INSERT INTO O_BATTR
+	VALUES ("49bc5d85-3372-41c9-94b7-b12545a4cb21",
+	"c8b2d620-fe1b-4583-a7f8-e1d705d065c6");
+INSERT INTO O_ATTR
+	VALUES ("49bc5d85-3372-41c9-94b7-b12545a4cb21",
+	"c8b2d620-fe1b-4583-a7f8-e1d705d065c6",
+	"00000000-0000-0000-0000-000000000000",
+	'location',
+	'',
+	'',
+	'location',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("bd3ba664-5fa7-4c7c-b377-ce206d31418f",
+	"c8b2d620-fe1b-4583-a7f8-e1d705d065c6");
+INSERT INTO O_BATTR
+	VALUES ("bd3ba664-5fa7-4c7c-b377-ce206d31418f",
+	"c8b2d620-fe1b-4583-a7f8-e1d705d065c6");
+INSERT INTO O_ATTR
+	VALUES ("bd3ba664-5fa7-4c7c-b377-ce206d31418f",
+	"c8b2d620-fe1b-4583-a7f8-e1d705d065c6",
+	"49bc5d85-3372-41c9-94b7-b12545a4cb21",
+	'number',
+	'',
+	'',
+	'number',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"c8b2d620-fe1b-4583-a7f8-e1d705d065c6");
+INSERT INTO O_ID
+	VALUES (1,
+	"c8b2d620-fe1b-4583-a7f8-e1d705d065c6");
+INSERT INTO O_ID
+	VALUES (2,
+	"c8b2d620-fe1b-4583-a7f8-e1d705d065c6");
+INSERT INTO PE_PE
+	VALUES ("c8b2d620-fe1b-4583-a7f8-e1d705d065c6",
+	1,
+	"8d0b291c-e8aa-44d2-8917-c259479b29a2",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("8d0b291c-e8aa-44d2-8917-c259479b29a2",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'Observations',
+	'',
+	0,
+	'../Observations.xtuml');

@@ -1,0 +1,412 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("746e0534-07b4-4b62-a9b4-6725d0b30c2a",
+	'Observation',
+	9,
+	'Observation',
+	'The supertype for those classes which, when invoked, will measure some change in the application under test.
+
+In general an observation will report on, or evaluate against some criteria, some returned value from the application.
+An observation may fail if it does not satisfy the presented criteria within a time limit, if specified.
+
+A observation may be polling or triggered:
+
+If polling, and an interval is specified, the evaluation will be repeated periodically; again, the time limit applies.
+
+If triggered, an evaluation may be caused at any time by the testbench, when deemed appropriate.
+To do this, the testbench should signal an "assess" with a key value matching that of the observation.
+
+If an observation fails to succeed, the test case is deemed to have failed; all un-executed stimuli and observations are cancelled.
+',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("29da92d2-991a-4952-9084-77d2bb72fa60",
+	"746e0534-07b4-4b62-a9b4-6725d0b30c2a",
+	'AddTriggered',
+	'Add an instance of Observation sub/supertype pair following the specified stimulus.
+A polling observation may be re-evaluated at specified intervals.
+An overall time limit for such re-evaluation may also be specified.
+Failure to signal success within the time limit is considered a time-out failure.
+Any observation failure terminates the entire test case.
+Note: 
+ if both poll interval and time limit are zero, the observation will be invoked once only;
+ this invocation may occur before all events at this time instance have been processed;
+ the ordering of simultaneous event processing may affect success or failure.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'send TESTSEQ::AddTriggeredObservation( seqLabel:param.seqLabel,
+                                       observationId:self.observationId,
+                                       durationLimit:param.timeLimit, 
+                                       eventKey:param.key,
+                                       concurrent:param.concurrent);',
+	1,
+	'',
+	"5b5c9463-a199-4a29-847e-495b504cd07f",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("701f21e1-8283-4a3c-bb52-cd85cb8735f9",
+	"29da92d2-991a-4952-9084-77d2bb72fa60",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'An observation is added to the currently latest stimulus on the specified sequence.');
+INSERT INTO O_TPARM
+	VALUES ("095982da-aa5e-45b0-ae75-a55a9b2a4a2a",
+	"29da92d2-991a-4952-9084-77d2bb72fa60",
+	'timeLimit',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"701f21e1-8283-4a3c-bb52-cd85cb8735f9",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("6c0479e2-ea2c-4dea-9c87-d7466e42b0e3",
+	"29da92d2-991a-4952-9084-77d2bb72fa60",
+	'key',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"095982da-aa5e-45b0-ae75-a55a9b2a4a2a",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("7556d13f-39f2-4728-b937-eeaa13af0ef7",
+	"29da92d2-991a-4952-9084-77d2bb72fa60",
+	'concurrent',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"6c0479e2-ea2c-4dea-9c87-d7466e42b0e3",
+	'');
+INSERT INTO O_TFR
+	VALUES ("68f40ae7-2afe-4fae-ae53-5893cd01d93c",
+	"746e0534-07b4-4b62-a9b4-6725d0b30c2a",
+	'Observe',
+	'This operation will be invoked when the counterpart instance is encountered by the sequencing service.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// The following is a work around for lack of polymorphic operation in Verifier.
+// See https://support.onefact.net/issues/12032 @TODO
+
+select one tr related by self->QueryTicketRequest[R400];
+if ( not_empty tr )
+  tr.CheckRequest();
+else
+  select one bs related by self->BarrierCheck[R400];
+  if ( not_empty bs )
+  	bs.CheckStatus(); 
+  else
+  	select one ti related by self->TicketIssued[R400];
+  	if ( not_empty ti )
+  	  ti.CheckIssued();
+    else
+      select one bv related by self->BalanceValue[R400];
+      if ( not_empty bv )
+        bv.CheckBalance();
+      else
+        select one rt related by self->TicketReturned[R400];
+        if ( not_empty rt )
+          rt.CheckReturned();
+        else
+          select one cd related by self->ChangeDispensed[R400];
+          if ( not_empty cd )
+            cd.CheckDispensed();
+          else
+            select one oc related by self->OccupancyCount[R400];
+            if ( not_empty oc )
+              oc.OccupancyChange();
+            else
+              select one ac related by self->ActivityCheck[R400];
+              if ( not_empty ac )
+                ac.CheckActivation();
+              else
+                select one vc related by self->VisitCheck[R400];
+                if ( not_empty vc )
+                  vc.CheckTracking();
+                end if;
+              end if;
+            end if;
+          end if;
+        end if;
+      end if;
+  	end if;
+  end if;
+end if;',
+	1,
+	'',
+	"29da92d2-991a-4952-9084-77d2bb72fa60",
+	0);
+INSERT INTO O_TFR
+	VALUES ("6573f450-20f8-40ff-8aa9-23e85bf50f03",
+	"746e0534-07b4-4b62-a9b4-6725d0b30c2a",
+	'Complete',
+	'Respond to the sequencing service with success or failure of the observation subtype.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Report succcess or failure of an observation to the test sequencing service.
+
+send TESTSEQ::ObservationDone( observationId:self.observationId, success:param.success );',
+	1,
+	'',
+	"d4cb7a5b-7e6f-4b84-8406-5bc94f596291",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("ed8a77d9-d589-4fe1-bd24-b32cca6adf68",
+	"6573f450-20f8-40ff-8aa9-23e85bf50f03",
+	'success',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("29ae3bf8-a1e3-46c5-802a-ec3c735593d1",
+	"746e0534-07b4-4b62-a9b4-6725d0b30c2a",
+	'ReadIntervalTimer',
+	'Request the value of the interval timer associated with the stimulus sequence this observation  belongs to.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'send TESTSEQ::RequestIntervalTimerValue( observationId:self.observationId, key:"", reset:param.reset );',
+	1,
+	'',
+	"6573f450-20f8-40ff-8aa9-23e85bf50f03",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("0a6cbcfb-8389-42f0-a831-a0aee1a89d17",
+	"29ae3bf8-a1e3-46c5-802a-ec3c735593d1",
+	'reset',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("6624feae-1235-4c07-bce6-d3b28bdec6ec",
+	"746e0534-07b4-4b62-a9b4-6725d0b30c2a",
+	'Delete',
+	'Dispose of the client instances when the test sequence service no longer needs them.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// one of these subtypes should match...
+
+select one req related by self->QueryTicketRequest[R400];
+if ( not_empty req )
+  unrelate req from self across R400;
+  delete object instance req;
+end if;
+select one ti related by self->TicketIssued[R400];
+if ( not_empty ti )
+  unrelate ti from self across R400;
+  delete object instance ti;
+end if;
+select one bs related by self->BarrierCheck[R400];
+if ( not_empty bs )
+  unrelate bs from self across R400;
+  delete object instance bs;
+end if;
+select one bv related by self->BalanceValue[R400];
+if ( not_empty bv )
+  unrelate bv from self across R400;
+  delete object instance bv;
+end if;
+select one giveback related by self->TicketReturned[R400];
+if ( not_empty giveback )
+  unrelate giveback from self across R400;
+  delete object instance giveback;
+end if;
+select one amount related by self->ChangeDispensed[R400];
+if ( not_empty amount )
+  unrelate amount from self across R400;
+  delete object instance amount;
+end if;
+select one contents related by self->OccupancyCount[R400];
+if ( not_empty contents )
+  unrelate contents from self across R400;
+  delete object instance contents;
+end if;
+select one activ related by self->ActivityCheck[R400];
+if ( not_empty activ )
+  unrelate activ from self across R400;
+  delete object instance activ;
+end if;
+select one visit related by self->VisitCheck[R400];
+if ( not_empty visit )
+  unrelate visit from self across R400;
+  delete object instance visit;
+end if;
+
+delete object instance self;',
+	1,
+	'',
+	"29ae3bf8-a1e3-46c5-802a-ec3c735593d1",
+	0);
+INSERT INTO O_TFR
+	VALUES ("d4cb7a5b-7e6f-4b84-8406-5bc94f596291",
+	"746e0534-07b4-4b62-a9b4-6725d0b30c2a",
+	'Unfinished',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'send TESTSEQ::ObservationIncomplete( observationId:self.observationId );',
+	1,
+	'',
+	"68f40ae7-2afe-4fae-ae53-5893cd01d93c",
+	0);
+INSERT INTO O_TFR
+	VALUES ("8d271ce6-730e-4108-a504-2703fc6b0bff",
+	"746e0534-07b4-4b62-a9b4-6725d0b30c2a",
+	'CancelDependents',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select many observations related by self->Observation[R701.''can cancel''];
+for each observation in observations
+  send TESTSEQ::CancelObservation( observationId: observation.observationId );
+end for;',
+	1,
+	'',
+	"6624feae-1235-4c07-bce6-d3b28bdec6ec",
+	0);
+INSERT INTO O_TFR
+	VALUES ("4a2e9d38-58ad-42bc-b67b-45b1d0cb9850",
+	"746e0534-07b4-4b62-a9b4-6725d0b30c2a",
+	'CancelableBy',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'select any canceler from instances of Observation
+ where ( selected.observationId == param.Canceler );
+select any cancelee from instances of Observation
+ where ( selected.observationId == param.Cancelee );
+relate cancelee to canceler across R701.''can be cancelled by'';',
+	1,
+	'',
+	"8d271ce6-730e-4108-a504-2703fc6b0bff",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("7fe492c0-8f89-45ba-a644-816aad2df935",
+	"4a2e9d38-58ad-42bc-b67b-45b1d0cb9850",
+	'Canceler',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("f3ba6fc6-1af0-4893-b7a1-bacbca15bc09",
+	"4a2e9d38-58ad-42bc-b67b-45b1d0cb9850",
+	'Cancelee',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"7fe492c0-8f89-45ba-a644-816aad2df935",
+	'');
+INSERT INTO O_TFR
+	VALUES ("5b5c9463-a199-4a29-847e-495b504cd07f",
+	"746e0534-07b4-4b62-a9b4-6725d0b30c2a",
+	'AddImmediate',
+	'Add an instance of Observation sub/supertype pair following the specified stimulus.
+A polling observation may be re-evaluated at specified intervals.
+An overall time limit for such re-evaluation may also be specified.
+Failure to signal success within the time limit is considered a time-out failure.
+Any observation failure terminates the entire test case.
+Note: 
+ if both poll interval and time limit are zero, the observation will be invoked once only;
+ this invocation may occur before all events at this time instance have been processed;
+ the ordering of simultaneous event processing may affect success or failure.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'send TESTSEQ::AddImmediateObservation( seqLabel:param.seqLabel,
+                                       observationId:self.observationId,
+                                       pollInterval:param.pollInterval, 
+                                       pollDuration:param.timeLimit, 
+                                       concurrent:param.concurrent);',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("60c8effc-5e99-4b02-bc2c-8c55157dfa8e",
+	"5b5c9463-a199-4a29-847e-495b504cd07f",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'An observation is added to the currently latest stimulus on the specified sequence.');
+INSERT INTO O_TPARM
+	VALUES ("e421f73a-e40c-4568-9993-059bb0d81095",
+	"5b5c9463-a199-4a29-847e-495b504cd07f",
+	'timeLimit',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"dcb87ba9-3650-45ee-8c0f-bc85c648e014",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("dcb87ba9-3650-45ee-8c0f-bc85c648e014",
+	"5b5c9463-a199-4a29-847e-495b504cd07f",
+	'pollInterval',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"60c8effc-5e99-4b02-bc2c-8c55157dfa8e",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("5890ab0b-c26c-4d2c-a338-e04dbb7c7587",
+	"5b5c9463-a199-4a29-847e-495b504cd07f",
+	'concurrent',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"e421f73a-e40c-4568-9993-059bb0d81095",
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("eb9914e8-b980-4475-9bf6-f1ba5cee6202",
+	"746e0534-07b4-4b62-a9b4-6725d0b30c2a");
+INSERT INTO O_BATTR
+	VALUES ("eb9914e8-b980-4475-9bf6-f1ba5cee6202",
+	"746e0534-07b4-4b62-a9b4-6725d0b30c2a");
+INSERT INTO O_ATTR
+	VALUES ("eb9914e8-b980-4475-9bf6-f1ba5cee6202",
+	"746e0534-07b4-4b62-a9b4-6725d0b30c2a",
+	"00000000-0000-0000-0000-000000000000",
+	'observationId',
+	'An identifier returned by the Test sequencer service.
+Used to identify an instance when being invoked by the Test sequencer.',
+	'',
+	'observationId',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000005",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"746e0534-07b4-4b62-a9b4-6725d0b30c2a");
+INSERT INTO O_OIDA
+	VALUES ("eb9914e8-b980-4475-9bf6-f1ba5cee6202",
+	"746e0534-07b4-4b62-a9b4-6725d0b30c2a",
+	0,
+	'observationId');
+INSERT INTO O_ID
+	VALUES (1,
+	"746e0534-07b4-4b62-a9b4-6725d0b30c2a");
+INSERT INTO O_ID
+	VALUES (2,
+	"746e0534-07b4-4b62-a9b4-6725d0b30c2a");
+INSERT INTO PE_PE
+	VALUES ("746e0534-07b4-4b62-a9b4-6725d0b30c2a",
+	1,
+	"8d0b291c-e8aa-44d2-8917-c259479b29a2",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("8d0b291c-e8aa-44d2-8917-c259479b29a2",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'Observations',
+	'',
+	0,
+	'../Observations.xtuml');

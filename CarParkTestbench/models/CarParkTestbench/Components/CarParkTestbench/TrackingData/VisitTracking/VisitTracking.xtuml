@@ -1,0 +1,244 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("bf1c4c9a-fb1f-40fa-8037-92ce429b6315",
+	'VisitTracking',
+	23,
+	'VisitTracking',
+	'Holds data pertinent to visit to the carpark.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("908aef19-73b6-47e1-b958-08867c488934",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_BATTR
+	VALUES ("908aef19-73b6-47e1-b958-08867c488934",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_ATTR
+	VALUES ("908aef19-73b6-47e1-b958-08867c488934",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315",
+	"d64c3755-2770-42db-9dc7-9ddbd263189c",
+	'ticketNumber',
+	'Ticket number associated with this visit; assigned by the application.',
+	'',
+	'ticketNumber',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("a1fd974d-d125-4499-a181-fd6556291746",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_BATTR
+	VALUES ("a1fd974d-d125-4499-a181-fd6556291746",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_ATTR
+	VALUES ("a1fd974d-d125-4499-a181-fd6556291746",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315",
+	"908aef19-73b6-47e1-b958-08867c488934",
+	'payingAt',
+	'The location where payment is being attempted.',
+	'',
+	'payingAt',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("60b11712-7a5c-41e5-8d58-2c06df867753",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_BATTR
+	VALUES ("60b11712-7a5c-41e5-8d58-2c06df867753",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_ATTR
+	VALUES ("60b11712-7a5c-41e5-8d58-2c06df867753",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315",
+	"c5287281-61f0-4d93-86ea-04add0da7870",
+	'deadline',
+	'Time by which car park should be vacated; not used in initial use cases.',
+	'',
+	'deadline',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("7833de0a-476f-44c1-b8df-bb5555dd2198",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_BATTR
+	VALUES ("7833de0a-476f-44c1-b8df-bb5555dd2198",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_ATTR
+	VALUES ("7833de0a-476f-44c1-b8df-bb5555dd2198",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315",
+	"b3cd0406-969e-42be-a275-17d58472432a",
+	'ticketReturned',
+	'If true, the ticket has been returned because of a cancelled transaction at a pay station.',
+	'',
+	'ticketReturned',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'False');
+INSERT INTO O_NBATTR
+	VALUES ("b3cd0406-969e-42be-a275-17d58472432a",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_BATTR
+	VALUES ("b3cd0406-969e-42be-a275-17d58472432a",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_ATTR
+	VALUES ("b3cd0406-969e-42be-a275-17d58472432a",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315",
+	"02301d88-7ac9-4409-a464-5da032a27da4",
+	'payStatus',
+	'Tracks the payment status throughout a visit.',
+	'',
+	'payStatus',
+	0,
+	"ded3bca0-4d1e-414f-8227-dc8fc8fd64d9",
+	'',
+	'false');
+INSERT INTO S_DT_PROXY
+	VALUES ("ded3bca0-4d1e-414f-8227-dc8fc8fd64d9",
+	"00000000-0000-0000-0000-000000000000",
+	'PayStatus',
+	'If not "ignored" must be matched by checking observation.',
+	'',
+	'../../Types/Types.xtuml');
+INSERT INTO O_NBATTR
+	VALUES ("5e5ecb29-2d51-4287-95b4-2bfdcf0b8c72",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_BATTR
+	VALUES ("5e5ecb29-2d51-4287-95b4-2bfdcf0b8c72",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_ATTR
+	VALUES ("5e5ecb29-2d51-4287-95b4-2bfdcf0b8c72",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315",
+	"60b11712-7a5c-41e5-8d58-2c06df867753",
+	'exitingAt',
+	'The location of the exit station where a visit ends.',
+	'',
+	'exitingAt',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("d64c3755-2770-42db-9dc7-9ddbd263189c",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_BATTR
+	VALUES ("d64c3755-2770-42db-9dc7-9ddbd263189c",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_ATTR
+	VALUES ("d64c3755-2770-42db-9dc7-9ddbd263189c",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315",
+	"00000000-0000-0000-0000-000000000000",
+	'enteredAt',
+	'The location of the entry stand where a visit begins.',
+	'',
+	'enteredAt',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("02301d88-7ac9-4409-a464-5da032a27da4",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_BATTR
+	VALUES ("02301d88-7ac9-4409-a464-5da032a27da4",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_ATTR
+	VALUES ("02301d88-7ac9-4409-a464-5da032a27da4",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315",
+	"a1fd974d-d125-4499-a181-fd6556291746",
+	'amountDue',
+	'Balance due at pay station.',
+	'',
+	'amountDue',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("a6853baf-0ab5-4133-a872-53a7eb2920df",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_BATTR
+	VALUES ("a6853baf-0ab5-4133-a872-53a7eb2920df",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_ATTR
+	VALUES ("a6853baf-0ab5-4133-a872-53a7eb2920df",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315",
+	"6cdc9e8c-ec36-4f20-8f9a-4ae851563f19",
+	'amountDispensed',
+	'Money dispensed - either change due or a refund for a cancelled transaction.',
+	'',
+	'amountDispensed',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("6cdc9e8c-ec36-4f20-8f9a-4ae851563f19",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_BATTR
+	VALUES ("6cdc9e8c-ec36-4f20-8f9a-4ae851563f19",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_ATTR
+	VALUES ("6cdc9e8c-ec36-4f20-8f9a-4ae851563f19",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315",
+	"7833de0a-476f-44c1-b8df-bb5555dd2198",
+	'wantChange',
+	'',
+	'',
+	'wantChange',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("c5287281-61f0-4d93-86ea-04add0da7870",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_BATTR
+	VALUES ("c5287281-61f0-4d93-86ea-04add0da7870",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_ATTR
+	VALUES ("c5287281-61f0-4d93-86ea-04add0da7870",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315",
+	"a6853baf-0ab5-4133-a872-53a7eb2920df",
+	'changeStatus',
+	'',
+	'',
+	'changeStatus',
+	0,
+	"44e7f67d-7896-4de3-b311-9aee3cb5b226",
+	'',
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("44e7f67d-7896-4de3-b311-9aee3cb5b226",
+	"00000000-0000-0000-0000-000000000000",
+	'ChangeStatus',
+	'If not "ignored" must be matched by checking observation.',
+	'',
+	'../../Types/Types.xtuml');
+INSERT INTO O_ID
+	VALUES (0,
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_ID
+	VALUES (1,
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_ID
+	VALUES (2,
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO PE_PE
+	VALUES ("bf1c4c9a-fb1f-40fa-8037-92ce429b6315",
+	1,
+	"94a87a4e-cf93-40fb-b34c-da75c6d9267a",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("94a87a4e-cf93-40fb-b34c-da75c6d9267a",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'TrackingData',
+	'',
+	0,
+	'../TrackingData.xtuml');

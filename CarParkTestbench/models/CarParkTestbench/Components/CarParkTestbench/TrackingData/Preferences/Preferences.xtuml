@@ -1,0 +1,183 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("e0c2be7d-3c8a-48a0-9110-25a29b1be1f5",
+	'Preferences',
+	37,
+	'Preferences',
+	'Controls which observations are to be selectively supported in test cases.
+If flags are set to suppress port activitiy actions, then the test case should not include observations.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("75054fc8-4914-401c-98e1-3557bb07c2ad",
+	"e0c2be7d-3c8a-48a0-9110-25a29b1be1f5",
+	'EntryActivation',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'select any prefs from instances of Preferences;
+if ( param.off )
+  prefs.EntryActivation = False;
+else
+  prefs.EntryActivation = True;
+end if;',
+	1,
+	'',
+	"56c574fe-5ddd-4cb8-b858-0072703f83d7",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("3a69e284-da92-4084-a744-bd186909d78e",
+	"75054fc8-4914-401c-98e1-3557bb07c2ad",
+	'off',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("53bdfbb3-c273-4081-a0b6-753c0678768e",
+	"e0c2be7d-3c8a-48a0-9110-25a29b1be1f5",
+	'ExitActivation',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'select any prefs from instances of Preferences;
+if ( param.off )
+  prefs.ExitActivation = False;
+else
+  prefs.ExitActivation = True;
+end if;',
+	1,
+	'',
+	"75054fc8-4914-401c-98e1-3557bb07c2ad",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("055f557e-3441-4cfb-80b4-09109d1e24a9",
+	"53bdfbb3-c273-4081-a0b6-753c0678768e",
+	'off',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("56c574fe-5ddd-4cb8-b858-0072703f83d7",
+	"e0c2be7d-3c8a-48a0-9110-25a29b1be1f5",
+	'Create',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'select any prefs from instances of Preferences;
+if ( empty prefs )
+  create object instance prefs of Preferences;
+  prefs.EntryActivation = True;
+  prefs.ExitActivation = True;
+  prefs.Occupancy = True;
+end if;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TFR
+	VALUES ("829d43ee-21da-4747-86c7-043fc0df1e8e",
+	"e0c2be7d-3c8a-48a0-9110-25a29b1be1f5",
+	'Occupancy',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'select any prefs from instances of Preferences;
+if ( param.off )
+  prefs.Occupancy = False;
+else
+  prefs.Occupancy = True;
+end if;',
+	1,
+	'',
+	"53bdfbb3-c273-4081-a0b6-753c0678768e",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("e557f76d-3ef5-4da0-8166-d3a00f412256",
+	"829d43ee-21da-4747-86c7-043fc0df1e8e",
+	'off',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("8271ec01-be02-4ed0-ae7d-701b54c20c6f",
+	"e0c2be7d-3c8a-48a0-9110-25a29b1be1f5");
+INSERT INTO O_BATTR
+	VALUES ("8271ec01-be02-4ed0-ae7d-701b54c20c6f",
+	"e0c2be7d-3c8a-48a0-9110-25a29b1be1f5");
+INSERT INTO O_ATTR
+	VALUES ("8271ec01-be02-4ed0-ae7d-701b54c20c6f",
+	"e0c2be7d-3c8a-48a0-9110-25a29b1be1f5",
+	"00000000-0000-0000-0000-000000000000",
+	'EntryActivation',
+	'If true, port activities will create instances of Entry stand activation data for checking.',
+	'',
+	'EntryActivation',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("c4dc39fa-8d52-477c-8b80-bd097dbde229",
+	"e0c2be7d-3c8a-48a0-9110-25a29b1be1f5");
+INSERT INTO O_BATTR
+	VALUES ("c4dc39fa-8d52-477c-8b80-bd097dbde229",
+	"e0c2be7d-3c8a-48a0-9110-25a29b1be1f5");
+INSERT INTO O_ATTR
+	VALUES ("c4dc39fa-8d52-477c-8b80-bd097dbde229",
+	"e0c2be7d-3c8a-48a0-9110-25a29b1be1f5",
+	"8271ec01-be02-4ed0-ae7d-701b54c20c6f",
+	'ExitActivation',
+	'If true, port activities will create instances of Exit stand activation data for checking.',
+	'',
+	'ExitActivation',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("5f811316-651e-4c9c-bf86-a60ec5fb5b45",
+	"e0c2be7d-3c8a-48a0-9110-25a29b1be1f5");
+INSERT INTO O_BATTR
+	VALUES ("5f811316-651e-4c9c-bf86-a60ec5fb5b45",
+	"e0c2be7d-3c8a-48a0-9110-25a29b1be1f5");
+INSERT INTO O_ATTR
+	VALUES ("5f811316-651e-4c9c-bf86-a60ec5fb5b45",
+	"e0c2be7d-3c8a-48a0-9110-25a29b1be1f5",
+	"c4dc39fa-8d52-477c-8b80-bd097dbde229",
+	'Occupancy',
+	'If true, occupancy will be checked.',
+	'',
+	'Occupancy',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"e0c2be7d-3c8a-48a0-9110-25a29b1be1f5");
+INSERT INTO O_ID
+	VALUES (1,
+	"e0c2be7d-3c8a-48a0-9110-25a29b1be1f5");
+INSERT INTO O_ID
+	VALUES (2,
+	"e0c2be7d-3c8a-48a0-9110-25a29b1be1f5");
+INSERT INTO PE_PE
+	VALUES ("e0c2be7d-3c8a-48a0-9110-25a29b1be1f5",
+	1,
+	"94a87a4e-cf93-40fb-b34c-da75c6d9267a",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("94a87a4e-cf93-40fb-b34c-da75c6d9267a",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'TrackingData',
+	'',
+	0,
+	'../TrackingData.xtuml');

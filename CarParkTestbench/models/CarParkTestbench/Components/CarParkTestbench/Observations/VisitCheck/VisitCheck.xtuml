@@ -1,0 +1,242 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("7f11a14f-8a66-4978-afbc-8f3aecd07207",
+	'VisitCheck',
+	40,
+	'VisitCheck',
+	'Observe that a ticket is returned at a pay station.
+It may be returned due to cancellation as well as full payment.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("3a8f1247-29c9-4d0d-b768-9daf9f244f3d",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207",
+	'Create',
+	'Add an observation of this type to the ''script'' of a test case.
+See Observation.AppendPolling for description.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance check of VisitCheck;
+check.ticketNumber = param.ticket;
+check.payDisposition = param.payment;
+check.changeDisposition = param.change; 
+check.deadlineStatus = param.deadlineStatus;
+
+create object instance obs of Observation;
+relate check to obs across R400;
+
+obs.AddImmediate( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, concurrent:True );',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("56554ca1-d350-43da-b1d8-a59ac258391e",
+	"3a8f1247-29c9-4d0d-b768-9daf9f244f3d",
+	'ticket',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"914fac2b-37cd-48ec-b559-93a77bcbb64b",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("914fac2b-37cd-48ec-b559-93a77bcbb64b",
+	"3a8f1247-29c9-4d0d-b768-9daf9f244f3d",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("da45722e-5ce5-489f-b7a5-d6c759ff9f68",
+	"3a8f1247-29c9-4d0d-b768-9daf9f244f3d",
+	'payment',
+	"ded3bca0-4d1e-414f-8227-dc8fc8fd64d9",
+	0,
+	'',
+	"56554ca1-d350-43da-b1d8-a59ac258391e",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("ded3bca0-4d1e-414f-8227-dc8fc8fd64d9",
+	"00000000-0000-0000-0000-000000000000",
+	'PayStatus',
+	'If not "ignored" must be matched by checking observation.',
+	'',
+	'../../Types/Types.xtuml');
+INSERT INTO O_TPARM
+	VALUES ("c9b96187-40d3-4de9-ab32-406e24e572fb",
+	"3a8f1247-29c9-4d0d-b768-9daf9f244f3d",
+	'change',
+	"44e7f67d-7896-4de3-b311-9aee3cb5b226",
+	0,
+	'',
+	"da45722e-5ce5-489f-b7a5-d6c759ff9f68",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("44e7f67d-7896-4de3-b311-9aee3cb5b226",
+	"00000000-0000-0000-0000-000000000000",
+	'ChangeStatus',
+	'If not "ignored" must be matched by checking observation.',
+	'',
+	'../../Types/Types.xtuml');
+INSERT INTO O_TPARM
+	VALUES ("d3020ab1-28d7-4244-a840-cc1e05b7a60a",
+	"3a8f1247-29c9-4d0d-b768-9daf9f244f3d",
+	'deadlineStatus',
+	"01e593e1-d9ae-4124-b4c0-98d3952a808a",
+	0,
+	'',
+	"c9b96187-40d3-4de9-ab32-406e24e572fb",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("01e593e1-d9ae-4124-b4c0-98d3952a808a",
+	"00000000-0000-0000-0000-000000000000",
+	'DeadlineStatus',
+	'If not "ignored" must be matched by checking observation.',
+	'',
+	'../../Types/Types.xtuml');
+INSERT INTO O_TFR
+	VALUES ("b9741741-a859-468b-81d0-3b22a4093340",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207",
+	'CheckTracking',
+	'When invoked, search any existing notifications looking for a match.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one observation related by self->Observation[R400]; 
+
+success = true;
+now = TIM::current_seconds();
+select any tracker from instances of VisitTracking
+ where ( selected.ticketNumber == self.ticketNumber );
+if ( not_empty tracker )
+  if ( self.deadlineStatus != DeadlineStatus::ignore )
+    if ( self.deadlineStatus == DeadlineStatus::valid )
+     and ( now >= tracker.deadline )
+      success = false;
+    else
+      if ( self.deadlineStatus == DeadlineStatus::expired )
+       and ( now < tracker.deadline )
+        success = false;
+      end if;
+    end if;
+  end if;
+  if ( self.payDisposition != PayStatus::ignore )
+    if ( self.payDisposition != tracker.payStatus )
+      success = false;
+    end if;
+  end if;
+  if ( self.changeDisposition != ChangeStatus::ignore )
+    if ( self.changeDisposition != tracker.changeStatus )
+      success = false;
+    end if;
+  end if;
+else
+  success = false;
+end if;
+if ( success )
+  LOG::LogSuccess( message:"Visit data checked OK." );
+  observation.Complete( success:True );
+else
+  observation.Complete( success:False );
+end if;
+',
+	1,
+	'',
+	"3a8f1247-29c9-4d0d-b768-9daf9f244f3d",
+	0);
+INSERT INTO O_NBATTR
+	VALUES ("a8222219-f962-4abf-925b-76c2ea5cae5f",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207");
+INSERT INTO O_BATTR
+	VALUES ("a8222219-f962-4abf-925b-76c2ea5cae5f",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207");
+INSERT INTO O_ATTR
+	VALUES ("a8222219-f962-4abf-925b-76c2ea5cae5f",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207",
+	"209abd94-f897-4697-828d-ec6db324f927",
+	'deadlineStatus',
+	'If true, check exit deadline against current time.',
+	'',
+	'deadlineStatus',
+	0,
+	"01e593e1-d9ae-4124-b4c0-98d3952a808a",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("209abd94-f897-4697-828d-ec6db324f927",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207");
+INSERT INTO O_BATTR
+	VALUES ("209abd94-f897-4697-828d-ec6db324f927",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207");
+INSERT INTO O_ATTR
+	VALUES ("209abd94-f897-4697-828d-ec6db324f927",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207",
+	"00000000-0000-0000-0000-000000000000",
+	'ticketNumber',
+	'',
+	'',
+	'ticketNumber',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("ef26126a-9635-4f99-9675-49cd74850880",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207");
+INSERT INTO O_BATTR
+	VALUES ("ef26126a-9635-4f99-9675-49cd74850880",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207");
+INSERT INTO O_ATTR
+	VALUES ("ef26126a-9635-4f99-9675-49cd74850880",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207",
+	"a8222219-f962-4abf-925b-76c2ea5cae5f",
+	'payDisposition',
+	'',
+	'',
+	'payDisposition',
+	0,
+	"ded3bca0-4d1e-414f-8227-dc8fc8fd64d9",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("ab6a7aa6-bf47-4ced-ab97-03786430e5ca",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207");
+INSERT INTO O_BATTR
+	VALUES ("ab6a7aa6-bf47-4ced-ab97-03786430e5ca",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207");
+INSERT INTO O_ATTR
+	VALUES ("ab6a7aa6-bf47-4ced-ab97-03786430e5ca",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207",
+	"ef26126a-9635-4f99-9675-49cd74850880",
+	'changeDisposition',
+	'',
+	'',
+	'changeDisposition',
+	0,
+	"44e7f67d-7896-4de3-b311-9aee3cb5b226",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207");
+INSERT INTO O_ID
+	VALUES (1,
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207");
+INSERT INTO O_ID
+	VALUES (2,
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207");
+INSERT INTO PE_PE
+	VALUES ("7f11a14f-8a66-4978-afbc-8f3aecd07207",
+	1,
+	"8d0b291c-e8aa-44d2-8917-c259479b29a2",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("8d0b291c-e8aa-44d2-8917-c259479b29a2",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'Observations',
+	'',
+	0,
+	'../Observations.xtuml');

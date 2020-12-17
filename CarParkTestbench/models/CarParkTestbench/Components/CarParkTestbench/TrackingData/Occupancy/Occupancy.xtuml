@@ -1,0 +1,68 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("c5f2c3ca-1ca7-4677-be40-463565c3515f",
+	'Occupancy',
+	36,
+	'Occupancy',
+	'Keep track of occupancy.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("a2472e82-44fe-450d-a31b-648c4fa6a854",
+	"c5f2c3ca-1ca7-4677-be40-463565c3515f");
+INSERT INTO O_BATTR
+	VALUES ("a2472e82-44fe-450d-a31b-648c4fa6a854",
+	"c5f2c3ca-1ca7-4677-be40-463565c3515f");
+INSERT INTO O_ATTR
+	VALUES ("a2472e82-44fe-450d-a31b-648c4fa6a854",
+	"c5f2c3ca-1ca7-4677-be40-463565c3515f",
+	"00000000-0000-0000-0000-000000000000",
+	'count',
+	'Current occupancy count.',
+	'',
+	'count',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("1242c5d8-1208-48c9-900e-ab39a9b192b1",
+	"c5f2c3ca-1ca7-4677-be40-463565c3515f");
+INSERT INTO O_BATTR
+	VALUES ("1242c5d8-1208-48c9-900e-ab39a9b192b1",
+	"c5f2c3ca-1ca7-4677-be40-463565c3515f");
+INSERT INTO O_ATTR
+	VALUES ("1242c5d8-1208-48c9-900e-ab39a9b192b1",
+	"c5f2c3ca-1ca7-4677-be40-463565c3515f",
+	"a2472e82-44fe-450d-a31b-648c4fa6a854",
+	'available',
+	'Number of free spaces.',
+	'',
+	'available',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"c5f2c3ca-1ca7-4677-be40-463565c3515f");
+INSERT INTO O_ID
+	VALUES (1,
+	"c5f2c3ca-1ca7-4677-be40-463565c3515f");
+INSERT INTO O_ID
+	VALUES (2,
+	"c5f2c3ca-1ca7-4677-be40-463565c3515f");
+INSERT INTO PE_PE
+	VALUES ("c5f2c3ca-1ca7-4677-be40-463565c3515f",
+	1,
+	"94a87a4e-cf93-40fb-b34c-da75c6d9267a",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("94a87a4e-cf93-40fb-b34c-da75c6d9267a",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'TrackingData',
+	'',
+	0,
+	'../TrackingData.xtuml');

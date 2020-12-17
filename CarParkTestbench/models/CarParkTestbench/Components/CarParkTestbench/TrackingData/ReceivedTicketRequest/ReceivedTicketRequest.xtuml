@@ -1,0 +1,68 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("04797ea4-ff17-4ed8-807d-c8e87401fe61",
+	'ReceivedTicketRequest',
+	17,
+	'ReceivedTicketRequest',
+	'Represents the result of a query as to whether a ticket will be issued on request.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("f8a8c880-9617-42d2-a997-c8a77d91f7d0",
+	"04797ea4-ff17-4ed8-807d-c8e87401fe61");
+INSERT INTO O_BATTR
+	VALUES ("f8a8c880-9617-42d2-a997-c8a77d91f7d0",
+	"04797ea4-ff17-4ed8-807d-c8e87401fe61");
+INSERT INTO O_ATTR
+	VALUES ("f8a8c880-9617-42d2-a997-c8a77d91f7d0",
+	"04797ea4-ff17-4ed8-807d-c8e87401fe61",
+	"00000000-0000-0000-0000-000000000000",
+	'location',
+	'',
+	'',
+	'location',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("1238e5ae-fa11-492c-baef-c8ebae5db335",
+	"04797ea4-ff17-4ed8-807d-c8e87401fe61");
+INSERT INTO O_BATTR
+	VALUES ("1238e5ae-fa11-492c-baef-c8ebae5db335",
+	"04797ea4-ff17-4ed8-807d-c8e87401fe61");
+INSERT INTO O_ATTR
+	VALUES ("1238e5ae-fa11-492c-baef-c8ebae5db335",
+	"04797ea4-ff17-4ed8-807d-c8e87401fe61",
+	"f8a8c880-9617-42d2-a997-c8a77d91f7d0",
+	'enabled',
+	'If true, ticket request is enabled at this entry stand.',
+	'',
+	'enabled',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"04797ea4-ff17-4ed8-807d-c8e87401fe61");
+INSERT INTO O_ID
+	VALUES (1,
+	"04797ea4-ff17-4ed8-807d-c8e87401fe61");
+INSERT INTO O_ID
+	VALUES (2,
+	"04797ea4-ff17-4ed8-807d-c8e87401fe61");
+INSERT INTO PE_PE
+	VALUES ("04797ea4-ff17-4ed8-807d-c8e87401fe61",
+	1,
+	"94a87a4e-cf93-40fb-b34c-da75c6d9267a",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("94a87a4e-cf93-40fb-b34c-da75c6d9267a",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'TrackingData',
+	'',
+	0,
+	'../TrackingData.xtuml');

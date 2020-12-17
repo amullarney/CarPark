@@ -1,0 +1,172 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("4e92318a-d898-40dc-a765-18503aa64a6e",
+	'TicketInserted',
+	24,
+	'TicketInserted',
+	'This signals that a ticket has been inserted in either a payment stand or an exit stand.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("c625f2df-3cdf-4082-a871-c7c68fed0a68",
+	"4e92318a-d898-40dc-a765-18503aa64a6e",
+	'Create',
+	'Add a stimulus of this type to the ''script of a test case.
+',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance insertion of TicketInserted;
+insertion.location = param.location;
+insertion.standType = param.stand;
+insertion.number = param.number;
+
+create object instance stimulus of Stimulus;
+relate stimulus to insertion across R300; 
+
+stimulus.AddToTest( seqLabel:param.seqLabel );',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("b3425075-f6a4-45a2-9106-78650a3cb20b",
+	"c625f2df-3cdf-4082-a871-c7c68fed0a68",
+	'location',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"592bae08-d59f-44ea-a43a-0c163858cfb7",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("592bae08-d59f-44ea-a43a-0c163858cfb7",
+	"c625f2df-3cdf-4082-a871-c7c68fed0a68",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("20190063-2513-4680-b86e-7f2a6de33937",
+	"c625f2df-3cdf-4082-a871-c7c68fed0a68",
+	'stand',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"b3425075-f6a4-45a2-9106-78650a3cb20b",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("ed2d188e-b5ea-421e-a6c6-4633b3311358",
+	"c625f2df-3cdf-4082-a871-c7c68fed0a68",
+	'number',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"20190063-2513-4680-b86e-7f2a6de33937",
+	'');
+INSERT INTO O_TFR
+	VALUES ("d1b097e9-5e29-4eaa-8a73-9940474c2de6",
+	"4e92318a-d898-40dc-a765-18503aa64a6e",
+	'Inserted',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// A ticket has been inserted - at either a pay station or an exit station.
+
+LOG::LogInfo( message:"Ticket inserted at " + self.location + " " + self.standType );
+
+select any tracker from instances of VisitTracking
+ where ( selected.ticketNumber == self.number );
+if ( self.standType == "Pay" )
+  tracker.payingAt = self.location;
+  tracker.payStatus = PayStatus::unpaid;
+  send Payer::InsertedTicket( Location:self.location, TicketNumber:tracker.ticketNumber); 
+else
+  tracker.exitingAt = self.location;
+  send ExitStand::InsertedTicket( Location:self.location, TicketNumber:tracker.ticketNumber );
+end if;
+
+select one stimulus related by self->Stimulus[R300];
+stimulus.Complete();
+',
+	1,
+	'',
+	"c625f2df-3cdf-4082-a871-c7c68fed0a68",
+	0);
+INSERT INTO O_NBATTR
+	VALUES ("2e822ca3-db41-40a3-b80d-758bc42699f0",
+	"4e92318a-d898-40dc-a765-18503aa64a6e");
+INSERT INTO O_BATTR
+	VALUES ("2e822ca3-db41-40a3-b80d-758bc42699f0",
+	"4e92318a-d898-40dc-a765-18503aa64a6e");
+INSERT INTO O_ATTR
+	VALUES ("2e822ca3-db41-40a3-b80d-758bc42699f0",
+	"4e92318a-d898-40dc-a765-18503aa64a6e",
+	"00000000-0000-0000-0000-000000000000",
+	'location',
+	'',
+	'',
+	'location',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("97d708e1-d823-4281-a66d-1c854c207f37",
+	"4e92318a-d898-40dc-a765-18503aa64a6e");
+INSERT INTO O_BATTR
+	VALUES ("97d708e1-d823-4281-a66d-1c854c207f37",
+	"4e92318a-d898-40dc-a765-18503aa64a6e");
+INSERT INTO O_ATTR
+	VALUES ("97d708e1-d823-4281-a66d-1c854c207f37",
+	"4e92318a-d898-40dc-a765-18503aa64a6e",
+	"2e822ca3-db41-40a3-b80d-758bc42699f0",
+	'standType',
+	'',
+	'',
+	'standType',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("fb7aa0da-4e4a-4287-b5aa-f6122fd724cf",
+	"4e92318a-d898-40dc-a765-18503aa64a6e");
+INSERT INTO O_BATTR
+	VALUES ("fb7aa0da-4e4a-4287-b5aa-f6122fd724cf",
+	"4e92318a-d898-40dc-a765-18503aa64a6e");
+INSERT INTO O_ATTR
+	VALUES ("fb7aa0da-4e4a-4287-b5aa-f6122fd724cf",
+	"4e92318a-d898-40dc-a765-18503aa64a6e",
+	"97d708e1-d823-4281-a66d-1c854c207f37",
+	'number',
+	'The number of the ticket.',
+	'',
+	'number',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"4e92318a-d898-40dc-a765-18503aa64a6e");
+INSERT INTO O_ID
+	VALUES (1,
+	"4e92318a-d898-40dc-a765-18503aa64a6e");
+INSERT INTO O_ID
+	VALUES (2,
+	"4e92318a-d898-40dc-a765-18503aa64a6e");
+INSERT INTO PE_PE
+	VALUES ("4e92318a-d898-40dc-a765-18503aa64a6e",
+	1,
+	"f3cba374-1086-4f35-ae97-68a635f058c5",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("f3cba374-1086-4f35-ae97-68a635f058c5",
+	"00000000-0000-0000-0000-000000000000",
+	"87ff681e-390e-45ca-9f9c-e0259790ea6c",
+	'Stimuli',
+	'',
+	0,
+	'../Stimuli.xtuml');
