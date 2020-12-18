@@ -68,7 +68,7 @@ ActivityCheck::CreateExit( seqLabel:"seq11", activate:True, location:"Lane 1", b
 TicketInserted::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", number:1 );
 ActivityCheck::CreateExit( seqLabel:"seq11", activate:True, location:"Lane 1", barrier:BarrierState::Closed, ticket:ExitTicketState::Inserted );
 BarrierCheck::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", state:BarrierState::Open );
-VisitCheck::Create( seqLabel:"seq11", ticket:1, payment:PayStatus::paid, change:ChangeStatus::ignore, deadlineStatus:DeadlineStatus::valid ); 
+VisitCheck::CreateExit( seqLabel:"seq11", ticket:1, payment:PayStatus::paid, deadlineStatus:DeadlineStatus::valid, unpaidStay:false ); 
 ActivityCheck::CreateExit( seqLabel:"seq11", activate:True, location:"Lane 1", barrier:BarrierState::Open, ticket:ExitTicketState::Inserted );
 VehicleMovement::Create( seqLabel:"seq11", location:"Lane 1", stand:"Exit", movement:Movement::Depart );
 ActivityCheck::CreateExit( seqLabel:"seq11", activate:True, location:"Lane 1", barrier:BarrierState::Closed, ticket:ExitTicketState::Inserted );

@@ -11,21 +11,24 @@ It may be returned due to cancellation as well as full payment.',
 INSERT INTO O_TFR
 	VALUES ("3a8f1247-29c9-4d0d-b768-9daf9f244f3d",
 	"7f11a14f-8a66-4978-afbc-8f3aecd07207",
-	'Create',
+	'CreateEnter',
 	'Add an observation of this type to the ''script'' of a test case.
 See Observation.AppendPolling for description.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
 	'create object instance check of VisitCheck;
+check.peripheral = "Entry";
 check.ticketNumber = param.ticket;
-check.payDisposition = param.payment;
-check.changeDisposition = param.change; 
-check.deadlineStatus = param.deadlineStatus;
+check.delayedEntry = param.delayed;
+
+check.payDisposition = PayStatus::ignore;
+check.changeDisposition = ChangeStatus::ignore;
+check.deadlineStatus = DeadlineStatus::ignore;
 
 create object instance obs of Observation;
 relate check to obs across R400;
 
-obs.AddImmediate( seqLabel:param.seqLabel, pollInterval:0, timeLimit:0, concurrent:True );',
+obs.AddImmediate( seqLabel:param.seqLabel, pollInterval:1, timeLimit:5, concurrent:True );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
@@ -51,51 +54,12 @@ INSERT INTO O_TPARM
 INSERT INTO O_TPARM
 	VALUES ("da45722e-5ce5-489f-b7a5-d6c759ff9f68",
 	"3a8f1247-29c9-4d0d-b768-9daf9f244f3d",
-	'payment',
-	"ded3bca0-4d1e-414f-8227-dc8fc8fd64d9",
+	'delayed',
+	"ba5eda7a-def5-0000-0000-000000000001",
 	0,
 	'',
 	"56554ca1-d350-43da-b1d8-a59ac258391e",
-	'');
-INSERT INTO S_DT_PROXY
-	VALUES ("ded3bca0-4d1e-414f-8227-dc8fc8fd64d9",
-	"00000000-0000-0000-0000-000000000000",
-	'PayStatus',
-	'If not "ignored" must be matched by checking observation.',
-	'',
-	'../../Types/Types.xtuml');
-INSERT INTO O_TPARM
-	VALUES ("c9b96187-40d3-4de9-ab32-406e24e572fb",
-	"3a8f1247-29c9-4d0d-b768-9daf9f244f3d",
-	'change',
-	"44e7f67d-7896-4de3-b311-9aee3cb5b226",
-	0,
-	'',
-	"da45722e-5ce5-489f-b7a5-d6c759ff9f68",
-	'');
-INSERT INTO S_DT_PROXY
-	VALUES ("44e7f67d-7896-4de3-b311-9aee3cb5b226",
-	"00000000-0000-0000-0000-000000000000",
-	'ChangeStatus',
-	'If not "ignored" must be matched by checking observation.',
-	'',
-	'../../Types/Types.xtuml');
-INSERT INTO O_TPARM
-	VALUES ("d3020ab1-28d7-4244-a840-cc1e05b7a60a",
-	"3a8f1247-29c9-4d0d-b768-9daf9f244f3d",
-	'deadlineStatus',
-	"01e593e1-d9ae-4124-b4c0-98d3952a808a",
-	0,
-	'',
-	"c9b96187-40d3-4de9-ab32-406e24e572fb",
-	'');
-INSERT INTO S_DT_PROXY
-	VALUES ("01e593e1-d9ae-4124-b4c0-98d3952a808a",
-	"00000000-0000-0000-0000-000000000000",
-	'DeadlineStatus',
-	'If not "ignored" must be matched by checking observation.',
-	'',
-	'../../Types/Types.xtuml');
+	'If true, testing for delayed entry alarm to operator at entry.');
 INSERT INTO O_TFR
 	VALUES ("b9741741-a859-468b-81d0-3b22a4093340",
 	"7f11a14f-8a66-4978-afbc-8f3aecd07207",
@@ -131,6 +95,16 @@ if ( not_empty tracker )
       success = false;
     end if;
   end if;
+  if ( self.peripheral == "Entry" )
+    if ( self.delayedEntry != tracker.delayedEntry )
+      success = false;
+    end if;
+  end if;
+  if ( self.peripheral == "Exit" )
+    if ( self.unpaid != tracker.unpaidExit )
+      success = false;
+    end if;
+  end if;
 else
   success = false;
 end if;
@@ -138,13 +112,164 @@ if ( success )
   LOG::LogSuccess( message:"Visit data checked OK." );
   observation.Complete( success:True );
 else
-  observation.Complete( success:False );
+//  observation.Complete( success:False );
 end if;
 ',
 	1,
 	'',
+	"39fd9991-da4b-44bf-b875-0ffe7aaea5a2",
+	0);
+INSERT INTO O_TFR
+	VALUES ("39fd9991-da4b-44bf-b875-0ffe7aaea5a2",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207",
+	'CreateExit',
+	'Add an observation of this type to the ''script'' of a test case.
+See Observation.AppendPolling for description.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance check of VisitCheck;
+check.peripheral = "Exit";
+check.ticketNumber = param.ticket;
+check.payDisposition = param.payment;
+check.deadlineStatus = param.deadlineStatus;
+check.unpaid = param.unpaidStay;
+
+check.changeDisposition = ChangeStatus::ignore;
+
+create object instance obs of Observation;
+relate check to obs across R400;
+
+obs.AddImmediate( seqLabel:param.seqLabel, pollInterval:1, timeLimit:25, concurrent:True );',
+	1,
+	'',
+	"cf0e4a91-0946-452d-b423-45b2af45ff00",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("b98e15f4-a397-4116-a755-ea12396a932a",
+	"39fd9991-da4b-44bf-b875-0ffe7aaea5a2",
+	'ticket',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"659859ec-9b78-4568-853f-061e1783004a",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("659859ec-9b78-4568-853f-061e1783004a",
+	"39fd9991-da4b-44bf-b875-0ffe7aaea5a2",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("d797f47a-3ca3-462e-af12-cb381f8aa7e5",
+	"39fd9991-da4b-44bf-b875-0ffe7aaea5a2",
+	'payment',
+	"ded3bca0-4d1e-414f-8227-dc8fc8fd64d9",
+	0,
+	'',
+	"b98e15f4-a397-4116-a755-ea12396a932a",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("ded3bca0-4d1e-414f-8227-dc8fc8fd64d9",
+	"00000000-0000-0000-0000-000000000000",
+	'PayStatus',
+	'If not "ignored" must be matched by checking observation.',
+	'',
+	'../../Types/Types.xtuml');
+INSERT INTO O_TPARM
+	VALUES ("5c7b1051-c3c6-456f-88c6-e36c16085576",
+	"39fd9991-da4b-44bf-b875-0ffe7aaea5a2",
+	'deadlineStatus',
+	"01e593e1-d9ae-4124-b4c0-98d3952a808a",
+	0,
+	'',
+	"d797f47a-3ca3-462e-af12-cb381f8aa7e5",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("01e593e1-d9ae-4124-b4c0-98d3952a808a",
+	"00000000-0000-0000-0000-000000000000",
+	'DeadlineStatus',
+	'If not "ignored" must be matched by checking observation.',
+	'',
+	'../../Types/Types.xtuml');
+INSERT INTO O_TPARM
+	VALUES ("dbc0da8c-32df-4958-8337-0c34700df1c4",
+	"39fd9991-da4b-44bf-b875-0ffe7aaea5a2",
+	'unpaidStay',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"5c7b1051-c3c6-456f-88c6-e36c16085576",
+	'If true, testing for unpaid stay alarm to operator at exit.');
+INSERT INTO O_TFR
+	VALUES ("cf0e4a91-0946-452d-b423-45b2af45ff00",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207",
+	'CreatePay',
+	'Add an observation of this type to the ''script'' of a test case.
+See Observation.AppendPolling for description.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance check of VisitCheck;
+check.peripheral = "Pay";
+check.ticketNumber = param.ticket;
+check.payDisposition = param.payment;
+check.changeDisposition = param.change;
+
+check.deadlineStatus = DeadlineStatus::ignore;
+
+create object instance obs of Observation;
+relate check to obs across R400;
+
+obs.AddImmediate( seqLabel:param.seqLabel, pollInterval:1, timeLimit:5, concurrent:True );',
+	1,
+	'',
 	"3a8f1247-29c9-4d0d-b768-9daf9f244f3d",
 	0);
+INSERT INTO O_TPARM
+	VALUES ("be4db761-10ad-4263-b82c-9ba417c7b3ea",
+	"cf0e4a91-0946-452d-b423-45b2af45ff00",
+	'ticket',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"7867d0ee-a714-450b-ae0c-932a504d2f46",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("7867d0ee-a714-450b-ae0c-932a504d2f46",
+	"cf0e4a91-0946-452d-b423-45b2af45ff00",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("3c4d7076-3540-4f6e-be69-b1aeef8f18ce",
+	"cf0e4a91-0946-452d-b423-45b2af45ff00",
+	'payment',
+	"ded3bca0-4d1e-414f-8227-dc8fc8fd64d9",
+	0,
+	'',
+	"be4db761-10ad-4263-b82c-9ba417c7b3ea",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("b27351bc-6bb2-433e-9fe6-48675208da8c",
+	"cf0e4a91-0946-452d-b423-45b2af45ff00",
+	'change',
+	"44e7f67d-7896-4de3-b311-9aee3cb5b226",
+	0,
+	'',
+	"3c4d7076-3540-4f6e-be69-b1aeef8f18ce",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("44e7f67d-7896-4de3-b311-9aee3cb5b226",
+	"00000000-0000-0000-0000-000000000000",
+	'ChangeStatus',
+	'If not "ignored" must be matched by checking observation.',
+	'',
+	'../../Types/Types.xtuml');
 INSERT INTO O_NBATTR
 	VALUES ("a8222219-f962-4abf-925b-76c2ea5cae5f",
 	"7f11a14f-8a66-4978-afbc-8f3aecd07207");
@@ -154,7 +279,7 @@ INSERT INTO O_BATTR
 INSERT INTO O_ATTR
 	VALUES ("a8222219-f962-4abf-925b-76c2ea5cae5f",
 	"7f11a14f-8a66-4978-afbc-8f3aecd07207",
-	"209abd94-f897-4697-828d-ec6db324f927",
+	"e83625a1-740d-459d-8f0f-4a4d219af572",
 	'deadlineStatus',
 	'If true, check exit deadline against current time.',
 	'',
@@ -172,7 +297,7 @@ INSERT INTO O_BATTR
 INSERT INTO O_ATTR
 	VALUES ("209abd94-f897-4697-828d-ec6db324f927",
 	"7f11a14f-8a66-4978-afbc-8f3aecd07207",
-	"00000000-0000-0000-0000-000000000000",
+	"9e2653ad-3579-4b42-889c-fe84283d2033",
 	'ticketNumber',
 	'',
 	'',
@@ -215,6 +340,60 @@ INSERT INTO O_ATTR
 	'changeDisposition',
 	0,
 	"44e7f67d-7896-4de3-b311-9aee3cb5b226",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("e83625a1-740d-459d-8f0f-4a4d219af572",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207");
+INSERT INTO O_BATTR
+	VALUES ("e83625a1-740d-459d-8f0f-4a4d219af572",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207");
+INSERT INTO O_ATTR
+	VALUES ("e83625a1-740d-459d-8f0f-4a4d219af572",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207",
+	"209abd94-f897-4697-828d-ec6db324f927",
+	'delayedEntry',
+	'If true, checking for delayed entry occurrence.',
+	'',
+	'delayedEntry',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("9e2653ad-3579-4b42-889c-fe84283d2033",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207");
+INSERT INTO O_BATTR
+	VALUES ("9e2653ad-3579-4b42-889c-fe84283d2033",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207");
+INSERT INTO O_ATTR
+	VALUES ("9e2653ad-3579-4b42-889c-fe84283d2033",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207",
+	"00000000-0000-0000-0000-000000000000",
+	'peripheral',
+	'Indicates the peripheral type with which the check is associated - entry, pay, exit.',
+	'',
+	'peripheral',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("bd48a95e-c823-4a7b-9b11-197ac618ffe9",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207");
+INSERT INTO O_BATTR
+	VALUES ("bd48a95e-c823-4a7b-9b11-197ac618ffe9",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207");
+INSERT INTO O_ATTR
+	VALUES ("bd48a95e-c823-4a7b-9b11-197ac618ffe9",
+	"7f11a14f-8a66-4978-afbc-8f3aecd07207",
+	"ab6a7aa6-bf47-4ced-ab97-03786430e5ca",
+	'unpaid',
+	'If true, checking for unpaid stay at exit occurrence.',
+	'',
+	'unpaid',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
 	'',
 	'');
 INSERT INTO O_ID
