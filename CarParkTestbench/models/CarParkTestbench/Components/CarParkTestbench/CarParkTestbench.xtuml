@@ -849,7 +849,7 @@ INSERT INTO SPR_RS
 	'LOG::LogInfo( message:"Tardy exit at " + param.Location );
 LOG::LogReal( message:"Additional fee: ", r:param.AdditionalCharge );
 select any tracker from instances of VisitTracking
- where ( selected.exitingAt == param.Location );
+ where ( selected.ticketNumber == param.TicketNumber );
 if ( not_empty tracker )
   tracker.payStatus = PayStatus::excess;
 end if;',
@@ -870,7 +870,12 @@ INSERT INTO SPR_RS
 	VALUES ("b15a9460-75c6-4faa-a392-8dce9344e6b1",
 	'UnpaidStayExit',
 	'Indicates that a ticket for an unpaid stay has been inserted into an exit stand.',
-	'LOG::LogInfo( message:"Unpaid stay exit" );',
+	'LOG::LogInfo( message:"Unpaid stay exit" );
+select any tracker from instances of VisitTracking
+ where ( selected.ticketNumber == param.TicketNumber );
+if ( not_empty tracker )
+  tracker.unpaidExit = true;
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -974,7 +979,12 @@ INSERT INTO SPR_RS
 	'Indicates that a vehicle has failed to enter the carpark
 within the expected time after collecting a ticket from
 an entry stand.',
-	'LOG::LogInfo( message:"Delayed entry." );',
+	'LOG::LogInfo( message:"Delayed entry." );
+select any tracker from instances of VisitTracking
+ where ( selected.enteringAt == param.Location );
+if ( not_empty tracker )
+  tracker.delayedEntry = true;
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1327,7 +1337,7 @@ INSERT INTO SPR_RS
 	'// Create an instance which tracks progress through a visit.
 create object instance tracker of VisitTracking;
 tracker.ticketNumber = param.Number;
-tracker.enteredAt = param.Location;
+tracker.enteringAt = param.Location;
 tracker.payingAt = "";
 tracker.exitingAt = "";
 tracker.ticketReturned = false;

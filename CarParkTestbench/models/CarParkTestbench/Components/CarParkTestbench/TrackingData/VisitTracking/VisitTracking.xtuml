@@ -16,7 +16,7 @@ INSERT INTO O_BATTR
 INSERT INTO O_ATTR
 	VALUES ("908aef19-73b6-47e1-b958-08867c488934",
 	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315",
-	"d64c3755-2770-42db-9dc7-9ddbd263189c",
+	"1208e453-f43c-4e9a-94fa-3f889d8315fc",
 	'ticketNumber',
 	'Ticket number associated with this visit; assigned by the application.',
 	'',
@@ -132,10 +132,10 @@ INSERT INTO O_ATTR
 	VALUES ("d64c3755-2770-42db-9dc7-9ddbd263189c",
 	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315",
 	"00000000-0000-0000-0000-000000000000",
-	'enteredAt',
+	'enteringAt',
 	'The location of the entry stand where a visit begins.',
 	'',
-	'enteredAt',
+	'enteringAt',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'',
@@ -219,6 +219,42 @@ INSERT INTO S_DT_PROXY
 	'If not "ignored" must be matched by checking observation.',
 	'',
 	'../../Types/Types.xtuml');
+INSERT INTO O_NBATTR
+	VALUES ("1208e453-f43c-4e9a-94fa-3f889d8315fc",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_BATTR
+	VALUES ("1208e453-f43c-4e9a-94fa-3f889d8315fc",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_ATTR
+	VALUES ("1208e453-f43c-4e9a-94fa-3f889d8315fc",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315",
+	"d64c3755-2770-42db-9dc7-9ddbd263189c",
+	'delayedEntry',
+	'If true, vehicle did not enter in a timely manner when barrier was opened.',
+	'',
+	'delayedEntry',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("22d24eac-ea9c-4ac4-bfe4-db5a8d9cc0cb",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_BATTR
+	VALUES ("22d24eac-ea9c-4ac4-bfe4-db5a8d9cc0cb",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
+INSERT INTO O_ATTR
+	VALUES ("22d24eac-ea9c-4ac4-bfe4-db5a8d9cc0cb",
+	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315",
+	"5e5ecb29-2d51-4287-95b4-2bfdcf0b8c72",
+	'unpaidExit',
+	'If true, ticket presented at exit has no associated payment.',
+	'',
+	'unpaidExit',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
 INSERT INTO O_ID
 	VALUES (0,
 	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");

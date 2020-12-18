@@ -85,6 +85,9 @@ if ( self.standType == "Entry" )
     send EntryStand::VehicleWaiting( Location:self.location );
   else
     send EntryStand::VehicleEntered( Location:self.location );
+    select any tracker from instances of VisitTracking
+     where ( selected.enteringAt == self.location );
+    tracker.enteringAt = "";  // used only to match for Delayed Entry.
   end if;
 else
   if ( self.movement == Movement::Arrive )
