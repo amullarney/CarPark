@@ -103,6 +103,7 @@ VisitCheck::CreatePay( seqLabel:"seq01", ticket:2, payment:PayStatus::paid, chan
 // The excess fee for a missed exit deadline is waived.
 send TESTSEQ::AddTestCase( caseLabel:"UC12" ); 
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:29, caseLabel:"UC12" );
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:42, caseLabel:"UC12" );
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:43, caseLabel:"UC12" );
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:45, caseLabel:"UC12" );
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
@@ -146,6 +147,31 @@ OpAction::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", action: Ope
 VisitCheck::CreateExit( seqLabel:"seq01", ticket:3, payment:PayStatus::paid, deadlineStatus:DeadlineStatus::expired, unpaidStay:false ); 
 VehicleMovement::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", movement: Movement::Depart );
 ActivityCheck::CreateExit( seqLabel:"seq01", activate:False, location:"Lane 1", barrier: BarrierState::Closed, ticket:ExitTicketState::Inserted );
+
+
+// The customer has not paid; a fee is collected.
+send TESTSEQ::AddTestCase( caseLabel:"UC15" ); 
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:42, caseLabel:"UC15" );
+send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:72, caseLabel:"UC15" );
+send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
+VehicleMovement::Create( seqLabel:"seq01", location:"North", stand:"Entry", movement: Movement::Arrive );
+QueryTicketRequest::Create( seqLabel:"seq01", location:"North", enabled:True );
+TicketRequested::Create( seqLabel:"seq01", location:"North" );
+TicketIssued::Create( seqLabel:"seq01", location:"North" );
+TicketTaken::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
+FastForward::Create( seqLabel:"seq01", hours:0, minutes:0, seconds:31 );
+VisitCheck::CreateEnter( seqLabel:"seq01", ticket:4, delayed:true );
+VehicleMovement::Create( seqLabel:"seq01", location:"North", stand:"Entry", movement: Movement::Depart );
+FastForward::Create( seqLabel:"seq01", hours:1, minutes:0, seconds:0 );
+VehicleMovement::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", movement: Movement::Arrive );
+TicketInserted::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", number:4 );
+OpAction::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", action: OperatorAction::CollectFee );
+VisitCheck::CreateExit( seqLabel:"seq01", ticket:4, payment:PayStatus::paid, deadlineStatus:DeadlineStatus::ignore, unpaidStay:true ); 
+//BarrierCheck::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", state:BarrierState::Open );
+VehicleMovement::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", movement: Movement::Depart );
+//BarrierCheck::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", state:BarrierState::Closed );
+OccupancyCount::Create( seqLabel:"seq01", count:0 );
+
 
 bucket.Initialized();',
 	1,
