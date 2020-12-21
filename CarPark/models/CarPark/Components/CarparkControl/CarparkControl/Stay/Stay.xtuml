@@ -110,11 +110,10 @@ while ( true )
     FeeSchedule[R14.''applies'']
     where ( selected.Position == cursor );
   if ( not_empty FeeSched )
+    EndPosition = cursor;  // this may be the one we want... but save it anyway, in case we run off the end.
     if ( FeeSched.End >= param.End )
-      EndPosition = cursor;
       break;
     else
-      EndPosition = cursor;  // in case we run off the end...
       cursor = cursor + 1;
     end if;
   else
