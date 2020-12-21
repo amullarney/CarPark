@@ -97,6 +97,10 @@ INSERT INTO O_TFR
 // First, find the fee schedule covering the end of the period 
 // by finding the earliest end time that is later than the 
 // end of the period of interest.
+//
+// If the end of stay is later than the end time of the last 
+// fee schedule entry, use that end time as end of charge period.
+
 cursor = 0;
 EndPosition = 0;
 select any FeeSched from instances of FeeSchedule where false;  // Decl
@@ -105,11 +109,15 @@ while ( true )
     Carpark[R7.''generates revenue for'']->
     FeeSchedule[R14.''applies'']
     where ( selected.Position == cursor );
-  if ( FeeSched.End >= param.End )
-    EndPosition = cursor;
-    break;
+  if ( not_empty FeeSched )
+    EndPosition = cursor;  // this may be the one we want... but save it anyway, in case we run off the end.
+    if ( FeeSched.End >= param.End )
+      break;
+    else
+      cursor = cursor + 1;
+    end if;
   else
-    cursor = cursor + 1;
+    break;
   end if;
 end while;
 
@@ -117,7 +125,12 @@ end while;
 // of the period of interest by walking backwards through the 
 // sequence to find the latest start time that is earlier 
 // than the start time for this period.
+//
+// If the stay begins after the end time of the last fee schedule 
+// entry, use that start time as the beginning of charge period.
+
 StartPosition = EndPosition;
+cursor = EndPosition;
 while ( cursor >= 0 )
   select any FeeSched related by self->
     Carpark[R7.''generates revenue for'']->

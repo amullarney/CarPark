@@ -177,43 +177,6 @@ INSERT INTO DIM_DIA
 	0.000000,
 	0.000000,
 	"00000000-0000-0000-0000-000000000000");
-INSERT INTO S_SYNC
-	VALUES ("4600cebf-a8a4-4a9e-8717-8374a4e1da02",
-	"00000000-0000-0000-0000-000000000000",
-	'InsertDelay',
-	'Used to establish a time delay before the next observation in a sequence is triggered.
-The duration is specified at the current timer resolution of the associated sequence.',
-	'create object instance delay of Observation;
-send TESTSEQ::InsertDelay( seqLabel:param.seqLabel, observationId: delay.observationId, duration:param.duration );
-delete object instance delay; ',
-	"ba5eda7a-def5-0000-0000-000000000000",
-	1,
-	'',
-	0);
-INSERT INTO S_SPARM
-	VALUES ("085c6cd3-986b-48dc-9244-09b89b571c88",
-	"4600cebf-a8a4-4a9e-8717-8374a4e1da02",
-	'seqLabel',
-	"ba5eda7a-def5-0000-0000-000000000004",
-	0,
-	'',
-	"00000000-0000-0000-0000-000000000000",
-	'');
-INSERT INTO S_SPARM
-	VALUES ("a0f9d3e5-6ae1-48c2-b1e1-185e2c0da207",
-	"4600cebf-a8a4-4a9e-8717-8374a4e1da02",
-	'duration',
-	"ba5eda7a-def5-0000-0000-000000000002",
-	0,
-	'',
-	"085c6cd3-986b-48dc-9244-09b89b571c88",
-	'');
-INSERT INTO PE_PE
-	VALUES ("4600cebf-a8a4-4a9e-8717-8374a4e1da02",
-	1,
-	"94a87a4e-cf93-40fb-b34c-da75c6d9267a",
-	"00000000-0000-0000-0000-000000000000",
-	1);
 INSERT INTO PE_PE
 	VALUES ("94a87a4e-cf93-40fb-b34c-da75c6d9267a",
 	1,
