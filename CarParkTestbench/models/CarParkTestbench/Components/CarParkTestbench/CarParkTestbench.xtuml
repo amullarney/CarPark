@@ -1792,7 +1792,13 @@ LOG::LogInfo( message:"Insufficient change available at " + param.Location );
 select any tracker from instances of VisitTracking
  where ( selected.payingAt == param.Location );
 if ( tracker.amountDue < 0.0 )
-  if ( tracker.wantChange )
+  wantChange = False;
+  select any balance from instances of BalanceValue
+   where ( selected.location == tracker.payingAt );
+  if ( not_empty balance )  // impossible - but playing safe.
+    wantChange = balance.wantChange;
+  end if;
+  if ( wantChange )
     send Payer::CancelledTransaction( Location:param.Location );
   else
     send Payer::WaivedChange( Location:param.Location );
@@ -1897,7 +1903,6 @@ INSERT INTO SPR_RS
 	'Indicates that the current transaction was cancelled by the carpark system.',
 	'// A payment transaction has been cancelled either by timeout or customer choice.
 // Any payment made, partial or full, will be refunded.
-// This also signals the completion of the observation monitoring the payment transaction. @TODO
 //
 select any observation from instances of Observation where ( false );  // declaration
 select any tracker from instances of VisitTracking
@@ -1906,13 +1911,8 @@ if ( not_empty tracker )
   select any balance from instances of BalanceValue
    where ( selected.location == tracker.payingAt );
   if ( not_empty balance )
-    select one observation related by balance->Observation[R400];
-    if ( tracker.payStatus == PayStatus::unpaid )  // no payment to return
-      observation.CancelDependents();  // @TODO
-    end if;
     LOG::LogInfo( message:"Payment transaction cancelled at " + param.Location );
     tracker.payStatus = PayStatus::cancelled;
-//    send TESTSEQ::CancelObservation( observationId: observation.observationId ); @TODO
     tracker.amountDue = 0.0;
     send TESTSEQ::Assess( key:"Balance"+param.Location );
   else

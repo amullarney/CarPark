@@ -54,7 +54,7 @@ INSERT INTO O_ATTR
 	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315",
 	"c5287281-61f0-4d93-86ea-04add0da7870",
 	'deadline',
-	'Time by which car park should be vacated; not used in initial use cases.',
+	'Time by which car park should be vacated.',
 	'',
 	'deadline',
 	0,
@@ -167,31 +167,13 @@ INSERT INTO O_BATTR
 INSERT INTO O_ATTR
 	VALUES ("a6853baf-0ab5-4133-a872-53a7eb2920df",
 	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315",
-	"6cdc9e8c-ec36-4f20-8f9a-4ae851563f19",
+	"7833de0a-476f-44c1-b8df-bb5555dd2198",
 	'amountDispensed',
 	'Money dispensed - either change due or a refund for a cancelled transaction.',
 	'',
 	'amountDispensed',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000003",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("6cdc9e8c-ec36-4f20-8f9a-4ae851563f19",
-	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
-INSERT INTO O_BATTR
-	VALUES ("6cdc9e8c-ec36-4f20-8f9a-4ae851563f19",
-	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315");
-INSERT INTO O_ATTR
-	VALUES ("6cdc9e8c-ec36-4f20-8f9a-4ae851563f19",
-	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315",
-	"7833de0a-476f-44c1-b8df-bb5555dd2198",
-	'wantChange',
-	'',
-	'',
-	'wantChange',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000001",
 	'',
 	'');
 INSERT INTO O_NBATTR
@@ -205,7 +187,7 @@ INSERT INTO O_ATTR
 	"bf1c4c9a-fb1f-40fa-8037-92ce429b6315",
 	"a6853baf-0ab5-4133-a872-53a7eb2920df",
 	'changeStatus',
-	'',
+	'Track whether change was dispensed or forfeit in case of insufficient change.',
 	'',
 	'changeStatus',
 	0,

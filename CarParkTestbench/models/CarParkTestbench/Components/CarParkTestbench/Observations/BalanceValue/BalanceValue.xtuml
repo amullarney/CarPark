@@ -83,7 +83,6 @@ select one observation related by self->Observation[R400];  // for success/fail 
 select any tracker from instances of VisitTracking
  where ( selected.payingAt == self.location );
 if ( not_empty tracker )
-  tracker.wantChange = self.wantChange;  // for decision, if change unavailable
   LOG::LogReal( message:"Balance due ", r:tracker.amountDue );
   if ( tracker.amountDue <= 0.0 )                       // no more money required
     if ( tracker.payStatus == PayStatus::cancelled )
@@ -93,7 +92,7 @@ if ( not_empty tracker )
     end if;
     observation.Complete( success:True );
   else
-    observation.Unfinished();			// tell test sequencer to allow repeat evaluation.
+    observation.Unfinished();			// signal test sequencer to allow repeat evaluation.
     if ( self.willpay )
       tracker.payStatus = PayStatus::paying;
       amount = 0;
