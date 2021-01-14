@@ -245,55 +245,6 @@ INSERT INTO O_TFR
 	"68f40ae7-2afe-4fae-ae53-5893cd01d93c",
 	0);
 INSERT INTO O_TFR
-	VALUES ("8d271ce6-730e-4108-a504-2703fc6b0bff",
-	"746e0534-07b4-4b62-a9b4-6725d0b30c2a",
-	'CancelDependents',
-	'',
-	"ba5eda7a-def5-0000-0000-000000000000",
-	1,
-	'select many observations related by self->Observation[R701.''can cancel''];
-for each observation in observations
-  send TESTSEQ::CancelObservation( observationId: observation.observationId );
-end for;',
-	1,
-	'',
-	"6624feae-1235-4c07-bce6-d3b28bdec6ec",
-	0);
-INSERT INTO O_TFR
-	VALUES ("4a2e9d38-58ad-42bc-b67b-45b1d0cb9850",
-	"746e0534-07b4-4b62-a9b4-6725d0b30c2a",
-	'CancelableBy',
-	'',
-	"ba5eda7a-def5-0000-0000-000000000000",
-	0,
-	'select any canceler from instances of Observation
- where ( selected.observationId == param.Canceler );
-select any cancelee from instances of Observation
- where ( selected.observationId == param.Cancelee );
-relate cancelee to canceler across R701.''can be cancelled by'';',
-	1,
-	'',
-	"8d271ce6-730e-4108-a504-2703fc6b0bff",
-	0);
-INSERT INTO O_TPARM
-	VALUES ("7fe492c0-8f89-45ba-a644-816aad2df935",
-	"4a2e9d38-58ad-42bc-b67b-45b1d0cb9850",
-	'Canceler',
-	"ba5eda7a-def5-0000-0000-000000000005",
-	0,
-	'',
-	"00000000-0000-0000-0000-000000000000",
-	'');
-INSERT INTO O_TPARM
-	VALUES ("f3ba6fc6-1af0-4893-b7a1-bacbca15bc09",
-	"4a2e9d38-58ad-42bc-b67b-45b1d0cb9850",
-	'Cancelee',
-	"ba5eda7a-def5-0000-0000-000000000005",
-	0,
-	'',
-	"7fe492c0-8f89-45ba-a644-816aad2df935",
-	'');
-INSERT INTO O_TFR
 	VALUES ("5b5c9463-a199-4a29-847e-495b504cd07f",
 	"746e0534-07b4-4b62-a9b4-6725d0b30c2a",
 	'AddImmediate',

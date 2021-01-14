@@ -1345,7 +1345,6 @@ tracker.amountDue = 0.0;
 tracker.amountDispensed = 0.0;
 tracker.payStatus = PayStatus::unpaid;
 tracker.changeStatus = ChangeStatus::ignore;
-tracker.wantChange = true;
 send TESTSEQ::Assess( key:"TicketIssued" );',
 	1,
 	0);
