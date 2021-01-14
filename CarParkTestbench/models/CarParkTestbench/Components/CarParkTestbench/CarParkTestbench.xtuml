@@ -1767,8 +1767,7 @@ currently inserted in a payment machine.',
 select any tracker from instances of VisitTracking
  where ( selected.payingAt == param.Location );
 tracker.amountDue = param.Amount;
-send TESTSEQ::Assess( key:"Balance" );
-',
+send TESTSEQ::Assess( key:"Balance"+param.Location );',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1868,13 +1867,16 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("4ffe69c6-eff9-4bf8-8240-31ff7622bf60",
 	'DispenseChange',
-	'Commands a payment machine to dispense change to settle the current transaction.',
-	'// Record the amount dispensed so that it can be checked by an observation.
+	'Commands a payment machine to dispense change to settle the current transaction.
+Note: Also used to dispense refund of any payment when a transaction is cancelled.',
+	'// Record the this activity so that it may be checked by an observation.
 
 select any tracker from instances of VisitTracking
  where ( selected.payingAt == param.Location );
 tracker.amountDispensed = param.Amount;
-send TESTSEQ::Assess( key:"Dispensed" );',
+if ( param.Amount > 0.0 )
+  tracker.changeStatus = ChangeStatus::dispensed; // Note this for visit check
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1882,7 +1884,8 @@ INSERT INTO C_EP_PROXY
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'DispenseChange',
-	'Commands a payment machine to dispense change to settle the current transaction.',
+	'Commands a payment machine to dispense change to settle the current transaction.
+Note: Also used to dispense refund of any payment when a transaction is cancelled.',
 	'../../../../../CarPark/models/CarPark/Interfaces/PaymentMachine/PaymentMachine.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("ac2494ef-8171-4c20-9e47-ac0d13ce2691",
@@ -1894,7 +1897,7 @@ INSERT INTO SPR_RS
 	'Indicates that the current transaction was cancelled by the carpark system.',
 	'// A payment transaction has been cancelled either by timeout or customer choice.
 // Any payment made, partial or full, will be refunded.
-// This also signals the completion of the observation monitoring the payment transaction.
+// This also signals the completion of the observation monitoring the payment transaction. @TODO
 //
 select any observation from instances of Observation where ( false );  // declaration
 select any tracker from instances of VisitTracking
@@ -1905,11 +1908,13 @@ if ( not_empty tracker )
   if ( not_empty balance )
     select one observation related by balance->Observation[R400];
     if ( tracker.payStatus == PayStatus::unpaid )  // no payment to return
-      observation.CancelDependents();
+      observation.CancelDependents();  // @TODO
     end if;
     LOG::LogInfo( message:"Payment transaction cancelled at " + param.Location );
     tracker.payStatus = PayStatus::cancelled;
-    send TESTSEQ::CancelObservation( observationId: observation.observationId );
+//    send TESTSEQ::CancelObservation( observationId: observation.observationId ); @TODO
+    tracker.amountDue = 0.0;
+    send TESTSEQ::Assess( key:"Balance"+param.Location );
   else
     LOG::LogInfo( message:"Unable to cancel transaction at " + param.Location );  end if;
 end if;',

@@ -42,7 +42,7 @@ send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:33, caseLabel:"UC08" );
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
 FastForward::Create( seqLabel:"seq01", hours:0, minutes:1, seconds:0 );
 TicketInserted::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay", number:1 );
-id = BalanceValue::Create( seqLabel:"seq01", location:"1st Floor", pay:False, wantChange:False );  // do not pay!
+BalanceValue::Create( seqLabel:"seq01", location:"1st Floor", pay:False, wantChange:False );  // do not pay!
 TicketReturned::Create( seqLabel:"seq01", location:"1st Floor" );
 TicketTaken::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay" );
 VisitCheck::CreatePay( seqLabel:"seq01", ticket:1, payment:PayStatus::cancelled, change:ChangeStatus::ignore ); 
@@ -55,9 +55,8 @@ send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:27, caseLabel:"UC07" );
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:28, caseLabel:"UC07" );
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
 TicketInserted::Create( seqLabel:"seq01", location:"Street", stand:"Pay", number:1 );
-id = BalanceValue::Create( seqLabel:"seq01", location:"Street", pay:True, wantChange:True );
+BalanceValue::Create( seqLabel:"seq01", location:"Street", pay:True, wantChange:True );
 TicketReturned::Create( seqLabel:"seq01", location:"Street" );
-ChangeDispensed::Create( seqLabel:"seq01", location:"Street", dependee:id );
 TicketTaken::Create( seqLabel:"seq01", location:"Street", stand:"Pay" );
 VisitCheck::CreatePay( seqLabel:"seq01", ticket:1, payment:PayStatus::cancelled, change:ChangeStatus::dispensed ); 
 
@@ -95,7 +94,7 @@ send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:26, caseLabel:"UC06" );
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq01" );
 FastForward::Create( seqLabel:"seq01", hours:0, minutes:1, seconds:0 );
 TicketInserted::Create( seqLabel:"seq01", location:"Street", stand:"Pay", number:2 );
-id = BalanceValue::Create( seqLabel:"seq01", location:"Street", pay:True, wantChange:False );
+BalanceValue::Create( seqLabel:"seq01", location:"Street", pay:True, wantChange:False );
 TicketReturned::Create( seqLabel:"seq01", location:"Street" );
 TicketTaken::Create( seqLabel:"seq01", location:"Street", stand:"Pay" );
 VisitCheck::CreatePay( seqLabel:"seq01", ticket:2, payment:PayStatus::paid, change:ChangeStatus::forfeit ); 
@@ -134,9 +133,8 @@ TicketTaken::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 VehicleMovement::Create( seqLabel:"seq01", location:"North", stand:"Entry", movement: Movement::Depart );
 FastForward::Create( seqLabel:"seq01", hours:5, minutes:0, seconds:0 );
 TicketInserted::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay", number:3 );
-id = BalanceValue::Create( seqLabel:"seq01", location:"1st Floor", pay:True, wantChange:False );
+BalanceValue::Create( seqLabel:"seq01", location:"1st Floor", pay:True, wantChange:False );
 TicketReturned::Create( seqLabel:"seq01", location:"1st Floor" );
-ChangeDispensed::Create( seqLabel:"seq01", location:"1st Floor", dependee:id );
 TicketTaken::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay" );
 FastForward::Create( seqLabel:"seq01", hours:0, minutes:16, seconds:0 );
 VehicleMovement::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", movement: Movement::Arrive );
@@ -167,9 +165,7 @@ VehicleMovement::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", move
 TicketInserted::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", number:4 );
 OpAction::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", action: OperatorAction::CollectFee );
 VisitCheck::CreateExit( seqLabel:"seq01", ticket:4, payment:PayStatus::paid, deadlineStatus:DeadlineStatus::ignore, unpaidStay:true ); 
-//BarrierCheck::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", state:BarrierState::Open );
 VehicleMovement::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", movement: Movement::Depart );
-//BarrierCheck::Create( seqLabel:"seq01", location:"Lane 1", stand:"Exit", state:BarrierState::Closed );
 OccupancyCount::Create( seqLabel:"seq01", count:0 );
 
 

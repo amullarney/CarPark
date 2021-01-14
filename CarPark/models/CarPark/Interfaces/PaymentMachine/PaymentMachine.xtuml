@@ -246,11 +246,13 @@ INSERT INTO C_EP
 	"1775761d-746e-41ae-a5e0-cd1a783dc665",
 	-1,
 	'DispenseChange',
-	'Commands a payment machine to dispense change to settle the current transaction.');
+	'Commands a payment machine to dispense change to settle the current transaction.
+Note: Also used to dispense refund of any payment when a transaction is cancelled.');
 INSERT INTO C_AS
 	VALUES ("f6708800-f5f1-4db3-bf94-550b4dd6e170",
 	'DispenseChange',
-	'Commands a payment machine to dispense change to settle the current transaction.',
+	'Commands a payment machine to dispense change to settle the current transaction.
+Note: Also used to dispense refund of any payment when a transaction is cancelled.',
 	1,
 	"7d98badf-0872-49ac-a66e-72a2d0d07fa7");
 INSERT INTO C_PP
@@ -267,7 +269,7 @@ INSERT INTO C_PP
 	"f6708800-f5f1-4db3-bf94-550b4dd6e170",
 	"ba5eda7a-def5-0000-0000-000000000003",
 	'Amount',
-	'Amount of change to be dispensed.
+	'Amount of change/refund to be dispensed.
 Units: dollars',
 	0,
 	'',

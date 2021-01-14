@@ -110,22 +110,17 @@ else
         if ( not_empty rt )
           rt.CheckReturned();
         else
-          select one cd related by self->ChangeDispensed[R400];
-          if ( not_empty cd )
-            cd.CheckDispensed();
+          select one oc related by self->OccupancyCount[R400];
+          if ( not_empty oc )
+            oc.OccupancyChange();
           else
-            select one oc related by self->OccupancyCount[R400];
-            if ( not_empty oc )
-              oc.OccupancyChange();
+            select one ac related by self->ActivityCheck[R400];
+            if ( not_empty ac )
+              ac.CheckActivation();
             else
-              select one ac related by self->ActivityCheck[R400];
-              if ( not_empty ac )
-                ac.CheckActivation();
-              else
-                select one vc related by self->VisitCheck[R400];
-                if ( not_empty vc )
-                  vc.CheckTracking();
-                end if;
+              select one vc related by self->VisitCheck[R400];
+              if ( not_empty vc )
+                vc.CheckTracking();
               end if;
             end if;
           end if;
@@ -215,11 +210,6 @@ select one giveback related by self->TicketReturned[R400];
 if ( not_empty giveback )
   unrelate giveback from self across R400;
   delete object instance giveback;
-end if;
-select one amount related by self->ChangeDispensed[R400];
-if ( not_empty amount )
-  unrelate amount from self across R400;
-  delete object instance amount;
 end if;
 select one contents related by self->OccupancyCount[R400];
 if ( not_empty contents )
