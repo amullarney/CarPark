@@ -52,13 +52,13 @@ INSERT INTO O_TFR
 	'When invoked, search any existing notifications looking for a match.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'LOG::LogInfo( message:" --- Checking for ticket returned at " + self.location );
-select one observation related by self->Observation[R400]; 
+	'select one observation related by self->Observation[R400]; 
 
 select any tracker from instances of VisitTracking
  where ( selected.payingAt == self.location )
   and ( selected.ticketReturned == True );
 if ( not_empty tracker )
+  LOG::LogInfo( message:" Observed ticket returned at " + self.location );
   observation.Complete( success:True );
 else
   observation.Complete( success:False );

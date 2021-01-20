@@ -54,9 +54,9 @@ send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:22, caseLabel:"UC5" );
 send TESTSEQ::LinkRequirement( reqPrefix:"CP", reqNumber:32, caseLabel:"UC5" );
 send TESTSEQ::AddStimulusSequence( seqLabel:"seq05" );
 TicketInserted::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay", number:1 ); 
-id = BalanceValue::Create( seqLabel:"seq05", location:"1st Floor", pay:True, wantChange:False );
+BalanceValue::Create( seqLabel:"seq05", location:"1st Floor", pay:True, wantChange:False );
 TicketReturned::Create( seqLabel:"seq05", location:"1st Floor" );
-ChangeDispensed::Create( seqLabel:"seq05", location:"1st Floor", dependee:id );
+VisitCheck::CreatePay( seqLabel:"seq05", ticket:1, payment: PayStatus::paid, change: ChangeStatus::ignore );
 TicketTaken::Create( seqLabel:"seq05", location:"1st Floor", stand:"Pay" );
 
 send TESTSEQ::AddTestCase( caseLabel:"UC11" ); 

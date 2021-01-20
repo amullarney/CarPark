@@ -30,7 +30,7 @@ TicketTaken::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 VehicleMovement::Create( seqLabel:"seq01", location:"North", stand:"Entry", movement: Movement::Depart );
 FastForward::Create( seqLabel:"seq01", hours:18, minutes:0, seconds:0 );
 TicketInserted::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay", number:1);
-id = BalanceValue::Create( seqLabel:"seq01", location:"1st Floor", pay:True, wantChange:False );
+BalanceValue::Create( seqLabel:"seq01", location:"1st Floor", pay:True, wantChange:False );
 TicketTaken::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay" );
 
 // Stay begins after end of Fee Schedule - now handled gracefully.
@@ -44,7 +44,7 @@ TicketTaken::Create( seqLabel:"seq01", location:"North", stand:"Entry" );
 VehicleMovement::Create( seqLabel:"seq01", location:"North", stand:"Entry", movement: Movement::Depart );
 FastForward::Create( seqLabel:"seq01", hours:5, minutes:0, seconds:0 );
 TicketInserted::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay", number:2 );
-id = BalanceValue::Create( seqLabel:"seq01", location:"1st Floor", pay:True, wantChange:False );
+BalanceValue::Create( seqLabel:"seq01", location:"1st Floor", pay:True, wantChange:False );
 TicketTaken::Create( seqLabel:"seq01", location:"1st Floor", stand:"Pay" );
 
 bucket.Initialized();',

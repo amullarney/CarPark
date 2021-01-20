@@ -5,7 +5,10 @@ INSERT INTO O_OBJ
 	'BarrierCheck',
 	18,
 	'BarrierCheck',
-	'An observation which checks for expected barrier status - open/closed.',
+	'An observation which checks for expected barrier status - open/closed.
+Note: if a test case makes any use of this observation at any station,
+it should be ''observed'' for all barrier commands at that station.
+If not, ''unused'' commands, which are not deleted, may be matched in error.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("c15958c2-3db1-4e76-bd93-56a32871612f",
