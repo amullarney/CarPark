@@ -1791,13 +1791,9 @@ LOG::LogInfo( message:"Insufficient change available at " + param.Location );
 select any tracker from instances of VisitTracking
  where ( selected.payingAt == param.Location );
 if ( tracker.amountDue < 0.0 )
-  wantChange = False;
   select any balance from instances of BalanceValue
    where ( selected.location == tracker.payingAt );
-  if ( not_empty balance )  // impossible - but playing safe.
-    wantChange = balance.wantChange;
-  end if;
-  if ( wantChange )
+  if ( balance.wantChange )
     send Payer::CancelledTransaction( Location:param.Location );
   else
     send Payer::WaivedChange( Location:param.Location );
@@ -1874,7 +1870,7 @@ INSERT INTO SPR_RS
 	'DispenseChange',
 	'Commands a payment machine to dispense change to settle the current transaction.
 Note: Also used to dispense refund of any payment when a transaction is cancelled.',
-	'// Record the this activity so that it may be checked by an observation.
+	'// Record this activity so that it may be checked by an observation.
 
 select any tracker from instances of VisitTracking
  where ( selected.payingAt == param.Location );
